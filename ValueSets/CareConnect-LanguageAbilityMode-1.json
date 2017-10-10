@@ -1,0 +1,52 @@
+{
+  "resourceType": "ValueSet",
+  "meta": {
+    "lastUpdated": "2016-08-03T00:00:00+01:00"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/valueset-oid",
+      "valueUri": "urn:oid:2.16.840.1.113883.5.60"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    }
+  ],
+  "url": "https://fhir.hl7.org.uk/ValueSet/CareConnect-LanguageAbilityMode-1",
+  "version": "1.0.0",
+  "name": "Care Connect Language Ability Mode",
+  "status": "active",
+  "publisher": "HL7 UK",
+  "description": "A valueset to describe the mode the patient can communicate in, representing the method of expression of the language.",
+  "copyright": "Copyright © 2016 HL7 UK\r\n\r\nLicensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\r\n\r\nhttp://www.apache.org/licenses/LICENSE-2.0\r\n\r\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\r\n\r\nHL7® FHIR® standard Copyright © 2011+ HL7\r\n\r\nThe HL7® FHIR® standard is used under the FHIR license. You may obtain a copy of the FHIR license at\r\n\r\nhttps://www.hl7.org/fhir/license.html",
+  "codeSystem": {
+    "system": "https://fhir.hl7.org.uk/CareConnect-LanguageAbilityMode-1",
+    "concept": [
+      {
+        "code": "ESGN",
+        "display": "Expressed signed"
+      },
+      {
+        "code": "ESP",
+        "display": "Expressed spoken"
+      },
+      {
+        "code": "EWR",
+        "display": "Expressed written"
+      },
+      {
+        "code": "RSGN",
+        "display": "Received signed"
+      },
+      {
+        "code": "RSP",
+        "display": "Received spoken"
+      },
+      {
+        "code": "RWR",
+        "display": "Received written"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+<ValueSet xmlns="http://hl7.org/fhir">
+	<meta>
+		<lastUpdated value="2016-08-03T00:00:00+01:00"/>
+	</meta>
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+		<valueInteger value="1"/>
+	</extension>
+	<url value="https://fhir.hl7.org.uk/ValueSet/CareConnect-TreatmentCategory-1"/>
+	<version value="1.0.0"/>
+	<name value="Care Connect Treatment Category"/>
+	<status value="active"/>
+	<publisher value="HL7 UK"/>
+	<description value="A vocabulary that identifies the treatment category for this patient. "/>
+	<copyright value="Copyright © 2016 HL7 UK&#xD;&#xA;&#xD;&#xA;Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at&#xD;&#xA;&#xD;&#xA;http://www.apache.org/licenses/LICENSE-2.0&#xD;&#xA;&#xD;&#xA;Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.&#xD;&#xA;&#xD;&#xA;HL7® FHIR® standard Copyright © 2011+ HL7&#xD;&#xA;&#xD;&#xA;The HL7® FHIR® standard is used under the FHIR license. You may obtain a copy of the FHIR license at&#xD;&#xA;&#xD;&#xA;https://www.hl7.org/fhir/license.html"/>
+	<codeSystem>
+		<system value="https://fhir.hl7.org.uk/CareConnect-TreatmentCategory-1"/>
+		<concept>
+			<code value="1"/>
+			<display value="Exempt from payment - subject to reciprocal health agreement"/>
+		</concept>
+		<concept>
+			<code value="2"/>
+			<display value="Exempt from payment - other"/>
+		</concept>
+		<concept>
+			<code value="3"/>
+			<display value="To pay hotel fees only"/>
+		</concept>
+		<concept>
+			<code value="4"/>
+			<display value="To pay all fees"/>
+		</concept>
+		<concept>
+			<code value="9"/>
+			<display value="Charging rate not known"/>
+		</concept>
+		<concept>
+			<code value="8"/>
+			<display value="Not applicable"/>
+			<definition value="Not an Overseas Visitor"/>
+		</concept>
+	</codeSystem>
+</ValueSet>

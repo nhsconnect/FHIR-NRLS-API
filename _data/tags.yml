@@ -1,0 +1,21 @@
+allowed-tags:
+  - overview
+  - casestudies
+  - fhir
+  - design
+  - development
+  - clinical
+  - identification
+  - workflow
+  - rest
+  - userstories
+  - support
+  - documents
+  - diagnostics
+  - clinical
+  - medication
+  - individuals
+  - entities
+  - foundation
+  - api
+  - noccprofile

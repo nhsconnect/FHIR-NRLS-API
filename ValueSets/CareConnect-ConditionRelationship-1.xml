@@ -1,0 +1,43 @@
+<ValueSet xmlns="http://hl7.org/fhir">
+	<meta>
+		<lastUpdated value="2016-08-29T00:00:00+00:00"/>
+	</meta>
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+		<valueInteger value="1"/>
+	</extension>
+	<url value="https://fhir.hl7.org.uk/ValueSet/CareConnect-ConditionRelationship-1"/>
+	<version value="1.0.0"/>
+	<name value="Care Connect Condition Relationship"/>
+	<status value="active"/>
+	<publisher value="HL7 UK"/>
+	<description value="A set of codes specifying the kind of relationship that exists with a target condition."/>
+	<copyright value="Copyright © 2016 HL7 UK&#xD;&#xA;&#xD;&#xA;Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except in compliance with the License. You may obtain a copy of the License at&#xD;&#xA;&#xD;&#xA;http://www.apache.org/licenses/LICENSE-2.0&#xD;&#xA;&#xD;&#xA;Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.&#xD;&#xA;&#xD;&#xA;HL7® FHIR® standard Copyright © 2011+ HL7&#xD;&#xA;&#xD;&#xA;The HL7® FHIR® standard is used under the FHIR license. You may obtain a copy of the FHIR license at&#xD;&#xA;&#xD;&#xA;https://www.hl7.org/fhir/license.html"/>
+	<codeSystem>
+		<system value="https://fhir.hl7.org.uk/CareConnect-ConditionRelationship"/>
+		<concept>
+			<code value="combined"/>
+			<display value="Combined"/>
+			<definition value="This condition is combined/merged with the target condition to form a single logical condition."/>
+		</concept>
+		<concept>
+			<code value="grouped"/>
+			<display value="Grouped"/>
+			<definition value="This condition is part of a group that includes the target condition as a member of the group."/>
+		</concept>
+		<concept>
+			<code value="replaces"/>
+			<display value="Replaces"/>
+			<definition value="This condition replaces a previous condition (i.e. a revised diagnosis). The target condition is now obsolete."/>
+		</concept>
+		<concept>
+			<code value="evolved-from"/>
+			<display value="Evolved From"/>
+			<definition value="This condition has evolved from the target condition."/>
+		</concept>
+		<concept>
+			<code value="onset"/>
+			<display value="Onset"/>
+			<definition value="This condition follows-on from the target onset condition. Used when specifing a relationship to a previous onset condition when this condition episodicity is Review, Flare or End."/>
+		</concept>
+	</codeSystem>
+</ValueSet>

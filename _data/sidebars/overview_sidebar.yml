@@ -1,0 +1,286 @@
+entries:
+- title: NRLS
+  product: NRLS
+  version: 2.1.0-beta.0
+  levels: one
+  folders:
+
+  - title: Overview
+    output: web
+    folderitems:
+    - title: Introduction
+      url: /index.html
+      output: web, pdf
+      type: homepage
+    - title: API Journey
+      url: /overview_api_journey.html
+      output: web
+    - title: Provide APIs
+      url: /overview_api_provide.html
+      output: web
+    - title: Guide Versioning
+      url: /overview_guide_versioning.html
+      output: web
+    - title: Release Notes
+      url: /overview_release_notes.html
+      output: web
+    - title: Glossary
+      url: /overview_glossary.html
+      output: web
+
+  - title: Case Studies
+    output: web
+    folderitems:
+
+    - title: Engagement Approach
+      url: /engage.html
+      output: web, pdf
+      type: homepage
+
+      subfolders:
+      - title: Case Studies
+        output: web
+        subfolderitems:
+
+        - title: "Case Study Overview"
+          url: /engage_case_studies.html
+          output: web
+        - title: Bristol Connecting Care POC
+          url: /engage_poc_bristolcc.html
+          output: web
+        - title: "University Hospital Southampton"
+          url: /engage_poc_uhscc.html
+          output: web
+        - title: "Michael's Story"
+          url: /engage_michaelsstory.html
+          output: web
+
+  - title: Resources
+    output: web
+    folderitems:
+    - title: Overview
+      url: /explore.html
+      output: web
+      subfolders:
+       # - title: Documents
+       # output: web
+       # subfolderitems:
+       #   - title: DocumentReference
+       #     url: /api_documents_documentreference.html
+       #     output: web
+     # - title: Clinical
+       # output: web
+        #subfolderitems:
+        #  - title: Allergy Intolerance
+         #   url: /api_clinical_allergyintolerance.html
+         #   output: web
+         # - title: Condition
+         #   url: /api_clinical_condition.html
+          #  output: web
+         # - title: Procedure
+         #   url: /api_clinical_procedure.html
+         #   output: web
+      #- title: Diagnostics
+       # output: web
+      #  subfolderitems:
+       #   - title: Observation
+       #     url: /api_diagnostics_observation.html
+       #     output: web
+      #- title: Medication
+       # output: web
+       # subfolderitems:
+        #  - title: Medication
+         #   url: /api_medication_medication.html
+         #   output: web
+         # - title: Medication Order
+         #   url: /api_medication_medicationorder.html
+         #   output: web
+         # - title: Medication Statement
+         #   url: /api_medication_medicationstatement.html
+         #   output: web
+         # - title: Immunization
+         #   url: /api_medication_immunization.html
+         #   output: web
+      - title: Individuals &amp; Entities
+        output: web
+        subfolderitems:
+          - title: Location
+            url: /api_entity_location.html
+            output: web
+          - title: Organisation
+            url: /api_entity_organisation.html
+            output: web
+          - title: Patient
+            url: /api_entity_patient.html
+            output: web
+          - title: Practitoner
+            url: /api_entity_practitoner.html
+            output: web
+      - title: Workflow
+        output: web
+        subfolderitems:
+          - title: Encounter
+            url: /api_workflow_encounter.html
+            output: web
+      - title: Documents
+        output: web
+        subfolderitems:
+          - title: DocumentReference
+            url: /api_documents_documentreference.html
+            output: web
+      - title: Foundation
+        output: web
+        subfolderitems:
+        - title: Conformance
+          url: /api_foundation_conformance.html
+          output: web
+        - title: ValueSet
+          url: /api_foundation_valueset.html
+          output: web
+      - title: API Guidance | FHIR&reg;
+        output: web
+        subfolderitems:
+        - title: API Codes
+          url: /explore_api_codes.html
+          output: web
+        - title: Search Parameters
+          url: /explore_search_parameters.html
+          output: web
+        - title: Open Source
+          url: /explore_fhir_open_source_guidance.html
+          output: web
+        - title: Reference
+          url: /explore_reference.html
+          output: web
+        - title: Care Connect Versioning
+          url: /explore_cc_versioning.html
+          output: web
+  - title: Design & Build
+    output: web
+    folderitems:
+    - title: Overview
+      url: /design.html
+      output: web
+    - title: Patterns / Topology
+      url: /design_patterns.html
+      output: web
+    - title: Exchange Patterns
+      url: /design_exchange_patterns.html
+      output: web
+    - title: Access
+      url: /design_access.html
+      output: web
+    - title: Security
+      url: /design_security.html
+      output: web
+      subfolders:
+      - title: Build
+        output: web
+        subfolderitems:
+          - title: Patient Search
+            url: /build_patient_search.html
+            output: web
+          - title: Clinical | Care Coord
+            url: /build_pcc_clinical.html
+            output: web
+          - title: Medication | Care Coord
+            url: /build_pcc_medication.html
+            output: web
+          - title: Diagnostics | Care Coord
+            url: /build_pcc_diagnostics.html
+            output: web
+  - title: Test
+    output: web
+    folderitems:
+    - title: Overview
+      url: /test.html
+      output: web
+    - title: Patterns / Topology
+      url: /test_patterns.html
+      output: web
+    - title: Access
+      url: /test_access.html
+      output: web
+    - title: Security
+      url: /test_security.html
+      output: web
+    - title: Test Data
+      url: /test_data.html
+      output: web
+
+  - title: Assure
+    output: web
+    folderitems:
+    - title: Overview
+      url: /assure.html
+      output: web
+    - title: Access
+      url: /assure_access.html
+      output: web
+    - title: Security
+      url: /assure_security.html
+      output: web
+    - title: End To End
+      url: /assure_end_to_end.html
+      output: web
+
+  - title: Deploy
+    output: web
+    folderitems:
+    - title: Overview
+      url: /deploy.html
+      output: web
+    - title: Access
+      url: /deploy_access.html
+      output: web
+    - title: Security
+      url: /deploy_security.html
+      output: web
+
+  - title: Help & Support
+    output: web
+    folderitems:
+    - title: Frequently Asked Questions (FAQ)
+      url: /support_faq.html
+      output: web
+    - title: Communication Channels
+      url: /support_communications.html
+      output: web
+      subfolders:
+      - title: Where Else Can I Look?
+        output: web
+        subfolderitems:
+        - title: Community
+          url: /support_community.html
+          output: web
+        - title: FHIR Tools
+          url: /support_fhirtools.html
+          output: web
+        - title: Resource Definitions
+          url: /support_referenceapiservers.html
+          output: web
+
+  - title: Tags
+    output: web
+    folderitems:
+    - title: Introduction
+      url: /tag_overview.html
+      output: web
+    - title: FHIR&reg;
+      url: /tag_fhir.html
+      output: web
+    - title: User Stories
+      url: /tag_user_stories.html
+      output: web
+    - title: Case Studies
+      url: /tag_casestudies.html
+      output: web
+    - title: Design
+      url: /tag_design.html
+      output: web
+    - title: Development
+      url: /tag_development.html
+      output: web
+    - title: Support
+      url: /tag_support.html
+      output: web
