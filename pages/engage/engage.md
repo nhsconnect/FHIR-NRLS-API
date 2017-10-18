@@ -4,18 +4,18 @@ keywords: engage, care connect process, process, introduction
 tags: [userstories,casestudies]
 sidebar: foundations_sidebar
 permalink: engage.html
-summary: "These pages assist with requirements gathering and mapping stages of a FHIR API development process."
+summary: "These pages assist with requirements gathering and mapping stages of a FHIR&reg; API development process."
 ---
 
 ## Approach to Engagement ##
 
-This process lays down steps of engagement with the client to analyse their business requirements for interoperability in a way that it supports mapping your requirements to CareConnect Profiles (that user HL7 INTEROPen FHIR standards) and enable the development of a live API (Application Programming Interface) to read or exchange information/data.
+This process lays down steps of engagement with the client to analyse their business requirements for interoperability in a way that it supports mapping your requirements to FHIR&reg; Profiles (that use HL7 FHIR&reg; standards) and enable the development of a live API (Application Programming Interface) to read or exchange information/data.
 
-It has been cited that it’s very difficult to exchange information between various business units in health care sector as most of them follow their own data structures to exchange information. This causes lot of interoperability issues and rework. Implementing this process gives us the opportunity to demonstrate and guide the business units as to how these issues can be resolved using standards- FHIR (Fast Health Information Resources) and NRLS Profiles which adhere to interoperability standards defined by INTEROPen community (INTEROPen.org). A standardised approach will provide a common language for engagement and will more easily support a framework for sharing knowledge that can continue to assist future projects and possibly become self sustaining within the community.
+It has been cited that it’s very difficult to exchange information between various business units in health care sector as most of them follow their own data structures to exchange information. This causes lot of interoperability issues and rework. Implementing this process gives us the opportunity to demonstrate and guide the business units as to how these issues can be resolved using standards- FHIR&reg; (Fast Health Information Resources) and Profiles which are built to FHIR standards and agreed within the health and social care community. A standardised approach provides a common language for engagement and will more easily support a framework for sharing knowledge that can continue to assist future projects and possibly become self sustaining within the community.
 <br><br>
 ## Business Benefit ##
 
-This process will add business value by enabling businesses to easily exchange information in a common format as defined by FHIR and Profiles which is easily understood by rest of the organisation.
+This process will add business value by enabling businesses to easily exchange information in a common format as defined by FHIR&reg; and Profiles which is easily understood by the rest of the organisation.
 <br><br>
 ## The Process ##
 
@@ -41,13 +41,13 @@ The process is broken down into 15 discrete steps that are broadly organised ont
 
 <table style="min-width:100%;width:100%">
 <thead><tr id="step6"><th style="width:3em;"></th><th style="width:11em;">Step</th><th>Description</th><th style="width:11em;">Formal Output</th></tr></thead>
-<tr id="step7"><td>6</td><td>Identify NRLS Profiles and FHIR Resources</td><td>Identify which NRLS profiles and FHIR resources can be used to meet the requirement. An entity relationship diagram can help to describe the profiles.</td><td><ul style="padding-left:1em;"><li style="margin:0;">Entity Relationship Diagram</li></ul></td></tr>
+<tr id="step7"><td>6</td><td>Identify FHIR&reg; Resources</td><td>Identify which FHIR&reg; resources can be used to meet the requirement. Depending on project, exisiting Profiles may be used. An entity relationship diagram can help to describe the profiles.</td><td><ul style="padding-left:1em;"><li style="margin:0;">Entity Relationship Diagram</li></ul></td></tr>
 <tr id="step8"><td>7</td><td>Map Dataset</td><td>Map the dataset to the profile.</td><td><ul style="padding-left:1em;"><li style="margin:0;">Dataset Mapping</li></ul></td></tr>
 <tr id="step9"><td>8</td><td>Obtain Approval</td><td>Get Profile to Dataset Mapping reviewed and approved by the client.</td><td></td></tr>
 <tr id="step10"><td>9</td><td>Design API</td><td>Define API Signatures and use of Search Parameters</td><td><ul style="padding-left:1em;"><li style="margin:0;">API Signature</li><li>Search Parameters</li><li>Search Results</li></ul></td></tr>
 <tr id="step11"><td>10</td><td>Document Interaction Flow</td><td>Define the sequence of interactions expected including the function, input parameters, output parameters etc.</td><td><ul style="padding-left:1em;"><li style="margin:0;">API Sequence Diagram</li></ul></td></tr>
 <tr id="step12"><td>11</td><td>Document Additional Technical Context</td><td>Identify any further techincal considerations to aid understanding.</td><td><ul style="padding-left:1em;"><li style="margin:0;">System Diagrams</li><li>Acceptance Criteria</li></ul></td></tr>
-<tr><td>12</td><td>Resolve Curation Requirements</td><td>Feedback to INTEROpen any necessary changes to Profile definitions.</td><td><ul style="padding-left:1em;"><li style="margin:0;">Updated NRLS Standards</li></ul></td></tr>
+<tr><td>12</td><td>Resolve Requirements</td><td>Feedback any necessary changes to Profile definitions.</td><td><ul style="padding-left:1em;"><li style="margin:0;">Update Standards</li></ul></td></tr>
 </table>
 <br><br>
 ### Deliver the Solution ###
@@ -59,4 +59,4 @@ The process is broken down into 15 discrete steps that are broadly organised ont
 <tr><td>15</td><td>Learning</td><td>Identify failures and successes of the project.</td><td><ul style="padding-left:1em;"><li style="margin:0;">Plan to improve processes, preventing a repeat of failure and improving success rate.</li></ul></td></tr>
 </table>
 <br><br>
-{% include custom/contribute.html content="Get in touch with careconnect@interopen.org to help with Case Studies of NRLS Profiles"%}
+<!--{% include custom/contribute.html content="Get in touch with careconnect@interopen.org to help with Case Studies of NRLS Profiles"%}-->

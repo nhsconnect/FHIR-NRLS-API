@@ -7,7 +7,7 @@ permalink: overview_release_notes.html
 summary: Summary release notes of the versions released in NRLS API Implementation Guide
 ---
 
-{% include important.html content="This site is under active development by NHS Digital on behalf of INTEROPen and is intended to provide all the technical resources you need to successfully develop the NRLS APIs. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
+{% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
 
 
@@ -17,6 +17,6 @@ First release of NRLS FHIR API (DSTU2) via github - uses the CareConnect API tem
 
 ## 1.0 : DRAFT A ##
 
-First draft of NRLS DMS (Version 1.0 Draft A) created to support development of the Spine 2 National Record Locator Service interface.
+First draft of NRLS DMS (Version 1.0 Draft A) created to support development of the Spine 2 POC National Record Locator Service interface.
 
-Published on NHS Developer Network: https://data.developer.nhs.uk/fhir/nrls-v1-draft-a/Chapter.1.About/index.html
+Published on [NHS Developer Network](https://data.developer.nhs.uk/fhir/nrls-v1-draft-a/Chapter.1.About/index.html).
