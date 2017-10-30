@@ -11,13 +11,13 @@ summary: "The Exchange Patterns introduce the three ways of exchanging FHIR Reso
 
 ## 1. Exchange Paradigms ##
 
-This section has been included to show how CareConnectAPI fits in with traditional messaging and document exchanges. Also how these ways of exchanging FHIR resources relates to Information Sharing Patterns.
+This section has been included to show how an API fits in with traditional messaging and document exchanges. Also how these ways of exchanging FHIR resources relates to Information Sharing Patterns.
 
 The exchange patterns are complimentary, each having it's strengths and weaknesses. The best solution will probably to use a combination of pattern.  
 
 ## 2. RESTful API
 
-<div markdown="span" class="alert alert-danger" role="alert"><i class="fa fa-fire"></i>  <b><a href="https://www.hl7.org/fhir/DSTU2/http.html"><b>FHIR RESTful API</b></div>
+<div markdown="span" class="alert alert-danger" role="alert"><i class="fa fa-fire"></i>  <b><a href="https://www.hl7.org/fhir/http.html"><b>FHIR RESTful API</b></div>
 
 ```
 Manipulate data held in a remote system while avoiding direct coupling to remote procedures.
@@ -134,7 +134,8 @@ This type of interface may also be called as **ResourceAPI** and is useful for r
 
 ### 2.2. NHS FHIR Examples ###
 
-- [CareConnectAPI](explore.html)
+- [NHS National Record Locator Service](https://nhsconnect.github.io/FHIR-NRLS-API/index.html)
+- [CareConnectAPI](https://nhsconnect.github.io/CareConnectAPI/index.html)
 - [GP Connect]("/gpconnect/")
   - [Tranche 1-3](https://nhsconnect.github.io/gpconnect/accessrecord_rest.html)
   - [Appointment](https://www.simplifier.net/GPConnect/gpconnect-appointment-1)
@@ -142,11 +143,11 @@ This type of interface may also be called as **ResourceAPI** and is useful for r
   - [Slot (Appointment)](https://www.simplifier.net/GPConnect/gpconnect-slot-1)
 - [Vistors and Migrants](https://nhsconnect.github.io/visitor-and-migrants/index.html)
 - [NHS e-Referral Service](https://nhsconnect.github.io/NHS-FHIR-eRS-Integration/Generated/)
-- [NHS National Record Locator Service](https://data.developer.nhs.uk/fhir/nrls-v1-draft-a/Chapter.1.About/index.html)
+
 
 ## 3. Messaging ##
 
-<div markdown="span" class="alert alert-danger" role="alert"><i class="fa fa-fire"></i>  <b><a href="https://www.hl7.org/fhir/DSTU2/messaging.html"><b>FHIR Messaging</b></div>
+<div markdown="span" class="alert alert-danger" role="alert"><i class="fa fa-fire"></i>  <b><a href="https://www.http://hl7.org/fhir/STU3/messaging.html"><b>FHIR Messaging</b></div>
 
 ```
 Send commands, notifications and other information to remote systems while avoiding direct coupling to remote procedures.

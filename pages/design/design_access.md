@@ -23,7 +23,7 @@ API access control measures need to be defined alongside API creation and need t
 
 A possible mechanism for providing access to APIs is the provision of API keys for access to the APIs being provided. Please contribute for other common access methods and add to the [Case Studies](/engage_case_studies.html) to show various access mechanisms to APIs.
 
-# Access and Care Connect APIs #
+# Access and APIs #
 
 Access to APIs needs to considered at the design phase to include the process of managing and maintaing valid and consistant APIs. The following design considerations become increasingly important as an accessible API moves through Test to Assure to Deployed.
 
@@ -38,7 +38,7 @@ For more information on the wider design decisions involved in providing safe ac
 - [Case Studies](/engage_case_studies.html) illustrates access decisions used to solve the challenges faced within the context and design patterns encountered.
 
 
-{% include custom/contribute.html content="Provide design patterns and API usage case studies by getting in touch with careconnect@interopen.org "%}
+{% include custom/contribute.html content="Provide design patterns and API usage case studies by getting in touch with interoperabilityteam@nhs.net "%}
 
 # API Considerations #
 
@@ -46,4 +46,4 @@ Other API consideration are shown below. Please click on the parts of the API pr
 
 {% include custom/provide_api.svg %}
 
-{% include custom/contribute.html content="Get in involved and contribute to the above API considerations careconnect@interopen.org"%}
+{% include custom/contribute.html content="Get in involved and contribute to the above API considerations interoperabilityteam@nhs.net"%}

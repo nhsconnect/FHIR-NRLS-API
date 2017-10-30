@@ -1,5 +1,5 @@
 ---
-title: Care Connect Profile Versioning
+title: Profile Versioning
 keywords: development, versioning
 tags: [rest,fhir]
 sidebar: overview_sidebar
@@ -45,7 +45,7 @@ The following pre-release labels will be used across all products:
 
 {% include todo.html content="The following table is published as a **work in progress** version and as such is subject to change and extension." %}
 
-Taking a similar approach to the [FHIR Maturity Model](http://wiki.hl7.org/index.php?title=FHIR_Maturity_Model){:target="_blank"} Care Connect will only freeze / master a technical specification once it has been independently implemented in at least three systems and demonstrated to interoperate.
+Taking a similar approach to the [FHIR Maturity Model](http://wiki.hl7.org/index.php?title=FHIR_Maturity_Model){:target="_blank"} NHS Digital will only freeze / master a technical specification once it has been independently implemented in at least three systems and demonstrated to interoperate.
 
 | Level | Version | Description |
 |-------|---------|-------------|

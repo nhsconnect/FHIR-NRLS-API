@@ -26,7 +26,7 @@ The following diagram explains the elements of APIs allowing a the development o
 
 {% include custom/provide_api.svg %}
 
-NHS Digital is contributing to progressing the profile development (see Overview section). Invitations are open for the INTEROPen community to get involved and progress the wider developer ecosystem as defined above. 
+NHS Digital is contributing to progressing the profile development (see Overview section). Invitations are open to the health and care community to get involved and progress the wider developer ecosystem as defined above. 
 
 
 # Contribute #
@@ -35,4 +35,4 @@ This site is structured around Care Connect stakeholders including API users, de
 
 {% include custom/api_overview.svg %}
 
-{% include custom/contribute.html content="If you want to get involved in any part of this then please get in touch with careconnect@interopen.org "%}
+{% include custom/contribute.html content="If you want to get involved in any part of this then please get in touch with interoperabilityteam@nhs.net "%}

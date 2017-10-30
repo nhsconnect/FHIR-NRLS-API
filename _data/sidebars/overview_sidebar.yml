@@ -98,9 +98,9 @@ entries:
       - title: Individuals &amp; Entities
         output: web
         subfolderitems:
-          - title: Location
-            url: /api_entity_location.html
-            output: web
+         # - title: Location
+         #   url: /api_entity_location.html
+         #  output: web
           - title: Organisation
             url: /api_entity_organisation.html
             output: web
@@ -110,18 +110,18 @@ entries:
           - title: Practitoner
             url: /api_entity_practitoner.html
             output: web
-      - title: Workflow
-        output: web
-        subfolderitems:
-          - title: Encounter
-            url: /api_workflow_encounter.html
-            output: web
-      - title: Documents
-        output: web
-        subfolderitems:
-          - title: DocumentReference
-            url: /api_documents_documentreference.html
-            output: web
+     # - title: Workflow
+     #  output: web
+     #  subfolderitems:
+     #     - title: Encounter
+     #      url: /api_workflow_encounter.html
+     #       output: web
+     # - title: Documents
+     #   output: web
+     #   subfolderitems:
+     #     - title: DocumentReference
+     #       url: /api_documents_documentreference.html
+     #       output: web
       - title: Foundation
         output: web
         subfolderitems:
@@ -130,6 +130,9 @@ entries:
           output: web
         - title: ValueSet
           url: /api_foundation_valueset.html
+          output: web
+        - title: DocumentReference
+          url: /api_foundation_documentreference.html
           output: web
       - title: API Guidance | FHIR&reg;
         output: web
@@ -146,7 +149,7 @@ entries:
         - title: Reference
           url: /explore_reference.html
           output: web
-        - title: Care Connect Versioning
+        - title: NRLS Versioning
           url: /explore_cc_versioning.html
           output: web
   - title: Design & Build
@@ -174,15 +177,15 @@ entries:
           - title: Patient Search
             url: /build_patient_search.html
             output: web
-          - title: Clinical | Care Coord
-            url: /build_pcc_clinical.html
-            output: web
-          - title: Medication | Care Coord
-            url: /build_pcc_medication.html
-            output: web
-          - title: Diagnostics | Care Coord
-            url: /build_pcc_diagnostics.html
-            output: web
+        #  - title: Clinical | Care Coord
+        #    url: /build_pcc_clinical.html
+        #    output: web
+        #  - title: Medication | Care Coord
+        #    url: /build_pcc_medication.html
+        #    output: web
+        #  - title: Diagnostics | Care Coord
+        #    url: /build_pcc_diagnostics.html
+        #    output: web
   - title: Test
     output: web
     folderitems:

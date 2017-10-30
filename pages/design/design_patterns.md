@@ -11,7 +11,7 @@ summary: "The Design Patterns / Topology demonstrates and describes how various 
 
 # Patterns #
 
-This section has been included to emphasise the use of design patterns in to the process of deciding how to use Care Connect APIs within solutions. The information has been taken from [developer.nhs.uk](https://developer.nhs.uk/library/architecture/integration-patterns/information-sharing-patterns-summary/).
+This section has been included to emphasise the use of design patterns in to the process of deciding how to use APIs within solutions. The information has been taken from [developer.nhs.uk](https://developer.nhs.uk/library/architecture/integration-patterns/information-sharing-patterns-summary/).
 
 ## Overview ## 
 
@@ -36,11 +36,12 @@ Below is a list of patterns. If you require more detail please go to [developer.
 - Registry Repository
 - Publish Subscribe
 
-# Patterns and Care Connect APIs #
+# Patterns and APIs #
 
-Considering the design pattern / topology influences how any exposed Care Connect APIs can be used and work within a system. APIs help to expose information to all design patterns allowing great user experiences to be created quickly, securely and consistantly. This implementation guide concentrates on [Case Studies](/engage_case_studies.html) to expose and demonstrate how design pattern can use Care Connect APIs to interoperate with other systems, patterns, and level of digital maturity within and between organisations.
+Considering the design pattern / topology influences how any exposed APIs can be used and work within a system. APIs help to expose information to all design patterns allowing great user experiences to be created quickly, securely and consistantly. This implementation guide concentrates on [Case Studies](/engage_case_studies.html) to expose and demonstrate how design pattern can use APIs to interoperate with other systems, patterns, and level of digital maturity within and between organisations.
 
-{% include custom/contribute.html content="Provide design patterns and API usage case studies by getting in touch with careconnect@interopen.org "%}
+{% include custom/contribute.html content="Provide design patterns and API usage case studies by getting in touch with interoperabilityteam@nhs.net
+API Considerations "%}
 
 # API Considerations #
 
@@ -48,5 +49,5 @@ Other API consideration are shown below. Please click on the parts of the API pr
 
 {% include custom/provide_api.svg %}
 
-{% include custom/contribute.html content="Get in involved and contribute to the above API considerations careconnect@interopen.org"%}
+{% include custom/contribute.html content="Get in involved and contribute to the above API considerations interoperabilityteam@nhs.net"%}
 

@@ -36,6 +36,6 @@ Feedback is requested from suppliers and consumers to confirm the conformance le
 
 ## 3. Improvement process ##
 
-An improvement process needs to be developed to improve the search parameters and validate the ones already suggested. Please contact the careconnect team if you have any suggestions.
+An improvement process needs to be developed to improve the search parameters and validate the ones already suggested. Please contact the NRLS team if you have any suggestions.
 
-{% include custom/contribute.html content="Get in touch with careconnect@interopen.org to improve the Search Parameters" %}
+{% include custom/contribute.html content="Get in touch with interoperabilityteam@nhs.net to improve the Search Parameters" %}

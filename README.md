@@ -4,7 +4,7 @@ An API for storing and retrieving pointers to records and documents from the nat
 <p align="center">
   <a href="https://v4-alpha.getbootstrap.com">
   	
-    <img src="images/logo.png" height=72>
+    <img src="images/logo.png">
   </a>
 
   <h3 align="center">NRLS API</h3>
@@ -42,7 +42,7 @@ Several quick start options are available:
 - Run Jekyll locally: `bundle exec jekyll serve`
 - Browse website [Browser](http://localhost:4000): `http://localhost:4000`
 
-Read the [Getting started page](#) for information on the CareConnect API contents, templates and examples, and more.
+Read the [Getting started page](#) for information on API contents, templates and examples, and more.
 
 ## What's included
 
@@ -55,7 +55,7 @@ StructureDefinitions
 ValueSets
 ```
 
-We provide a complete set of instructions for you to get your CareConnect API working and compiled locally.
+We provide a complete set of instructions for you to get your API working and compiled locally.
 
 ### Running documentation locally
 
@@ -63,7 +63,7 @@ Learn more about using Jekyll by reading its [documentation](https://jekyllrb.co
 
 ## Bugs and feature requests
 
-Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/nhsconnect/CareConnectAPI/master/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/nhsconnect/CareConnectAPI/issues/new).
+Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/nhsconnect/FHIR-NRLS-API/master/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/nhsconnect/FHIR-NRLS-API/issues/new).
 
 
 ### Documentation for previous releases
@@ -82,18 +82,22 @@ Editor preferences are available in the [editor config]() for easy use in common
 
 ## Community
 
-Get updates on CareConnect APIs development and chat with the project maintainers and community members.
+Get updates on NRLS APIs development and chat with the project maintainers and community members.
 
+Details to follow.
+<!--
 - Follow [@careconnectapi on Twitter](https://twitter.com/getbootstrap).
 - Read and subscribe to [The INTEROpen CareConnect API](http://www.interopen.org/).
 - Join [the official Ryver room](https://interopen.ryver.com/).
-
+-->
 
 ## Versioning
 
-For transparency into our release cycle and in striving to maintain backward compatibility, CareConnect API is maintained under [the Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
+For transparency into our release cycle and in striving to maintain backward compatibility, the NRLS API is maintained under [the Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
 
-See [the Releases section of our GitHub project](https://github.com/nhsconnect/CareConnectAPI/releases) for changelogs for each release version of Bootstrap. Release announcement posts on [the official CareConnect API blog](#) contain summaries of the most noteworthy changes made in each release.
+See [the Releases section of our GitHub project](https://github.com/nhsconnect/FHIR-NRLS-API/releases) for changelogs for each release version of Bootstrap. 
+
+<!--Release announcement posts on [the official CareConnect API blog](#) contain summaries of the most noteworthy changes made in each release.-->
 
 
 

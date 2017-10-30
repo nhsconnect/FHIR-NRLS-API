@@ -52,7 +52,7 @@ Encryption and Signatures are used together i.e.:
 - The encrypted data could be signed to further ensure that data is neither seen or modified by unwanted parties.
 
 
-# Security and Care Connect APIs #
+# Security and APIs #
 
 Security is a key consideration when establishing API projects and should be considered within the design from the start of any project. The four key principles to consider are:
 
@@ -69,7 +69,7 @@ For more information on the wider design decisions involved in providing safe ac
 - [Case Studies](/engage_case_studies.html) illustrates design and security decisions used to solve the challenges faced within the context and design pattern encountered.
 
 
-{% include custom/contribute.html content="Provide design patterns and API usage case studies by getting in touch with careconnect@interopen.org "%}
+{% include custom/contribute.html content="Provide design patterns and API usage case studies by getting in touch with interoperabilityteam@nhs.net  "%}
 
 # API Considerations #
 
@@ -77,4 +77,4 @@ Other API consideration are shown below. Please click on the parts of the API pr
 
 {% include custom/provide_api.svg %}
 
-{% include custom/contribute.html content="Get in involved and contribute to the above API considerations careconnect@interopen.org"%}
+{% include custom/contribute.html content="Get in involved and contribute to the above API considerations interoperabilityteam@nhs.net"%}
