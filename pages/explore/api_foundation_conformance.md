@@ -1,15 +1,15 @@
 ---
-title: Foundation | Conformance
+title: Conformance | CapabilityStatement
 keywords: foundations, fhir
 tags: [rest,fhir,use_case,api,foundation,noccprofile]
 sidebar: accessrecord_rest_sidebar
 permalink: api_foundation_conformance.html
-summary: A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
+summary: A capability statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
 ---
 
 {% include custom/search.warnbanner.html %}
 
-{% include custom/fhir.referencemin.html resource="" page="" fhirlink="[Conformance](http://www.hl7.org/fhir/dstu2/conformance.html)" content="User Stories" userlink="" %}
+{% include custom/fhir.referencemin.html resource="" page="" fhirlink="[Conformance](http://www.http://hl7.org/fhir/STU3/capabilitystatement.html)" content="User Stories" userlink="" %}
 
 
 ## 1. Read ##

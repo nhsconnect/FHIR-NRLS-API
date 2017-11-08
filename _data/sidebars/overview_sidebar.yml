@@ -125,7 +125,7 @@ entries:
       - title: Foundation
         output: web
         subfolderitems:
-        - title: Conformance
+        - title: CapabilityStatement
           url: /api_foundation_conformance.html
           output: web
         - title: ValueSet

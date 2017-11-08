@@ -1,5 +1,5 @@
 ---
-title: Foundation | ValueSet
+title: Terminology | ValueSet
 keywords: foundations, fhir
 tags: [foundation,use_case,fhir,rest,api,noccprofile]
 sidebar: accessrecord_rest_sidebar
