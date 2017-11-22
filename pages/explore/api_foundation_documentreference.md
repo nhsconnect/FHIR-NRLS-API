@@ -8,9 +8,9 @@ summary: A DocumentReference resource is used to describe a document that is mad
 ---
 {% include custom/search.warnbanner.html %}
 
-{% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://data.developer.nhs.uk/fhir/nrls-v1-draft-a/Profile.RecordLocator/nrls-documentreference-1-0.html" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/DSTU2/documentreference.html)" content="User Stories" userlink="engage_michaelsstory.html" %}
+{% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
 
-[SKETCH profile. Not official]
+<!--[SKETCH profile. Not official]-->
 
 ## 1. Read Operation ##
 
@@ -19,18 +19,32 @@ GET [baseUrl]/DocumentReference/[id]</div>
 
 {% include custom/read.response.html resource="DocumentReference" content="" %}
 
-## 2. Search ##
+## 2. Create Operation ##
+
+TBA
+
+## 3. Update Operation ##
+
+TBA
+
+## 4. Delete Operation ##
+
+TBA
+
+## 5. Search ##
+
+TBC
 
 <div markdown="span" class="alert alert-success" role="alert">
 GET [baseUrl]/DocumentReference?[searchParameters]</div>
 
-Search for all problems and health concerns for a patient. Fetches a bundle of all `DocumentReference` resources for the specified patient.
+Search for all records for a patient. Fetches a bundle of all `DocumentReference` resources for the specified patient.
 
 {% include custom/search.header.html resource="DocumentReference" %}
 
 ### 2.1. Search Parameters ###
 
-{% include custom/search.parameters.html resource="DocumentReference"     link="https://www.hl7.org/fhir/DSTU2/documentreference.html#search" %}
+{% include custom/search.parameters.html resource="DocumentReference"     link="https://www.hl7.org/fhir/STU3/documentreference.html#search" %}
 
 <table style="min-width:100%;width:100%">
 <tr id="clinical">
@@ -61,11 +75,18 @@ Search for all problems and health concerns for a patient. Fetches a bundle of a
     <td>SHOULD</td>
     <td>DocumentReference.type</td>
 </tr>
+<tr>
+    <td><code class="highlighter-rouge">custodian</code></td>
+    <td><code class="highlighter-rouge">reference</code></td>
+    <td>Organization which maintains the document</td>
+    <td>SHOULD</td>
+    <td>DocumentReference.custodian</td>
+</tr>
 </table>
 
 Systems SHOULD support the following search combinations:
 
-* patient + type + period
+* TBC
 
 {% include custom/search.patient.html para="2.1.1." content="DocumentReference" %}
 

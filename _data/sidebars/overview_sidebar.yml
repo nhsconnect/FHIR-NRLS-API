@@ -1,7 +1,7 @@
 entries:
 - title: NRLS
   product: NRLS
-  version: 2.1.0-beta.0
+  version: 2.0.0-alpha.1
   levels: one
   folders:
 
@@ -95,21 +95,21 @@ entries:
          # - title: Immunization
          #   url: /api_medication_immunization.html
          #   output: web
-      - title: Individuals &amp; Entities
-        output: web
-        subfolderitems:
+    #  - title: Individuals &amp; Entities
+    #    output: web
+    #    subfolderitems:
          # - title: Location
          #   url: /api_entity_location.html
          #  output: web
-          - title: Organisation
-            url: /api_entity_organisation.html
-            output: web
-          - title: Patient
-            url: /api_entity_patient.html
-            output: web
-          - title: Practitoner
-            url: /api_entity_practitoner.html
-            output: web
+         # - title: Organisation
+         #   url: /api_entity_organisation.html
+         #   output: web
+         # - title: Patient
+         #   url: /api_entity_patient.html
+         #   output: web
+         # - title: Practitoner
+         #   url: /api_entity_practitoner.html
+         #   output: web
      # - title: Workflow
      #  output: web
      #  subfolderitems:
@@ -128,9 +128,9 @@ entries:
         - title: CapabilityStatement
           url: /api_foundation_conformance.html
           output: web
-        - title: ValueSet
-          url: /api_foundation_valueset.html
-          output: web
+       # - title: ValueSet
+       #   url: /api_foundation_valueset.html
+       #   output: web
         - title: DocumentReference
           url: /api_foundation_documentreference.html
           output: web
