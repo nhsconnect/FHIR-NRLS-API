@@ -12,10 +12,8 @@ summary: "Developer Cheat Sheet shortcuts for the <br/>technical build of NRLS A
 ## 1. API Profiles: ##
 
 | Profile | ValueSets |
-| :--------- |:-------- |
-| [CareConnect-Patient-1](StructureDefinitions/CareConnect-Patient-1.xml) | [CareConnect-RegistrationType-1](ValueSets/CareConnect-RegistrationType-1.xml) <br /> [CareConnect-RegistrationStatus-1](ValueSets/CareConnect-RegistrationStatus-1.xml) <br /> [CareConnect-CareConnect-ResidentialStatus-1](ValueSets/CareConnect-ResidentialStatus-1.xml) <br /> [CareConnect-TreatmentCategory-1](ValueSets/CareConnect-TreatmentCategory-1.xml) <br /> [CareConnect-HumanLanguage-1](ValueSets/CareConnect-HumanLanguage-1.xml) <br /> [CareConnect-LanguageAbilityMode-1](ValueSets/CareConnect-LanguageAbilityMode-1.xml) <br /> [CareConnect-LanguageAbilityProficiency-1](ValueSets/CareConnect-LanguageAbilityProficiency-1.xml) <br /> [CareConnect-AdministrativeGender-1](ValueSets/CareConnect-AdministrativeGender-1.xml) <br /> [CareConnect-MaritalStatus-1](ValueSets/CareConnect-MaritalStatus-1.xml) <br />[CareConnect-PersonRelationshipType-1](ValueSets/CareConnect-PersonRelationshipType-1.xml) <br /> |
-| [CareConnect-Practitioner-1](StructureDefinitions/CareConnect-Practitioner-1.xml) | [CareConnect-HumanLanguage-1](ValueSets/CareConnect-HumanLanguage-1.xml) <br /> [CareConnect-LanguageAbilityMode-1](ValueSets/CareConnect-LanguageAbilityMode-1.xml) <br /> [CareConnect-LanguageAbilityProficiency-1](ValueSets/CareConnect-LanguageAbilityProficiency-1.xml) <br /> [CareConnect-AdministrativeGender-1](ValueSets/CareConnect-AdministrativeGender-1.xml) <br /> [CareConnect-SDSJobRoleName-1](ValueSets/CareConnect-SDSJobRoleName-1.xml) |
-| [CareConnect-DocumentReference-1](StructureDefinitions/CareConnect-Procedure-1.xml) | |
+|--------- |-------- |
+| [NRLS-DocumentReference-1](StructureDefinitions/NRLS-DocumentReference-1.xml) |[NRLS-RecordRetrievalMode](ValueSets/NRLS-RecordRetrievalMode-1.xml) |
 
 
 ## 2. Identifiers ##

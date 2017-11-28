@@ -1,0 +1,26 @@
+<p>The 'delete' interaction removes an existing resource. The interaction is performed by an HTTP DELETE of the <code class="highlighter-rouge">{{include.resource}}</code> resource.</p>
+
+<!--<p>Return a single <code class="highlighter-rouge">{{include.resource}}</code> for the specified id{{include.content}}.</p>-->
+
+<p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header. The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/json+fhir</code> or <code class="highlighter-rouge">application/xml+fhir</code>.</p>
+
+<h3 id="readresponse">1.1. Response</h3>
+
+Assuming successful URL submission, there are two possible outcomes to the delete request:
+
+<p>A full set of response codes can be found here <a href="profiles_api_codes.html">API Response Codes</a>. FHIR Servers SHALL support the following response codes:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>204</td>
+      <td>No Content</td>
+       <td>The record either does not exist or has been successfully deleted.</td>
+    </tr>
+    <tr>
+      <td>404</td>
+      <td>No match to delete</td>
+       <td>The parameters used to identify the record were not met.</td>
+    </tr>
+  </tbody>
+</table>

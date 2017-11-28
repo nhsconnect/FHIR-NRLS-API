@@ -1,9 +1,9 @@
 ---
-title: Documents | DocumentReference
+title: Consumer API
 keywords: getcarerecord, structured, rest, documentreference
 tags: [rest,fhir,documents,api,noccprofile]
 sidebar: accessrecord_rest_sidebar
-permalink: api_foundation_documentreference.html
+permalink: api_consumer_documentreference.html
 summary: A DocumentReference resource is used to describe a document that is made available to a healthcare system. A document is some sequence of bytes that is identifiable, establishes its own context (e.g., what subject, author, etc. can be displayed to the user), and has defined update management. The DocumentReference resource can be used with any document format that has a recognized mime type and that conforms to this definition.
 ---
 {% include custom/search.warnbanner.html %}
@@ -11,8 +11,6 @@ summary: A DocumentReference resource is used to describe a document that is mad
 {% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
 
 <!--[SKETCH profile. Not official]-->
-
-## Consumer Guidance ##
 
 <!--
 ## 1. Read Operation ##
@@ -91,35 +89,13 @@ Systems SHOULD support the following search combinations:
 
 <!--{% include custom/search.response.html resource="DocumentReference" %}-->
 
+## 2. Example ##
 
-## 2. Create Operation ##
-
-<div markdown="span" class="alert alert-success" role="alert">
-GET [baseUrl]/DocumentReference/[id]</div>
-
-{% include custom/read.response.html resource="DocumentReference" content="" %}
-
-## 3. Update Operation ##
-
-<div markdown="span" class="alert alert-success" role="alert">
-GET [baseUrl]/DocumentReference/[id]</div>
-
-{% include custom/read.response.html resource="DocumentReference" content="" %}
-
-## 4. Delete Operation ##
-
-<div markdown="span" class="alert alert-success" role="alert">
-GET [baseUrl]/DocumentReference/[id]</div>
-
-{% include custom/read.response.html resource="DocumentReference" content="" %}
-
-## 3. Example ##
-
-### 3.1 Request Query ###
+### 2.1 Request Query ###
 
 Return all DocumentReference resources for Patient with a NHS Number of 9876543210, the format of the response body will be xml. Replace 'baseUrl' with the actual base Url of the FHIR Server.
 
-#### 3.1.1. cURL ####
+#### 2.1.1. cURL ####
 
 {% include custom/embedcurl.html title="Search DocumentReference" command="curl -H 'Accept: application/xml+fhir' -H 'Authorization: BEARER [token]' -X GET  '[baseUrl]/DocumentReference?patient.identifier=https://fhir.nhs.uk/Id/nhs-number|9876543210'" %}
 

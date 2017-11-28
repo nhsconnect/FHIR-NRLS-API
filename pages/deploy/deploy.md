@@ -7,7 +7,9 @@ permalink: deploy.html
 summary: "These pages assist with requirements gathering and mapping stages of a FHIR API development process."
 ---
 
+This section is a placeholder and content will be added in a later phase of the project.
 
+<!--
 The Deploy section contains descriptions of approaches and suggestions for building APIs at the Assure stage.
 
 | Page              |  Description    |
@@ -36,3 +38,4 @@ This site is structured around Care Connect stakeholders including API users, de
 {% include custom/api_overview.svg %}
 
 {% include custom/contribute.html content="If you want to get involved in any part of this then please get in touch with interoperabilityteam@nhs.net "%}
+-->

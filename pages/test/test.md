@@ -7,6 +7,9 @@ permalink: test.html
 summary: "These pages assist with requirements gathering and mapping stages of a FHIR API development process."
 ---
 
+This section is a placeholder and content will be added in a later phase of the project.
+
+<!--
 The Test section contains descriptions of approaches and suggestions for building APIs.
 
 | Page              |  Description    |
@@ -30,3 +33,4 @@ The following diagram explains the elements of APIs allowing a the development o
 This site is structured around API users, developers and architects. Please get involved in the journey.
 
 {% include custom/api_overview.svg %}
+-->

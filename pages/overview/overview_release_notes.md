@@ -11,9 +11,11 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 
 
 
-## 2.1.0-beta.0 ##
+## 2.0.0-alpha.1 ##
 
-First release of NRLS FHIR API (DSTU2) via github - uses the CareConnect API template.   
+First release of NRLS FHIR API (STU3) via https://nhsconnect.github.io/. 
+
+Project follows the Gov.UK agile delivery phases.   
 
 ## 1.0 : DRAFT A ##
 
