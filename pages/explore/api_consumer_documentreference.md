@@ -6,6 +6,8 @@ sidebar: accessrecord_rest_sidebar
 permalink: api_consumer_documentreference.html
 summary: A DocumentReference resource is used to describe a document that is made available to a healthcare system. A document is some sequence of bytes that is identifiable, establishes its own context (e.g., what subject, author, etc. can be displayed to the user), and has defined update management. The DocumentReference resource can be used with any document format that has a recognized mime type and that conforms to this definition.
 ---
+
+
 {% include custom/search.warnbanner.html %}
 
 {% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
@@ -22,7 +24,10 @@ GET [baseUrl]/DocumentReference/[id]</div>
 -->
 
 
-## 1. Search ##
+
+
+
+## 2. Search ##
 
 TBC
 
@@ -33,7 +38,7 @@ Search for all records for a patient. Fetches a bundle of all `DocumentReference
 
 {% include custom/search.header.html resource="DocumentReference" %}
 
-### 1.1. Search Parameters ###
+### 2.1. Search Parameters ###
 
 {% include custom/search.parameters.html resource="DocumentReference"     link="https://www.hl7.org/fhir/STU3/documentreference.html#search" %}
 
@@ -89,13 +94,13 @@ Systems SHOULD support the following search combinations:
 
 <!--{% include custom/search.response.html resource="DocumentReference" %}-->
 
-## 2. Example ##
+## 3. Example ##
 
-### 2.1 Request Query ###
+### 3.1 Request Query ###
 
 Return all DocumentReference resources for Patient with a NHS Number of 9876543210, the format of the response body will be xml. Replace 'baseUrl' with the actual base Url of the FHIR Server.
 
-#### 2.1.1. cURL ####
+#### 3.1.1. cURL ####
 
 {% include custom/embedcurl.html title="Search DocumentReference" command="curl -H 'Accept: application/xml+fhir' -H 'Authorization: BEARER [token]' -X GET  '[baseUrl]/DocumentReference?patient.identifier=https://fhir.nhs.uk/Id/nhs-number|9876543210'" %}
 
