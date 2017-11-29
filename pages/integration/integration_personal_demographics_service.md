@@ -3,7 +3,7 @@ title: Personal Demographic Service
 keywords: spine, pds, integration, patient, demographics
 tags: [integration]
 sidebar: overview_sidebar
-permalink: integration_personal_demographic_service.html
+permalink: integration_personal_demographics_service.html
 summary: "Overview of the role of the Personal Demographic Services (PDS) <br/>and the Spine Mini Services PDS (SMSP) within NRLS."
 ---
 
