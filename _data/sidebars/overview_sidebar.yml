@@ -66,9 +66,9 @@ entries:
     - title: Provider API
       url: /api_provider_documentreference.html
       output: web
-    - title: Security
-      url: /design_security.html
-      output: web
+   #- title: Security
+   #  url: /design_security.html
+    # output: web
       subfolders:
       - title: API Guidance | FHIR&reg;
         output: web
@@ -82,6 +82,27 @@ entries:
           - title: NRLS Versioning
             url: /explore_cc_versioning.html
             output: web
+          - title: Security
+            url: /development_api_security_guidance.html
+            output: web  
+      - title: Integrate With Spine
+        output: web
+        subfolderitems:
+          - title: Cross Organisation Audit & Provenance
+            url: /integration_cross_organisation_audit_and_provenance.html
+            output: web
+          - title: Personal Demographic Service
+            url: /integration_personal_demographics_service.html
+            output: web
+          - title: Spine Directory Service
+            url: /integration_spine_directory_service.html
+            output: web
+          - title: Spine Security Proxy
+            url: /integration_spine_security_proxy.html
+            output: web 
+          - title: Spine Security Proxy Implementation Guide
+            url: /integration_spine_security_proxy_implementation_guide.html
+            output: web    
         # - title: Patient Search
         #   url: /build_patient_search.html
         #   output: web
