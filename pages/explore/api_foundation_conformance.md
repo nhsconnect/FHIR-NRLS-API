@@ -44,11 +44,8 @@ Retrieve the capability statement from the FHIR Server, the format of the respon
 
 {% include important.html content="The following draft capability statement will move as the implementation guide moves on." %}
 
-```xml
-TBA
-```
 
-{% include important.html content="The following draft capability statement will move as the implementation guide moves on." %}
+<script src="https://gist.github.com/IOPS-DEV/873579911893ce480f15393917812587.js"></script>
 
 
 ### 2.4 C# ###
@@ -58,6 +55,6 @@ TBA
 ```csharp
 var client = new FhirClient("http://[fhir_base]/");
 client.PreferredFormat = ResourceFormat.Json;
-var resource = client.Conformance();
+var resource = client.CapabilityStatement();
 FhirSerializer.SerializeResourceToXml(resource).Dump();
 ```
