@@ -22,6 +22,11 @@ Assuming successful URL submission, there are several possible responses to the 
       <td>bad request</td>
        <td>Resource could not be parsed or failed basic FHIR validation rules.</td>
     </tr>
+     <tr>
+      <td>403</td>
+      <td>Forbidden</td>
+       <td>The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource, or may need an account of some sort.</td>
+    </tr>
     <!--
      <tr>
       <td>404</td>

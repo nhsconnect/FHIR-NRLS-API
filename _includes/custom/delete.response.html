@@ -18,9 +18,24 @@ Assuming successful URL submission, there are two possible outcomes to the delet
        <td>The record either does not exist or has been successfully deleted.</td>
     </tr>
     <tr>
+      <td>403</td>
+      <td>Forbidden</td>
+       <td>The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource, or may need an account of some sort.</td>
+    </tr>
+    <tr>
       <td>404</td>
       <td>No match to delete</td>
        <td>The parameters used to identify the record were not met.</td>
+    </tr>
+    <tr>
+      <td>409</td>
+      <td>Conflict</td>
+       <td>Indicates that the request could not be processed because of conflict in the request, such as an edit or versionId conflict between multiple simultaneous updates.</td>
+    </tr>
+     <tr>
+      <td>412</td>
+      <td>Precondition Failed</td>
+       <td>The server does not meet one of the preconditions that the requester put on the request.</td>
     </tr>
   </tbody>
 </table>

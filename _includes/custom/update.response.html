@@ -8,13 +8,14 @@
 
 TBC
 
-<!--
+
 Assuming successful URL submission, there are several possible responses to the registry request:
 
 <p>A full set of response codes can be found here <a href="profiles_api_codes.html">API Response Codes</a>. FHIR Servers SHALL support the following response codes:</p>
 
 <table>
   <tbody>
+  <!--
     <tr>
       <td>201</td>
       <td>record created</td>
@@ -25,16 +26,35 @@ Assuming successful URL submission, there are several possible responses to the 
       <td>bad request</td>
        <td>Resource could not be parsed or failed basic FHIR validation rules.</td>
     </tr>
+    -->
+     <tr>
+      <td>403</td>
+      <td>Forbidden</td>
+       <td>The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource, or may need an account of some sort.</td>
+    </tr>
+    <!--
      <tr>
       <td>404</td>
       <td>resource not found</td>
        <td>Resource type not supported, or not a FHIR end-point.</td>
     </tr>
+    -->
+     <tr>
+      <td>409</td>
+      <td>Conflict</td>
+       <td>Indicates that the request could not be processed because of conflict in the request, such as an edit or versionId conflict between multiple simultaneous updates.</td>
+    </tr>
+      <tr>
+      <td>412</td>
+      <td>Precondition Failed</td>
+       <td>The server does not meet one of the preconditions that the requester put on the request.</td>
+    </tr>
+     <!--
     <tr>
       <td>422</td>
       <td>unprocessable entity</td>
       <td>The proposed resource violated applicable FHIR profiles or server business rules.</td>
     </tr>
+     -->
   </tbody>
 </table>
--->

@@ -57,6 +57,8 @@ Search for all records for a patient. Fetches a bundle of all `DocumentReference
 
 {% include custom/search.header.html resource="DocumentReference" %}
 
+Though the NRLS does not keep a version history of each DocumentReference each one does hold a versionId to support the NRLS update strategy. In responding to a search request the NRLS server will populate the versionId of each matching DocumentReference.
+
 ### 1.2.1. Search Parameters ###
 
 {% include custom/search.parameters.html resource="DocumentReference"     link="https://www.hl7.org/fhir/STU3/documentreference.html#search" %}
@@ -125,7 +127,7 @@ Success:
 
 - SHALL return a `200` **OK** HTTP status code on successful execution of the interaction.
 - SHALL return a `Bundle` of `type` searchset, containing either:
-    - One matching `documentReference` resource that conforms to the `nrls-documentReference-1` profile; or
+    - One or more `documentReference` resource that conforms to the `nrls-documentReference-1` profile; or
     - One `OperationOutcome` resource if the interaction is a success, however no documentReference record has been found.
 - Where an documentReference is returned, it SHALL include the `versionId` and `fullUrl` of the current version of the `documentReference` resource.
 
@@ -163,7 +165,7 @@ Return all DocumentReference resources for Patient with a NHS Number of 98765432
 
 #### 1.3.2 cURL ####
 
-{% include custom/embedcurl.html title="Search DocumentReference" command="curl -H 'Accept: application/xml+fhir' -H 'Authorization: BEARER [token]' -X GET  '[baseUrl]/DocumentReference?patient.identifier=https://fhir.nhs.uk/Id/nhs-number|9876543210'" %}
+{% include custom/embedcurl.html title="Search DocumentReference" command="curl -H 'Accept: application/fhir+xml' -H 'Authorization: BEARER [token]' -X GET  '[baseUrl]/DocumentReference?patient.identifier=https://fhir.nhs.uk/Id/nhs-number|9876543210'" %}
 
 {% include custom/search.response.headers.html resource="DocumentReference" %}
 
