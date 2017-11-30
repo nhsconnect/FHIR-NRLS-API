@@ -4,8 +4,13 @@ keywords: getcarerecord, structured, rest, documentreference
 tags: [rest,fhir,documents,api,noccprofile]
 sidebar: accessrecord_rest_sidebar
 permalink: api_consumer_documentreference.html
-summary: A DocumentReference resource is used to describe a document that is made available to a healthcare system. A document is some sequence of bytes that is identifiable, establishes its own context (e.g., what subject, author, etc. can be displayed to the user), and has defined update management. The DocumentReference resource can be used with any document format that has a recognized mime type and that conforms to this definition.
+summary: A Consumer has a read-only view of the Pointers within NRLS. A Consumer is interested in being able to retrieve Pointers that relate to a given Patient (via their NHS number).
 ---
+
+<!--
+summary: A DocumentReference resource is used to describe a document that is made available to a healthcare system. A document is some sequence of bytes that is identifiable, establishes its own context (e.g., what subject, author, etc. can be displayed to the user), and has defined update management. The DocumentReference resource can be used with any document format that has a recognized mime type and that conforms to this definition.
+-->
+
 
 
 {% include custom/search.warnbanner.html %}
@@ -23,13 +28,7 @@ GET [baseUrl]/DocumentReference/[id]</div>
 {% include custom/read.response.html resource="DocumentReference" content="" %}
 -->
 
-
-
-
-
-## 2. Search ##
-
-TBC
+## 1. Search ##
 
 <div markdown="span" class="alert alert-success" role="alert">
 GET [baseUrl]/DocumentReference?[searchParameters]</div>
@@ -38,7 +37,7 @@ Search for all records for a patient. Fetches a bundle of all `DocumentReference
 
 {% include custom/search.header.html resource="DocumentReference" %}
 
-### 2.1. Search Parameters ###
+### 1.1. Search Parameters ###
 
 {% include custom/search.parameters.html resource="DocumentReference"     link="https://www.hl7.org/fhir/STU3/documentreference.html#search" %}
 
@@ -57,6 +56,7 @@ Search for all records for a patient. Fetches a bundle of all `DocumentReference
     <td>SHOULD</td>
     <td>DocumentReference.subject<br>(Patient)</td>
 </tr>
+<!--
 <tr>
     <td><code class="highlighter-rouge">period</code></td>
     <td><code class="highlighter-rouge">date</code></td>
@@ -78,29 +78,34 @@ Search for all records for a patient. Fetches a bundle of all `DocumentReference
     <td>SHOULD</td>
     <td>DocumentReference.custodian</td>
 </tr>
+-->
 </table>
 
+<!--
 Systems SHOULD support the following search combinations:
 
 * TBC
+-->
 
 {% include custom/search.patient.html para="1.1.1." content="DocumentReference" %}
 
+<!--
 {% include custom/search.date.plus.html para="1.1.2." content="DocumentReference" name="period" %}
-
+-->
+<!--
 {% include custom/search.token.html para="1.1.3." content="type" resource="DocumentReference" text1="type" text2="'End of Life Care Coordination Summary'" example="http://snomed.info/sct|861421000000109" %}
-
+-->
 {% include custom/search.response.html para="1.2." content="DocumentReference" %}
 
 <!--{% include custom/search.response.html resource="DocumentReference" %}-->
 
-## 3. Example ##
+## 2. Example ##
 
-### 3.1 Request Query ###
+### 2.1 Request Query ###
 
 Return all DocumentReference resources for Patient with a NHS Number of 9876543210, the format of the response body will be xml. Replace 'baseUrl' with the actual base Url of the FHIR Server.
 
-#### 3.1.1. cURL ####
+#### 2.1.1. cURL ####
 
 {% include custom/embedcurl.html title="Search DocumentReference" command="curl -H 'Accept: application/xml+fhir' -H 'Authorization: BEARER [token]' -X GET  '[baseUrl]/DocumentReference?patient.identifier=https://fhir.nhs.uk/Id/nhs-number|9876543210'" %}
 

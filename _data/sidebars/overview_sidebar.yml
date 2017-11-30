@@ -21,7 +21,7 @@ entries:
    # - title: Provide APIs
    #   url: /overview_api_provide.html
    #   output: web
-    - title: Guide Versioning
+    - title: Versioning of Implementation Guide
       url: /overview_guide_versioning.html
       output: web
     - title: Release Notes
@@ -79,7 +79,7 @@ entries:
           - title: Reference
             url: /explore_reference.html
             output: web
-          - title: NRLS Versioning
+          - title: NRLS FHIR Asset Versioning
             url: /explore_cc_versioning.html
             output: web
           - title: Security

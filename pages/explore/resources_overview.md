@@ -61,7 +61,8 @@ Detailed Spine services pre-requisites:
 
 - Provider/ consumer systems SHALL have gone through accreditation and received an endpoint certificate and associated ASID for the client system.
 - Provider/ consumer systems SHALL be capable of PDS tracing (or equivalent service e.g. SMSP) of patients
-- Provider/ consumer systems Shall have either authenticated the user using national smartcard authentication, and obtained a UUID from the user’s smartcard (and associated RBAC role from CIS) or authenticated the user using an assured local mechanism, and obtained a local user ID and role and passed this user information in a JSON web token.
+- Provider/ consumer systems SHALL have obtained a local user ID and role and passed this user information in a JSON web token.
+<!--- Provider/ consumer systems Shall have either authenticated the user using national smartcard authentication, and obtained a UUID from the user’s smartcard (and associated RBAC role from CIS) or authenticated the user using an assured local mechanism, and obtained a local user ID and role and passed this user information in a JSON web token.-->
 - Spine Security Proxy (SSP) TBC
 
 ### 2.4 NHS Number ###
@@ -73,130 +74,20 @@ Only verified NHS Number SHALL be used with FHIR API profiles. This can be achie
 -->
 ## 3. API Structure ##
 
-The API implementation guide has been split into Consumer and Provider API sections.
+The API implementation guide has been split into Consumer and Provider API sections. 
 
-The FHIR profile API's described in the Consumer section have been structured in the following way:
+Providers are systems external to the NRLS that expose records for retrieval via metadata or so-called Pointers that are stored in the NRLS. A Provider can be thought of as a system that has write access to the NRLS with some limited read-access that is designed to support Pointer maintenance. 
 
-- `0.` References
-<!--- `1.` Read -->
-- `1.` Search Parameters - List of search parameters for the profile being described, including any tips for searching. This section shows examples of how to search using the provided search parameters
-- `2.` Example - Description of of the Request & Response headers, example of how to search on a server and the expected response body as an example
+A Consumer can be thought of as a system that has read-access to the NRLS. The read access that a Consumer has is designed to facilitate the retrieval of Pointers that are of interest to the Consuming system. The way that Consumers retrieve Pointers from the system is different from the read-access that a Provider has.
 
-The FHIR profile API's described in the Provider section have been structured in the following way:
+The Consumer and Provider API sections have been structured to support:
 
-- `0.` References
-- `1.` Create - Create a new DocumentReference resource with a server assigned id
-- `2.` Update - Update an existing DocumentReference resource by its id (or create it if it is new)
-- `3.` Delete - Delete a DocumentReference resource
-- `4.` Example - Description of of the Request & Response headers, example of interactions and the expected response body as an example
+- References - provides links to NHS Digital FHIR profiles, HL7 FHIR STU3 core resources and user stories
+- Read interaction - accesses the current contents of a resource.
+- Search Parameters - list of search parameters for the profile being described, including any tips for searching. This section shows examples of how to search using the provided search parameters
+- Create interaction - create a new resource with a server assigned id
+- Update interaction - update an existing resource by its id (or create it if it is new)
+- Delete interaction - delete a resource
+- Examples - Description of the Request & Response headers, example of how to search on a server and the expected response body as an example
 
-<!--
-### 1.1 Resource API Structure Details ###
 
-<table style="min-width:100%;width:100%">
-<tr id="clinical">
-<th style="width:20%;">General</th>
-<th style="width:80%;">Description </th>
-</tr>
-<tr>
-<td>0. References</td>
-<td>Links to other parts of the implementation guide which might help with context and understanding the API's described</td>
-</tr>
-<!--
-<tr>
-
-<td>1. Read</td>
-<td>A description of how to get the API</td>
-</tr>
--->
-<!--
-<tr>
-<td>2. Search Parameters</td>
-<td>List of search parameters for the profile being described, including any tips for searching. This section shows examples of how to search using the provided search parameters</td>
-</tr>
-<tr>
-<td>3. Example</td>
-<td>Description of of the Request & Response headers, example of how to search on a server and the expected response body as an example</td>
-</tr>
-</table>
--->
-
-## 3. NRLS FHIR Resources ##
-This section looks at the NRLS profile API's covered within this implementation guide.
-
-<!--
-<table style="min-width:100%;width:100%">
-<tr id="clinical">
-<th style="width:33%;">Clinical</th>
-<th style="width:33%;">&nbsp;</th>
-<th style="width:33%;">&nbsp;</th>
-</tr>
-<tr id="clinicald">
-<th>Summary</th>
-<th>Diagnostics</th>
-<th>Medications</th>
-</tr>
-<tr>
-<td><a href="api_clinical_allergyintolerance.html">AllergyIntolerance</a></td>
-<td><a href="api_diagnostics_observation.html">Observation</a></td>
-<td><a href="api_medication_medication.html">Medication</a></td>
-</tr>
-<tr>
-<td><a href="api_clinical_condition.html">Condition</a> (Problem)</td>
-<td>&nbsp;</td>
-<td><a href="api_medication_medicationorder.html">MedicationOrder</a></td>
-</tr>
-<tr>
-<td><a href="api_clinical_procedure.html">Procedure</a></td>
-<td>&nbsp;</td>
-<td><a href="api_medication_medicationstatement.html">MedicationStatement</a></td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td><a href="api_medication_immunization.html">Immunization</a></td>
-</tr>
-</table>
--->
-<!--
-<table style="min-width:100%;width:100%">
-<tr id="base">
-<th style="width:33%;">Base</th>
-<th style="width:33%;">&nbsp;</th>
-<th style="width:33%;">&nbsp;</th>
-</tr>
-<tr id="based">
-<th>Individuals</th>
-<th>Entities</th>
-<th>&nbsp;</th>
-</tr>
-<tr>
-<td><a href="api_entity_patient.html">Patient</a></td>
-<td><a href="api_entity_organisation.html">Organization</a></td>
-<td>&nbsp;</td>
-</tr>
-<tr>
-<td><a href="api_entity_practitioner.html">Practitioner</a> (Problem)</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-</tr>
-</table>
--->
-
-<table style="min-width:100%;width:100%">
-<tr id="conformance">
-<th style="width:33%;">Foundation</th>
-<th style="width:33%;"></th>
-</tr>
-<tr id="conformanced">
-<th>Conformance</th>
-<!--<th>&nbsp;</th>-->
-<th>Documents</th>
-</tr>
-<tr>
-<td><a href="api_foundation_conformance.html">Conformance</a></td>
-<!--<td><a href="api_foundation_valueset.html">ValueSet</a></td>-->
-<!--<td>&nbsp;</td>-->
-<td><a href="api_foundation_documentreference.html">DocumentReference</a></td>
-</tr>
-</table>

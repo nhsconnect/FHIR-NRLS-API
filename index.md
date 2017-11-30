@@ -24,7 +24,7 @@ The INTEROPen vision is to create a library of nationally defined HL7® FHIR® r
 
 Find out more on the [NHS Developer Network](https://developer.nhs.uk/library/systems/national-record-locator-service/).
 
-
+<!--
 # Using this guide #
 
 This guide has been created to support the adoption of NRLS FHIR&reg; profiles and resources. As such the site is structured around NRLS stakeholders including API users, developers and architects.  
@@ -32,9 +32,10 @@ This guide has been created to support the adoption of NRLS FHIR&reg; profiles a
 {% include custom/api_overview.svg %}
 
 The above steps outline a complete API journey from imagination and exploring to developing local APIs using NRLS FHIR&reg; profiles all the way to deploying a live API.
+-->
 
 <!--{% include custom/contribute.html content="If you want to get involved in any part of this then please get in touch with careconnect@interopen.org "%}-->
-
+<!--
 # NRLS Focus #
 
 The current site focuses on a typical API Developer's Journey as highlighted by the green boxes below in the developer journey:
@@ -44,6 +45,8 @@ The current site focuses on a typical API Developer's Journey as highlighted by 
 NHS Digital is contributing to progressing the profile development, the testing process and invitations are open for the community to get involved and progress the wider developer ecosystem.
 
 Please see the explanation of the complete development roadmap.
+-->
+
 
 <!--{% include custom/contribute.html content="Please contact [careconnect@interopen.org] to get involved." %}-->
 
