@@ -59,9 +59,20 @@ The NRLS API is accessed through the NHS Spine. As such, providers and consumers
 
 Detailed Spine services pre-requisites:
 
+To use this API, provider/ consumer systems:
+
+- SHALL have gone through accreditation and received an endpoint certificate and associated ASID (Accredited System ID) for the client system.
+- SHALL have either:
+	- Authenticated the user using national smartcard authentication, and obtained a the UUID from the user's smartcard (and associated RBAC role from CIS), or
+	- Authenticated the user using an assured local mechanism, and obtained a local user ID and role
+	- And pass this user information in a JSON web token - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.
+- SHALL have previously traced the patient's NHS Number using PDS or an equivalent service.
+
+<!--
 - Provider/ consumer systems SHALL have gone through accreditation and received an endpoint certificate and associated ASID for the client system.
 - Provider/ consumer systems SHALL be capable of PDS tracing (or equivalent service e.g. SMSP) of patients
 - Provider/ consumer systems SHALL have obtained a local user ID and role and passed this user information in a JSON web token.
+-->
 <!--- Provider/ consumer systems Shall have either authenticated the user using national smartcard authentication, and obtained a UUID from the user’s smartcard (and associated RBAC role from CIS) or authenticated the user using an assured local mechanism, and obtained a local user ID and role and passed this user information in a JSON web token.-->
 - Spine Security Proxy (SSP) TBC
 
