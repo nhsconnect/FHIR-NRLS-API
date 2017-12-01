@@ -59,7 +59,7 @@ Search for all records for a patient. Fetches a bundle of all `DocumentReference
 
 Though the NRLS does not keep a version history of each DocumentReference each one does hold a versionId to support the NRLS update strategy. In responding to a search request the NRLS server will populate the versionId of each matching DocumentReference.
 
-### 1.2.1. Search Parameters ###
+### 1.3. Search Parameters ###
 
 {% include custom/search.parameters.html resource="DocumentReference"     link="https://www.hl7.org/fhir/STU3/documentreference.html#search" %}
 
@@ -109,7 +109,7 @@ Systems SHOULD support the following search combinations:
 * TBC
 -->
 
-{% include custom/search.patient.html para="2.1.1." content="DocumentReference" %}
+{% include custom/search.patient.html para="1.3.1." content="DocumentReference" %}
 
 <!--
 {% include custom/search.date.plus.html para="1.1.2." content="DocumentReference" name="period" %}
@@ -121,7 +121,7 @@ Systems SHOULD support the following search combinations:
 
 <!--{% include custom/search.response.html resource="DocumentReference" %}-->
 
-### 1.3 Search Response ###
+### 1.4 Search Response ###
 
 Success:
 
@@ -151,16 +151,23 @@ Failure:
 
 <!--- Error REQUEST_UNMATCHED would occur if the NHS number being requested in the search request does not match the requested_record value in the JWT - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.-->
 
-### 1.3. Example ###
+### 1.5. Example ###
 
-### 1.3.1 Request Query ###
+### 1.5.1 Request Query ###
 
 Return all DocumentReference resources for Patient with a NHS Number of 9876543210, the format of the response body will be xml. Replace 'baseUrl' with the actual base Url of the FHIR Server.
 
-#### 1.3.2 cURL ####
+#### 1.5.2 cURL ####
 
 {% include custom/embedcurl.html title="Search DocumentReference" command="curl -H 'Accept: application/fhir+xml' -H 'Authorization: BEARER [token]' -X GET  '[baseUrl]/DocumentReference?patient.identifier=https://fhir.nhs.uk/Id/nhs-number|9876543210'" %}
 
+
+#### 1.5.3 Query Response Http Headers ####
+
+<script src="https://gist.github.com/KevinMayfield/74fdaf9414b08038552715fabba8828b.js"></script>
+
+<!--
 {% include custom/search.response.headers.html resource="DocumentReference" %}
+-->
 
 [TODO Response]

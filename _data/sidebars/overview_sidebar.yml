@@ -16,28 +16,7 @@ entries:
       url: /overview_engage.html
       output: web
 
-      subfolders:
-      - title: Solution
-    
-        output: web
-
-
-        subfolderitems:
-        - title: Concepts
-          url: /overview_concepts.html
-          output: web
-        - title: Behaviour
-          url: /overview_behaviours.html
-          output: web
-        - title: Principles
-          url: /overview_principles.html
-          output: web
-        - title: Data model
-          url: /overview_data_model.html
-          output: web
-        - title: Interactions
-          url: /overview_interactions.html
-          output: web
+      
    # - title: API Journey
    #   url: /overview_api_journey.html
    #  output: web
@@ -54,10 +33,24 @@ entries:
       url: /overview_glossary.html
       output: web
       subfolders:
- # - title: Case Studies
- #   output: web
- #   folderitems:
-
+  - title: Solution
+    output: web
+    folderitems:
+    - title: Concepts
+      url: /overview_concepts.html
+      output: web
+    - title: Behaviour
+      url: /overview_behaviours.html
+      output: web
+    - title: Principles
+      url: /overview_principles.html
+      output: web
+    - title: Data model
+      url: /overview_data_model.html
+      output: web
+    - title: Interactions
+      url: /overview_interactions.html
+      output: web
  #   - title: Engagement Approach
  #     url: /engage.html
  #     output: web, pdf
@@ -102,9 +95,9 @@ entries:
           - title: Reference
             url: /explore_reference.html
             output: web
-          - title: NRLS FHIR Asset Versioning
-            url: /explore_cc_versioning.html
-            output: web
+        #  - title: NRLS FHIR Asset Versioning
+        #    url: /explore_cc_versioning.html
+        #    output: web
         # - title: Security
         #   url: /development_api_security_guidance.html
         #   output: web  

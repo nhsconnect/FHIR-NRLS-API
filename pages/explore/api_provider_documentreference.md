@@ -42,19 +42,21 @@ All Consumer API read requests should include the below additional HTTP request 
 - Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
 
 
-### 1.1.2 Provider Read Operation ###
+### 1.2 Provider Read Operation ###
 
 <div markdown="span" class="alert alert-success" role="alert">
 GET [baseUrl]/DocumentReference/[id]</div>
 
+<p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header. The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>.</p>
 
 
-### 1.1.3 Provider Read Response ###
+
+### 1.3 Provider Read Response ###
 
 Success:
 
 - SHALL return a `200` **OK** HTTP status code on successful execution of the interaction.
-- The NRLS server will return the versionId of each DocumentReference along with an Etag whose value matches the versionId.
+- The NRLS server will return the versionId of each DocumentReference.
 
 
 Failure: 
@@ -110,7 +112,7 @@ Search for all custodian pointers. Fetches a bundle of all `DocumentReference` r
 
 Though the NRLS does not keep a version history of each DocumentReference each one does hold a versionId to support the NRLS update strategy. In responding to a search request the NRLS server will populate the versionId of each matching DocumentReference.
 
-### 2.2.1. Search Parameters ###
+### 2.3 Search Parameters ###
 
 {% include custom/search.parameters.html resource="DocumentReference"     link="https://www.hl7.org/fhir/STU3/documentreference.html#search" %}
 
@@ -162,7 +164,7 @@ Systems SHOULD support the following search combinations:
 * TBC
 -->
 
-{% include custom/search.custodian.html para="2.1.1." content="DocumentReference" %}
+{% include custom/search.custodian.html para="2.3.1." content="DocumentReference" %}
 
 <!--
 {% include custom/search.date.plus.html para="1.1.2." content="DocumentReference" name="period" %}
@@ -174,7 +176,7 @@ Systems SHOULD support the following search combinations:
 
 <!--{% include custom/search.response.html resource="DocumentReference" %}-->
 
-### 2.3 Search Response ###
+### 2.4 Search Response ###
 
 Success:
 
@@ -182,7 +184,7 @@ Success:
 - SHALL return a `Bundle` of `type` searchset, containing either:
     - One or more `documentReference` resource that conforms to the `nrls-documentReference-1` profile; or
     - One `OperationOutcome` resource if the interaction is a success, however no documentReference record has been found.
-- The NRLS server will return the versionId of each DocumentReference along with an Etag whose value matches the versionId..
+- The NRLS server will return the versionId of each DocumentReference.
 
 
 Failure: 
@@ -194,7 +196,7 @@ Failure:
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
 |-----------|----------------|------------|--------------|-----------------|
 |400|error|code-invalid|INVALID_CODE_SYSTEM|Invalid code system|
-|400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|
+|400|error|invalid|INVALID_CODE_VALUE|Invalid code system|
 |400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|
 |403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
 |403|error|forbidden|ACCESS_DENIED_SSL|SSL Protocol or Cipher requirements not met|
@@ -233,19 +235,21 @@ All Consumer API create requests should include the below additional HTTP reques
 
 - Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
 
-### 3.1.1. Provider Create Operation ###
+### 3.2. Provider Create Operation ###
 
 <div markdown="span" class="alert alert-success" role="alert">
 POST [baseUrl]/DocumentReference</div>
 
+<p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header. The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>.</p>
 
 
-### 2.3 Create Response ###
+
+### 3.3 Create Response ###
 
 Success:
 
 - SHALL return a `201` **OK** HTTP status code on successful execution of the interaction and the entry has been successfully created and the NRLS.
-- The NRLS server will return an HTTP Location header containing the 'server' assigned logical Id and versionId of the created DocumentReference resource along with an Etag whose value matches the versionId.
+- The NRLS server will return an HTTP Location header containing the 'server' assigned logical Id and versionId of the created DocumentReference resource.
 
 Failure: 
 
@@ -292,7 +296,7 @@ All Consumer API create requests should include the below additional HTTP reques
 
 - Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
 
-### 4.1.2 Provider Update Operation ###
+### 4.2. Provider Update Operation ###
 
 <div markdown="span" class="alert alert-success" role="alert">
 PUT [baseUrl]/DocumentReference/[id]</div>
@@ -302,12 +306,12 @@ PUT [baseUrl]/DocumentReference/[id]</div>
 <p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header and SHALL contain an ‘If-Match’ header. The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. The ‘If-Match’ header makes the request conditional. The server will process the requested DocumentReference only if it’s versionId property matches one of the listed ETags.</p>
 
 
-### 2.3 Update Response ###
+### 4.3 Update Response ###
 
 Success:
 
-- SHALL return a `201` **OK** HTTP status code on successful execution of the interaction and the entry has been successfully created and the NRLS.
-- The NRLS server will return an HTTP Location header containing the 'server' assigned logical Id and versionId of the created DocumentReference resource along with an Etag whose value matches the versionId.
+- SHALL return a `204` **OK** HTTP status code on successful execution of the interaction and the entry has been successfully created and the NRLS.
+- The NRLS server will return an Etag which matches the new versionId.
 
 Failure: 
 
@@ -324,6 +328,7 @@ Failure:
 |403|error|forbidden|ACCESS_DENIED_SSL|SSL Protocol or Cipher requirements not met|
 |403|error|forbidden|ASID_CHECK_FAILED|The sender or receiver's ASID is not authorised for this interaction|
 |404|error|not-found|NO_RECORD_FOUND|No record found|
+
 
 
 - The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/ValueSet/spine-error-or-warning-code-1)
@@ -359,14 +364,14 @@ All Consumer API create requests should include the below additional HTTP reques
 
 - Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
 
-### 5.1.2 Provider Delete Operation ###
+### 5.2 Provider Delete Operation ###
 
 <div markdown="span" class="alert alert-success" role="alert">
 DELETE [baseUrl]/DocumentReference/[id]</div>
 
 
 
-### 2.3 Delete Response ###
+### 5.3 Delete Response ###
 
 <p>The 'delete' interaction removes an existing resource. The interaction is performed by an HTTP DELETE of the <code class="highlighter-rouge">{{include.resource}}</code> resource.</p>
 
@@ -376,8 +381,7 @@ DELETE [baseUrl]/DocumentReference/[id]</div>
 
 Success:
 
-- SHALL return a `201` **OK** HTTP status code on successful execution of the interaction and the entry has been successfully created and the NRLS.
-- The NRLS server will return an HTTP Location header containing the 'server' assigned logical Id and versionId of the created DocumentReference resource along with an Etag whose value matches the versionId.
+- SHALL return a `204` **OK** HTTP status code on successful execution of the interaction.
 
 Failure: 
 
