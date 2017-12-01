@@ -36,4 +36,6 @@ Note that in order to execute this kind of query a client must have been assigne
 
 ### Record retrieval by Consumers ###
 
-TODO
+The NRLS does not take part in Record retrieval. The Pointers that is holds can be seen as signposts that show the way. The actual retrieval of the Record referenced by a given Pointer is facilitated by the Spine Security Proxy (SSP).
+The SSP is a forward HTTP proxy which will be used as a front-end to control and protect access to Provider IT systems that will be exposing Records. It provides a single security point for both authentication and authorisation for consuming systems. Additional responsibilities include auditing of all requests, throttling of requests and transaction logging for performance and commercial remuneration purposes.
+A consumer should route requests to retrieve Records through the SSP as opposed to attempting to retrieve the Record directly.
