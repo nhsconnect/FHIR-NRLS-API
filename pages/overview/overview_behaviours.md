@@ -18,6 +18,8 @@ A Consumer can be thought of as a system that has read-access though the way tha
 
 [TODO Diagram 5]
 
+<img src="images/solution/Solution_Behaviour_diagram.png" style="width:100%;max-width: 100%;">
+
 ### Identity on the NRLS ###
 
 The NRLS has two roles of user – Provider and Consumer. The ODS code is used as a means to identify a user. The NRLS maintains a mapping of ODS code to role; Provider, Consumer role or in some cases both. In order to categorise client systems, the NRLS it must have a means of reliably determining the ODS code of that system. This will be discussed in more detail in the security section (TODO).

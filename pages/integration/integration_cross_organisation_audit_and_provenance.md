@@ -34,13 +34,6 @@ Consumer system SHALL generate a new JWT for each API request. The Payload secti
 | exp | R | Expiration time integer after which this authorization MUST be considered invalid. | No | (now + 5 minutes) UTC time in seconds | |
 | iat | R | The UTC time the JWT was created by the requesting system | `No| now UTC time in seconds | |
 
-
-<sup>1</sup> Minimal FHIR resource to include any relevant business identifier(s).
-
-<sup>2</sup> To contain the practitioners SDS Role profile ID (taken from their SAML assertion, linked to their Smartcard session).
-
-<sup>3</sup>The requesting organisation resource SHALL refer to the care organisation from where the request originates rather than any other organisation which may host hardware or software, route requests to Spine, and/or hold the endpoint registration.
-
 {% include important.html content="In topologies where consumer applications are provisioned via a portal or middleware hosted by another organisation (e.g. a 'mini service' provider) it is important for audit purposes that the practitioner and organisation populated in the JWT reflect the originating organisation rather than the hosting organisation." %}
 
 #### JWT Generation ####

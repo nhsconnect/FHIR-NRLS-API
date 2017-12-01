@@ -25,8 +25,8 @@ In the overall solution for NRLS broadly speaking there are four main systems th
 
 ### Provider interaction ###
 
-[Diagram 3]
+<img src="images/solution/Provider_interaction_diagram.png" style="width:100%;max-width: 100%;">
 
 ### Consumer interaction ###
 
-[Diagram 2]
+<img src="images/solution/Consumer_interaction_diagram.png" style="width:100%;max-width: 100%;">

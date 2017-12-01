@@ -14,7 +14,8 @@ summary: Solution Concepts
 
 The NRLS is based on the [Registry-Repository] (https://developer.nhs.uk/library/architecture/integration-patterns/registry-repository/) pattern which separates the storage and retrieval of a record from data that describes its location. 
 
-[TBA - Diagram 6]
+
+<img src="images/solution/Solution_Concepts_diagram.png" style="width:100%;max-width: 100%;">
 
 
 ### Actors ###
@@ -33,3 +34,6 @@ The NRLS also acknowledges that there is a difference to be drawn between the ho
 
 Pointers are associated with a Record. As noted a Record exists in a remote system, one of the roles of the Pointer is to provide enough context to allow a Consumer to retrieve that Record from the remote system and display it.  
 The NRLS has two kinds of Pointer which are differentiated by the way they facilitate Record retrieval. A direct Pointer can be followed, and the expectation of the Consumer should be that the Record will be returned to them. An indirect Pointer is different. Following this kind of Pointer will not return the Record, instead it will present the Consumer with a further set of instructions that must be followed in order to retrieve the Record. Typically, this will be a set of contact details that must be used to request the Record, for example it might be the phone number of a healthcare service which can relay a Record’s contents over the phone.
+
+
+<img src="images/solution/Solution_Concepts_Pointer_diagram.png" style="width:100%;max-width: 100%;">
