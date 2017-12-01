@@ -62,9 +62,21 @@ Failure:
 - SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the `spine-operationoutcome-1` profile if the search cannot be executed (not that there is no match).
 - The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
 
+<!--
 {% include custom/read.response.html resource="DocumentReference" content="" %}
+-->
 
-DO WE NEED THE SPINE ERROR TABLE???
+
+
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
+|-----------|----------------|------------|--------------|-----------------|
+|404|error|not-found|NO_RECORD_FOUND|No record found|
+|403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
+|403|error|forbidden|ACCESS_DENIED_SSL|SSL Protocol or Cipher requirements not met|
+|403|error|forbidden|ASID_CHECK_FAILED|The sender or receiver's ASID is not authorised for this interaction|
+
+
+- The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/ValueSet/spine-error-or-warning-code-1)
 
 
 ## 2. Provider Search ##
@@ -132,16 +144,16 @@ Though the NRLS does not keep a version history of each DocumentReference each o
     <td>Kind of document (SNOMED CT if possible)</td>
     <td>SHOULD</td>
     <td>DocumentReference.type</td>
-</tr>
--->
+</tr>-->
+
 <tr>
     <td><code class="highlighter-rouge">custodian</code></td>
     <td><code class="highlighter-rouge">reference</code></td>
-    <td>Organization which maintains the document</td>
+    <td>Organization which maintains the document reference</td>
     <td>SHOULD</td>
     <td>DocumentReference.custodian</td>
 </tr>
--->
+
 </table>
 
 <!--
@@ -150,7 +162,7 @@ Systems SHOULD support the following search combinations:
 * TBC
 -->
 
-{% include custom/search.patient.html para="2.1.1." content="DocumentReference" %}
+{% include custom/search.custodian.html para="2.1.1." content="DocumentReference" %}
 
 <!--
 {% include custom/search.date.plus.html para="1.1.2." content="DocumentReference" name="period" %}
@@ -178,24 +190,20 @@ Failure:
 - SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the `spine-operationoutcome-1` profile if the search cannot be executed (not that there is no match).
 - The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
 
+
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
 |-----------|----------------|------------|--------------|-----------------|
-|404|error|not-found|PATIENT_NOT_FOUND|Patient not found|
-|400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|
 |400|error|code-invalid|INVALID_CODE_SYSTEM|Invalid code system|
-|400|error|code-invalid|INVALID_CODE_VALUE|Invalid code value|
-|400|error|code-invalid|INVALID_IDENTIFIER_SYSTEM|Invalid identifier system|
-|400|error|value|INVALID_ELEMENT|Invalid element|
-|400|error|invalid|INVALID_PARAMETER|Invalid parameter|
-|400|error|unknown|REQUEST_UNMATCHED|Request does not match authorisation token|
-|400|error|structure|MESSAGE_NOT_WELL_FORMED|Message not well formed|
+|400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|
 |400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|
+|403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
 |403|error|forbidden|ACCESS_DENIED_SSL|SSL Protocol or Cipher requirements not met|
 |403|error|forbidden|ASID_CHECK_FAILED|The sender or receiver's ASID is not authorised for this interaction|
 
 
 - The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/ValueSet/spine-error-or-warning-code-1)
-- Error REQUEST_UNMATCHED would occur if the NHS number being requested in the search request does not match the requested_record value in the JWT - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.
+
+<!--- Error REQUEST_UNMATCHED would occur if the NHS number being requested in the search request does not match the requested_record value in the JWT - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.-->
 
 
 
@@ -230,8 +238,34 @@ All Consumer API create requests should include the below additional HTTP reques
 <div markdown="span" class="alert alert-success" role="alert">
 POST [baseUrl]/DocumentReference</div>
 
-{% include custom/create.response.html resource="DocumentReference" content="" %}
 
+
+### 2.3 Create Response ###
+
+Success:
+
+- SHALL return a `201` **OK** HTTP status code on successful execution of the interaction and the entry has been successfully created and the NRLS.
+- The NRLS server will return an HTTP Location header containing the 'server' assigned logical Id and versionId of the created DocumentReference resource along with an Etag whose value matches the versionId.
+
+Failure: 
+
+- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the `spine-operationoutcome-1` profile if the search cannot be executed (not that there is no match).
+- The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
+
+
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
+|-----------|----------------|------------|--------------|-----------------|
+|400|error|invalid|INVALID_RESOURCE|Invalid validation of resource|
+|400|error|structure|MESSAGE_NOT_WELL_FORMED|Message not well formed|
+|400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|
+|403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
+|403|error|forbidden|ACCESS_DENIED_SSL|SSL Protocol or Cipher requirements not met|
+|403|error|forbidden|ASID_CHECK_FAILED|The sender or receiver's ASID is not authorised for this interaction|
+
+
+- The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/ValueSet/spine-error-or-warning-code-1)
+
+<!--- Error REQUEST_UNMATCHED would occur if the NHS number being requested in the search request does not match the requested_record value in the JWT - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.-->
 
 
 ## 4. Provider Update ##
@@ -263,7 +297,44 @@ All Consumer API create requests should include the below additional HTTP reques
 <div markdown="span" class="alert alert-success" role="alert">
 PUT [baseUrl]/DocumentReference/[id]</div>
 
-{% include custom/update.response.html resource="DocumentReference" content="" %}
+<p>The 'update' interaction is performed by an HTTP PUT of the <code class="highlighter-rouge">{{include.resource}}</code> and creates a new current version of the resource to the NRLS Registry endpoint.</p>
+
+<p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header and SHALL contain an ‘If-Match’ header. The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. The ‘If-Match’ header makes the request conditional. The server will process the requested DocumentReference only if it’s versionId property matches one of the listed ETags.</p>
+
+
+### 2.3 Update Response ###
+
+Success:
+
+- SHALL return a `201` **OK** HTTP status code on successful execution of the interaction and the entry has been successfully created and the NRLS.
+- The NRLS server will return an HTTP Location header containing the 'server' assigned logical Id and versionId of the created DocumentReference resource along with an Etag whose value matches the versionId.
+
+Failure: 
+
+- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the `spine-operationoutcome-1` profile if the search cannot be executed (not that there is no match).
+- The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
+
+
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
+|-----------|----------------|------------|--------------|-----------------|
+|400|error|invalid|INVALID_RESOURCE|Invalid validation of resource|
+|400|error|structure|MESSAGE_NOT_WELL_FORMED|Message not well formed|
+|400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|
+|403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
+|403|error|forbidden|ACCESS_DENIED_SSL|SSL Protocol or Cipher requirements not met|
+|403|error|forbidden|ASID_CHECK_FAILED|The sender or receiver's ASID is not authorised for this interaction|
+|404|error|not-found|NO_RECORD_FOUND|No record found|
+
+
+- The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/ValueSet/spine-error-or-warning-code-1)
+
+A 409 HTTP response is expected for versionId conflict when performing an update or delete of a DocumentReference.
+
+
+<!--- Error REQUEST_UNMATCHED would occur if the NHS number being requested in the search request does not match the requested_record value in the JWT - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.-->
+
+
+
 
 
 ## 5. Provider Delete ##
@@ -293,7 +364,39 @@ All Consumer API create requests should include the below additional HTTP reques
 <div markdown="span" class="alert alert-success" role="alert">
 DELETE [baseUrl]/DocumentReference/[id]</div>
 
-{% include custom/delete.response.html resource="DocumentReference" content="" %}
 
 
+### 2.3 Delete Response ###
 
+<p>The 'delete' interaction removes an existing resource. The interaction is performed by an HTTP DELETE of the <code class="highlighter-rouge">{{include.resource}}</code> resource.</p>
+
+<!--<p>Return a single <code class="highlighter-rouge">{{include.resource}}</code> for the specified id{{include.content}}.</p>-->
+
+<p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header and SHALL contain an ‘If-Match’ header. The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. The ‘If-Match’ header makes the request conditional. The server will process the requested DocumentReference only if it’s versionId property matches one of the listed ETags.</p>
+
+Success:
+
+- SHALL return a `201` **OK** HTTP status code on successful execution of the interaction and the entry has been successfully created and the NRLS.
+- The NRLS server will return an HTTP Location header containing the 'server' assigned logical Id and versionId of the created DocumentReference resource along with an Etag whose value matches the versionId.
+
+Failure: 
+
+- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the `spine-operationoutcome-1` profile if the search cannot be executed (not that there is no match).
+- The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
+
+
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
+|-----------|----------------|------------|--------------|-----------------|
+|400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|
+|403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
+|403|error|forbidden|ACCESS_DENIED_SSL|SSL Protocol or Cipher requirements not met|
+|403|error|forbidden|ASID_CHECK_FAILED|The sender or receiver's ASID is not authorised for this interaction|
+|404|error|not-found|NO_RECORD_FOUND|No record found|
+
+
+- The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/ValueSet/spine-error-or-warning-code-1)
+
+A 409 HTTP response is expected for versionId conflict when performing an update or delete of a DocumentReference.
+
+
+<!--- Error REQUEST_UNMATCHED would occur if the NHS number being requested in the search request does not match the requested_record value in the JWT - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.-->

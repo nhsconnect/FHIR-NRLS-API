@@ -139,23 +139,17 @@ Failure:
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
 |-----------|----------------|------------|--------------|-----------------|
-|404|error|not-found|PATIENT_NOT_FOUND|Patient not found|
-|400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|
 |400|error|code-invalid|INVALID_CODE_SYSTEM|Invalid code system|
-|400|error|code-invalid|INVALID_CODE_VALUE|Invalid code value|
-|400|error|code-invalid|INVALID_IDENTIFIER_SYSTEM|Invalid identifier system|
-|400|error|value|INVALID_ELEMENT|Invalid element|
-|400|error|invalid|INVALID_PARAMETER|Invalid parameter|
-|400|error|unknown|REQUEST_UNMATCHED|Request does not match authorisation token|
-|400|error|structure|MESSAGE_NOT_WELL_FORMED|Message not well formed|
+|400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|
 |400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|
+|403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
 |403|error|forbidden|ACCESS_DENIED_SSL|SSL Protocol or Cipher requirements not met|
 |403|error|forbidden|ASID_CHECK_FAILED|The sender or receiver's ASID is not authorised for this interaction|
 
 
 - The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/ValueSet/spine-error-or-warning-code-1)
-- Error REQUEST_UNMATCHED would occur if the NHS number being requested in the search request does not match the requested_record value in the JWT - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.
 
+<!--- Error REQUEST_UNMATCHED would occur if the NHS number being requested in the search request does not match the requested_record value in the JWT - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.-->
 
 ### 1.3. Example ###
 

@@ -62,7 +62,7 @@ The above roadmap illustrates the steps necessary to create, test and verify the
 -->
 <!--{% include custom/contribute.html content="To get involved in any parts of the roadmap or to discuss the other elements please get in touch with careconnect@interopen.org "%}-->
 
-
+<!--
 # Solution #
 
 ## Concepts ##
@@ -187,3 +187,4 @@ In the overall solution for NRLS broadly speaking there are four main systems th
 ### Consumer interaction ###
 
 [Diagram 2]
+-->

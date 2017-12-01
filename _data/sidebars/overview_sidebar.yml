@@ -15,13 +15,36 @@ entries:
     - title: Getting Started
       url: /overview_engage.html
       output: web
+
+      subfolders:
+      - title: Solution
+    
+        output: web
+
+
+        subfolderitems:
+        - title: Concepts
+          url: /overview_concepts.html
+          output: web
+        - title: Behaviour
+          url: /overview_behaviours.html
+          output: web
+        - title: Principles
+          url: /overview_principles.html
+          output: web
+        - title: Data model
+          url: /overview_data_model.html
+          output: web
+        - title: Interactions
+          url: /overview_interactions.html
+          output: web
    # - title: API Journey
    #   url: /overview_api_journey.html
    #  output: web
    # - title: Provide APIs
    #   url: /overview_api_provide.html
    #   output: web
-    - title: Versioning of Implementation Guide
+    - title: Product Versioning
       url: /overview_guide_versioning.html
       output: web
     - title: Release Notes
@@ -30,7 +53,7 @@ entries:
     - title: Glossary
       url: /overview_glossary.html
       output: web
-
+      subfolders:
  # - title: Case Studies
  #   output: web
  #   folderitems:
@@ -66,43 +89,43 @@ entries:
     - title: Provider API
       url: /api_provider_documentreference.html
       output: web
-   #- title: Security
-   #  url: /design_security.html
-    # output: web
+    - title: Security
+      url: /development_api_security_guidance.html
+      output: web
       subfolders:
       - title: API Guidance | FHIR&reg;
         output: web
         subfolderitems:
-          - title: HTTP Response Codes
-            url: /explore_api_codes.html
-            output: web
+        # - title: HTTP Response Codes
+        #   url: /explore_api_codes.html
+        #   output: web
           - title: Reference
             url: /explore_reference.html
             output: web
           - title: NRLS FHIR Asset Versioning
             url: /explore_cc_versioning.html
             output: web
-          - title: Security
-            url: /development_api_security_guidance.html
-            output: web  
-      - title: Integrate With Spine
-        output: web
-        subfolderitems:
-          - title: Cross Organisation Audit & Provenance
-            url: /integration_cross_organisation_audit_and_provenance.html
-            output: web
-          - title: Personal Demographic Service
-            url: /integration_personal_demographics_service.html
-            output: web
-          - title: Spine Directory Service
-            url: /integration_spine_directory_service.html
-            output: web
-          - title: Spine Security Proxy
-            url: /integration_spine_security_proxy.html
-            output: web 
-          - title: Spine Security Proxy Implementation Guide
-            url: /integration_spine_security_proxy_implementation_guide.html
-            output: web    
+        # - title: Security
+        #   url: /development_api_security_guidance.html
+        #   output: web  
+  - title: Integrate With Spine
+    output: web
+    folderitems:
+    - title: Cross Organisation Audit & Provenance
+      url: /integration_cross_organisation_audit_and_provenance.html
+      output: web
+    - title: Personal Demographic Service
+      url: /integration_personal_demographics_service.html
+      output: web
+    - title: Spine Directory Service
+      url: /integration_spine_directory_service.html
+      output: web
+    - title: Spine Security Proxy
+      url: /integration_spine_security_proxy.html
+      output: web 
+        # - title: Spine Security Proxy Implementation Guide
+        #   url: /integration_spine_security_proxy_implementation_guide.html
+        #   output: web    
         # - title: Patient Search
         #   url: /build_patient_search.html
         #   output: web

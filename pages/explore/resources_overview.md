@@ -40,7 +40,7 @@ The NRLS API is based on the HL7 FHIR STU3 3.0.1 Messaging Implementation (April
 
 - Resources SHALL identify the profile supported as part of the [FHIR Base Resource](https://hl7.org/fhir/resource-definitions.html#Resource.meta)
 
-- SHALL support XML **or** JSON formats for all API interactions and SHOULD support both formats.
+- SHALL support XML **or** JSON formats for all API interactions.
 
 
 ### 2.2 FHIR Conformance ###
