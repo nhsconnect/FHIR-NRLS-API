@@ -12,7 +12,7 @@ summary: Solution Concepts
 
 ## Concepts ##
 
-The NRLS is based on the [Registry-Repository:] (https://developer.nhs.uk/library/architecture/integration-patterns/registry-repository/) pattern which separates the storage and retrieval of a record from data that describes its location. 
+The NRLS is based on the [Registry-Repository:](https://developer.nhs.uk/library/architecture/integration-patterns/registry-repository/) pattern which separates the storage and retrieval of a record from data that describes its location. 
 
 
 <img src="images/solution/Solution_Concepts_diagram.png" style="width:100%;max-width: 100%;">
