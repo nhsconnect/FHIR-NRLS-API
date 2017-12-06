@@ -16,7 +16,7 @@ The NRLS has been designed around the Pointer being the unit of currency. Both P
 A Provider can be thought of as a system that has write access to the NRLS with some limited read-access that is designed to support Pointer maintenance. 
 A Consumer can be thought of as a system that has read-access though the way that Pointers can be retrieved from the system is different from the read-access that a Provider has. The read access that a Consumer has is designed to facilitate the retrieval of Pointers that are of interest to the Consuming system.
 
-[TODO Diagram 5]
+
 
 <img src="images/solution/Solution_Behaviour_diagram.png" style="width:100%;max-width: 100%;">
 
