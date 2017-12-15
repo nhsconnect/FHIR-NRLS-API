@@ -34,8 +34,23 @@ Consumer API to support discovery of NRLI pointers.
 
 ### 1.1 Search Request Headers ###
 
-All Consumer API searches should include the below additional HTTP request headers to support audit and security requirements on the Spine:
+All Consumer API searches SHALL include the following HTTP request headers:
 
+
+| Header               | Value |
+|----------------------|-------|
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
+| `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. |
+| `Ssp-From`           | Client System ASID |
+| `Ssp-To`             | The Spine ASID |
+| `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:search:documentreference`|
+| `Ssp-Version`  | `1` |
+
+
+Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+
+<!--
 | Header               | Value |
 |----------------------|-------|
 | `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. |
@@ -43,9 +58,11 @@ All Consumer API searches should include the below additional HTTP request heade
 | `Ssp-To`             | The Spine ASID |
 | `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:search:documentreference`|
 | `Ssp-Version`  | `1` |
-| `Authorization`      | This will carry the base64 encoded JSON web token required for audit - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
+| `Authorization`      | This will carry the base64url encoded JSON web token required for audit - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
+
 
 - Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+-->
 
 
 ### 1.2. Search ###
@@ -54,8 +71,6 @@ All Consumer API searches should include the below additional HTTP request heade
 GET [baseUrl]/DocumentReference?[searchParameters]</div>
 
 Search for all records for a patient. Fetches a bundle of all `DocumentReference` resources for the specified patient.
-
-{% include custom/search.header.html resource="DocumentReference" %}
 
 Though the NRLS does not keep a version history of each DocumentReference each one does hold a versionId to support the NRLS update strategy. In responding to a search request the NRLS server will populate the versionId of each matching DocumentReference.
 
@@ -134,7 +149,7 @@ Success:
 
 Failure: 
 
-- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the `spine-operationoutcome-1` profile if the search cannot be executed (not that there is no match).
+- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match).
 - The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |

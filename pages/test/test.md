@@ -4,8 +4,13 @@ keywords: test
 tags: [testing]
 sidebar: foundations_sidebar
 permalink: test.html
-summary: "These pages assists with requirements for testing the API."
+summary: "These pages assist with requirements for testing the API."
 ---
+
+
+{% include custom/under.construction.html content="Please check back later for any updates to this page." %}
+
+<!--
 ### 1. Testing Overview
 The Test section contains a common baseline for testing FHIR based API's to ensure a satisfactory level of technical conformance has been reached. A FHIR based API contains individual layers that require testing, which when combined will form a complete and detailed test log for the API prior to any formal assurance activities being carried out.
 
@@ -45,7 +50,7 @@ A servlet based RESTful server, which is an Open Source application written in J
 **Furore Vonk**
 
 Vonk is created by Furore and is a user friendly RESTful server. It's free for testing, but does require that you restart the server everyday. It can be ran in Docker or as a .NET executable. More information can be found at [https://fhir.furore.com/](https://fhir.furore.com/)
-
+-->
 
 
 <!--

@@ -28,8 +28,26 @@ Provider API to support read access to NRLI pointers.
 ### 1.1 Provider Read Request Headers ###
 
 
-All Consumer API read requests should include the below additional HTTP request headers to support audit and security requirements on the Spine:
+<!--
+All Provider API read requests should include the below additional HTTP request headers to support audit and security requirements on the Spine:
+-->
 
+All Provider API read requests SHALL include the following HTTP request headers:
+
+
+| Header               | Value |
+|----------------------|-------|
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
+| `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. |
+| `Ssp-From`           | Client System ASID |
+| `Ssp-To`             | The Spine ASID |
+| `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:read:documentreference`|
+| `Ssp-Version`  | `1` |
+
+Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+
+<!--
 | Header               | Value |
 |----------------------|-------|
 | `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. |
@@ -37,18 +55,21 @@ All Consumer API read requests should include the below additional HTTP request 
 | `Ssp-To`             | The Spine ASID |
 | `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:read:documentreference`|
 | `Ssp-Version`  | `1` |
-| `Authorization`      | This will carry the base64 encoded JSON web token required for audit - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
+| `Authorization`      | This will carry the base64url encoded JSON web token required for audit - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
 
 - Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
-
+-->
 
 ### 1.2 Provider Read Operation ###
 
 <div markdown="span" class="alert alert-success" role="alert">
 GET [baseUrl]/DocumentReference/[id]</div>
 
-<p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header. The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>.</p>
+<!--
+<p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header. </p>
 
+<p>The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>.</p>
+-->
 
 
 ### 1.3 Provider Read Response ###
@@ -61,7 +82,7 @@ Success:
 
 Failure: 
 
-- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the `spine-operationoutcome-1` profile if the search cannot be executed (not that there is no match).
+- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match).
 - The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
 
 <!--
@@ -87,7 +108,28 @@ Provider API to support pointer owner (custodian) searches based on ODS code.
 
 ### 2.1 Search Request Headers ###
 
+<!--
 All Provider API searches should include the below additional HTTP request headers to support audit and security requirements on the Spine:
+-->
+
+All Provider API searches SHALL include the following HTTP request headers:
+
+
+| Header               | Value |
+|----------------------|-------|
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
+| `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. |
+| `Ssp-From`           | Client System ASID |
+| `Ssp-To`             | The Spine ASID |
+| `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:search:documentreference`|
+| `Ssp-Version`  | `1` |
+
+
+
+Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+
+<!--
 
 | Header               | Value |
 |----------------------|-------|
@@ -96,10 +138,10 @@ All Provider API searches should include the below additional HTTP request heade
 | `Ssp-To`             | The Spine ASID |
 | `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:search:documentreference`|
 | `Ssp-Version`  | `1` |
-| `Authorization`      | This will carry the base64 encoded JSON web token required for audit - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
+| `Authorization`      | This will carry the base64url encoded JSON web token required for audit - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
 
 - Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
-
+-->
 
 ### 2.2. Search ###
 
@@ -108,7 +150,7 @@ GET [baseUrl]/DocumentReference?[searchParameters]</div>
 
 Search for all custodian pointers. Fetches a bundle of all `DocumentReference` resources for the specified pointer owner (custodian).
 
-{% include custom/search.header.html resource="DocumentReference" %}
+
 
 Though the NRLS does not keep a version history of each DocumentReference each one does hold a versionId to support the NRLS update strategy. In responding to a search request the NRLS server will populate the versionId of each matching DocumentReference.
 
@@ -189,7 +231,7 @@ Success:
 
 Failure: 
 
-- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the `spine-operationoutcome-1` profile if the search cannot be executed (not that there is no match).
+- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match).
 - The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
 
 
@@ -221,8 +263,26 @@ Provider API to support creation of NRLI pointers.
 
 ### 3.1 Provider Create Request Headers ###
 
+<!--
+All Provider API create requests should include the below additional HTTP request headers to support audit and security requirements on the Spine:
+-->
 
-All Consumer API create requests should include the below additional HTTP request headers to support audit and security requirements on the Spine:
+All Provider API create requests SHALL include the following HTTP request headers:
+
+
+| Header               | Value |
+|----------------------|-------|
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
+| `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. |
+| `Ssp-From`           | Client System ASID |
+| `Ssp-To`             | The Spine ASID |
+| `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:create:documentreference`|
+| `Ssp-Version`  | `1` |
+
+Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+
+<!--
 
 | Header               | Value |
 |----------------------|-------|
@@ -231,17 +291,20 @@ All Consumer API create requests should include the below additional HTTP reques
 | `Ssp-To`             | The Spine ASID |
 | `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:create:documentreference`|
 | `Ssp-Version`  | `1` |
-| `Authorization`      | This will carry the base64 encoded JSON web token required for audit - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
+| `Authorization`      | This will carry the base64url encoded JSON web token required for audit - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
 
 - Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+-->
 
 ### 3.2. Provider Create Operation ###
 
 <div markdown="span" class="alert alert-success" role="alert">
 POST [baseUrl]/DocumentReference</div>
 
-<p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header. The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>.</p>
-
+<!--
+<p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header. </p>
+<p>The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>.</p>
+-->
 
 
 ### 3.3 Create Response ###
@@ -253,7 +316,7 @@ Success:
 
 Failure: 
 
-- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the `spine-operationoutcome-1` profile if the search cannot be executed (not that there is no match).
+- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match).
 - The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
 
 
@@ -282,8 +345,27 @@ Updates are version aware. In order to conduct an update the Provider should sub
 
 ### 4.1 Provider Update Request Headers ###
 
+<!--
+All Provider API update requests should include the below additional HTTP request headers to support audit and security requirements on the Spine:
+-->
+All Provider API update requests SHALL include the following HTTP request headers:
 
-All Consumer API create requests should include the below additional HTTP request headers to support audit and security requirements on the Spine:
+
+| Header               | Value |
+|----------------------|-------|
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
+| `If-Match`      | The ‘If-Match’ header makes the request conditional. The server will process the requested DocumentReference only if it’s versionId property matches one of the listed ETags.|
+| `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. |
+| `Ssp-From`           | Client System ASID |
+| `Ssp-To`             | The Spine ASID |
+| `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:update:documentreference`|
+| `Ssp-Version`  | `1` |
+
+Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+
+
+<!--
 
 | Header               | Value |
 |----------------------|-------|
@@ -292,9 +374,10 @@ All Consumer API create requests should include the below additional HTTP reques
 | `Ssp-To`             | The Spine ASID |
 | `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:update:documentreference`|
 | `Ssp-Version`  | `1` |
-| `Authorization`      | This will carry the base64 encoded JSON web token required for audit - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
+| `Authorization`      | This will carry the base64url encoded JSON web token required for audit - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
 
 - Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+-->
 
 ### 4.2. Provider Update Operation ###
 
@@ -303,8 +386,12 @@ PUT [baseUrl]/DocumentReference/[id]</div>
 
 <p>The 'update' interaction is performed by an HTTP PUT of the <code class="highlighter-rouge">{{include.resource}}</code> and creates a new current version of the resource to the NRLS Registry endpoint.</p>
 
-<p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header and SHALL contain an ‘If-Match’ header. The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. The ‘If-Match’ header makes the request conditional. The server will process the requested DocumentReference only if it’s versionId property matches one of the listed ETags.</p>
+<!--
+<p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header and SHALL contain an ‘If-Match’ header. </p>
+<p>The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. </p>
 
+<p>The ‘If-Match’ header makes the request conditional. The server will process the requested DocumentReference only if it’s versionId property matches one of the listed ETags.</p>
+-->
 
 ### 4.3 Update Response ###
 
@@ -315,7 +402,7 @@ Success:
 
 Failure: 
 
-- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the `spine-operationoutcome-1` profile if the search cannot be executed (not that there is no match).
+- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match).
 - The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
 
 
@@ -350,8 +437,27 @@ Deletes are version aware. In order to conduct an update the Provider should sub
 
 ### 5.1 Provider Delete Request Headers ###
 
+<!--
+All Provider API delete requests should include the below additional HTTP request headers to support audit and security requirements on the Spine:
+-->
+All Provider API delete requests SHALL include the following HTTP request headers:
 
-All Consumer API create requests should include the below additional HTTP request headers to support audit and security requirements on the Spine:
+
+| Header               | Value |
+|----------------------|-------|
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
+| `If-Match`      | The ‘If-Match’ header makes the request conditional. The server will process the requested DocumentReference only if it’s versionId property matches one of the listed ETags.|
+| `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. |
+| `Ssp-From`           | Client System ASID |
+| `Ssp-To`             | The Spine ASID |
+| `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:delete:documentreference`|
+| `Ssp-Version`  | `1` |
+
+Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+
+
+<!--
 
 | Header               | Value |
 |----------------------|-------|
@@ -360,9 +466,10 @@ All Consumer API create requests should include the below additional HTTP reques
 | `Ssp-To`             | The Spine ASID |
 | `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:delete:documentreference`|
 | `Ssp-Version`  | `1` |
-| `Authorization`      | This will carry the base64 encoded JSON web token required for audit - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
+| `Authorization`      | This will carry the base64url encoded JSON web token required for audit - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
 
 - Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+-->
 
 ### 5.2 Provider Delete Operation ###
 
@@ -377,7 +484,12 @@ DELETE [baseUrl]/DocumentReference/[id]</div>
 
 <!--<p>Return a single <code class="highlighter-rouge">{{include.resource}}</code> for the specified id{{include.content}}.</p>-->
 
-<p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header and SHALL contain an ‘If-Match’ header. The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. The ‘If-Match’ header makes the request conditional. The server will process the requested DocumentReference only if it’s versionId property matches one of the listed ETags.</p>
+<!--
+<p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header and SHALL contain an ‘If-Match’ header. </p>
+<p>The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. </p>
+
+<p>The ‘If-Match’ header makes the request conditional. The server will process the requested DocumentReference only if it’s versionId property matches one of the listed ETags.</p>
+-->
 
 Success:
 
@@ -385,7 +497,7 @@ Success:
 
 Failure: 
 
-- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the `spine-operationoutcome-1` profile if the search cannot be executed (not that there is no match).
+- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match).
 - The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
 
 

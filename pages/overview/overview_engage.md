@@ -7,10 +7,9 @@ permalink: overview_engage.html
 summary: Getting involved with NRLS
 ---
 
-{% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
 
-This section is a placeholder and content will be added in a later phase of the project.
+{% include custom/under.construction.html content="Please check back later for any updates to this page." %}
 
 <!--
 

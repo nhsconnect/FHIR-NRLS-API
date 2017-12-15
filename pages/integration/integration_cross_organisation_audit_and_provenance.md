@@ -34,7 +34,9 @@ Consumer system SHALL generate a new JWT for each API request. The Payload secti
 | exp | R | Expiration time integer after which this authorization MUST be considered invalid. | No | (now + 5 minutes) UTC time in seconds | |
 | iat | R | The UTC time the JWT was created by the requesting system | `No| now UTC time in seconds | |
 
+<!--
 {% include important.html content="In topologies where consumer applications are provisioned via a portal or middleware hosted by another organisation (e.g. a 'mini service' provider) it is important for audit purposes that the practitioner and organisation populated in the JWT reflect the originating organisation rather than the hosting organisation." %}
+-->
 
 #### JWT Generation ####
 Consumer systems SHALL generate the JSON Web Token (JWT) consisting of three parts seperated by dots (.), which are:
@@ -54,7 +56,7 @@ The Spine does not currently validate the signature in the JWT that is sent, so 
 
 If using unsigned tokens, the consumer systems SHALL generate an empty signature.
 
-The final output is three Base64 strings separated by dots (note - there is some canonicalisation done to the JSON before it is base64 encoded, which the JWT code libraries will do for you).
+The final output is three base64url encoded strings separated by dots (note - there is some canonicalisation done to the JSON before it is base64url encoded, which the JWT code libraries will do for you).
 
 For example:
 

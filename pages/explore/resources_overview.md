@@ -15,17 +15,23 @@ summary: "Overview of the Development section"
 
 ## 1. NRLS API Overview ##
 
-This section provides NRLS implementers with an overview of the NRLS API.
+<!--This section provides NRLS implementers with an overview of the NRLS API.-->
 
-The NRLS API supports the following functionality:
+The NRLS API supports the following operations as detailed in the [Solution Interactions](overview/overview_interactions.html) section of this implementation guide:
 
-- Consumer search patient record/s on the NRLI National Record Locator Index
-- Consumer retrieve patient record/s from the NRLS National Record Locator Service
-- Provider create patient record pointer/s on the NRLI National Record Locator Index
-- Provider update patient record pointer/s on the NRLI National Record Locator Index
-- Provider delete patient record pointer/s on the NRLI National Record Locator Index
 
-The NRLS API is based on the HL7 FHIR STU3 3.0.1 Messaging Implementation (April 2017).
+|Actor|Read|Search|Create|Update|Delete|
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | 
+|Consumer|![Cross](images/cross.png)|![Tick](images/tick.png)|![Cross](images/cross.png)|![Cross](images/cross.png)|![Cross](images/cross.png)|
+|Provider|![Tick](images/tick.png)|![Tick](images/tick.png)|![Tick](images/tick.png)|![Tick](images/tick.png)|![Tick](images/tick.png)|
+
+
+<!--
+- Consumer discovery of patient records on the NRLI National Record Locator Index
+- Consumer retrieval of patient records from the NRLS National Record Locator Service
+- Provider creation, updates and deletions of patient record pointers on the NRLI National Record Locator Index
+-->
+
 
 ## 2. Pre-Requisites for NRLS API ##
 
@@ -36,9 +42,9 @@ The NRLS API is based on the HL7 FHIR STU3 3.0.1 Messaging Implementation (April
 <!--- SHALL support the CareConnect Patient resource profile.
 - SHALL support at least one additional resource profile from the list of CareConnect Profiles-->
 
-- SHALL Implement REST behavior according to the [FHIR specification](http://http://www.hl7.org/fhir/http.html)
+- SHALL Implement REST behavior according to the [FHIR specification](http://www.hl7.org/fhir/STU3/http.html)
 
-- Resources SHALL identify the profile supported as part of the [FHIR Base Resource](https://hl7.org/fhir/resource-definitions.html#Resource.meta)
+- Resources SHALL identify the profile supported as part of the [FHIR Base Resource](https://www.hl7.org/fhir/resource-definitions.html#Resource.meta)
 
 - SHALL support XML **or** JSON formats for all API interactions.
 
@@ -47,15 +53,20 @@ The NRLS API is based on the HL7 FHIR STU3 3.0.1 Messaging Implementation (April
 
 SHALL declare a Conformance identifying the list of profiles, operations and search parameters supported.
 
-In order to be a compliant FHIR server, the NRLS FHIR Server will expose a valid FHIR [CapabilityStatement](https://www.http://hl7.org/fhir/STU3/capabilitystatement.html) profile. See also [NRLS API FHIR conformance profile](api_foundation_conformance.html).
+In order to be a compliant FHIR server, the NRLS FHIR Server will expose a valid FHIR [CapabilityStatement](https://www.hl7.org/fhir/STU3/capabilitystatement.html) profile. See also [NRLS API FHIR conformance profile](api_foundation_conformance.html).
 
 ### 2.3 Spine Services ###
 
 The NRLS API is accessed through the NHS Spine. As such, providers and consumers of the NRLS API are required to integrate with the following Spine services as a pre-requisite to making API calls to the NRLS API:
 
-- Personal Demographics Service (PDS)
-- Spine Directory Service (SDS)
-- Spine Security Proxy (SSP)
+
+|National Service|Description|
+| ------------- | ------------- |
+|Personal Demographics Service (PDS)|National database of NHS patients containing details such as name, address, date of birth and NHS Number (known as demographic information).|
+
+<!--
+|Spine Security Proxy (SSP)|Spine server that acts as an intermediary for requests from clients seeking resources from other servers [TBC]|
+-->
 
 Detailed Spine services pre-requisites:
 
@@ -73,8 +84,9 @@ To use this API, provider/ consumer systems:
 - Provider/ consumer systems SHALL be capable of PDS tracing (or equivalent service e.g. SMSP) of patients
 - Provider/ consumer systems SHALL have obtained a local user ID and role and passed this user information in a JSON web token.
 -->
-<!--- Provider/ consumer systems Shall have either authenticated the user using national smartcard authentication, and obtained a UUID from the user’s smartcard (and associated RBAC role from CIS) or authenticated the user using an assured local mechanism, and obtained a local user ID and role and passed this user information in a JSON web token.-->
-- Spine Security Proxy (SSP) TBC
+<!--- Provider/ consumer systems Shall have either authenticated the user using national smartcard authentication, and obtained a UUID from the user’s smartcard (and associated RBAC role from CIS) or authenticated the user using an assured local mechanism, and obtained a local user ID and role and passed this user information in a JSON web token.
+- Spine Security Proxy (SSP) [TBC]
+-->
 
 ### 2.4 NHS Number ###
 
@@ -83,6 +95,7 @@ Only verified NHS Number SHALL be used with FHIR API profiles. This can be achie
 <!--
 {% include custom/contribute.html content="Get in touch with interoperabilityteam@nhs.net to improve the Prerequisites." %}
 -->
+<!--
 ## 3. API Structure ##
 
 The API implementation guide has been split into Consumer and Provider API sections. 
@@ -100,5 +113,5 @@ The Consumer and Provider API sections have been structured to support:
 - Update interaction - update an existing resource by its id (or create it if it is new)
 - Delete interaction - delete a resource
 - Examples - Description of the Request & Response headers, example of how to search on a server and the expected response body as an example
-
+-->
 

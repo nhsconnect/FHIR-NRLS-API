@@ -1,7 +1,7 @@
 entries:
 - title: NRLS
   product: NRLS
-  version: 2.0.0-alpha.1
+  version: 2.1.0-alpha.1
   levels: one
   folders:
 
@@ -110,9 +110,9 @@ entries:
     - title: Personal Demographic Service
       url: /integration_personal_demographics_service.html
       output: web
-    - title: Spine Directory Service
-      url: /integration_spine_directory_service.html
-      output: web
+   # - title: Spine Directory Service
+    #  url: /integration_spine_directory_service.html
+    #  output: web
     - title: Spine Security Proxy
       url: /integration_spine_security_proxy.html
       output: web 
