@@ -14,7 +14,7 @@ summary: A brief introduction to getting started with the NRLS FHIR&reg; API.
 
 # Introduction #
 
-Welcome to the National Record Locator Service Technical Specification landing page. This site will continue to be updated as we receive feedback, which we welcome from all within the clinical and non-clinical community.  To discuss any questions or queries you may have with the NRLS team, feel free to email us on nrls@nhs.net. Thank you for your time!
+Welcome to the National Record Locator Service Technical Specification landing page. This site will continue to be updated as we receive feedback, which we welcome from all within the clinical and non-clinical community.  To discuss any questions or queries you may have with the NRLS team, feel free to email us on <a href="mailto:nrls@nhs.net">nrls@nhs.net</a>. Thank you for your time!
 
 # Background #
 

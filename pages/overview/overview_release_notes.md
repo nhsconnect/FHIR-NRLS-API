@@ -10,6 +10,13 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 {% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
 
+## 2.1.0-alpha.1 ##
+
+Sprint 1 'internal' review feedback amendments include:
+
+- References to SDS removed
+- Solution principles changed to reflect that the Provider controls the Record retrieval mechanism strategy 
+- NRLS will not be fronted by SSP i.e. requests to read/write Pointers will not go through the SSP in order to reach NRLS
 
 ## 2.0.0-alpha.1 ##
 
