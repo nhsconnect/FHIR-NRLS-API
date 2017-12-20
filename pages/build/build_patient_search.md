@@ -1,11 +1,13 @@
 ---
 title: Design | Patient Search
 keywords: development
-tags: [design,development]
+tags: 
 sidebar: overview_sidebar
 permalink: build_patient_search.html
 summary: "How to use FHIR Patient resources to perform Patient Searches"
 ---
+
+<!--tags: [design,development]-->
 
 {% include custom/search.warnbanner.html %}
 

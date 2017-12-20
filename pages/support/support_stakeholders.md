@@ -1,12 +1,15 @@
 ---
 title: Organisations
 keywords: support, communications, community, hl7, endeavour, nhs digital, nhs england, code4health, forore
-tags: [support]
+tags:
 toc: false
 sidebar: overview_sidebar
 permalink: support_whereelse.html
 summary: "Other key industry members related to FHIR or Care Connect"
 ---
+
+<!--tags: [support]-->
+
 <br><br>
 Within the UK, there are many system suppliers, trusts and other projects adopting FHIR and actively working with the standard. Within this environment, as the various tools and services are explored, there are a core set of organisations that keep featuring in discussions.
 HL7

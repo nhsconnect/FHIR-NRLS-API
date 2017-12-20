@@ -1,12 +1,14 @@
 ---
 title: Resource Definitions
 keywords: support, communications, community, tools, server, api, hl7, resources, profiles
-tags: [support]
+tags: 
 toc: false
 sidebar: overview_sidebar
 permalink: support_referenceapiservers.html
 summary: "Resource definitions published"
 ---
+
+<!--tags: [support]-->
 
 As each reference is described, the following features will be highlighted:
 * <b>Profiles</b> indicates that complete profiles are displayed and is typically expected in any reference site displaying Resources.
