@@ -1,11 +1,14 @@
 ---
 title: Profile Versioning
 keywords: development, versioning
-tags: [rest,fhir]
+tags:
 sidebar: overview_sidebar
 permalink: explore_cc_versioning.html
 summary: An overview of how profiles are versioned.
 ---
+
+
+<!--tags: [rest,fhir]-->
 
 {% include custom/search.warnbanner.html %}
 

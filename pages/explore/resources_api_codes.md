@@ -1,11 +1,13 @@
 ---
 title: API Codes
 keywords: development
-tags: [rest,fhir,api]
+tags: 
 sidebar: overview_sidebar
 permalink: explore_api_codes.html
 summary: "Details of the API Codes used in the responses."
 ---
+
+<!--tags: [rest,fhir,api]-->
 {% include custom/search.warnbanner.html %}
 
 ## 1. API Codes ##
