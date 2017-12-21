@@ -312,7 +312,7 @@ POST [baseUrl]/DocumentReference</div>
 Success:
 
 - SHALL return a `201` **OK** HTTP status code on successful execution of the interaction and the entry has been successfully created and the NRLS.
-- The NRLS server will return an HTTP Location header containing the 'server' assigned logical Id and versionId of the created DocumentReference resource.
+- The NRLS server will return an HTTP Location header containing the 'server' assigned logical Id <!--and versionId-->of the created DocumentReference resource.
 
 Failure: 
 
@@ -338,10 +338,10 @@ Failure:
 ## 4. Provider Update ##
 
 Provider API to support NRLI pointer updates.
-
+<!--
 All provider documentReference update requests should contain a version id to avoid lost updates. See [FAQ](support_faq.html).
 
-Updates are version aware. In order to conduct an update the Provider should submit the request with an If-Match header where the ETag matches the versionId of the DocumentReference in question from the server. If the version id given in the If-Match header does not match the versionId that the server holds for that DocumentReference, the server returns a 409 Conflict status code instead of updating the resource. In this situation the client should read the DocumentReference from the server to get the most recent versionId and use that to populate the Etag in a fresh update request.
+Updates are version aware. In order to conduct an update the Provider should submit the request with an If-Match header where the ETag matches the versionId of the DocumentReference in question from the server. If the version id given in the If-Match header does not match the versionId that the server holds for that DocumentReference, the server returns a 409 Conflict status code instead of updating the resource. In this situation the client should read the DocumentReference from the server to get the most recent versionId and use that to populate the Etag in a fresh update request.-->
 
 ### 4.1 Provider Update Request Headers ###
 
@@ -355,7 +355,7 @@ All Provider API update requests SHALL include the following HTTP request header
 |----------------------|-------|
 | `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. |
 | `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
-| `If-Match`      | The ‘If-Match’ header makes the request conditional. The server will process the requested DocumentReference only if it’s versionId property matches one of the listed ETags.|
+<!--| `If-Match`      | The ‘If-Match’ header makes the request conditional. The server will process the requested DocumentReference only if it’s versionId property matches one of the listed ETags.|-->
 | `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. |
 | `Ssp-From`           | Client System ASID |
 | `Ssp-To`             | The Spine ASID |
@@ -398,7 +398,7 @@ PUT [baseUrl]/DocumentReference/[id]</div>
 Success:
 
 - SHALL return a `204` **OK** HTTP status code on successful execution of the interaction and the entry has been successfully created and the NRLS.
-- The NRLS server will return an Etag which matches the new versionId.
+<!--- The NRLS server will return an Etag which matches the new versionId.-->
 
 Failure: 
 
@@ -420,7 +420,7 @@ Failure:
 
 - The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/ValueSet/spine-error-or-warning-code-1)
 
-A 409 HTTP response is expected for versionId conflict when performing an update or delete of a DocumentReference.
+<!--A 409 HTTP response is expected for versionId conflict when performing an update or delete of a DocumentReference.-->
 
 
 <!--- Error REQUEST_UNMATCHED would occur if the NHS number being requested in the search request does not match the requested_record value in the JWT - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.-->
@@ -432,8 +432,8 @@ A 409 HTTP response is expected for versionId conflict when performing an update
 ## 5. Provider Delete ##
 
 Provider API to support deletion of NRLI pointers.
-
-Deletes are version aware. In order to conduct an update the Provider should submit the request with an If-Match header where the ETag matches the versionId of the DocumentReference in question from the server. If the version id given in the If-Match header does not match the versionId that the server holds for that DocumentReference, the server returns a 409 Conflict status code instead of deleting the resource. In this situation the client should read the DocumentReference from the server to get the most recent versionId and use that to populate the Etag in a fresh delete request.
+<!--
+Deletes are version aware. In order to conduct an update the Provider should submit the request with an If-Match header where the ETag matches the versionId of the DocumentReference in question from the server. If the version id given in the If-Match header does not match the versionId that the server holds for that DocumentReference, the server returns a 409 Conflict status code instead of deleting the resource. In this situation the client should read the DocumentReference from the server to get the most recent versionId and use that to populate the Etag in a fresh delete request.-->
 
 ### 5.1 Provider Delete Request Headers ###
 
@@ -447,7 +447,7 @@ All Provider API delete requests SHALL include the following HTTP request header
 |----------------------|-------|
 | `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. |
 | `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
-| `If-Match`      | The ‘If-Match’ header makes the request conditional. The server will process the requested DocumentReference only if it’s versionId property matches one of the listed ETags.|
+<!--| `If-Match`      | The ‘If-Match’ header makes the request conditional. The server will process the requested DocumentReference only if it’s versionId property matches one of the listed ETags.|-->
 | `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. |
 | `Ssp-From`           | Client System ASID |
 | `Ssp-To`             | The Spine ASID |
@@ -512,7 +512,7 @@ Failure:
 
 - The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/ValueSet/spine-error-or-warning-code-1)
 
-A 409 HTTP response is expected for versionId conflict when performing an update or delete of a DocumentReference.
+<!--A 409 HTTP response is expected for versionId conflict when performing an update or delete of a DocumentReference.-->
 
 
 <!--- Error REQUEST_UNMATCHED would occur if the NHS number being requested in the search request does not match the requested_record value in the JWT - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.-->
