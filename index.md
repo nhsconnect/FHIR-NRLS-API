@@ -18,11 +18,11 @@ Welcome to the National Record Locator Service Technical Specification landing p
 
 # Background #
 
-There is currently no national solution for locating and sharing patient records across health and care systems. The National Record Locator Service (NRLS) will enable an authorised clinician, care worker and/or administrator, in any health or care setting, to access a patient’s information to support that patient’s direct care. In turn, NRLS will empower professionals, patients and communities, strengthen primary, secondary and acute care and introduce system efficiencies. This new national capability will aim to complement local digital initiatives (including shared care records) and enhance the level of digital maturity across Health and Care. Phase 1 aims to demonstrate this capability, testing the concept of cross border interoperability and crucially enabling the power of local shared care records (where they exist) to become woven into the NRLS fabric from the outset.
+There is currently no national solution for locating and sharing patient records across health and care systems. The National Record Locator Service (NRLS) will enable an authorised clinician, care worker and/or administrator, in any health or care setting, to access a patient’s information to support that patient’s direct care. In turn, NRLS will empower professionals, patients and communities, strengthen primary, secondary and acute care and introduce system efficiencies. This new national capability will aim to complement local digital initiatives (including Shared Care Records) and enhance the level of digital maturity across Health and Care. Phase 1 aims to demonstrate this capability, testing the concept of cross border interoperability and crucially enabling the power of local Shared Care Records (where they exist) to become woven into the NRLS fabric from the outset.
 NHS Digital intends for the NRLS to be accessible to all localities in 2018, opening up the possibility of achieving the ‘holy grail of interoperability’ in the months and years that follow. The NHS England Target Architecture also states that platforms moving forward will be expected to use common national services, standards and governance processes to ensure national cohesion, including the NRLS. More information can be found 
 [here:](https://www.england.nhs.uk/digitaltechnology/info-revolution/interoperability/).
 
-In 2016, NHS Digital concluded a proof of concept project to test the implementation challenges of the NRLS and to measure its potential service impact and benefits. A decision was made to continue with the development of the NRLS in the form of a ‘private beta’ across four key regions of the NHS for their digital maturity. Working initially with urgent and emergency care, the NRLS will enable cross border, cross organisation and cross sector interoperability. Our plan therefore is to integrate with: 
+In 2016, NHS Digital concluded a proof of concept project to test the implementation challenges of the NRLS and to measure its potential service impact and benefits. A decision was made to continue with the development of the NRLS in four key regions across the NHS identified for their digital maturity as outlined below. Working initially with urgent and emergency care, the NRLS will enable cross border, cross organisation and cross sector interoperability. Our plan therefore is to integrate with: 
 
 - North West, North East, Yorkshire and London Ambulance Services and Mental Health Trusts
 - The Lancashire Patient Record Exchange Service 
@@ -35,15 +35,15 @@ Proving the success of such integrations in Phase 1 will allow all records held 
 # Phases #
 ## Phase One – Alpha / Beta ##
 Phase one aims to provide:
-- access to 4 Ambulance Trusts.
-- access to 11 Mental Health Trusts.
-- connection to shared care record initiatives in Lancashire and London.
-- an agreed tactical IG model.
-- support for STPs and GDEs.
+- Access to 4 Ambulance Trusts
+- Access to 11 Mental Health Trusts
+- Connection to Shared Care Record initiatives in Lancashire and London
+- An agreed tactical IG model
+- Support for STPs and GDEs
 
 ## Phase Two – NHS Implementation ##
  In Phase two: 
 - The NRLS will be accessible to ALL authorised users
 - Fast followers will begin accessing the NRLS
-- Additional shared Care Record initiatives to provide / consume the NRLS
+- Additional Shared Care Record initiatives to provide / consume the NRLS
 - Social care access and scope defined and agreed
