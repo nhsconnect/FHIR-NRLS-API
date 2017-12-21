@@ -11,13 +11,9 @@ summary: "Details of the API security model and supported protocols"
 
 After consultation with the Infrastructure Security, Operational Security and Spine DDC teams the following SSL protocols SHALL be supported.
 
-{% include important.html content="The list of supported ciphers is ordered in order of preference (i.e. the first item being the most preferred)." %}
-
 - `TLSv1.2`
-- `TLSv1.1`
-- `TLSv1`
 
-{% include note.html content="SSLv2 and SSLv3 are deprecated and SHALL NOT be used. All consumer and provider systems SHALL be configured to implement TLSv1 and SHOULD be configured to implement TLSv1.1 and above." %}
+{% include note.html content="SSLv2 and SSLv3 are deprecated and SHALL NOT be used. All consumer and provider systems SHALL be configured to implement TLSv1.2." %}
 
 ## Supported Ciphers ##
 
@@ -36,6 +32,7 @@ After consultation with the Infrastructure Security, Operational Security and Sp
 
 <sup>1</sup>[Digitcert - SSL Support Enabling Perfect Forward Secrecy](https://www.digicert.com/ssl-support/ssl-enabling-perfect-forward-secrecy.htm)
 
+<!--
 ## Tomcat OpenSSL Support Using The APR/Native Provider ##
 
 - SSLCipherSuite = `AESGCM+EECDH,AESGCM+EDH,AES256+EECDH,AES256+EDH`
@@ -44,7 +41,7 @@ After consultation with the Infrastructure Security, Operational Security and Sp
 - SSLVerifyClient = `require`
 
 Please see the [Tomcat Config HTTP SSL Support](https://tomcat.apache.org/tomcat-8.0-doc/config/http.html#SSL_Support) webpage for more details.
-
+-->
 ## Client Certificates (TLSMA) ##
 
 {% include todo.html content="Coming Soon..." %}
