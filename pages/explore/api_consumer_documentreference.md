@@ -28,11 +28,94 @@ GET [baseUrl]/DocumentReference/[id]</div>
 {% include custom/read.response.html resource="DocumentReference" content="" %}
 -->
 
-## 1. Consumer Search ##
+
+## 1. Consumer Read ##
+
+Consumer API to support read access of NRLI pointers.
+
+### 1.1 Consumer Read Request Headers ###
+
+
+<!--
+All Provider API read requests should include the below additional HTTP request headers to support audit and security requirements on the Spine:
+-->
+
+All Consumer API read requests SHALL include the following HTTP request headers:
+
+
+| Header               | Value |
+|----------------------|-------|
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
+| `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. |
+| `Ssp-From`           | Client System ASID |
+| `Ssp-To`             | The Spine ASID |
+| `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:read:documentreference`|
+| `Ssp-Version`  | `1` |
+
+Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+
+<!--
+| Header               | Value |
+|----------------------|-------|
+| `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. |
+| `Ssp-From`           | Client System ASID |
+| `Ssp-To`             | The Spine ASID |
+| `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:read:documentreference`|
+| `Ssp-Version`  | `1` |
+| `Authorization`      | This will carry the base64url encoded JSON web token required for audit - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |
+
+- Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+-->
+
+### 1.2 Consumer Read Operation ###
+
+<div markdown="span" class="alert alert-success" role="alert">
+GET [baseUrl]/DocumentReference/[id]</div>
+
+<!--
+<p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header. </p>
+
+<p>The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>.</p>
+-->
+
+
+### 1.3 Consumer Read Response ###
+
+Success:
+
+- SHALL return a `200` **OK** HTTP status code on successful execution of the interaction.
+- The NRLS server will return the versionId of each DocumentReference.
+
+
+Failure: 
+
+- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match).
+- The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
+
+<!--
+{% include custom/read.response.html resource="DocumentReference" content="" %}
+-->
+
+
+
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
+|-----------|----------------|------------|--------------|-----------------|
+|404|error|not-found|NO_RECORD_FOUND|No record found|
+|403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
+|403|error|forbidden|ACCESS_DENIED_SSL|SSL Protocol or Cipher requirements not met|
+|403|error|forbidden|ASID_CHECK_FAILED|The sender or receiver's ASID is not authorised for this interaction|
+
+
+- The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/ValueSet/spine-error-or-warning-code-1)
+
+
+
+## 2. Consumer Search ##
 
 Consumer API to support discovery of NRLI pointers.
 
-### 1.1 Search Request Headers ###
+### 2.1 Search Request Headers ###
 
 All Consumer API searches SHALL include the following HTTP request headers:
 
@@ -65,7 +148,7 @@ Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only 
 -->
 
 
-### 1.2. Search ###
+### 2.2. Search ###
 
 <div markdown="span" class="alert alert-success" role="alert">
 GET [baseUrl]/DocumentReference?[searchParameters]</div>
@@ -74,7 +157,7 @@ Search for all records for a patient. Fetches a bundle of all `DocumentReference
 
 Though the NRLS does not keep a version history of each DocumentReference each one does hold a versionId to support the NRLS update strategy. In responding to a search request the NRLS server will populate the versionId of each matching DocumentReference.
 
-### 1.3. Search Parameters ###
+### 2.3. Search Parameters ###
 
 {% include custom/search.parameters.html resource="DocumentReference"     link="https://www.hl7.org/fhir/STU3/documentreference.html#search" %}
 
@@ -136,7 +219,7 @@ Systems SHOULD support the following search combinations:
 
 <!--{% include custom/search.response.html resource="DocumentReference" %}-->
 
-### 1.4 Search Response ###
+### 2.4 Search Response ###
 
 Success:
 
@@ -166,18 +249,18 @@ Failure:
 
 <!--- Error REQUEST_UNMATCHED would occur if the NHS number being requested in the search request does not match the requested_record value in the JWT - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.-->
 
-### 1.5. Example ###
+### 2.5. Example ###
 
-### 1.5.1 Request Query ###
+### 2.5.1 Request Query ###
 
 Return all DocumentReference resources for Patient with a NHS Number of 9876543210, the format of the response body will be xml. Replace 'baseUrl' with the actual base Url of the FHIR Server.
 
-#### 1.5.2 cURL ####
+#### 2.5.2 cURL ####
 
 {% include custom/embedcurl.html title="Search DocumentReference" command="curl -H 'Accept: application/fhir+xml' -H 'Authorization: BEARER [token]' -X GET  '[baseUrl]/DocumentReference?patient.identifier=https://fhir.nhs.uk/Id/nhs-number|9876543210'" %}
 
 
-#### 1.5.3 Query Response Http Headers ####
+#### 2.5.3 Query Response Http Headers ####
 
 <script src="https://gist.github.com/KevinMayfield/74fdaf9414b08038552715fabba8828b.js"></script>
 

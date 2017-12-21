@@ -150,7 +150,7 @@ GET [baseUrl]/DocumentReference?[searchParameters]</div>
 
 Search for all custodian pointers. Fetches a bundle of all `DocumentReference` resources for the specified pointer owner (custodian).
 
-
+Providers MUST only search for pointers where they are the pointer owner (custodian).
 
 Though the NRLS does not keep a version history of each DocumentReference each one does hold a versionId to support the NRLS update strategy. In responding to a search request the NRLS server will populate the versionId of each matching DocumentReference.
 
@@ -195,7 +195,7 @@ Though the NRLS does not keep a version history of each DocumentReference each o
     <td><code class="highlighter-rouge">reference</code></td>
     <td>Organization which maintains the document reference</td>
     <td>SHOULD</td>
-    <td>DocumentReference.custodian</td>
+    <td>DocumentReference.custodian(Organization)</td>
 </tr>
 
 </table>

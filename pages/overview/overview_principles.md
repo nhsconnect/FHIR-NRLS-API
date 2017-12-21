@@ -24,6 +24,7 @@ Clearly issuing a GET to retrieve a record is only one part of the task. Accessi
 ### The Provider controls Record retrieval ###
 
 The NRLS takes the stance that it is for the Provider to determine the mechanism employed to retrieve the Record.
+
 A consequence of this principle is that in some circumstances it may not be possible for a Pointer to describe all of the information needed to retrieve the Record. For example if there are dynamic parameters that need to be passed to the Provider’s system that are not known a priori. In these instances, a Pointer will give the Provider a place to record some optional guidance to advise the Consuming organisation around how to integrate with the Provider.
 
 Having said that if a Record is exposed using National standards then the aspiration is that the NRLS Pointer can be used to retrieve a Record using a National broker without the need for the Consumer to perform custom integration.
@@ -39,13 +40,16 @@ Acknowledging that this complexity exists and sits outside of the NRLS’ contro
 ### The NRLS supports varying levels of digital maturity ###
 
 The NRLS recognises that there will be varying levels of digital maturity across Providers and Consumers. To accommodate this the NRLS has the concept of direct and indirect Pointers which have been discussed above.
+
 The purpose of an indirect Pointer is to provide a lower maturity Provider with a means to surface Records to  Consumers without the need to expose them digitally. An indirect Pointer could point to a set of contact details for a service that can be called to relay a Record over the phone. Similarly if a Consumer does not have the capability to integrate a digital Record into their system an indirect Pointer gives them another mechanism to allow their users to access Records.
 
 ### The Consumer controls Pointer access ###
 
 When a Consumer requests that the NRLS return the Pointers that it has for a given patient it will return all Pointers. The NRLS will not perform any filtering before sending that collection of Pointers back to the Consumer. 
+
 Once consequence of this is that the end user on the Consumer side may be exposed to Pointers that reveal sensitive information about the Patient, for example it will be possible to infer through a Pointer that a Patient has a certain kind of record. Even though the user may not be able to retrieve the Record, knowing that it exists is in itself revealing a degree of personal information about that patient that may not be appropriate. 
 With this in mind it is acknowledged that there is most likely going to be a need to filter Pointers before they are displayed to the end user. This responsibility is seen as belonging to the Consumer where local access rules will be used to judge whether or not a given user should be permitted to know that a given Pointer exists.
+
 The mechanism for making this decision is predicated on the type of Record that the Pointer references. 
 
 [TODO Diagram 4]

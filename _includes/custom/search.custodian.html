@@ -19,7 +19,7 @@ Return all {{include.content}} resources for Patients with a logical id of 42</p
 
 -->
 <div markdown="span" class="alert alert-success" role="alert">
-GET [baseUrl]/{{include.content}}?organization.identifier=[system]|[code] <br>
+GET [baseUrl]/{{include.content}}?custodian.identifier=[system]|[code] <br>
 </div>
 
 <!--GET [baseUrl]/{{include.content}}?organization.identifier=[code]-->
@@ -32,7 +32,7 @@ GET [baseUrl]/{{include.content}}?organization.identifier=[system]|[code] <br>
 
 <p><code class="highlighter-rouge">system</code> is a uniform resource identifier which defines which CodeSystem the identifer belongs to. For ODS this would be <code class="highlighter-rouge">https://fhir.nhs.uk/Id/ods-organization-code</code> and <code class="highlighter-rouge">code</code> would be the ODS identifier.</p>
 <div class="language-http highlighter-rouge">
-<pre class="highlight"><code><span class="err">GET [baseUrl]/{{include.content}}?organization.identifier=https://fhir.nhs.uk/Id/ods-organization-code|RR8
+<pre class="highlight"><code><span class="err">GET [baseUrl]/{{include.content}}?custodian.identifier=https://fhir.nhs.uk/Id/ods-organization-code|RR8
 </span></code>
 Return all {{include.content}} resources for pointer owners (Custodians) with a ODS code of RR8</pre>
 </div>
