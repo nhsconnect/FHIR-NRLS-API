@@ -173,8 +173,15 @@ Though the NRLS does not keep a version history of each DocumentReference each o
     <td><code class="highlighter-rouge">patient</code></td>
     <td><code class="highlighter-rouge">reference</code></td>
     <td>Who/what is the subject of the document</td>
-    <td>SHOULD</td>
+    <td>SHALL</td>
     <td>DocumentReference.subject<br>(Patient)</td>
+</tr>
+<tr>
+    <td><code class="highlighter-rouge">created</code></td>
+    <td><code class="highlighter-rouge">date</code></td>
+    <td>Document creation time</td>
+    <td>SHOULD</td>
+    <td>DocumentReference.created</td>
 </tr>
 <!--
 <tr>
@@ -209,6 +216,8 @@ Systems SHOULD support the following search combinations:
 
 {% include custom/search.patient.html para="1.3.1." content="DocumentReference" %}
 
+{% include custom/search.date.startend.html para="1.3.2." name="created" content="DocumentReference" %}
+
 <!--
 {% include custom/search.date.plus.html para="1.1.2." content="DocumentReference" name="period" %}
 -->
@@ -218,6 +227,10 @@ Systems SHOULD support the following search combinations:
 <!--{% include custom/search.response.html para="1.2." content="DocumentReference" %}-->
 
 <!--{% include custom/search.response.html resource="DocumentReference" %}-->
+
+<div markdown="span" class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> If a DocumentReference Pointer points to a dynamically generated record then the created date will be blank. In this instance Pointers for dynamically generated records will be returned regardless of the created date range search parameters included.</div>
+<br>
+
 
 ### 2.4 Search Response ###
 
@@ -253,11 +266,11 @@ Failure:
 
 ### 2.5.1 Request Query ###
 
-Return all DocumentReference resources for Patient with a NHS Number of 9876543210, the format of the response body will be xml. Replace 'baseUrl' with the actual base Url of the FHIR Server.
+Return all DocumentReference resources for Patient with a NHS Number of 9876543210, and a record created date greater than or equal to 1st Jan 2010, and a record created date less than or equal to 31st Dec 2011, the format of the response body will be xml. Replace 'baseUrl' with the actual base Url of the FHIR Server.
 
 #### 2.5.2 cURL ####
 
-{% include custom/embedcurl.html title="Search DocumentReference" command="curl -H 'Accept: application/fhir+xml' -H 'Authorization: BEARER [token]' -X GET  '[baseUrl]/DocumentReference?patient.identifier=https://fhir.nhs.uk/Id/nhs-number|9876543210'" %}
+{% include custom/embedcurl.html title="Search DocumentReference" command="curl -H 'Accept: application/fhir+xml' -H 'Authorization: BEARER [token]' -X GET  '[baseUrl]/DocumentReference?patient.identifier=https://fhir.nhs.uk/Id/nhs-number|9876543210&start=ge2010-01-01&amp;end=le2011-12-31'" %}
 
 
 #### 2.5.3 Query Response Http Headers ####
