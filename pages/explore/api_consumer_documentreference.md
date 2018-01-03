@@ -230,7 +230,10 @@ Systems SHOULD support the following search combinations:
 
 {% include custom/search.patient.html para="2.3.1." content="DocumentReference" %}
 
-{% include custom/search.date.startend.html para="2.3.2." name="created" content="DocumentReference" %}
+{% include custom/search.nopat.date.multiprefix.html para="2.3.2." multi="a maximum of two" name="created" content="DocumentReference" %}
+
+<div markdown="span" class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> If a DocumentReference Pointer points to a dynamically generated record then the created date will be blank. In this instance Pointers for dynamically generated records will be returned regardless of the created date range search parameters included.</div>
+<br>
 
 {% include custom/search.pagination.html para="2.3.3." values="created [TODO] add more parameters" content="DocumentReference" %}
 
@@ -243,9 +246,6 @@ Systems SHOULD support the following search combinations:
 <!--{% include custom/search.response.html para="1.2." content="DocumentReference" %}-->
 
 <!--{% include custom/search.response.html resource="DocumentReference" %}-->
-
-<div markdown="span" class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> If a DocumentReference Pointer points to a dynamically generated record then the created date will be blank. In this instance Pointers for dynamically generated records will be returned regardless of the created date range search parameters included.</div>
-<br>
 
 
 ### 2.4 Search Response ###
