@@ -183,6 +183,20 @@ Though the NRLS does not keep a version history of each DocumentReference each o
     <td>SHOULD</td>
     <td>DocumentReference.created</td>
 </tr>
+<tr>
+    <td><code class="highlighter-rouge">_count</code></td>
+    <td><code class="highlighter-rouge">number</code></td>
+    <td>Number of results per page</td>
+    <td>SHOULD</td>
+    <td>N/A</td>
+</tr>
+<tr>
+    <td><code class="highlighter-rouge">_sort</code></td>
+    <td><code class="highlighter-rouge">string</code></td>
+    <td>Order to sort results in</td>
+    <td>SHOULD</td>
+    <td>N/A</td>
+</tr>
 <!--
 <tr>
     <td><code class="highlighter-rouge">period</code></td>
@@ -214,9 +228,11 @@ Systems SHOULD support the following search combinations:
 * TBC
 -->
 
-{% include custom/search.patient.html para="1.3.1." content="DocumentReference" %}
+{% include custom/search.patient.html para="2.3.1." content="DocumentReference" %}
 
-{% include custom/search.date.startend.html para="1.3.2." name="created" content="DocumentReference" %}
+{% include custom/search.date.startend.html para="2.3.2." name="created" content="DocumentReference" %}
+
+{% include custom/search.pagination.html para="2.3.3." values="created [TODO] add more parameters" content="DocumentReference" %}
 
 <!--
 {% include custom/search.date.plus.html para="1.1.2." content="DocumentReference" name="period" %}
