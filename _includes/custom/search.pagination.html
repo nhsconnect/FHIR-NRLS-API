@@ -1,20 +1,21 @@
-<h4 id="date">{{include.para}} _count and _sort</h4>
+<h4 id="date">{{include.para}} _count<!-- and _sort--></h4>
 
 <p>See <a href="https://www.hl7.org/fhir/STU3/search.html#return">Managing Returned Resources</a> for details on these parameters.</p>
 
 <div markdown="span" class="alert alert-success" role="alert">
-GET [baseUrl]/{{include.content}}?_count=[number]&_sort=[string]</div>
+GET [baseUrl]/{{include.content}}?_count=[number]<!--&_sort=[string]--></div>
 
 - The `_count` parameter SHOULD be included.
-- The `_sort` parameter SHOULD be included. Prexing the sort parameter value with a '-' indicates decreasing order.
-- The `_sort` parameter value SHALL be one of the following valid search parameters: {{include.values}}
-
+<!--
+ The `_sort` parameter SHOULD be included. Prexing the sort parameter value with a '-' indicates decreasing order.
+ The `_sort` parameter value SHALL be one of the following valid search parameters: {{include.values}}
+-->
 <div markdown="span" class="alert alert-info" role="alert">
     <i class="fa fa-info-circle"></i> <b>Note:</b> If the `_count` parameter is included then the resulting Bundle that is returned may include page navigation links where appropriate. See <a href="https://www.hl7.org/fhir/STU3/http.html#paging">Paging</a> for more details.
 </div>
 
 <div class="language-http highlighter-rouge">
-<pre class="highlight"><code><span class="err">GET [baseUrl]/{{include.content}}?_count=20&_sort=-created
+<pre class="highlight"><code><span class="err">GET [baseUrl]/{{include.content}}?_count=20<!--&_sort=-created-->
 </span></code>
-Return 20 {{include.content}} resource entries or less, if there are less than 20 total {{include.content}} entries available, sorted by created date in descending order.</pre>
+Return 20 {{include.content}} resource entries or less, if there are less than 20 total {{include.content}} entries available<!--, sorted by created date in descending order-->.</pre>
 </div>
