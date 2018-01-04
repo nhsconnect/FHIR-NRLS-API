@@ -321,6 +321,10 @@ Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only 
 <div markdown="span" class="alert alert-success" role="alert">
 POST [baseUrl]/DocumentReference</div>
 
+<p>In addition to the base mandatory data-elements, the following data-elements are also mandatory:</p>
+
+- The `type` data-element MUST be included in the payload request.
+
 <!--
 <p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header. </p>
 <p>The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>.</p>
@@ -343,6 +347,8 @@ Failure:
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
 |-----------|----------------|------------|--------------|-----------------|
 |400|error|invalid|INVALID_RESOURCE|Invalid validation of resource|
+|400|error|invalid|INVALID_CODE_SYSTEM|Invalid code system|
+|400|error|invalid|INVALID_CODE_VALUE|Invalid code value|
 |400|error|structure|MESSAGE_NOT_WELL_FORMED|Message not well formed|
 |400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|
 |403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
@@ -406,6 +412,10 @@ PUT [baseUrl]/DocumentReference/[id]</div>
 
 <p>The 'update' interaction is performed by an HTTP PUT of the <code class="highlighter-rouge">{{include.resource}}</code> and creates a new current version of the resource to the NRLS Registry endpoint.</p>
 
+<p>In addition to the base mandatory data-elements, the following data-elements are also mandatory:</p>
+
+- The `type` data-element MUST be included in the payload request.
+
 <!--
 <p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header and SHALL contain an ‘If-Match’ header. </p>
 <p>The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. </p>
@@ -429,6 +439,8 @@ Failure:
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
 |-----------|----------------|------------|--------------|-----------------|
 |400|error|invalid|INVALID_RESOURCE|Invalid validation of resource|
+|400|error|invalid|INVALID_CODE_SYSTEM|Invalid code system|
+|400|error|invalid|INVALID_CODE_VALUE|Invalid code value|
 |400|error|structure|MESSAGE_NOT_WELL_FORMED|Message not well formed|
 |400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|
 |403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
