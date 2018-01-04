@@ -170,12 +170,20 @@ Though the NRLS does not keep a version history of each DocumentReference each o
     <th style="width:35%;">Path</th>
 </tr>
 <tr>
+    <td><code class="highlighter-rouge">custodian</code></td>
+    <td><code class="highlighter-rouge">reference</code></td>
+    <td>Organization which maintains the document reference</td>
+    <td>SHOULD</td>
+    <td>DocumentReference.custodian(Organization)</td>
+</tr>
+<tr>
     <td><code class="highlighter-rouge">patient</code></td>
     <td><code class="highlighter-rouge">reference</code></td>
     <td>Who/what is the subject of the document</td>
-    <td>SHALL</td>
+    <td>SHOULD</td>
     <td>DocumentReference.subject<br>(Patient)</td>
 </tr>
+<!--
 <tr>
     <td><code class="highlighter-rouge">created</code></td>
     <td><code class="highlighter-rouge">date</code></td>
@@ -183,6 +191,7 @@ Though the NRLS does not keep a version history of each DocumentReference each o
     <td>SHOULD</td>
     <td>DocumentReference.created</td>
 </tr>
+-->
 <tr>
     <td><code class="highlighter-rouge">_count</code></td>
     <td><code class="highlighter-rouge">number</code></td>
@@ -190,6 +199,7 @@ Though the NRLS does not keep a version history of each DocumentReference each o
     <td>SHOULD</td>
     <td>N/A</td>
 </tr>
+<!--
 <tr>
     <td><code class="highlighter-rouge">_sort</code></td>
     <td><code class="highlighter-rouge">string</code></td>
@@ -197,6 +207,7 @@ Though the NRLS does not keep a version history of each DocumentReference each o
     <td>SHOULD</td>
     <td>N/A</td>
 </tr>
+-->
 <!--
 <tr>
     <td><code class="highlighter-rouge">period</code></td>
@@ -222,20 +233,23 @@ Though the NRLS does not keep a version history of each DocumentReference each o
 -->
 </table>
 
+{% include custom/search.warn.subject.custodian.html %}
+
 <!--
 Systems SHOULD support the following search combinations:
 
 * TBC
 -->
+{% include custom/search.custodian.html para="2.3.1." content="DocumentReference" %}
 
-{% include custom/search.patient.html para="2.3.1." content="DocumentReference" %}
-
-{% include custom/search.nopat.date.multiprefix.html para="2.3.2." multi="a maximum of two" name="created" content="DocumentReference" %}
+{% include custom/search.patient.html para="2.3.2." content="DocumentReference" %}
+<!--
+{% include custom/search.nopat.date.multiprefix.html para="2.3.2." prefixes="`le`, `ge`" multi="a maximum of two" name="created" content="DocumentReference" %}
 
 <div markdown="span" class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> If a DocumentReference Pointer points to a dynamically generated record then the created date will be blank. In this instance Pointers for dynamically generated records will be returned regardless of the created date range search parameters included.</div>
 <br>
-
-{% include custom/search.pagination.html para="2.3.3." values="created [TODO] add more parameters" content="DocumentReference" %}
+-->
+{% include custom/search.pagination.html para="2.3.3." values="" content="DocumentReference" %}
 
 <!--
 {% include custom/search.date.plus.html para="1.1.2." content="DocumentReference" name="period" %}
@@ -266,6 +280,7 @@ Failure:
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
 |-----------|----------------|------------|--------------|-----------------|
+|400|error|invalid|BAD_REQUEST|Bad request|
 |400|error|code-invalid|INVALID_CODE_SYSTEM|Invalid code system|
 |400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|
 |400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|

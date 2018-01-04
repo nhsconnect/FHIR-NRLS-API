@@ -188,8 +188,8 @@ Though the NRLS does not keep a version history of each DocumentReference each o
     <td>Kind of document (SNOMED CT if possible)</td>
     <td>SHOULD</td>
     <td>DocumentReference.type</td>
-</tr>-->
-
+</tr> 
+-->
 <tr>
     <td><code class="highlighter-rouge">custodian</code></td>
     <td><code class="highlighter-rouge">reference</code></td>
@@ -197,16 +197,35 @@ Though the NRLS does not keep a version history of each DocumentReference each o
     <td>SHOULD</td>
     <td>DocumentReference.custodian(Organization)</td>
 </tr>
-
+<tr>
+    <td><code class="highlighter-rouge">patient</code></td>
+    <td><code class="highlighter-rouge">reference</code></td>
+    <td>Who/what is the subject of the document</td>
+    <td>SHOULD</td>
+    <td>DocumentReference.subject<br>(Patient)</td>
+</tr>
+<tr>
+    <td><code class="highlighter-rouge">_count</code></td>
+    <td><code class="highlighter-rouge">number</code></td>
+    <td>Number of results per page</td>
+    <td>SHOULD</td>
+    <td>N/A</td>
+</tr>
 </table>
+
+{% include custom/search.warn.subject.custodian.html %}
 
 <!--
 Systems SHOULD support the following search combinations:
 
 * TBC
 -->
-
 {% include custom/search.custodian.html para="2.3.1." content="DocumentReference" %}
+
+{% include custom/search.patient.html para="2.3.2." content="DocumentReference" %}
+
+{% include custom/search.pagination.html para="2.3.3." values="" content="DocumentReference" %}
+
 
 <!--
 {% include custom/search.date.plus.html para="1.1.2." content="DocumentReference" name="period" %}
@@ -237,6 +256,7 @@ Failure:
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
 |-----------|----------------|------------|--------------|-----------------|
+|400|error|invalid|BAD_REQUEST|Bad request|
 |400|error|code-invalid|INVALID_CODE_SYSTEM|Invalid code system|
 |400|error|invalid|INVALID_CODE_VALUE|Invalid code system|
 |400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|
