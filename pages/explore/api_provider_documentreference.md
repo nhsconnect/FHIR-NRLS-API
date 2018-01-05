@@ -366,8 +366,8 @@ Failure:
 Provider API to support NRLI pointer updates.
 <!--
 All provider documentReference update requests should contain a version id to avoid lost updates. See [FAQ](support_faq.html).
+-->
 
-Updates are version aware. In order to conduct an update the Provider should submit the request with an If-Match header where the ETag matches the versionId of the DocumentReference in question from the server. If the version id given in the If-Match header does not match the versionId that the server holds for that DocumentReference, the server returns a 409 Conflict status code instead of updating the resource. In this situation the client should read the DocumentReference from the server to get the most recent versionId and use that to populate the Etag in a fresh update request.-->
 
 ### 4.1 Provider Update Request Headers ###
 
@@ -387,7 +387,6 @@ All Provider API update requests SHALL include the following HTTP request header
 | `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:update:documentreference`|
 | `Ssp-Version`  | `1` |
 
-<!--| `If-Match`      | The ‘If-Match’ header makes the request conditional. The server will process the requested DocumentReference only if it’s versionId property matches one of the listed ETags.|-->
 
 Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
 
@@ -420,9 +419,8 @@ PUT [baseUrl]/DocumentReference/[id]</div>
 <!--
 <p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header and SHALL contain an ‘If-Match’ header. </p>
 <p>The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. </p>
-
-<p>The ‘If-Match’ header makes the request conditional. The server will process the requested DocumentReference only if it’s versionId property matches one of the listed ETags.</p>
 -->
+
 
 ### 4.3 Update Response ###
 
