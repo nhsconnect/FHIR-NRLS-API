@@ -27,7 +27,7 @@ In order to support the Consumer and Provider interactions with the NRLS the Poi
 |Pointer owner|1..1|The entity who maintains the Pointer. Used to control which systems can modify the Pointer|
 |Record owner|1..1|The entity who maintains the Record. Used to provide the Consumer with context around who they will be interacting with if retrieving the Record.|
 |Record creation datetime|0..1|The date and time (on the Provider’s system) that the record was created. Note that this is an optional field and is meant to convey the concept of a static record.|
-|Record type|1..1|The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers. This is a CodeablConcept and the terminology system MUST be http://snomed.info/sct. The Subset of codes is still to be finalised.|
+|Record type|1..1|The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers. The clinical type will be one of a controlled set. It will not be possible to create a pointer with a type that does not exist within this controlled set.|
 |Record URL|1..1|The location of the record on the Provider’s system|
 |Record mime type|1..1|Describes the format of the record such that the Consumer can pick an appropriate mechanism to handle the record. Without it the Consumer would be in the dark as to how to deal with the Record|
 |Record retrieval mode|1..1|Whether or not this Pointer facilitates direct or indirect Record retrieval. Used to give the Consumer a que as to what following the Pointer will return.|
