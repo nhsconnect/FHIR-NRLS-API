@@ -10,6 +10,17 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 {% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
 
+## 2.2.0-alpha ##
+
+Sprint 2 summary:
+
+- Read Operation added to Consumer API.
+- Provider and Consumer API search capabilities aligned.
+- Pagination added to Provider and Consumer search API.
+- If-Match header (containing ETag) dropped from Provider API update and delete operations.
+- Security Guidance updated: TLSv1.2 must be supported for all new Spine interfaces and new cyphers added. 
+- Implementation Guide semver use updated. No longer using pre-release numeric identifiers.
+
 ## 2.1.0-alpha.1 ##
 
 Sprint 1 'internal' review feedback amendments include:
