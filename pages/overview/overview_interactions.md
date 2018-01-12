@@ -12,7 +12,7 @@ summary: Getting involved with NRLS
 
 ## Interactions ##
 
-In the overall solution for NRLS broadly speaking there are four main systems that need to integrate in order for systems to share data. Diagram 1
+In the overall solution for NRLS broadly speaking there are three main systems that need to integrate in order for systems to share data.
 
 
 | System | Role in NRLS solution | 
@@ -20,7 +20,6 @@ In the overall solution for NRLS broadly speaking there are four main systems th
 |Consumer|A system that wishes to retrieve Pointers related to a given patient (NHS number) and optionally follow one or more of those Pointers to retrieve the record that they each point to.|
 |Provider|A system that wishes to expose its Records for sharing.|
 |NRLS|A system that exposes Pointers for retrieval and maintenance.|
-|Spine Security Proxy (SSP)|Facilitates the retrieval of Records referenced by Pointers.|
 
 
 ### Provider interaction ###

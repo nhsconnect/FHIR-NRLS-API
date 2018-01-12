@@ -44,8 +44,12 @@ Note that in order to execute this kind of query a client must have been assigne
 
 ### Record retrieval by Consumers ###
 
-The NRLS does not take part in Record retrieval. The Pointers that is holds can be seen as signposts that show the way. The actual retrieval of the Record referenced by a given Pointer is facilitated by the Spine Security Proxy (SSP).
+The NRLS does not take part in Record retrieval. The Pointers that is holds can be seen as signposts that show the way. Actually following these signposts to reach the Record that they point to is not facilitated by the NRLS.
 
-The SSP is a forward HTTP proxy which will be used as a front-end to control and protect access to Provider IT systems that will be exposing Records. It provides a single security point for both authentication and authorisation for consuming systems. Additional responsibilities include auditing of all requests, throttling of requests and transaction logging for performance and commercial remuneration purposes.
+In order to retrieve Records it is likely that there will need to be a degree of integration between the Consumer and the Record Provider. Consider for example that the Provider exposes a Record of type X over a proprietary interface. It is not within the scope of the NRLS to negotiate the retrieval of that Record from that proprietary interface. Instead it is the responsibility of the Consumer to integrate with the proprietary API exposed by the Provider.
 
-A consumer should route requests to retrieve Records through the SSP as opposed to attempting to retrieve the Record directly.
+NHS Digital are considering how some of this integration burden can be lifted from the Consumers. The current view is that national data standards in the form of centrally defined data models and API definitions will greatly aid in the goal of reducing the Consumer integration burden by increasing interoperability between third party systems.
+
+By relying on national standards NHS Digital may be able to act on behalf of Consumers to retrieve Records from Providers that exposed Records conforming to standard data models that are exposed over APIs which conform to standardised API definitions. Numerous things need to align to make this goal a reality however on the assumption that a standards based approach is realistic then an existing NHS Digital service known as the Spine Security Proxy or SSP may be used to mediate Record retrieval on behalf of Consumers.
+
+Briefly, the SSP is a forward HTTP proxy which will be used as a front-end to control and protect access to Provider IT systems that will be exposing Records in a standards compliant way. Additional responsibilities of the SSP include auditing of requests and throttling of requests.
