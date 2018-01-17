@@ -249,7 +249,9 @@ Systems SHOULD support the following search combinations:
 <div markdown="span" class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> If a DocumentReference Pointer points to a dynamically generated record then the created date will be blank. In this instance Pointers for dynamically generated records will be returned regardless of the created date range search parameters included.</div>
 <br>
 -->
+
 {% include custom/search.pagination.html para="2.3.3." values="" content="DocumentReference" %}
+
 
 <!--
 {% include custom/search.date.plus.html para="1.1.2." content="DocumentReference" name="period" %}
