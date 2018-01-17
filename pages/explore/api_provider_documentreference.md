@@ -198,7 +198,7 @@ Though the NRLS does not keep a version history of each DocumentReference each o
     <td>DocumentReference.custodian(Organization)</td>
 </tr>
 <tr>
-    <td><code class="highlighter-rouge">subject</code></td>
+    <td><code class="highlighter-rouge">patient</code></td>
     <td><code class="highlighter-rouge">reference</code></td>
     <td>Who/what is the subject of the document</td>
     <td>SHOULD</td>
@@ -208,7 +208,7 @@ Though the NRLS does not keep a version history of each DocumentReference each o
     <td><code class="highlighter-rouge">_count</code></td>
     <td><code class="highlighter-rouge">number</code></td>
     <td>Number of results per page</td>
-    <td>SHOULD</td>
+    <td>MAY</td>
     <td>N/A</td>
 </tr>
 </table>

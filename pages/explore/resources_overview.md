@@ -35,7 +35,7 @@ The NRLS API supports the following operations as detailed in the [Solution Inte
 
 ## 2. Pre-Requisites for NRLS API ##
 
-### 2.1 API Requirements ###
+### 2.1 NRLS Server API Conformance ###
 
 - SHALL support HL7 FHIR STU3 version 3.0.1.
 
@@ -44,16 +44,25 @@ The NRLS API supports the following operations as detailed in the [Solution Inte
 
 - SHALL Implement REST behavior according to the [FHIR specification](http://www.hl7.org/fhir/STU3/http.html)
 
-- Resources SHALL identify the profile supported as part of the [FHIR Base Resource](https://www.hl7.org/fhir/resource-definitions.html#Resource.meta)
-
 - SHALL support XML **or** JSON formats for all API interactions.
 
+- SHALL expose a valid NRLS FHIR [CapabilityStatement](https://www.hl7.org/fhir/STU3/capabilitystatement.html) identifying the list of profiles, operations and search parameters supported. See [NRLS API FHIR Capability Statement profile](api_foundation_conformance.html).
 
-### 2.2 FHIR Conformance ###
+<!--- - SHALL support the NRLS-DocumentReference-1 resource profile.
 
-SHALL declare a Conformance identifying the list of profiles, operations and search parameters supported.
+- SHOULD identify the resource profiles supported as part of the FHIR meta.profile attribute for each instance.-->
 
-In order to be a compliant FHIR server, the NRLS FHIR Server will expose a valid FHIR [CapabilityStatement](https://www.hl7.org/fhir/STU3/capabilitystatement.html) profile. See also [NRLS API FHIR conformance profile](api_foundation_conformance.html).
+### 2.2 NRLS Client API Conformance ###
+
+- SHALL support HL7 FHIR STU3 version 3.0.1.
+
+<!--- SHALL support the CareConnect Patient resource profile.
+- SHALL support at least one additional resource profile from the list of CareConnect Profiles-->
+
+- SHALL support **either** XML **or** JSON formats for all API interactions.
+
+- SHOULD support the RESTful interactions and search parameters as declared in the NRLS FHIR Server CapabilityStatement.
+
 
 ### 2.3 Spine Services ###
 

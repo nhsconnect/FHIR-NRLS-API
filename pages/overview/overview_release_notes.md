@@ -9,6 +9,15 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 
 {% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
+## 2.3.0-alpha ##
+
+Sprint 3 summary:
+
+- Consumer and Provider APIs now support the 'patient' Search parameter. This replaces the 'subject' parameter.
+- Consumer and Provider APIs Search operations will not mandate the '_count' parameter. It is expected that the NRLS Server will support paging as a default to break up result-sets that exceed a pre-determined limit.
+- NRLS API Conformance updated.
+
+
 ## 2.2.1-alpha ##
 
 Sprint 3 early release summary:
