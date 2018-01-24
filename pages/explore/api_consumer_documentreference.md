@@ -31,7 +31,7 @@ GET [baseUrl]/DocumentReference/[id]</div>
 
 ## 1. Consumer Read ##
 
-Consumer API to support read access of NRLI pointers.
+Consumer API to support read access of NRLS pointers.
 
 ### 1.1 Consumer Read Request Headers ###
 
@@ -39,10 +39,26 @@ Consumer API to support read access of NRLI pointers.
 <!--
 All Provider API read requests should include the below additional HTTP request headers to support audit and security requirements on the Spine:
 -->
-
+<!--
 All Consumer API read requests SHALL include the following HTTP request headers:
+-->
+Consumer API read requests support the following HTTP request headers:
 
 
+| Header               | Value |Conformance |
+|----------------------|-------|-------|
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](/development_general_api_guidance.html#content-types) section. | MAY |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |  MUST |
+| `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. | MUST |
+| `Ssp-From`           | Client System ASID | MUST |
+| `Ssp-To`             | The Spine ASID | MUST |
+| `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:read:documentreference`| MUST |
+| `Ssp-Version`  | `1` | MUST |
+
+Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+
+
+<!--
 | Header               | Value |
 |----------------------|-------|
 | `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. |
@@ -53,9 +69,7 @@ All Consumer API read requests SHALL include the following HTTP request headers:
 | `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:read:documentreference`|
 | `Ssp-Version`  | `1` |
 
-Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
 
-<!--
 | Header               | Value |
 |----------------------|-------|
 | `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. |
@@ -113,11 +127,29 @@ Failure:
 
 ## 2. Consumer Search ##
 
-Consumer API to support discovery of NRLI pointers.
+Consumer API to support discovery of NRLS pointers.
 
 ### 2.1 Search Request Headers ###
 
-All Consumer API searches SHALL include the following HTTP request headers:
+<!--All Consumer API searches SHALL include the following HTTP request headers:-->
+
+Consumer API search requests support the following HTTP request headers:
+
+
+| Header               | Value |Conformance |
+|----------------------|-------|-------|
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](/development_general_api_guidance.html#content-types) section. | MAY |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |  MUST |
+| `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. | MUST |
+| `Ssp-From`           | Client System ASID | MUST |
+| `Ssp-To`             | The Spine ASID | MUST |
+| `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:search:documentreference`| MUST |
+| `Ssp-Version`  | `1` | MUST |
+
+
+Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+
+<!--
 
 
 | Header               | Value |
@@ -131,9 +163,6 @@ All Consumer API searches SHALL include the following HTTP request headers:
 | `Ssp-Version`  | `1` |
 
 
-Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
-
-<!--
 | Header               | Value |
 |----------------------|-------|
 | `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. |
@@ -250,7 +279,12 @@ Systems SHOULD support the following search combinations:
 <br>
 -->
 
-{% include custom/search.pagination.html para="2.3.3." values="" content="DocumentReference" %}
+{% include custom/search.patient.custodian.html para="2.3.3." values="" content="DocumentReference" %}
+
+{% include custom/search.pagination.html para="2.3.4." values="" content="DocumentReference" %}
+
+
+
 
 
 <!--
@@ -271,8 +305,8 @@ Success:
 - SHALL return a `200` **OK** HTTP status code on successful execution of the interaction.
 - SHALL return a `Bundle` of `type` searchset, containing either:
     - One or more `documentReference` resource that conforms to the `nrls-documentReference-1` profile; or
-    - One `OperationOutcome` resource if the interaction is a success, however no documentReference record has been found.
-- Where an documentReference is returned, it SHALL include the `versionId` and `fullUrl` of the current version of the `documentReference` resource.
+    - A '0' (zero) total value indicating no record was matched i.e. an empty 'Bundle'.
+- Where a documentReference is returned, it SHALL include the `versionId` and `fullUrl` of the current version of the `documentReference` resource.
 
 
 Failure: 
@@ -299,19 +333,28 @@ Failure:
 
 ### 2.5.1 Request Query ###
 
-Return all DocumentReference resources for Patient with a NHS Number of 9876543210, and a record created date greater than or equal to 1st Jan 2010, and a record created date less than or equal to 31st Dec 2011, the format of the response body will be xml. Replace 'baseUrl' with the actual base Url of the FHIR Server.
+Return all DocumentReference resources for a patient with a NHS Number of 9876543210 and a pointer provider ODS code of RR8. The format of the response body will be xml. 
+
+
+<!--Return all DocumentReference resources for Patient with a NHS Number of 9876543210, and a record created date greater than or equal to 1st Jan 2010, and a record created date less than or equal to 31st Dec 2011, the format of the response body will be xml. Replace 'baseUrl' with the actual base Url of the FHIR Server.-->
+
 
 #### 2.5.2 cURL ####
 
-{% include custom/embedcurl.html title="Search DocumentReference" command="curl -H 'Accept: application/fhir+xml' -H 'Authorization: BEARER [token]' -X GET  '[baseUrl]/DocumentReference?patient.identifier=https://fhir.nhs.uk/Id/nhs-number|9876543210&start=ge2010-01-01&amp;end=le2011-12-31'" %}
-
+{% include custom/embedcurl.html title="Search DocumentReference" command="curl -H 'Accept: application/fhir+xml' -H 'Authorization: BEARER [token]' -X GET  '[baseUrl]/DocumentReference?patient=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210&custodian.identifier=https://fhir.nhs.uk/Id/ods-organization-code|RR8&_format=xml'" %}
 
 #### 2.5.3 Query Response Http Headers ####
 
-<script src="https://gist.github.com/KevinMayfield/74fdaf9414b08038552715fabba8828b.js"></script>
+<script src="https://gist.github.com/swk003/1fb79ea938f6f5f984069819a29c2356.js"></script>
+
+
+
+
 
 <!--
 {% include custom/search.response.headers.html resource="DocumentReference" %}
 -->
 
-[TODO Response]
+#### 2.5.4 Query Response ####
+
+<script src="https://gist.github.com/swk003/3fe6a98111228c9429119ce6a6a0f2d3.js"></script>

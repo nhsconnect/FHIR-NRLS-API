@@ -1,7 +1,7 @@
 entries:
 - title: NRLS
   product: NRLS
-  version: 2.3.0-alpha
+  version: 2.4.0-alpha
   levels: one
   folders:
 
@@ -77,6 +77,9 @@ entries:
     - title: Security
       url: /development_api_security_guidance.html
       output: web
+    - title: General API Guidance
+      url: /development_general_api_guidance.html
+      output: web  
       subfolders:
       - title: API Guidance | FHIR&reg;
         output: web
@@ -87,6 +90,9 @@ entries:
           - title: Reference
             url: /explore_reference.html
             output: web
+        # - title: General API Guidance
+        #   url: /development_general_api_guidance.html
+        #   output: web
         #  - title: NRLS FHIR Asset Versioning
         #    url: /explore_cc_versioning.html
         #    output: web

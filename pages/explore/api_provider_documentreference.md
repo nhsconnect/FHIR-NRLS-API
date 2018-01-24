@@ -23,7 +23,7 @@ summary: A DocumentReference resource is used to describe a document that is mad
 
 ## 1. Provider Read ##
 
-Provider API to support read access to NRLI pointers.
+Provider API to support read access to NRLS pointers.
 
 ### 1.1 Provider Read Request Headers ###
 
@@ -32,8 +32,24 @@ Provider API to support read access to NRLI pointers.
 All Provider API read requests should include the below additional HTTP request headers to support audit and security requirements on the Spine:
 -->
 
-All Provider API read requests SHALL include the following HTTP request headers:
+<!--All Provider API read requests SHALL include the following HTTP request headers:-->
 
+Provider API read requests support the following HTTP request headers:
+
+
+| Header               | Value |Conformance |
+|----------------------|-------|-------|
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](/development_general_api_guidance.html#content-types) section. | MAY |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |  MUST |
+| `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. | MUST |
+| `Ssp-From`           | Client System ASID | MUST |
+| `Ssp-To`             | The Spine ASID | MUST |
+| `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:read:documentreference`| MUST |
+| `Ssp-Version`  | `1` | MUST |
+
+Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+
+<!--
 
 | Header               | Value |
 |----------------------|-------|
@@ -45,9 +61,7 @@ All Provider API read requests SHALL include the following HTTP request headers:
 | `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:read:documentreference`|
 | `Ssp-Version`  | `1` |
 
-Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
 
-<!--
 | Header               | Value |
 |----------------------|-------|
 | `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. |
@@ -112,7 +126,26 @@ Provider API to support pointer owner (custodian) searches based on ODS code.
 All Provider API searches should include the below additional HTTP request headers to support audit and security requirements on the Spine:
 -->
 
-All Provider API searches SHALL include the following HTTP request headers:
+<!--All Provider API searches SHALL include the following HTTP request headers:-->
+
+Provider API search requests support the following HTTP request headers:
+
+
+| Header               | Value |Conformance |
+|----------------------|-------|-------|
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](/development_general_api_guidance.html#content-types) section. | MAY |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |  MUST |
+| `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. | MUST |
+| `Ssp-From`           | Client System ASID | MUST |
+| `Ssp-To`             | The Spine ASID | MUST |
+| `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:search:documentreference`| MUST |
+| `Ssp-Version`  | `1` | MUST |
+
+
+
+Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+
+<!--
 
 
 | Header               | Value |
@@ -127,9 +160,6 @@ All Provider API searches SHALL include the following HTTP request headers:
 
 
 
-Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
-
-<!--
 
 | Header               | Value |
 |----------------------|-------|
@@ -224,7 +254,11 @@ Systems SHOULD support the following search combinations:
 
 {% include custom/search.patient.html para="2.3.2." content="DocumentReference" %}
 
-{% include custom/search.pagination.html para="2.3.3." values="" content="DocumentReference" %}
+{% include custom/search.custodian.patient.html para="2.3.3." values="" content="DocumentReference" %}
+
+{% include custom/search.pagination.html para="2.3.4." values="" content="DocumentReference" %}
+
+
 
 
 <!--
@@ -244,9 +278,9 @@ Success:
 - SHALL return a `200` **OK** HTTP status code on successful execution of the interaction.
 - SHALL return a `Bundle` of `type` searchset, containing either:
     - One or more `documentReference` resource that conforms to the `nrls-documentReference-1` profile; or
-    - One `OperationOutcome` resource if the interaction is a success, however no documentReference record has been found.
-- The NRLS server will return the versionId of each DocumentReference.
-
+    - A '0' (zero) total value indicating no record was matched i.e. an empty 'Bundle'.
+<!--- The NRLS server will return the versionId of each DocumentReference.-->
+- Where a documentReference is returned, it SHALL include the versionId and fullUrl of the current version of the documentReference resource
 
 Failure: 
 
@@ -279,7 +313,7 @@ Failure:
 
 ## 3. Provider Create ##
 
-Provider API to support creation of NRLI pointers.
+Provider API to support creation of NRLS pointers.
 
 ### 3.1 Provider Create Request Headers ###
 
@@ -287,7 +321,26 @@ Provider API to support creation of NRLI pointers.
 All Provider API create requests should include the below additional HTTP request headers to support audit and security requirements on the Spine:
 -->
 
-All Provider API create requests SHALL include the following HTTP request headers:
+<!--All Provider API create requests SHALL include the following HTTP request headers:-->
+
+
+Provider API create requests support the following HTTP request headers:
+
+
+| Header               | Value |Conformance |
+|----------------------|-------|-------|
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](/development_general_api_guidance.html#content-types) section. | MAY |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |  MUST |
+| `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. | MUST |
+| `Ssp-From`           | Client System ASID | MUST |
+| `Ssp-To`             | The Spine ASID | MUST |
+| `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:create:documentreference`| MUST |
+| `Ssp-Version`  | `1` | MUST |
+
+Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+
+<!--
+
 
 
 | Header               | Value |
@@ -300,9 +353,7 @@ All Provider API create requests SHALL include the following HTTP request header
 | `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:create:documentreference`|
 | `Ssp-Version`  | `1` |
 
-Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
 
-<!--
 
 | Header               | Value |
 |----------------------|-------|
@@ -335,7 +386,7 @@ POST [baseUrl]/DocumentReference</div>
 
 Success:
 
-- SHALL return a `201` **OK** HTTP status code on successful execution of the interaction and the entry has been successfully created and the NRLS.
+- SHALL return a `201` **OK** HTTP status code on successful execution of the interaction and the entry has been successfully created in the NRLS.
 - The NRLS server will return an HTTP Location header containing the 'server' assigned logical Id <!--and versionId-->of the created DocumentReference resource.
 
 Failure: 
@@ -363,7 +414,7 @@ Failure:
 
 ## 4. Provider Update ##
 
-Provider API to support NRLI pointer updates.
+Provider API to support NRLS pointer updates.
 <!--
 All provider documentReference update requests should contain a version id to avoid lost updates. See [FAQ](support_faq.html).
 -->
@@ -374,7 +425,27 @@ All provider documentReference update requests should contain a version id to av
 <!--
 All Provider API update requests should include the below additional HTTP request headers to support audit and security requirements on the Spine:
 -->
-All Provider API update requests SHALL include the following HTTP request headers:
+<!--All Provider API update requests SHALL include the following HTTP request headers:-->
+
+
+Provider API update requests support the following HTTP request headers:
+
+
+| Header               | Value |Conformance |
+|----------------------|-------|-------|
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](/development_general_api_guidance.html#content-types) section. | MAY |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |  MUST |
+| `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. | MUST |
+| `Ssp-From`           | Client System ASID | MUST |
+| `Ssp-To`             | The Spine ASID | MUST |
+| `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:update:documentreference`| MUST |
+| `Ssp-Version`  | `1` | MUST |
+
+
+Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+
+
+<!--
 
 
 | Header               | Value |
@@ -388,10 +459,6 @@ All Provider API update requests SHALL include the following HTTP request header
 | `Ssp-Version`  | `1` |
 
 
-Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
-
-
-<!--
 
 | Header               | Value |
 |----------------------|-------|
@@ -426,7 +493,7 @@ PUT [baseUrl]/DocumentReference/[id]</div>
 
 Success:
 
-- SHALL return a `204` **OK** HTTP status code on successful execution of the interaction and the entry has been successfully created and the NRLS.
+- SHALL return a `204` **OK** HTTP status code on successful execution of the interaction and the entry has been successfully created on the NRLS.
 <!--- The NRLS server will return an Etag which matches the new versionId.-->
 
 Failure: 
@@ -462,7 +529,7 @@ Failure:
 
 ## 5. Provider Delete ##
 
-Provider API to support deletion of NRLI pointers.
+Provider API to support deletion of NRLS pointers.
 <!--
 Deletes are version aware. In order to conduct an update the Provider should submit the request with an If-Match header where the ETag matches the versionId of the DocumentReference in question from the server. If the version id given in the If-Match header does not match the versionId that the server holds for that DocumentReference, the server returns a 409 Conflict status code instead of deleting the resource. In this situation the client should read the DocumentReference from the server to get the most recent versionId and use that to populate the Etag in a fresh delete request.-->
 
@@ -471,8 +538,28 @@ Deletes are version aware. In order to conduct an update the Provider should sub
 <!--
 All Provider API delete requests should include the below additional HTTP request headers to support audit and security requirements on the Spine:
 -->
-All Provider API delete requests SHALL include the following HTTP request headers:
+<!--All Provider API delete requests SHALL include the following HTTP request headers:-->
 
+
+Provider API delete requests support the following HTTP request headers:
+
+
+| Header               | Value |Conformance |
+|----------------------|-------|-------|
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](/development_general_api_guidance.html#content-types) section. | MAY |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |  MUST |
+| `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. | MUST |
+| `Ssp-From`           | Client System ASID | MUST |
+| `Ssp-To`             | The Spine ASID | MUST |
+| `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:delete:documentreference`| MUST |
+| `Ssp-Version`  | `1` | MUST |
+
+<!--| `If-Match`      | The ‘If-Match’ header makes the request conditional. The server will process the requested DocumentReference only if it’s versionId property matches one of the listed ETags.|-->
+
+Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+
+
+<!--
 
 | Header               | Value |
 |----------------------|-------|
@@ -483,13 +570,6 @@ All Provider API delete requests SHALL include the following HTTP request header
 | `Ssp-To`             | The Spine ASID |
 | `Ssp-InteractionID`  | `urn:nhs:names:services:nrls:fhir:rest:delete:documentreference`|
 | `Ssp-Version`  | `1` |
-
-<!--| `If-Match`      | The ‘If-Match’ header makes the request conditional. The server will process the requested DocumentReference only if it’s versionId property matches one of the listed ETags.|-->
-
-Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
-
-
-<!--
 
 | Header               | Value |
 |----------------------|-------|

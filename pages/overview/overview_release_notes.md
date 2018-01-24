@@ -9,6 +9,16 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 
 {% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
+## 2.4.0-alpha ##
+
+Sprint 4 summary:
+
+- Consumer and Provider APIs 'Success' Search Response amended to support an empty bundle if search returns no matches.
+- Consumer API Search examples added.
+- Development Guidance section now supports 'General API Guidance' page. This includes implementation guide 'notational conventions' and RESTful API 'content types' sections.
+- The 'Accept' HTTP request header conformance amended to 'MAY'.
+
+
 ## 2.3.0-alpha ##
 
 Sprint 3 summary:
