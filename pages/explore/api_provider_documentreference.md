@@ -91,7 +91,9 @@ GET [baseUrl]/DocumentReference/[id]</div>
 Success:
 
 - SHALL return a `200` **OK** HTTP status code on successful execution of the interaction.
-- The NRLS server will return the versionId of each DocumentReference.
+- SHALL return a DocumentReference resource that conforms to the nrls-documentReference-1 profile.
+
+<!--- The NRLS server will return the versionId of each DocumentReference.-->
 
 
 Failure: 
@@ -109,16 +111,27 @@ Failure:
 |-----------|----------------|------------|--------------|-----------------|
 |404|error|not-found|NO_RECORD_FOUND|No record found|
 |403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
+|400|error|invalid|INVALID_PARAMETER|Invalid parameter|
+|400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|
+
+<!--
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
+|-----------|----------------|------------|--------------|-----------------|
+|404|error|not-found|NO_RECORD_FOUND|No record found|
+|403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
 |403|error|forbidden|ACCESS_DENIED_SSL|SSL Protocol or Cipher requirements not met|
 |403|error|forbidden|ASID_CHECK_FAILED|The sender or receiver's ASID is not authorised for this interaction|
-
+-->
 
 - The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/ValueSet/spine-error-or-warning-code-1)
+- See the 'General API Guidance' section for full on details NRLS [Error Handling](development_general_api_guidance.html#error-handling)
 
 
 ## 2. Provider Search ##
 
-Provider API to support pointer owner (custodian) searches based on ODS code.
+<!--Provider API to support pointer owner (custodian) searches based on ODS code. -->
+
+Provider API to support parameterised search based on custodian and/or patient associated with a DocumentReference.
 
 ### 2.1 Search Request Headers ###
 
@@ -290,16 +303,24 @@ Failure:
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
 |-----------|----------------|------------|--------------|-----------------|
+|403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
+|400|error|invalid|INVALID_PARAMETER|Invalid parameter|
+|400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|
+
+<!--
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
+|-----------|----------------|------------|--------------|-----------------|
 |400|error|invalid|BAD_REQUEST|Bad request|
 |400|error|code-invalid|INVALID_CODE_SYSTEM|Invalid code system|
-|400|error|invalid|INVALID_CODE_VALUE|Invalid code system|
+|400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|
 |400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|
 |403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
 |403|error|forbidden|ACCESS_DENIED_SSL|SSL Protocol or Cipher requirements not met|
 |403|error|forbidden|ASID_CHECK_FAILED|The sender or receiver's ASID is not authorised for this interaction|
-
+-->
 
 - The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/ValueSet/spine-error-or-warning-code-1)
+- See the 'General API Guidance' section for full on details NRLS [Error Handling](development_general_api_guidance.html#error-handling)
 
 <!--- Error REQUEST_UNMATCHED would occur if the NHS number being requested in the search request does not match the requested_record value in the JWT - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.-->
 
@@ -387,7 +408,10 @@ POST [baseUrl]/DocumentReference</div>
 Success:
 
 - SHALL return a `201` **OK** HTTP status code on successful execution of the interaction and the entry has been successfully created in the NRLS.
-- The NRLS server will return an HTTP Location header containing the 'server' assigned logical Id <!--and versionId-->of the created DocumentReference resource.
+- SHALL return an HTTP `Location header` containing the full URL to the newly created DocumentReference. This URL will contain the 'server' assigned `logical Id` and `versionId` of the new DocumentReference resource. When a resource has been created it will have an initial `versionId` of 1. Following an update the `versionId` will be incremented by 1.
+
+{% include note.html content="The versionId is an integer that is assigned and maintained by the NRLS server. When a new DocumentReference is created the server assigns it a versionId of 1. If a Provider subsequently updates that DocumentReference the server will increment the versionId by 1. <br/><br/> The NRLS server will ignore any versionId value sent by a client in an update or create interaction. Instead the server will ensure that the newly assigned verionId adheres to the rules laid out above. The NRLS server will ensure that it maintains the latest versionId of a DocumentReference.
+" %}
 
 Failure: 
 
@@ -395,6 +419,14 @@ Failure:
 - The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
 
 
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
+|-----------|----------------|------------|--------------|-----------------|
+|403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
+|400|error|invalid|INVALID_RESOURCE|Invalid validation of resource|
+|400|error|structure|MESSAGE_NOT_WELL_FORMED|Message not well formed|
+|400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|
+
+<!--
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
 |-----------|----------------|------------|--------------|-----------------|
 |400|error|invalid|INVALID_RESOURCE|Invalid validation of resource|
@@ -405,16 +437,23 @@ Failure:
 |403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
 |403|error|forbidden|ACCESS_DENIED_SSL|SSL Protocol or Cipher requirements not met|
 |403|error|forbidden|ASID_CHECK_FAILED|The sender or receiver's ASID is not authorised for this interaction|
-
+-->
 
 - The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/ValueSet/spine-error-or-warning-code-1)
+- See the 'General API Guidance' section for full on details NRLS [Error Handling](development_general_api_guidance.html#error-handling)
 
 <!--- Error REQUEST_UNMATCHED would occur if the NHS number being requested in the search request does not match the requested_record value in the JWT - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.-->
+
+
 
 
 ## 4. Provider Update ##
 
 Provider API to support NRLS pointer updates.
+
+Update cannot be used to create new pointers. See [Payload Business Rules](development_general_api_guidance.html#id) Error Handling section.
+
+
 <!--
 All provider documentReference update requests should contain a version id to avoid lost updates. See [FAQ](support_faq.html).
 -->
@@ -443,6 +482,8 @@ Provider API update requests support the following HTTP request headers:
 
 
 Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
+
+
 
 
 <!--
@@ -477,7 +518,11 @@ Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only 
 <div markdown="span" class="alert alert-success" role="alert">
 PUT [baseUrl]/DocumentReference/[id]</div>
 
-<p>The 'update' interaction is performed by an HTTP PUT of the <code class="highlighter-rouge">{{include.resource}}</code> and creates a new current version of the resource to the NRLS Registry endpoint.</p>
+<p>The 'update' interaction is performed by an HTTP PUT of the <code class="highlighter-rouge">DocumentReference</code> and creates a new current version of the resource to the NRLS Registry endpoint.</p>
+
+<!--{{include.content}}
+
+<p>The 'update' interaction is performed by an HTTP PUT of the <code class="highlighter-rouge">{{include.content}}</code> and creates a new current version of the resource to the NRLS Registry endpoint.</p>-->
 
 <p>In addition to the base mandatory data-elements, the following data-elements are also mandatory:</p>
 
@@ -488,20 +533,33 @@ PUT [baseUrl]/DocumentReference/[id]</div>
 <p>The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. </p>
 -->
 
-
 ### 4.3 Update Response ###
 
 Success:
 
-- SHALL return a `204` **OK** HTTP status code on successful execution of the interaction and the entry has been successfully created on the NRLS.
+- SHALL return a `200` **OK** HTTP status code on successful execution of the interaction and the entry has been successfully updated on the NRLS. 
 <!--- The NRLS server will return an Etag which matches the new versionId.-->
+- SHALL return an `ETag` header which matches the incremented `versionId`. The `ETag` header holds the current version of the Pointer. It will be an integer. The greater the value the more recent the version (see below for further details).
+- SHALL return a `Last-Modified` header. The `Last-Modified` header refers to the datetime (in UTC) that the Pointer was last changed in the NRLS. It is a timestamp that carries the instant that the Pointer was changed. The timestamp holds the `year, month, day, hour, minute and number of seconds in UTC` at the instant the Pointer was changed.
+<!--- SHALL return an HTTP `Location` header containing the full URL to the updated DocumentReference. This URL will contain the 'server' assigned `logical Id` and incremented `versionId` of the new DocumentReference resource. -->
+
+{% include note.html content="The versionId is an integer that is assigned and maintained by the NRLS server. When a new DocumentReference is created the server assigns it a versionId of 1. If a Provider subsequently updates that DocumentReference the server will increment the versionId by 1. <br/><br/> The NRLS server will ignore any versionId value sent by a client in an update or create interaction. Instead the server will ensure that the newly assigned verionId adheres to the rules laid out above. The NRLS server will ensure that it maintains the latest versionId of a DocumentReference.
+" %}
 
 Failure: 
 
 - SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match).
 - The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
 
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
+|-----------|----------------|------------|--------------|-----------------|
+|404|error|not-found|NO_RECORD_FOUND|No record found|
+|403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
+|400|error|invalid|INVALID_RESOURCE|Invalid validation of resource|
+|400|error|structure|MESSAGE_NOT_WELL_FORMED|Message not well formed|
+|400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|
 
+<!--
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
 |-----------|----------------|------------|--------------|-----------------|
 |400|error|invalid|INVALID_RESOURCE|Invalid validation of resource|
@@ -513,10 +571,12 @@ Failure:
 |403|error|forbidden|ACCESS_DENIED_SSL|SSL Protocol or Cipher requirements not met|
 |403|error|forbidden|ASID_CHECK_FAILED|The sender or receiver's ASID is not authorised for this interaction|
 |404|error|not-found|NO_RECORD_FOUND|No record found|
-
-
+-->
 
 - The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/ValueSet/spine-error-or-warning-code-1)
+- See the 'General API Guidance' section for full on details NRLS [Error Handling](development_general_api_guidance.html#error-handling)
+
+
 
 <!--A 409 HTTP response is expected for versionId conflict when performing an update or delete of a DocumentReference.-->
 
@@ -592,7 +652,7 @@ DELETE [baseUrl]/DocumentReference/[id]</div>
 
 ### 5.3 Delete Response ###
 
-<p>The 'delete' interaction removes an existing resource. The interaction is performed by an HTTP DELETE of the <code class="highlighter-rouge">{{include.resource}}</code> resource.</p>
+<p>The 'delete' interaction removes an existing resource. The interaction is performed by an HTTP DELETE of the <code class="highlighter-rouge">DocumentReference</code> resource.</p>
 
 <!--<p>Return a single <code class="highlighter-rouge">{{include.resource}}</code> for the specified id{{include.content}}.</p>-->
 
@@ -613,6 +673,15 @@ Failure:
 - The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
 
 
+
+
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
+|-----------|----------------|------------|--------------|-----------------|
+|404|error|not-found|NO_RECORD_FOUND|No record found|
+|403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
+|400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|
+
+<!--
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
 |-----------|----------------|------------|--------------|-----------------|
 |400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|
@@ -621,8 +690,10 @@ Failure:
 |403|error|forbidden|ASID_CHECK_FAILED|The sender or receiver's ASID is not authorised for this interaction|
 |404|error|not-found|NO_RECORD_FOUND|No record found|
 
+-->
 
 - The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/ValueSet/spine-error-or-warning-code-1)
+- See the 'General API Guidance' section for full on details NRLS [Error Handling](development_general_api_guidance.html#error-handling)
 
 <!--A 409 HTTP response is expected for versionId conflict when performing an update or delete of a DocumentReference.-->
 

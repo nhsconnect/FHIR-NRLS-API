@@ -99,7 +99,9 @@ GET [baseUrl]/DocumentReference/[id]</div>
 Success:
 
 - SHALL return a `200` **OK** HTTP status code on successful execution of the interaction.
-- The NRLS server will return the versionId of each DocumentReference.
+- SHALL return a DocumentReference resource that conforms to the nrls-documentReference-1 profile.
+
+<!--- The NRLS server will return the versionId of each DocumentReference.-->
 
 
 Failure: 
@@ -111,23 +113,32 @@ Failure:
 {% include custom/read.response.html resource="DocumentReference" content="" %}
 -->
 
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
+|-----------|----------------|------------|--------------|-----------------|
+|404|error|not-found|NO_RECORD_FOUND|No record found|
+|403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
+|422|error|invalid|INVALID_PARAMETER|Invalid parameter|
+|400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|
 
-
+<!--
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
 |-----------|----------------|------------|--------------|-----------------|
 |404|error|not-found|NO_RECORD_FOUND|No record found|
 |403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
 |403|error|forbidden|ACCESS_DENIED_SSL|SSL Protocol or Cipher requirements not met|
 |403|error|forbidden|ASID_CHECK_FAILED|The sender or receiver's ASID is not authorised for this interaction|
-
+-->
 
 - The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/ValueSet/spine-error-or-warning-code-1)
+- See the 'General API Guidance' section for full on details NRLS [Error Handling](development_general_api_guidance.html#error-handling)
 
 
 
 ## 2. Consumer Search ##
 
-Consumer API to support discovery of NRLS pointers.
+Consumer API to support parameterised search based on patient and/or custodian associated with a DocumentReference.
+
+<!--Consumer API to support discovery of NRLS pointers.-->
 
 ### 2.1 Search Request Headers ###
 
@@ -314,6 +325,15 @@ Failure:
 - SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match).
 - The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
 
+
+
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
+|-----------|----------------|------------|--------------|-----------------|
+|403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
+|422|error|invalid|INVALID_PARAMETER|Invalid parameter|
+|400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|
+
+<!--
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
 |-----------|----------------|------------|--------------|-----------------|
 |400|error|invalid|BAD_REQUEST|Bad request|
@@ -323,9 +343,10 @@ Failure:
 |403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
 |403|error|forbidden|ACCESS_DENIED_SSL|SSL Protocol or Cipher requirements not met|
 |403|error|forbidden|ASID_CHECK_FAILED|The sender or receiver's ASID is not authorised for this interaction|
-
+-->
 
 - The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/ValueSet/spine-error-or-warning-code-1)
+- See the 'General API Guidance' section for full on details NRLS [Error Handling](development_general_api_guidance.html#error-handling)
 
 <!--- Error REQUEST_UNMATCHED would occur if the NHS number being requested in the search request does not match the requested_record value in the JWT - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.-->
 
@@ -348,12 +369,6 @@ Return all DocumentReference resources for a patient with a NHS Number of 987654
 <script src="https://gist.github.com/swk003/1fb79ea938f6f5f984069819a29c2356.js"></script>
 
 
-
-
-
-<!--
-{% include custom/search.response.headers.html resource="DocumentReference" %}
--->
 
 #### 2.5.4 Query Response ####
 

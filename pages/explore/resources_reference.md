@@ -26,7 +26,7 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Data Item|FHIR Element|Data Type|Card|Description|
 |----|---------|----|-----------|-----|
 |Identifier|`id`|string|0..1|Assigned by the NRLS at creation time. Uniquely identifies this record within an instance of the NRLS. Used by Providers to update or delete.|
-|Version|`versionId`|string|0..1|Assigned by the NRLS at creation or update time. Used to track the current version of a Pointer to support optimistic locking when performing updates or deletes.|
+|Version|`versionId`|string|0..1|Assigned by the NRLS at creation or update time. Used to track the current version of a Pointer.|
 |Record type|`type`|CodeableConcept|1..1|The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers.|
 |Patient|`subject`|Reference|1..1|The Patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.| 
 |Record owner|`author`|Reference|1..1|ODS code for the record owner organization.|
@@ -86,4 +86,25 @@ NRLS supported URI's:
 |`organization`| https://directory.spineservices.nhs.uk/STU3/Organization/[ODS Code] | Record author or record owner |
 
 
-{% include warning.html content="The URI's on subdomain spineservices.nhs.uk are currently not resolvable, however this will change in the future where references relate to FHIR endpoints in our national systems." %}
+{% include warning.html content="The URI's on subdomain `spineservices.nhs.uk` are currently not resolvable, however this will change in the future where references relate to FHIR endpoints in our national systems." %}
+
+## 7. Examples ##
+
+
+### JSON Example ###
+
+A JSON example of a DocumentReference resource is displayed below. 
+
+<script src="https://gist.github.com/swk003/d7d42428b4d4516f1d64ccee2813ff84.js"></script>
+
+
+### XML Example ###
+
+An XML example of a DocumentReference resource is displayed below. 
+
+<script src="https://gist.github.com/swk003/7dbd484c3e590e259a82abe684ebb4a5.js"></script>
+
+
+
+
+

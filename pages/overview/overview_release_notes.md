@@ -9,7 +9,24 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 
 {% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
-## 2.4.0-alpha ##
+## 1.0.0-beta ##
+
+Sprint 5 summary:
+
+- 'Error Handling' section added to 'General API Guidance' page.
+- Consumer and Provider API error response examples refined.
+- Provider API Create and Update responses amended.
+- VersionId guidance added.
+- 'CapabilityStatement' page updated.
+- 'Auditing' section added to 'Solution Behaviour' page.
+- 'Audit Trail' section added to 'Cross Organization Audit & Provenance' page.
+- JWT Claims: 
+  - 'device' claim added - this is the Identifier (ASID) of the system where the request originates. 
+  - 'sub' claim specification/ example has been updated.
+- 'Authentication and Autherisation' page added - introduces the current tactical and longer term strategic approach. 
+- JSON and XML examples added to 'Reference' section.
+
+## 1.0.0-alpha ##
 
 Sprint 4 summary:
 
@@ -18,23 +35,15 @@ Sprint 4 summary:
 - Development Guidance section now supports 'General API Guidance' page. This includes implementation guide 'notational conventions' and RESTful API 'content types' sections.
 - The 'Accept' HTTP request header conformance amended to 'MAY'.
 
-
-## 2.3.0-alpha ##
-
 Sprint 3 summary:
 
 - Consumer and Provider APIs now support the 'patient' Search parameter. This replaces the 'subject' parameter.
 - Consumer and Provider APIs Search operations will not mandate the '_count' parameter. It is expected that the NRLS Server will support paging as a default to break up result-sets that exceed a pre-determined limit.
 - NRLS API Conformance updated.
 
-
-## 2.2.1-alpha ##
-
 Sprint 3 early release summary:
 
 - Record retrieval via the SSP will not be mandated.
-
-## 2.2.0-alpha ##
 
 Sprint 2 summary:
 
@@ -45,21 +54,17 @@ Sprint 2 summary:
 - Security Guidance updated: TLSv1.2 must be supported for all new Spine interfaces and new cyphers added. 
 - Implementation Guide semver use updated. No longer using pre-release numeric identifiers.
 
-## 2.1.0-alpha.1 ##
-
 Sprint 1 'internal' review feedback amendments include:
 
 - References to SDS removed
 - Solution principles changed to reflect that the Provider controls the Record retrieval mechanism strategy 
 - NRLS will not be fronted by SSP i.e. requests to read/write Pointers will not go through the SSP in order to reach NRLS
 
-## 2.0.0-alpha.1 ##
-
 First release of NRLS FHIR API (STU3) via https://nhsconnect.github.io/. 
 
-Project follows the Gov.UK agile delivery phases.   
+- Project follows the Gov.UK agile delivery phases.   
 
-## 1.0 : DRAFT A ##
+## 1.0.0-experimental ##
 
 First draft of NRLS DMS (Version 1.0 Draft A) created to support development of the Spine 2 POC National Record Locator Service interface.
 

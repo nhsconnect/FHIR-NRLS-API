@@ -1,7 +1,7 @@
 entries:
 - title: NRLS
   product: NRLS
-  version: 2.4.0-alpha
+  version: 1.0.0-beta
   levels: one
   folders:
 
@@ -12,9 +12,9 @@ entries:
       url: /index.html
       output: web, pdf
       type: homepage
-    - title: Getting Started
-      url: /overview_engage.html
-      output: web
+   # - title: Getting Started
+   #   url: /overview_engage.html
+   #   output: web
     - title: Product Versioning
       url: /overview_guide_versioning.html
       output: web
@@ -102,6 +102,9 @@ entries:
   - title: Integrate With Spine
     output: web
     folderitems:
+    - title: Authentication & Authorisation
+      url: /integration_authentication_authorisation.html
+      output: web
     - title: Cross Organisation Audit & Provenance
       url: /integration_cross_organisation_audit_and_provenance.html
       output: web
@@ -111,9 +114,9 @@ entries:
    # - title: Spine Directory Service
     #  url: /integration_spine_directory_service.html
     #  output: web
-    - title: Spine Security Proxy
-      url: /integration_spine_security_proxy.html
-      output: web 
+    #- title: Spine Security Proxy
+     # url: /integration_spine_security_proxy.html
+     # output: web 
         # - title: Spine Security Proxy Implementation Guide
         #   url: /integration_spine_security_proxy_implementation_guide.html
         #   output: web    

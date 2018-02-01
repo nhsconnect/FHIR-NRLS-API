@@ -29,7 +29,8 @@ Consumer system SHALL generate a new JWT for each API request. The Payload secti
 | Claim | Priority | Description | Fixed Value | Dynamic Value | Specification / Example |
 |-------|----------|-------------|-------------|---------------|-------------------------|
 | iss | R | Client systems issuer URI | No | Yes | |
-| sub | R | Identifier of individual making the request.| No | Yes | Could be local system identifier for that user or if national Smartcard capability has been used then this will be the user’s UUID|
+| sub | O | Identifier of individual making the request.| No | Yes | This field is conditionally mandatory. It must be supplied if the client is just a Consumer. However if the client is a Provider this field is optional. Note that if available the Provider should populate this field however in cases where no user is in scope then the sub can be left unpopulated. Where the sub is supplied it could be local system identifier for that user or if national Smartcard capability has been used then this will be the user’s UUID. |
+| device | R | Identifier (ASID) of system where request originates | No | Yes | |
 | aud | R | Requested resource URI | No | Yes | |
 | exp | R | Expiration time integer after which this authorization MUST be considered invalid. | No | (now + 5 minutes) UTC time in seconds | |
 | iat | R | The UTC time the JWT was created by the requesting system | `No| now UTC time in seconds | |
@@ -67,3 +68,26 @@ eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJpc3MiOiJodHRwOi8vZWMyLTU0LTE5NC0xMDktMTg0
 NOTE: As this is an unsigned token, the final section (the signature) is empty, so the JWT will end with a trailing . - this must not be omitted as it will then not be a valid token.
 
 {% include tip.html content="The [JWT.io](https://jwt.io/) website includes a number of rich resources to aid in developing JWT enabled applications." %}
+
+## Audit Trail ##
+
+The various parts of an audit trail will be assembled from different parts of the request and in some cases will be calculated properties
+
+### Request audit trail ###
+_"This [local user on this] (1) system (2) from this organisation (3) with this legitimate relationship (4) has sent this request (5) at this time (6)..."_
+
+1.  local user - taken from the sub claim on the JWT which is sent under the mandatory Authorization HTTP header. Note that the sub claim may or may not be provided (see [JWT](integration_cross_organisation_audit_and_provenance.html#json-web-tokens-jwt) table above)
+2.  system - the ASID of the client system. Taken from the device claim on the [JWT](integration_cross_organisation_audit_and_provenance.html#json-web-tokens-jwt) which is sent under the mandatory Authorization HTTP header.
+3.  organisation - calculated by looking up the ODS code of the Organisation that is associated with the ASID (Ssp-From)
+4.  legitimate relationship - currently expected to be a fixed value of "directcare". No validation will be performed as to whether the given system and or organisation
+are valid in their use of direct care as the kind of relationship
+5.  request- the request URL, HTTP verb and the body of the request (in the case of a Provider's create and update actions)
+6.  time - the datetime that the request landed on the NRLS web server
+
+### Response audit trail ###
+_"...which resulted in this response (1) at this time (2)"_
+
+1.  response - HTTP response code, response body (if present), Location header (for create and update)
+2.  time - the datetime that the NRLS web server posted its response to the client
+
+For more detail on the Audit capabilities of the NRLS see [Auditing](overview_behaviours.html#auditing)

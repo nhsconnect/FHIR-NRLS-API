@@ -39,7 +39,7 @@ Acknowledging that this complexity exists and sits outside of the NRLS’ contro
 
 ### The NRLS supports varying levels of digital maturity ###
 
-The NRLS recognises that there will be varying levels of digital maturity across Providers and Consumers. To accommodate this the NRLS has the concept of direct and indirect Pointers which have been discussed above.
+The NRLS recognises that there will be varying levels of digital maturity across Providers and Consumers. To accommodate this the NRLS has the concept of direct and indirect Pointers which have been discussed elsewhere.
 
 The purpose of an indirect Pointer is to provide a lower maturity Provider with a means to surface Records to  Consumers without the need to expose them digitally. An indirect Pointer could point to a set of contact details for a service that can be called to relay a Record over the phone. Similarly if a Consumer does not have the capability to integrate a digital Record into their system an indirect Pointer gives them another mechanism to allow their users to access Records.
 
@@ -50,10 +50,8 @@ When a Consumer requests that the NRLS return the Pointers that it has for a giv
 Once consequence of this is that the end user on the Consumer side may be exposed to Pointers that reveal sensitive information about the Patient, for example it will be possible to infer through a Pointer that a Patient has a certain kind of record. Even though the user may not be able to retrieve the Record, knowing that it exists is in itself revealing a degree of personal information about that patient that may not be appropriate. 
 With this in mind it is acknowledged that there is most likely going to be a need to filter Pointers before they are displayed to the end user. This responsibility is seen as belonging to the Consumer where local access rules will be used to judge whether or not a given user should be permitted to know that a given Pointer exists.
 
-The mechanism for making this decision is predicated on the type of Record that the Pointer references. 
-
-[TODO Diagram 4]
+The mechanism for making this decision is predicated on the [Record type](overview_data_model.html#data-model) that the Pointer references. 
 
 ### The Provider controls Record format ###
 
-The NRLS takes the stance that it is for the Provider to determine what format its Records should be delivered in. Whether or not the Consumer can handle that format is not the concern of the Provider and nor is it the concern of the NRLS. The NRLS expects that a Provider will create a Pointer with additional contextual information (i.e. mime type) to help the Consumer determine the appropriate way to handle the Record.
+The NRLS takes the stance that it is for the Provider to determine what format its Records should be delivered in. The NRLS does not restrict the format of Records that are pointed to. Whether or not the Consumer can handle that format is not the concern of the Provider and nor is it the concern of the NRLS. The NRLS expects that a Provider will create a Pointer with additional contextual information (i.e. mime type) to help the Consumer determine the appropriate way to handle the Record.
