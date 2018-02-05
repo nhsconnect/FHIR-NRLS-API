@@ -28,6 +28,8 @@ In the overall solution for NRLS broadly speaking there are three main systems t
 
 ### Consumer interaction ###
 
+<br/>
+
 {% include custom/under.construction.html content="Consumer interactions to be added in a future release." %}
 
 <!--<img src="images/solution/Consumer_interaction_diagram.png" style="width:100%;max-width: 100%;">-->
