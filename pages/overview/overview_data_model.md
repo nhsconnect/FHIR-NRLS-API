@@ -26,4 +26,11 @@ In order to support the Consumer and Provider interactions with the NRLS the Poi
 |Record type|1..1|The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers. The clinical type will be one of a controlled set. It will not be possible to create a pointer with a type that does not exist within this controlled set.|
 |Record URL|1..1|The location of the record on the Provider’s system|
 |Record mime type|1..1|Describes the format of the record such that the Consumer can pick an appropriate mechanism to handle the record. Without it the Consumer would be in the dark as to how to deal with the Record|
-|Record retrieval mode|1..1|Whether or not this Pointer facilitates direct or indirect Record retrieval. Used to give the Consumer a cue as to what following the Pointer will return.|
+
+
+
+<!--|Master identifier|0..1|identifier as assigned by the source of the record. This identifier is specific to this version of the record. This unique identifier may be used elsewhere to identify this version of the record.|-->
+
+
+<!--
+|Record retrieval mode|1..1|Whether or not this Pointer facilitates direct or indirect Record retrieval. Used to give the Consumer a cue as to what following the Pointer will return.|-->

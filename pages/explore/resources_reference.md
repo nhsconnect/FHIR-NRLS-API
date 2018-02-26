@@ -32,11 +32,18 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Record owner|`author`|Reference|1..1|ODS code for the record owner organization.|
 |Pointer owner|`custodian`|Reference|1..1|ODS code for the pointer owner organization.|
 |Record mime type|`attachment.contentType`|code|1..1|Describes the format of the record such that the Consumer can pick an appropriate mechanism to handle the record. Without it the Consumer would be in the dark as to how to deal with the Record|
-|Record URL|`attachment.url`|uri|1..1|The location of the record on the Provider’s system|
+|Record URL|`attachment.url`|uri|1..1|The location of the record on the Provider’s system and/ or a service that allows you to look up information based on the provider url e.g. web page with service contact details|
 |Record creation datetime|`attachment.creation`|dateTime|0..1|The date and time (on the Provider’s system) that the record was created. Note that this is an optional field and is meant to convey the concept of a static record.|
-|Record retrieval mode|`content.recordRetrievalMode`|CodeableConcept|0..1|Whether or not this Pointer facilitates direct or indirect Record retrieval. Used to give the Consumer a clue as to what following the Pointer will return.|
 
 
+
+<!--|Master identifier|`masterIdentifier`|Identifier|0..1|identifier as assigned by the source of the record. This identifier is specific to this version of the record. This unique identifier may be used elsewhere to identify this version of the record.|-->
+
+
+<!--
+|Record retrieval mode|`content.recordRetrievalMode`|CodeableConcept|0..1|Whether or not this Pointer facilitates direct or indirect Record retrieval. Used to give the Consumer a clue as to what following the Pointer will return.|-->
+
+<!--
 ## 3. Extensions ##
 
 Links to the NRLS FHIR extensions on the NHS FHIR Reference Server. 
@@ -44,25 +51,31 @@ Links to the NRLS FHIR extensions on the NHS FHIR Reference Server.
 |Extension|
 |---------|
 | [Extension-NRLS-RecordRetrievalMode-1](https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRLS-RecordRetrievalMode-1)|
+-->
 
-## 4. Valesets ##
+## 3. ValeSets ##
 
-Links to the NRLS FHIR valuesets on the NHS FHIR Reference Server. 
+Links to the NRLS FHIR value sets on the NHS FHIR Reference Server. 
 
 |Valueset|Description|
 |-------|-----------|
-|[ValueSet-NRLS-RecordRetrievalMode-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordRetrievalMode-1)| National record locator pointer retrieval mode. |
 |[ValueSet-CarePlanType-1](https://fhir.nhs.uk/STU3/ValueSet/CarePlanType-1)| Care plan type |
 |[ValueSet-Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)| Spine error codes|
 
-## 5. CodeSystems ##
+<!--
+|[ValueSet-NRLS-RecordRetrievalMode-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordRetrievalMode-1)| National record locator pointer retrieval mode. |
+-->
+
+## 4. CodeSystems ##
 
 Links to the NRLS FHIR CodeSystems on the NHS FHIR Reference Server. 
 
 |CodeSystem|Description|
 |-------|-----------|
-|[CodeSystem-NRLS-RecordRetrievalMode-1](https://fhir.nhs.uk/STU3/CodeSystem/NRLS-RecordRetrievalMode-1)| identifies the national record locator pointer retrieval mode. |
 |[CodeSystem-Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1)|Spine error codes and descriptions.|
+
+<!--
+|[CodeSystem-NRLS-RecordRetrievalMode-1](https://fhir.nhs.uk/STU3/CodeSystem/NRLS-RecordRetrievalMode-1)| identifies the national record locator pointer retrieval mode. |-->
 
 <!--
 ## NRLS Identifiers ##
@@ -75,7 +88,7 @@ Links to the NRLS FHIR CodeSystems on the NHS FHIR Reference Server.
 | SDS/ODS Site Code | https://fhir.nhs.uk/Id/ods-site-code | Location |
 -->
 
-## 6. Identifiers ##
+## 5. Identifiers ##
 
 NRLS supported URI's:   
 
@@ -88,7 +101,7 @@ NRLS supported URI's:
 
 {% include warning.html content="The URI's on subdomain `spineservices.nhs.uk` are currently not resolvable, however this will change in the future where references relate to FHIR endpoints in our national systems." %}
 
-## 7. Examples ##
+## 6. Examples ##
 
 
 ### JSON Example ###

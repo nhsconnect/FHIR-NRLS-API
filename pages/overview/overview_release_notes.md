@@ -9,6 +9,18 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 
 {% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
+## 1.1.0-beta ##
+
+- Concept of direct and indirect pointers removed from API. Changes to the [Data Model](overview_data_model.html#data-model) and the [NRLS-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1) FHIR profile as follows: 
+  - RecordRetrievalMode CodeableConcept functionality removed from the [NRLS-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1) FHIR profile. 
+  - The following dependent FHIR assets have been removed from NHS FHIR Server and implementation guide:
+    - Extension-NRLS-RecordRetrievalMode-1
+    - ValueSet-NRLS-RecordRetrievalMode-1
+    - CodeSystem-NRLS-RecordRetrievalMode-1
+
+- Versioning of profile[TBC]
+- masterIdentifier[TBC]
+
 ## 1.0.0-beta ##
 
 Sprint 5 summary:
