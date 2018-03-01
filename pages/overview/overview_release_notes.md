@@ -18,8 +18,14 @@ summary: Summary release notes of the versions released in NRLS API Implementati
     - ValueSet-NRLS-RecordRetrievalMode-1
     - CodeSystem-NRLS-RecordRetrievalMode-1
 
-- Versioning of profile[TBC]
-- masterIdentifier[TBC]
+- `custodian` search parameter dropped from Consumer API
+- Support for the `patient and custodian` search parameters dropped from Consumer API
+- Additional guidance added to [Parameters - INVALID_PARAMETER](development_general_api_guidance.html#parameters---invalid_parameter) Error Handling section.
+- Consumer API XML/ JSON examples added
+<!--
+Versioning of profile[TBC]
+masterIdentifier[TBC]
+-->
 
 ## 1.0.0-beta ##
 
