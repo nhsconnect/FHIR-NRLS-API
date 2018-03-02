@@ -39,9 +39,17 @@ Acknowledging that this complexity exists and sits outside of the NRLS’ contro
 
 ### The NRLS supports varying levels of digital maturity ###
 
-The NRLS recognises that there will be varying levels of digital maturity across Providers and Consumers. To accommodate this the NRLS has the concept of direct and indirect Pointers which have been discussed elsewhere.
+The NRLS recognises that there will be varying levels of digital maturity across Providers and Consumers. The format of and way that a Record can be retrieved are under the control of the Provider system. At this stage 2 record retrieval scenarios are envisaged: 
+
+- A Provider exposes a Record for direct retrieval such that using the context available in the Pointer, a Consumer is able to retrieve the Record by electronic means. 
+- A Provider exposes a set of contact details that a Consumer can use to retrieve the Record. The Consumer does not retrieve the Record electronically, instead they use the contact details as an intermediate step to get to the Record e.g. by phoning a healthcare service found in the contact details, who then can relay the Record to the Consumer via another mechanism.
+
+
+<!--
+To accommodate this the NRLS has the concept of direct and indirect Pointers which have been discussed elsewhere.
 
 The purpose of an indirect Pointer is to provide a lower maturity Provider with a means to surface Records to  Consumers without the need to expose them digitally. An indirect Pointer could point to a set of contact details for a service that can be called to relay a Record over the phone. Similarly if a Consumer does not have the capability to integrate a digital Record into their system an indirect Pointer gives them another mechanism to allow their users to access Records.
+-->
 
 ### The Consumer controls Pointer access ###
 

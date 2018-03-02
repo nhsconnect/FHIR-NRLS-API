@@ -390,8 +390,11 @@ Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only 
 
 ### 3.2. Provider Create Operation ###
 
+Provider system will construct a new Pointer (DocumentReference) and submit this to NRLS using the FHIR RESTful [create](https://www.hl7.org/fhir/http.html#create) interaction.
+
 <div markdown="span" class="alert alert-success" role="alert">
 POST [baseUrl]/DocumentReference</div>
+
 
 <p>In addition to the base mandatory data-elements, the following data-elements are also mandatory:</p>
 
@@ -402,6 +405,9 @@ POST [baseUrl]/DocumentReference</div>
 <p>The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>.</p>
 -->
 
+#### 3.2.1 XML Example of a new DocumentReference resource (pointer) ####
+
+<script src="https://gist.github.com/swk003/ddd53998c6021c357cdccd3bce839a7a.js"></script>
 
 ### 3.3 Create Response ###
 
@@ -443,6 +449,15 @@ Failure:
 - See the 'General API Guidance' section for full on details NRLS [Error Handling](development_general_api_guidance.html#error-handling)
 
 <!--- Error REQUEST_UNMATCHED would occur if the NHS number being requested in the search request does not match the requested_record value in the JWT - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.-->
+
+#### 3.3.1 Example Error Response (OperationOutcome): #### 
+
+- HTTP 400-Invalid validation of resource. This is a resource validation error type and if there are problems with one or more of the DocumentReference resource elements this error may be thrown.
+- OperationOutcome resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the create interaction DocumentReference resource is not valid. An XML example is below:
+
+<script src="https://gist.github.com/swk003/c147ae7dd8fc0f518984f7bfcb4bebe1.js"></script>
+
+
 
 
 

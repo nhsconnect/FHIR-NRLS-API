@@ -12,8 +12,8 @@ summary: A DocumentReference resource is used to describe a document that is mad
 -->
 
 
-
 {% include custom/search.warnbanner.html %}
+
 
 {% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
 
@@ -136,7 +136,9 @@ Failure:
 
 ## 2. Consumer Search ##
 
-Consumer API to support parameterised search based on patient and/or custodian associated with a DocumentReference.
+Consumer API to support parameterised search based on a patient associated with a DocumentReference.
+
+<!--Consumer API to support parameterised search based on a patient and/or custodian associated with a DocumentReference.-->
 
 <!--Consumer API to support discovery of NRLS pointers.-->
 
@@ -209,6 +211,7 @@ Though the NRLS does not keep a version history of each DocumentReference each o
     <th style="width:5%;">Conformance</th>
     <th style="width:35%;">Path</th>
 </tr>
+<!--
 <tr>
     <td><code class="highlighter-rouge">custodian</code></td>
     <td><code class="highlighter-rouge">reference</code></td>
@@ -216,6 +219,7 @@ Though the NRLS does not keep a version history of each DocumentReference each o
     <td>SHOULD</td>
     <td>DocumentReference.custodian(Organization)</td>
 </tr>
+-->
 <tr>
     <td><code class="highlighter-rouge">patient</code></td>
     <td><code class="highlighter-rouge">reference</code></td>
@@ -273,16 +277,14 @@ Though the NRLS does not keep a version history of each DocumentReference each o
 -->
 </table>
 
-{% include custom/search.warn.subject.custodian.html %}
+When performing a consumer search its is mandatory to support search by `patient`.
 
-<!--
-Systems SHOULD support the following search combinations:
+<!--Systems SHOULD support the following search combinations:* TBC-->
 
-* TBC
--->
-{% include custom/search.custodian.html para="2.3.1." content="DocumentReference" %}
+<!--Removed include link to custom/search.warn.subject.custodian.html-->
 
-{% include custom/search.patient.html para="2.3.2." content="DocumentReference" %}
+{% include custom/search.patient.html para="2.3.1." content="DocumentReference" %}
+
 <!--
 {% include custom/search.nopat.date.multiprefix.html para="2.3.2." prefixes="`le`, `ge`" multi="a maximum of two" name="created" content="DocumentReference" %}
 
@@ -290,9 +292,11 @@ Systems SHOULD support the following search combinations:
 <br>
 -->
 
-{% include custom/search.patient.custodian.html para="2.3.3." values="" content="DocumentReference" %}
+<!--Removed include link to custom/search.custodian.html-->
 
-{% include custom/search.pagination.html para="2.3.4." values="" content="DocumentReference" %}
+<!--Removed include link to custom/search.patient.custodian.html-->
+
+{% include custom/search.pagination.html para="2.3.2." values="" content="DocumentReference" %}
 
 
 
@@ -315,14 +319,14 @@ Success:
 
 - SHALL return a `200` **OK** HTTP status code on successful execution of the interaction.
 - SHALL return a `Bundle` of `type` searchset, containing either:
-    - One or more `documentReference` resource that conforms to the `nrls-documentReference-1` profile; or
-    - A '0' (zero) total value indicating no record was matched i.e. an empty 'Bundle'.
+    - [One](api_consumer_documentreference.html#2541-single-pointer-documentreference-returned) or [more](api_consumer_documentreference.html#2542-multiple-pointers-documentreference-returned) `documentReference` resources that conform to the `nrls-documentReference-1` profile; or
+    - A '0' (zero) total value indicating no record was matched i.e. an [empty](api_consumer_documentreference.html#2543-no-record-pointer-matched) 'Bundle'.
 - Where a documentReference is returned, it SHALL include the `versionId` and `fullUrl` of the current version of the `documentReference` resource.
 
 
 Failure: 
 
-- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match).
+- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match) - see example [OperationOutcome](api_consumer_documentreference.html#2544-error-response-operationoutcome-returned) error response.
 - The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
 
 
@@ -350,11 +354,15 @@ Failure:
 
 <!--- Error REQUEST_UNMATCHED would occur if the NHS number being requested in the search request does not match the requested_record value in the JWT - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.-->
 
-### 2.5. Example ###
+### 2.5. Example Scenario ###
 
-### 2.5.1 Request Query ###
+An authorised NRLS Consumer searches for a patient's relevant health record using the NRLS to discover potentially vital information to support a patient's emergency crisis care.
 
-Return all DocumentReference resources for a patient with a NHS Number of 9876543210 and a pointer provider ODS code of RR8. The format of the response body will be xml. 
+#### 2.5.1 Request Query ####
+
+Return all DocumentReference resources (pointers) for a patient with a NHS Number of 9876543210. The format of the response body will be XML. 
+
+<!--Return all DocumentReference resources for a patient with a NHS Number of 9876543210 and a pointer provider ODS code of RR8. The format of the response body will be xml. -->
 
 
 <!--Return all DocumentReference resources for Patient with a NHS Number of 9876543210, and a record created date greater than or equal to 1st Jan 2010, and a record created date less than or equal to 31st Dec 2011, the format of the response body will be xml. Replace 'baseUrl' with the actual base Url of the FHIR Server.-->
@@ -362,7 +370,7 @@ Return all DocumentReference resources for a patient with a NHS Number of 987654
 
 #### 2.5.2 cURL ####
 
-{% include custom/embedcurl.html title="Search DocumentReference" command="curl -H 'Accept: application/fhir+xml' -H 'Authorization: BEARER [token]' -X GET  '[baseUrl]/DocumentReference?patient=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210&custodian.identifier=https://fhir.nhs.uk/Id/ods-organization-code|RR8&_format=xml'" %}
+{% include custom/embedcurl.html title="Search DocumentReference" command="curl -H 'Accept: application/fhir+xml' -H 'Authorization: BEARER [token]' -X GET  '[baseUrl]/DocumentReference?patient=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210&_format=xml'" %}
 
 #### 2.5.3 Query Response Http Headers ####
 
@@ -372,4 +380,36 @@ Return all DocumentReference resources for a patient with a NHS Number of 987654
 
 #### 2.5.4 Query Response ####
 
+##### 2.5.4.1 Single Pointer (DocumentReference) Returned: ##### 
+
+- HTTP 200-Request was successfully executed
+- Bundle resource of type searchset containing a total value '1' DocumentReference resource that conforms to the `nrls-documentReference-1` profile.
+
 <script src="https://gist.github.com/swk003/3fe6a98111228c9429119ce6a6a0f2d3.js"></script>
+
+##### 2.5.4.2 Multiple Pointers (DocumentReference) Returned: ##### 
+
+- HTTP 200-Request was successfully executed
+- Bundle resource of type searchset containing a total value '2' DocumentReference resources that conform to the `nrls-documentReference-1` profile
+
+<script src="https://gist.github.com/swk003/9243210a0c78b0202c484e46ce41ac80.js"></script>
+
+A JSON example of multiple pointers returned is as follows:
+
+<script src="https://gist.github.com/swk003/6397f3d7b5ba7355629221e49754151b.js"></script>
+
+##### 2.5.4.3 No Record (pointer) Matched: ##### 
+
+- HTTP 200-Request was successfully executed
+- Empty bundle resource of type searchset containing a '0' (zero) total value indicating no record was matched
+
+<script src="https://gist.github.com/swk003/672e5b3af26646c29f468cbc54200795.js"></script>
+
+##### 2.5.4.4 Error Response (OperationOutcome) Returned: ##### 
+
+- HTTP 403-Security validation error. Access has been denied to process this request. 
+- OperationOutcome resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match)
+
+<script src="https://gist.github.com/swk003/315767504327169bd4d6670b98582eb0.js"></script>
+
+See Consumer Search section for all [HTTP Error response codes](api_consumer_documentreference.html#24-search-response) supported by Consumer Search API.
