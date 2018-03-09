@@ -44,9 +44,28 @@ The NRLS also acknowledges that there is a difference to be drawn between how th
 
 ### Pointer ###
 
+Pointers are associated with a Record. As noted a Record exists in a remote system, one of the roles of the Pointer is to provide enough context to allow a Consumer to retrieve that Record from the remote system and display it.
+
+The format of and way that a Record can be retrieved are under the control of the Provider system. It might be that the Provider has exposed the Record for direct retrieval such that using the context available in the Pointer, a Consumer is able to retrieve the Record. 
+
+In another scenario it might be that rather than point to an electronic copy of the Record, the Provider has exposed a set of contact details that a Consumer can use to retrieve the Record. In this scenario the Consumer is not retrieving the Record electronically, instead they are using the contact details as an intermediate step to get to the Record perhaps by phoning a healthcare service found in the contact details who will then relay the Record to the Consumer via another mechanism.
+
+
+<img src="images/solution/Solution_Concepts_Pointer2_diagram.png" style="width:100%;max-width: 100%;">
+
+
+The diagram above shows two Pointers that reference the same Record (Record A). The ways that they describe how to get the contents of Record A are different. In red is a Pointer that directly references the Provider’s API. In this example, following the Pointer will return the Record in electronic form direct from the Provider’s record store (green). 
+
+Contrast this with the blue Pointer that contains a set of contact details. A Consumer following this Pointer would begin their retrieval by dialling the telephone number detailed on the Pointer, from there they would enter into a human controlled process that would lead ultimately to Record A being retrieved for them. In this example the person on the end of the contact details is accessing Record A via the same API that the red Pointer references.
+
+
+
+<!--
 Pointers are associated with a Record. As noted a Record exists in a remote system, one of the roles of the Pointer is to provide enough context to allow a Consumer to retrieve that Record from the remote system and display it.  
 
 The NRLS has two kinds of Pointer which are differentiated by the way they facilitate Record retrieval. A <b>direct</b> Pointer can be followed, and the expectation of the Consumer should be that the Record will be returned to them. An <b>indirect</b> Pointer is different. Following this kind of Pointer will not return the Record, instead it will present the Consumer with a further set of instructions that must be followed in order to retrieve the Record. Typically, this will be a set of contact details that must be used to request the Record, for example it might be the phone number of a healthcare service which can relay a Record’s contents over the phone.
 
 
+
 <img src="images/solution/Solution_Concepts_Pointer_diagram.png" style="width:100%;max-width: 100%;">
+-->

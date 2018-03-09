@@ -331,17 +331,19 @@ This error should be expected when a request references the [unique id](explore_
 ### Access - ACCESS_DENIED ###
 There could be a variety of reasons as to why the client is not permitted to perform the action that they have requested:
 - The client's SSL certificate is not trusted by the Spine
-- The interaction ID (Ssp-InteractionID) supplied by the client in the Ssp-From request header is valid however it has not been assigned to the ASID that the client request originated from
+<!--The interaction ID (Ssp-InteractionID) supplied by the client in the Ssp-From request header is valid however it has not been assigned to the ASID that the client request originated from-->
 
 ### Headers - MISSING_OR_INVALID_HEADER ###
 This error will be thrown in relation to the mandatory Authorisation header. There are two main reasons as to why this error might be thrown:
 - The header is missing (note that the header name is case-sensitive)
 - The header is present however it's value is not valid:
   - Authorisation header is not a valid [JWT](integration_cross_organisation_audit_and_provenance.html)
-  - Ssp-From is not a known ASID
-  - Ssp-To is not the ASID of the NRLS
-  - InteractionId – is not a valid NRLS InteractionId
-  - InteractionId – does not match the HTTP verb
+  - `fromASID` is not a known ASID
+  - `toASID` is not the ASID of the NRLS
+
+  <!--InteractionId – is not a valid NRLS InteractionId
+  InteractionId – does not match the HTTP verb-->
+
 
 ### Parameters - INVALID_PARAMETER ###
 This error will be raised in relation to request parameters that the client may have specified. As such this error can be raised in a variety of circumstances:
@@ -363,13 +365,14 @@ This parameter refers to an Organisation by a business identifier, specifically 
 #### _format request parameter ####
 This parameter must specify one of the [mime types](development_general_api_guidance.html#restful-api) recognised by the NRLS.
 
+<!--
 #### Consumer search should return 422 with error code of INVALID_PARAMETER under the following circumstances: ####
 - `custodian` is considered an invalid parameter for searches by systems that only have authorised NRLS Consumer acccess rights. The reason that it's invalid is down to IG and the direct care leg relationship.
 
 #### Provider search should return 422 with error code of INVALID_PARAMETER under the following circumstances: ####
 - Providers can only pass their own ODS code in the `custodian` parameter otherwise an invalid parameter error respone will be returned. 
 - Provider Pointer(s) owners are allowed to view their own pointers in bulk
-
+-->
 ### Payload business rules - INVALID_RESOURCE ###
 This error code may surface when creating or modifying a DocumentReference. There are a number of properties that make up the DocumentReference which have business rules associated with them. If there are problems with one or more of these properties then this error may be thrown.
 

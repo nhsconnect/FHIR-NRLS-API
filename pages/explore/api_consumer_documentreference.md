@@ -49,6 +49,16 @@ Consumer API read requests support the following HTTP request headers:
 |----------------------|-------|-------|
 | `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](development_general_api_guidance.html#content-types) section. | MAY |
 | `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |  MUST |
+| `fromASID`           | Client System ASID | MUST |
+| `toASID`             | The Spine ASID | MUST |
+
+
+<!--
+
+| Header               | Value |Conformance |
+|----------------------|-------|-------|
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](development_general_api_guidance.html#content-types) section. | MAY |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |  MUST |
 | `Ssp-TraceID`        | Client System TraceID (i.e. GUID/UUID). This is a unique ID that the client system should provide. It can be used to identify specific requests when troubleshooting issues with API calls. All calls into the service should have a unique TraceID so they can be uniquely identified later if required. | MUST |
 | `Ssp-From`           | Client System ASID | MUST |
 | `Ssp-To`             | The Spine ASID | MUST |
@@ -58,7 +68,7 @@ Consumer API read requests support the following HTTP request headers:
 Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
 
 
-<!--
+
 | Header               | Value |
 |----------------------|-------|
 | `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. |
@@ -149,6 +159,18 @@ Consumer API to support parameterised search based on a patient associated with 
 Consumer API search requests support the following HTTP request headers:
 
 
+
+| Header               | Value |Conformance |
+|----------------------|-------|-------|
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](development_general_api_guidance.html#content-types) section. | MAY |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |  MUST |
+| `fromASID`           | Client System ASID | MUST |
+| `toASID`             | The Spine ASID | MUST |
+
+
+<!--
+
+
 | Header               | Value |Conformance |
 |----------------------|-------|-------|
 | `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](development_general_api_guidance.html#content-types) section. | MAY |
@@ -162,7 +184,6 @@ Consumer API search requests support the following HTTP request headers:
 
 Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
 
-<!--
 
 
 | Header               | Value |
@@ -211,15 +232,15 @@ Though the NRLS does not keep a version history of each DocumentReference each o
     <th style="width:5%;">Conformance</th>
     <th style="width:35%;">Path</th>
 </tr>
-<!--
+
 <tr>
     <td><code class="highlighter-rouge">custodian</code></td>
     <td><code class="highlighter-rouge">reference</code></td>
     <td>Organization which maintains the document reference</td>
-    <td>SHOULD</td>
+    <td>MAY</td>
     <td>DocumentReference.custodian(Organization)</td>
 </tr>
--->
+
 <tr>
     <td><code class="highlighter-rouge">patient</code></td>
     <td><code class="highlighter-rouge">reference</code></td>
@@ -277,7 +298,10 @@ Though the NRLS does not keep a version history of each DocumentReference each o
 -->
 </table>
 
-When performing a consumer search its is mandatory to support search by `patient`.
+<p>When performing a consumer search the <code class="highlighter-rouge">patient</code> parameter SHALL be supported and the <code class="highlighter-rouge">custodian</code> parameter MAY be supported in the search query. </p>    
+
+<!--When performing a consumer search the `patient` parameter SHALL be supported and the `custodian` parameter MAY be supported in the search query.-->
+
 
 <!--Systems SHOULD support the following search combinations:* TBC-->
 

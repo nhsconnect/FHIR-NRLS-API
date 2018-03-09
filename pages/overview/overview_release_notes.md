@@ -18,14 +18,15 @@ summary: Summary release notes of the versions released in NRLS API Implementati
     - ValueSet-NRLS-RecordRetrievalMode-1
     - CodeSystem-NRLS-RecordRetrievalMode-1
 
-- `custodian` search parameter dropped from Consumer API. In turn the combined `patient and custodian` search parameter has also been dropped from Consumer API. See the [Error Handling section](development_general_api_guidance.html#consumer-search-should-return-422-with-error-code-of-invalid_parameter-under-the-following-circumstances) for further guidance.
-- Additional Consumer and Provider API guidance added to [Parameters - INVALID_PARAMETER](development_general_api_guidance.html#parameters---invalid_parameter) Error Handling section.
+<!--`custodian` search parameter dropped from Consumer API. In turn the combined `patient and custodian` search parameter has also been dropped from Consumer API. See the [Error Handling section](development_general_api_guidance.html#consumer-search-should-return-422-with-error-code-of-invalid_parameter-under-the-following-circumstances) for further guidance.
+- Additional Consumer and Provider API guidance added to [Parameters - INVALID_PARAMETER](development_general_api_guidance.html#parameters---invalid_parameter) Error Handling section.-->
 - Consumer Provider API XML/ JSON examples added
-<!--
-Versioning of profile[TBC]
-masterIdentifier[TBC]
--->
-TEST
+- HTTP request headers amendments: 
+  - Ssp-TraceID, Ssp-InteractionID, Ssp-Version - dropped from specification
+  - Ssp-From and Ssp-To - Header name change to `fromASID` and `toASID`
+  - Error Handling section reflects these changes
+
+
 
 
 ## 1.0.0-beta ##
