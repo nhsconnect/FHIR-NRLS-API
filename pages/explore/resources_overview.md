@@ -22,8 +22,8 @@ The NRLS API supports the following operations as detailed in the [Solution Inte
 
 |Actor|Read|Search|Create|Update|Delete|
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | 
-|Consumer|![Tick](images/tick.png)|![Tick](images/tick.png)|![Cross](images/cross.png)|![Cross](images/cross.png)|![Cross](images/cross.png)|
-|Provider|![Tick](images/tick.png)|![Tick](images/tick.png)|![Tick](images/tick.png)|![Tick](images/tick.png)|![Tick](images/tick.png)|
+|Consumer|![Tick](images/cross.png)|![Tick](images/tick.png)|![Cross](images/cross.png)|![Cross](images/cross.png)|![Cross](images/cross.png)|
+|Provider|![Tick](images/cross.png)|![Tick](images/tick.png)|![Tick](images/tick.png)|![Tick](images/cross.png)|![Tick](images/tick.png)|
 
 
 <!--
@@ -46,7 +46,7 @@ The NRLS API supports the following operations as detailed in the [Solution Inte
 
 - SHALL support XML **or** JSON formats for all API interactions.
 
-- SHALL expose a valid NRLS FHIR [CapabilityStatement](https://www.hl7.org/fhir/STU3/capabilitystatement.html) identifying the list of profiles, operations and search parameters supported. See [NRLS API FHIR Capability Statement profile](api_foundation_conformance.html).
+<!-- SHALL expose a valid NRLS FHIR [CapabilityStatement](https://www.hl7.org/fhir/STU3/capabilitystatement.html) identifying the list of profiles, operations and search parameters supported. See [NRLS API FHIR Capability Statement profile](api_foundation_conformance.html).-->
 
 <!--- - SHALL support the NRLS-DocumentReference-1 resource profile.
 
@@ -61,7 +61,10 @@ The NRLS API supports the following operations as detailed in the [Solution Inte
 
 - SHALL support **either** XML **or** JSON formats for all API interactions.
 
-- SHOULD support the RESTful interactions and search parameters as declared in the NRLS FHIR Server CapabilityStatement.
+
+- SHOULD support the NRLS Service RESTful interactions and search parameters.
+
+<!-- SHOULD support the RESTful interactions and search parameters as declared in the NRLS FHIR Server CapabilityStatement.-->
 
 
 ### 2.3 Spine Services ###
@@ -105,6 +108,10 @@ To use this API, provider/ consumer systems:
 ### 2.4 NHS Number ###
 
 Only verified NHS Number SHALL be used with FHIR API profiles. This can be achieved using a spine accredited system, a [Demographics Batch Service (DBS)](https://developer.nhs.uk/library/systems/demographic-batch-service-dbs/) batch-traced record (CSV), or using a [Spine Mini Services Provider (HL7v3)](https://nhsconnect.github.io/spine-smsp/) to verify the NHS Number.
+
+
+{% include note.html content="A verified NHS Number exists on PDS, is still in use and the demographic data supplied results in the correct degree of demographic matching as per PDS matching rules.<br/><br/>The NHS NUMBER is 10 numeric digits in length. The tenth digit is a check digit used to confirm its validity. The check digit is validated using the Modulus 11 algorithm and the use of this algorithm is mandatory. " %}
+
 
 <!--
 {% include custom/contribute.html content="Get in touch with interoperabilityteam@nhs.net to improve the Prerequisites." %}

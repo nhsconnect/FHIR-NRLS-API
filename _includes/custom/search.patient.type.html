@@ -1,4 +1,4 @@
-<h4 id="subject and custodian">{{include.para}} subject and custodian</h4>
+<h4 id="subject and type">{{include.para}} subject and type</h4>
 
 <!--<p>See <a href="https://www.hl7.org/fhir/STU3/search.html#reference">reference</a> for details on this parameter. The patient parameter can be used as follows:</p>-->
 
@@ -19,7 +19,7 @@ Return all {{include.content}} resources for Patients with a logical id of 42</p
 
 -->
 <div markdown="span" class="alert alert-success" role="alert">
-GET [baseUrl]/{{include.content}}?subject=[reference]&custodian.identifier=[system]|[code]<br>
+GET [baseUrl]/{{include.content}}?subject=[reference]&type.coding=http://snomed.info/sct|[code]<br>
 </div>
 
 <!--<div markdown="span" class="alert alert-success" role="alert">
@@ -36,15 +36,17 @@ GET [baseUrl]/{{include.content}}?subject.identifier=[system]|[code]</div>-->
 -->
 
 <div class="language-http highlighter-rouge">
-<pre class="highlight"><code><span class="err">GET [baseUrl]/{{include.content}}?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210&custodian.identifier=https://fhir.nhs.uk/Id/ods-organization-code|RR8
+<pre class="highlight"><code><span class="err">GET [baseUrl]/{{include.content}}?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210&type.coding=http://snomed.info/sct|736253002
 </span></code>
-Return all {{include.content}} resources for a patient with a NHS Number of 9876543210 and a pointer provider ODS code of RR8.</pre>
+Return all {{include.content}} records for a patient with NHS Number of 9876543210 and a pointer type of Mental Health Crisis plan.</pre>
 </div>
 
 
 <div markdown="span" class="alert alert-info" role="alert">
     <i class="fa fa-info-circle"></i> <b>Note:</b> The format of the reference URL must be of the form: `https://demographics.spineservices.nhs.uk/STU3/Patient/[NHS Number]`.
 </div>
+
+
 
 <!--
 <div class="language-http highlighter-rouge">

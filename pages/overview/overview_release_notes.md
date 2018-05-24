@@ -11,6 +11,37 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 
 ## 1.1.0-beta ##
 
+*Changes to re-align the NRLS API 1.1.0-beta Specification with the DDC March and May 2018 NRLS Service Development Iterations:*
+
+- Provider and Consumer API Read interaction removed
+- Provider and Consumer API Search interaction changes:
+  - `_count` Search parameter removed
+  - `_id` Search parameter added
+  - `type` Search parameter added
+  - `patient` search parameter reverted to `subject`
+  - Bundle type `searchset` does not support:
+    - encoded client search parameters in returned bundle using the `self link`.
+    - the identity of resources in the entry using the `fullUrl` element.
+    - resources matched in a successful search using the `search.mode` element
+ - Provider API Update interaction removed.
+ - Provider API Delete interaction changes:
+   - Now supports conditional delete interaction. Allows a provider to delete an existing pointer based on the search parameter `_id` which refers to the logical id of the pointer.
+ - Spine response codes changes:
+   - amended for all Provider and Consumer API interactions
+   - Successful Provider Create and Delete interactions now support positive response code values conveyed in the response body OperationOutcome payload:
+     - RESOURCE_CREATED
+     - RESOURCE_ DELETED
+   - <font color="red">addition of common response codes</font>
+   - Exceptions raised by the Spine Core common requesthandler and not the NRLS Service will be supported by the default Spine OperationOutcome [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to the default Spine valueSet [spine-response-code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0). Codes include:
+     - UNSUPPORTED_MEDIA_TYPE
+- Pagination removed from Provider and Consumer search API.
+- CapabilityStatement conformance functionality removed from this release.
+- For this release the NRLS Service returns data as the default format of `XML`. 
+- [Solution Interactions](overview_interactions.html) diagrams updated.
+
+
+*Sprint 6 Summary:*
+
 - Concept of direct and indirect pointers removed from API. Changes to the [Data Model](overview_data_model.html#data-model) and the [NRLS-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1) FHIR profile as follows: 
   - RecordRetrievalMode CodeableConcept functionality removed from the [NRLS-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1) FHIR profile. 
   - The following dependent FHIR assets have been removed from NHS FHIR Server and implementation guide:
@@ -25,7 +56,7 @@ summary: Summary release notes of the versions released in NRLS API Implementati
   - Ssp-TraceID, Ssp-InteractionID, Ssp-Version - dropped from specification
   - Ssp-From and Ssp-To - Header name change to `fromASID` and `toASID`
   - Error Handling section reflects these changes
-
+- Consumer and Provider API `INVALID_PARAMETER` error response code aligned to `400` *BAD REQUEST* HTTP response code.
 
 
 

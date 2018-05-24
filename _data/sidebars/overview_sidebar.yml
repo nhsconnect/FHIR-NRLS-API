@@ -65,9 +65,9 @@ entries:
     - title: Overview
       url: /explore.html
       output: web
-    - title: CapabilityStatement
-      url: /api_foundation_conformance.html
-      output: web
+ #  - title: CapabilityStatement
+ #    url: /api_foundation_conformance.html
+ #    output: web
     - title: Consumer API
       url: /api_consumer_documentreference.html
       output: web

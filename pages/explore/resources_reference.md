@@ -17,6 +17,9 @@ Links to the NRLS FHIR profiles on the NHS FHIR Reference Server.
 |-------|
 | [NRLS-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1)| 
 | [Spine-OperationOutcome-1](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1)| 
+| [Spine-OperationOutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0)| 
+
+   {% include note.html content="Exceptions raised by the Spine common requesthandler and not the NRLS Service will be returned using the Spine default OperationOutcome profile: http://fhir.nhs.net/StructureDefinition/spine-operationoutcome-1-0" %}
 
 
 ## 2. NRLS Pointer FHIR Profile ##
@@ -60,7 +63,10 @@ Links to the NRLS FHIR value sets on the NHS FHIR Reference Server.
 |Valueset|Description|
 |-------|-----------|
 |[ValueSet-CarePlanType-1](https://fhir.nhs.uk/STU3/ValueSet/CarePlanType-1)| Care plan type |
-|[ValueSet-Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)| Spine error codes|
+|[ValueSet-Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)| A ValueSet that identifies the Spine error or warning code in response to a request.|
+|[ValueSet-Spine-Response-Code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0)| A set of codes to indicate low level error information about a Spine 2 error response to a request for patient record details|
+
+   {% include note.html content="Exceptions raised by the Spine common requesthandler and not the NRLS Service will be returned using the Spine default operationOutcome profile: http://fhir.nhs.net/StructureDefinition/spine-operationoutcome-1-0 which binds to the default valueSet: http://fhir.nhs.net/ValueSet/spine-response-code-1-0" %}
 
 <!--
 |[ValueSet-NRLS-RecordRetrievalMode-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordRetrievalMode-1)| National record locator pointer retrieval mode. |
