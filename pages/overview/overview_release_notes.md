@@ -31,13 +31,19 @@ summary: Summary release notes of the versions released in NRLS API Implementati
    - Successful Provider Create and Delete interactions now support positive response code values conveyed in the response body OperationOutcome payload:
      - RESOURCE_CREATED
      - RESOURCE_ DELETED
-   - <font color="red">addition of common response codes</font>
+   - Error Handling section updated to reflect API re-alignment with DDC NRLS Service implementation.
    - Exceptions raised by the Spine Core common requesthandler and not the NRLS Service will be supported by the default Spine OperationOutcome [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to the default Spine valueSet [spine-response-code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0). Codes include:
      - UNSUPPORTED_MEDIA_TYPE
 - Pagination removed from Provider and Consumer search API.
 - CapabilityStatement conformance functionality removed from this release.
 - For this release the NRLS Service returns data as the default format of `XML`. 
+- NRLS-DocumentReference-1 FHIR profile changes:
+  - [ValueSet-NRLSRecordType-1](https://fhir.nhs.uk/STU3/ValueSet/NRLSRecordType-1) replaces ValueSet/CarePlanType-1
+  - ValueSet-NRLSRecordType-1 supports a single SNOMED concept:  `736253002 - Mental health crisis plan`.
+  - All API examples updated to support record type: `Mental health crisis plan`. 
 - [Solution Interactions](overview_interactions.html) diagrams updated.
+- [Access Tokens and Audit (JWT)](integration_access_tokens_and_audit_JWT.html) replaces the Cross Organisation Audit & Provenance section
+
 
 
 *Sprint 6 Summary:*

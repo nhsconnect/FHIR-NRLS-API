@@ -318,7 +318,7 @@ To [manage return errors](http://hl7.org/fhir/STU3/http.html#2.1.0.4), FHIR defi
 The NRLS API defines numerous categories of error, each of which encapsulates a specific part of the request that is sent to the NRLS. Each type of error will be discussed in its own section below with the relevant Spine response code:
 - [Not found](development_general_api_guidance.html#not-found---no_record_found) - Spine supports this behaviour when:
   - a request references a resource that cannot be resolved be it a DocumentReference, Patient or Organisation
-  - a request supports an NHS Number that is registered in PDS but no Spine clinicalsRecord exists.
+  - a request supports an NHS Number where no Spine Clinicals record exists for that NHS Number.
 
 <!--
 	BROKEN URL
@@ -342,7 +342,8 @@ There are two situations when Spine supports this behaviour:
   - provider client retrieval of a DocumentReference by logical id
   - provider client request to delete a DocumentReference by logical id
 
-- When a request supports an NHS Number that is registered in PDS but no Spine clinicalsRecord exists. The NRLS Service supports this exception scenario in the consumer and Provider Search API interface.
+- When a request supports an NHS Number where no Clinicals record exists in the Spine Clinicals data store for that NHS Number. The NRLS Service supports this exception scenario in the consumer and Provider Search API interface.
+
 <!--
 These exceptions are raised by the Spine Core common requesthandler and not the NRLS Service so are supported by the default Spine OperationOutcome [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to the default Spine valueSet [spine-response-code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0).
 -->
@@ -434,6 +435,13 @@ This error is raised during a provider create interaction. There are two excepti
 - The DocumentReference in the request body specifies an incorrect URL of the FHIR server that hosts the Patient resource. 
 - The DocumentReference in the request body specifies an incorrect URL of the author and custodian Organization resource. 
 
+
+#### Type parameter ####
+When using the MANDATORY `type` parameter the client is referring to a pointer by record type. Two pieces of information are needed: 
+- the Identity of the [SNOMED URI](http://snomed.info/sct) terminology system
+- the pointer record type SNOMED concept e.g. 736253002
+If the search request specifies unsupported parameter values in the request, this error will be thrown. 
+
 <!--
 #### Consumer search should return 422 with error code of INVALID_PARAMETER under the following circumstances: ####
 - `custodian` is considered an invalid parameter for searches by systems that only have authorised NRLS Consumer acccess rights. The reason that it's invalid is down to IG and the direct care leg relationship.
@@ -478,7 +486,7 @@ As well as being mandatory this field must also be a valid [URL](https://www.w3.
 
 #### Attachment.creation ####
 This is an optional field but if supplied:
-- must be a valid FHIR [dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime)
+- must be a valid FHIR [dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime) 
 
 <!--date portion of the field must not be a date that is in the future as determined by the system date on the NRLS server-->
 
@@ -489,8 +497,21 @@ The action that is being performed (create or update) determines whether or not 
 - update: the identifier is mandatory however it must be known to the NRLS (see RESOURCE_NOT_FOUND error)
 -->
 
+#### DocumentReference.Status ####
+
+If the DocumentReference in the request body specifies a status code that is not supported by the required HL7 FHIR [document-reference-status](http://hl7.org/fhir/ValueSet/document-reference-status) valueset then this error will be thrown. 
+
+
+#### DocumentReference.Type ####
+If the DocumentReference in the request body specifies a type that is not part of the valueset defined in the [NRLS-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1) FHIR profile this error will be thrown. 
+
+#### DocumentReference.Indexed ####
+If the DocumentReference in the request body specifies an indexed element that is not a valid [instant](http://hl7.org/fhir/STU3/datatypes.html#instant) as per the FHIR specification this error will be thrown. 
+
+
+
 #### Delete Request - Provider ODS Code does not match Custodian ODS Code ####
-This error is raised during a provider delete interaction. There is one exception scenarios:
+This error is raised during a provider delete interaction. There is one exception scenario:
 - A provider delete pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code in the fromASID header.
 
 

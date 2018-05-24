@@ -347,7 +347,7 @@ Success:
     - One or more `documentReference` resource that conforms to the `NRLS-DocumentReference-1` profile; or
     - A '0' (zero) total value indicating no record was matched i.e. an empty 'Bundle'.
 
-    {% include note.html content="The returned searchset bundle does NOT currently support the self link, which carries the encoded parameters that were actually used to process the search. <br/> <br/> The NRLS Service will ONLY return an empty bundle if a Spine clincalsRecord exists and there is no DocumentReference for that specific clinicalsRecord." %}
+      {% include note.html content="The returned searchset bundle does NOT currently support: <br/> <br/> (1) the `self link`, which carries the encoded parameters that were actually used to process the search. <br/> <br/> (2) the identity of resources in the entry using the `fullUrl` element. <br/> <br/> (3) resources matched in a successful search using the `search.mode` element. <br/> <br/> NB: The NRLS Service will ONLY return an empty bundle if a Spine Clincals record exists and there is no DocumentReference for that specific Clinicals record." %}
 
  
 <!--- The NRLS server will return the versionId of each DocumentReference.-->
@@ -411,7 +411,7 @@ Example 2: The DocumentReference in the request body contains an invalid URL of 
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |404|error|not-found|NO_RECORD_FOUND|No record found|The given NHS number could not be found [nhsNumber]|
 -->
-Example 1: The client attempts to retrieve DocumentReference(s) using an NHS Number that is valid on PDS but no clinicalsRecord exist in the Spine clinicals data store. The following response SHALL be returned to the client.
+Example 1: The client attempts to retrieve a DocumentReference(s) using an NHS Number where no Clinicals record exists in the Spine Clinicals data store for that NHS Number. The following response SHALL be returned to the client.
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
@@ -611,10 +611,11 @@ Example 1: The DocumentReference in the request body is missing one or more mand
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
-|400|error|invalid|INVALID_RESOURCE|Invalid validation of resource||
+|400|error|invalid|INVALID_RESOURCE|Resource is invalid - [property]|Resource is invalid - [property]|
 
-
+<!--
 NB: If a mandatory node is missing from the POST DocumentReference payload, the Spine NRLS Service SHALL return an OperationOutcome resource with support for the optional OperationOutcome.issue.diagnostics element. This element SHALL NOT contain diagnostic information about the issue, instead it SHALL carry an ‘empty’ string.
+-->
 
 
 Example 2: The DocumentReference in the request body contains a mandatory element however with an empty value. The following response SHALL be returned to the client.
@@ -623,8 +624,9 @@ Example 2: The DocumentReference in the request body contains a mandatory elemen
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |400|error|invalid|INVALID_RESOURCE|Invalid validation of resource|Resource is invalid : [property]|
 
+<!--
 NB:  If a mandatory node is missing a value in the POST DocumentReference payload, the Spine NRLS Service SHALL return an OperationOutcome resource with support for the optional OperationOutcome.issue.diagnostics element. This element SHALL contain diagnostic information about the issue e.g. "Resource is invalid - status".
-
+-->
 Example 3: The DocumentReference in the request body specifies an ODS code on the custodian that is not tied to the ASID supplied in the HTTP request header `fromASID`. The following response SHALL be returned to the client.
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |

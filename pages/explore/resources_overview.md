@@ -90,8 +90,9 @@ To use this API, provider/ consumer systems:
 	- Authenticated the user using an assured local mechanism, and obtained a local user ID and role
 	- And pass this user information in a JSON web token - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.
 
+<!--
 {% include warning.html content="It is not yet clear, whether or not national identity is needed to be established for a client to interact with the NRLS. Further elaboration of NRLS consumer and provider authentication scenarios is expected." %}
-
+-->
 - SHALL have previously traced the patient's NHS Number using PDS or an equivalent service.
 
 
