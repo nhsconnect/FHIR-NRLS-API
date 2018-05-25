@@ -582,7 +582,7 @@ The table summarises the `create` interaction HTTP response code and the values 
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |201|information|informational|RESOURCE_CREATED|New resource created | Spine message UUID |Successfully created resource DocumentReference|
 
-{% include note.html content="Upon either successful creation or deletion of a pointer the NRLS Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Delete or Create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrive log entries that relate to a specific client transaction." %}
+{% include note.html content="Upon either successful creation or deletion of a pointer the NRLS Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Delete or Create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
 
 <!--
 ORIGINAL include note.html FOR ABOVE: 
@@ -991,7 +991,7 @@ The table summarises the successful `delete` interaction scenario and includes H
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |200|information|informational|RESOURCE_DELETED|Resource removed | Spine message UUID |Successfully removed resource DocumentReference: [url]|
 
-{% include note.html content="Upon either successful creation or deletion of a pointer the NRLS Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Delete or Create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrive log entries that relate to a specific client transaction." %}
+{% include note.html content="Upon either successful creation or deletion of a pointer the NRLS Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Delete or Create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
 
 
 Failure: 

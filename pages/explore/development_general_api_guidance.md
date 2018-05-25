@@ -440,6 +440,7 @@ This error is raised during a provider create interaction. There are two excepti
 When using the MANDATORY `type` parameter the client is referring to a pointer by record type. Two pieces of information are needed: 
 - the Identity of the [SNOMED URI](http://snomed.info/sct) terminology system
 - the pointer record type SNOMED concept e.g. 736253002
+
 If the search request specifies unsupported parameter values in the request, this error will be thrown. 
 
 <!--

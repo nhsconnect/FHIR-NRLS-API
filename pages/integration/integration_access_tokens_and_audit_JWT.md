@@ -15,7 +15,7 @@ In order to access the NRLS clients MUST send an access token (JWT) with each re
 
 ### Claims ###
 
-In the Spine JWT definition the requesting_organistion claim is marked as optional however for NRLS this claim MUST be supplied 
+In the Spine JWT definition the `requesting_organistion` claim is marked as optional however for NRLS this claim MUST be supplied.
 
 ### Validation ###
 
@@ -27,9 +27,9 @@ Depending upon the client’s role (Provider or Consumer) the validation that is
 
 3. Consumer – validation rules that only apply where the client is a Consumer 
 
-#### Common validation ####
+#### Common Validation ####
 
-Where there has been a validation failure then the following response will be returned to the client. In all instances the response will be the same however the diagnostic text will vary depending upon the nature of the error. 
+Where there has been a validation failure then the following response will be returned to the client. In all instances the response will be the same however the diagnostics text will vary depending upon the nature of the error. 
 
 |
 
@@ -41,23 +41,46 @@ Where there has been a validation failure then the following response will be re
 
 #### MISSING_OR_INVALID_HEADER Exception Scenarios: ####
 
+Example 1: JWT missing – the Authorization header has not been supplied. The following response SHALL be returned to the client.
 
-JWT missing – the Authorization header has not been supplied 
+<i> Diagnostics - The Authorisation header must be supplied <i/>
 
-diagnostics - The Authorisation header must be supplied 
+<!--
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
+|-----------|----------------|------------|--------------|-----------------|-------------------|
+|400|error|<font color="red">structure</font> |MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|The Authorisation header must be supplied|
 
-JWT structure invalid – the Authorization header is present however the value is not a structurally valid JWT ie one or more of the required elements of header, payload and signature is missing. 
-
-diagnostics - The JWT associated with the Authorisation header must have the 3 sections 
-
-Mandatory claim missing – the Authorization header is present and the JWT is structurally valid however one or more of the mandatory claims is missing from the JWT 
-
-diagnostics - The mandatory claim [claim] from the JWT associated with the Authorisation header is missing 
-
-Claim’s value is invalid - the Authorization header is present and the JWT is structurally valid a mandatory claim is present in the JWT however it’s value is not valid. The table below shows the various checking that is applied to each claim in the JWT and the associated diagnostics message 
+Diagnostics - The Authorisation header must be supplied-->
 
 
-| Claim being validated | Error scenario | diagnostics | 
+Example 2: JWT structure invalid – the Authorization header is present however the value is not a structurally valid JWT ie one or more of the required elements of header, payload and signature is missing. 
+
+<i> Diagnostics - The JWT associated with the Authorisation header must have the 3 sections <i/>
+
+<!--
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
+|-----------|----------------|------------|--------------|-----------------|-------------------|
+|400|error|<font color="red">structure</font> |MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|The JWT associated with the Authorisation header must have the 3 sections|
+
+Diagnostics - The JWT associated with the Authorisation header must have the 3 sections -->
+
+
+Example 3: Mandatory claim missing – the Authorization header is present and the JWT is structurally valid however one or more of the mandatory claims is missing from the JWT 
+
+<i> Diagnostics - The mandatory claim [claim] from the JWT associated with the Authorisation header is missing <i/>
+
+
+<!--
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
+|-----------|----------------|------------|--------------|-----------------|-------------------|
+|400|error|<font color="red">structure</font> |MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|The mandatory claim [claim] from the JWT associated with the Authorisation header is missing|
+
+Diagnostics - The mandatory claim [claim] from the JWT associated with the Authorisation header is missing -->
+
+Example 4: Claim’s value is invalid - the Authorization header is present and the JWT is structurally valid a mandatory claim is present in the JWT however it’s value is not valid. The table below shows the various checking that is applied to each claim in the JWT and the associated diagnostics message:
+
+
+| Claim being validated | Error scenario | Diagnostics | 
 |-------|----------|-------------|
 | sub | No requesting_user has been supplied and the sub claims’ value does not match the value of the requesting_system claim| requesting_system ([requesting_system]) and sub ([sub]) claim’s values must match| 
 | sub | requesting_user has been supplied and the sub claims’ value does not match the value of the requesting_user claim | requesting_user ([requesting_user]) and sub ([sub]) claim’s values must match|
@@ -71,18 +94,18 @@ Claim’s value is invalid - the Authorization header is present and the JWT is 
 
 
 
-### Precedence of requesting_user over requesting_system ###
+<b> Precedence of requesting_user over requesting_system <b/>
 
-If both the requesting_system and requesting_user claims have been provided, then the sub claim must match the requesting_user claim 
+If both the `requesting_system` and `requesting_user` claims have been provided, then the `sub` claim MUST match the `requesting_user` claim.
 
 
-#### Provider validation ####
+#### Provider Validation ####
 
-No specific validation rules apply 
+No specific validation rules apply.
 
-#### Consumer validation ####
+#### Consumer Validation ####
 
-In the context of a Consumer request the requesting_user claim is mandatory. 
+In the context of a Consumer request the `requesting_user` claim is mandatory. 
 
 
 
