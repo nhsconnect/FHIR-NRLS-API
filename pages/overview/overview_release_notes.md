@@ -28,7 +28,7 @@ summary: Summary release notes of the versions released in NRLS API Implementati
    - Now supports conditional delete interaction. Allows a provider to delete an existing pointer based on the search parameter `_id` which refers to the logical id of the pointer.
  - Spine response codes changes:
    - amended for all Provider and Consumer API interactions
-   - Successful Provider Create and Delete interactions now support positive response code values conveyed in the response body OperationOutcome payload:
+   - Successful Provider Create and Delete interactions now support positive response code values conveyed in the response body [Spine-OperationOutcome-1](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) payload:
      - RESOURCE_CREATED
      - RESOURCE_ DELETED
    - Error Handling section updated to reflect API re-alignment with DDC NRLS Service implementation.
@@ -38,8 +38,8 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 - CapabilityStatement conformance functionality removed from this release.
 - For this release the NRLS Service returns data as the default format of `XML`. 
 - NRLS-DocumentReference-1 FHIR profile changes:
-  - [ValueSet-NRLSRecordType-1](https://fhir.nhs.uk/STU3/ValueSet/NRLSRecordType-1) replaces ValueSet/CarePlanType-1
-  - ValueSet-NRLSRecordType-1 supports a single SNOMED concept:  `736253002 - Mental health crisis plan`.
+  - [ValueSet-NRLS-RecordType-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordType-1) replaces ValueSet/CarePlanType-1
+  - ValueSet-NRLS-RecordType-1 supports a single SNOMED concept:  `736253002 - Mental health crisis plan (record artifact)`.
   - All API examples updated to support record type: `Mental health crisis plan`. 
 - [Solution Interactions](overview_interactions.html) diagrams updated.
 - [Access Tokens and Audit (JWT)](integration_access_tokens_and_audit_JWT.html) replaces the Cross Organisation Audit & Provenance section

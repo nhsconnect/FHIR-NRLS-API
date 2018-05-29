@@ -163,7 +163,7 @@ Provider API search requests support the following HTTP request headers:
 | Header               | Value |Conformance |
 |----------------------|-------|-------|
 | `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](development_general_api_guidance.html#content-types) section. | MAY |
-| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |  MUST |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Access Tokens and Audit (JWT)](integration_access_tokens_and_audit_JWT.html) for details. |  MUST |
 | `fromASID`           | Client System ASID | MUST |
 | `toASID`             | The Spine ASID | MUST |
 
@@ -362,10 +362,19 @@ Failure:
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
+|400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|<font color="red">Guidance TBA</font>|
+|400|error|invalid|INVALID_PARAMETER|Invalid parameter|<font color="red">Guidance TBA</font>|
+|404|error|not-found|NO_RECORD_FOUND|No record found|<font color="red">Guidance TBA</font>|
+
+<!--
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
+|-----------|----------------|------------|--------------|-----------------|-------------------|
 |400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|<font color="blue">Note:</font> See [INVALID_NHS_NUMBER Exception Scenarios](api_provider_documentreference.html#invalid_nhs_number-search-exception-scenarios)|
 |400|error|invalid|INVALID_PARAMETER|Invalid parameter|<font color="blue">Note:</font> See [INVALID_PARAMETER Exception Scenarios](api_provider_documentreference.html#invalid_parameter-search-exception-scenarios)|
 |404|error|not-found|NO_RECORD_FOUND|No record found|<font color="blue">Note:</font> See [NO_RECORD_FOUND Exception Scenarios](api_provider_documentreference.html#no_record_found-exception-scenarios)|
+-->
 
+<!--
 #### INVALID_PARAMETER Search Exception Scenarios: ####
 
 Example 1: The search request specifies an unsupported parameter value e.g. incorrect URL of the FHIR server that hosts the Patient resource. The following response SHALL be returned to the client.
@@ -397,7 +406,7 @@ Example 2: The search request specifies an unsupported parameter value i.e. inco
 
 
 #### NO_RECORD_FOUND Exception Scenarios: ####
-
+-->
 <!--
 Example 1: The DocumentReference in the request body contains an invalid URL for the referenced Patient resource. The following response SHALL be returned to the client.
 
@@ -411,6 +420,7 @@ Example 2: The DocumentReference in the request body contains an invalid URL of 
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |404|error|not-found|NO_RECORD_FOUND|No record found|The given NHS number could not be found [nhsNumber]|
 -->
+<!--
 Example 1: The client attempts to retrieve a DocumentReference(s) using an NHS Number where no Clinicals record exists in the Spine Clinicals data store for that NHS Number. The following response SHALL be returned to the client.
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
@@ -422,7 +432,7 @@ Example 2: The client attempts to retrieve a pointer using a URL that does not r
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |404|error|not-found|NO_RECORD_FOUND|No record found|No record found for supplied DocumentReference identifier - [logicalID]|
-
+-->
 
 <!--<font color="red">NB: Need to check OperationOutcome conforming to the http://fhir.nhs.net/StructureDefinition/spine-operationoutcome-1-0 profile + http://fhir.nhs.net/ValueSet/spine-response-code-2-0</font>-->
 
@@ -482,7 +492,7 @@ Provider API create requests support the following HTTP request headers:
 | Header               | Value |Conformance |
 |----------------------|-------|-------|
 | `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](development_general_api_guidance.html#content-types) section. | MAY |
-| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |  MUST |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Access Tokens and Audit (JWT)](integration_access_tokens_and_audit_JWT.html) for details. |  MUST |
 | `fromASID`           | Client System ASID | MUST |
 | `toASID`             | The Spine ASID | MUST |
 
@@ -599,6 +609,16 @@ Failure:
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |400|error|value|INVALID_REQUEST_MESSAGE|Invalid Request Message|Invalid Request Message|
+|400|error|invalid|INVALID_RESOURCE|Invalid validation of resource|<font color="red">Guidance TBA</font>|
+|400|error|not-found|ORGANISATION_NOT_FOUND|Organisation record not found|The ODS code in the custodian and/or author element is not resolvable – [ods code].|
+|400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|The NHS number does not conform to the NHS Number format: [nhs number].|
+|400|error|invalid|INVALID_PARAMETER|Invalid parameter|<font color="red">Guidance TBA</font>|
+
+<!--
+
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
+|-----------|----------------|------------|--------------|-----------------|-------------------|
+|400|error|value|INVALID_REQUEST_MESSAGE|Invalid Request Message|Invalid Request Message|
 |400|error|invalid|INVALID_RESOURCE|Invalid validation of resource|<font color="blue">Note:</font> See [INVALID_RESOURCE Exception Scenarios](api_provider_documentreference.html#invalid_resource-exception-scenarios)|
 |400|error|not-found|ORGANISATION_NOT_FOUND|Organisation record not found|The ODS code in the custodian and/or author element is not resolvable – [ods code].|
 |400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|The NHS number does not conform to the NHS Number format: [nhs number].|
@@ -612,21 +632,22 @@ Example 1: The DocumentReference in the request body is missing one or more mand
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |400|error|invalid|INVALID_RESOURCE|Resource is invalid - [property]|Resource is invalid - [property]|
-
+-->
 <!--
 NB: If a mandatory node is missing from the POST DocumentReference payload, the Spine NRLS Service SHALL return an OperationOutcome resource with support for the optional OperationOutcome.issue.diagnostics element. This element SHALL NOT contain diagnostic information about the issue, instead it SHALL carry an ‘empty’ string.
 -->
 
-
+<!--
 Example 2: The DocumentReference in the request body contains a mandatory element however with an empty value. The following response SHALL be returned to the client.
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |400|error|invalid|INVALID_RESOURCE|Invalid validation of resource|Resource is invalid : [property]|
-
+-->
 <!--
 NB:  If a mandatory node is missing a value in the POST DocumentReference payload, the Spine NRLS Service SHALL return an OperationOutcome resource with support for the optional OperationOutcome.issue.diagnostics element. This element SHALL contain diagnostic information about the issue e.g. "Resource is invalid - status".
 -->
+<!--
 Example 3: The DocumentReference in the request body specifies an ODS code on the custodian that is not tied to the ASID supplied in the HTTP request header `fromASID`. The following response SHALL be returned to the client.
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
@@ -651,9 +672,9 @@ Example 6:  The DocumentReference in the request body specifies a `type` code th
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |400|error|<font color="red">structure</font> |INVALID_RESOURCE|Invalid validation of resource|The type value (value) is not a valid value.|
-
+-->
 <!--|400|error|invalid|INVALID_RESOURCE|Resource is invalid : [property]|The NRLS types valueset does not contain the type: [type]|-->
-
+<!--
 Example 7:  The DocumentReference in the request body specifies an indexed element that is not a valid [instant](http://hl7.org/fhir/STU3/datatypes.html#instant) as per the FHIR specification. The following response SHALL be returned to the client.
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
@@ -674,7 +695,7 @@ Example 2: The DocumentReference in the request body contains an invalid URL of 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |400|error|invalid|INVALID_PARAMETER|Invalid parameter|The given resource URL does not conform to the expected format - https://directory.spineservices.nhs.uk/STU3/Organization/[ODS Code]|
-
+-->
 <!--
 |403|error|forbidden|ACCESS_DENIED|Access has been denied to process this request|
 |400|error|invalid|INVALID_RESOURCE|Invalid validation of resource|
@@ -897,7 +918,7 @@ Provider API delete requests support the following HTTP request headers:
 | Header               | Value |Conformance |
 |----------------------|-------|-------|
 | `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](development_general_api_guidance.html#content-types) section. | MAY |
-| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |  MUST |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Access Tokens and Audit (JWT)](integration_access_tokens_and_audit_JWT.html) for details. |  MUST |
 | `fromASID`           | Client System ASID | MUST |
 | `toASID`             | The Spine ASID | MUST |
 

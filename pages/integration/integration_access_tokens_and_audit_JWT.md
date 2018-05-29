@@ -36,7 +36,7 @@ Where there has been a validation failure then the following response will be re
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
-|400|error|<font color="red">structure</font> |MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|<font color="blue">Note:</font> See [MISSING_OR_INVALID_HEADER Exception Scenarios](integration_access_tokens_and_audit_JWT.html#missing_or_invalid_header-exception-scenarios)|
+|400|error|structure|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|<font color="blue">Note:</font> See [MISSING_OR_INVALID_HEADER Exception Scenarios](integration_access_tokens_and_audit_JWT.html#missing_or_invalid_header-exception-scenarios)|
 
 
 #### MISSING_OR_INVALID_HEADER Exception Scenarios: ####

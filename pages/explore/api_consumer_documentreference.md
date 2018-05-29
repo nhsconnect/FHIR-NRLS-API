@@ -164,7 +164,7 @@ Consumer API search requests support the following HTTP request headers:
 | Header               | Value |Conformance |
 |----------------------|-------|-------|
 | `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](development_general_api_guidance.html#content-types) section. | MAY |
-| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details. |  MUST |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Access Tokens and Audit (JWT)](integration_access_tokens_and_audit_JWT.html) for details. |  MUST |
 | `fromASID`           | Client System ASID | MUST |
 | `toASID`             | The Spine ASID | MUST |
 
@@ -363,6 +363,15 @@ Failure:
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
+|400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|<font color="red">Guidance TBA</font>|
+|400|error|invalid|INVALID_PARAMETER|Invalid parameter|<font color="red">Guidance TBA</font>|
+|404|error|not-found|NO_RECORD_FOUND|No record found|<font color="red">Guidance TBA</font>|
+
+
+
+<!--
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
+|-----------|----------------|------------|--------------|-----------------|-------------------|
 |400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|<font color="blue">Note:</font> See [INVALID_NHS_NUMBER Exception Scenarios](api_provider_documentreference.html#invalid_nhs_number-search-exception-scenarios)|
 |400|error|invalid|INVALID_PARAMETER|Invalid parameter|<font color="blue">Note:</font> See [INVALID_PARAMETER Exception Scenarios](api_provider_documentreference.html#invalid_parameter-search-exception-scenarios)|
 |404|error|not-found|NO_RECORD_FOUND|No record found|<font color="blue">Note:</font> See [NO_RECORD_FOUND Exception Scenarios](api_provider_documentreference.html#no_record_found-exception-scenarios)|
@@ -398,6 +407,7 @@ Example 2: The search request specifies an unsupported parameter value i.e. inco
 
 
 #### NO_RECORD_FOUND Exception Scenarios: ####
+-->
 <!--
 Example 1: The DocumentReference in the request body contains an invalid URL for the referenced Patient resource. The following response SHALL be returned to the client.
 
@@ -411,6 +421,7 @@ Example 2: The DocumentReference in the request body contains an invalid URL of 
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |404|error|not-found|NO_RECORD_FOUND|No record found|The given NHS number could not be found [nhsNumber]|
 -->
+<!--
 Example 1: The client attempts to retrieve a DocumentReference(s) using an NHS Number where no Clinicals record exists in the Spine Clinicals data store for that NHS Number. The following response SHALL be returned to the client.
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
@@ -422,7 +433,7 @@ Example 2: The client attempts to retrieve a pointer using a URL that does not r
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |404|error|not-found|NO_RECORD_FOUND|No record found|No record found for supplied DocumentReference identifier - [logicalID]|
-
+-->
 
 <!--
 
