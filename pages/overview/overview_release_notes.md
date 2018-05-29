@@ -40,7 +40,7 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 - NRLS-DocumentReference-1 FHIR profile changes:
   - [ValueSet-NRLS-RecordType-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordType-1) replaces ValueSet/CarePlanType-1
   - ValueSet-NRLS-RecordType-1 supports a single SNOMED concept:  `736253002 - Mental health crisis plan (record artifact)`.
-  - All API examples updated to support record type: `Mental health crisis plan`. 
+  - All API examples updated to support record type: `Mental health crisis plan (record artifact)`. 
 - [Solution Interactions](overview_interactions.html) diagrams updated.
 - [Access Tokens and Audit (JWT)](integration_access_tokens_and_audit_JWT.html) replaces the Cross Organisation Audit & Provenance section
 
