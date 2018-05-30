@@ -37,12 +37,14 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 - Pagination removed from Provider and Consumer search API.
 - CapabilityStatement conformance functionality removed from this release.
 - For this release the NRLS Service returns data as the default format of `XML`. 
-- NRLS-DocumentReference-1 FHIR profile changes:
+- [NRLS-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1) FHIR profile upversioned to 1.1.0. Changes as follows:
   - [ValueSet-NRLS-RecordType-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordType-1) replaces ValueSet/CarePlanType-1
   - ValueSet-NRLS-RecordType-1 supports a single SNOMED concept:  `736253002 - Mental health crisis plan (record artifact)`.
-  - All API examples updated to support record type: `Mental health crisis plan (record artifact)`. 
+  - All NRLS-DocumentReference-1 API examples updated to support record type: `Mental health crisis plan (record artifact)`. 
 - [Solution Interactions](overview_interactions.html) diagrams updated.
-- [Access Tokens and Audit (JWT)](integration_access_tokens_and_audit_JWT.html) replaces the Cross Organisation Audit & Provenance section
+- NRLS access token (JWT) enhancements:
+  - The NRLS access token conforms to the Spine [JWT](https://nhsconnect.github.io/FHIR-SpineCore/security_jwt.html) definition.
+  - New section [Access Tokens and Audit (JWT)](integration_access_tokens_and_audit_JWT.html) added which replaces the Cross Organisation Audit & Provenance section.
 
 
 
