@@ -4,7 +4,7 @@ keywords: assure, accredit
 tags: [overview]
 sidebar: foundations_sidebar
 permalink: assure.html
-summary: "These pages assist with requirements gathering and mapping stages of a FHIR API development process."
+summary: "These pages assist with the NRLS Servcie Assurance Process"
 ---
 
 
