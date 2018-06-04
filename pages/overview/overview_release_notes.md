@@ -13,7 +13,7 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 
 *Changes to re-align the NRLS API 1.1.0-beta Specification with the DDC March and May 2018 NRLS Service Development Iterations:*
 
-- Provider and Consumer API Read interaction removed
+- Provider and Consumer API Read interaction removed.
 - Provider and Consumer API Search interaction changes:
   - `_count` Search parameter removed
   - `_id` Search parameter added
@@ -45,6 +45,7 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 - NRLS access token (JWT) enhancements:
   - The NRLS access token conforms to the Spine [JWT](https://nhsconnect.github.io/FHIR-SpineCore/security_jwt.html) definition.
   - New section [Access Tokens and Audit (JWT)](integration_access_tokens_and_audit_JWT.html) added which replaces the Cross Organisation Audit & Provenance section.
+ - [Assurance Process](assure.html) overview added to specification.
 
 
 
