@@ -13,7 +13,7 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 
 *Changes to re-align the NRLS API 1.1.0-beta Specification with the DDC March and May 2018 NRLS Service Development Iterations:*
 
-- Provider and Consumer API Read interaction removed.
+- Provider and Consumer API Read interaction removed
 - Provider and Consumer API Search interaction changes:
   - `_count` Search parameter removed
   - `_id` Search parameter added
