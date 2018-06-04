@@ -20,9 +20,9 @@ summary: Summary release notes of the versions released in NRLS API Implementati
   - `type` Search parameter added
   - `patient` search parameter reverted to `subject`
   - Bundle type `searchset` does not support:
-    - encoded client search parameters in returned bundle using the `self link`.
-    - the identity of resources in the entry using the `fullUrl` element.
-    - resources matched in a successful search using the `search.mode` element
+    - Encoded client search parameters in returned bundle using the `self link`.
+    - The identity of resources in the entry using the `fullUrl` element.
+    - Resources matched in a successful search using the `search.mode` element
  - Provider API Update interaction removed.
  - Provider API Delete interaction changes:
    - Now supports conditional delete interaction. Allows a provider to delete an existing pointer based on the search parameter `_id` which refers to the logical id of the pointer.
