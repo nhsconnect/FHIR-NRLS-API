@@ -27,7 +27,7 @@ summary: Summary release notes of the versions released in NRLS API Implementati
  - Provider API Delete interaction changes:
    - Now supports conditional delete interaction. Allows a provider to delete an existing pointer based on the search parameter `_id` which refers to the logical id of the pointer.
  - Spine response codes changes:
-   - amended for all Provider and Consumer API interactions
+   - Amended for all Provider and Consumer API interactions
    - Successful Provider Create and Delete interactions now support positive response code values conveyed in the response body [Spine-OperationOutcome-1](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) payload:
      - RESOURCE_CREATED
      - RESOURCE_ DELETED
