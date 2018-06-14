@@ -79,8 +79,8 @@ Sprint 5 summary:
 - VersionId guidance added.
 - [CapabilityStatement](api_foundation_conformance.html) page updated.
 - [Auditing](overview_behaviours.html#auditing) section added to 'Solution Behaviour' page.
-- [Audit Trail](integration_cross_organisation_audit_and_provenance.html#audit-trail) section added to 'Cross Organization Audit & Provenance' page.
-- [JWT Claims](integration_cross_organisation_audit_and_provenance.html#json-web-tokens-jwt) updated: 
+- Audit Trail section added to 'Cross Organization Audit & Provenance' page.
+- JWT Claims updated: 
   - 'device' claim added - this is the Identifier (ASID) of the system where the request originates. 
   - 'sub' claim specification/ example has been updated.
 - [Authentication and Autherisation](integration_authentication_authorisation.html) page added - NRLS strategic approach to align with 'Care Access Service' which will become NHS Digital’s national Authentication and Authorisation service. 
