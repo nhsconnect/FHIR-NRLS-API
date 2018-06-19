@@ -55,7 +55,7 @@ Links to the NRLS FHIR extensions on the NHS FHIR Reference Server.
 | [Extension-NRLS-RecordRetrievalMode-1](https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRLS-RecordRetrievalMode-1)|
 -->
 
-## 3. ValeSets ##
+## 3. ValueSets ##
 
 Links to the NRLS FHIR value sets on the NHS FHIR Reference Server. 
 
