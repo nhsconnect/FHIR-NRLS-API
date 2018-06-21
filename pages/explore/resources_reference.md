@@ -29,6 +29,9 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Identifier|`id`|string|0..1|Assigned by the NRLS at creation time. Uniquely identifies this record within an instance of the NRLS. Used by Providers to update or delete.|
 |Version|`versionId`|string|0..1|Assigned by the NRLS at creation or update time. Used to track the current version of a Pointer.|
 |Record type|`type`|CodeableConcept|1..1|The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers.|
+||`type.system`|Uri|1..1|Example Value: http://snomed.info/sct.|
+||`type.code`|Code|1..1|Symbol in syntax defined by the system. Example Value: 736253002|
+||`type.display`|String|1..1|Representation defined by the system.|
 |Patient|`subject`|Reference|1..1|The Patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.| 
 |Record owner|`author`|Reference|1..1|ODS code for the record owner organization.|
 |Pointer owner|`custodian`|Reference|1..1|ODS code for the pointer owner organization.|
