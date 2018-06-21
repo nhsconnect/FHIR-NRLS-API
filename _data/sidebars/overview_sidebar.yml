@@ -43,6 +43,9 @@ entries:
     - title: Interactions
       url: /overview_interactions.html
       output: web
+    - title: Pointer Lifecycle
+      url: /overview_pointer_lifecycle.html
+      output: web
  #   - title: Engagement Approach
  #     url: /engage.html
  #     output: web, pdf
@@ -68,19 +71,31 @@ entries:
  #  - title: CapabilityStatement
  #    url: /api_foundation_conformance.html
  #    output: web
-    - title: Consumer API
-      url: /api_consumer_documentreference.html
-      output: web
-    - title: Provider API
-      url: /api_provider_documentreference.html
-      output: web
+ #   - title: Consumer API
+ #     url: /api_consumer_documentreference.html
+ #     output: web
+ #   - title: Provider API
+ #     url: /api_provider_documentreference.html
+ #     output: web
     - title: Security
       url: /development_api_security_guidance.html
       output: web
     - title: General API Guidance
       url: /development_general_api_guidance.html
-      output: web  
+      output: web
       subfolders:
+      - title: API Interaction
+        output: web
+        subfolderitems:
+          - title: Create
+            url: /api_interaction_create.html
+            output: web
+          - title: Delete
+            url: /api_interaction_delete.html
+            output: web 
+          - title: Search
+            url: /api_interaction_search.html
+            output: web            
       - title: API Guidance | FHIR&reg;
         output: web
         subfolderitems:
