@@ -95,6 +95,9 @@ entries:
             output: web 
           - title: Search
             url: /api_interaction_search.html
+            output: web   
+          - title: Update
+            url: /api_interaction_update.html
             output: web            
       - title: API Guidance | FHIR&reg;
         output: web

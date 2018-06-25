@@ -77,7 +77,7 @@ Sprint 5 summary:
 - Consumer and Provider API error response examples refined.
 - Provider API Create and Update responses amended.
 - VersionId guidance added.
-- [CapabilityStatement](api_foundation_conformance.html) page updated.
+- CapabilityStatement page updated.
 - [Auditing](overview_behaviours.html#auditing) section added to 'Solution Behaviour' page.
 - Audit Trail section added to 'Cross Organization Audit & Provenance' page.
 - JWT Claims updated: 

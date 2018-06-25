@@ -12,9 +12,9 @@ summary: To support parameterised search of the NRLS.
 {% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
 
 
-## Provider Search ##
+## Search ##
 
-Provider API to support parameterised search of the NRLS.
+API to support parameterised search of the NRLS. This functionality is available for both consumer and provider systems.
 
 ## Search Request Headers ##
 
@@ -32,7 +32,7 @@ Provider API search requests support the following HTTP request headers:
 
 
 
-## Search ##
+## Search DocumentReference ##
 
 <div markdown="span" class="alert alert-success" role="alert">
 GET [baseUrl]/DocumentReference?[searchParameters]</div>
@@ -171,3 +171,69 @@ Failure:
 
 - The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)
 - See the 'General API Guidance' section for full on details NRLS [Error Handling](development_general_api_guidance.html#error-handling)
+
+
+## Example Scenario ##
+
+An authorised NRLS Consumer searches for a patient's relevant health record using the NRLS to discover potentially vital information to support a patient's emergency crisis care.
+
+### 1. Request Query ###
+
+Return all DocumentReference resources (pointers) for a patient with a NHS Number of 9876543210. The format of the response body will be XML. 
+
+<!--Return all DocumentReference resources for a patient with a NHS Number of 9876543210 and a pointer provider ODS code of RR8. The format of the response body will be xml. -->
+
+
+<!--Return all DocumentReference resources for Patient with a NHS Number of 9876543210, and a record created date greater than or equal to 1st Jan 2010, and a record created date less than or equal to 31st Dec 2011, the format of the response body will be xml. Replace 'baseUrl' with the actual base Url of the FHIR Server.-->
+
+
+#### 1.5.2 cURL ####
+
+{% include custom/embedcurl.html title="Search DocumentReference" command="curl -H 'Accept: application/fhir+xml' -H 'Authorization: BEARER [token]' -X GET  '[baseUrl]/DocumentReference?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210&_format=xml'" %}
+
+#### 1.5.3 Query Response Http Headers ####
+
+<script src="https://gist.github.com/swk003/1fb79ea938f6f5f984069819a29c2356.js"></script>
+
+
+
+#### 1.5.4 Query Response ####
+
+##### 1.5.4.1 Single Pointer (DocumentReference) Returned: ##### 
+
+- HTTP 200-Request was successfully executed
+- Bundle resource of type searchset containing a total value '1' DocumentReference resource that conforms to the `nrls-documentReference-1` profile.
+
+
+
+<script src="https://gist.github.com/swk003/ce94f58f6af930a419da4c9e9d29b620.js"></script>
+
+##### 1.5.4.2 Multiple Pointers (DocumentReference) Returned: ##### 
+
+- HTTP 200-Request was successfully executed
+- Bundle resource of type searchset containing a total value '2' DocumentReference resources that conform to the `nrls-documentReference-1` profile
+
+
+<script src="https://gist.github.com/swk003/3ab926e15f1dc424a9890cbc1687f1d0.js"></script>
+
+<!--
+A JSON example of multiple pointers returned is as follows:
+
+<script src="https://gist.github.com/swk003/6397f3d7b5ba7355629221e49754151b.js"></script>
+-->
+##### 1.5.4.3 No Record (pointer) Matched: ##### 
+
+- HTTP 200-Request was successfully executed
+- Empty bundle resource of type searchset containing a '0' (zero) total value indicating no record was matched
+
+<script src="https://gist.github.com/swk003/f0d1049f7cf557e21ebe86052866a5bb.js"></script>
+
+##### 1.5.4.4 Error Response (OperationOutcome) Returned: ##### 
+
+- HTTP 400-Bad Request. Invalid Parameter. 
+- OperationOutcome resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match)
+
+<script src="https://gist.github.com/swk003/a418511924364b9407940ce2f573c4be.js"></script>
+
+See Consumer Search section for all [HTTP Error response codes](api_consumer_documentreference.html#24-search-response) supported by Consumer Search API.
+

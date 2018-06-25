@@ -12,11 +12,11 @@ summary: To support the creation of NRLS pointers
 {% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
 
 
-## Provider Create ##
+## Create ##
 
-Provider API to support creation of NRLS pointers.
+API to support the creation of NRLS pointers. This functionality is only available for providers.
 
-## Provider Create Request Headers ##
+## Create Request Headers ##
 
 Provider API create requests support the following HTTP request headers:
 
@@ -28,7 +28,7 @@ Provider API create requests support the following HTTP request headers:
 | `toASID`             | The Spine ASID | MUST |
 
 
-## Provider Create Operation ##
+## Create Operation ##
 
 Provider system will construct a new Pointer (DocumentReference) and submit this to NRLS using the FHIR RESTful [create](https://www.hl7.org/fhir/http.html#create) interaction.
 
@@ -81,7 +81,7 @@ The table summarises the `create` interaction HTTP response code and the values 
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |201|information|informational|RESOURCE_CREATED|New resource created | Spine message UUID |Successfully created resource DocumentReference|
 
-{% include note.html content="Upon either successful creation or deletion of a pointer the NRLS Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Delete or Create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
+{% include note.html content="Upon successful creation of a pointer the NRLS Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Delete or Create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
 
 <!--
 ORIGINAL include note.html FOR ABOVE: 

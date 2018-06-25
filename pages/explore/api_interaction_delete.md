@@ -17,13 +17,13 @@ summary: A DocumentReference resource is used to describe a document that is mad
 {% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
 
 
-## Provider Delete ##
+## Delete ##
 
-Provider API to support deletion of NRLS pointers.
+API to support the deletion of NRLS pointers. This functionality is only available for providers.
 <!--
 Deletes are version aware. In order to conduct an update the Provider should submit the request with an If-Match header where the ETag matches the versionId of the DocumentReference in question from the server. If the version id given in the If-Match header does not match the versionId that the server holds for that DocumentReference, the server returns a 409 Conflict status code instead of deleting the resource. In this situation the client should read the DocumentReference from the server to get the most recent versionId and use that to populate the Etag in a fresh delete request.-->
 
-## Provider Delete Request Headers ##
+## Delete Request Headers ##
 
 <!--
 All Provider API delete requests should include the below additional HTTP request headers to support audit and security requirements on the Spine:
@@ -43,7 +43,7 @@ Provider API delete requests support the following HTTP request headers:
 
 
 
-## Provider Delete Operation ##
+## Delete Operation ##
 
 The Provider API supports the conditional delete interaction which allows a provider to delete an existing pointer based on the search parameter `_id` which refers to the logical id of the pointer. To accomplish this, the provider issues an HTTP DELETE as shown:
 
@@ -80,7 +80,7 @@ The table summarises the successful `delete` interaction scenario and includes H
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |200|information|informational|RESOURCE_DELETED|Resource removed | Spine message UUID |Successfully removed resource DocumentReference: [url]|
 
-{% include note.html content="Upon either successful creation or deletion of a pointer the NRLS Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Delete or Create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
+{% include note.html content="Upon successful deletion of a pointer the NRLS Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Delete or Create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
 
 
 Failure: 
