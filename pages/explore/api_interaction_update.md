@@ -34,6 +34,29 @@ Along with creating the new DocumentReference for each element in relatesTo that
 8. Use incremented value as the versionId in the new (to be created) current DocumentReference
 9. Persist the change
 
+### Ensure that the related DocumentReference exists ###
+
+Concretely the target property within the relatesTo property will be a FHIR Identifier whose system and value properties should be non-null and not empty.
+The Identifier should be interpreted as the masterIdentifier of a DocumentReference held within NRLS.
+
+The masterIdentifier is unique within the scope of a patient.
+
+In order to ensure that the masterIdentifer resolves to a DocumentReference the NRLS will need to pull back the DocumentReferences for the patient in question. This patient’s NHS number can be found in the subject field of the DocumentReference containing the relatesTo collection.
+
+Once those DocumentReferences have been retrieved then the masterIdentifier value (if present) will need to be compared to the Identifier in the relatesTo collection. For the Identifier to be considered equal to the masterIdentifer of a given DocumentReference both the system and value properties should be equal. They should be interpreted as String values whose cases should match.
+
+### Ensure that the requesting party has permissions to modify the related DocumentReference ###
+
+Assuming that a DocumentReference has been matched (see Ensure that the related DocumentReference exists) the NRLS needs to ensure that the client making the request has permission to modify the given DocumentReference.
+
+Extract value from the custodian property of the matched DocumentReference. Ensure that it is equal to the custodian property from the DocumentReference containing the relatesTo collection. The custodian values should be interpreted as Strings whose cases should match.
+
+Ordering of validation - Note that it is assumed that the above check takes place after the following checking -
+
+It has been established that the client making the request is a Provider
+The ODS code associated with the value of the fromASID HTTP header matches the ODS code in the custodian field of the DocumentReference containing the relatesTo collection.
+
+
 ### Example of a populated relatesTo property ###
 ```
 "relatesTo":[
@@ -61,7 +84,7 @@ Along with creating the new DocumentReference for each element in relatesTo that
 See [Create Response](/api_interaction_create.html#create-response) foe the response behaviour and codes.
 
 
-## Validation ##
+## relatesTo - Validation ##
 
 The DocumentReference.relatesTo property should be supported such that a Provider can create a DocumentReference with that property set.
 
@@ -71,11 +94,11 @@ The relatesTo property is a collection where each element must contain both of
 
 - target - FHIR Reference instances. Within each instance the Identifier field must be populated and within the Identifier the system and value properties must be set. (see below).
    
-- code - which must be one of - replaces | transforms | signs | appends
+- code - which must be one of - replaces, transforms, signs, appends
 
 It should be possible for a Provider to add more than one element to the relatesTo property.
 
-### Mandatory Properties ###
+#### a. Mandatory Properties ####
 
 If any of the mandatory fields listed above are missing the following response is returned to the client -
 
@@ -88,7 +111,7 @@ If any of the mandatory fields listed above are missing the following response i
 |OperationOutcome.issue.details.coding.display 	Resource is invalid: relatesTo|
 |OperationOutcome.issue.diagnostics| 	Both of the target and code properties must be set and the reference must be an Identifier where both the system and value properties are set.|
 
-### System and Value validation ###
+#### b. System and Value validation ####
 
 The *relatesTo.target.system*  and *relatesTo.target.value* properties of the masterIdentifier are mandatory and must not be empty. If not then the response below should be returned to the client -
 
@@ -101,7 +124,7 @@ The *relatesTo.target.system*  and *relatesTo.target.value* properties of the ma
 |OperationOutcome.issue.details.coding.display |	Resource is invalid: [masterIdentifier.value\|masterIdentifier.system]|
 |OperationOutcome.issue.diagnostics |	One of the Identifiers from the relatesTo field is missing one or both of the mandatory value and system properties.|
 
-### code validation ###
+#### c. Code validation ####
 
 The code property of the relatesTo must be set to one of the following values - 
 
@@ -120,3 +143,101 @@ Where the supplied value is outside of this set then the response below should b
 |OperationOutcome.issue.details.coding.code |	INVALID_RESOURCE|
 |OperationOutcome.issue.details.coding.display |	Resource is invalid: relatesTo.code|
 |OperationOutcome.issue.diagnostics |	The code must be one of replaces, transforms, signs or appends|
+
+
+
+## masterIdentifier - Validation ##
+
+The DocumentReference.masterIdentifier property should be supported such that a Provider can create a DocumentReference with that property set.
+
+When a Consumer retrieves a DocumentReference if the masterIdentifier is set then it should be included in the returned DocumentReference.
+
+
+#### a. Mandatory properties  ####
+Note that masterIdentifier is not a mandatory element but if it is supplied then the masterIdentifier.system and masterIdentifier.value properties must be set. If either one of these is not set then the following response should be returned to the client
+
+ 
+|HTTP response code |	400|
+|Response body |	OperationOutcome conforming to the https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1 |profile
+|OperationOutcome.issue.severity 	|error|
+|OperationOutcome.issue.code |	invalid|
+|OperationOutcome.issue.details.coding.system |	https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1|
+|OperationOutcome.issue.details.coding.code |	INVALID_RESOURCE|
+|OperationOutcome.issue.details.coding.display| 	Resource is invalid: [masterIdentifier.value|masterIdentifier.system]|
+|OperationOutcome.issue.diagnostics |	If the masterIdentifier is supplied then the value and system properties are mandatory|
+
+
+#### b. Unique masterIdentifer ####
+When the NRLS persists a DocumentReference with a masterIdentifier it should ensure that no other DocumentReference exists for that patient with the same masterIdentifier.
+
+Two masterIdentifiers will be considered the same where the following is true of the system and value properties of the masterIdentifers - 
+
+- system property is identical (case sensitive)
+- value property is identical (case sensitive)
+
+If this is not the case then the response below should be returned to the client -
+
+ 
+|HTTP response code |400|
+|Response body |	OperationOutcome conforming to the https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1 profile|
+|OperationOutcome.issue.severity |	error|
+|OperationOutcome.issue.code |	invalid|
+|OperationOutcome.issue.details.coding.system |	https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1|
+|OperationOutcome.issue.details.coding.code |	DUPLICATE_REJECTED|
+|OperationOutcome.issue.details.coding.display |	Duplicate DocumentReference|
+|OperationOutcome.issue.diagnostics |	Duplicate masterIdentifier value: [relatesTo.target.value] system: [relatesTo.target.system]|
+
+
+
+## Example ##
+
+```
+
+<DocumentReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://hl7.org/fhir">
+      <meta>
+             <profile value="https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1"/>
+      </meta>
+      <masterIdentifier>
+             <system value="urn:ietf:rfc:3986"/>
+             <value value="urn:oid:1.3.6.1.4.1.21367.2005.3.7"/>
+      </masterIdentifier>
+      <status value="current"/>
+      <type>
+             <coding>
+                   <system value="http://snomed.info/sct"/>
+                   <code value="736253002"/>
+                   <display value="Mental health crisis plan (record artifact)"/>
+             </coding>
+      </type>
+      <subject>
+             <reference value="https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210"/>
+      </subject>
+      <created value="2016-03-08T15:26:00+01:00"/>
+      <indexed value="2016-03-08T15:26:01+01:00"/>
+      <author>
+             <reference value="https://directory.spineservices.nhs.uk/STU3/Organization/RGD"/>
+      </author>
+      <custodian>
+             <reference value="https://directory.spineservices.nhs.uk/STU3/Organization/RR8"/>
+      </custodian>
+      <relatesTo>
+             <code value="replaces"/>
+             <target>
+                   <identifier>
+                         <system value="urn:ietf:rfc:3986"/>
+                          <value value="urn:oid:1.3.6.1.4.1.21367.2005.3.6"/>
+                   </identifier>
+             </target>
+      </relatesTo>
+      <content>
+             <attachment>
+                   <contentType value="application/pdf"/>
+                   <url value="https://spine-proxy.national.ncrs.nhs.uk/p1.nhs.uk/MentalHealthCrisisPlanReportRGD.pdf"/>
+                   <title value="Mental health Crisis Plan Report"/>
+                   <creation value="2016-03-08T15:26:00+01:00"/>
+             </attachment>
+      </content>
+</DocumentReference>
+
+
+```
