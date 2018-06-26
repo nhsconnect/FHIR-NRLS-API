@@ -190,54 +190,6 @@ If this is not the case then the response below should be returned to the client
 
 
 ## Example ##
+### A DocumentReference example including the relatesTo and masterIdentifier element ###
 
-```
-
-<DocumentReference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://hl7.org/fhir">
-      <meta>
-             <profile value="https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1"/>
-      </meta>
-      <masterIdentifier>
-             <system value="urn:ietf:rfc:3986"/>
-             <value value="urn:oid:1.3.6.1.4.1.21367.2005.3.7"/>
-      </masterIdentifier>
-      <status value="current"/>
-      <type>
-             <coding>
-                   <system value="http://snomed.info/sct"/>
-                   <code value="736253002"/>
-                   <display value="Mental health crisis plan (record artifact)"/>
-             </coding>
-      </type>
-      <subject>
-             <reference value="https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210"/>
-      </subject>
-      <created value="2016-03-08T15:26:00+01:00"/>
-      <indexed value="2016-03-08T15:26:01+01:00"/>
-      <author>
-             <reference value="https://directory.spineservices.nhs.uk/STU3/Organization/RGD"/>
-      </author>
-      <custodian>
-             <reference value="https://directory.spineservices.nhs.uk/STU3/Organization/RR8"/>
-      </custodian>
-      <relatesTo>
-             <code value="replaces"/>
-             <target>
-                   <identifier>
-                         <system value="urn:ietf:rfc:3986"/>
-                          <value value="urn:oid:1.3.6.1.4.1.21367.2005.3.6"/>
-                   </identifier>
-             </target>
-      </relatesTo>
-      <content>
-             <attachment>
-                   <contentType value="application/pdf"/>
-                   <url value="https://spine-proxy.national.ncrs.nhs.uk/p1.nhs.uk/MentalHealthCrisisPlanReportRGD.pdf"/>
-                   <title value="Mental health Crisis Plan Report"/>
-                   <creation value="2016-03-08T15:26:00+01:00"/>
-             </attachment>
-      </content>
-</DocumentReference>
-
-
-```
+<script src="https://gist.github.com/sufyanpat/a979b89f3cc81cf59157c68c8a866244.js"></script>

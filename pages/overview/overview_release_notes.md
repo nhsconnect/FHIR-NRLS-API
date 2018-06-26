@@ -9,6 +9,12 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 
 {% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
+## 1.2.0-beta ##
+*Changes to restructure the implementation guide*
+- Guidance added to the DocumentReference.type element
+- Addition of new *API Interaction* section to describe the RESTful functionalities.
+- New *Pointer Lifecycle* page introduced.
+
 ## 1.1.0-beta ##
 
 *Changes to re-align the NRLS API 1.1.0-beta Specification with the DDC March and May 2018 NRLS Service Development Iterations:*

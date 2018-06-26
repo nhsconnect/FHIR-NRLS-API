@@ -12,12 +12,12 @@ summary: NRLS Pointer Lifecycle
 
 ## Maintaining Pointers ##
 
-A Pointer is a reference to a Record. From the perspective of NRLS that resource is held on a remote system. It has its own lifecycle that is managed by a third-party (the Record owner). The state of the Pointer should reflect the state of the referenced Record so that Consumers are able to make informed decisions around whether or not a Pointer is worth following or given the choice of more than one Pointer which is the most appropriate to follow.
+A Pointer is a reference to a Record. From the perspective of NRLS that resource is held on a remote system. It has its own lifecycle that is managed by a third-party (the Record owner). The state of the Pointer should reflect the state of the referenced Record so that consumers are able to make informed decisions around whether or not a Pointer is worth following or given the choice of more than one Pointer which is the most appropriate to follow.
 
 
 ## Pointer Status ##
 
-The Pointer has the concept of a status. The status provides a means for a Consumer to understand whether the Pointer references the “current” Record. The definition of “current” is under the control of the Provider but a Consumer should be confident that by selecting the latest Pointer they will be presented with what the Provider considers to be the most appropriate for Consumers to use. 
+The Pointer has the concept of a status. The status provides a means for a consumer to understand whether the Pointer references the “current” Record. The definition of “current” is under the control of the Provider but a Consumer should be confident that by selecting the latest Pointer they will be presented with what the Provider considers to be the most appropriate for Consumers to use. 
 
 ## Advice for Providers ##
 
@@ -25,7 +25,7 @@ The Pointer has the concept of a status. The status provides a means for a Consu
 
 The rules around when a Pointer is created will vary from Provider to Provider because different business process’ will be at play within their organisations. Having said that there is some general guidance that can be given around when creation of a new pointer is appropriate.
 
-As discussed in the concepts section (TODO – link) the NRLS has the concept of a static and dynamic content in relation to what the Pointer is referencing. Static content will never change whereas a dynamic content is not guaranteed to be the same from one point in time to another in the future.
+As discussed in the [concepts](/overview_concepts.html) section the NRLS has the concept of a static and dynamic content in relation to what the Pointer is referencing. Static content will never change whereas a dynamic content is not guaranteed to be the same from one point in time to another in the future.
 
 Static content is typically content that undergoes version control. When a change is needed rather than changing the contents directly a new version is created. This new version builds on the original and contains the modified content. Once the changes are complete this new version is then considered immutable and becomes the current version replacing the previous one.
 
@@ -61,7 +61,7 @@ However even in this circumstance the Provider should consider marking the Point
 
 #### Update of an existing Pointer ####
 
-As noted in the create section typically update will be invoked on a Pointer when the Provider needs to change its status from current to one of superseded or entered in error. In general Providers should refrain from changing any of the other properties on an existing Pointer instead preferring to create a new one.
+As noted in the [update](api_interaction_update.html) section typically update will be invoked on a Pointer when the Provider needs to change its status from current to one of superseded or entered in error. In general Providers should refrain from changing any of the other properties on an existing Pointer instead preferring to create a new one.
 
 
 

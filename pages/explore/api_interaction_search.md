@@ -133,13 +133,13 @@ Systems SHOULD support the following search combinations:
 
 <!-- Include file removed: % include custom/search.custodian.html para="2.3.1." content="DocumentReference" %-->
 
-{% include custom/search._id.html para="1.3.1." values="" content="DocumentReference" %}
+{% include custom/search._id.html values="" content="DocumentReference" %}
 
-{% include custom/search.patient.html para="1.3.2." content="DocumentReference" %}
+{% include custom/search.patient.html content="DocumentReference" %}
 
-{% include custom/search.patient.custodian.html para="1.3.3." values="" content="DocumentReference" %}
+{% include custom/search.patient.custodian.html values="" content="DocumentReference" %}
 
-{% include custom/search.patient.type.html para="1.3.4." values="" content="DocumentReference" %}
+{% include custom/search.patient.type.html values="" content="DocumentReference" %}
 
 
 ## Search Response ##
@@ -177,7 +177,7 @@ Failure:
 
 An authorised NRLS Consumer searches for a patient's relevant health record using the NRLS to discover potentially vital information to support a patient's emergency crisis care.
 
-### 1. Request Query ###
+### Request Query ###
 
 Return all DocumentReference resources (pointers) for a patient with a NHS Number of 9876543210. The format of the response body will be XML. 
 
@@ -187,19 +187,19 @@ Return all DocumentReference resources (pointers) for a patient with a NHS Numbe
 <!--Return all DocumentReference resources for Patient with a NHS Number of 9876543210, and a record created date greater than or equal to 1st Jan 2010, and a record created date less than or equal to 31st Dec 2011, the format of the response body will be xml. Replace 'baseUrl' with the actual base Url of the FHIR Server.-->
 
 
-#### 1.5.2 cURL ####
+#### cURL ####
 
 {% include custom/embedcurl.html title="Search DocumentReference" command="curl -H 'Accept: application/fhir+xml' -H 'Authorization: BEARER [token]' -X GET  '[baseUrl]/DocumentReference?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210&_format=xml'" %}
 
-#### 1.5.3 Query Response Http Headers ####
+#### Query Response Http Headers ####
 
 <script src="https://gist.github.com/swk003/1fb79ea938f6f5f984069819a29c2356.js"></script>
 
 
 
-#### 1.5.4 Query Response ####
+#### Query Response ####
 
-##### 1.5.4.1 Single Pointer (DocumentReference) Returned: ##### 
+##### Single Pointer (DocumentReference) Returned: ##### 
 
 - HTTP 200-Request was successfully executed
 - Bundle resource of type searchset containing a total value '1' DocumentReference resource that conforms to the `nrls-documentReference-1` profile.
@@ -208,7 +208,7 @@ Return all DocumentReference resources (pointers) for a patient with a NHS Numbe
 
 <script src="https://gist.github.com/swk003/ce94f58f6af930a419da4c9e9d29b620.js"></script>
 
-##### 1.5.4.2 Multiple Pointers (DocumentReference) Returned: ##### 
+##### Multiple Pointers (DocumentReference) Returned: ##### 
 
 - HTTP 200-Request was successfully executed
 - Bundle resource of type searchset containing a total value '2' DocumentReference resources that conform to the `nrls-documentReference-1` profile
@@ -221,14 +221,14 @@ A JSON example of multiple pointers returned is as follows:
 
 <script src="https://gist.github.com/swk003/6397f3d7b5ba7355629221e49754151b.js"></script>
 -->
-##### 1.5.4.3 No Record (pointer) Matched: ##### 
+##### No Record (pointer) Matched: ##### 
 
 - HTTP 200-Request was successfully executed
 - Empty bundle resource of type searchset containing a '0' (zero) total value indicating no record was matched
 
 <script src="https://gist.github.com/swk003/f0d1049f7cf557e21ebe86052866a5bb.js"></script>
 
-##### 1.5.4.4 Error Response (OperationOutcome) Returned: ##### 
+##### Error Response (OperationOutcome) Returned: ##### 
 
 - HTTP 400-Bad Request. Invalid Parameter. 
 - OperationOutcome resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match)
