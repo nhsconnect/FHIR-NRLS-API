@@ -1,0 +1,18 @@
+<h4 id="_id">{{include.para}} _summary</h4>
+
+The search parameter `_summary` allows the client to retrieve the number of DocumentReferences that match a given search.
+
+<p>See <a href="https://www.hl7.org/fhir/search.html#summary">_summary</a> for details on this parameter. The _summary parameter can be used as follows:</p>
+
+
+<div markdown="span" class="alert alert-success" role="alert">
+GET [baseUrl]/{{include.content}}?subject=[reference]&_summary=count</div>
+
+
+<div class="language-http highlighter-rouge">
+<pre class="highlight"><code><span class="err">GET [baseUrl]/{{include.content}}?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210&_summary=count
+</span></code>
+Return a count of resources for a patient with a NHS Number of 9876543210</pre>
+</div>
+
+The '_summary' search parameter must be set to the value 'count' to retrieve the number of matching results.

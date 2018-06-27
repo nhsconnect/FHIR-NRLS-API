@@ -37,10 +37,6 @@ Provider API search requests support the following HTTP request headers:
 <div markdown="span" class="alert alert-success" role="alert">
 GET [baseUrl]/DocumentReference?[searchParameters]</div>
 
-Search for all custodian pointers. Fetches a bundle of all `DocumentReference` resources for the specified pointer owner (custodian).
-
-Providers MUST only search for pointers where they are the pointer owner (custodian).
-
 Though the NRLS does not keep a version history of each DocumentReference each one does hold a versionId. 
 
 <!--Though the NRLS does not keep a version history of each DocumentReference each one does hold a versionId to support the NRLS update strategy. -->
@@ -111,16 +107,13 @@ In responding to a search request the NRLS server will populate the versionId of
     <td>MAY</td>
     <td>DocumentReference.type</td>
 </tr> 
-
-<!--
 <tr>
-    <td><code class="highlighter-rouge">_count</code></td>
-    <td><code class="highlighter-rouge">number</code></td>
-    <td>Number of results per page</td>
+    <td><code class="highlighter-rouge">_summary</code></td>
+    <td><code class="highlighter-rouge">Summary</code></td>
+    <td>Total number of matching results</td>
     <td>MAY</td>
     <td>N/A</td>
 </tr>
--->
 </table>
 
 {% include custom/search.warn.subject.custodian.html %}
@@ -140,6 +133,8 @@ Systems SHOULD support the following search combinations:
 {% include custom/search.patient.custodian.html values="" content="DocumentReference" %}
 
 {% include custom/search.patient.type.html values="" content="DocumentReference" %}
+
+{% include custom/search._summary.html values="" content="DocumentReference" %}
 
 
 ## Search Response ##
@@ -199,16 +194,14 @@ Return all DocumentReference resources (pointers) for a patient with a NHS Numbe
 
 #### Query Response ####
 
-##### Single Pointer (DocumentReference) Returned: ##### 
+##### **Single Pointer (DocumentReference) Returned:** ##### 
 
 - HTTP 200-Request was successfully executed
 - Bundle resource of type searchset containing a total value '1' DocumentReference resource that conforms to the `nrls-documentReference-1` profile.
 
-
-
 <script src="https://gist.github.com/swk003/ce94f58f6af930a419da4c9e9d29b620.js"></script>
 
-##### Multiple Pointers (DocumentReference) Returned: ##### 
+##### **Multiple Pointers (DocumentReference) Returned:** ##### 
 
 - HTTP 200-Request was successfully executed
 - Bundle resource of type searchset containing a total value '2' DocumentReference resources that conform to the `nrls-documentReference-1` profile
@@ -221,14 +214,14 @@ A JSON example of multiple pointers returned is as follows:
 
 <script src="https://gist.github.com/swk003/6397f3d7b5ba7355629221e49754151b.js"></script>
 -->
-##### No Record (pointer) Matched: ##### 
+##### **No Record (pointer) Matched:** ##### 
 
 - HTTP 200-Request was successfully executed
 - Empty bundle resource of type searchset containing a '0' (zero) total value indicating no record was matched
 
 <script src="https://gist.github.com/swk003/f0d1049f7cf557e21ebe86052866a5bb.js"></script>
 
-##### Error Response (OperationOutcome) Returned: ##### 
+##### **Error Response (OperationOutcome) Returned:** ##### 
 
 - HTTP 400-Bad Request. Invalid Parameter. 
 - OperationOutcome resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match)
@@ -237,3 +230,15 @@ A JSON example of multiple pointers returned is as follows:
 
 See Consumer Search section for all [HTTP Error response codes](api_consumer_documentreference.html#24-search-response) supported by Consumer Search API.
 
+##### **_summary=count response:** ##### 
+
+- Response body SHALL return a valid XML or JSON formatted Bundle of type searchset, containing a bundle that reports the 
+total number of resources that match in Bundle.total, but with no entries, and no prev/next/last links. Note that the Bundle.total 
+only include the total number of matching DocumentReferences.
+
+Examples
+- 3 DocumentReferences exist for patient with NHS number passed into the search
+<script src="https://gist.github.com/sufyanpat/5fc773dc35a05fa3778639ff3ff3400a.js"></script>
+
+- 0 DocumentReferences exist for patient with NHS number passed into the search
+<script src="https://gist.github.com/sufyanpat/907afd0b118b2247f79d6c5a667e4487.js"></script>
