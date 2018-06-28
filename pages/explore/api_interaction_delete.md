@@ -45,7 +45,9 @@ Provider API delete requests support the following HTTP request headers:
 
 ## Delete Operation ##
 
-The Provider API supports the conditional delete interaction which allows a provider to delete an existing pointer based on the search parameter `_id` which refers to the logical id of the pointer. To accomplish this, the provider issues an HTTP DELETE as shown:
+### Delete by *'id'* ###
+
+The API supports the conditional delete interaction which allows a provider to delete an existing pointer based on the search parameter `_id` which refers to the logical id of the pointer. To accomplish this, the provider issues an HTTP DELETE as shown:
 
 <div markdown="span" class="alert alert-success" role="alert">
 DELETE [baseUrl]/DocumentReference?_id=[id]</div>
@@ -61,6 +63,25 @@ For all delete requests the `custodian` ODS code in the DocumentReference to be 
 </span></code>
 Delete the DocumentReference resource for a pointer with a logical id of 'da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142'.</pre>
 </div>
+
+
+### Delete by *'masterIdentifier'* ###
+
+The API supports the conditional delete interaction which allows a provider to delete an existing pointer using the masterIdentifier
+so they do not have to persist or query for the NRLS generated logical id for the Pointer.
+To accomplish this, the provider issues an HTTP DELETE as shown:
+
+<div markdown="span" class="alert alert-success" role="alert">
+DELETE [baseUrl]/DocumentReference?subject[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&identifier=[system][value]</div>
+
+*[nhsNumber]* - The NHS number of the patient whose DocumentReferences the client is requesting
+
+*[system]* - The namespace of the masterIdentifier value that is associated with the DocumentReference(s)
+
+*[value]* - The value of the masterIdentifier that is associated with the DocumentReference(s)
+
+Providers systems SHALL only delete pointers for records where they are the pointer owner (custodian). 
+
 
 
 ## Delete Response ##
