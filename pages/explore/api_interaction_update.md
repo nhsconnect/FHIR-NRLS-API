@@ -144,6 +144,24 @@ Where the supplied value is outside of this set then the response below should b
 |OperationOutcome.issue.details.coding.display |	Resource is invalid: relatesTo.code|
 |OperationOutcome.issue.diagnostics |	The code must be one of replaces, transforms, signs or appends|
 
+#### d. Failure to modify a related DocumentReference ####
+
+During the internal update of any of the DocumentReferences that have been resolved from the relatesTo elements a failure occurs during the change of the DocumentReferences status.
+
+The NRLS should roll back all changes that had been persisted as part of the POST. This includes 
+
+- The newly created DocumentReference
+- Any related DocumentReferences whose status had been successfully updated should be reverted to their original status
+- The following response should be returned to the client
+
+|HTTP response code |	500|
+|Response body |	OperationOutcome conforming to the https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1 profile|
+|OperationOutcome.issue.severity| 	error|
+|OperationOutcome.issue.code |	processing|
+|OperationOutcome.issue.details.coding.system 	|https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1|
+|OperationOutcome.issue.details.coding.code |	INTERNAL_SERVER_ERROR|
+|OperationOutcome.issue.details.coding.display|	Unexpected internal server error.|
+|OperationOutcome.issue.diagnostics |	There has been an internal error when attempting to persist the DocumentReference. Please contact the national helpdesk quoting - [Spine message UUID]|
 
 
 ## masterIdentifier - Validation ##
@@ -181,7 +199,7 @@ If this is not the case then the response below should be returned to the client
 |HTTP response code |400|
 |Response body |	OperationOutcome conforming to the https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1 profile|
 |OperationOutcome.issue.severity |	error|
-|OperationOutcome.issue.code |	invalid|
+|OperationOutcome.issue.code |	duplicate|
 |OperationOutcome.issue.details.coding.system |	https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1|
 |OperationOutcome.issue.details.coding.code |	DUPLICATE_REJECTED|
 |OperationOutcome.issue.details.coding.display |	Duplicate DocumentReference|
