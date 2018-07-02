@@ -151,6 +151,10 @@ Success:
  
 - Where a documentReference is returned, it SHALL include the versionId <!--and fullUrl--> of the current version of the documentReference resource
 
+- When a Consumer retrieves a DocumentReference if the masterIdentifier is set then it should be included in the returned DocumentReference
+
+- When a Consumer retrieves a DocumentReference if the relatesTo is set then it should be included in the returned DocumentReference
+
 Failure: 
 - SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the 'Spine-OperationOutcome-1-0' profile if the search cannot be executed (not that there is no match).
 

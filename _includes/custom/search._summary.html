@@ -16,3 +16,12 @@ Return a count of resources for a patient with a NHS Number of 9876543210</pre>
 </div>
 
 The '_summary' search parameter must be set to the value 'count' to retrieve the number of matching results.
+
+Response
+
+HTTP response code 200.
+
+Response body SHALL return a valid XML or JSON formatted Bundle of type searchset, containing a bundle that reports the total 
+number of resources that match in Bundle.total, but with no entries, and no prev/next/last links. 
+Note that the Bundle.total only include the total number of matching DocumentReferences.
+
