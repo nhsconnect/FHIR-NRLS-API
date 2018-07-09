@@ -124,8 +124,6 @@ Systems SHOULD support the following search combinations:
 * TBC
 -->
 
-<!-- Include file removed: % include custom/search.custodian.html para="2.3.1." content="DocumentReference" %-->
-
 {% include custom/search._id.html values="" content="DocumentReference" %}
 
 {% include custom/search.patient.html content="DocumentReference" %}

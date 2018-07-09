@@ -6,7 +6,15 @@ When the <code class="highlighter-rouge">_id</code> search parameter is used by 
 When the <code class="highlighter-rouge">subject</code> parameter is used by a client it MAY be used in conjunction with the <code class="highlighter-rouge">custodian</code> and <code class="highlighter-rouge">type</code> search parameters to form a combination search query. The <code class="highlighter-rouge">custodian</code> and <code class="highlighter-rouge">type</code> search parameters SHALL only be used to form combination search queries.
 
 
+<div markdown="span" class="alert alert-info" role="alert">
+    <i class="fa fa-info-circle"></i> <b>Note:</b> The format of the parameters must be of the form:<br/>
+	<br/>
+	<b>Subject:</b> `https://demographics.spineservices.nhs.uk/STU3/Patient/[NHS Number]`.<br/>
+	<b>Custodian:</b> `https://fhir.nhs.uk/Id/ods-organization-code|[ODS code]`.<br/>
+	<b>Type:</b> `http://snomed.info/sct|[code]`.
 	
+</div>
+
 
 
 

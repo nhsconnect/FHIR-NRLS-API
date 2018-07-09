@@ -15,9 +15,10 @@ GET [baseUrl]/{{include.content}}?subject=[reference]&_summary=count</div>
 Return a count of resources for a patient with a NHS Number of 9876543210</pre>
 </div>
 
-The '_summary' search parameter must be set to the value 'count' to retrieve the number of matching results.
+The <code class="highlighter-rouge">_summary</code> search parameter must be set to the value 'count' to retrieve the number of matching results.
+Other FHIR values for this search parameter are not supported.
 
-Response
+<b>Success Response</b>
 
 HTTP response code 200.
 
@@ -25,3 +26,31 @@ Response body SHALL return a valid XML or JSON formatted Bundle of type searchse
 number of resources that match in Bundle.total, but with no entries, and no prev/next/last links. 
 Note that the Bundle.total only include the total number of matching DocumentReferences.
 
+<b>Exception Scenarios</b>
+
+<i>_summary value must be count</i><br/><br/>
+The _summary parameter must have a value of "count". If it is anything else then the following response should be returned to the client
+<table>
+<tr>	<td>HTTP response code</td><td>400</td></tr>
+<tr>	<td>Response body</td><td>OperationOutcome conforming to the https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1 profile</td></tr>
+<tr>	<td>OperationOutcome.issue.severity</td><td>error</td></tr>
+<tr>	<td>OperationOutcome.issue.code</td><td>invalid</td></tr>
+<tr>	<td>OperationOutcome.issue.details.coding.system</td><td>https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1</td></tr>
+<tr>	<td>OperationOutcome.issue.details.coding.code</td><td>INVALID_PARAMETER</td></tr>
+<tr>	<td>OperationOutcome.issue.details.coding.display</td><td>Invalid parameter</td></tr>
+<tr>	<td>OperationOutcome.issue.diagnostics</td><td>Unsupported search parameter - _summary=[value]</td></tr>
+</table>
+
+
+<i>invalid combination of search parameters</i><br/><br/>
+The _summary parameter must have a value of "count". If it is anything else then the following response should be returned to the client
+<table>
+<tr>	<td>HTTP response code</td><td>400</td></tr>
+<tr>	<td>Response body</td><td>OperationOutcome conforming to the https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1 profile</td></tr>
+<tr>	<td>OperationOutcome.issue.severity</td><td>error</td></tr>
+<tr>	<td>OperationOutcome.issue.code</td><td>invalid</td></tr>
+<tr>	<td>OperationOutcome.issue.details.coding.system</td><td>https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1</td></tr>
+<tr>	<td>OperationOutcome.issue.details.coding.code</td><td>INVALID_PARAMETER</td></tr>
+<tr>	<td>OperationOutcome.issue.details.coding.display</td><td>Invalid parameter</td></tr>
+<tr>	<td>OperationOutcome.issue.diagnostics</td><td>Unsupported search parameter - [param key] = [param value]</td></tr>
+</table>
