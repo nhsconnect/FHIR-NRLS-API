@@ -28,13 +28,13 @@ entries:
   - title: General Guidance
     output: web
     folderitems:
-    - title: Pointer identity
+    - title: Pointer Identity
       url: /pointer_identity.html
       output: web
-    - title: Pointer lifecycle 
+    - title: Pointer Lifecycle 
       url: /pointer_lifecycle.html
       output: web
-    - title: Pointer maintenance 
+    - title: Pointer Maintenance 
       url: /pointer_maintenance.html
       output: web
   - title: Solution

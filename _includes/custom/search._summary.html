@@ -43,7 +43,7 @@ The _summary parameter must have a value of "count". If it is anything else then
 
 
 <i>invalid combination of search parameters</i><br/><br/>
-The _summary parameter must have a value of "count". If it is anything else then the following response should be returned to the client
+If the _summary parameter is provided then the only other param that it can be used with it the optional _format param. If any other parameters are provided then the following response should be returned to the client.
 <table>
 <tr>	<td>HTTP response code</td><td>400</td></tr>
 <tr>	<td>Response body</td><td>OperationOutcome conforming to the https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1 profile</td></tr>

@@ -1,7 +1,7 @@
 ---
 title: Pointer Identity
 keywords: engage, about
-tags: [overview]
+tags: [pointer]
 sidebar: overview_sidebar
 permalink: pointer_identity.html
 summary: NRLS Pointer Identity
@@ -26,7 +26,10 @@ The format of the id is under the control of the NRLS service. Clients should tr
 
 ### Master Identifier ###
 
-The Master identifier is an optional identifier on the Pointer. It is under the control of the Provider. The Master identifier is associated with the version of the content that the Pointer references. Any time that the content’s version changes (see Maintaining Pointers page xxx) then so too should the masterIdentifier. The NRLS prefers that this is done through the creation of a new Pointer with a new masterIdentifier and the deprecation of the existing Pointer (see Pointer status page).
+The Master identifier is an optional identifier on the Pointer. It is under the control of the Provider. 
+The Master identifier is associated with the version of the content that the Pointer references. Any time that the content’s version 
+changes [see Maintaining Pointers page](/pointer_maintenance.html) then so too should the masterIdentifier. 
+The NRLS prefers that this is done through the creation of a new Pointer with a new masterIdentifier and the deprecation of the existing Pointer ([see Pointer status page](/pointer_lifecycle.html#pointer-status)).
 
 
 ### Uniqueness ###
@@ -51,7 +54,7 @@ If the Provider attempts to create a Pointer using a Master identifier that has 
 Headline – it is the Provider’s responsibly to ensure that the Master identifiers that it creates are unique across all of its Pointers
 It is perfectly possible for a Provider to create Pointers for different patients with the same Master identifier. Fig 1 below illustrates the negative consequences of a Provider failing to ensure that their masterIdentifier is unique. 
 
-<img src="images/solution/Solution_Behaviour_diagram.png" style="width:100%;max-width: 100%;">
+
 <img src="images/pointers/nrls_pointer.png" style="width:100%;max-width: 100%;">
 
 
@@ -59,7 +62,7 @@ It is perfectly possible for a Provider to create Pointers for different patient
 
 The Provider creates two Pointers; one for patient Bob Smith and the other for patient Jane Doe. Both Pointers sit in the NRLS with the same Master identifier. This is relatively innocuous until the Provider wishes to supersede one of these Pointers. 
 
-In figure 1 the Provider needs to update Bob Smith’s Pointer to replace it with a newer version. As discussed in the Pointer status page the Provider assembles a create message and defines a superseding relationship to the existing Pointer using its masterIdentifier to refer to the target.
+In figure 1 the Provider needs to update Bob Smith’s Pointer to replace it with a newer version. As discussed in the [Pointer status page](/pointer_lifecycle.html#pointer-status) the Provider assembles a create message and defines a superseding relationship to the existing Pointer using its masterIdentifier to refer to the target.
 
 Since both Bob Smith and Jane Doe’s Pointers have the same Master Identifier the NRLS will resolve both Pointers and crucially will mark both as superseded even though Jane Doe’s Pointer has no relation to Bob Smiths pointers.
 

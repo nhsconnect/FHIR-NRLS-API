@@ -63,3 +63,10 @@ The mechanism for making this decision is predicated on the [Record type](overvi
 ### The Provider controls Record format ###
 
 The NRLS takes the stance that it is for the Provider to determine what format its Records should be delivered in. The NRLS does not restrict the format of Records that are pointed to. Whether or not the Consumer can handle that format is not the concern of the Provider and nor is it the concern of the NRLS. The NRLS expects that a Provider will create a Pointer with additional contextual information (i.e. mime type) to help the Consumer determine the appropriate way to handle the Record.
+
+### Pointers should not be removed ### 
+
+In part the NRLS is there to track the evolution of a Pointer’s content. This is important so that the NRLS can support the retrieval 
+of historical Pointers for medico-legal use cases. To that end the deletion of a Pointer should be avoided. 
+Though the NRLS does provide a delete function as in some circumstances deletion of a Pointer may be unavoidable. 
+More information is provided in [Pointer maintenance page](/pointer_maintenance.html).
