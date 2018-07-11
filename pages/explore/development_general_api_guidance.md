@@ -170,149 +170,6 @@ In line with work being undertaken in other jurisdictions (see the [Argonaut Imp
 - If neither the `Accept` header nor the `_format` parameter are supplied by the client system the NRLS Server SHALL return data in the default format of `application/fhir+xml`.
 
 
-<!--
-### Wire format representations ###
-
-Servers should support two [wire formats](https://www.hl7.org/fhir/STU3/formats.html#wire) as ways to represent resources when they are exchanged:
-
-- Servers SHALL support [JSON](https://www.hl7.org/fhir/STU3/json.html)
-- Servers SHOULD support [XML](https://www.hl7.org/fhir/STU3/xml.html)
-
-{% include important.html content="The FHIR standard outlines specific rules for formatting XML and JSON on the wire. It is important to read and understand in full the differences between how XML and JSON are required to be represented." %}
-
-Consumers SHALL ignore unknown extensions and elements in order to foster [forwards compatibility](https://www.hl7.org/fhir/STU3/compatibility.html#1.10.3) and declare this by setting [CapabilityStatement.acceptUnknown](https://www.hl7.org/fhir/STU3/capabilitystatement-definitions.html#CapabilityStatement.acceptUnknown) to 'both' in their capability statement.
-
-Systems SHALL declare which format(s) they support in their CapabilityStatement. If a server receives a request for a format that it does not support, it SHALL return an HTTP status code of `415` indicating an `Unsupported Media Type`.
-
-### Transfer encoding ###
-
-Clients and servers SHALL support the HTTP [Transfer-Encoding](https://www.hl7.org/fhir/STU3/http.html#mime-type) header with a value of `chunked`. This indicates that the body of a HTTP response will be returned as an unspecified number of data chunks (without an explicit `Content-Length` header).
-
-### Character encoding ###
-
-Clients and servers SHALL support the `UTF-8` [character encoding](https://www.hl7.org/fhir/STU3/http.html#mime-type) as outlined in the FHIR standard.
-
-> FHIR uses `UTF-8` for all request and response bodies. Since the HTTP specification (section 3.7.1) defines a default character encoding of `ISO-8859-1`, requests and responses SHALL explicitly set the character encoding to `UTF-8` using the `charset` parameter of the MIME-type in the `Content-Type` header. Requests MAY also specify this charset parameter in the `Accept` header and/or use the `Accept-Charset` header.
-
-### Content compression ###
-
-To improve system performances clients/servers SHALL support GZIP compression.
-
-Compression is requested by setting the `Accept-Encoding` header to `gzip`.
-
-{% include tip.html content="Applying content compression is key to reducing bandwidth needs and improving battery life for mobile devices." %} 
-
-### [Inter-version compatibility](https://www.hl7.org/fhir/STU3/compatibility.html) ###
-
-Unrecognized search criteria SHALL always be ignored. As search criteria supported in a query are echoed back as part of the search response there is no risk in ignoring unexpected search criteria.
-
-### HTTP headers ###
-
-#### Proxying headers ####
-
-Additional HTTP headers SHALL be added into the HTTP request/response for allowing the proxy system to disclose information lost in the proxying process (for example, the originating IP address of a request). Typically, this information is added to proxy forwarding headers as defined in [RFC 7239](http://tools.ietf.org/html/rfc7239).
-
-#### Cross-organisation provenance and audit headers ####
-
-To meet auditing and provenance requirements (which are expected to be closely aligned with the IM1 requirements), clients SHALL provide an oAuth 2.0 Bearer token in the HTTP Authorization header (as outlined in [RFC 6749](http://tools.ietf.org/html/rfc6749)) in the form of a JSON Web Token (JWT) as defined in [RFC 7519](http://tools.ietf.org/html/rfc7519).
-
-{% include tip.html content="We are using an open standard (JWT) to provide a container for the provenance and audit data for ease of transport between the consumer and provider systems. It is important to note that these tokens (for GP Connect FoT) will **not** be centrally issued and are not signed or encrypted (that is, they are constructed of plain text). There are JWT libraries available for most programming languages simplifying the generation of this data in JWT format." %}
-
-Refer to [Integration - cross-organisation audit and provenance](integration_cross_organisation_audit_and_provenance) for full details of the JWT claims that SHALL be used for passing audit and provenance details between systems.
-
-{% include important.html content="We have defined a small number of additional headers which are also required to be included in NHS Digital defined custom headers." %}
-
-Clients SHALL add the following Spine proxy headers for audit and security purposes:
-
-- `Ssp-TraceID` - TraceID (generated per request) which identifies the sender's message/interaction (for example, a GUID/UUID).
-- `Ssp-From` - ASID which identifies the sender's FHIR endpoint.
-- `Ssp-To` - ASID which identifies the recipient's FHIR endpoint.
-- `Ssp-InteractionID` - identifies the FHIR interaction that is being performed <sup>1</sup>
-
-<sup>1</sup> please refer to the [Development - FHIR API guidance - operation guidance](development_fhir_operation_guidance.html) for full details.
-
-The SSP SHALL perform the following checks to authenticate client request:
-
-- get the common name (CN) from the TLS session and compare the host name to the declared endpoint
-- check that the client/sending endpoint has been registered (and accredited) to initiate the given interaction
-- check that the server/receiving endpoint has been registered (and accredited) to receive/process the given interaction   
-
-#### Caching headers ####
-
-Providers SHALL use the following HTTP header to ensure that no intermediaries cache responses: `Cache-Control: no-store`
-
-
-### [Managing Return Content](https://www.hl7.org/fhir/STU3/http.html#return) ###
-
-Provider SHALL maintain resource state in line with the underlying system, including the state of any associated resources.
-
-For example: 
-
-_If the practitioner associated with a schedule is changed on the provider's system, such as when a locum is standing in for a regular doctor, this should be reflected in all associated resources to that schedule. The diagram below shows the expected change to the appointment resources for this scenario._
-
-_When the appointment is booked, the appointment resource is associated with a slot resource and references the practitioner resource associated with the schedule in which the slot resides. If the schedule is then updated within the provider system to reflect the change of practitioner from the original doctor to a locum doctor, then the practitioner reference with the schedule will be updated. If a consumer then performs a read of the appointment the returned appointment resource should reflect the updated practitioner on the schedule._
--->
-
-<!--[Diagram of reflection of state](images/development/Reseource Reflection of state.png)-->
-
-<!--
-Servers SHALL default to the `return=representation` behaviour (that is, returning the entire resource) for interactions that create or update resources.
-
-Servers SHOULD honour a `return=minimal` or `return=representation` preference indicated in the `Prefer` request header, if present.
-
-### Demographic cross-checking ###
-
-Consumer systems SHALL compare the returned structured patient demographic data (supplied by the provider system as structured data) against the demographic data held in the consumer system.
-
-The following data SHALL be cross-checked between consumer and returned provider data. Any differences between these fields SHALL be brought to the attention of the user.   
-
-| Item | Resource field |
-| ---- | -------------- | 
-| Family name | patient.name.family |
-| Given name | patient.name.given |
-| Gender | patient.gender |
-| Birth date | patient.birthDate |
-
-Additionally, the following data MAY be displayed if returned from the provider to assist a visual cross-check and for safe identification, but should not be part of the automatic comparison:
-* Address and postcode
-* Contact (telephone, mobile, email)
-
-All above may be redacted if patient is flagged on Spine as sensitive demographics.
-
-### Managing resource contention ###
-
-To facilitate the management of [resource contention](http://hl7.org/fhir/STU3/http.html#concurrency), servers SHALL always return an `ETag` header with each resource including the resource’s `versionId`:
-
-```http
-HTTP 200 OK
-Date: Sat, 09 Feb 2013 16:09:50 GMT
-Last-Modified: Sat, 02 Feb 2013 12:02:47 GMT
-ETag: W/"23"
-Content-type: application/json+fhir
-```
-
-`ETag` headers which denote resource `version Id`s SHALL be prefixed with `W/` and enclosed in quotes, for example:
-
-```http
-ETag: W/"3141"
-```
-
-Clients SHALL submit update requests with an `If-Match` header that quotes the `ETag` from the server.
-
-```http
-PUT /Patient/347 HTTP/1.1
-If-Match: W/"23"
-```
-
-If the `version Id` given in the `If-Match` header does not match, the server returns a `409` **Conflict** status code instead of updating the resource.
-
-For servers that don't persist historical versions of a resource (that is, any resource other than the currently available/latest version) then they SHALL operate in line with the guidance provided in the following [Hay on FHIR - FHIR versioning with a non-version capable back-end](https://fhirblog.com/2013/11/21/fhir-versioning-with-a-non-version-capable-back-end/) blog post. This is to ensure that GP Connect servers will be compatible with version-aware clients, even though the server itself doesn't support the retrieval of historical versions.
-
-### Managing return errors ###
-
-To [manage return errors](http://hl7.org/fhir/STU3/http.html#2.1.0.4), FHIR defines an [OperationOutcome](http://hl7.org/fhir/STU3/operationoutcome.html) resource that can be used to convey specific detailed processable error information. An `OperationOutcome` may be returned with any HTTP `4xx` or `5xx` response, but is not always required.
--->
-
 ## Error handling ##
 
 The NRLS API defines numerous categories of error, each of which encapsulates a specific part of the request that is sent to the NRLS. Each type of error will be discussed in its own section below with the relevant Spine response code:
@@ -327,7 +184,7 @@ The NRLS API defines numerous categories of error, each of which encapsulates a 
 
 - [Headers](development_general_api_guidance.html#headers---missing_invalid_header) - There are a number of HTTP headers that must be supplied with any request. In addition that values associated with those headers have their own validation rules. 
 - [Parameters](development_general_api_guidance.html#parameters---invalid_parameter) – Certain actions against the NRLS allow a client to specify HTTP parameters. This class of error covers problems with the way that those parameters may have been presented
-- [Payload business rules](development_general_api_guidance.html#payload-business-rules---invalid_resource) - Errors of this nature will arise when the request payload (DocumentReference) does not conform to the business rules associated with its use as an NRLS Pointer
+- [Payload business rules](development_general_api_guidance.html#payload-business-rules) - Errors of this nature will arise when the request payload (DocumentReference) does not conform to the business rules associated with its use as an NRLS Pointer
 - [Payload syntax](development_general_api_guidance.html#payload-syntax---invalid_request_message) - Used to inform the client that the syntax of the request payload (DocumentReference) is invalid for example if using JSON to carry the DocumentReference then the structure of the payload may not conform to JSON notation.
 - [ODS not found](development_general_api_guidance.html#custodian--author-organisations---organisation_not_found) - Used to inform the client that the URL being used to reference a given Organisation is invalid.
 - [Invalid NHS Number](development_general_api_guidance.html#invalid_nhs_number) - Used to inform a client that the the NHS Number used in a provider pointer create or consumer search interaction is invalid.
@@ -424,10 +281,15 @@ If the search request specifies unsupported parameter values in the request, thi
 Where masterIdentifier is a search term both the system and value parameters must be supplied.
 
 #### _summary parameter ####
+The _summary parameter must have a value of “count”. If it is anything else then an error should be returned to the client.
+
+If the _summary parameter is provided then the only other param that it can be used with is the optional _format param. If any other parameters are provided then an error should be returned to the client.
 
 
+### Payload business rules ###
+***
 
-### Payload business rules - INVALID_RESOURCE ###
+### INVALID_RESOURCE ###
 This error code may surface when creating or <!--modifying--> deleting a DocumentReference. There are a number of properties that make up the DocumentReference which have business rules associated with them. If there are problems with one or more of these properties then this error may be thrown.
 
 #### mandatory fields ####
