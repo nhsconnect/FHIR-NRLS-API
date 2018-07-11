@@ -173,26 +173,23 @@ In line with work being undertaken in other jurisdictions (see the [Argonaut Imp
 ## Error handling ##
 
 The NRLS API defines numerous categories of error, each of which encapsulates a specific part of the request that is sent to the NRLS. Each type of error will be discussed in its own section below with the relevant Spine response code:
-- [Not found](development_general_api_guidance.html#not-found---no_record_found) - Spine supports this behaviour when:
+- [Not found](development_general_api_guidance.html#not-found) - Spine supports this behaviour when:
   - a request references a resource that cannot be resolved be it a DocumentReference, Patient or Organisation
   - a request supports an NHS Number where no Spine Clinicals record exists for that NHS Number.
-
-<!--
-	BROKEN URL
-- [Access](development_general_api_guidance.html#access-access_denied) - Used to cover scenarios where a client is attempting to perform an action for which they are not authorised
--->
-
-- [Headers](development_general_api_guidance.html#headers---missing_invalid_header) - There are a number of HTTP headers that must be supplied with any request. In addition that values associated with those headers have their own validation rules. 
-- [Parameters](development_general_api_guidance.html#parameters---invalid_parameter) – Certain actions against the NRLS allow a client to specify HTTP parameters. This class of error covers problems with the way that those parameters may have been presented
+- [Headers](development_general_api_guidance.html#headers) - There are a number of HTTP headers that must be supplied with any request. In addition that values associated with those headers have their own validation rules. 
+- [Parameters](development_general_api_guidance.html#parameters) – Certain actions against the NRLS allow a client to specify HTTP parameters. This class of error covers problems with the way that those parameters may have been presented
 - [Payload business rules](development_general_api_guidance.html#payload-business-rules) - Errors of this nature will arise when the request payload (DocumentReference) does not conform to the business rules associated with its use as an NRLS Pointer
-- [Payload syntax](development_general_api_guidance.html#payload-syntax---invalid_request_message) - Used to inform the client that the syntax of the request payload (DocumentReference) is invalid for example if using JSON to carry the DocumentReference then the structure of the payload may not conform to JSON notation.
+- [Payload syntax](development_general_api_guidance.html#payload-syntax) - Used to inform the client that the syntax of the request payload (DocumentReference) is invalid for example if using JSON to carry the DocumentReference then the structure of the payload may not conform to JSON notation.
 - [ODS not found](development_general_api_guidance.html#custodian--author-organisations---organisation_not_found) - Used to inform the client that the URL being used to reference a given Organisation is invalid.
 - [Invalid NHS Number](development_general_api_guidance.html#invalid_nhs_number) - Used to inform a client that the the NHS Number used in a provider pointer create or consumer search interaction is invalid.
 - [Unsupported Media Type](development_general_api_guidance.html#unsupported_media_type) - Used to inform the client that requested content types are not supported by NRLS Service
 - [Internal Server Error](development_general_api_guidance.html#internal_server_error) - Used to inform the client if there is a failure during the change of the DocumentReference status.
 
 
-### Not found - NO_RECORD_FOUND ###
+### <u>Not found</u> ###
+
+
+### NO_RECORD_FOUND ###
 There are two situations when Spine supports this behaviour:
 
 - When a request references a resource that cannot be resolved. For example This error should be expected when a request references the [unique id](explore_reference.html#2-nrls-pointer-fhir-profile) of a DocumentReference however the id is not known to the NRLS. There are two scenarios when the NRLS Service supports this exception:
@@ -215,7 +212,10 @@ The below table summarises the HTTP response codes, along with the values to exp
 |404|error|not-found|NO_RECORD_FOUND|No record found|The given NHS number could not be found [nhsNumber]|
 
 
-### Headers - MISSING_OR_INVALID_HEADER ###
+### <u>Headers</u> ###
+
+
+### MISSING_OR_INVALID_HEADER ###
 
 This error will be thrown in relation to the mandatory HTTP request headers. The scenarios when this error might be thrown:
 - The  mandatory `fromASID` HTTP Header is missing in the request
@@ -244,7 +244,9 @@ Note that the header name is case-sensitive.
 |400|error|invalid| MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|Authorization HTTP Header is missing|
 
 
-### Parameters - INVALID_PARAMETER ###
+### <u>Parameters</u> ###
+
+### INVALID_PARAMETER ###
 This error will be raised in relation to request parameters that the client may have specified. As such this error can be raised in a variety of circumstances:
 
 #### Subject parameter ####
@@ -286,8 +288,8 @@ The _summary parameter must have a value of “count”. If it is anything else 
 If the _summary parameter is provided then the only other param that it can be used with is the optional _format param. If any other parameters are provided then an error should be returned to the client.
 
 
-### Payload business rules ###
-***
+### <u>Payload business rules</u> ###
+
 
 ### INVALID_RESOURCE ###
 This error code may surface when creating or <!--modifying--> deleting a DocumentReference. There are a number of properties that make up the DocumentReference which have business rules associated with them. If there are problems with one or more of these properties then this error may be thrown.
@@ -320,21 +322,33 @@ If the DocumentReference in the request body specifies a type that is not part o
 If the DocumentReference in the request body specifies an indexed element that is not a valid [instant](http://hl7.org/fhir/STU3/datatypes.html#instant) as per the FHIR specification this error will be thrown. 
 
 
-
 #### Delete Request - Provider ODS Code does not match Custodian ODS Code ####
 This error is raised during a provider delete interaction. There is one exception scenario:
 - A provider delete pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code in the fromASID header.
 
+#### relatesTo.code ####
+If the code is not set to the following values then an error must be returned: 
+- replaces
+- transforms
+- signs
+- appends
+
+#### Incorrect permissions to modify ####
+
+When the NRLS resolves a DocumentReference through the relatesTo property before modifying its status the NRLS should check that 
+the ODS code associated with the fromASID HTTP header is associated with the ODS code specified on the custodian property of the 
+DocumentReference. If not then the NRLS should roll back all changes and an error returned.
+
+### DUPLICATE_REJECTED ###
+
+#### Unique masterIdentifier ####
+When the NRLS persists a DocumentReference with a masterIdentifier it should ensure that no other DocumentReference exists 
+for that patient with the same masterIdentifier.
 
 
-<!--
-### Payload syntax - MESSAGE_NOT_WELL_FORMED ###
+### <u>Payload syntax</u> ###
 
-This kind of error will be created in response to problems with the request payload. However the kind of errors that trigger this error are distinct from those that cause the INVALID_RESOURCE error which is intended to convey a problem that relates to the business rules associated with an NRLS DocumentReference. The MESSAGE_NOT_WELL_FORMED error is triggered when there is a problem with the format of the DocumentReference Resource in terms of the XML or JSON syntax that has been used.
-
--->
-
-### Payload syntax - INVALID_REQUEST_MESSAGE ###
+### INVALID_REQUEST_MESSAGE ###
 
 This kind of error will be created in response to problems with the request payload. However the kind of errors that trigger this error are distinct from those that cause the INVALID_RESOURCE error which is intended to convey a problem that relates to the business rules associated with an NRLS DocumentReference. The INVALID_REQUEST_MESSAGE error is triggered when there is a problem with the format of the DocumentReference Resource in terms of the XML or JSON syntax that has been used.
 
@@ -373,6 +387,8 @@ These exceptions are raised by the Spine Core common requesthandler and not the 
 | HTTP Code | issue-severity | issue-type | Details.System | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |415|error|invalid|http://fhir.nhs.net/ValueSet/spine-response-code-1-0 | UNSUPPORTED_MEDIA_TYPE|Unsupported Media Type|Unsupported Media Type|
+
+### <u>Internal Error</u> ###
 
 ### INTERNAL_SERVER_ERROR ###
 
