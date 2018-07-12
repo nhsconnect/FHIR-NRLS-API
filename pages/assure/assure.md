@@ -20,7 +20,7 @@ summary: "These pages assist with the NRLS Service Assurance Process"
  
 3. The <a href="mailto:itkconformance@nhs.net">Solution Assurance team</a> will work with the supplier through development and assurance to provide assistance with technical support and test and assurance queries and conduct the review of Supplier submissions.
 
-4. Supplier should carry out initial development against TKW testbench.
+4. Supplier should carry out initial development against [TKW testbench](https://hscic365-my.sharepoint.com/:u:/g/personal/chbe53_log1_hscic_gov_uk/EdO79_cHfj5LqEOJv7o-zj4B9tTK8T6PBnOEN88e19_Edw?e=xeKfqj).
 
 5.	Further testing can be done in test environments OpenTest or DEV. The environments will be populated with test data which will support all test cases detailed within the TOM.  Suppliers will be able to carry out their own initial testing in these environments.
 

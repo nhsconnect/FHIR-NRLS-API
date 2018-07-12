@@ -339,6 +339,10 @@ When the NRLS resolves a DocumentReference through the relatesTo property before
 the ODS code associated with the fromASID HTTP header is associated with the ODS code specified on the custodian property of the 
 DocumentReference. If not then the NRLS should roll back all changes and an error returned.
 
+#### DocumentReference does not exist ####
+
+When the NRLS fails to resolve a DocumentReference through the relatesTo property then the NRLS should roll back all changes and an error returned.
+
 ### DUPLICATE_REJECTED ###
 
 #### Unique masterIdentifier ####

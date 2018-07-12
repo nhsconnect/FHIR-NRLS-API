@@ -107,3 +107,16 @@ Failure:
 
 - The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)
 - See the 'General API Guidance' section for full on details NRLS [Error Handling](development_general_api_guidance.html#error-handling)
+
+### Ensuring that masterIdentifier is unique ###
+
+The masterIdentifier should be unique within the NRLS. For more information see the discussion on [Pointer identifiers](/pointer_identity.html). The masterIdentifer is a [FHIR identifier](https://www.hl7.org/fhir/datatypes.html#Identifier) and for NRLS the system and value properties are mandatory.
+
+The system defines how the value is made unique. As the FHIR specification says this might be a recognised standard that describes how this uniqueness is generated.  
+
+The NRLS recommends the use of either an OID or a UUID as an Identifier in keeping with the need for the masterIdentifier value to be unique. In this case then the system SHALL be "urn:ietf:rfc:3986" (see the [FHIR identifier registry](https://www.hl7.org/fhir/identifier-registry.html) for details) and the value is of the form – 
+
+•	OID -  urn:oid:[oidValue]
+•	UUID - urn:uuid:[uuidValue]
+
+See the [example](https://www.hl7.org/fhir/datatypes-examples.html#Identifier) OID and UUID based Identifiers from the FHIR specification.

@@ -25,18 +25,6 @@ entries:
       url: /overview_glossary.html
       output: web
       subfolders:
-  - title: General Guidance
-    output: web
-    folderitems:
-    - title: Pointer Identity
-      url: /pointer_identity.html
-      output: web
-    - title: Pointer Lifecycle 
-      url: /pointer_lifecycle.html
-      output: web
-    - title: Pointer Maintenance 
-      url: /pointer_maintenance.html
-      output: web
   - title: Solution
     output: web
     folderitems:
@@ -55,7 +43,18 @@ entries:
     - title: Interactions
       url: /overview_interactions.html
       output: web
-
+  - title: General Guidance
+    output: web
+    folderitems:
+    - title: Pointer Identity
+      url: /pointer_identity.html
+      output: web
+    - title: Pointer Lifecycle 
+      url: /pointer_lifecycle.html
+      output: web
+    - title: Pointer Maintenance 
+      url: /pointer_maintenance.html
+      output: web
   - title: Development Guidance
     output: web
     folderitems:
