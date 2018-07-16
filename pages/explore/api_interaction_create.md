@@ -52,7 +52,9 @@ For all create requests the `custodian` ODS code in the DocumentReference resour
 
 ### XML Example of a new DocumentReference resource (pointer) ###
 
-<script src="https://gist.github.com/swk003/ddd53998c6021c357cdccd3bce839a7a.js"></script>
+<script src="https://gist.github.com/sufyanpat/105a344c3a078475066ce09767658e82.js"></script>
+
+<!--<script src="https://gist.github.com/swk003/ddd53998c6021c357cdccd3bce839a7a.js"></script>-->
 
 ## Create Response ##
 
