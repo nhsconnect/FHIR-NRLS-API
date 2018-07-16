@@ -201,15 +201,16 @@ Return all DocumentReference resources (pointers) for a patient with a NHS Numbe
 - HTTP 200-Request was successfully executed
 - Bundle resource of type searchset containing a total value '1' DocumentReference resource that conforms to the `nrls-documentReference-1` profile.
 
-<script src="https://gist.github.com/swk003/ce94f58f6af930a419da4c9e9d29b620.js"></script>
+<script src="https://gist.github.com/sufyanpat/19a6cb827895f327eb5232bcef85f2bf.js"></script>
+<!--<script src="https://gist.github.com/swk003/ce94f58f6af930a419da4c9e9d29b620.js"></script>-->
 
 ##### **Multiple Pointers (DocumentReference) Returned:** ##### 
 
 - HTTP 200-Request was successfully executed
 - Bundle resource of type searchset containing a total value '2' DocumentReference resources that conform to the `nrls-documentReference-1` profile
 
-
-<script src="https://gist.github.com/swk003/3ab926e15f1dc424a9890cbc1687f1d0.js"></script>
+<script src="https://gist.github.com/sufyanpat/b85394951c3df416e3001611238ffd3b.js"></script>
+<!--<script src="https://gist.github.com/swk003/3ab926e15f1dc424a9890cbc1687f1d0.js"></script>-->
 
 <!--
 A JSON example of multiple pointers returned is as follows:
