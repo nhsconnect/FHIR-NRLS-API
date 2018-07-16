@@ -118,7 +118,7 @@ The system defines how the value is made unique. As the FHIR specification says 
 
 The NRLS recommends the use of either an OID or a UUID as an Identifier in keeping with the need for the masterIdentifier value to be unique. In this case then the system SHALL be "urn:ietf:rfc:3986" (see the [FHIR identifier registry](https://www.hl7.org/fhir/identifier-registry.html) for details) and the value is of the form – 
 
-•	OID -  urn:oid:[oidValue]
+•	OID -  urn:oid:[oidValue] <br/>
 •	UUID - urn:uuid:[uuidValue]
 
 See the [example](https://www.hl7.org/fhir/datatypes-examples.html#Identifier) OID and UUID based Identifiers from the FHIR specification.
