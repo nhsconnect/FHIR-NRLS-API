@@ -29,10 +29,10 @@ Along with creating the new DocumentReference for each element in relatesTo that
 3. Ensure that the requesting party has permissions to modify the related DocumentReference.
 4. Set the status on the linked DocumentReference to “superseded”
 5. Calculate the versionId of the new (to be created) current DocumentReference as follows -
-6. Take the value of the versionId property from the superseded DocumentReference
-7. Increment the value by one
-8. Use incremented value as the versionId in the new (to be created) current DocumentReference
-9. Persist the change
+	1. Take the value of the versionId property from the superseded DocumentReference
+	2. Increment the value by one
+	3. Use incremented value as the versionId in the new (to be created) current DocumentReference
+6. Persist the change
 
 ## Update Request Headers ##
 
