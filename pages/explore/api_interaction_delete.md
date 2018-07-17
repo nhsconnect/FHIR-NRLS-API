@@ -106,17 +106,9 @@ The table summarises the successful `delete` interaction scenario and includes H
 
 Failure: 
 
-- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the 'Spine-OperationOutcome-1-0' profile if the pointer cannot be created.
-- The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
+SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the 'Spine-OperationOutcome-1-0' profile if the pointer cannot be created.
 
+The following errors can be triggered when performing this operation:
 
-| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
-|-----------|----------------|------------|--------------|-----------------|-------------------|
-|404|error|not-found|NO_RECORD_FOUND|No record found|No record found for supplied DocumentReference identifier - [id]|
-|400|error|invalid|INVALID_RESOURCE|Resource is invalid - [custodian]|The custodian ODS code is not affiliated with the sender ASID.|
-
-
-
-
-- The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)
-- See the 'General API Guidance' section for full on details NRLS [Error Handling](development_general_api_guidance.html#error-handling)
+- [No record found](/development_general_api_guidance.html#resource-not-found)
+- [Invalid Resource](/development_general_api_guidance.html#invalid-resource)

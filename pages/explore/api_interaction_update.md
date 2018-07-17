@@ -17,23 +17,6 @@ summary: To support the update of NRLS pointers
 API to support the update of NRLS pointers. This functionality is only available for providers.
 The update functionality will be used in cases where a Provider wishes to deprecate the Document that the current DocumentReference points to and replace it with a new version.
 
-The end result will be that the DocumentReference that is being superseded will have a status of "superseded" and there will be a newly created DocumetReference that points to the new version of the Document.
-
-To perform this activity the client (Provider) will POST a new DocumentReference that points to the new document. Within that DocumentReference the relatesTo property will have been populated. 
-See the [create](/api_interaction_create.html) interaction for more information about creating a pointer.
-
-Along with creating the new DocumentReference for each element in relatesTo that targets a DocumentReference the NRLS should perform the following checks and actions -
-
-1. Ignore any relatesTo element where the code property's value is not "replaces"
-2. Ensure that the related DocumentReference exists. 
-3. Ensure that the requesting party has permissions to modify the related DocumentReference.
-4. Set the status on the linked DocumentReference to “superseded”
-5. Calculate the versionId of the new (to be created) current DocumentReference as follows -
-	1. Take the value of the versionId property from the superseded DocumentReference
-	2. Increment the value by one
-	3. Use incremented value as the versionId in the new (to be created) current DocumentReference
-6. Persist the change
-
 ## Update Request Headers ##
 
 Provider API update requests support the following HTTP request headers:
@@ -46,12 +29,12 @@ Provider API update requests support the following HTTP request headers:
 | `toASID`             | The Spine ASID | MUST |
 
 
-## Provider Update Operation ##
+## Update Operation ##
 
 Currently the API does not allow a true update i.e. the HTTP PUT verb is not supported. 
 At the moment the Provider can only update a DocumentReference’s status property. This is described below.
 
-### Provider Update status Operation ###
+### Update status Operation ###
 
 The NRLS will only allow a provider to supersede a Pointer and the moment i.e. to transition a DocumentReference’s status from 
 current to superseded. No other [transitions](/pointer_lifecycle.html) are supported at this time.

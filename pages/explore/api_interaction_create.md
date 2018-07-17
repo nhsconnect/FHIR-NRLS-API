@@ -92,23 +92,18 @@ include note.html content="The versionId is an integer that is assigned and main
 
 Failure: 
 
-- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the 'Spine-OperationOutcome-1-0' profile if the pointer cannot be created.
-<!--SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match).-->
-- The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
 
+SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the 'Spine-OperationOutcome-1-0' profile if the pointer cannot be created.
 
-| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
-|-----------|----------------|------------|--------------|-----------------|-------------------|
-|400|error|value|INVALID_REQUEST_MESSAGE|Invalid Request Message|Invalid Request Message|
-|400|error|invalid|INVALID_RESOURCE|Invalid validation of resource|<font color="red">Guidance TBA</font>|
-|400|error|not-found|ORGANISATION_NOT_FOUND|Organisation record not found|The ODS code in the custodian and/or author element is not resolvable – [ods code].|
-|400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|The NHS number does not conform to the NHS Number format: [nhs number].|
-|400|error|invalid|INVALID_PARAMETER|Invalid parameter|<font color="red">Guidance TBA</font>|
+The following errors can be triggered when performing this operation:
 
+- [Invalid Request Message](/development_general_api_guidance.html#invalid-request-message)
+- [Invalid Resource](/development_general_api_guidance.html#invalid-resource)
+- [Organisation not found](/development_general_api_guidance.html#organisation-not-found)
+- [Invalid NHS Number](/development_general_api_guidance.html#invalid-nhs-number)
+- [Invalid Parameter](/development_general_api_guidance.html#parameters)
+- [Duplicate Resource](/development_general_api_guidance.html#duplicate-resource)
 
-
-- The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)
-- See the 'General API Guidance' section for full on details NRLS [Error Handling](development_general_api_guidance.html#error-handling)
 
 ### Ensuring that masterIdentifier is unique ###
 
