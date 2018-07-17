@@ -92,9 +92,6 @@ include note.html content="The versionId is an integer that is assigned and main
 
 Failure: 
 
-
-SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the 'Spine-OperationOutcome-1-0' profile if the pointer cannot be created.
-
 The following errors can be triggered when performing this operation:
 
 - [Invalid Request Message](/development_general_api_guidance.html#invalid-request-message)

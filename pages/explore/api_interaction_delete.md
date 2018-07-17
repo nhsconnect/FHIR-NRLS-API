@@ -106,8 +106,6 @@ The table summarises the successful `delete` interaction scenario and includes H
 
 Failure: 
 
-SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the 'Spine-OperationOutcome-1-0' profile if the pointer cannot be created.
-
 The following errors can be triggered when performing this operation:
 
 - [No record found](/development_general_api_guidance.html#resource-not-found)

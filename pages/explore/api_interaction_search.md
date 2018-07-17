@@ -154,20 +154,12 @@ Success:
 - When a Consumer retrieves a DocumentReference if the relatesTo is set then it should be included in the returned DocumentReference
 
 Failure: 
-- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the 'Spine-OperationOutcome-1-0' profile if the search cannot be executed (not that there is no match).
 
-- The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
+The following errors can be triggered when performing this operation:
 
-
-| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
-|-----------|----------------|------------|--------------|-----------------|-------------------|
-|400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|<font color="red">Guidance TBA</font>|
-|400|error|invalid|INVALID_PARAMETER|Invalid parameter|<font color="red">Guidance TBA</font>|
-|404|error|not-found|NO_RECORD_FOUND|No record found|<font color="red">Guidance TBA</font>|
-
-
-- The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)
-- See the 'General API Guidance' section for full on details NRLS [Error Handling](development_general_api_guidance.html#error-handling)
+- [Invalid NHS number](/development_general_api_guidance.html#invalid-nhs-number)
+- [Invalid parameter](/development_general_api_guidance.html#parameters)
+- [No record found](/development_general_api_guidance.html#resource-not-found)
 
 
 ## Example Scenario ##

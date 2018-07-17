@@ -296,9 +296,9 @@ If there are problems with one or more of these properties then this error may b
 The below table summarises the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
 
 
-| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
-|-----------|----------------|------------|--------------|-----------------|
-|400|error|invalid| INVALID_RESOURCE|Invalid validation of resource|
+| HTTP Code | issue-severity | issue-type | Details.Code | 
+|-----------|----------------|------------|--------------|
+|400|error|invalid| INVALID_RESOURCE|
 
 #### mandatory fields ####
 If one or more mandatory fields are missing then this error will be thrown. See [DocumentReference](explore_reference.html#2-nrls-pointer-fhir-profile) profile.

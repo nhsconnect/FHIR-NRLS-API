@@ -36,7 +36,7 @@ At the moment the Provider can only update a DocumentReference’s status proper
 
 ### Update status Operation ###
 
-The NRLS will only allow a provider to supersede a Pointer and the moment i.e. to transition a DocumentReference’s status from 
+The NRLS will only allow a provider to supersede a Pointer at the moment i.e. to transition a DocumentReference’s status from 
 current to superseded. No other [transitions](/pointer_lifecycle.html) are supported at this time.
 
 A Provider transitions an existing Pointer’s status from current to superseded as part of the act of creating its replacement. In effect the POSTing of a new DocumentReference provides a means to specify an existing DocumentReference whose status should be moved to superseded. Concretely this is achieved as follows –
@@ -58,14 +58,7 @@ A Provider transitions an existing Pointer’s status from current to superseded
 
 ## Response ##
 
-Success:
+Success and Failure:
 
-See [Create Response](/api_interaction_create.html#create-response) for the success response behaviour and codes.
-
-
-Failure:
-
-
-- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the 'Spine-OperationOutcome-1-0' profile if the pointer cannot be created.
-- The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
+See [Create Response](/api_interaction_create.html#create-response) for the response behaviour and codes.
 
