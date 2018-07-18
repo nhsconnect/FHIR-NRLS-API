@@ -53,8 +53,11 @@ A Provider transitions an existing Pointer’s status from current to superseded
 
 ### XML Example of a DocumentReference resource that supersedes an existing DocumentReference ###
 
-<!--<script src="https://gist.github.com/sufyanpat/b85394951c3df416e3001611238ffd3b.js"></script>-->
 <script src="https://gist.github.com/sufyanpat/22bd1935648a7055f0836ed888917b85.js"></script>
+
+### JSON Example of a DocumentReference resource that supersedes an existing DocumentReference ###
+
+<script src="https://gist.github.com/sufyanpat/fd3f828fe535299752632319257c43ce.js"></script>
 
 ## Response ##
 
