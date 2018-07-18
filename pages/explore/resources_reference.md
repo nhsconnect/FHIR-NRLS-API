@@ -28,6 +28,10 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |----|---------|----|-----------|-----|
 |Identifier|`id`|string|0..1|Assigned by the NRLS at creation time. Uniquely identifies this record within an instance of the NRLS. Used by Providers to update or delete.|
 |Version|`versionId`|string|0..1|Assigned by the NRLS at creation or update time. Used to track the current version of a Pointer.|
+|Master Identifier|`masterIdentifier`|Identifier|0..1|The masterIdentifier is the identifier of the document as assigned by the source of the document. It is version specific – i.e. a new one is required if the document is updated. It is an optional field, providers do not have to supply a value.|
+||`masterIdentifier.system`|Uri|1..1|The namespace for the identifier. This element must be completed if the masterIdentifier is to be included.|
+||`masterIdentifier.value`|String|1..1| The unique value of the identifier. This element must be completed if the masterIdentifier is to be included.|
+|Record status|`status`| Code| 1..1| The status of the pointer|
 |Record type|`type`|CodeableConcept|1..1|The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers.|
 ||`type.system`|Uri|1..1|Example Value: http://snomed.info/sct.|
 ||`type.code`|Code|1..1|Symbol in syntax defined by the system. Example Value: 736253002|
@@ -35,6 +39,8 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Patient|`subject`|Reference|1..1|The Patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.| 
 |Record owner|`author`|Reference|1..1|ODS code for the record owner organization.|
 |Pointer owner|`custodian`|Reference|1..1|ODS code for the pointer owner organization.|
+|Related documents|`relatesTo`| BackboneElement| 0..*| Relationships to other documents|
+||`relatesTo.code`| Code| 1..1| The type of relationship between the documents. This element is mandatory if the *relatesTo* element is sent. Possible values are *replaces, transforms, signs, appends*.|
 |Pointer referenced|`content`| BackboneElement| 1..*| Record referenced|
 |Record mime type|`attachment.contentType`|code|1..1|Describes the format of the record such that the Consumer can pick an appropriate mechanism to handle the record. Without it the Consumer would be in the dark as to how to deal with the Record|
 |Record URL|`attachment.url`|uri|1..1|The location of the record on the Provider’s system and/ or a service that allows you to look up information based on the provider url e.g. web page with service contact details|

@@ -1,7 +1,7 @@
 entries:
 - title: NRLS
   product: NRLS
-  version: 1.1.0-beta API <i>specification</i>
+  version: 1.2.0-beta API <i>specification</i>
   levels: one
   folders:
 
@@ -43,25 +43,18 @@ entries:
     - title: Interactions
       url: /overview_interactions.html
       output: web
-    - title: Pointer Lifecycle
-      url: /overview_pointer_lifecycle.html
+  - title: General Guidance
+    output: web
+    folderitems:
+    - title: Pointer Identity
+      url: /pointer_identity.html
       output: web
- #   - title: Engagement Approach
- #     url: /engage.html
- #     output: web, pdf
- #     type: homepage
-
- #     subfolders:
- #     - title: Case Studies
- #       output: web
- #       subfolderitems:
-
- #       - title: "Case Study Overview"
- #         url: /engage_case_studies.html
- #         output: web
- #       - title: Case Study Placeholder
- #         url: /engage_casestudy_placeholder.html
- #         output: web
+    - title: Pointer Lifecycle 
+      url: /pointer_lifecycle.html
+      output: web
+    - title: Pointer Maintenance 
+      url: /pointer_maintenance.html
+      output: web
   - title: Development Guidance
     output: web
     folderitems:
@@ -95,6 +88,9 @@ entries:
             output: web 
           - title: Search
             url: /api_interaction_search.html
+            output: web   
+          - title: Update
+            url: /api_interaction_update.html
             output: web            
       - title: API Guidance | FHIR&reg;
         output: web
@@ -126,45 +122,6 @@ entries:
     - title: Personal Demographic Service
       url: /integration_personal_demographics_service.html
       output: web
-   # - title: Spine Directory Service
-    #  url: /integration_spine_directory_service.html
-    #  output: web
-    #- title: Spine Security Proxy
-     # url: /integration_spine_security_proxy.html
-     # output: web 
-        # - title: Spine Security Proxy Implementation Guide
-        #   url: /integration_spine_security_proxy_implementation_guide.html
-        #   output: web    
-        # - title: Patient Search
-        #   url: /build_patient_search.html
-        #   output: web
-        #  - title: Clinical | Care Coord
-        #    url: /build_pcc_clinical.html
-        #    output: web
-        #  - title: Medication | Care Coord
-        #    url: /build_pcc_medication.html
-        #    output: web
-        #  - title: Diagnostics | Care Coord
-        #    url: /build_pcc_diagnostics.html
-        #    output: web
-  - title: Test
-    output: web
-    folderitems:
-    - title: Overview
-      url: /test.html
-      output: web
-  # - title: Patterns / Topology
-  #   url: /test_patterns.html
-  #   output: web
-  # - title: Access
-  #   url: /test_access.html
-  #   output: web
-  # - title: Security
-  #   url: /test_security.html
-  #   output: web
-  # - title: Test Data
-  #   url: /test_data.html
-  #   output: web
 
   - title: Assure
     output: web
@@ -182,18 +139,13 @@ entries:
   #   url: /assure_end_to_end.html
   #   output: web
 
-  - title: Deploy
-    output: web
-    folderitems:
-    - title: Overview
-      url: /deploy.html
-      output: web
-  # - title: Access
-  #   url: /deploy_access.html
-  #   output: web
-  # - title: Security
-  #   url: /deploy_security.html
-  #   output: web
+  #- title: Deploy
+   # output: web
+   # folderitems:
+   # - title: Overview
+   #   url: /deploy.html
+   #   output: web
+
 
   - title: Help & Support
     output: web

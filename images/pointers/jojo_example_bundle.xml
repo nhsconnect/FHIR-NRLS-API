@@ -1,0 +1,57 @@
+<Bundle xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<id value="ad49fdd4-9802-42d2-b736-182b687dc8a6"/>
+	<type value="searchset"/>
+	<total value="1"/>
+	<entry>
+		<resource>
+			<DocumentReference>
+				<id value="ad49fdd4-9802-42d2-b736-182b687dc8a6"/>
+				<meta>
+					<versionId value="2"/>
+					<lastUpdated value="2018-07-02T11:39:44+00:00"/>
+					<profile value="https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1"/>
+				</meta>
+				<masterIdentifier>
+					<system value="urn:ietf:rfc:3986"/>
+					<value value="urn:oid:1.3.6.1.4.1.21367.2005.3.8"/>
+				</masterIdentifier>
+				<status value="current"/>
+				<type>
+					<coding>
+						<system value="http://snomed.info/sct"/>
+						<code value="718347000"/>
+						<display value="Mental health care plan"/>
+					</coding>
+				</type>
+				<subject>
+					<reference value="https://demographics.spineservices.nhs.uk/STU3/Patient/9995000784"/>
+				</subject>
+				<created value="2016-03-08T15:26:00+01:00"/>
+				<indexed value="2016-03-08T15:26:01+01:00"/>
+				<author>
+					<reference value="https://directory.spineservices.nhs.uk/STU3/Organization/TESTV349"/>
+				</author>
+				<custodian>
+					<reference value="https://directory.spineservices.nhs.uk/STU3/Organization/SCRA01"/>
+				</custodian>
+				<relatesTo>
+					<code value="replaces"/>
+					<target>
+						<identifier>
+							<system value="urn:ietf:rfc:3986"/>
+							<value value="urn:oid:1.3.6.1.4.1.21367.2005.3.7"/>
+						</identifier>
+					</target>
+				</relatesTo>
+				<content>
+					<attachment>
+						<contentType value="application/pdf"/>
+						<url value="https://spine-proxy.national.ncrs.nhs.uk/p1.nhs.uk/MentalhealthCarePlanReportRGD.pdf"/>
+						<title value="Mental health Care Plan Report"/>
+						<creation value="2016-03-08T15:26:00+01:00"/>
+					</attachment>
+				</content>
+			</DocumentReference>
+		</resource>
+	</entry>
+</Bundle>

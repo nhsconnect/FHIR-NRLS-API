@@ -4,24 +4,23 @@ keywords: assure, accredit
 tags: [overview]
 sidebar: foundations_sidebar
 permalink: assure.html
-summary: "These pages assist with the NRLS Servcie Assurance Process"
+summary: "These pages assist with the NRLS Service Assurance Process"
 ---
 
 
 <!--{% include custom/under.construction.html content="Please check back later for any updates to this page." %}-->
-
 
 ### Solution Assurance Process Overview ###
 
 1.	The Programme Team will provide Suppliers with the necessary information and materials to enable them to determine the feasibility of developing a technical product. This can be done with a combination of face to face and WebEx.
 
 2.	Supplier completes a Usage and Settings document to get Programme approval for usage and settings of the NRLS. 
+	
+	*Note*: The Usage and Settings document is not needed for the pilot.
+ 
+3. The <a href="mailto:itkconformance@nhs.net">Solution Assurance team</a> will work with the supplier through development and assurance to provide assistance with technical support and test and assurance queries and conduct the review of Supplier submissions.
 
- {% include note.html content="The Usage and Settings document is not needed for the pilot." %}
-
-3.	The <a href="mailto:itkconformance@nhs.net">Solution Assurance team</a> will work with the supplier through development and assurance to provide assistance with technical support and test and assurance queries and conduct the review of Supplier submissions.
-
-4.	Supplier should carry out initial development against TKW testbench.
+4. Supplier should carry out initial development against [TKW testbench](https://hscic365-my.sharepoint.com/:u:/g/personal/chbe53_log1_hscic_gov_uk/EdO79_cHfj5LqEOJv7o-zj4B9tTK8T6PBnOEN88e19_Edw?e=xeKfqj).
 
 5.	Further testing can be done in test environments OpenTest or DEV. The environments will be populated with test data which will support all test cases detailed within the TOM.  Suppliers will be able to carry out their own initial testing in these environments.
 

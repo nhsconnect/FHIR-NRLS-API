@@ -9,6 +9,25 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 
 {% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
+## 1.2.0-beta ##
+*Changes to restructure the implementation guide*.
+- Additional guidance added to the Data model page.
+ - Cardinality corrected for *Related Documents*
+ - Added *Status* to the model.
+ - Description updated for the elements.
+- Addition of new *API Interaction* section to describe the RESTful functionalities (Create, Delete, Search and Update).
+- API Guidance > Search page
+ - Format guidance added for Custodian.
+ - Inclusion of the `_summary=count` functionality. 
+- New Pointer-related pages added a new *Development Guidance* menu.
+- General API Guidance
+ - Error guidance has been restructured to be more informative to the reader.
+ - Addition of INTERNAL_SERVER_ERROR and the response format.
+- Exception tables moved from the API Interaction page to the General API Guidance page.
+- Deploy menu option removed
+- Assure menu option removed
+
+
 ## 1.1.0-beta ##
 
 *Changes to re-align the NRLS API 1.1.0-beta Specification with the DDC March and May 2018 NRLS Service Development Iterations:*
@@ -77,7 +96,7 @@ Sprint 5 summary:
 - Consumer and Provider API error response examples refined.
 - Provider API Create and Update responses amended.
 - VersionId guidance added.
-- [CapabilityStatement](api_foundation_conformance.html) page updated.
+- CapabilityStatement page updated.
 - [Auditing](overview_behaviours.html#auditing) section added to 'Solution Behaviour' page.
 - Audit Trail section added to 'Cross Organization Audit & Provenance' page.
 - JWT Claims updated: 

@@ -12,11 +12,11 @@ summary: To support the creation of NRLS pointers
 {% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
 
 
-## Provider Create ##
+## Create ##
 
-Provider API to support creation of NRLS pointers.
+API to support the creation of NRLS pointers. This functionality is only available for providers.
 
-## Provider Create Request Headers ##
+## Create Request Headers ##
 
 Provider API create requests support the following HTTP request headers:
 
@@ -28,7 +28,7 @@ Provider API create requests support the following HTTP request headers:
 | `toASID`             | The Spine ASID | MUST |
 
 
-## Provider Create Operation ##
+## Create Operation ##
 
 Provider system will construct a new Pointer (DocumentReference) and submit this to NRLS using the FHIR RESTful [create](https://www.hl7.org/fhir/http.html#create) interaction.
 
@@ -52,7 +52,10 @@ For all create requests the `custodian` ODS code in the DocumentReference resour
 
 ### XML Example of a new DocumentReference resource (pointer) ###
 
-<script src="https://gist.github.com/swk003/ddd53998c6021c357cdccd3bce839a7a.js"></script>
+<script src="https://gist.github.com/sufyanpat/105a344c3a078475066ce09767658e82.js"></script>
+
+### JSON Example of a new DocumentReference resource (pointer) ###
+<script src="https://gist.github.com/sufyanpat/2668e9063c4444bd3329dbe69ba290b6.js"></script>
 
 ## Create Response ##
 
@@ -81,7 +84,7 @@ The table summarises the `create` interaction HTTP response code and the values 
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |201|information|informational|RESOURCE_CREATED|New resource created | Spine message UUID |Successfully created resource DocumentReference|
 
-{% include note.html content="Upon either successful creation or deletion of a pointer the NRLS Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Delete or Create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
+{% include note.html content="Upon successful creation of a pointer the NRLS Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
 
 <!--
 ORIGINAL include note.html FOR ABOVE: 
@@ -90,20 +93,25 @@ include note.html content="The versionId is an integer that is assigned and main
 
 Failure: 
 
-- SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the 'Spine-OperationOutcome-1-0' profile if the pointer cannot be created.
-<!--SHALL return one of the below HTTP status error codes with an `OperationOutcome` resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match).-->
-- The below table summarises the types of error that could occur, and the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body.
+The following errors can be triggered when performing this operation:
+
+- [Invalid Request Message](/development_general_api_guidance.html#invalid-request-message)
+- [Invalid Resource](/development_general_api_guidance.html#invalid-resource)
+- [Organisation not found](/development_general_api_guidance.html#organisation-not-found)
+- [Invalid NHS Number](/development_general_api_guidance.html#invalid-nhs-number)
+- [Invalid Parameter](/development_general_api_guidance.html#parameters)
+- [Duplicate Resource](/development_general_api_guidance.html#duplicate-resource)
 
 
-| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
-|-----------|----------------|------------|--------------|-----------------|-------------------|
-|400|error|value|INVALID_REQUEST_MESSAGE|Invalid Request Message|Invalid Request Message|
-|400|error|invalid|INVALID_RESOURCE|Invalid validation of resource|<font color="red">Guidance TBA</font>|
-|400|error|not-found|ORGANISATION_NOT_FOUND|Organisation record not found|The ODS code in the custodian and/or author element is not resolvable – [ods code].|
-|400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|The NHS number does not conform to the NHS Number format: [nhs number].|
-|400|error|invalid|INVALID_PARAMETER|Invalid parameter|<font color="red">Guidance TBA</font>|
+### Ensuring that masterIdentifier is unique ###
 
+The masterIdentifier should be unique within the NRLS. For more information see the discussion on [Pointer identifiers](/pointer_identity.html). The masterIdentifer is a [FHIR identifier](https://www.hl7.org/fhir/datatypes.html#Identifier) and for NRLS the system and value properties are mandatory.
 
+The system defines how the value is made unique. As the FHIR specification says this might be a recognised standard that describes how this uniqueness is generated.  
 
-- The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)
-- See the 'General API Guidance' section for full on details NRLS [Error Handling](development_general_api_guidance.html#error-handling)
+The NRLS recommends the use of either an OID or a UUID as an Identifier in keeping with the need for the masterIdentifier value to be unique. In this case then the system SHALL be "urn:ietf:rfc:3986" (see the [FHIR identifier registry](https://www.hl7.org/fhir/identifier-registry.html) for details) and the value is of the form – 
+
+•	OID -  urn:oid:[oidValue] <br/>
+•	UUID - urn:uuid:[uuidValue]
+
+See the [example](https://www.hl7.org/fhir/datatypes-examples.html#Identifier) OID and UUID based Identifiers from the FHIR specification.
