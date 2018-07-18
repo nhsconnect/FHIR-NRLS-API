@@ -10,10 +10,23 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 {% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
 ## 1.2.0-beta ##
-*Changes to restructure the implementation guide*
-- Guidance added to the DocumentReference.type element
-- Addition of new *API Interaction* section to describe the RESTful functionalities.
-- New *Pointer Lifecycle* page introduced.
+*Changes to restructure the implementation guide*.
+- Additional guidance added to the Data model page.
+ - Cardinality corrected for *Related Documents*
+ - Added *Status* to the model.
+ - Description updated for the elements.
+- Addition of new *API Interaction* section to describe the RESTful functionalities (Create, Delete, Search and Update).
+- API Guidance > Search page
+ - Format guidance added for Custodian.
+ - Inclusion of the `_summary=count` functionality. 
+- New Pointer-related pages added a new *Development Guidance* menu.
+- General API Guidance
+ - Error guidance has been restructured to be more informative to the reader.
+ - Addition of INTERNAL_SERVER_ERROR and the response format.
+- Exception tables moved from the API Interaction page to the General API Guidance page.
+- Deploy menu option removed
+- Assure menu option removed
+
 
 ## 1.1.0-beta ##
 
