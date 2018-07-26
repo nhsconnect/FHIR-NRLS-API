@@ -17,7 +17,7 @@ summary: "Overview of the Development section"
 
 <!--This section provides NRLS implementers with an overview of the NRLS API.-->
 
-The NRLS API supports the following operations as detailed in the [Solution Interactions](overview/overview_interactions.html) section of this implementation guide:
+The NRLS API supports the following operations as detailed in the [Solution Interactions](overview_interactions.html) section of this implementation guide:
 
 
 |Actor|Read|Search|Create|Update|Delete|

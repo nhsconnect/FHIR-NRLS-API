@@ -72,7 +72,7 @@ Links to the NRLS FHIR value sets on the NHS FHIR Reference Server.
 |-------|-----------|
 |[ValueSet-NRLS-RecordType-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordType-1)| A ValueSet that identifies the NRLS record type. |
 |[ValueSet-Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)| A ValueSet that identifies the Spine error or warning code in response to a request.|
-|[ValueSet-Spine-Response-Code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0)|  A set of codes to indicate low level error information about a Spine 2 error response to a request for patient record details. Exceptions raised by the Spine common requesthandler and not the NRLS Service will be returned using the Spine default [spine-operationoutcome-1-0](http://fhir.nhs.net/StructureDefinition/spine-operationoutcome-1-0) profile which binds to this default valueSet. |
+|[ValueSet-Spine-Response-Code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0)|  A set of codes to indicate low level error information about a Spine 2 error response to a request for patient record details. Exceptions raised by the Spine common requesthandler and not the NRLS Service will be returned using the Spine default [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to this default valueSet. |
 
 <!--
 	|[ValueSet-NRLSRecordType-1](https://fhir.nhs.uk/STU3/ValueSet/CarePlanType-1)| NRLS record type |

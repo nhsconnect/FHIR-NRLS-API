@@ -1,7 +1,7 @@
 ---
 title: API Search Interaction
 keywords: structured, rest, documentreference
-tags: [rest,fhir,documents,api,noccprofile]
+tags: [rest,fhir,api,noccprofile]
 sidebar: accessrecord_rest_sidebar
 permalink: api_interaction_search.html
 summary: To support parameterised search of the NRLS.
@@ -157,9 +157,9 @@ Failure:
 
 The following errors can be triggered when performing this operation:
 
-- [Invalid NHS number](/development_general_api_guidance.html#invalid-nhs-number)
-- [Invalid parameter](/development_general_api_guidance.html#parameters)
-- [No record found](/development_general_api_guidance.html#resource-not-found)
+- [Invalid NHS number](development_general_api_guidance.html#invalid-nhs-number)
+- [Invalid parameter](development_general_api_guidance.html#parameters)
+- [No record found](development_general_api_guidance.html#resource-not-found)
 
 
 ## Example Scenario ##

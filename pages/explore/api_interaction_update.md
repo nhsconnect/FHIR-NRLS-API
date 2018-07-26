@@ -1,7 +1,7 @@
 ---
 title: API Update Interaction
 keywords: structured, update, rest, documentreference
-tags: [rest,fhir,documents,api,noccprofile]
+tags: [rest,fhir,api,noccprofile]
 sidebar: accessrecord_rest_sidebar
 permalink: api_interaction_update.html
 summary: To support the update of NRLS pointers
@@ -37,7 +37,7 @@ At the moment the Provider can only update a DocumentReference’s status proper
 ### Update status Operation ###
 
 The NRLS will only allow a provider to supersede a Pointer at the moment i.e. to transition a DocumentReference’s status from 
-current to superseded. No other [transitions](/pointer_lifecycle.html) are supported at this time.
+current to superseded. No other [transitions](pointer_lifecycle.html) are supported at this time.
 
 A Provider transitions an existing Pointer’s status from current to superseded as part of the act of creating its replacement. In effect the POSTing of a new DocumentReference provides a means to specify an existing DocumentReference whose status should be moved to superseded. Concretely this is achieved as follows –
 
@@ -63,5 +63,5 @@ A Provider transitions an existing Pointer’s status from current to superseded
 
 Success and Failure:
 
-See [Create Response](/api_interaction_create.html#create-response) for the response behaviour and codes.
+See [Create Response](api_interaction_create.html#create-response) for the response behaviour and codes.
 

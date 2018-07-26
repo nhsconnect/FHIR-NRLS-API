@@ -29,7 +29,7 @@ The format of the id is under the control of the NRLS service. Clients should tr
 The Master identifier is an optional identifier on the Pointer. It is under the control of the Provider. 
 The Master identifier is associated with the version of the content that the Pointer references. Any time that the content’s version 
 changes [see Maintaining Pointers page](/pointer_maintenance.html) then so too should the masterIdentifier. 
-The NRLS prefers that this is done through the creation of a new Pointer with a new masterIdentifier and the deprecation of the existing Pointer ([see Pointer status page](/pointer_lifecycle.html#pointer-status)).
+The NRLS prefers that this is done through the creation of a new Pointer with a new masterIdentifier and the deprecation of the existing Pointer ([see Pointer status page](pointer_lifecycle.html#pointer-status)).
 
 
 ### Uniqueness ###
@@ -62,7 +62,7 @@ It is perfectly possible for a Provider to create Pointers for different patient
 
 The Provider creates two Pointers; one for patient Bob Smith and the other for patient Jane Doe. Both Pointers sit in the NRLS with the same Master identifier. This is relatively innocuous until the Provider wishes to supersede one of these Pointers. 
 
-In figure 1 the Provider needs to update Bob Smith’s Pointer to replace it with a newer version. As discussed in the [Pointer status page](/pointer_lifecycle.html#pointer-status) the Provider assembles a create message and defines a superseding relationship to the existing Pointer using its masterIdentifier to refer to the target.
+In figure 1 the Provider needs to update Bob Smith’s Pointer to replace it with a newer version. As discussed in the [Pointer status page](pointer_lifecycle.html#pointer-status) the Provider assembles a create message and defines a superseding relationship to the existing Pointer using its masterIdentifier to refer to the target.
 
 Since both Bob Smith and Jane Doe’s Pointers have the same Master Identifier the NRLS will resolve both Pointers and crucially will mark both as superseded even though Jane Doe’s Pointer has no relation to Bob Smiths pointers.
 

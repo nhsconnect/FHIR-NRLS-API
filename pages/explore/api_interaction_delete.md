@@ -1,7 +1,7 @@
 ---
 title: API Delete Interaction
 keywords: structured, rest, documentreference
-tags: [rest,fhir,documents,api,noccprofile]
+tags: [rest,fhir,api,noccprofile]
 sidebar: accessrecord_rest_sidebar
 permalink: api_interaction_delete.html
 summary: To support the deletion of NRLS pointers.
@@ -108,5 +108,5 @@ Failure:
 
 The following errors can be triggered when performing this operation:
 
-- [No record found](/development_general_api_guidance.html#resource-not-found)
-- [Invalid Resource](/development_general_api_guidance.html#invalid-resource)
+- [No record found](development_general_api_guidance.html#resource-not-found)
+- [Invalid Resource](development_general_api_guidance.html#invalid-resource)

@@ -1,7 +1,7 @@
 ---
 title: Consumer API
 keywords: getcarerecord, structured, rest, documentreference
-tags: [rest,fhir,documents,api,noccprofile]
+tags: [rest,fhir,api,noccprofile]
 sidebar: accessrecord_rest_sidebar
 permalink: api_consumer_documentreference.html
 summary: A Consumer has a read-only view of the Pointers within NRLS. A Consumer is interested in being able to retrieve Pointers that relate to a given Patient (via their NHS number).

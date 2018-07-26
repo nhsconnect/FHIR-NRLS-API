@@ -69,4 +69,4 @@ The NRLS takes the stance that it is for the Provider to determine what format i
 In part the NRLS is there to track the evolution of a Pointer’s content. This is important so that the NRLS can support the retrieval 
 of historical Pointers for medico-legal use cases. To that end the deletion of a Pointer should be avoided. 
 Though the NRLS does provide a delete function as in some circumstances deletion of a Pointer may be unavoidable. 
-More information is provided in [Pointer maintenance page](/pointer_maintenance.html).
+More information is provided in [Pointer maintenance page](pointer_maintenance.html).

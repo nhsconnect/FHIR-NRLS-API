@@ -17,10 +17,10 @@ In order to support the Consumer and Provider interactions with the NRLS the Poi
 
 | Property | Cardinality | Description | 
 |-----------|----------------|------------|
-|[Identifier](/pointer_identity.html)|0..1|Assigned by the NRLS at creation time. Uniquely identifies this record within an instance of the NRLS. Used by Providers to update or delete.|
+|[Identifier](pointer_identity.html)|0..1|Assigned by the NRLS at creation time. Uniquely identifies this record within an instance of the NRLS. Used by Providers to update or delete.|
 |Version |0..1|Assigned by the NRLS at creation or update time. Used to track the current version of a Pointer.|
 |[Master Identifier](/pointer_identity.html)|0..1|The masterIdentifier is the identifier of the document as assigned by the source of the document. It is version specific – i.e. a new one is required if the document is updated. It is an optional field, providers do not have to supply a value.|
-|[Status](/pointer_lifecycle.html)|1..1|The status of the pointer|
+|[Status](pointer_lifecycle.html)|1..1|The status of the pointer|
 |Patient|1..1|The Patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.|
 |Pointer owner|1..1|The entity who maintains the Pointer. Used to control which systems can modify the Pointer|
 |Pointer reference|1..*|The record that is being referenced|
@@ -29,7 +29,7 @@ In order to support the Consumer and Provider interactions with the NRLS the Poi
 |Record type|1..1|The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers. The clinical type will be one of a controlled set. It will not be possible to create a pointer with a type that does not exist within this controlled set.|
 |Record URL|1..1|The location of the record on the Provider’s system|
 |Record mime type|1..1|Describes the format of the record such that the Consumer can pick an appropriate mechanism to handle the record. Without it the Consumer would be in the dark as to how to deal with the Record|
-|[Related Documents](/pointer_maintenance.html)|0..*|Relationship to other documents|
+|[Related Documents](pointer_maintenance.html)|0..*|Relationship to other documents|
 
 <!--|Master identifier|0..1|identifier as assigned by the source of the record. This identifier is specific to this version of the record. This unique identifier may be used elsewhere to identify this version of the record.|-->
 
