@@ -22,7 +22,7 @@ following or given the choice of more than one Pointer which is the most appropr
 The Pointer has the concept of a status. It can have one of three possible values - 
 - Current - The status provide a means for a Consumer to understand whether the Pointer references the “current” Record. The definition of “current” is under the control of the Provider but a Consumer should be confident that by selecting the latest Pointer they will be presented with what the Provider considers to be the most appropriate for Consumers to use. 
 - Superseded – Indicates that this Pointer has been replaced by another.
-- Entered-in-error – Indicates that the Pointer should not really have been entered into the NRLS however in keeping with the principle of deleting only by exception [link to principles](/overview_principles.html) this status allows a Provider to mark a Pointer as erroneous without needing to delete it.
+- Entered-in-error – Indicates that the Pointer should not really have been entered into the NRLS however in keeping with the principle of deleting only by exception [link to principles](overview_principles.html) this status allows a Provider to mark a Pointer as erroneous without needing to delete it.
 
 ### Pointer status: legal transitions ###
 

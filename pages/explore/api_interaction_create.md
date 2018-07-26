@@ -1,7 +1,7 @@
 ---
 title: API Create Interaction
 keywords: structured, rest, documentreference
-tags: [rest,fhir,documents,api,noccprofile]
+tags: [rest,fhir,api,noccprofile]
 sidebar: accessrecord_rest_sidebar
 permalink: api_interaction_create.html
 summary: To support the creation of NRLS pointers
@@ -95,12 +95,12 @@ Failure:
 
 The following errors can be triggered when performing this operation:
 
-- [Invalid Request Message](/development_general_api_guidance.html#invalid-request-message)
-- [Invalid Resource](/development_general_api_guidance.html#invalid-resource)
-- [Organisation not found](/development_general_api_guidance.html#organisation-not-found)
-- [Invalid NHS Number](/development_general_api_guidance.html#invalid-nhs-number)
-- [Invalid Parameter](/development_general_api_guidance.html#parameters)
-- [Duplicate Resource](/development_general_api_guidance.html#duplicate-resource)
+- [Invalid Request Message](development_general_api_guidance.html#invalid-request-message)
+- [Invalid Resource](development_general_api_guidance.html#invalid-resource)
+- [Organisation not found](development_general_api_guidance.html#organisation-not-found)
+- [Invalid NHS Number](development_general_api_guidance.html#invalid-nhs-number)
+- [Invalid Parameter](development_general_api_guidance.html#parameters)
+- [Duplicate Resource](development_general_api_guidance.html#duplicate-resource)
 
 
 ### Ensuring that masterIdentifier is unique ###

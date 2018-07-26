@@ -1,7 +1,7 @@
 ---
 title: Provider API
 keywords: getcarerecord, structured, rest, documentreference
-tags: [rest,fhir,documents,api,noccprofile]
+tags: [rest,fhir,api,noccprofile]
 sidebar: accessrecord_rest_sidebar
 permalink: api_provider_documentreference.html
 summary: A Provider has a read-write view of Pointers within the NRLS. A Provider can only view and modify the Pointers that they own.
