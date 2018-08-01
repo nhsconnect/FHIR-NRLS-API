@@ -9,6 +9,24 @@ summary: NRLS Pointer Maintenance
 
 {% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
+{% include warning.html content="
+The current version of the NRLS API does not give Providers the ability to update the properties of an existing Pointer. 
+The only property that can be modified is the status and that is done in a very specific way only allowing a Provider to replace one 
+document reference with another [Managing Pointers](pointer_maintenance.html#managing-pointers-to-static-content).
+<br/>
+This means that a number of scenarios outlined below around updating a Pointer can not yet be achieved though the NRLS intends to support these features in a future release. 
+<br/>
+Specifically the NRLS API does not currently support- <br/>
+
+- The following status property transitions:<br/>
+
+	&emsp; o **current** to **entered-in-error**<br/>
+	&emsp; o **entered-in-error** to **current**<br/>
+	&emsp; o **current** to **superseded** where the current Pointer is not being replaced.<br/>
+	
+- Modification of other properties<br/>
+" %}
+
 ## Pointer Maintenance ##
 
 The NRLS allows a Provider to perform three actions in relation to Pointers –
@@ -23,7 +41,7 @@ So when considering Pointer maintenance we should really think in terms of the m
 2.	Changes to the referenced content – in this instance Providers should create a new Pointer which references the modified content
 
 
-### Creation of a new Pointer ###
+## Creation of a new Pointer ##
 
 The rules around when a Pointer is created will vary from Provider to Provider because different business process’ 
 will be at play within their organisations. Having said that there is some general guidance that can be given around when creation 
@@ -72,20 +90,20 @@ If the location of the API changes or the API becomes deprecated then a new Poin
 to prevent Consumers from attempting to retrieve contents from a non-existent or non-current location.
 
 
-### Deletion of an existing Pointer ###
+## Deletion of an existing Pointer ##
 
 Deletion of a Pointer is an exceptional action to take. Under most circumstances a Pointer should be updated and marked as superseded. 
 If the Provider realises that the Pointer is simply not valid then it should be updated and marked as entered in error. 
 If the Provider does want to delete the Pointer it should be done as soon as possible after creation to limit exposure to Consumers. 
 However even in this circumstance the Provider should consider marking the Pointer as entered in error.
 
-### Update of an existing Pointer ###
+## Update of an existing Pointer ##
 
 As noted in the create section typically update will be invoked on a Pointer when the Provider needs to change its status from 
 current to one of superseded or entered in error. In general Providers should refrain from changing any of the other properties on an 
 existing Pointer instead preferring to create a new one. 
 
-### Managing Pointers to static content ###
+## Managing Pointers to static content ##
 
 As noted in the create section where a new version of static content is created the NRLS prefers that a new Pointer be created to 
 reference that static content. This is as opposed to the existing Pointer being modified to reflect the new content.

@@ -204,11 +204,7 @@ Return all DocumentReference resources (pointers) for a patient with a NHS Numbe
 <script src="https://gist.github.com/sufyanpat/b85394951c3df416e3001611238ffd3b.js"></script>
 <!--<script src="https://gist.github.com/swk003/3ab926e15f1dc424a9890cbc1687f1d0.js"></script>-->
 
-<!--
-A JSON example of multiple pointers returned is as follows:
 
-<script src="https://gist.github.com/swk003/6397f3d7b5ba7355629221e49754151b.js"></script>
--->
 ##### **No Record (pointer) Matched:** ##### 
 
 - HTTP 200-Request was successfully executed

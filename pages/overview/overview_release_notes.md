@@ -9,8 +9,16 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 
 {% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
+## 1.2.1-beta ##
+*Changes to restructure the Implementation Guide*.
+- Wording change for Internal errors.
+- Clearer guidance for pointer transitions (*Current to Superseded*).
+- Explanation added for the Superseded status.
+- Addition of example for deleting a pointer using masterIdentifier.
+
+
 ## 1.2.0-beta ##
-*Changes to restructure the implementation guide*.
+*Changes to restructure the Implementation Guide*.
 - Additional guidance added to the Data model page.
  - Cardinality corrected for *Related Documents*
  - Added *Status* to the model.
