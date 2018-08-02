@@ -35,7 +35,11 @@ Provider API delete requests support the following HTTP request headers:
 
 ### Delete by *'id'* ###
 
-The API supports the conditional delete interaction which allows a provider to delete an existing pointer based on the search parameter `_id` which refers to the logical id of the pointer. To accomplish this, the provider issues an HTTP DELETE as shown:
+The API supports the conditional delete interaction which allows a provider to delete an existing pointer based on the search parameter `_id` which refers to the logical id of the pointer. 
+
+The logical id can be obtained from the Location header which is contained in the [create response](api_interaction_create.html#create-response).
+
+To accomplish this, the provider issues an HTTP DELETE as shown:
 
 <div markdown="span" class="alert alert-success" role="alert">
 DELETE [baseUrl]/DocumentReference?_id=[id]</div>
