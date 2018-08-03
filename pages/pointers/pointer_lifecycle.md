@@ -12,7 +12,7 @@ summary: NRLS Pointer Lifecycle
 {% include warning.html content="
 The current version of the NRLS API does not give Providers the ability to update the properties of an existing Pointer. 
 The only property that can be modified is the status and that is done in a very specific way only allowing a Provider to replace one 
-document reference with another [Managing Pointers](pointer_maintenance.html#managing-pointers-to-static-content).
+pointer with another [Managing Pointers](pointer_maintenance.html#managing-pointers-to-static-content).
 <br/>
 This means that a number of scenarios outlined below around updating a Pointer can not yet be achieved though the NRLS intends to support these features in a future release. 
 <br/>
@@ -43,7 +43,7 @@ The Pointer has the concept of a status. It can have one of three possible value
 	1. Indicates that this Pointer has been replaced by another. Consumers should be aware that there is another 
 	Pointer referencing a more [current content](pointer_maintenance.html#managing-pointers-to-static-content).
 	2. Indicates that this Pointer has been deprecated but has not been replaced by another DocumentReference. 
-	There is no newer Pointer or content that can be retrieved but the use of this Pointer and its content is discouraged. [Status transition](#pointer-status-transition-worked-examples)
+	There is no newer Pointer or content that can be retrieved but the use of this Pointer and its content is discouraged. See [Status transition](#pointer-status-transition-worked-examples) for more information.
 - Entered-in-error – Indicates that the Pointer should not really have been entered into the NRLS however in keeping with the principle of deleting only by exception [link to principles](overview_principles.html) this status allows a Provider to mark a Pointer as erroneous without needing to delete it.
 
 ## Pointer status: legal transitions ##

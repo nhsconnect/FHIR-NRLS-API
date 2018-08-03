@@ -16,7 +16,7 @@ Once persisted within NRLS there are up to two ways to refer to a specific Point
 
 - Logical identifier – This identifier is assigned by the NRLS service when it persists a Pointer. It uniquely identifies that Pointer within the boundary of the NRLS service. In effect the NRLS service instance is the namespace for a given Pointer’s Logical identifier. 
 
-- Master identifier – this identifier is optional and is under the control of the Provider. Contrast this with the Logical identifier which is under the control of the NRLS service.
+- Master identifier – This identifier is optional and is under the control of the Provider. Contrast this with the Logical identifier which is under the control of the NRLS service.
 
 ### Logical identifier ###
 

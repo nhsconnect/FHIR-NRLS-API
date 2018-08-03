@@ -12,7 +12,7 @@ summary: NRLS Pointer Maintenance
 {% include warning.html content="
 The current version of the NRLS API does not give Providers the ability to update the properties of an existing Pointer. 
 The only property that can be modified is the status and that is done in a very specific way only allowing a Provider to replace one 
-document reference with another [Managing Pointers](pointer_maintenance.html#managing-pointers-to-static-content).
+pointer with another [Managing Pointers](pointer_maintenance.html#managing-pointers-to-static-content).
 <br/>
 This means that a number of scenarios outlined below around updating a Pointer can not yet be achieved though the NRLS intends to support these features in a future release. 
 <br/>
