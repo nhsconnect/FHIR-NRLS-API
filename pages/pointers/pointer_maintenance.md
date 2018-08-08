@@ -133,4 +133,17 @@ The NRLS supports the transition to the end state above by leveraging the relate
 Upon receipt of this Pointer the NRLS takes the resolves the related Pointer and sets its status to superseded. Once this has been successfully completed the NRLS persists the new pointer. The end result is that the NRLS is now in the state described above; two Pointers exist where one has been superseded by the other. This pattern of superseding can be repeated indefinitely by a Provider leading to multiple superseded versions of a Pointer but there is only ever one current version.
 
 
+## Pointer lineage ##
+A consequence of creating a relationship between Pointers where one superseded another is that a lineage of Pointers is created. 
+
+In this context lineage is used to describe the line of descendants of an original Pointer. This line in effect describes each of the different versions of the content that each Pointer references. It’s a view of the evolution of the content with the oldest content being replaced by newer content.
+
+The related Pointer element of a given Pointer can be used to find its direct ancestor and once that ancestor is found if it has a related Pointer element then that relationship can be resolved and so on until the entire lineage is built up.
+
+<img src="images/pointers/pointer_lineage.png">
+
+<b>Figure 3: Pointer lineage.</b> As soon as a Pointer is replaced (superseded) by another one then a linage of related Pointers is created. 
+
+Figure 3 above illustrates the lineage concept. Three Pointers exists in NRLS (1,2 & 3). Pointer 1 was the original and references content in the Provider’s system. After Pointer 1 was published a new version of the content that it references was created. This triggered the Provider to publish a new Pointer (2) that superseded the Pointer 1. Finally, the process was repeated with Pointer 3 which references the newest version of the content.
+
 

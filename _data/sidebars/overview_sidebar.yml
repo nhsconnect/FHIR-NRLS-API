@@ -49,6 +49,9 @@ entries:
     - title: Pointer Identity
       url: /pointer_identity.html
       output: web
+    - title: Pointer Errors
+      url: /pointer_errors.html
+      output: web
     - title: Pointer Lifecycle 
       url: /pointer_lifecycle.html
       output: web

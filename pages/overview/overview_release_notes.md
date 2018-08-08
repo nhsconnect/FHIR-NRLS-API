@@ -15,6 +15,7 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 - Clearer guidance for pointer transitions (*Current to Superseded*).
 - Explanation added for the Superseded status.
 - Addition of example for deleting a pointer using masterIdentifier.
+- Pointer error handling and pointer lineage guidance added. 
 
 
 ## 1.2.0-beta ##
