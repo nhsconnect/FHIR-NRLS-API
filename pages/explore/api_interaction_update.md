@@ -39,6 +39,8 @@ At the moment the Provider can only update a DocumentReference’s status proper
 The NRLS will only allow a provider to supersede a Pointer at the moment i.e. to transition a DocumentReference’s status from 
 current to superseded. No other [transitions](pointer_lifecycle.html) are supported at this time.
 
+Note also that currently the NRLS will only attempt to interpret the first relatesTo element. Subsequent elements will be persisted as part of the containing DocumentReference but their contents will not be processed i.e. no attempt will be made to resolve the relatesTo.reference nor will any validation be applied to the code property. This behaviour is subject to change in future releases on the NRLS API.
+
 A Provider transitions an existing Pointer’s status from current to superseded as part of the act of creating its replacement. In effect the POSTing of a new DocumentReference provides a means to specify an existing DocumentReference whose status should be moved to superseded. Concretely this is achieved as follows –
 
 1.	Provider assembles a new DocumentReference resource

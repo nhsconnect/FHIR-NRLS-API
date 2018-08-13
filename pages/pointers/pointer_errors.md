@@ -9,6 +9,25 @@ summary: NRLS Pointer Errors
 
 {% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
+{% include warning.html content="
+The current version of the NRLS API does not give Providers the ability to update the properties of an existing Pointer. 
+The only property that can be modified is the status and that is done in a very specific way only allowing a Provider to replace one 
+pointer with another [Managing Pointers](pointer_maintenance.html#managing-pointers-to-static-content).
+<br/>
+This means that a number of scenarios outlined below around updating a Pointer can not yet be achieved though the NRLS intends to support these features in a future release. 
+<br/>
+Specifically the NRLS API does not currently support- <br/>
+
+- The following status property transitions:<br/>
+
+	&emsp; o **current** to **entered-in-error**<br/>
+	&emsp; o **entered-in-error** to **current**<br/>
+	&emsp; o **current** to **superseded** where the current Pointer is not being replaced.<br/>
+	
+- Modification of other properties<br/>
+" %}
+
+
 ## Pointer Errors ##
 
 The current version of the NRLS API does not give Providers the ability to update the properties of an existing Pointer, other than status . The status property is modified  in a very specific way by  only allowing a Provider to replace one document reference with another - see [Managing Pointers to static content](pointer_maintenance.html#managing-pointers-to-static-content.html). This means that a number of scenarios outlined below around updating a Pointer cannot yet be achieved though the NRLS intends to support these features in a future release. Specifically the NRLS API does not currently support -
