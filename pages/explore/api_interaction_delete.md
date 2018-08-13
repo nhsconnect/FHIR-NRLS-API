@@ -7,11 +7,6 @@ permalink: api_interaction_delete.html
 summary: To support the deletion of NRLS pointers.
 ---
 
-<!--
-summary: A DocumentReference resource is used to describe a document that is made available to a healthcare system. A document is some sequence of bytes that is identifiable, establishes its own context (e.g., what subject, author, etc. can be displayed to the user), and has defined update management. The DocumentReference resource can be used with any document format that has a recognized mime type and that conforms to this definition.
--->
-
-
 {% include custom/search.warnbanner.html %}
 
 {% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
@@ -20,15 +15,8 @@ summary: A DocumentReference resource is used to describe a document that is mad
 ## Delete ##
 
 API to support the deletion of NRLS pointers. This functionality is only available for providers.
-<!--
-Deletes are version aware. In order to conduct an update the Provider should submit the request with an If-Match header where the ETag matches the versionId of the DocumentReference in question from the server. If the version id given in the If-Match header does not match the versionId that the server holds for that DocumentReference, the server returns a 409 Conflict status code instead of deleting the resource. In this situation the client should read the DocumentReference from the server to get the most recent versionId and use that to populate the Etag in a fresh delete request.-->
 
 ## Delete Request Headers ##
-
-<!--
-All Provider API delete requests should include the below additional HTTP request headers to support audit and security requirements on the Spine:
--->
-<!--All Provider API delete requests SHALL include the following HTTP request headers:-->
 
 
 Provider API delete requests support the following HTTP request headers:
@@ -47,7 +35,11 @@ Provider API delete requests support the following HTTP request headers:
 
 ### Delete by *'id'* ###
 
-The API supports the conditional delete interaction which allows a provider to delete an existing pointer based on the search parameter `_id` which refers to the logical id of the pointer. To accomplish this, the provider issues an HTTP DELETE as shown:
+The API supports the conditional delete interaction which allows a provider to delete an existing pointer based on the search parameter `_id` which refers to the logical id of the pointer. 
+
+The logical id can be obtained from the Location header which is contained in the [create response](api_interaction_create.html#create-response).
+
+To accomplish this, the provider issues an HTTP DELETE as shown:
 
 <div markdown="span" class="alert alert-success" role="alert">
 DELETE [baseUrl]/DocumentReference?_id=[id]</div>
@@ -72,7 +64,7 @@ so they do not have to persist or query for the NRLS generated logical id for th
 To accomplish this, the provider issues an HTTP DELETE as shown:
 
 <div markdown="span" class="alert alert-success" role="alert">
-DELETE [baseUrl]/DocumentReference?subject[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&identifier=[system][value]</div>
+DELETE [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&identifier=[system]|[value]</div>
 
 *[nhsNumber]* - The NHS number of the patient whose DocumentReferences the client is requesting
 
@@ -82,7 +74,13 @@ DELETE [baseUrl]/DocumentReference?subject[https://demographics.spineservices.nh
 
 Providers systems SHALL only delete pointers for records where they are the pointer owner (custodian). 
 
-
+<div class="language-http highlighter-rouge">
+<pre class="highlight">
+<code><span class="err">
+DELETE [baseUrl]/DocumentReference?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210&identifier=urn:ietf:rfc:3986|urn:oid:1.3.6.1.4.1.21367.2005.3.71
+</span></code>
+Delete the DocumentReference resource for a pointer with a subject and identifier.</pre>
+</div>
 
 ## Delete Response ##
 

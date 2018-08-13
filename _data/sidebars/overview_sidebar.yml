@@ -1,7 +1,7 @@
 entries:
 - title: NRLS
   product: NRLS
-  version: 1.2.0-beta API <i>specification</i>
+  version: 1.2.1-beta API <i>specification</i>
   levels: one
   folders:
 
@@ -48,6 +48,9 @@ entries:
     folderitems:
     - title: Pointer Identity
       url: /pointer_identity.html
+      output: web
+    - title: Pointer Errors
+      url: /pointer_errors.html
       output: web
     - title: Pointer Lifecycle 
       url: /pointer_lifecycle.html

@@ -417,13 +417,7 @@ These exceptions are raised by the Spine Core common requesthandler and not the 
 
 ### <u>Internal Error</u> ###
 
-During the internal update of any of the DocumentReferences that have been resolved from the relatesTo elements a failure occurs during the change of the DocumentReferences status.
-
-The NRLS should roll back all changes that had been persisted as part of the POST. This includes:
-
-- The newly created DocumentReference
-- Any related DocumentReferences whose status had been successfully updated should be reverted to their original status
-- The following response should be returned to the client
+Where the request cannot be processed but the fault is with the NRLS service and not the client then the following response will be returned to the client:
 
 | HTTP Code | issue-severity | issue-type | Details.System | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
