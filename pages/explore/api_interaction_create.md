@@ -115,3 +115,42 @@ The NRLS recommends the use of either an OID or a UUID as an Identifier in keepi
 •	UUID - urn:uuid:[uuidValue]
 
 See the [example](https://www.hl7.org/fhir/datatypes-examples.html#Identifier) OID and UUID based Identifiers from the FHIR specification.
+
+
+## Code Examples ##
+
+### POST a Pointer with C# ###
+
+The following code samples are taken from the NRLS Demonstrator application which has both Consumer and Provider client implementations built in. More information about the design solution can be found
+on the [NRLS Demonstrator Wiki](https://github.com/nhsconnect/nrls-reference-implementation/wiki)
+
+First we generate a base pointer request model that includes the custodian and author details, and the specific care plan attachment details that are later used to build our pointer (DocumentReference). 
+These pointer values are taken from the demo crisis plan that is created for the Demonstrator Provider system.
+
+Then we call our DocumentReference service GenerateAndCreatePointer method which will generate our pointer (DocumentReference) using the values stored in the model, build a POST command request and then start the call to the NRLS API.
+
+<div class="github-sample-wrapper">
+{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.Services/Service/Epr/CrisisPlanService.cs#L125-L128 %}
+{% highlight csharp %}
+{% github_sample /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.Services/Service/Epr/CrisisPlanService.cs 124 127 %}
+{% endhighlight %}
+</div>
+
+Within the DocumentReference service GenerateAndCreatePointer method we generate our pointer model and then serialise this generated model ready for posting:
+
+<div class="github-sample-wrapper">
+{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.NRLSAdapter/DocumentReferences/DocumentReferenceServices.cs#L53-L54 %}
+{% highlight csharp %}
+{% github_sample /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.NRLSAdapter/DocumentReferences/DocumentReferenceServices.cs 52 53 %}
+{% endhighlight %}
+</div>
+
+<b>Calling the NRLS</b><br />
+Using our POST command request model we create a connection to the NRLS using HttpClient.
+
+You can view the common connection code example [here](connectioncode.html).
+
+<b>Explore the NRLS</b><br />
+You can explore and test the NRLS POST command using Swagger in our [Reference implementation](https://data.developer.nhs.uk/nrls-ri/index.html#/Nrls/createPointer).
+
+{% include note.html content="The code in these examples is standard C# v7.2 taken direct from the [NRLS Demonstrator](https://nrls.digital.nhs.uk) code.<br /><br />The official <b>[.NET FHIR Library](https://ewoutkramer.github.io/fhir-net-api/)</b> is utilised to construct, test, parse and serialize FHIR models with ease." %}

@@ -10,8 +10,10 @@ summary: "Overview of how audit and provenance data transported over NRLS FHIR i
 ## Access Tokens and Audit (JWT)##
 
 
-In order to access the NRLS clients MUST send an access token (JWT) with each request using the standard HTTP Authorization request header. The JWT MUST conform to the [Spine JWT](https://nhsconnect.github.io/FHIR-SpineCore/security_jwt.html) definition.
+In order to access the NRLS clients MUST send an access token (JWT) with each request using the standard HTTP Authorization request header. The JWT MUST conform to the [Spine JWT](https://developer.nhs.uk/apis/spine-core/security_jwt.html) definition.
 
+The claims of the NRLS JWT is the same as those defined in the Spine Core JWT however the rules that govern the validation of those claims are different. From an NRLS perspective the rules defined here override rules defined for the Spine Core. 
+Where a Spine Core rule is not explicitly replaced here then the Spine Core rule stands.
 
 ### Claims ###
 

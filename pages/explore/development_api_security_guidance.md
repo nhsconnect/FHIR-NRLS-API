@@ -32,19 +32,16 @@ After consultation with the Infrastructure Security, Operational Security and Sp
 
 <sup>1</sup>[Digitcert - SSL Support Enabling Perfect Forward Secrecy](https://www.digicert.com/ssl-support/ssl-enabling-perfect-forward-secrecy.htm)
 
-<!--
-## Tomcat OpenSSL Support Using The APR/Native Provider ##
 
-- SSLCipherSuite = `AESGCM+EECDH,AESGCM+EDH,AES256+EECDH,AES256+EDH`
-- SSLHonorCipherOrder = `true`
-- SSLProtocol = `TLSv1+TLSv1.1+TLSv1.2`
-- SSLVerifyClient = `require`
-
-Please see the [Tomcat Config HTTP SSL Support](https://tomcat.apache.org/tomcat-8.0-doc/config/http.html#SSL_Support) webpage for more details.
--->
 ## Client Certificates (TLSMA) ##
 
-{% include todo.html content="Coming Soon..." %}
+Provider and consumer systems SHALL only accept client certificates issued by the NHS Digital Deployment Issue and Resolution (DIR) team.
+
+Provider and consumer systems SHALL only accept client certificates with a valid Spine ‘chain of trust’ (that is, linked to the Spine SubCA and RootCA).
+
+Provider and consumer systems SHALL only accept client certificates which have not expired or been revoked.
+
+Provider and consumer systems SHALL check the `FQDN` presented in the client certificate is that of the [Spine Security Proxy](https://developer.nhs.uk/apis/spine-core-1-0/ssp_implementation_guide.html) (SSP).
 
 ## External Documents / Policy Documents ##
 

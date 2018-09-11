@@ -117,6 +117,7 @@ In responding to a search request the NRLS server will populate the versionId of
 </table>
 
 {% include custom/search.warn.subject.custodian.html %}
+{% include note.html content="Please make sure that the query parameters are encoded with the appropriate code." %}
 
 <!--
 Systems SHOULD support the following search combinations:

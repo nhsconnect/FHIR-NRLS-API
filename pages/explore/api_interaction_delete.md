@@ -64,7 +64,7 @@ so they do not have to persist or query for the NRLS generated logical id for th
 To accomplish this, the provider issues an HTTP DELETE as shown:
 
 <div markdown="span" class="alert alert-success" role="alert">
-DELETE [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&identifier=[system]|[value]</div>
+DELETE [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&identifier=[system]%7C[value]</div>
 
 *[nhsNumber]* - The NHS number of the patient whose DocumentReferences the client is requesting
 
@@ -77,10 +77,12 @@ Providers systems SHALL only delete pointers for records where they are the poin
 <div class="language-http highlighter-rouge">
 <pre class="highlight">
 <code><span class="err">
-DELETE [baseUrl]/DocumentReference?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210&identifier=urn:ietf:rfc:3986|urn:oid:1.3.6.1.4.1.21367.2005.3.71
+DELETE [baseUrl]/DocumentReference?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210&identifier=urn:ietf:rfc:3986%7Curn:oid:1.3.6.1.4.1.21367.2005.3.71
 </span></code>
 Delete the DocumentReference resource for a pointer with a subject and identifier.</pre>
 </div>
+
+{% include note.html content="Please make sure that all query parameters are encoded with the appropriate code." %}
 
 ## Delete Response ##
 

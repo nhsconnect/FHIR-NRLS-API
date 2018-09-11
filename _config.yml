@@ -105,7 +105,7 @@ sitemap: true
 # needed for sitemap.xml file only
 url: https://nhsconnect.github.io/CareConnectAPI
 
-repository: nhsconnect/CareConnectAPI
+repository: nhsconnect/FHIR-NRLS-API
 
 gist:
   noscript: false
@@ -124,3 +124,4 @@ plugins:
    - jekyll-sitemap
    - jekyll-feed
    - jekyll-gist
+   - jekyll_github_sample
