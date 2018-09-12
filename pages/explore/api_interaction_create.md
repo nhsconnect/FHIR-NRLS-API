@@ -136,7 +136,9 @@ Then we call our DocumentReference service GenerateAndCreatePointer method which
 {% endhighlight %}
 </div>
 
+<br/>
 Within the DocumentReference service GenerateAndCreatePointer method we generate our pointer model and then serialise this generated model ready for posting:
+
 
 <div class="github-sample-wrapper">
 {% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.NRLSAdapter/DocumentReferences/DocumentReferenceServices.cs#L53-L54 %}
@@ -145,10 +147,11 @@ Within the DocumentReference service GenerateAndCreatePointer method we generate
 {% endhighlight %}
 </div>
 
+<br/>
 <b>Calling the NRLS</b><br />
 Using our POST command request model we create a connection to the NRLS using HttpClient.
 
-You can view the common connection code example [here](connectioncode.html).
+You can view the common connection code example [here](connectioncode_example.html).
 
 <b>Explore the NRLS</b><br />
 You can explore and test the NRLS POST command using Swagger in our [Reference implementation](https://data.developer.nhs.uk/nrls-ri/index.html#/Nrls/createPointer).

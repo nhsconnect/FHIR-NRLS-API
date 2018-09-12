@@ -30,8 +30,6 @@ Provider API search requests support the following HTTP request headers:
 | `toASID`             | The Spine ASID | MUST |
 
 
-
-
 ## Search DocumentReference ##
 
 <div markdown="span" class="alert alert-success" role="alert">
@@ -234,3 +232,35 @@ Examples
 
 - 0 DocumentReferences exist for patient with NHS number passed into the search
 <script src="https://gist.github.com/sufyanpat/907afd0b118b2247f79d6c5a667e4487.js"></script>
+
+
+## Code Examples ##
+
+### GET Pointers with C# ###
+
+The following code samples are taken from the NRLS Demonstrator application which has both Consumer and Provider client implementations built in. More information about the design solution can be found
+on the [NRLS Demonstrator Wiki](https://github.com/nhsconnect/nrls-reference-implementation/wiki)
+
+First we generate a base pointer request model that includes the patients NHS Number used for the subject parameter. 
+The NHS Number is obtained through a stub PDS Trace performed within the Demonstrator Consumer system.
+
+Then we call our DocumentReference service GetPointersBundle method which will build a GET command request and then start the call to the NRLS API.
+
+<div class="github-sample-wrapper">
+{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.Services/Service/Nrls/PointerService.cs#L34-L36 %}
+{% highlight csharp %}
+{% github_sample /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.Services/Service/Nrls/PointerService.cs 33 35 %}
+{% endhighlight %}
+</div>
+
+Once we have received pointers from the NRLS when then look up the custodian (and author) organisation details using the ODS Code's held within each pointer via a stub ODS lookup. We can then present actual organisation details to the end users.
+
+<b>Calling the NRLS</b><br />
+Using our GET command request model we create a connection to the NRLS using HttpClient.
+
+You can view the common connection code example [here](connectioncode_example.html).
+
+<b>Explore the NRLS</b><br />
+You can explore and test the NRLS GET command using Swagger in our [Reference implementation](https://data.developer.nhs.uk/nrls-ri/index.html#/Nrls/searchPointers).
+
+{% include note.html content="The code in these examples is standard C# v7.2 taken direct from the [NRLS Demonstrator](https://nrls.digital.nhs.uk) code.<br /><br />The official <b>[.NET FHIR Library](https://ewoutkramer.github.io/fhir-net-api/)</b> is utilised to construct, test, parse and serialize FHIR models with ease." %}
