@@ -33,6 +33,8 @@ Provider API delete requests support the following HTTP request headers:
 
 ## Delete Operation ##
 
+{% include note.html content="Please make sure that all query parameters are encoded with the appropriate code." %}
+
 ### Delete by *'id'* ###
 
 The API supports the conditional delete interaction which allows a provider to delete an existing pointer based on the search parameter `_id` which refers to the logical id of the pointer. 
@@ -82,7 +84,6 @@ DELETE [baseUrl]/DocumentReference?subject=https://demographics.spineservices.nh
 Delete the DocumentReference resource for a pointer with a subject and identifier.</pre>
 </div>
 
-{% include note.html content="Please make sure that all query parameters are encoded with the appropriate code." %}
 
 ## Delete Response ##
 
