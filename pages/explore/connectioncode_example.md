@@ -27,7 +27,7 @@ At this point we also generate our JWT using the ASID, ODS Code and User Role Pr
 {% github_sample /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.NRLSAdapter/DocumentReferences/DocumentReferenceServices.cs 90 111 %}
 {% endhighlight %}
 </div>
-
+<br/>
 Once we have our command request model we call the FhirConnector service to start the actual call to the NRLS.
 We first build our HTTP message. At this point we also add in our NRLS specific headers that are held in our base request model and add in our DocumentReference model (http content) if we are performing a create (POST).
 
@@ -37,7 +37,7 @@ We first build our HTTP message. At this point we also add in our NRLS specific 
 {% github_sample /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.NRLSAdapter/Helpers/FhirConnector.cs 114 143 %}
 {% endhighlight %}
 </div>
-
+<br/>
 Then we add in our certificate handling for mutual authentication:
 
 <div class="github-sample-wrapper">
@@ -47,7 +47,7 @@ Then we add in our certificate handling for mutual authentication:
 {% endhighlight %}
 </div>
 
-
+<br/>
 Next we make the call to the NRLS API and then parse the response.
 Here we are expecting either a FHIR Bundle or a FHIR OperationOutcome both of which inherit from a FHIR Resource.
 There is a check here to see if we have a success type HTTP response code. If not then we immediately raise an error.

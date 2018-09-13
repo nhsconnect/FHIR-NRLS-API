@@ -8,6 +8,11 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 ---
 
 {% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
+## 1.2.2-beta ##
+*Changes to restructure the Implementation Guide*.
+- Introduction of C# example code.
+- Warnings about encoding query parameters.
+- Additional guidance regarding JWT added.
 
 ## 1.2.1-beta ##
 *Changes to restructure the Implementation Guide*.

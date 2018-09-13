@@ -33,7 +33,7 @@ Provider API delete requests support the following HTTP request headers:
 
 ## Delete Operation ##
 
-{% include note.html content="Please make sure that all query parameters are encoded with the appropriate code." %}
+{% include note.html content="Please make sure that all query parameters are URL encoded. In particular the pipe (|) character must be URL encoded (%7C)." %}
 
 ### Delete by *'id'* ###
 
@@ -132,7 +132,7 @@ Then we call our DocumentReference service DeletePointer method which will build
 {% github_sample /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.Services/Service/Epr/CrisisPlanService.cs 157 159 %}
 {% endhighlight %}
 </div>
-
+<br/>
 <b>Calling the NRLS</b><br />
 Using our DELETE command request model we create a connection to the NRLS using HttpClient.
 

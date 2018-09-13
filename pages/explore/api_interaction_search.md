@@ -115,13 +115,8 @@ In responding to a search request the NRLS server will populate the versionId of
 </table>
 
 {% include custom/search.warn.subject.custodian.html %}
-{% include note.html content="Please make sure that the query parameters are encoded with the appropriate code." %}
+{% include note.html content="Please make sure that all query parameters are URL encoded. In particular the pipe (|) character must be URL encoded (%7C)." %}
 
-<!--
-Systems SHOULD support the following search combinations:
-
-* TBC
--->
 
 {% include custom/search._id.html values="" content="DocumentReference" %}
 
