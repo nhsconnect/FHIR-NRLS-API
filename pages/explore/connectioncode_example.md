@@ -22,9 +22,9 @@ Within the model the full url to the NRLS API is constructed including appending
 At this point we also generate our JWT using the ASID, ODS Code and User Role Profile ID values that are passed in.
 
 <div class="github-sample-wrapper">
-{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.NRLSAdapter/DocumentReferences/DocumentReferenceServices.cs#L91-L112 %}
+{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.NRLSAdapter/DocumentReferences/DocumentReferenceServices.cs#L91-L112 %}
 {% highlight csharp %}
-{% github_sample /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.NRLSAdapter/DocumentReferences/DocumentReferenceServices.cs 90 111 %}
+{% github_sample /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.NRLSAdapter/DocumentReferences/DocumentReferenceServices.cs 90 111 %}
 {% endhighlight %}
 </div>
 <br/>
@@ -32,18 +32,18 @@ Once we have our command request model we call the FhirConnector service to star
 We first build our HTTP message. At this point we also add in our NRLS specific headers that are held in our base request model and add in our DocumentReference model (http content) if we are performing a create (POST).
 
 <div class="github-sample-wrapper">
-{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.NRLSAdapter/Helpers/FhirConnector.cs#L115-L144 %}
+{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.NRLSAdapter/Helpers/FhirConnector.cs#L115-L144 %}
 {% highlight csharp %}
-{% github_sample /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.NRLSAdapter/Helpers/FhirConnector.cs 114 143 %}
+{% github_sample /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.NRLSAdapter/Helpers/FhirConnector.cs 114 143 %}
 {% endhighlight %}
 </div>
 <br/>
 Then we add in our certificate handling for mutual authentication:
 
 <div class="github-sample-wrapper">
-{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.NRLSAdapter/Helpers/FhirConnector.cs#L100-L111 %}
+{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.NRLSAdapter/Helpers/FhirConnector.cs#L100-L111 %}
 {% highlight csharp %}
-{% github_sample /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.NRLSAdapter/Helpers/FhirConnector.cs 99 110 %}
+{% github_sample /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.NRLSAdapter/Helpers/FhirConnector.cs 99 110 %}
 {% endhighlight %}
 </div>
 
@@ -53,9 +53,9 @@ Here we are expecting either a FHIR Bundle or a FHIR OperationOutcome both of wh
 There is a check here to see if we have a success type HTTP response code. If not then we immediately raise an error.
 
 <div class="github-sample-wrapper">
-{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.NRLSAdapter/Helpers/FhirConnector.cs#L48-L92 %}
+{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.NRLSAdapter/Helpers/FhirConnector.cs#L48-L92 %}
 {% highlight csharp %}
-{% github_sample /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.NRLSAdapter/Helpers/FhirConnector.cs 47 91 %}
+{% github_sample /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.NRLSAdapter/Helpers/FhirConnector.cs 47 91 %}
 {% endhighlight %}
 </div>
 
