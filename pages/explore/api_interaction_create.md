@@ -105,7 +105,7 @@ The following errors can be triggered when performing this operation:
 
 ### Ensuring that masterIdentifier is unique ###
 
-The masterIdentifier should be unique within the NRLS. For more information see the discussion on [Pointer identifiers](/pointer_identity.html). The masterIdentifer is a [FHIR identifier](https://www.hl7.org/fhir/datatypes.html#Identifier) and for NRLS the system and value properties are mandatory.
+The masterIdentifier should be unique within the NRLS. For more information see the discussion on [Pointer identifiers](pointer_identity.html). The masterIdentifer is a [FHIR identifier](https://www.hl7.org/fhir/datatypes.html#Identifier) and for NRLS the system and value properties are mandatory.
 
 The system defines how the value is made unique. As the FHIR specification says this might be a recognised standard that describes how this uniqueness is generated.  
 

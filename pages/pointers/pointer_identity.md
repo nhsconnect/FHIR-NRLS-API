@@ -28,7 +28,7 @@ The format of the id is under the control of the NRLS service. Clients should tr
 
 The Master identifier is an optional identifier on the Pointer. It is under the control of the Provider. 
 The Master identifier is associated with the version of the content that the Pointer references. Any time that the content’s version 
-changes [see Maintaining Pointers page](/pointer_maintenance.html) then so too should the masterIdentifier. 
+changes [see Maintaining Pointers page](pointer_maintenance.html) then so too should the masterIdentifier. 
 The NRLS prefers that this is done through the creation of a new Pointer with a new masterIdentifier and the deprecation of the existing Pointer ([see Pointer status page](pointer_lifecycle.html#pointer-status)).
 
 
