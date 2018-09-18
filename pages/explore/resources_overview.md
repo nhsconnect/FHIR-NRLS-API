@@ -114,26 +114,8 @@ Only verified NHS Number SHALL be used with FHIR API profiles. This can be achie
 {% include note.html content="A verified NHS Number exists on PDS, is still in use and the demographic data supplied results in the correct degree of demographic matching as per PDS matching rules.<br/><br/>The NHS NUMBER is 10 numeric digits in length. The tenth digit is a check digit used to confirm its validity. The check digit is validated using the Modulus 11 algorithm and the use of this algorithm is mandatory. " %}
 
 
-<!--
-{% include custom/contribute.html content="Get in touch with interoperabilityteam@nhs.net to improve the Prerequisites." %}
--->
-<!--
-## 3. API Structure ##
+## 3. Explore the NRLS ##
 
-The API implementation guide has been split into Consumer and Provider API sections. 
+You can explore and test the NRLS GET, POST and DELETE commands and responses using Swagger in our [Reference Implementation](https://data.developer.nhs.uk/nrls-ri/index.html).
 
-Providers are systems external to the NRLS that expose records for retrieval via metadata or so-called Pointers that are stored in the NRLS. A Provider can be thought of as a system that has write access to the NRLS with some limited read-access that is designed to support Pointer maintenance. 
-
-A Consumer can be thought of as a system that has read-access to the NRLS. The read access that a Consumer has is designed to facilitate the retrieval of Pointers that are of interest to the Consuming system. The way that Consumers retrieve Pointers from the system is different from the read-access that a Provider has.
-
-The Consumer and Provider API sections have been structured to support:
-
-- References - provides links to NHS Digital FHIR profiles, HL7 FHIR STU3 core resources and user stories
-- Read interaction - accesses the current contents of a resource.
-- Search Parameters - list of search parameters for the profile being described, including any tips for searching. This section shows examples of how to search using the provided search parameters
-- Create interaction - create a new resource with a server assigned id
-- Update interaction - update an existing resource by its id (or create it if it is new)
-- Delete interaction - delete a resource
-- Examples - Description of the Request & Response headers, example of how to search on a server and the expected response body as an example
--->
 

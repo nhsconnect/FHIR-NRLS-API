@@ -33,6 +33,8 @@ Provider API delete requests support the following HTTP request headers:
 
 ## Delete Operation ##
 
+{% include note.html content="Please make sure that all query parameters are URL encoded. In particular the pipe (|) character must be URL encoded (%7C)." %}
+
 ### Delete by *'id'* ###
 
 The API supports the conditional delete interaction which allows a provider to delete an existing pointer based on the search parameter `_id` which refers to the logical id of the pointer. 
@@ -64,7 +66,7 @@ so they do not have to persist or query for the NRLS generated logical id for th
 To accomplish this, the provider issues an HTTP DELETE as shown:
 
 <div markdown="span" class="alert alert-success" role="alert">
-DELETE [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&identifier=[system]|[value]</div>
+DELETE [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&identifier=[system]%7C[value]</div>
 
 *[nhsNumber]* - The NHS number of the patient whose DocumentReferences the client is requesting
 
@@ -77,10 +79,11 @@ Providers systems SHALL only delete pointers for records where they are the poin
 <div class="language-http highlighter-rouge">
 <pre class="highlight">
 <code><span class="err">
-DELETE [baseUrl]/DocumentReference?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210&identifier=urn:ietf:rfc:3986|urn:oid:1.3.6.1.4.1.21367.2005.3.71
+DELETE [baseUrl]/DocumentReference?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210&identifier=urn:ietf:rfc:3986%7Curn:oid:1.3.6.1.4.1.21367.2005.3.71
 </span></code>
 Delete the DocumentReference resource for a pointer with a subject and identifier.</pre>
 </div>
+
 
 ## Delete Response ##
 
@@ -108,3 +111,35 @@ The following errors can be triggered when performing this operation:
 
 - [No record found](development_general_api_guidance.html#resource-not-found)
 - [Invalid Resource](development_general_api_guidance.html#invalid-resource)
+
+
+## Code Examples ##
+
+### DELETE a Pointer with C# ###
+
+The following code samples are taken from the NRLS Demonstrator application which has both Consumer and Provider client implementations built in. More information about the design solution can be found
+on the [NRLS Demonstrator Wiki](https://github.com/nhsconnect/nrls-reference-implementation/wiki)
+
+First we generate a base pointer request model that includes the pointer logical id used for the _id parameter.
+The logical id is obtained from a mapping stored within the Demonstrator that maps the Provider system crisis plans to NRLS pointers.
+
+Then we call our DocumentReference service DeletePointer method which will build a DELETE command request and then start the call to the NRLS API.
+
+
+<div class="github-sample-wrapper">
+{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.Services/Service/Epr/CrisisPlanService.cs#L158-L160 %}
+{% highlight csharp %}
+{% github_sample /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.Services/Service/Epr/CrisisPlanService.cs 157 159 %}
+{% endhighlight %}
+</div>
+<br/>
+<b>Calling the NRLS</b><br />
+Using our DELETE command request model we create a connection to the NRLS using HttpClient.
+
+You can view the common connection code example [here](connectioncode_example.html).
+
+
+<b>Explore the NRLS</b><br />
+You can explore and test the NRLS DELETE command using Swagger in our [Reference implementation](https://data.developer.nhs.uk/nrls-ri/index.html#/Nrls/deletePointer).
+
+{% include note.html content="The code in these examples is standard C# v7.2 taken direct from the [NRLS Demonstrator](https://nrls.digital.nhs.uk) code.<br /><br />The official <b>[.NET FHIR Library](https://ewoutkramer.github.io/fhir-net-api/)</b> is utilised to construct, test, parse and serialize FHIR models with ease." %}

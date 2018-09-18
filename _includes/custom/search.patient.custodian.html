@@ -19,7 +19,7 @@ Return all {{include.content}} resources for Patients with a logical id of 42</p
 
 -->
 <div markdown="span" class="alert alert-success" role="alert">
-GET [baseUrl]/{{include.content}}?subject=[reference]&custodian.identifier=[system]|[code]<br>
+GET [baseUrl]/{{include.content}}?subject=[reference]&custodian.identifier=[system]%7C[code]<br>
 </div>
 
 <!--<div markdown="span" class="alert alert-success" role="alert">
@@ -36,7 +36,7 @@ GET [baseUrl]/{{include.content}}?subject.identifier=[system]|[code]</div>-->
 -->
 
 <div class="language-http highlighter-rouge">
-<pre class="highlight"><code><span class="err">GET [baseUrl]/{{include.content}}?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210&custodian.identifier=https://fhir.nhs.uk/Id/ods-organization-code|RR8
+<pre class="highlight"><code><span class="err">GET [baseUrl]/{{include.content}}?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210&custodian.identifier=https://fhir.nhs.uk/Id/ods-organization-code%7CRR8
 </span></code>
 Return all {{include.content}} resources for a patient with a NHS Number of 9876543210 and a pointer provider ODS code of RR8.</pre>
 </div>

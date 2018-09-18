@@ -1157,6 +1157,46 @@ div.box.box1 {
         font-size: 14px;
     }
 
+.github-sample-wrapper {
+    display:block;
+    width: 100%;
+    margin-top: 10px;
+    position: relative;
+    top:0;
+    left:0;
+    padding: 43px 0 18px 0;
+}
+
+.github-sample-wrapper .github-sample-reference .author-info {
+    position: absolute;
+    top:5px;
+    left:0;
+    display: block;
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+    border: 1px solid #cccccc;
+    background-color: #f5f5f5;
+    padding: 10px;
+    text-align: right;
+}
+
+.github-sample-wrapper .github-sample-reference .meta-info {
+    position: absolute;
+    bottom:0;
+    left:0;
+    display: block;
+    width: 100%;
+    border-radius: 0 0 4px 4px;
+    border: 1px solid #cccccc;
+    background-color: #f5f5f5;
+    padding: 10px;
+}
+
+.github-sample-wrapper .highlight pre {
+    margin-top: 5px;
+    border-radius: 0;
+}
+
 /*
  * Let's target IE to respect aspect ratios and sizes for img tags containing SVG files
  *
