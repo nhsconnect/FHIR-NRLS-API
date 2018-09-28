@@ -122,15 +122,14 @@ NRLS supported URI's:
 
 A JSON example of a DocumentReference resource is displayed below. 
 
-<script src="https://gist.github.com/swk003/d7d42428b4d4516f1d64ccee2813ff84.js"></script>
+<script src="https://gist.github.com/sufyanpat/7471548c4c7ee9eb55df4d9552b6d99a.js"></script>
 
 
 ### XML Example ###
 
 An XML example of a DocumentReference resource is displayed below. 
 
-<script src="https://gist.github.com/swk003/7dbd484c3e590e259a82abe684ebb4a5.js"></script>
-
+<script src="https://gist.github.com/sufyanpat/08898ecc09781e0216fcdf4860273e90.js"></script>
 
 
 

@@ -159,19 +159,6 @@ entries:
     - title: Communication Channels
       url: /support_communications.html
       output: web
-    #  subfolders:
-    #  - title: Where Else Can I Look?
-    #    output: web
-    #    subfolderitems:
-     #   - title: Community
-     #     url: /support_community.html
-     #     output: web
-     #   - title: FHIR Tools
-     #     url: /support_fhirtools.html
-      #    output: web
-     #   - title: Resource Definitions
-     #     url: /support_referenceapiservers.html
-     #     output: web
 
   - title: Tags
     output: web
@@ -182,15 +169,6 @@ entries:
     - title: FHIR&reg;
       url: /tag_fhir.html
       output: web
-   # - title: User Stories
-   #   url: /tag_user_stories.html
-   #   output: web
-   # - title: Case Studies
-   #  url: /tag_casestudies.html
-   #   output: web
-   # - title: Design
-   #   url: /tag_design.html
-   #   output: web
     - title: Development
       url: /tag_development.html
       output: web
