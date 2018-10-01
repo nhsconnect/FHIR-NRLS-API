@@ -79,6 +79,10 @@ in the section named Managing Pointers to static content below.
 
 ## Pointer status transition: worked examples ##
 
+Note that in the diagrams below three properties from the Pointer data model are referenced. One of them is the version. 
+This is the version of the Pointer and not the version of the content that the Pointer references. 
+Each time a particular instance of a Pointer is modified the NRLS service will increment the version by one as can be seen in several of the worked examples.
+
 ***Null to Current***
 
 As a Provider I want to create a new Pointer on NRLS so that Consumers are aware of a resource that I own.

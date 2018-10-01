@@ -51,31 +51,19 @@ Headline – The NRLS guarantees that no two Pointers for the same Patient (iden
 If the Provider attempts to create a Pointer using a Master identifier that has already been assigned to one of that patient’s other Pointers then the Provider’s request will be blocked.
 
 ### Provider namespace ###
-Headline – it is the Provider’s responsibly to ensure that the Master identifiers that it creates are unique across all of its Pointers
-It is perfectly possible for a Provider to create Pointers for different patients with the same Master identifier. Fig 1 below illustrates the negative consequences of a Provider failing to ensure that their masterIdentifier is unique. 
+Headline – it is the Provider’s responsibly to ensure that the Master identifiers that it creates are unique across all of its Pointers. 
+It is perfectly possible for a Provider to create Pointers for different patients with the same Master identifier. 
+The NRLS service will not prevent this scenario from arising. 
 
-
-<img src="images/pointers/nrls_pointer.png" style="width:100%;max-width: 100%;">
-
-
-* Figure 1 illustrates a scenario where a Provider has failed to ensure that its Master identifiers are unique within its own set of Pointers (as defined by the ownership concept).*
-
-The Provider creates two Pointers; one for patient Bob Smith and the other for patient Jane Doe. Both Pointers sit in the NRLS with the same Master identifier. This is relatively innocuous until the Provider wishes to supersede one of these Pointers. 
-
-In figure 1 the Provider needs to update Bob Smith’s Pointer to replace it with a newer version. As discussed in the [Pointer status page](pointer_lifecycle.html#pointer-status) the Provider assembles a create message and defines a superseding relationship to the existing Pointer using its masterIdentifier to refer to the target.
-
-Since both Bob Smith and Jane Doe’s Pointers have the same Master Identifier the NRLS will resolve both Pointers and crucially will mark both as superseded even though Jane Doe’s Pointer has no relation to Bob Smiths pointers.
-
-This problem only occurs if a Provider fails to ensure that the Master identifiers of the Pointers that they own are not unique within that space. If two different Providers clash on Master identifier then the concept of Pointer ownership will prevent the situation illustrated above from occurring. However ownership should not be relied upon as a guarantor of integrity.
 
 ### NRLS namespace ###
 
-Headline - it is the Provider’s responsibly to ensure that the Master identifiers that it creates are unique across all Pointers in the NRLS.
-It is not unheard of for organisations to merge. In this case the Pointers previously owned by two organisations will come under the ownership of one of those organisations. If the Master identifiers chosen by those organisations clash this could result in the situation illustrated in fig 1 .
+Headline - it is the Provider’s responsibly to ensure that the Master identifiers that it creates are unique across all Pointers in the NRLS. 
+It is not unheard of for organisations to merge. In this case the Pointers previously owned by two organisations will come under the ownership of one of those organisations. 
 
-To provide the NRLS with a degree of flexibility in terms of deployment a Provider should not assume that there is a single instance of the NRLS service. With this constraint in mind the uniqueness of a Master identifier extends across NRLS instances. 
+To provide the NRLS with a degree of flexibility in terms of deployment a Provider should not assume that there is a single instance of the NRLS service. With this constraint in mind the uniqueness of a Master identifier extends across NRLS instances.
 
-In the end we arrive at the recommendation made at the beginning of this section - 
+In the end we arrive at the recommendation made at the beginning of this section.
 
 ***Providers should use a unique value for the Master identifier***
 

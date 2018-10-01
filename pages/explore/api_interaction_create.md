@@ -67,7 +67,7 @@ Success:
   - The URL will contain the 'server' assigned `logical Id` of the new DocumentReference resource.
   - The URL format MUST be: `https://[host]/[path]?_id=[id]`. 
   - An example `Location` response header: 
-    - `https://psis-sync.national.ncrs.nhs.uk/DocumentReference?_id=297c3492-3b78-11e8-b333-6c3be5a609f5`
+    - `https://psis-sync.national.ncrs.nhs.uk/DocumentReference?_id=297c3492-3b78-11e8-b333-6c3be5a609f5-54477876544511209789`
 - When a resource has been created it will have a `versionId` of 1. The `versionId` will not be incremented. <!-- Following an update the `versionId` will be incremented by 1.-->
 
  

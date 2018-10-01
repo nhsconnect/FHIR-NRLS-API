@@ -188,7 +188,6 @@ Return all DocumentReference resources (pointers) for a patient with a NHS Numbe
 - Bundle resource of type searchset containing a total value '1' DocumentReference resource that conforms to the `nrls-documentReference-1` profile.
 
 <script src="https://gist.github.com/sufyanpat/19a6cb827895f327eb5232bcef85f2bf.js"></script>
-<!--<script src="https://gist.github.com/swk003/ce94f58f6af930a419da4c9e9d29b620.js"></script>-->
 
 ##### **Multiple Pointers (DocumentReference) Returned:** ##### 
 
@@ -196,7 +195,6 @@ Return all DocumentReference resources (pointers) for a patient with a NHS Numbe
 - Bundle resource of type searchset containing a total value '2' DocumentReference resources that conform to the `nrls-documentReference-1` profile
 
 <script src="https://gist.github.com/sufyanpat/b85394951c3df416e3001611238ffd3b.js"></script>
-<!--<script src="https://gist.github.com/swk003/3ab926e15f1dc424a9890cbc1687f1d0.js"></script>-->
 
 
 ##### **No Record (pointer) Matched:** ##### 
@@ -204,14 +202,14 @@ Return all DocumentReference resources (pointers) for a patient with a NHS Numbe
 - HTTP 200-Request was successfully executed
 - Empty bundle resource of type searchset containing a '0' (zero) total value indicating no record was matched
 
-<script src="https://gist.github.com/swk003/f0d1049f7cf557e21ebe86052866a5bb.js"></script>
+<script src="https://gist.github.com/sufyanpat/77cb0a918e4aa51381d3c1f8f43c508a.js"></script>
 
 ##### **Error Response (OperationOutcome) Returned:** ##### 
 
 - HTTP 400-Bad Request. Invalid Parameter. 
 - OperationOutcome resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match)
 
-<script src="https://gist.github.com/swk003/a418511924364b9407940ce2f573c4be.js"></script>
+<script src="https://gist.github.com/sufyanpat/b4f88d059b4b63ffb2ad5ca3bd836172.js"></script>
 
 See Consumer Search section for all [HTTP Error response codes](api_consumer_documentreference.html#24-search-response) supported by Consumer Search API.
 
