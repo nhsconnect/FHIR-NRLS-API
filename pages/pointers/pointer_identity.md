@@ -56,14 +56,6 @@ It is perfectly possible for a Provider to create Pointers for different patient
 The NRLS service will not prevent this scenario from arising. 
 
 
-The Provider creates two Pointers; one for patient Bob Smith and the other for patient Jane Doe. Both Pointers sit in the NRLS with the same Master identifier. This is relatively innocuous until the Provider wishes to supersede one of these Pointers. 
-
-In figure 1 the Provider needs to update Bob Smith’s Pointer to replace it with a newer version. As discussed in the [Pointer status page](pointer_lifecycle.html#pointer-status) the Provider assembles a create message and defines a superseding relationship to the existing Pointer using its masterIdentifier to refer to the target.
-
-Since both Bob Smith and Jane Doe’s Pointers have the same Master Identifier the NRLS will resolve both Pointers and crucially will mark both as superseded even though Jane Doe’s Pointer has no relation to Bob Smiths pointers.
-
-This problem only occurs if a Provider fails to ensure that the Master identifiers of the Pointers that they own are not unique within that space. If two different Providers clash on Master identifier then the concept of Pointer ownership will prevent the situation illustrated above from occurring. However ownership should not be relied upon as a guarantor of integrity.
-
 ### NRLS namespace ###
 
 Headline - it is the Provider’s responsibly to ensure that the Master identifiers that it creates are unique across all Pointers in the NRLS. 
