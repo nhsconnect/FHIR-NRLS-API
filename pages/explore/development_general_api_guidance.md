@@ -417,9 +417,7 @@ These exceptions are raised by the Spine Core common requesthandler and not the 
 
 ### <u>Internal Error</u> ###
 
-Where the request cannot be processed but the fault is with the NRLS service and not the client then the following response will be returned to the client:
+Where the request cannot be processed but the fault is with the NRLS service and not the client then the NRLS service will return a 500 HTTP response code along with a descriptive message in the response body e.g:
 
-| HTTP Code | issue-severity | issue-type | Details.System | Details.Code | Details.Display | Diagnostics |
-|-----------|----------------|------------|--------------|-----------------|-------------------|
-|500|error|invalid|https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1 | INTERNAL_SERVER_ERROR|Unexpected internal server error|There has been an internal error when attempting to persist the DocumentReference. Please contact the national helpdesk quoting - [Spine message UUID]|
+<html><title>500: Internal Server Error</title><body>500: Internal Server Error</body></html>
 
