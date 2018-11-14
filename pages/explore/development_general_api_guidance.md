@@ -419,5 +419,6 @@ These exceptions are raised by the Spine Core common requesthandler and not the 
 
 Where the request cannot be processed but the fault is with the NRLS service and not the client then the NRLS service will return a 500 HTTP response code along with a descriptive message in the response body e.g:
 
-'<html><title>500: Internal Server Error</title><body>500: Internal Server Error</body></html>'
+`<html><title>500: Internal Server Error</title><body>500: Internal Server Error</body></html>`
+
 
