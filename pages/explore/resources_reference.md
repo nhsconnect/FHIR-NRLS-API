@@ -41,6 +41,7 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Pointer owner|`custodian`|Reference|1..1|ODS code for the pointer owner organization.|
 |Related documents|`relatesTo`| BackboneElement| 0..*| Relationships to other documents|
 ||`relatesTo.code`| Code| 1..1| The type of relationship between the documents. This element is mandatory if the *relatesTo* element is sent. Possible values are *replaces, transforms, signs, appends*.|
+||`relatesTo.target`| Reference| 1..1| The Target of the relationship. This should contain the logical reference to the target DocumentReference held within the NRLS using the identifier property of this [Reference Data Type](https://www.hl7.org/fhir/references.html#logical).|
 |Pointer referenced|`content`| BackboneElement| 1..*| Record referenced|
 |Record mime type|`attachment.contentType`|code|1..1|Describes the format of the record such that the Consumer can pick an appropriate mechanism to handle the record. Without it the Consumer would be in the dark as to how to deal with the Record|
 |Record URL|`attachment.url`|uri|1..1|The location of the record on the Provider’s system and/ or a service that allows you to look up information based on the provider url e.g. web page with service contact details|

@@ -68,12 +68,12 @@ Success:
   - The URL format MUST be: `https://[host]/[path]?_id=[id]`. 
   - An example `Location` response header: 
     - `https://psis-sync.national.ncrs.nhs.uk/DocumentReference?_id=297c3492-3b78-11e8-b333-6c3be5a609f5-54477876544511209789`
-- When a resource has been created it will have a `versionId` of 1. The `versionId` will not be incremented. <!-- Following an update the `versionId` will be incremented by 1.-->
+- When a resource has been created it will have a `versionId` of 1.
 
  
 
 
-{% include note.html content="The versionId is an integer that is assigned and maintained by the NRLS server. When a new DocumentReference is created the server assigns it a versionId of 1. As pointer updates are not supported by the NRLS Service the versionId will not be incremented.<br/><br/> The NRLS server will ignore any versionId value sent by a client in a create interaction. Instead the server will ensure that the newly assigned verionId adheres to the rules laid out above. 
+{% include note.html content="The versionId is an integer that is assigned and maintained by the NRLS server. When a new DocumentReference is created the server assigns it a versionId of 1. Although a direct update is not supported by the NRLS Service, the versionId will be incremeted during a supersede transaction. See [https://developer.nhs.uk/apis/nrls/api_interaction_update.html](https://developer.nhs.uk/apis/nrls/api_interaction_update.html) for more details on this transaction.<br/><br/> The NRLS server will ignore any versionId value sent by a client in a create interaction. Instead the server will ensure that the newly assigned verionId adheres to the rules laid out above. 
 " %}
 
 
