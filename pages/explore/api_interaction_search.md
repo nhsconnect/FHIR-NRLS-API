@@ -229,7 +229,7 @@ Examples
 
 ## Code Examples ##
 
-### GET Pointers with C Sharp ###
+### GET Pointers with C# ###
 
 The following code samples are taken from the NRLS Demonstrator application which has both Consumer and Provider client implementations built in. More information about the design solution can be found
 on the [NRLS Demonstrator Wiki](https://github.com/nhsconnect/nrls-reference-implementation/wiki)
