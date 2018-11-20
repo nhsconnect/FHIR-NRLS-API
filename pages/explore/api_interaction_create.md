@@ -119,7 +119,7 @@ See the [example](https://www.hl7.org/fhir/datatypes-examples.html#Identifier) O
 
 ## Code Examples ##
 
-### POST a Pointer with C Sharp ###
+### POST a Pointer with C# ###
 
 The following code samples are taken from the NRLS Demonstrator application which has both Consumer and Provider client implementations built in. More information about the design solution can be found
 on the [NRLS Demonstrator Wiki](https://github.com/nhsconnect/nrls-reference-implementation/wiki)
