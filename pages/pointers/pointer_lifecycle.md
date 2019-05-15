@@ -84,5 +84,7 @@ on the Pointer or the resource that it references.
 
 The Provider must UPDATE the existing resource changing its status from current to entered-in-error. In doing so the NRLS will modify its version to reflect the change to that Pointer.
 
+## Deleting Pointers ##
 
+If a pointer is no longer valid or appropriate for use and should not be superseded or marked as "entered-in-error", then the pointer should be deleted.
 
