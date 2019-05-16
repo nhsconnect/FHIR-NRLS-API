@@ -218,11 +218,9 @@ This error is raised during a provider delete interaction. There is one exceptio
 - A provider delete pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code in the fromASID header.
 
 #### relatesTo.code ####
-If the code is not set to the following values then an error must be returned: 
+If the code is not set to one of the following values then an error must be returned: 
 - replaces
-- transforms
-- signs
-- appends
+
 
 #### Incorrect permissions to modify ####
 
