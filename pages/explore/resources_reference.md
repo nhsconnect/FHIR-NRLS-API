@@ -127,9 +127,9 @@ NRLS supported URI's:
 A JSON example of a DocumentReference resource is displayed below. 
 
 <div class="github-sample-wrapper scroll-height-350">
-{% github_sample_ref /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/create_documentreference_resource.json %}
+{% github_sample_ref /nhsconnect/FHIR-NRLS-API/blob/13f3078386d76385ffa9f3c2e975cf13bb7104ce/Examples/create_documentreference_resource.json %}
 {% highlight json %}
-{% github_sample /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/create_documentreference_resource.json  %}
+{% github_sample /nhsconnect/FHIR-NRLS-API/blob/13f3078386d76385ffa9f3c2e975cf13bb7104ce/Examples/create_documentreference_resource.json  %}
 {% endhighlight %}
 </div>
 
@@ -139,9 +139,9 @@ A JSON example of a DocumentReference resource is displayed below.
 An XML example of a DocumentReference resource is displayed below. 
 
 <div class="github-sample-wrapper scroll-height-350">
-{% github_sample_ref /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/create_documentreference_resource.xml %}
+{% github_sample_ref /nhsconnect/FHIR-NRLS-API/blob/13f3078386d76385ffa9f3c2e975cf13bb7104ce/Examples/create_documentreference_resource.xml %}
 {% highlight json %}
-{% github_sample /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/create_documentreference_resource.xml  %}
+{% github_sample /nhsconnect/FHIR-NRLS-API/blob/13f3078386d76385ffa9f3c2e975cf13bb7104ce/Examples/create_documentreference_resource.xml  %}
 {% endhighlight %}
 </div>
 
