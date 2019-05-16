@@ -14,8 +14,7 @@ summary: To support the update of NRLS pointers
 
 ## Update ##
 
-API to support the update of NRLS pointers. This functionality is only available for providers.
-The update functionality will be used in cases where a Provider wishes to deprecate the Document that the current DocumentReference points to and replace it with a new version.
+API to support the update of NRLS pointers. This functionality is only available for providers. The update functionality will be used in cases where a Provider wishes to update a pointer status value from “current” of “entered-in-error”. 
 
 ## Update Request Headers ##
 
@@ -31,42 +30,77 @@ Provider API update requests support the following HTTP request headers:
 
 ## Update Operation ##
 
-Currently the API does not allow a true update i.e. the HTTP PUT verb is not supported. 
-At the moment the Provider can only update a DocumentReference’s status property. This is described below.
+Provider system will construct a [FHIRPath PATCH Parameters resource](https://www.hl7.org/fhir/fhirpatch.html) and submit this to NRL using the FHIR RESTful [patch](https://www.hl7.org/fhir/http.html#patch) interaction.
 
-### Update status Operation ###
+<div markdown="span" class="alert alert-success" role="alert">
+PATCH [baseUrl]/DocumentReference/[id]</div>
 
-The NRLS will only allow a provider to supersede a Pointer at the moment i.e. to transition a DocumentReference’s status from 
-current to superseded. No other [transitions](pointer_lifecycle.html) are supported at this time.
+The API supports the conditional update interaction which allows a provider to update a pointer using the masterIdentifier so they do not have to persist or query for the NRL generated logical id for the pointer. The query parameters should be used as shown:
 
-Note also that currently the NRLS will only attempt to interpret the first relatesTo element. Subsequent elements will be persisted as part of the containing DocumentReference but their contents will not be processed i.e. no attempt will be made to resolve the relatesTo.reference nor will any validation be applied to the code property. This behaviour is subject to change in future releases of the NRLS API.
+<div markdown="span" class="alert alert-success" role="alert">
+PATCH [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&amp;identifier=[system]%7C[value]</div>
 
-A Provider transitions an existing Pointer’s status from current to superseded as part of the act of creating its replacement. In effect the POSTing of a new DocumentReference provides a means to specify an existing DocumentReference whose status should be moved to superseded. Concretely this is achieved as follows –
+*[nhsNumber]* - The NHS number of the patient whose DocumentReferences the client is requesting
 
-1.	Provider assembles a new DocumentReference resource
-2.	Provider populates the relatesTo property with a new target element which holds  –
-	- an identifier that is the masterIdentifier of the existing DocumentReference
-	- the action code “replaces”
-3.	Provider POSTs the DocumentReference resource
-4.	NRLS will transactionally -
-	1. create the new DocumentReference marking it as current
-	2. resolve the existing DocumentReference using the relatesTo.target.identifer
-	3. mark that DocumentReference as superseded
+*[system]* - The namespace of the masterIdentifier value that is associated with the DocumentReference(s)
 
-### XML Example of a DocumentReference resource that supersedes an existing DocumentReference ###
+*[value]* - The value of the masterIdentifier that is associated with the DocumentReference(s)
 
-<script src="https://gist.github.com/sufyanpat/22bd1935648a7055f0836ed888917b85.js"></script>
+Providers systems SHALL only update pointers for records where they are the pointer owner (custodian).
+For all update requests the custodian ODS code in the DocumentReference resource SHALL be affiliated with the Client System ASID value in the fromASID HTTP request header sent to the NRLS.
 
-### JSON Example of a DocumentReference resource that supersedes an existing DocumentReference ###
+The FHIRPath Parameters resource must conform either the XML or JSON example as shown below. All parameters and their associated values are mandatory. 
 
-<script src="https://gist.github.com/sufyanpat/fd3f828fe535299752632319257c43ce.js"></script>
+### XML FHIRPath PATCH Parameters resource ###
+
+<div class="github-sample-wrapper">
+{% github_sample_ref /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/patch_parameters_resource.xml %}
+{% highlight XML %}
+{% github_sample /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/patch_parameters_resource.xml 0 16 %}
+{% endhighlight %}
+</div>
+
+### JSON FHIRPath PATCH Parameters resource ###
+
+<div class="github-sample-wrapper">
+{% github_sample_ref /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/patch_parameters_resource.json %}
+{% highlight json-doc %}
+{% github_sample /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/patch_parameters_resource.json 0 16 %}
+{% endhighlight %}
+</div>
 
 ## Response ##
 
-Success and Failure:
+Success:
 
-See [Create Response](api_interaction_create.html#create-response) for the response behaviour and codes.
+- SHALL return a `200` **SUCCESS** HTTP status code on successful execution of the interaction and the entry has been successfully updated in the NRL.
+- SHALL return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Operation Outcome'](http://hl7.org/fhir/STU3/operationoutcome.html) core FHIR resource. See table below.
+- SHALL return an HTTP `Location` response header containing the full resolvable URL to the newly created 'single' DocumentReference. 
+  - The URL will contain the 'server' assigned `logical Id` of the new DocumentReference resource.
+  - The URL format MUST be: `https://[host]/[path]/[id]`. 
+  - An example `Location` response header: 
+    - `https://psis-sync.national.ncrs.nhs.uk/DocumentReference/297c3492-3b78-11e8-b333-6c3be5a609f5-54477876544511209789`
+- When a resource has been upcated it will have a `versionId` of 2.
 
-## Code Examples ##
 
-Code examples about updating the pointer can be found [here](api_interaction_create.html#code-examples).
+{% include note.html content="The versionId is an integer that is assigned and maintained by the NRLS server. When a new DocumentReference is created the server assigns it a versionId of 1. The versionId will be incremeted during an update or supersede transaction. <br/><br/> The NRLS server will ignore any versionId value sent by a client in a create interaction. Instead the server will ensure that the newly assigned verionId adheres to the rules laid out above. 
+" %}
+
+The table summarises the `update` interaction HTTP response code and the values expected to be conveyed in the successful response body `OperationOutcome` payload:
+
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Details.Text |Diagnostics |
+|-----------|----------------|------------|--------------|-----------------|-------------------|
+|200|information|informational|RESOURCE_UPDATED|Resource has been updated| Spine message UUID |Successfully updated resource DocumentReference|
+
+{% include note.html content="Upon successful creation of a pointer the NRLS Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
+
+Failure: 
+
+The following errors can be triggered when performing this operation:
+
+- [Invalid Request Message](development_general_api_guidance.html#invalid-request-message)
+- [Invalid Resource](development_general_api_guidance.html#invalid-resource)
+- [Organisation not found](development_general_api_guidance.html#organisation-not-found)
+- [Invalid NHS Number](development_general_api_guidance.html#invalid-nhs-number)
+- [Invalid Parameter](development_general_api_guidance.html#parameters)
+- [Duplicate Resource](development_general_api_guidance.html#duplicate-resource)

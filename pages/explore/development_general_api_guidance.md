@@ -15,7 +15,6 @@ This implementation guide is intended for use by software developers looking to 
 
 The keywords ‘**MUST**’, ‘**MUST NOT**’, ‘**REQUIRED**’, ‘**SHALL**’, ‘**SHALL NOT**’, ‘**SHOULD**’, ‘**SHOULD NOT**’, ‘**RECOMMENDED**’, ‘**MAY**’, and ‘**OPTIONAL**’ in this implementation guide are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
 
-
 ## RESTful API ##
 
 ### Content types ###
@@ -37,7 +36,6 @@ The keywords ‘**MUST**’, ‘**MUST NOT**’, ‘**REQUIRED**’, ‘**SHALL*
 
 - If neither the `Accept` header nor the `_format` parameter are supplied by the client system the NRLS Server SHALL return data in the default format of `application/fhir+xml`.
 
-
 ## Error handling ##
 
 The NRLS API defines numerous categories of error, each of which encapsulates a specific part of the request that is sent to the NRLS. Each type of error will be discussed in its own section below with the relevant Spine response code:
@@ -50,7 +48,8 @@ The NRLS API defines numerous categories of error, each of which encapsulates a 
 - [Payload syntax](development_general_api_guidance.html#payload-syntax) - Used to inform the client that the syntax of the request payload (DocumentReference) is invalid. For example, if using JSON to carry the DocumentReference then the structure of the payload may not conform to JSON notation.
 - [Organisation not found](development_general_api_guidance.html#organisation-not-found) - Used to inform the client that the URL being used to reference a given Organisation is invalid.
 - [Invalid NHS Number](development_general_api_guidance.html#invalid-nhs-number) - Used to inform a client that the the NHS Number used in a provider pointer create or consumer search interaction is invalid.
-- [Unsupported Media Type](development_general_api_guidance.html#unsupported-media-type) - Used to inform the client that requested content types are not supported by NRLS Service
+- [Unsupported Media Type](development_general_api_guidance.html#unsupported-media-type) - Used to inform the client that requested content types are not supported by NRLS Service.
+- [Access Denied](development_general_api_guidance.html#access-denied) - Used to inform the client that access has been denied to perform the interaction.
 - [Internal Error](development_general_api_guidance.html#internal-error) - Used to inform the client if there is a failure during the change of the DocumentReference status.
 
 The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1).
@@ -212,21 +211,25 @@ If the DocumentReference in the request body specifies a period then:
 - At least the start date must be populated and must be a valid FHIR [dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime) 
 - If the end date is populated it must be a valid FHIR [dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime)
 
-
 #### Delete Request - Provider ODS Code does not match Custodian ODS Code ####
 This error is raised during a provider delete interaction. There is one exception scenario:
 - A provider delete pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code in the fromASID header.
 
-#### relatesTo.code ####
-If the code is not set to one of the following values then an error must be returned: 
-- replaces
+#### relatesTo ####
+If multiple relatesTo elements are included in a create request then an error will be returned. 
 
+#### relatesTo.code ####
+If the code is not set to the "replaces" then an error will be returned.
 
 #### Incorrect permissions to modify ####
 
 When the NRLS resolves a DocumentReference through the relatesTo property before modifying its status the NRLS should check that 
 the ODS code associated with the fromASID HTTP header is associated with the ODS code specified on the custodian property of the 
 DocumentReference. If not then the NRLS should roll back all changes and an error returned.
+
+#### Update or Delete Request - Provider ODS Code does not match Custodian ODS Code ####
+This error is raised during a provider update or delete interaction. There is one exception scenario:
+- A provider delete pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code in the fromASID header.
 
 #### DocumentReference does not exist ####
 
