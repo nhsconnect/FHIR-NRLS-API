@@ -92,6 +92,9 @@ entries:
           - title: Search
             url: /api_interaction_search.html
             output: web   
+          - title: Supersede
+            url: /api_interaction_supersede.html
+            output: web
           - title: Update
             url: /api_interaction_update.html
             output: web            
