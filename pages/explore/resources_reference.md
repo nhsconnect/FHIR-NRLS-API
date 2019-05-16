@@ -46,24 +46,31 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Record mime type|`attachment.contentType`|code|1..1|Describes the format of the record such that the Consumer can pick an appropriate mechanism to handle the record. Without it the Consumer would be in the dark as to how to deal with the Record|
 |Record URL|`attachment.url`|uri|1..1|The location of the record on the Provider’s system and/ or a service that allows you to look up information based on the provider url e.g. web page with service contact details|
 |Record creation datetime|`attachment.creation`|dateTime|0..1|The date and time (on the Provider’s system) that the record was created. Note that this is an optional field and is meant to convey the concept of a static record.|
+|Record format|`content.format`|Coding|1..1|Describes the technical structure and rules of the record and it’s retrieval route|
+||`content.format.system`|Uri|1..1|Identity of the terminology system|
+||`content.format.code`|Code|1..1|Symbol in syntax defined by the system|
+||`content.format.display`|String|1..1|Representation defined by the system|
+|Record creation clinical setting|`context.practiceSetting`|CodeableConcept|1..1|Describes where the content was created, in what clinical setting|
+||`context.practiceSetting.system`|Uri|1..1|Identity of the terminology system|
+||`context.practiceSetting.code`|Code|1..1|Symbol in syntax defined by the system|
+||`context.practiceSetting.display`|String|1..1|Representation defined by the system|
+|Period of care|`context.period`|Period|0..1|Details the time at which the documented care is relevant|
+||`context.period.start`|dateTime|1..1|Starting time with inclusive boundary|
+||`context.period.end`|dateTime|0..1|End time with inclusive boundary, if not ongoing|
+|Record Class|`class`|CodeableConcept|1..1|A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set|
+||`class.system`|Uri|1..1|Identity of the terminology system|
+||`class.code`|Code|1..1|Symbol in syntax defined by the system|
+||`class.display`|String|1..1|Representation defined by the system|
+|Record Retrieval Mode|`content.extension:retrievalMode`|Extension|1..1|Record content extension|
+||`content.extension:retrievalMode.url`|Uri|1..1|identifies the meaning of the extension|
+||`content.extension:retrievalMode.`<br />`valueCodeableConcept`|CodeableConcept|1..1|Describes whether the record content is generated in real-time or is static|
+||`content.extension:retrievalMode.`<br />`valueCodableConcept.system`|Uri|1..1|Identity of the terminology system|
+||`content.extension:retrievalMode.`<br />`valueCodableConcept.code`|Code|1..1|Symbol in syntax defined by the system|
+||`content.extension:retrievalMode.`<br />`valueCodableConcept.display`|String|1..1|Representation defined by the system|
 
 
 
-<!--|Master identifier|`masterIdentifier`|Identifier|0..1|identifier as assigned by the source of the record. This identifier is specific to this version of the record. This unique identifier may be used elsewhere to identify this version of the record.|-->
 
-
-<!--
-|Record retrieval mode|`content.recordRetrievalMode`|CodeableConcept|0..1|Whether or not this Pointer facilitates direct or indirect Record retrieval. Used to give the Consumer a clue as to what following the Pointer will return.|-->
-
-<!--
-## 3. Extensions ##
-
-Links to the NRLS FHIR extensions on the NHS FHIR Reference Server. 
-
-|Extension|
-|---------|
-| [Extension-NRLS-RecordRetrievalMode-1](https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRLS-RecordRetrievalMode-1)|
--->
 
 ## 3. ValueSets ##
 
@@ -72,16 +79,24 @@ Links to the NRLS FHIR value sets on the NHS FHIR Reference Server.
 |Valueset|Description|
 |-------|-----------|
 |[ValueSet-NRLS-RecordType-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordType-1)| A ValueSet that identifies the NRLS record type. |
+|[ValueSet-NRLS-RecordFormat-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-Format-1)| A ValueSet that identifies the NRLS record format. |
+|[ValueSet-NRLS-PracticeSetting-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-PracticeSetting-1)| A ValueSet that identifies the NRLS record practice setting. |
+|[ValueSet-NRLS-RecordClass-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordClass-1)| A ValueSet that identifies the NRLS record class. |
+|[ValueSet-NRLS-RecordRetrievalMode-2](https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordRetrievalMode-2)| A ValueSet that identifies the NRLS record retrieval mode. |
 |[ValueSet-Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)| A ValueSet that identifies the Spine error or warning code in response to a request.|
 |[ValueSet-Spine-Response-Code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0)|  A set of codes to indicate low level error information about a Spine 2 error response to a request for patient record details. Exceptions raised by the Spine common requesthandler and not the NRLS Service will be returned using the Spine default [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to this default valueSet. |
 
-<!--
-	|[ValueSet-NRLSRecordType-1](https://fhir.nhs.uk/STU3/ValueSet/CarePlanType-1)| NRLS record type |
-	|[ValueSet-NRLSRecordType-1](https://fhir.nhs.uk/STU3/ValueSet/NRLSRecordType-1)| NRLS record type |
-|[ValueSet-NRLS-RecordRetrievalMode-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordRetrievalMode-1)| National record locator pointer retrieval mode. |
--->
 
-## 4. CodeSystems ##
+## 4. Extensions ##
+
+Links to the NRLS FHIR Extensions on the NHS FHIR Reference Server. 
+
+|Extension|Description|
+|-------|-----------|
+|[Extension-NRLS-RecordRetrievalMode-2](https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRLS-RecordRetrievalMode-2)|NRLS Record Retrieval Mode.|
+
+
+## 5. CodeSystems ##
 
 Links to the NRLS FHIR CodeSystems on the NHS FHIR Reference Server. 
 
@@ -89,21 +104,9 @@ Links to the NRLS FHIR CodeSystems on the NHS FHIR Reference Server.
 |-------|-----------|
 |[CodeSystem-Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1)|Spine error codes and descriptions.|
 
-<!--
-|[CodeSystem-NRLS-RecordRetrievalMode-1](https://fhir.nhs.uk/STU3/CodeSystem/NRLS-RecordRetrievalMode-1)| identifies the national record locator pointer retrieval mode. |-->
 
-<!--
-## NRLS Identifiers ##
 
-| identifier | URI | Comment |
-|--------------------------------------------|----------|----|
-| NHS Number | https://fhir.nhs.uk/Id/nhs-number | Patient - England and Wales |
-| SDS User Id/ Practitioner Code | https://fhir.nhs.uk/Id/sds-user-id | Practitioner |
-| SDS/ODS Organisation Code | https://fhir.nhs.uk/Id/ods-organization-code | Organization |
-| SDS/ODS Site Code | https://fhir.nhs.uk/Id/ods-site-code | Location |
--->
-
-## 5. Identifiers ##
+## 6. Identifiers ##
 
 NRLS supported URI's:   
 
@@ -111,26 +114,36 @@ NRLS supported URI's:
 |--------------------------------------------|----------|----|
 | `Logical ID` | [baseurl]/DocumentReference/[id] | Pointer identifier |
 | `Patient` | https://demographics.spineservices.nhs.uk/STU3/Patient/[NHS Number] | Patient |
-|`organization`| https://directory.spineservices.nhs.uk/STU3/Organization/[ODS Code] | Record author or record owner |
-
+| `Organization` | https://directory.spineservices.nhs.uk/STU3/Organization/[ODS Code] | Record author or record owner |
+| `Master Identifier` | Identifier=[system]%7C[value] | Pointer local/business indentifier |
 
 {% include warning.html content="The URI's on subdomain `spineservices.nhs.uk` are currently not resolvable, however this will change in the future where references relate to FHIR endpoints in our national systems." %}
 
-## 6. Examples ##
+## 7. Examples ##
 
 
 ### JSON Example ###
 
 A JSON example of a DocumentReference resource is displayed below. 
 
-<script src="https://gist.github.com/sufyanpat/7471548c4c7ee9eb55df4d9552b6d99a.js"></script>
+<div class="github-sample-wrapper scroll-height-350">
+{% github_sample_ref /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/create_documentreference_resource.json %}
+{% highlight json %}
+{% github_sample /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/create_documentreference_resource.json  %}
+{% endhighlight %}
+</div>
 
 
 ### XML Example ###
 
 An XML example of a DocumentReference resource is displayed below. 
 
-<script src="https://gist.github.com/sufyanpat/08898ecc09781e0216fcdf4860273e90.js"></script>
+<div class="github-sample-wrapper scroll-height-350">
+{% github_sample_ref /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/create_documentreference_resource.xml %}
+{% highlight json %}
+{% github_sample /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/create_documentreference_resource.xml  %}
+{% endhighlight %}
+</div>
 
 
 
