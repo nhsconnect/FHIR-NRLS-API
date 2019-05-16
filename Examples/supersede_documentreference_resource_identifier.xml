@@ -29,7 +29,10 @@
     <relatesTo>
         <code value="replaces"/>
         <target>
-            <reference value="https://psis-sync.national.ncrs.nhs.uk/DocumentReference/0353e505-f7be-4c20-8f4e-337e79a32c51-76009894321256642261"/>
+            <identifier>
+                <system value="urn:ietf:rfc:3986"/>
+                <value value="urn:oid:1.3.6.1.4.1.21367.2005.3.6"/>
+            </identifier>
         </target>
     </relatesTo>
     <content>
