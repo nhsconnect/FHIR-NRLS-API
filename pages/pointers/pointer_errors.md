@@ -9,34 +9,13 @@ summary: NRLS Pointer Errors
 
 {% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
-{% include warning.html content="
-The current version of the NRLS API does not give Providers the ability to update the properties of an existing Pointer. 
-The only property that can be modified is the status and that is done in a very specific way only allowing a Provider to replace one 
-pointer with another [Managing Pointers](pointer_maintenance.html#managing-pointers-to-static-content).
-<br/>
-This means that a number of scenarios outlined below around updating a Pointer can not yet be achieved though the NRLS intends to support these features in a future release. 
-<br/>
-Specifically the NRLS API does not currently support- <br/>
-
-- The following status property transitions:<br/>
-
-	&emsp; o **current** to **entered-in-error**<br/>
-	&emsp; o **entered-in-error** to **current**<br/>
-	&emsp; o **current** to **superseded** where the current Pointer is not being replaced.<br/>
-	
-- Modification of other properties<br/>
-" %}
-
-
 ## Pointer Errors ##
 
-The current version of the NRLS API does not give Providers the ability to update the properties of an existing Pointer, other than status . The status property is modified  in a very specific way by  only allowing a Provider to replace one document reference with another - see [Managing Pointers to static content](pointer_maintenance.html#managing-pointers-to-static-content.html). This means that a number of scenarios outlined below around updating a Pointer cannot yet be achieved though the NRLS intends to support these features in a future release. Specifically the NRLS API does not currently support -
+The current version of the NRL API does not give Providers the ability to update the properties of an existing Pointer, other than status property. The status property is modified in one of two ways. 
 
-- Modification of the status property – 
-  - current to entered-in-error
-  - entered-in-error to current
-  - current to superseded where the current Pointer is not being replaced.
-- Modification of other properties
+The first is where a Provider replaces one document reference with another, known as superseding - see [API Interaction - Supersede](api_interaction_supersede.html) for more details. 
+
+The second is by performing a PATCH to directly change the status of the pointer - see [API Interaction - Update](api_interaction_update.html) for more details.
 
 ## Pointer error handling ##
 
@@ -64,32 +43,11 @@ Note that it is important to do this before that Pointer has been superseded as 
 
 If a Provider finds that one of their superseded Pointers should not have been registered with the NRLS then the entire lineage of that Pointer is considered corrupted. The Provider must mark the Pointer at the head of the lineage (i.e. the current Pointer) as being entered-in-error.
 
-The Provider should then recreate the entire lineage missing out the erroneous Pointer.
+The Provider could then recreate the entire lineage missing out the erroneous Pointer.
 
 ### Pointer’s data is invalid ###
 
-Where the presence of the Pointer on NRLS is valid but the data it holds is invalid then the Provider could choose to update the erroneous data in order to repair that Pointer. 
-
-Each property on the Pointer is listed below along with a description of what action should be taken if the Provider finds a problem with that property. In most cases where the Pointer at fault is part of a lineage of related Pointers then the state of the other Pointers in the [lineage](pointer_lineage.html) should be taken in to account when deciding what changes to make .
-
-| Property               | Notes |
-|------------------------|-------|
-| status      | The modification of status is restricted. See [Pointer lifecycle](pointer_lifecycle.html) |
-| author      | If the DocumentReference is part of a lineage then the author should  be consistent |
-| URL        | - |
-| content type           | - |
-| created           |If the  DocumentReference is part of a lineage then the new date should not be before the created date of any of the previous Pointers in the lineage |
-
-
-<b>Table 1: Mutable properties.</b> These properties can be changed without the need to create a new Pointer.
-
-| Property               | Notes |
-|------------------------|-------|
-| patient      | If the Pointer is not part of a lineage then mark it as entered-in-error and create a new Pointer that is associated with the correct Patient. <br><br>If the Pointer is part of a lineage then mark it as entered-in-error and create a new lineage that mirrors the existing one however the Pointers will now be  associated with the correct Patient.|
-| type      | If the Pointer is not part of a lineage then mark it as entered-in-error and create a new Pointer that is associated with the correct type. <br><br>If the Pointer is part of a lineage then mark it as entered-in-error and create a new lineage that mirrors the existing one however the Pointers will now be  associated with the correct type. |
-| related       | Where the relationship is one of replacement the following advice applies: <br><br>Mark the Pointer (A) as entered-in-error and create a new Pointer (B) that is related to the correct Pointer. <br><br>The Pointer (C) that was originally (and incorrectly)  replaced by A will be incorrectly marked as having been replaced. <br><br>Create a new Pointer that is largely identical to C except its status will be “current”. <br><br>If C was part of a lineage create a new lineage that mirrors the existing one.|
-
-<b>Table 2: Immutable properties.</b> These properties cannot be changed on an existing Pointer. Instead a new Pointer must be created.
+Where the presence of the Pointer on NRL is valid but the data it holds is invalid then the Provider should update the pointer’s status to entered-in-error and create a new pointer that contains the correct data.
 
 ## Errors with the content that the Pointer references ##
 
