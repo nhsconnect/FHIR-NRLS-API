@@ -1,0 +1,13 @@
+{
+    "relatesTo": [
+        {
+            "code": "replaces",
+            "target": {
+                "identifier": {
+                    "system": "urn:ietf:rfc:3986",
+                    "value": "urn:oid:1.3.6.1.4.1.21367.2005.3.6"
+                }
+            }
+        }
+    ]
+}

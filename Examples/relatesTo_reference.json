@@ -1,0 +1,10 @@
+{
+    "relatesTo": [
+        {
+            "code": "replaces",
+            "target": {
+                "reference": "https://psis-sync.national.ncrs.nhs.uk/DocumentReference/0353e505-f7be-4c20-8f4e-337e79a32c51-76009894321256642261"
+            }
+        }
+    ]
+}
