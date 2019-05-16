@@ -101,7 +101,7 @@ entries:
         # - title: HTTP Response Codes
         #   url: /explore_api_codes.html
         #   output: web
-          - title: Reference
+          - title: FHIR&reg; Resources &amp; References
             url: /explore_reference.html
             output: web
         # - title: General API Guidance
