@@ -16,7 +16,7 @@ Once persisted within NRL there are up to two ways to refer to a specific Pointe
 
 - Logical identifier – This identifier is assigned by the NRL service when it persists a Pointer. It uniquely identifies that Pointer within the boundary of the NRL service. In effect the NRL service instance is the namespace for a given Pointer’s Logical identifier. 
 
-- Master identifier – This identifier is optional and is under the control of the Provider. Contrast this with the Logical identifier which is under the control of the NRL service.
+- Master identifier – This identifier is optional and is under the control of the Provider. Contrast this with the Logical identifier which is under the control of the NRL service. This identifier uniquely identifies the Pointer within the boundary of the NRL service, however it is recommended that the scope of uniqueness extends beyond this (see Uniqueness below).
 
 ### Logical identifier ###
 
@@ -27,10 +27,12 @@ The format of the id is under the control of the NRL service. Clients should tre
 ### Master Identifier ###
 
 The Master identifier is an optional identifier on the Pointer. It is under the control of the Provider. 
-The Master identifier is associated with the version of the content that the Pointer references. Any time that the content’s version 
-changes [see Maintaining Pointers page](pointer_maintenance.html) then so too should the masterIdentifier. 
-The NRL prefers that this is done through the creation of a new Pointer with a new masterIdentifier and the deprecation of the existing Pointer ([see Pointer status page](pointer_lifecycle.html#pointer-status)).
+The Master identifier is associated with the version of the Pointer references. 
+Guidance on the use of a unique master identifier value:
 
+- Once a pointer with a master identifier value has been created, that same master identifier value cannot be re-used with another pointer. 
+- 'Superseding' requires a new master identifier value. If a pointer is superseded, the new Pointer which replaces it must have a new, unique master identifier value.
+- Once a pointer with a master identifier is deleted, the master identifier value used in that pointer cannot be used again on the NRL.
 
 ### Uniqueness ###
 
