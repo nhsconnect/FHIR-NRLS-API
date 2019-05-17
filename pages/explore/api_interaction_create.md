@@ -130,9 +130,9 @@ These pointer values are taken from the demo crisis plan that is created for the
 Then we call our DocumentReference service GenerateAndCreatePointer method which will generate our pointer (DocumentReference) using the values stored in the model, build a POST command request and then start the call to the NRL API.
 
 <div class="github-sample-wrapper">
-{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.Services/Service/Epr/CrisisPlanService.cs#L125-L128 %}
+{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.Services/Service/Epr/CrisisPlanService.cs#L125-L128 %}
 {% highlight csharp %}
-{% github_sample /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.Services/Service/Epr/CrisisPlanService.cs 124 127 %}
+{% github_sample /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.Services/Service/Epr/CrisisPlanService.cs 124 127 %}
 {% endhighlight %}
 </div>
 
@@ -141,9 +141,9 @@ Within the DocumentReference service GenerateAndCreatePointer method we generate
 
 
 <div class="github-sample-wrapper">
-{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.NRLSAdapter/DocumentReferences/DocumentReferenceServices.cs#L53-L54 %}
+{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.NRLSAdapter/DocumentReferences/DocumentReferenceServices.cs#L53-L54 %}
 {% highlight csharp %}
-{% github_sample /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.NRLSAdapter/DocumentReferences/DocumentReferenceServices.cs 52 53 %}
+{% github_sample /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.NRLSAdapter/DocumentReferences/DocumentReferenceServices.cs 52 53 %}
 {% endhighlight %}
 </div>
 

@@ -37,15 +37,30 @@ Provider API delete requests support the following HTTP request headers:
 
 ### Delete by *'id'* ###
 
-The API supports the conditional delete interaction which allows a provider to delete an existing pointer based on the search parameter `_id` which refers to the logical id of the pointer. 
+#### RESTful Delete ####
+The API supports the delete by ID interaction which allows a provider to delete an existing pointer, in a RESTful way, based on the logical ID of the pointer.
 
-The logical id can be obtained from the Location header which is contained in the [create response](api_interaction_create.html#create-response).
+The logical id can be obtained from the Location header which is contained in the create response - see the [Create API Interaction](api_interaction_create.html#create-response) for details.
 
 To accomplish this, the provider issues an HTTP DELETE as shown:
 
 <div markdown="span" class="alert alert-success" role="alert">
-DELETE [baseUrl]/DocumentReference?_id=[id]</div>
+    DELETE [baseUrl]/DocumentReference/[id]
+</div>
 
+#### Conditional Delete ####
+
+The API also supports the conditional delete interaction which allows a provider to delete an existing pointer based on the search parameter `_id` which refers to the logical id of the pointer. 
+
+The logical id can be obtained from the Location header which is contained in the create response - see the [Create API Interaction](api_interaction_create.html#create-response) for details.
+
+To accomplish this, the provider issues an HTTP DELETE as shown:
+
+<div markdown="span" class="alert alert-success" role="alert">
+    DELETE [baseUrl]/DocumentReference?_id=[id]
+</div>
+
+{% include important.html content="Conditional delete by logical ID may be deprecated in the future, therefore it is recommended to implement delete by ID as a path variable." %}
 
 
 Providers systems SHALL only delete pointers for records where they are the pointer owner (custodian). 
@@ -53,7 +68,7 @@ Providers systems SHALL only delete pointers for records where they are the poin
 For all delete requests the `custodian` ODS code in the DocumentReference to be deleted SHALL be affiliated with the Client System `ASID` value in the `fromASID` HTTP request header sent to the NRL.
 
 <div class="language-http highlighter-rouge">
-<pre class="highlight"><code><span class="err">DELETE [baseUrl]/DocumentReference?_id=da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142
+<pre class="highlight"><code><span class="err">DELETE [baseUrl]/DocumentReference/da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142
 </span></code>
 Delete the DocumentReference resource for a pointer with a logical id of 'da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142'.</pre>
 </div>
@@ -127,9 +142,9 @@ Then we call our DocumentReference service DeletePointer method which will build
 
 
 <div class="github-sample-wrapper">
-{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.Services/Service/Epr/CrisisPlanService.cs#L158-L160 %}
+{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.Services/Service/Epr/CrisisPlanService.cs#L158-L160 %}
 {% highlight csharp %}
-{% github_sample /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.Services/Service/Epr/CrisisPlanService.cs 157 159 %}
+{% github_sample /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.Services/Service/Epr/CrisisPlanService.cs 157 159 %}
 {% endhighlight %}
 </div>
 <br/>
