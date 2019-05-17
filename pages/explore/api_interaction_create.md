@@ -73,7 +73,7 @@ Success:
  
 
 
-{% include note.html content="The versionId is an integer that is assigned and maintained by the NRLS server. When a new DocumentReference is created the server assigns it a versionId of 1. Although a direct update is not supported by the NRLS Service, the versionId will be incremeted during a supersede transaction. See the [supersede interaction page](/api_interaction_supersede.html) for more details on this transaction.<br/><br/> The NRLS server will ignore any versionId value sent by a client in a create interaction. Instead the server will ensure that the newly assigned verionId adheres to the rules laid out above. 
+{% include note.html content="The versionId is an integer that is assigned and maintained by the NRLS server. When a new DocumentReference is created the server assigns it a versionId of 1. Although a direct update is not supported by the NRLS Service, the versionId will be incremeted during a supersede transaction. See [API Interaction - Supersede](/api_interaction_supersede.html) for more details on this transaction.<br/><br/> The NRLS server will ignore any versionId value sent by a client in a create interaction. Instead the server will ensure that the newly assigned verionId adheres to the rules laid out above. 
 " %}
 
 
