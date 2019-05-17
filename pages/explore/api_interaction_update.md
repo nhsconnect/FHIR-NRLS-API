@@ -65,7 +65,7 @@ The FHIRPath Parameters resource must conform either the XML or JSON example as 
 <div class="github-sample-wrapper">
 {% github_sample_ref /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/patch_parameters_resource.json %}
 {% highlight json-doc %}
-{% github_sample /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/patch_parameters_resource.json 0 16 %}
+{% github_sample /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/patch_parameters_resource.json %}
 {% endhighlight %}
 </div>
 
