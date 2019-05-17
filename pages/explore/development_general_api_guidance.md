@@ -211,10 +211,6 @@ If the DocumentReference in the request body specifies a period then:
 - At least the start date must be populated and must be a valid FHIR [dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime) 
 - If the end date is populated it must be a valid FHIR [dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime)
 
-#### Delete Request - Provider ODS Code does not match Custodian ODS Code ####
-This error is raised during a provider delete interaction. There is one exception scenario:
-- A provider delete pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code in the fromASID header.
-
 #### relatesTo ####
 If multiple relatesTo elements are included in a create request then an error will be returned. 
 
@@ -228,7 +224,8 @@ the ODS code associated with the fromASID HTTP header is associated with the ODS
 DocumentReference. If not then the NRL should roll back all changes and an error returned.
 
 #### Update or Delete Request - Provider ODS Code does not match Custodian ODS Code ####
-This error is raised during a provider update or delete interaction. There is one exception scenario:
+This error is raised during a provider update or delete interaction. There are two exception scenarios:
+- A provider update pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code in the fromASID header.
 - A provider delete pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code in the fromASID header.
 
 #### DocumentReference does not exist ####
