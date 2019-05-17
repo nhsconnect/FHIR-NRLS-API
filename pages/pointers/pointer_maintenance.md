@@ -46,7 +46,7 @@ So when considering Pointer maintenance we should really think in terms of the m
 The rules around when a Pointer is created will vary from Provider to Provider because different business process’ 
 will be at play within their organisations. Having said that there is some general guidance that can be given around when creation 
 of a new pointer is appropriate.
-As discussed in the [concepts section](/overview_concepts.html) the NRL has the concept of a static and dynamic content in relation to what the 
+As discussed in the [concepts section](overview_concepts.html) the NRL has the concept of a static and dynamic content in relation to what the 
 Pointer is referencing. Static content will never change whereas a dynamic content is not guaranteed to be the same from one point in 
 time to another in the future.
 
