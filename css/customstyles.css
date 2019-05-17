@@ -1192,6 +1192,16 @@ div.box.box1 {
     padding: 10px;
 }
 
+.github-sample-wrapper .highlight pre  {
+    margin-top: 5px;
+    margin-bottom:0;
+    border-radius: 0;
+}
+
+.github-sample-wrapper.scroll-height-350 {
+    padding: 0 0 20px 0;
+}
+
 .github-sample-wrapper.scroll-height-350 figure.highlight pre code {
    white-space: pre;
 }
@@ -1200,12 +1210,6 @@ div.box.box1 {
     max-height: 350px;
     overflow: auto;
     word-wrap: normal;
-}
-
-.github-sample-wrapper .highlight pre  {
-    margin-top: 5px;
-    margin-bottom:0;
-    border-radius: 0;
 }
 
 
