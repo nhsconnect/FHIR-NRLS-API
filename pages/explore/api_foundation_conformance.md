@@ -14,7 +14,7 @@ summary: A capability statement is a set of capabilities of a FHIR Server that m
 
 ## 1. Capabilities ##
 
-API to support getting the NRLS server capability statement.
+API to support getting the NRL server capability statement.
 
 <!--Alternatively, a HTTP OPTIONS request against the root of the FHIR server will also return the conformance profile:-->
 
@@ -48,12 +48,12 @@ The Capabilities Interaction supports the following HTTP request headers:
 Note: The Ssp-Version defaults to 1 if not supplied (this is currently the only version of the API). This indicates the major version of the interaction, so when new major releases of this specification are released (for example releases with breaking changes), implementors will need to specify the correct version in this header.
 -->
 
-### 1.2 Capabilities Interaction (Get the NRLS CapabilityStatement)  ###
+### 1.2 Capabilities Interaction (Get the NRL CapabilityStatement)  ###
 
 <div markdown="span" class="alert alert-success" role="alert">
 GET [baseUrl]/metadata</div>
 
-The `/metadata` path on the root of the NRLS FHIR server will return the capability statement for the FHIR server.
+The `/metadata` path on the root of the NRL FHIR server will return the capability statement for the FHIR server.
 
 For details of this interaction - see [HL7 FHIR STU3 RESTful API](https://www.hl7.org/fhir/STU3/http.html#capabilities).
 
@@ -71,13 +71,13 @@ Success:
 
 Error Handling:
 
-<p>The NRLS Server is expected to always be able to return a valid capability statement.</p>
+<p>The NRL Server is expected to always be able to return a valid capability statement.</p>
 
 ## 2. Example ##
 
 ### 2.1 Capabilities Request Query ###
 
-Retrieve the capability statement from the NRLS Server, the format of the response body will be xml. 
+Retrieve the capability statement from the NRL Server, the format of the response body will be xml. 
 
 #### 2.1.1. cURL ####
 
@@ -91,7 +91,7 @@ Retrieve the capability statement from the NRLS Server, the format of the respon
 
 <!--### 2.2.2 Response Body ###-->
 
-<p>An example NRLS CapabilityStatement of kind <code class="highlighter-rouge">Requirements</code> is shown below:</p>
+<p>An example NRL CapabilityStatement of kind <code class="highlighter-rouge">Requirements</code> is shown below:</p>
 
 
 

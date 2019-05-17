@@ -1,6 +1,6 @@
 entries:
-- title: NRLS
-  product: NRLS
+- title: NRL
+  product: NRL
   version: 1.2.3-beta API <i>specification</i>
   levels: one
   folders:
@@ -110,7 +110,7 @@ entries:
         # - title: General API Guidance
         #   url: /development_general_api_guidance.html
         #   output: web
-        #  - title: NRLS FHIR Asset Versioning
+        #  - title: NRL FHIR Asset Versioning
         #    url: /explore_cc_versioning.html
         #    output: web
         # - title: Security

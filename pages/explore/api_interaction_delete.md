@@ -4,7 +4,7 @@ keywords: structured, rest, documentreference
 tags: [rest,fhir,api,noccprofile]
 sidebar: accessrecord_rest_sidebar
 permalink: api_interaction_delete.html
-summary: To support the deletion of NRLS pointers.
+summary: To support the deletion of NRL pointers.
 ---
 
 {% include custom/search.warnbanner.html %}
@@ -14,7 +14,7 @@ summary: To support the deletion of NRLS pointers.
 
 ## Delete ##
 
-API to support the deletion of NRLS pointers. This functionality is only available for providers.
+API to support the deletion of NRL pointers. This functionality is only available for providers.
 
 ## Delete Request Headers ##
 
@@ -50,7 +50,7 @@ DELETE [baseUrl]/DocumentReference?_id=[id]</div>
 
 Providers systems SHALL only delete pointers for records where they are the pointer owner (custodian). 
 
-For all delete requests the `custodian` ODS code in the DocumentReference to be deleted SHALL be affiliated with the Client System `ASID` value in the `fromASID` HTTP request header sent to the NRLS.
+For all delete requests the `custodian` ODS code in the DocumentReference to be deleted SHALL be affiliated with the Client System `ASID` value in the `fromASID` HTTP request header sent to the NRL.
 
 <div class="language-http highlighter-rouge">
 <pre class="highlight"><code><span class="err">DELETE [baseUrl]/DocumentReference?_id=da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142
@@ -62,7 +62,7 @@ Delete the DocumentReference resource for a pointer with a logical id of 'da2b6e
 ### Delete by *'masterIdentifier'* ###
 
 The API supports the conditional delete interaction which allows a provider to delete an existing pointer using the masterIdentifier
-so they do not have to persist or query for the NRLS generated logical id for the Pointer.
+so they do not have to persist or query for the NRL generated logical id for the Pointer.
 To accomplish this, the provider issues an HTTP DELETE as shown:
 
 <div markdown="span" class="alert alert-success" role="alert">
@@ -102,7 +102,7 @@ The table summarises the successful `delete` interaction scenario and includes H
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |200|information|informational|RESOURCE_DELETED|Resource removed | Spine message UUID |Successfully removed resource DocumentReference: [url]|
 
-{% include note.html content="Upon successful deletion of a pointer the NRLS Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Delete transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
+{% include note.html content="Upon successful deletion of a pointer the NRL Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Delete transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
 
 
 Failure: 
@@ -117,13 +117,13 @@ The following errors can be triggered when performing this operation:
 
 ### DELETE a Pointer with C# ###
 
-The following code samples are taken from the NRLS Demonstrator application which has both Consumer and Provider client implementations built in. More information about the design solution can be found
-on the [NRLS Demonstrator Wiki](https://github.com/nhsconnect/nrls-reference-implementation/wiki)
+The following code samples are taken from the NRL Demonstrator application which has both Consumer and Provider client implementations built in. More information about the design solution can be found
+on the [NRL Demonstrator Wiki](https://github.com/nhsconnect/nrls-reference-implementation/wiki)
 
 First we generate a base pointer request model that includes the pointer logical id used for the _id parameter.
-The logical id is obtained from a mapping stored within the Demonstrator that maps the Provider system crisis plans to NRLS pointers.
+The logical id is obtained from a mapping stored within the Demonstrator that maps the Provider system crisis plans to NRL pointers.
 
-Then we call our DocumentReference service DeletePointer method which will build a DELETE command request and then start the call to the NRLS API.
+Then we call our DocumentReference service DeletePointer method which will build a DELETE command request and then start the call to the NRL API.
 
 
 <div class="github-sample-wrapper">
@@ -133,13 +133,13 @@ Then we call our DocumentReference service DeletePointer method which will build
 {% endhighlight %}
 </div>
 <br/>
-<b>Calling the NRLS</b><br />
-Using our DELETE command request model we create a connection to the NRLS using HttpClient.
+<b>Calling the NRL</b><br />
+Using our DELETE command request model we create a connection to the NRL using HttpClient.
 
 You can view the common connection code example [here](connectioncode_example.html).
 
 
-<b>Explore the NRLS</b><br />
-You can explore and test the NRLS DELETE command using Swagger in our [Reference implementation](https://data.developer.nhs.uk/nrls-ri/index.html#/Nrls/deletePointer).
+<b>Explore the NRL</b><br />
+You can explore and test the NRL DELETE command using Swagger in our [Reference implementation](https://data.developer.nhs.uk/nrls-ri/index.html#/Nrls/deletePointer).
 
-{% include note.html content="The code in these examples is standard C# v7.2 taken direct from the [NRLS Demonstrator](https://nrls.digital.nhs.uk) code.<br /><br />The official <b>[.NET FHIR Library](https://ewoutkramer.github.io/fhir-net-api/)</b> is utilised to construct, test, parse and serialize FHIR models with ease." %}
+{% include note.html content="The code in these examples is standard C# v7.2 taken direct from the [NRL Demonstrator](https://nrls.digital.nhs.uk) code.<br /><br />The official <b>[.NET FHIR Library](https://ewoutkramer.github.io/fhir-net-api/)</b> is utilised to construct, test, parse and serialize FHIR models with ease." %}

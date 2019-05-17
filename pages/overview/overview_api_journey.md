@@ -4,7 +4,7 @@ keywords: development,overview
 tags: [explanation]
 sidebar: overview_sidebar
 permalink: overview_api_journey.html
-summary: NRLS API journey outlines the approach of developing a RESTful API and the journey taken to define and mature the NRLS API.
+summary: NRL API journey outlines the approach of developing a RESTful API and the journey taken to define and mature the NRL API.
 ---
 
 {% include important.html content="All phases outlined below are indicative and subject to on-going review." %}

@@ -4,7 +4,7 @@ keywords: structured, update, rest, documentreference
 tags: [rest,fhir,api,noccprofile]
 sidebar: accessrecord_rest_sidebar
 permalink: api_interaction_update.html
-summary: To support the update of NRLS pointers
+summary: To support the update of NRL pointers
 ---
 
 {% include custom/search.warnbanner.html %}
@@ -14,7 +14,7 @@ summary: To support the update of NRLS pointers
 
 ## Update ##
 
-API to support the update of NRLS pointers. This functionality is only available for providers. The update functionality will be used in cases where a Provider wishes to update a pointer status value from “current” of “entered-in-error”. 
+API to support the update of NRL pointers. This functionality is only available for providers. The update functionality will be used in cases where a Provider wishes to update a pointer status value from “current” of “entered-in-error”. 
 
 ## Update Request Headers ##
 
@@ -47,7 +47,7 @@ PATCH [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.nh
 *[value]* - The value of the masterIdentifier that is associated with the DocumentReference(s)
 
 Providers systems SHALL only update pointers for records where they are the pointer owner (custodian).
-For all update requests the custodian ODS code in the DocumentReference resource SHALL be affiliated with the Client System ASID value in the fromASID HTTP request header sent to the NRLS.
+For all update requests the custodian ODS code in the DocumentReference resource SHALL be affiliated with the Client System ASID value in the fromASID HTTP request header sent to the NRL.
 
 The FHIRPath Parameters resource must conform either the XML or JSON example as shown below. All parameters and their associated values are mandatory. 
 
@@ -83,7 +83,7 @@ Success:
 - When a resource has been upcated it will have a `versionId` of 2.
 
 
-{% include note.html content="The versionId is an integer that is assigned and maintained by the NRLS server. When a new DocumentReference is created the server assigns it a versionId of 1. The versionId will be incremeted during an update or supersede transaction. <br/><br/> The NRLS server will ignore any versionId value sent by a client in a create interaction. Instead the server will ensure that the newly assigned verionId adheres to the rules laid out above. 
+{% include note.html content="The versionId is an integer that is assigned and maintained by the NRL server. When a new DocumentReference is created the server assigns it a versionId of 1. The versionId will be incremeted during an update or supersede transaction. <br/><br/> The NRL server will ignore any versionId value sent by a client in a create interaction. Instead the server will ensure that the newly assigned verionId adheres to the rules laid out above. 
 " %}
 
 The table summarises the `update` interaction HTTP response code and the values expected to be conveyed in the successful response body `OperationOutcome` payload:
@@ -92,7 +92,7 @@ The table summarises the `update` interaction HTTP response code and the values 
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |200|information|informational|RESOURCE_UPDATED|Resource has been updated| Spine message UUID |Successfully updated resource DocumentReference|
 
-{% include note.html content="Upon successful creation of a pointer the NRLS Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
+{% include note.html content="Upon successful creation of a pointer the NRL Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
 
 Failure: 
 

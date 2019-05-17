@@ -4,14 +4,14 @@ keywords: engage, about
 tags: [pointer]
 sidebar: overview_sidebar
 permalink: pointer_lifecycle.html
-summary: NRLS Pointer Lifecycle
+summary: NRL Pointer Lifecycle
 ---
 
-{% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
+{% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRL API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
 ## Pointer Lifecycle ##
 
-A Pointer is a reference to some content. From the perspective of NRLS that content is held on a remote system. It has its own lifecycle that is managed by a third-party (the Record owner). The Pointer Lifecycle as described by NRL defines the statuses and permitted transitions between those statuses for the pointer. The statuses and transitions ensure that only the appropriate pointers are shown to Consumers. 
+A Pointer is a reference to some content. From the perspective of NRL that content is held on a remote system. It has its own lifecycle that is managed by a third-party (the Record owner). The Pointer Lifecycle as described by NRL defines the statuses and permitted transitions between those statuses for the pointer. The statuses and transitions ensure that only the appropriate pointers are shown to Consumers. 
 
 ## Pointer Status ##
 
@@ -28,20 +28,20 @@ Not only is the value of a Pointer’s status constrained but the transition fro
 
 <img src="images/pointers/pointer_transitions.png">
 
-***Fig 1: status transitions: The NRLS controls that transition from one status to another. It is not possible to transition from one to all states.***
+***Fig 1: status transitions: The NRL controls that transition from one status to another. It is not possible to transition from one to all states.***
 
 All Pointers begin life with a status of current. From there it is possible to move into a superseded state or to an entered-in-error state.
 
-Once in a superseded state, or an entered-in-error state, the Pointer cannot transition anywhere else. One cannot build a chain of Pointers on top of a Pointer whose status is entered-in-error, or a Pointer which has already been superseded. Only the current Pointer can be used in this way by superseding it and replacing it with a new version that becomes the current Pointer. See the Pointer status transition: worked examples section that details how to the NRLS allows a Provider to transition the status of their Pointers.
+Once in a superseded state, or an entered-in-error state, the Pointer cannot transition anywhere else. One cannot build a chain of Pointers on top of a Pointer whose status is entered-in-error, or a Pointer which has already been superseded. Only the current Pointer can be used in this way by superseding it and replacing it with a new version that becomes the current Pointer. See the Pointer status transition: worked examples section that details how to the NRL allows a Provider to transition the status of their Pointers.
 
 ## Pointer status: making transitions ##
 
 When a Pointer is first created it will always have a status of current. 
-From there it is possible to supersede that Pointer or to mark it as entered-in-error. Fig 2 below illustrates the NRLS functions that must be invoked in order to trigger the transition from one state to another (legal) state.
+From there it is possible to supersede that Pointer or to mark it as entered-in-error. Fig 2 below illustrates the NRL functions that must be invoked in order to trigger the transition from one state to another (legal) state.
 
 <img src="images/pointers/pointer_transitions2.png">
 
-***Fig 2: How to transition between statuses: The NRLS allows the Provider to transition their Pointers state using a combination 
+***Fig 2: How to transition between statuses: The NRL allows the Provider to transition their Pointers state using a combination 
 of the create and update actions.***
 
 One transition that is worth expanding on is the transition from current to superseded. In this case the existing Pointer (P1) whose status is current is to be replaced or superseded by a new Pointer (P2) which will become the current Pointer and P1 will become superseded. 
@@ -54,11 +54,11 @@ in the section named Managing Pointers to static content below.
 
 Note that in the diagrams below three properties from the Pointer data model are referenced. One of them is the version. 
 This is the version of the Pointer and not the version of the content that the Pointer references. 
-Each time a particular instance of a Pointer is modified the NRLS service will increment the version by one as can be seen in several of the worked examples.
+Each time a particular instance of a Pointer is modified the NRL service will increment the version by one as can be seen in several of the worked examples.
 
 ***Null to Current***
 
-As a Provider I want to create a new Pointer on NRLS so that Consumers are aware of a resource that I own.
+As a Provider I want to create a new Pointer on NRL so that Consumers are aware of a resource that I own.
 
 <img src="images/pointers/pointer_transitions3.png">
 
@@ -66,13 +66,13 @@ The Provider CREATEs a brand new Pointer transitioning from the null state (no P
 
 ***Current to Superseded (replaced)***
 
-As a Provider I want to create a new Pointer on NRLS that supersedes one of my existing Pointers so that Consumers have access to the latest 
+As a Provider I want to create a new Pointer on NRL that supersedes one of my existing Pointers so that Consumers have access to the latest 
 information regarding my resource.
 
 <img src="images/pointers/pointer_transitions4.png">
 
 As part of the CREATE of the new Pointer that will replace the existing one the Provider describes the relationship between the 
-new and existing Pointer. The NRLS uses this relationship to create a new Pointer marking it as current and to deprecate the existing 
+new and existing Pointer. The NRL uses this relationship to create a new Pointer marking it as current and to deprecate the existing 
 Pointer marking it as superseded and modifying its version to reflect the change to that Pointer.
 
 ***Current to Entered in error***
@@ -82,7 +82,7 @@ on the Pointer or the resource that it references.
 
 <img src="images/pointers/pointer_transitions5.png">
 
-The Provider must UPDATE the existing resource changing its status from current to entered-in-error. In doing so the NRLS will modify its version to reflect the change to that Pointer.
+The Provider must UPDATE the existing resource changing its status from current to entered-in-error. In doing so the NRL will modify its version to reflect the change to that Pointer.
 
 ## Deleting Pointers ##
 

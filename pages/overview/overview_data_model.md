@@ -7,18 +7,18 @@ permalink: overview_data_model.html
 summary: Solution Data Model
 ---
 
-{% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
+{% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRL API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
 
 ## Data model ##
 
-In order to support the Consumer and Provider interactions with the NRLS the Pointer has been distilled into a data model. The data model is purposefully lean, each property has a clear reason to exist and it directly supports the activities of the Consumer and/or Provider.
+In order to support the Consumer and Provider interactions with the NRL the Pointer has been distilled into a data model. The data model is purposefully lean, each property has a clear reason to exist and it directly supports the activities of the Consumer and/or Provider.
 
 
 | Property | Cardinality | Description | 
 |-----------|----------------|------------|
-|[Identifier](pointer_identity.html)|0..1|Assigned by the NRLS at creation time. Uniquely identifies this record within the NRLS. Used by Providers to update or delete.|
-|Version |0..1|Assigned by the NRLS at creation or update time. Used to track the current version of a Pointer.|
+|[Identifier](pointer_identity.html)|0..1|Assigned by the NRL at creation time. Uniquely identifies this record within the NRL. Used by Providers to update or delete.|
+|Version |0..1|Assigned by the NRL at creation or update time. Used to track the current version of a Pointer.|
 |[Master Identifier](/pointer_identity.html)|0..1|The masterIdentifier is the identifier of the document as assigned by the source of the document. It is version specific – i.e. a new one is required if the document is updated. It is an optional field, providers do not have to supply a value.|
 |[Status](pointer_lifecycle.html)|1..1|The status of the pointer|
 |Patient|1..1|The Patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.|

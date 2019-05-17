@@ -13,11 +13,11 @@ summary: "Overview of the Development section"
 {% include custom/api_overview.svg %}
 -->
 
-## 1. NRLS API Overview ##
+## 1. NRL API Overview ##
 
-<!--This section provides NRLS implementers with an overview of the NRLS API.-->
+<!--This section provides NRL implementers with an overview of the NRL API.-->
 
-The NRLS API supports the following operations as detailed in the [Solution Interactions](overview_interactions.html) section of this implementation guide:
+The NRL API supports the following operations as detailed in the [Solution Interactions](overview_interactions.html) section of this implementation guide:
 
 
 |Actor|Read|Search|Create|Update|Delete|
@@ -28,14 +28,14 @@ The NRLS API supports the following operations as detailed in the [Solution Inte
 
 <!--
 - Consumer discovery of patient records on the NRLI National Record Locator Index
-- Consumer retrieval of patient records from the NRLS National Record Locator Service
+- Consumer retrieval of patient records from the NRL National Record Locator
 - Provider creation, updates and deletions of patient record pointers on the NRLI National Record Locator Index
 -->
 
 
-## 2. Pre-Requisites for NRLS API ##
+## 2. Pre-Requisites for NRL API ##
 
-### 2.1 NRLS Server API Conformance ###
+### 2.1 NRL Server API Conformance ###
 
 - SHALL support HL7 FHIR STU3 version 3.0.1.
 
@@ -46,13 +46,13 @@ The NRLS API supports the following operations as detailed in the [Solution Inte
 
 - SHALL support XML **or** JSON formats for all API interactions.
 
-<!-- SHALL expose a valid NRLS FHIR [CapabilityStatement](https://www.hl7.org/fhir/STU3/capabilitystatement.html) identifying the list of profiles, operations and search parameters supported. See [NRLS API FHIR Capability Statement profile](api_foundation_conformance.html).-->
+<!-- SHALL expose a valid NRL FHIR [CapabilityStatement](https://www.hl7.org/fhir/STU3/capabilitystatement.html) identifying the list of profiles, operations and search parameters supported. See [NRL API FHIR Capability Statement profile](api_foundation_conformance.html).-->
 
 <!--- - SHALL support the NRLS-DocumentReference-1 resource profile.
 
 - SHOULD identify the resource profiles supported as part of the FHIR meta.profile attribute for each instance.-->
 
-### 2.2 NRLS Client API Conformance ###
+### 2.2 NRL Client API Conformance ###
 
 - SHALL support HL7 FHIR STU3 version 3.0.1.
 
@@ -62,14 +62,14 @@ The NRLS API supports the following operations as detailed in the [Solution Inte
 - SHALL support **either** XML **or** JSON formats for all API interactions.
 
 
-- SHOULD support the NRLS Service RESTful interactions and search parameters.
+- SHOULD support the NRL Service RESTful interactions and search parameters.
 
-<!-- SHOULD support the RESTful interactions and search parameters as declared in the NRLS FHIR Server CapabilityStatement.-->
+<!-- SHOULD support the RESTful interactions and search parameters as declared in the NRL FHIR Server CapabilityStatement.-->
 
 
 ### 2.3 Spine Services ###
 
-The NRLS API is accessed through the NHS Spine. As such, providers and consumers of the NRLS API are required to integrate with the following Spine services as a pre-requisite to making API calls to the NRLS API:
+The NRL API is accessed through the NHS Spine. As such, providers and consumers of the NRL API are required to integrate with the following Spine services as a pre-requisite to making API calls to the NRL API:
 
 
 |National Service|Description|
@@ -91,7 +91,7 @@ To use this API, provider/ consumer systems:
 	- And pass this user information in a JSON web token - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.
 
 <!--
-{% include warning.html content="It is not yet clear, whether or not national identity is needed to be established for a client to interact with the NRLS. Further elaboration of NRLS consumer and provider authentication scenarios is expected." %}
+{% include warning.html content="It is not yet clear, whether or not national identity is needed to be established for a client to interact with the NRL. Further elaboration of NRL consumer and provider authentication scenarios is expected." %}
 -->
 - SHALL have previously traced the patient's NHS Number using PDS or an equivalent service.
 
@@ -114,8 +114,8 @@ Only verified NHS Number SHALL be used with FHIR API profiles. This can be achie
 {% include note.html content="A verified NHS Number exists on PDS, is still in use and the demographic data supplied results in the correct degree of demographic matching as per PDS matching rules.<br/><br/>The NHS NUMBER is 10 numeric digits in length. The tenth digit is a check digit used to confirm its validity. The check digit is validated using the Modulus 11 algorithm and the use of this algorithm is mandatory. " %}
 
 
-## 3. Explore the NRLS ##
+## 3. Explore the NRL ##
 
-You can explore and test the NRLS GET, POST and DELETE commands and responses using Swagger in our [Reference Implementation](https://data.developer.nhs.uk/nrls-ri/index.html).
+You can explore and test the NRL GET, POST and DELETE commands and responses using Swagger in our [Reference Implementation](https://data.developer.nhs.uk/nrls-ri/index.html).
 
 

@@ -4,7 +4,7 @@ keywords: assure, accredit
 tags: [overview]
 sidebar: foundations_sidebar
 permalink: assure.html
-summary: "These pages assist with the NRLS Service Assurance Process"
+summary: "These pages assist with the NRL Service Assurance Process"
 ---
 
 
@@ -14,7 +14,7 @@ summary: "These pages assist with the NRLS Service Assurance Process"
 
 1.	The Programme Team will provide Suppliers with the necessary information and materials to enable them to determine the feasibility of developing a technical product. This can be done with a combination of face to face and WebEx.
 
-2.	Supplier completes a Usage and Settings document to get Programme approval for usage and settings of the NRLS. 
+2.	Supplier completes a Usage and Settings document to get Programme approval for usage and settings of the NRL. 
 	
 	*Note*: The Usage and Settings document is not needed for the pilot.
  

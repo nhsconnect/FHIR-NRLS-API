@@ -1,5 +1,5 @@
 ---
-title: Engage with NRLS
+title: Engage with NRL
 keywords: engage, care connect process, process, introduction
 tags: [userstories,casestudies]
 sidebar: foundations_sidebar
@@ -59,4 +59,4 @@ The process is broken down into 15 discrete steps that are broadly organised ont
 <tr><td>15</td><td>Learning</td><td>Identify failures and successes of the project.</td><td><ul style="padding-left:1em;"><li style="margin:0;">Plan to improve processes, preventing a repeat of failure and improving success rate.</li></ul></td></tr>
 </table>
 <br><br>
-<!--{% include custom/contribute.html content="Get in touch with careconnect@interopen.org to help with Case Studies of NRLS Profiles"%}-->
+<!--{% include custom/contribute.html content="Get in touch with careconnect@interopen.org to help with Case Studies of NRL Profiles"%}-->

@@ -4,20 +4,20 @@ keywords: spine, ssp, integration, audit, provenance
 tags: [integration]
 sidebar: overview_sidebar
 permalink: integration_access_tokens_and_audit_JWT.html
-summary: "Overview of how audit and provenance data transported over NRLS FHIR interfaces."
+summary: "Overview of how audit and provenance data transported over NRL FHIR interfaces."
 ---
 
 ## Access Tokens and Audit (JWT)##
 
 
-In order to access the NRLS clients MUST send an access token (JWT) with each request using the standard HTTP Authorization request header. The JWT MUST conform to the [Spine JWT](https://developer.nhs.uk/apis/spine-core/security_jwt.html) definition.
+In order to access the NRL clients MUST send an access token (JWT) with each request using the standard HTTP Authorization request header. The JWT MUST conform to the [Spine JWT](https://developer.nhs.uk/apis/spine-core/security_jwt.html) definition.
 
-The claims of the NRLS JWT is the same as those defined in the Spine Core JWT however the rules that govern the validation of those claims are different. From an NRLS perspective the rules defined here override rules defined for the Spine Core. 
+The claims of the NRL JWT is the same as those defined in the Spine Core JWT however the rules that govern the validation of those claims are different. From an NRL perspective the rules defined here override rules defined for the Spine Core. 
 Where a Spine Core rule is not explicitly replaced here then the Spine Core rule stands.
 
 ### Claims ###
 
-In the Spine JWT definition the `requesting_organistion` claim is marked as optional however for NRLS this claim MUST be supplied.
+In the Spine JWT definition the `requesting_organistion` claim is marked as optional however for NRL this claim MUST be supplied.
 
 ### Validation ###
 
@@ -185,13 +185,13 @@ _"This [local user on this] (1) system (2) from this organisation (3) with this 
 4.  legitimate relationship - currently expected to be a fixed value of "directcare". No validation will be performed as to whether the given system and or organisation
 are valid in their use of direct care as the kind of relationship
 5.  request- the request URL, HTTP verb and the body of the request (in the case of a Provider's create and update actions)
-6.  time - the datetime that the request landed on the NRLS web server
+6.  time - the datetime that the request landed on the NRL web server
 
 ### Response audit trail ###
 _"...which resulted in this response (1) at this time (2)"_
 
 1.  response - HTTP response code, response body (if present), Location header (for create and update)
-2.  time - the datetime that the NRLS web server posted its response to the client
+2.  time - the datetime that the NRL web server posted its response to the client
 
-For more detail on the Audit capabilities of the NRLS see [Auditing](overview_behaviours.html#auditing)
+For more detail on the Audit capabilities of the NRL see [Auditing](overview_behaviours.html#auditing)
 -->

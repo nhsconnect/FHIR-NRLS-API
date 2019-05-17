@@ -4,7 +4,7 @@ keywords: structured, update, rest, documentreference
 tags: [rest,fhir,api,noccprofile]
 sidebar: accessrecord_rest_sidebar
 permalink: api_interaction_supersede.html
-summary: To support the update of NRLS pointers
+summary: To support the update of NRL pointers
 ---
 
 {% include custom/search.warnbanner.html %}
@@ -14,7 +14,7 @@ summary: To support the update of NRLS pointers
 
 ## Supersede ##
 
-API to support the superseding NRLS pointers. This functionality is only available for providers.
+API to support the superseding NRL pointers. This functionality is only available for providers.
 The supsersede functionality will be used in cases where a Provider wishes to deprecate the current pointer (DocumentReference) and replace it with a new version.
 
 ## Supersede Request Headers ##
@@ -41,7 +41,7 @@ A Provider transitions an existing Pointer’s status from current to superseded
 	- an identifier that is the masterIdentifier of the existing DocumentReference
 	- the action code “replaces”
 3.	Provider POSTs the DocumentReference resource
-4.	NRLS will transactionally -
+4.	NRL will transactionally -
 	1. create the new DocumentReference marking it as current
 	2. resolve the existing DocumentReference using the relatesTo.target.identifer
 	3. mark that DocumentReference as superseded
