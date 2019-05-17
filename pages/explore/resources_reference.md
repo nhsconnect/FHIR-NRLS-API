@@ -1,5 +1,5 @@
 ---
-title: NRLS | Reference
+title: NRLS | FHIR&reg; Resources &amp; References
 keywords: development Reference
 tags: [development,fhir,profiles]
 sidebar: overview_sidebar
@@ -20,13 +20,13 @@ Links to the NRLS FHIR profiles on the NHS FHIR Reference Server.
 | [Spine-OperationOutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0)| The default Spine OperationOutcome profile resource that supports exceptions raised by the Spine common requesthandler and not the NRLS Service. 
 
 
-## 2. NRLS Pointer FHIR Profile ##
+## 2. NRLS Data Model to FHIR Profile Mapping ##
 
 The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) to NRLS-DocumentReference-1 profile elements. 
 
 |Data Item|FHIR Element|Data Type|Card|Description|
 |----|---------|----|-----------|-----|
-|Identifier|`id`|string|0..1|Assigned by the NRLS at creation time. Uniquely identifies this record within an instance of the NRLS. Used by Providers to update or delete.|
+|Identifier|`id`|string|0..1|Assigned by the NRLS at creation time. Uniquely identifies this record within the NRLS. Used by Providers to update or delete.|
 |Version|`versionId`|string|0..1|Assigned by the NRLS at creation or update time. Used to track the current version of a Pointer.|
 |Master Identifier|`masterIdentifier`|Identifier|0..1|The masterIdentifier is the identifier of the document as assigned by the source of the document. It is version specific – i.e. a new one is required if the document is updated. It is an optional field, providers do not have to supply a value.|
 ||`masterIdentifier.system`|Uri|1..1|The namespace for the identifier. This element must be completed if the masterIdentifier is to be included.|
@@ -36,6 +36,10 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 ||`type.system`|Uri|1..1|Example Value: http://snomed.info/sct.|
 ||`type.code`|Code|1..1|Symbol in syntax defined by the system. Example Value: 736253002|
 ||`type.display`|String|1..1|Representation defined by the system.|
+|Record Class|`class`|CodeableConcept|1..1|A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set|
+||`class.system`|Uri|1..1|Identity of the terminology system|
+||`class.code`|Code|1..1|Symbol in syntax defined by the system|
+||`class.display`|String|1..1|Representation defined by the system|
 |Patient|`subject`|Reference|1..1|The Patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.| 
 |Record owner|`author`|Reference|1..1|ODS code for the record owner organization.|
 |Pointer owner|`custodian`|Reference|1..1|ODS code for the pointer owner organization.|
@@ -50,6 +54,12 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 ||`content.format.system`|Uri|1..1|Identity of the terminology system|
 ||`content.format.code`|Code|1..1|Symbol in syntax defined by the system|
 ||`content.format.display`|String|1..1|Representation defined by the system|
+|Record Retrieval Mode|`content.extension:retrievalMode`|Extension|1..1|Record content extension|
+||`content.extension:retrievalMode.url`|Uri|1..1|identifies the meaning of the extension|
+||`content.extension:retrievalMode.`<br />`valueCodeableConcept`|CodeableConcept|1..1|Describes whether the record content is generated in real-time or is static|
+||`content.extension:retrievalMode.`<br />`valueCodableConcept.system`|Uri|1..1|Identity of the terminology system|
+||`content.extension:retrievalMode.`<br />`valueCodableConcept.code`|Code|1..1|Symbol in syntax defined by the system|
+||`content.extension:retrievalMode.`<br />`valueCodableConcept.display`|String|1..1|Representation defined by the system|
 |Record creation clinical setting|`context.practiceSetting`|CodeableConcept|1..1|Describes where the content was created, in what clinical setting|
 ||`context.practiceSetting.system`|Uri|1..1|Identity of the terminology system|
 ||`context.practiceSetting.code`|Code|1..1|Symbol in syntax defined by the system|
@@ -57,18 +67,6 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Period of care|`context.period`|Period|0..1|Details the time at which the documented care is relevant|
 ||`context.period.start`|dateTime|1..1|Starting time with inclusive boundary|
 ||`context.period.end`|dateTime|0..1|End time with inclusive boundary, if not ongoing|
-|Record Class|`class`|CodeableConcept|1..1|A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set|
-||`class.system`|Uri|1..1|Identity of the terminology system|
-||`class.code`|Code|1..1|Symbol in syntax defined by the system|
-||`class.display`|String|1..1|Representation defined by the system|
-|Record Retrieval Mode|`content.extension:retrievalMode`|Extension|1..1|Record content extension|
-||`content.extension:retrievalMode.url`|Uri|1..1|identifies the meaning of the extension|
-||`content.extension:retrievalMode.`<br />`valueCodeableConcept`|CodeableConcept|1..1|Describes whether the record content is generated in real-time or is static|
-||`content.extension:retrievalMode.`<br />`valueCodableConcept.system`|Uri|1..1|Identity of the terminology system|
-||`content.extension:retrievalMode.`<br />`valueCodableConcept.code`|Code|1..1|Symbol in syntax defined by the system|
-||`content.extension:retrievalMode.`<br />`valueCodableConcept.display`|String|1..1|Representation defined by the system|
-
-
 
 
 

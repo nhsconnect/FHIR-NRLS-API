@@ -11,7 +11,7 @@ summary: NRLS Pointer Errors
 
 ## Pointer Errors ##
 
-The current version of the NRL API does not give Providers the ability to update the properties of an existing Pointer, other than status property. The status property is modified in one of two ways. 
+The NRL API does not give Providers the ability to update the properties of an existing Pointer, other than status property. The status property is modified in one of two ways. 
 
 The first is where a Provider replaces one document reference with another, known as superseding - see [API Interaction - Supersede](api_interaction_supersede.html) for more details. 
 
@@ -43,7 +43,7 @@ Note that it is important to do this before that Pointer has been superseded as 
 
 If a Provider finds that one of their superseded Pointers should not have been registered with the NRLS then the entire lineage of that Pointer is considered corrupted. The Provider must mark the Pointer at the head of the lineage (i.e. the current Pointer) as being entered-in-error.
 
-The Provider could then recreate the entire lineage missing out the erroneous Pointer.
+The Provider should then recreate a new "current" pointer with the correct information in place of the pointer that was marked as entered-in-error.
 
 ### Pointer’s data is invalid ###
 
