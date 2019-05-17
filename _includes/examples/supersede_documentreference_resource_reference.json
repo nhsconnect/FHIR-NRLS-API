@@ -15,6 +15,15 @@
             }
         ]
     },
+    "class": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "734163000",
+                "display": "Care plan (record artifact)"
+            }
+        ]
+    },
     "subject": {
         "reference": "https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210"
     },
@@ -35,6 +44,27 @@
                 "url": "https://spine-proxy.national.ncrs.nhs.uk/p1.nhs.uk/MentalHealthCrisisPlanReportRGD.pdf",
                 "title": "Mental health Crisis Plan Report",
                 "creation": "2016-03-08T15:26:00+01:00"
+            },
+            "format": {
+                "coding": [
+                    {
+                        "system": "https://fhir.nhs.uk/STU3/ValueSet/NRLS-Format-1",
+                        "code": "direct:https://www.iso.org/standard/63534.html",
+                        "display": "Public PDF"
+                    }
+                ]
+            },
+            "extension": {
+                "url": "https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRLS-RecordRetrievalMode-2",
+                "valueCodeableConcept": {
+                    "coding": [
+                        {
+                            "system": "https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordRetrievalMode-2",
+                            "code": "SR",
+                            "display": "Static Resource"
+                        }
+                    ]
+                }
             }
         }
     ],
@@ -52,5 +82,19 @@
                 ]
             }
         }
-    ]
+    ],
+    "context": {
+        "period": {
+            "start": "2016-03-07T13:34:00+01:00"
+        },
+        "practiceSetting": {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "892811000000109",
+                    "display": "Adult mental health service"
+                }
+            ]
+        }
+    }
 }
