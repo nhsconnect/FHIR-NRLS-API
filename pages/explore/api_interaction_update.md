@@ -75,12 +75,7 @@ Success:
 
 - SHALL return a `200` **SUCCESS** HTTP status code on successful execution of the interaction and the entry has been successfully updated in the NRL.
 - SHALL return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Operation Outcome'](http://hl7.org/fhir/STU3/operationoutcome.html) core FHIR resource. See table below.
-- SHALL return an HTTP `Location` response header containing the full resolvable URL to the newly created 'single' DocumentReference. 
-  - The URL will contain the 'server' assigned `logical Id` of the new DocumentReference resource.
-  - The URL format MUST be: `https://[host]/[path]/[id]`. 
-  - An example `Location` response header: 
-    - `https://psis-sync.national.ncrs.nhs.uk/DocumentReference/297c3492-3b78-11e8-b333-6c3be5a609f5-54477876544511209789`
-- When a resource has been upcated it will have a `versionId` of 2.
+- When a resource has been updated it will have a `versionId` of 2.
 
 
 {% include note.html content="The versionId is an integer that is assigned and maintained by the NRL server. When a new DocumentReference is created the server assigns it a versionId of 1. The versionId will be incremeted during an update or supersede transaction. <br/><br/> The NRL server will ignore any versionId value sent by a client in a create interaction. Instead the server will ensure that the newly assigned verionId adheres to the rules laid out above. 
@@ -92,7 +87,7 @@ The table summarises the `update` interaction HTTP response code and the values 
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |200|information|informational|RESOURCE_UPDATED|Resource has been updated| Spine message UUID |Successfully updated resource DocumentReference|
 
-{% include note.html content="Upon successful creation of a pointer the NRL Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
+{% include note.html content="Upon successful update of a pointer the NRL Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Update transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
 
 Failure: 
 
@@ -100,7 +95,5 @@ The following errors can be triggered when performing this operation:
 
 - [Invalid Request Message](development_general_api_guidance.html#invalid-request-message)
 - [Invalid Resource](development_general_api_guidance.html#invalid-resource)
-- [Organisation not found](development_general_api_guidance.html#organisation-not-found)
-- [Invalid NHS Number](development_general_api_guidance.html#invalid-nhs-number)
 - [Invalid Parameter](development_general_api_guidance.html#parameters)
-- [Duplicate Resource](development_general_api_guidance.html#duplicate-resource)
+- [Resource Not Found](development_general_api_guidance.html#resource-not-found)
