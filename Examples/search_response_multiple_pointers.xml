@@ -1,0 +1,96 @@
+<Bundle xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file:///C:/Users/supa1/Desktop/STU3%20Schemas/bundle.xsd">
+	<id value="dd9724d1-7b61-44e2-9023-b72e6b966018-54446768443265458908"/>
+	<type value="searchset"/>
+	<total value="2"/>
+	<entry>
+		<resource>
+			<DocumentReference>
+				<id value="0353e505-f7be-4c20-8f4e-337e79a32c51-58778905432232112312"/>
+				<meta>
+					<profile value="https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1"/>
+				</meta>
+				<masterIdentifier>
+					<system value="urn:ietf:rfc:3986"/>
+					<value value="urn:oid:1.3.6.1.4.1.21367.2005.3.11"/>
+				</masterIdentifier>
+				<status value="current"/>
+				<type>
+					<coding>
+						<system value="http://snomed.info/sct"/>
+						<code value="736253002"/>
+						<display value="Mental health crisis plan (record artifact)"/>
+					</coding>
+				</type>
+				<subject>
+					<reference value="https://demographics.spineservices.nhs.uk/STU3/Patient/9876543211"/>
+				</subject>
+				<created value="2018-07-01T15:26:00+01:00"/>
+				<indexed value="2018-07-01T15:26:01+01:00"/>
+				<author>
+					<reference value="https://directory.spineservices.nhs.uk/STU3/Organization/RGD"/>
+				</author>
+				<custodian>
+					<reference value="https://directory.spineservices.nhs.uk/STU3/Organization/RR8"/>
+				</custodian>
+				<content>
+					<attachment>
+						<contentType value="application/pdf"/>
+						<url value="https://spine-proxy.national.ncrs.nhs.uk/p1.nhs.uk/MentalhealthCrisisPlanReportRGD.pdf"/>
+						<title value="Mental health Crisis Plan Report"/>
+						<creation value="2018-07-01T15:26:00+01:00"/>
+					</attachment>
+				</content>
+			</DocumentReference>
+		</resource>
+	</entry>
+	<entry>
+		<resource>
+			<DocumentReference>
+				<id value="5303c09e-de28-4622-9416-62ab0b22e15a-54598780989231213433"/>
+				<meta>
+					<profile value="https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1"/>
+				</meta>
+				<masterIdentifier>
+					<system value="urn:ietf:rfc:3986"/>
+					<value value="urn:oid:1.3.6.1.4.1.21367.2005.3.10"/>
+				</masterIdentifier>
+				<status value="current"/>
+				<type>
+					<coding>
+						<system value="http://snomed.info/sct"/>
+						<code value="736253002"/>
+						<display value="Mental health crisis plan (record artifact)"/>
+					</coding>
+				</type>
+				<subject>
+					<reference value="https://demographics.spineservices.nhs.uk/STU3/Patient/9876543211"/>
+				</subject>
+				<created value="2018-07-02T11:25:00+01:00"/>
+				<indexed value="2018-07-02T11:25:01+01:00"/>
+				<author>
+					<reference value="https://directory.spineservices.nhs.uk/STU3/Organization/RGD"/>
+				</author>
+				<custodian>
+					<reference value="https://directory.spineservices.nhs.uk/STU3/Organization/RR8"/>
+				</custodian>
+				<relatesTo>
+					<code value="replaces"/>
+					<target>
+						<identifier>
+							<system value="urn:ietf:rfc:3986"/>
+							<value value="urn:oid:1.3.6.1.4.1.21367.2005.3.9"/>
+						</identifier>
+					</target>
+				</relatesTo>
+				<content>
+					<attachment>
+						<contentType value="application/pdf"/>
+						<url value="https://spine-proxy.national.ncrs.nhs.uk/p1.nhs.uk/MentalhealthCrisisPlanReportRGD.pdf"/>
+						<title value="Mental health Crisis Plan Report"/>
+						<creation value="2018-07-02T11:25:00+01:00"/>
+					</attachment>
+				</content>
+			</DocumentReference>
+		</resource>
+	</entry>
+</Bundle>
