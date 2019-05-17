@@ -135,7 +135,7 @@ Success:
 
 - SHALL return a `200` **OK** HTTP status code on successful execution of the interaction.
 - SHALL return a `Bundle` of `type` searchset, containing either:
-    - One or more `documentReference` resource that conforms to the `NRLS-DocumentReference-1` profile; or
+    - One or more `documentReference` resource that conforms to the `NRLS-DocumentReference-1` profile and has the status value "current"; or
     - A '0' (zero) total value indicating no record was matched i.e. an empty 'Bundle'.
 
       {% include note.html content="The returned searchset bundle does NOT currently support: <br/> <br/> (1) the `self link`, which carries the encoded parameters that were actually used to process the search. <br/> <br/> (2) the identity of resources in the entry using the `fullUrl` element. <br/> <br/> (3) resources matched in a successful search using the `search.mode` element. <br/> <br/> NB: The NRLS Service will ONLY return an empty bundle if a Spine Clincals record exists and there is no DocumentReference for that specific Clinicals record." %}
@@ -176,9 +176,9 @@ Return all DocumentReference resources (pointers) for a patient with a NHS Numbe
 
 #### Query Response Http Headers ####
 
-<script src="https://gist.github.com/swk003/1fb79ea938f6f5f984069819a29c2356.js"></script>
-
-
+```
+{% include /examples/search_response_headers %}
+```
 
 #### Query Response ####
 
@@ -187,29 +187,44 @@ Return all DocumentReference resources (pointers) for a patient with a NHS Numbe
 - HTTP 200-Request was successfully executed
 - Bundle resource of type searchset containing a total value '1' DocumentReference resource that conforms to the `nrls-documentReference-1` profile.
 
-<script src="https://gist.github.com/sufyanpat/19a6cb827895f327eb5232bcef85f2bf.js"></script>
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight XML %}
+{% include /examples/search_response_single_pointer.xml %}
+{% endhighlight %}
+</div>
 
 ##### **Multiple Pointers (DocumentReference) Returned:** ##### 
 
 - HTTP 200-Request was successfully executed
 - Bundle resource of type searchset containing a total value '2' DocumentReference resources that conform to the `nrls-documentReference-1` profile
 
-<script src="https://gist.github.com/sufyanpat/b85394951c3df416e3001611238ffd3b.js"></script>
-
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight XML %}
+{% include /examples/search_response_multiple_pointers.xml %}
+{% endhighlight %}
+</div>
 
 ##### **No Record (pointer) Matched:** ##### 
 
 - HTTP 200-Request was successfully executed
 - Empty bundle resource of type searchset containing a '0' (zero) total value indicating no record was matched
 
-<script src="https://gist.github.com/sufyanpat/77cb0a918e4aa51381d3c1f8f43c508a.js"></script>
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight XML %}
+{% include /examples/search_response_empty.xml %}
+{% endhighlight %}
+</div>
 
 ##### **Error Response (OperationOutcome) Returned:** ##### 
 
 - HTTP 400-Bad Request. Invalid Parameter. 
 - OperationOutcome resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match)
 
-<script src="https://gist.github.com/sufyanpat/b4f88d059b4b63ffb2ad5ca3bd836172.js"></script>
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight XML %}
+{% include /examples/search_response_error.xml %}
+{% endhighlight %}
+</div>
 
 See Consumer Search section for all [HTTP Error response codes](api_consumer_documentreference.html#24-search-response) supported by Consumer Search API.
 
@@ -221,11 +236,18 @@ only include the total number of matching DocumentReferences.
 
 Examples
 - 3 DocumentReferences exist for patient with NHS number passed into the search
-<script src="https://gist.github.com/sufyanpat/5fc773dc35a05fa3778639ff3ff3400a.js"></script>
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight XML %}
+{% include /examples/search_response_summary_count3.xml %}
+{% endhighlight %}
+</div>
 
 - 0 DocumentReferences exist for patient with NHS number passed into the search
-<script src="https://gist.github.com/sufyanpat/907afd0b118b2247f79d6c5a667e4487.js"></script>
-
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight XML %}
+{% include /examples/search_response_summary_count0.xml %}
+{% endhighlight %}
+</div>
 
 ## Code Examples ##
 

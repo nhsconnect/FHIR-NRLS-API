@@ -1,0 +1,5 @@
+<Bundle xmlns="http://hl7.org/fhir">
+	<id value="de258b7f-2f0b-4b41-afcb-964d9995fd4f-65447656980012115439"/>
+	<type value="searchset"/>
+	<total value="0"/>
+</Bundle>

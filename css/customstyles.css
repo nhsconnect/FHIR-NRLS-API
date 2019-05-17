@@ -1192,9 +1192,14 @@ div.box.box1 {
     padding: 10px;
 }
 
-.github-sample-wrapper.scroll-height-350 figure.highlight {
+.github-sample-wrapper.scroll-height-350 figure.highlight pre code {
+   white-space: pre;
+}
+
+.github-sample-wrapper.scroll-height-350 figure.highlight pre {
     max-height: 350px;
     overflow: auto;
+    word-wrap: normal;
 }
 
 .github-sample-wrapper .highlight pre  {
