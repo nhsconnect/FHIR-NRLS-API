@@ -38,12 +38,12 @@ A Provider transitions an existing Pointer’s status from current to superseded
 
 1.	Provider assembles a new DocumentReference resource
 2.	Provider populates the relatesTo property with a new target element which holds  –
-	- an identifier that is the masterIdentifier of the existing DocumentReference
+	- a reference that is the logical identifier of the existing DocumentReference or an identifier that is the masterIdentifier of the existing DocumentReference
 	- the action code “replaces”
 3.	Provider POSTs the DocumentReference resource
 4.	NRL will transactionally -
 	1. create the new DocumentReference marking it as current
-	2. resolve the existing DocumentReference using the relatesTo.target.identifer
+	2. resolve the existing DocumentReference using the relatesTo.target
 	3. mark that DocumentReference as superseded
 
 Note also that the NRL will only accept one relatesTo element. Requests that contain multiple relatesTo elements will be rejected. 
@@ -58,7 +58,11 @@ To supersede by logical ID, the relatesTo.target attribute should be a reference
 
 Example of a populated relatesTo property (reference) 
 
-<!-- TODO add code example -->
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight json-doc %}
+{% include /examples/relatesTo_reference.json %}
+{% endhighlight %}
+</div>
 
 ## Supersede by Master Identifier ##
 
@@ -66,7 +70,11 @@ To supersede by master identifier, the relatesTo.target attribute should be a FH
 
 Example of a populated relatesTo property (identifier) 
 
-<!-- TODO add code example -->
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight json-doc %}
+{% include /examples/relatesTo_identifier.json %}
+{% endhighlight %}
+</div>
 
 In both cases (use of reference or identifier values) the patient NHS Number on the new (to be created) DocumentReference and the DocumentReference being superseded must match.
 
@@ -74,37 +82,33 @@ If both the target.reference property and the target.identifier property are pop
 
 ### XML Example of a DocumentReference resource that supersedes an existing DocumentReference by Logical ID ###
 
-<div class="github-sample-wrapper">
-{% github_sample_ref /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/supersede_documentreference_resource_reference.xml %}
+<div class="github-sample-wrapper scroll-height-350">
 {% highlight XML %}
-{% github_sample /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/supersede_documentreference_resource_reference.xml %}
+{% include /examples/supersede_documentreference_resource_reference.xml %}
 {% endhighlight %}
 </div>
 
 ### JSON Example of a DocumentReference resource that supersedes an existing DocumentReference by Logical ID ###
 
-<div class="github-sample-wrapper">
-{% github_sample_ref /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/supersede_documentreference_resource_reference.json %}
+<div class="github-sample-wrapper scroll-height-350">
 {% highlight json-doc %}
-{% github_sample /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/supersede_documentreference_resource_reference.json %}
+{% include /examples/supersede_documentreference_resource_reference.json %}
 {% endhighlight %}
 </div>
 
 ### XML Example of a DocumentReference resource that supersedes an existing DocumentReference by Master Identifier ###
 
-<div class="github-sample-wrapper">
-{% github_sample_ref /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/supersede_documentreference_resource_identifier.xml %}
+<div class="github-sample-wrapper scroll-height-350">
 {% highlight XML %}
-{% github_sample /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/supersede_documentreference_resource_identifier.xml %}
+{% include /examples/supersede_documentreference_resource_identifier.xml %}
 {% endhighlight %}
 </div>
 
 ### JSON Example of a DocumentReference resource that supersedes an existing DocumentReference by Master Identifier ###
 
-<div class="github-sample-wrapper">
-{% github_sample_ref /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/supersede_documentreference_resource_identifier.json %}
+<div class="github-sample-wrapper scroll-height-350">
 {% highlight json-doc %}
-{% github_sample /nhsconnect/FHIR-NRLS-API/blob/phase-2/Examples/supersede_documentreference_resource_identifier.json %}
+{% include /examples/supersede_documentreference_resource_identifier.json %}
 {% endhighlight %}
 </div>
 
