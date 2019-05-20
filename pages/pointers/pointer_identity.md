@@ -27,7 +27,6 @@ The format of the id is under the control of the NRL service. Clients should tre
 ### Master Identifier ###
 
 The Master identifier is an optional identifier on the Pointer. It is under the control of the Provider. 
-The Master identifier is associated with the version of the Pointer references. 
 Guidance on the use of a unique master identifier value:
 
 - Once a pointer with a master identifier value has been created, that same master identifier value cannot be re-used with another pointer. 
