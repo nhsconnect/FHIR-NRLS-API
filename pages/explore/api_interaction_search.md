@@ -262,9 +262,9 @@ The NHS Number is obtained through a stub PDS Trace performed within the Demonst
 Then we call our DocumentReference service GetPointersBundle method which will build a GET command request and then start the call to the NRL API.
 
 <div class="github-sample-wrapper">
-{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.Services/Service/Nrls/PointerService.cs#L34-L36 %}
+{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.Services/Service/Nrls/PointerService.cs#L34-L36 %}
 {% highlight csharp %}
-{% github_sample /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.Services/Service/Nrls/PointerService.cs 33 35 %}
+{% github_sample /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.Services/Service/Nrls/PointerService.cs 33 35 %}
 {% endhighlight %}
 </div>
 
