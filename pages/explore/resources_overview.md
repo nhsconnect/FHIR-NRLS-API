@@ -108,8 +108,9 @@ To use this API, provider/ consumer systems:
 
 ### 2.4 NHS Number ###
 
-Only verified NHS Number SHALL be used with FHIR API profiles. This can be achieved using a spine accredited system, a [Demographics Batch Service (DBS)](https://developer.nhs.uk/library/systems/demographic-batch-service-dbs/) batch-traced record (CSV), or using a [Spine Mini Services Provider (HL7v3)](https://nhsconnect.github.io/spine-smsp/) to verify the NHS Number.
+Only verified NHS Number SHALL be used with FHIR API profiles. This can be achieved using a full PDS Spine compliant system, a [Spine Mini Services Provider (HL7v3)](https://nhsconnect.github.io/spine-smsp/) or a [Demographics Batch Service (DBS)](https://developer.nhs.uk/library/systems/demographic-batch-service-dbs/) batch-traced record (CSV) to verify the NHS number. 
 
+The option of using a DBS service is for Provider systems only. Consumers performing a search operation must use either a full PDS Spine compliant system or a Spine Mini Services Provider. 
 
 {% include note.html content="A verified NHS Number exists on PDS, is still in use and the demographic data supplied results in the correct degree of demographic matching as per PDS matching rules.<br/><br/>The NHS NUMBER is 10 numeric digits in length. The tenth digit is a check digit used to confirm its validity. The check digit is validated using the Modulus 11 algorithm and the use of this algorithm is mandatory. " %}
 
