@@ -32,7 +32,7 @@ In order to support the Consumer and Provider interactions with the NRL the Poin
 |Record mime type|1..1|Describes the format of the record such that the Consumer can pick an appropriate mechanism to handle the record. Without it the Consumer would be in the dark as to how to deal with the Record|
 |[Related Documents](pointer_maintenance.html)|0..*|Relationship to other documents|
 |Record format|1..1|Describes the technical structure and rules of the record and it’s retrieval route|
-|Record retrieval mode|1..1|Describes whether the record content is generated in real-time or is static|
+|Record stability|1..1|Describes whether the record content is generated in real-time or is static|
 |Record creation clinical setting|1..1|Describes where the content was created, in what clinical setting|
 |Period of care|0..1|Details the time at which the documented care is relevant|
 
