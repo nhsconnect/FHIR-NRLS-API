@@ -20,7 +20,7 @@ In order to support the Consumer and Provider interactions with the NRL the Poin
 |[Identifier](pointer_identity.html)|0..1|Assigned by the NRL at creation time. Uniquely identifies this record within the NRL. Used by Providers to update or delete.|
 |Version |0..1|Assigned by the NRL at creation or update time. Used to track the current version of a Pointer.|
 |[Master Identifier](pointer_identity.html)|0..1|The masterIdentifier is the identifier of the document as assigned by the source of the document. It is version specific – i.e. a new one is required if the document is updated. It is an optional field, providers do not have to supply a value.|
-|[Status](pointer_lifecycle.html)|1..1|The status of the pointer|
+|[Pointer Status](pointer_lifecycle.html)|1..1|The status of the pointer|
 |Patient|1..1|The Patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.|
 |Pointer owner|1..1|The entity who maintains the Pointer. Used to control which systems can modify the Pointer|
 |Pointer reference|1..*|The record that is being referenced|

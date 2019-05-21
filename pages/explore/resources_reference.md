@@ -31,7 +31,7 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Master Identifier|`masterIdentifier`|Identifier|0..1|The masterIdentifier is the identifier of the document as assigned by the source of the document. It is version specific – i.e. a new one is required if the document is updated. It is an optional field, providers do not have to supply a value.|
 ||`masterIdentifier.system`|Uri|1..1|The namespace for the identifier. This element must be completed if the masterIdentifier is to be included.|
 ||`masterIdentifier.value`|String|1..1| The unique value of the identifier. This element must be completed if the masterIdentifier is to be included.|
-|Record status|`status`| Code| 1..1| The status of the pointer|
+|Pointer Status|`status`| Code| 1..1| The status of the pointer|
 |Record type|`type`|CodeableConcept|1..1|The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers.|
 ||`type.system`|Uri|1..1|Example Value: http://snomed.info/sct.|
 ||`type.code`|Code|1..1|Symbol in syntax defined by the system. Example Value: 736253002|
