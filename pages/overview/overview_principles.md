@@ -70,3 +70,7 @@ In part the NRL is there to track the evolution of a Pointer’s content. This i
 of historical Pointers for medico-legal use cases. To that end the deletion of a Pointer should be avoided. 
 Though the NRL does provide a delete function as in some circumstances deletion of a Pointer may be unavoidable. 
 More information is provided in [Pointer maintenance page](pointer_maintenance.html).
+
+### Caching ###
+
+It is important that consumers of NRL pointers are able to view and make clinical decisions based on the most update to date information available. For this reason NRL recommends that pointers and referenced content returned from search and read requests should not be cached. 
