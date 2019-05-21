@@ -13,18 +13,22 @@ After consultation with the Infrastructure Security, Operational Security and Sp
 
 - `TLSv1.2`
 
-{% include note.html content="SSLv2 and SSLv3 are deprecated and SHALL NOT be used. All consumer and provider systems SHALL be configured to implement TLSv1.2." %}
+{% include note.html content="Protocol versions SSLv2, SSLv3, TLSv1.0, and TLSv1.1 are not supported and SHALL NOT be used. All consumer and provider systems SHALL be configured to implement the protocol version TLSv1.2." %}
 
 ## Supported Ciphers ##
 
-After consultation with the Infrastructure Security, Operational Security and Spine DDC teams the following SSL protocols SHALL be supported.
+After consultation with the Infrastructure Security, Operational Security and Spine DDC teams the following ciphers SHALL be supported.
 
 {% include important.html content="The list of supported ciphers is ordered in order of preference (i.e. the first item being the most preferred)." %}
 
-- `AESGCM+EECDH`
-- `AESGCM+EDH`
-- `AES256+EECDH`
-- `AES256+EDH`
+- `ECDHE-RSA-AES256-GCM-SHA384`
+- `ECDHE-RSA-AES128-GCM-SHA256`
+- `DHE-RSA-AES256-GCM-SHA384`
+- `DHE-RSA-AES128-GCM-SHA256`
+- `ECDHE-RSA-AES256-SHA384`
+- `DHE-RSA-AES256-SHA256`
+- `DHE-RSA-AES256-SHA`
+- `ECDHE-RSA-AES256-SHA`
 
 {% include note.html content="GCM (Galois Counter Mode) suites are prefered as these are resistant to timing attacks<sup>1</sup>." %}
 
