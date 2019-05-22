@@ -75,7 +75,7 @@ to prevent Consumers from attempting to retrieve contents from a non-existent or
 
 ## Deletion of an existing Pointer ##
 
-Deletion of a Pointer is an exceptional action to take. Under most circumstances a Pointer should be updated and marked as superseded. 
+Deletion of a Pointer is an exceptional action to take. Under most circumstances a Pointer should be replaced (superseded). 
 If the Provider realises that the Pointer is simply not valid then it should be updated and marked as entered in error. 
 If the Provider does want to delete the Pointer it should be done as soon as possible after creation to limit exposure to Consumers. 
 However even in this circumstance the Provider should consider marking the Pointer as entered in error.
@@ -84,20 +84,21 @@ However even in this circumstance the Provider should consider marking the Point
 
 ## Update of an existing Pointer ##
 
-As noted in the create section typically update will be invoked on a Pointer when the Provider needs to change its status from 
-current to one of superseded or entered in error. Providers can only change the status property on an 
-existing Pointer and should supersede an existing pointer where any other attributes need to change. 
+As noted in the create section update will be invoked on a Pointer when the Provider needs to change its status from 
+current to entered in error. Providers can only change the status property on an existing Pointer. 
+When any other attribute on the Pointer needs to be changed then the Pointer should be replaced (superseded) with an updated version. 
 
-## Managing Pointers to static content ##
+## Managing Pointers to content ##
 
-As noted in the create section where a new version of static content is created the NRL prefers that a new Pointer be created to 
-reference that static content. This is as opposed to the existing Pointer being modified to reflect the new content.
-For more detail see figure 2 but in brief each time a new version of a Pointer is created the existing one should be marked as superseded 
+As noted in the create section where a new version of content is created then a new Pointer should be created to 
+reference the new content.
+For more detail see figure 2 but in brief each time a new version of a Pointer is created the existing one will be marked as superseded 
 and the new Pointer becomes current.
+
 The way that this is achieved is through the combined use of three properties on the Pointer – 
 
 1.	Status
-2.	Master Identifier
+2.	Master Identifier or Logical Id
 3.	Related Pointers
 
 <img src="images/pointers/pointer_maintenance2.png">
