@@ -243,6 +243,16 @@ The below table summarises the HTTP response code, along with the values to expe
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |400|error|duplicate| DUPLICATE_REJECTED|Duplicate DocumentReference|Duplicate masterIdentifier <br/> value: [masterIdentifier.value] system: [masterIdentifier.system]|
 
+### Inactive DocumentReference ###
+
+This error is raised when the status of the DocumentReference to be retrieved or modified is not "current". 
+
+The below table summarises the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
+
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |Diagnostics |
+|-----------|----------------|------------|--------------|-----------------|-------------------|
+|400|warning|invalid| BAD_REQUEST|Bad Request|DocumentReference status is not "current"|
+
 ### <u>Payload syntax</u> ###
 
 ### Invalid request message ###

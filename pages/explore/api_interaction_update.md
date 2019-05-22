@@ -95,3 +95,4 @@ The following errors can be triggered when performing this operation:
 - [Invalid Resource](development_general_api_guidance.html#invalid-resource)
 - [Invalid Parameter](development_general_api_guidance.html#parameters)
 - [Resource Not Found](development_general_api_guidance.html#resource-not-found)
+- [Inactive Document Reference](development_general_api_guidance.html#inactive-documentreference)
