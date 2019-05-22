@@ -35,10 +35,13 @@ Provider API delete requests support the following HTTP request headers:
 
 {% include note.html content="Please make sure that all query parameters are URL encoded. In particular the pipe (|) character must be URL encoded (%7C)." %}
 
+Providers systems SHALL only delete pointers for records where they are the pointer owner (custodian). 
+
+For all delete requests the `custodian` ODS code in the DocumentReference to be deleted SHALL be affiliated with the Client System `ASID` value in the `fromASID` HTTP request header sent to the NRL.
+
 ### Delete by *'id'* ###
 
-#### RESTful Delete ####
-The API supports the delete by ID interaction which allows a provider to delete an existing pointer, in a RESTful way, based on the logical ID of the pointer.
+The API supports the delete by ID interaction which allows a provider to delete an existing pointer based on the logical ID of the pointer.
 
 The logical id can be obtained from the Location header which is contained in the create response - see the [Create API Interaction](api_interaction_create.html#create-response) for details.
 
@@ -48,9 +51,15 @@ To accomplish this, the provider issues an HTTP DELETE as shown:
     DELETE [baseUrl]/DocumentReference/[id]
 </div>
 
-#### Conditional Delete ####
+<div class="language-http highlighter-rouge">
+<pre class="highlight"><code><span class="err">DELETE [baseUrl]/DocumentReference/da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142
+</span></code>
+Delete the DocumentReference resource for a pointer with a logical id of 'da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142'.</pre>
+</div>
 
-The API also supports the conditional delete interaction which allows a provider to delete an existing pointer based on the search parameter `_id` which refers to the logical id of the pointer. 
+### Conditional Delete by *'id'* ###
+
+The API supports the conditional delete by `id` interaction which allows a provider to delete an existing pointer based on the search parameter `_id` which refers to the logical id of the pointer. 
 
 The logical id can be obtained from the Location header which is contained in the create response - see the [Create API Interaction](api_interaction_create.html#create-response) for details.
 
@@ -60,28 +69,26 @@ To accomplish this, the provider issues an HTTP DELETE as shown:
     DELETE [baseUrl]/DocumentReference?_id=[id]
 </div>
 
-{% include important.html content="Conditional delete by logical ID may be deprecated in the future, therefore it is recommended to implement delete by ID as a path variable." %}
-
-
-Providers systems SHALL only delete pointers for records where they are the pointer owner (custodian). 
-
-For all delete requests the `custodian` ODS code in the DocumentReference to be deleted SHALL be affiliated with the Client System `ASID` value in the `fromASID` HTTP request header sent to the NRL.
-
 <div class="language-http highlighter-rouge">
-<pre class="highlight"><code><span class="err">DELETE [baseUrl]/DocumentReference/da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142
+<pre class="highlight">
+<code><span class="err">DELETE [baseUrl]/DocumentReference?_id=da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142
 </span></code>
-Delete the DocumentReference resource for a pointer with a logical id of 'da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142'.</pre>
+Delete the DocumentReference resource for a pointer conditionally with a logical id of 'da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142'.</pre>
 </div>
 
+{% include important.html content="Conditional delete by logical ID may be deprecated in the future, therefore it is recommended to implement [delete by ID](#delete-by-id) as a path variable." %}
 
-### Delete by *'masterIdentifier'* ###
 
-The API supports the conditional delete interaction which allows a provider to delete an existing pointer using the masterIdentifier
+### Conditional Delete by *'masterIdentifier'* ###
+
+The API supports the conditional delete by `masterIdentifier` interaction which allows a provider to delete an existing pointer using the masterIdentifier
 so they do not have to persist or query for the NRL generated logical id for the Pointer.
+
 To accomplish this, the provider issues an HTTP DELETE as shown:
 
 <div markdown="span" class="alert alert-success" role="alert">
-DELETE [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&identifier=[system]%7C[value]</div>
+    DELETE [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&identifier=[system]%7C[value]
+</div>
 
 *[nhsNumber]* - The NHS number of the patient whose DocumentReferences the client is requesting
 
@@ -89,12 +96,9 @@ DELETE [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.n
 
 *[value]* - The value of the masterIdentifier that is associated with the DocumentReference(s)
 
-Providers systems SHALL only delete pointers for records where they are the pointer owner (custodian). 
-
 <div class="language-http highlighter-rouge">
 <pre class="highlight">
-<code><span class="err">
-DELETE [baseUrl]/DocumentReference?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210&identifier=urn:ietf:rfc:3986%7Curn:oid:1.3.6.1.4.1.21367.2005.3.71
+<code><span class="err">DELETE [baseUrl]/DocumentReference?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210&identifier=urn:ietf:rfc:3986%7Curn:oid:1.3.6.1.4.1.21367.2005.3.71
 </span></code>
 Delete the DocumentReference resource for a pointer with a subject and identifier.</pre>
 </div>
