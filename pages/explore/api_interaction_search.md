@@ -226,7 +226,7 @@ Return all DocumentReference resources (pointers) for a patient with a NHS Numbe
 {% endhighlight %}
 </div>
 
-See Consumer Search section for all [HTTP Error response codes](api_consumer_documentreference.html#24-search-response) supported by Consumer Search API.
+See the [general API guidance](development_general_api_guidance.html#error-handling) for all HTTP Error response codes supported by the NRL.
 
 ##### **_summary=count response:** ##### 
 

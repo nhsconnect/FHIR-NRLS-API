@@ -63,7 +63,7 @@ The following errors can be triggered when performing this operation:
 
 ## Example Scenario ##
 
-An authorised NRL Consumer searches for a patient's relevant health record using the NRL to discover potentially vital information to support a patient's emergency crisis care.
+An authorised NRL Consumer retrieves a pointer to patient's relevant health record using the NRL to discover potentially vital information to support a patient's emergency crisis care.
 
 ### Request Query ###
 
@@ -114,4 +114,4 @@ Return DocumentReference resource (pointer) with logical ID 0353e505-f7be-4c20-8
 {% endhighlight %}
 </div>
 
-See Consumer Search section for all [HTTP Error response codes](api_consumer_documentreference.html#24-search-response) supported by Consumer Search API.
+See the [general API guidance](development_general_api_guidance.html#error-handling) for all HTTP Error response codes supported by the NRL.
