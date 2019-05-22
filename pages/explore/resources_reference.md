@@ -80,6 +80,7 @@ Links to the NRL FHIR value sets on the NHS FHIR Reference Server.
 |[ValueSet-NRLS-RecordFormat-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-Format-1)| A ValueSet that identifies the NRL record format. |
 |[ValueSet-NRLS-PracticeSetting-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-PracticeSetting-1)| A ValueSet that identifies the NRL record practice setting. |
 |[ValueSet-NRLS-RecordClass-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordClass-1)| A ValueSet that identifies the NRL record class. |
+|[ValueSet-NRLS-ContentStability-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-ContentStability-1)| A ValueSet that identifies the NRL record stability. |
 |[ValueSet-Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)| A ValueSet that identifies the Spine error or warning code in response to a request.|
 |[ValueSet-Spine-Response-Code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0)|  A set of codes to indicate low level error information about a Spine 2 error response to a request for patient record details. Exceptions raised by the Spine common requesthandler and not the NRL Service will be returned using the Spine default [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to this default valueSet. |
 
