@@ -88,7 +88,7 @@ To use this API, provider/ consumer systems:
 - SHALL have either:
 	- Authenticated the user using national smartcard authentication, and obtained a the UUID from the user's smartcard (and associated RBAC role from CIS), or
 	- Authenticated the user using an assured local mechanism, and obtained a local user ID and role
-	- And pass this user information in a JSON web token - see [Cross Organisation Audit and Provenance](integration_cross_organisation_audit_and_provenance.html) for details.
+	- And pass this user information in a JSON web token - see [Access Tokens and Audit](integration_access_tokens_and_audit_JWT.html) for details.
 
 <!--
 {% include warning.html content="It is not yet clear, whether or not national identity is needed to be established for a client to interact with the NRL. Further elaboration of NRL consumer and provider authentication scenarios is expected." %}
