@@ -50,5 +50,5 @@ Provider and consumer systems SHALL check the `FQDN` presented in the client cer
 ## External Documents / Policy Documents ##
 
 | Name | Author | Version | Updated |
-| Approved Cryptographic Algorithms Good Practice Guidelines | NHS Digital | v4.0 | 13/07/2016 |
-| Warranted Environment Specification (WES) | NHS Digital | v1.0 | June 2015 |
+| [Approved Cryptographic Algorithms Good Practice Guidelines](https://developer.nhs.uk/apis/gpconnect-1-2-2/development_api_security_guidance.html#external-policy-documents) | NHS Digital | v4.0 | 13/07/2016 |
+| [Warranted Environment Specification (WES)](https://digital.nhs.uk/services/spine/spine-technical-information-warranted-environment-specification-wes) | NHS Digital | v1.0 | June 2015 |
