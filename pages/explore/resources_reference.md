@@ -31,7 +31,7 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Master Identifier|`masterIdentifier`|Identifier|0..1|The masterIdentifier is the identifier of the document as assigned by the source of the document. It is version specific – i.e. a new one is required if the document is updated. It is an optional field, providers do not have to supply a value.|
 ||`masterIdentifier.system`|Uri|1..1|The namespace for the identifier. This element must be completed if the masterIdentifier is to be included.|
 ||`masterIdentifier.value`|String|1..1| The unique value of the identifier. This element must be completed if the masterIdentifier is to be included.|
-|Record status|`status`| Code| 1..1| The status of the pointer|
+|Pointer Status|`status`| Code| 1..1| The status of the pointer|
 |Record type|`type`|CodeableConcept|1..1|The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers.|
 ||`type.system`|Uri|1..1|Example Value: http://snomed.info/sct.|
 ||`type.code`|Code|1..1|Symbol in syntax defined by the system. Example Value: 736253002|
@@ -54,12 +54,12 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 ||`content.format.system`|Uri|1..1|Identity of the terminology system|
 ||`content.format.code`|Code|1..1|Symbol in syntax defined by the system|
 ||`content.format.display`|String|1..1|Representation defined by the system|
-|Record Retrieval Mode|`content.extension:retrievalMode`|Extension|1..1|Record content extension|
-||`content.extension:retrievalMode.url`|Uri|1..1|identifies the meaning of the extension|
-||`content.extension:retrievalMode.`<br />`valueCodeableConcept`|CodeableConcept|1..1|Describes whether the record content is generated in real-time or is static|
-||`content.extension:retrievalMode.`<br />`valueCodableConcept.system`|Uri|1..1|Identity of the terminology system|
-||`content.extension:retrievalMode.`<br />`valueCodableConcept.code`|Code|1..1|Symbol in syntax defined by the system|
-||`content.extension:retrievalMode.`<br />`valueCodableConcept.display`|String|1..1|Representation defined by the system|
+|Record Stability|`content.extension:contentStability`|Extension|1..1|Record content extension|
+||`content.extension:contentStability.url`|Uri|1..1|identifies the meaning of the extension|
+||`content.extension:contentStability.`<br />`valueCodeableConcept`|CodeableConcept|1..1|Describes whether the record content is generated in real-time or is static|
+||`content.extension:contentStability.`<br />`valueCodableConcept.system`|Uri|1..1|Identity of the terminology system|
+||`content.extension:contentStability.`<br />`valueCodableConcept.code`|Code|1..1|Symbol in syntax defined by the system|
+||`content.extension:contentStability.`<br />`valueCodableConcept.display`|String|1..1|Representation defined by the system|
 |Record creation clinical setting|`context.practiceSetting`|CodeableConcept|1..1|Describes where the content was created, in what clinical setting|
 ||`context.practiceSetting.system`|Uri|1..1|Identity of the terminology system|
 ||`context.practiceSetting.code`|Code|1..1|Symbol in syntax defined by the system|
@@ -80,7 +80,6 @@ Links to the NRL FHIR value sets on the NHS FHIR Reference Server.
 |[ValueSet-NRLS-RecordFormat-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-Format-1)| A ValueSet that identifies the NRL record format. |
 |[ValueSet-NRLS-PracticeSetting-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-PracticeSetting-1)| A ValueSet that identifies the NRL record practice setting. |
 |[ValueSet-NRLS-RecordClass-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordClass-1)| A ValueSet that identifies the NRL record class. |
-|[ValueSet-NRLS-RecordRetrievalMode-2](https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordRetrievalMode-2)| A ValueSet that identifies the NRL record retrieval mode. |
 |[ValueSet-Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)| A ValueSet that identifies the Spine error or warning code in response to a request.|
 |[ValueSet-Spine-Response-Code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0)|  A set of codes to indicate low level error information about a Spine 2 error response to a request for patient record details. Exceptions raised by the Spine common requesthandler and not the NRL Service will be returned using the Spine default [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to this default valueSet. |
 
@@ -91,8 +90,7 @@ Links to the NRL FHIR Extensions on the NHS FHIR Reference Server.
 
 |Extension|Description|
 |-------|-----------|
-|[Extension-NRLS-RecordRetrievalMode-2](https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRLS-RecordRetrievalMode-2)|NRL Record Retrieval Mode.|
-
+||NRL Record Content Stability.|
 
 ## 5. CodeSystems ##
 

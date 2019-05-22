@@ -88,7 +88,10 @@ entries:
             output: web
           - title: Delete
             url: /api_interaction_delete.html
-            output: web 
+            output: web
+          - title: Read
+            url: /api_interaction_read.html
+            output: web  
           - title: Search
             url: /api_interaction_search.html
             output: web   

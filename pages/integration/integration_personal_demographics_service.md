@@ -30,8 +30,10 @@ NRL systems MAY utilise the [Spine Mini Service Provider for PDS](https://develo
 {% include note.html content="SMSP responses do not include trace sequence number information. The presence of a trace sequence number in a consumer request to NRL could enable providers to programmatically determine the need to perform a PDS trace themselves, for example if their local patient record's trace was not current." %}
 
 
-### Demographics Batch Service (DBS) ###
+### 3. Demographics Batch Service (DBS) ###
 
-NRL systems MAY utilise the [Demographics Batch Service (DBS)](http://developer.nhs.uk/library/systems/demographic-batch-service-dbs/){:target="_blank"} to perform batch PDS Tracing.
+NRL Provider systems MAY utilise the [Demographics Batch Service (DBS)](http://developer.nhs.uk/library/systems/demographic-batch-service-dbs/){:target="_blank"} to perform batch PDS Tracing.
 
 The suitability of the use of DBS to perform batch PDS tracing would be assessed as part of the Consumer Accreditation process.
+
+This option is for Provider systems only. Consumers performing a search operation SHALL use either option 1 or 2 as described above. 
