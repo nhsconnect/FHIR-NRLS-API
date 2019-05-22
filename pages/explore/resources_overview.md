@@ -22,8 +22,8 @@ The NRL API supports the following operations as detailed in the [Solution Inter
 
 |Actor|Read|Search|Create|Update|Delete|
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | 
-|Consumer|![Tick](images/cross.png)|![Tick](images/tick.png)|![Cross](images/cross.png)|![Cross](images/cross.png)|![Cross](images/cross.png)|
-|Provider|![Tick](images/cross.png)|![Tick](images/tick.png)|![Tick](images/tick.png)|![Tick](images/cross.png)|![Tick](images/tick.png)|
+|Consumer|![Tick](images/tick.png)|![Tick](images/tick.png)|![Cross](images/cross.png)|![Cross](images/cross.png)|![Cross](images/cross.png)|
+|Provider|![Tick](images/tick.png)|![Tick](images/tick.png)|![Tick](images/tick.png)|![Tick](images/tick.png)|![Tick](images/tick.png)|
 
 
 <!--
