@@ -12,7 +12,7 @@ summary: Solution overview of record and document retrieval
 
 ## Retrieval ##
 
-Documents and records can be retrieved direct from the Providers  that hold the documents/records. This is achieved by using the location information (record URL/endpoint) stored on a pointer (obtained from a pointer search) and sending a request to this location over HTTP(S) via the Spine Secure Proxy (SSP). 
+Documents and records can be retrieved directly from the Providers that hold the documents/records. This is achieved by using the location information (record URL/endpoint) stored on a pointer (obtained from a pointer search) and sending a request to this location over HTTP(S) via the Spine Secure Proxy (SSP). 
 
 The process of retrieving a document or record from a provider in this way may be manually triggered by the end user. Retrieval could also be an automated process triggered after a successful patient match from PDS, for example.  The latter example would be transparent to the end user.  
 
@@ -20,7 +20,7 @@ The process of retrieving a document or record from a provider in this way may b
 
 The SSP is a content agnostic forward proxy, which is used to control and protect access to health systems. It provides a single security point for both authentication and authorisation for systems. See the [SSP specification]( https://developer.nhs.uk/apis/spine-core/ssp_overview.html) for further detail. 
 
-## Retrieval ##
+## Retrieval Solution End-to-End ##
 
 The diagram below describes how record retrieval is facilitated through the SSP using the Record URL stored on the pointer. 
 
