@@ -1,13 +1,13 @@
 ---
-title: Access Tokens and Audit (JWT)
-keywords: spine, ssp, integration, audit, provenance
+title: Access Tokens (JWT)
+keywords: spine, ssp, integration, provenance
 tags: [integration]
 sidebar: overview_sidebar
-permalink: integration_access_tokens_and_audit_JWT.html
-summary: "Overview of how audit and provenance data transported over NRL FHIR interfaces."
+permalink: integration_access_tokens_JWT.html
+summary: Access token required for interacting with the NRL and SSP. 
 ---
 
-## Access Tokens and Audit (JWT)##
+## Access Tokens (JWT)##
 
 
 In order to access the NRL clients MUST send an access token (JWT) with each request using the standard HTTP Authorization request header. The JWT MUST conform to the [Spine JWT](https://developer.nhs.uk/apis/spine-core/security_jwt.html) definition.
