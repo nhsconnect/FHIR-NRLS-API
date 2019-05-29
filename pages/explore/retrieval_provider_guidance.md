@@ -46,12 +46,12 @@ Retrieval HTTP GET requests through the SSP include a number of Spine specific H
 
 |Header|Value|
 |------------------|---------------------------|
-|Ssp-TraceID|Consumer's TraceID (i.e. GUID/UUID)|
-|Ssp-From|Consumer's ASID|
-|Ssp-To|Provider's ASID|
-|Ssp-InteractionID|Spine's InteractionID|
+|`Ssp-TraceID`|Consumer's TraceID (i.e. GUID/UUID)|
+|`Ssp-From`|Consumer's ASID|
+|`Ssp-To`|Provider's ASID|
+|`Ssp-InteractionID`|Spine's InteractionID|
 
-Please refer to the [Spine Security Proxy Implementation Guide](https://developer.nhs.uk/apis/spine-core/ssp_implementation_guide.html) for full technical details. 
+Please refer to the [Spine Secure Proxy Implementation Guide](https://developer.nhs.uk/apis/spine-core/ssp_implementation_guide.html) for full technical details. 
 
 The headers must be returned in the response to the SSP for auditing purposes. 
 
