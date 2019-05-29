@@ -102,9 +102,6 @@ description: "The Care Connect RESTful APIs support the delivery of care by open
 
 sitemap: true
 
-# needed for sitemap.xml file only
-url: https://nhsconnect.github.io/CareConnectAPI
-
 repository: nhsconnect/FHIR-NRLS-API
 
 gist:
