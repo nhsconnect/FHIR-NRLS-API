@@ -35,6 +35,8 @@ The table below describes the formats that are currently supported:
 
 Please see the [format code value set](https://fhir.nhs.uk/STU3/ValueSet/NRLS-Format-1) for the list of codes to use. 
 
+Consumers and Providers SHOULD support PDF as a minimum.
+
 Note that the NRL supports referencing multiple formats of a record document on a single pointer. 
 
 ## Direct vs Proxy ##
