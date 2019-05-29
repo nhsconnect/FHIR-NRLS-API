@@ -38,7 +38,7 @@ Please see the [format code value set](https://fhir.nhs.uk/STU3/ValueSet/NRLS-Fo
 Note that the NRL supports referencing multiple formats of a record document on a single pointer. 
 
 ## Direct vs Proxy ##
-The record format code also  indicates whether the record should be retrieved directly (for publicly accessible URLs) or is secured via the SSP. 
+The record format code also indicates whether the record should be retrieved directly (for publicly accessible URLs) or is secured via the SSP. 
 Where a record is to be secured via the SSP, the NRL will pre-fix the Pointer URL property with the proxy server URL as follows: 
 
 <div markdown="span" class="alert alert-success" role="alert">
