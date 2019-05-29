@@ -4,7 +4,7 @@ keywords: structured, rest, documentreference
 tags: [rest,fhir,api,noccprofile]
 sidebar: accessrecord_rest_sidebar
 permalink: api_interaction_read.html
-summary: To support the creation of NRL pointers
+summary: To support retrieval of an NRL pointer
 ---
 
 {% include custom/search.warnbanner.html %}
