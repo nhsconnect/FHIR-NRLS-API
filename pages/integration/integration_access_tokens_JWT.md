@@ -5,6 +5,7 @@ tags: [integration]
 sidebar: overview_sidebar
 permalink: integration_access_tokens_JWT.html
 summary: Access token required for interacting with the NRL and SSP. 
+redirect_from: "/integration_access_tokens_and_audit_JWT.html"
 ---
 
 ## Access Tokens (JWT)##
