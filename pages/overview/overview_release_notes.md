@@ -83,7 +83,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 - [Solution Interactions](overview_interactions.html) diagrams updated.
 - NRL access token (JWT) enhancements:
   - The NRL access token conforms to the Spine [JWT](https://nhsconnect.github.io/FHIR-SpineCore/security_jwt.html) definition.
-  - New section [Access Tokens and Audit (JWT)](integration_access_tokens_and_audit_JWT.html) added which replaces the Cross Organisation Audit & Provenance section.
+  - New section [Access Tokens and Audit (JWT)](integration_access_tokens_JWT.html) added which replaces the Cross Organisation Audit & Provenance section.
  - [Assurance Process](assure.html) overview added to specification.
 
 
