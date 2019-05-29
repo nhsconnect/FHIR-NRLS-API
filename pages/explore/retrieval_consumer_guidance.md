@@ -53,7 +53,7 @@ This can be done using the record author ODS code, which is included in the poin
 A worked example of the endpoint look-up process can be found on the [Spine Core specification](https://developer.nhs.uk/apis/spine-core-1-0/build_endpoints_example_spine_fhir.html).
 
 ## Authentication and Authorisation ##
-Consumer systems must ensure that users are authenticated and authorised, using an appropriate access control mechanism, for retrieving records and documents. HTTP(S) requests to the SSP for retrieving records and documents must include an access token (JWT). Further detail can be found on the [Auth & Auth page](link to Auth&Auth section).
+Consumer systems must ensure that users are authenticated and authorised, using an appropriate access control mechanism, for retrieving records and documents. HTTP(S) requests to the SSP for retrieving records and documents must include an access token (JWT). Further detail can be found on the [Auth & Auth page](integration_authentication_authorisation.html).
 
 ## Handling Multiple Formats ##
 Where a Pointer contains reference to multiple formats for a single record/document Consuming systems need to take action in order to understand which is the most appropriate format to display within their system. 
