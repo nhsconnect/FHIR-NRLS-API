@@ -7,6 +7,12 @@ permalink: development_api_security_guidance.html
 summary: "Details of the API security model and supported protocols"
 ---
 
+## Overview ##
+
+Providers and Consumers are required to maintain a secure connection to the NRL and SSP.
+
+The technical requirements that support this are detailed below.
+
 ## Secure Socket Layer (SSL), and Transport Layer Security (TLS) Protocols ##
 
 After consultation with the Infrastructure Security, Operational Security and Spine DDC teams the following SSL protocols SHALL be supported.
@@ -45,10 +51,14 @@ Provider and consumer systems SHALL only accept client certificates with a valid
 
 Provider and consumer systems SHALL only accept client certificates which have not expired or been revoked.
 
-Provider and consumer systems SHALL check the `FQDN` presented in the client certificate is that of the [Spine Security Proxy](https://developer.nhs.uk/apis/spine-core-1-0/ssp_implementation_guide.html) (SSP).
+Provider and consumer systems SHALL check the `FQDN` presented in the client certificate is that of the [Spine Secure Proxy](https://developer.nhs.uk/apis/spine-core-1-0/ssp_implementation_guide.html) (SSP).
+
+{% include note.html content="For Providers and Consumers that have been issued with an FQDN and an x509 certificate for NRL Pointer Search and/or Maintenance, these same assets may be re-used for the purpose of record retrieval.
+
+The NHS Digital Deployment Issue and Resolution (DIR) team will be able to confirm this at the point at which EndPoint registration is required." %}
 
 ## External Documents / Policy Documents ##
 
 | Name | Author | Version | Updated |
-| [Approved Cryptographic Algorithms Good Practice Guidelines](https://developer.nhs.uk/apis/gpconnect-1-2-2/development_api_security_guidance.html#external-policy-documents) | NHS Digital | v4.0 | 13/07/2016 |
+| [Approved Cryptographic Algorithms Good Practice Guidelines](http://webarchive.nationalarchives.gov.uk/20161021125701/http:/systems.digital.nhs.uk/infogov/security/infrasec/gpg/acs.pdf) | NHS Digital | v4.0 | 13/07/2016 |
 | [Warranted Environment Specification (WES)](https://digital.nhs.uk/services/spine/spine-technical-information-warranted-environment-specification-wes) | NHS Digital | v1.0 | June 2015 |
