@@ -26,7 +26,7 @@ Clients are required to authenticate and authorise users, using a mechanism that
 
 Clients are required to apply RBAC control to manage access to different types of Pointers and their referenced records and documents appropriately. 
 
-This level of control can be achieved and verified through integration with the Care Identity Service (CIS), which will become the NHS Digital’s National Identity service. As well as providing support for existing smartcard-based mechanisms the National Identity service will provide an array of other authentication types. Clients will need to integrate with CIS to access the NRL and the SSP.
+This level of control can be achieved and verified through integration with the [Care Identity Service (CIS)](https://digital.nhs.uk/services/registration-authorities-and-smartcards/care-identity-service), which will become [NHS Identity](https://digital.nhs.uk/services/nhs-identity/guidance-for-developers/an-introduction-to-nhs-identity). As well as providing support for existing smartcard-based mechanisms NHS Identity will provide an array of other authentication types. Consumers will need to integrate with CIS or NHS Identity to access the NRL and the SSP.
 
 Please see the [NRL RBAC mapping table](explore_rbac_mapping.html) for details on the mappings between RBAC codes and Pointer types.
 
