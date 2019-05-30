@@ -56,7 +56,7 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 ||`content.format.display`|String|1..1|Representation defined by the system|
 |Record Stability|`content.extension:contentStability`|Extension|1..1|Record content extension|
 ||`content.extension:contentStability.url`|Uri|1..1|identifies the meaning of the extension|
-||`content.extension:contentStability.`<br />`valueCodeableConcept`|CodeableConcept|1..1|Describes whether the record content is generated in real-time or is static|
+||`content.extension:contentStability.`<br />`valueCodeableConcept`|CodeableConcept|1..1|Describes whether the record content at the time of the request is dynamically generated or is static|
 ||`content.extension:contentStability.`<br />`valueCodableConcept.system`|Uri|1..1|Identity of the terminology system|
 ||`content.extension:contentStability.`<br />`valueCodableConcept.code`|Code|1..1|Symbol in syntax defined by the system|
 ||`content.extension:contentStability.`<br />`valueCodableConcept.display`|String|1..1|Representation defined by the system|

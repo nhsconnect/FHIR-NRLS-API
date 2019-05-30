@@ -9,19 +9,19 @@ summary: NRL Pointer Maintenance
 
 {% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRL API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
 
-## Pointer Maintenance ##
+## Overview ##
 
 The NRL allows a Provider to perform four actions in relation to Pointers –
 - Create – results in the storage of a brand new Pointer in NRL
 - Update – modify the status of an existing Pointer in NRL
-- Replace – Allows you to deprecate a pointer, marking it as superseded, and create a new Pointer in the NRL
+- Supersede – Allows you to replace a pointer. This action marks the pointer as superseded, and creates a new Pointer in the NRL
 - Delete – remove an existing Pointer from NRL. This Pointer will no longer appear in search results
 
 A Pointer’s main role is to refer to another entity; some kind of content (static or dynamic). 
 So when considering Pointer maintenance we should really think in terms of the maintenance of two entities -
 
-1.	Changes to the Pointer’s data – the referenced content has not changed but one or more of the data items captured on the Pointer needs to be modified. In this case an update of the existing resource is appropriate but will be discussed in more detail below
-2.	Changes to the referenced content – in this instance Providers should create a new Pointer which references the modified content
+1.	Changes to the Pointer’s data – the referenced content has not changed but one or more of the data items captured on the Pointer needs to be modified. In this case Providers should supersede the existing resource resulting in the creation of a new Pointer with updated data items
+2.	Changes to the referenced content – in this case Providers should supersede the existing resource resulting in the creation of a new Pointer which references the modified content
 
 
 ## Creation of a new Pointer ##
@@ -80,17 +80,17 @@ If the Provider realises that the Pointer is simply not valid then it should be 
 If the Provider does want to delete the Pointer it should be done as soon as possible after creation to limit exposure to Consumers. 
 However even in this circumstance the Provider should consider marking the Pointer as entered in error.
 
-{% include important.html content="It is important to note that when a Pointer is deleted from the NRL it is marked as &quot;inactive&quot; as opposed to being removed completely. This is commonly known as a &quot;soft delete&quot;. Once a Pointer is deleted the Pointer can no longer be viewed or edited by any Consumer or Provider." %}
+{% include important.html content="When a Pointer is deleted from the NRL it is marked as &quot;inactive&quot; as opposed to being removed completely. This is commonly known as a &quot;soft delete&quot;. Once a Pointer is deleted the Pointer can no longer be viewed or edited by any Consumer or Provider." %}
 
 ## Update of an existing Pointer ##
 
-As noted in the create section update will be invoked on a Pointer when the Provider needs to change its status from 
+Update will be invoked on a Pointer when the Provider needs to change its status from 
 current to entered in error. Providers can only change the status property on an existing Pointer. 
-When any other attribute on the Pointer needs to be changed then the Pointer should be replaced (superseded) with an updated version. 
+When any other attribute on the Pointer needs to be changed then the Pointer should be superseded, replacing it with an updated version. 
 
 ## Managing Pointers to content ##
 
-As noted in the create section where a new version of content is created then a new Pointer should be created to 
+As noted above in the [overview](#overview) section where a new version of content is created then a new Pointer should be created to 
 reference the new content.
 For more detail see figure 2 but in brief each time a new version of a Pointer is created the existing one will be marked as superseded 
 and the new Pointer becomes current.
