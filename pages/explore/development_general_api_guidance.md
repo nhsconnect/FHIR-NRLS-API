@@ -223,6 +223,10 @@ When the NRL resolves a DocumentReference through the relatesTo property before 
 the ODS code associated with the fromASID HTTP header is associated with the ODS code specified on the custodian property of the 
 DocumentReference. If not then the NRL should roll back all changes and an error returned.
 
+#### Patient mismatch ####
+
+When the NRL resolves a DocumentReference through the relatesTo property the subject property reference value must match the subject property reference on the new DocumentReference being created. If not then the NRL should roll back all changes and an error returned.
+
 #### Update or Delete Request - Provider ODS Code does not match Custodian ODS Code ####
 This error is raised during a provider update or delete interaction. There are two exception scenarios:
 - A provider update pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code in the fromASID header.

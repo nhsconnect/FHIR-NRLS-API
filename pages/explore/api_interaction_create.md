@@ -94,11 +94,6 @@ The table summarises the `create` interaction HTTP response code and the values 
 
 {% include note.html content="Upon successful creation of a pointer the NRL Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
 
-<!--
-ORIGINAL include note.html FOR ABOVE: 
-include note.html content="The versionId is an integer that is assigned and maintained by the NRL server. When a new DocumentReference is created the server assigns it a versionId of 1. If a Provider subsequently updates that DocumentReference the server will increment the versionId by 1. <br/><br/> The NRL server will ignore any versionId value sent by a client in an update or create interaction. Instead the server will ensure that the newly assigned verionId adheres to the rules laid out above. The NRL server will ensure that it maintains the latest versionId of a DocumentReference
--->
-
 Failure: 
 
 The following errors can be triggered when performing this operation:
@@ -109,6 +104,7 @@ The following errors can be triggered when performing this operation:
 - [Invalid NHS Number](development_general_api_guidance.html#invalid-nhs-number)
 - [Invalid Parameter](development_general_api_guidance.html#parameters)
 - [Duplicate Resource](development_general_api_guidance.html#duplicate-resource)
+- [Missing or Invalid Headers](development_general_api_guidance.html#headers)
 
 
 ### Ensuring that masterIdentifier is unique ###

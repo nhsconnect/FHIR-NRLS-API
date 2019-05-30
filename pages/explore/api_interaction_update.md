@@ -14,7 +14,9 @@ summary: To support the update of NRL pointers
 
 ## Update ##
 
-API to support the update of NRL pointers. This functionality is only available for providers. The update functionality will be used in cases where a Provider wishes to update a pointer status value from “current” to “entered-in-error”. 
+{% include important.html content="The Supersede interaction previously detailed on this page has been moved to the [Supersede Interaction](api_interaction_supersede.html) page." %}
+
+API to support the update of NRL pointers. This functionality is only available for providers. The update functionality will be used in cases where a Provider wishes to update a pointer status value, changing it from “current” to “entered-in-error”. 
 
 ## Update Request Headers ##
 
