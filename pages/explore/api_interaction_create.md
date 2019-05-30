@@ -52,10 +52,18 @@ For all create requests the `custodian` ODS code in the DocumentReference resour
 
 ### XML Example of a new DocumentReference resource (pointer) ###
 
-<script src="https://gist.github.com/sufyanpat/105a344c3a078475066ce09767658e82.js"></script>
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight xml %}
+{% include /examples/create_documentreference_resource.xml  %}
+{% endhighlight %}
+</div>
 
 ### JSON Example of a new DocumentReference resource (pointer) ###
-<script src="https://gist.github.com/sufyanpat/2668e9063c4444bd3329dbe69ba290b6.js"></script>
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight json %}
+{% include /examples/create_documentreference_resource.json  %}
+{% endhighlight %}
+</div>
 
 ## Create Response ##
 

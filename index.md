@@ -12,7 +12,7 @@ summary: A brief introduction to getting started with the NRL FHIR&reg; API.
 
 {% include warning.html content="This site is provided for information only and is intended for those engaged with NHS Digital on the development of the NRL API. It is advised not to develop against these specifications until a formal announcement has been made." %}
 
-{% include note.html content="The National Record Locator Service (NRLS) has been renamed to National Record Locator (NRL) following an issue raised with multiple national capabilities using the acronym NRLS." %}
+{% include note.html content="The National Record Locator Service (NRLS) has been renamed to National Record Locator (NRL) following an issue raised with multiple national capabilities using the acronym NRLS. There may be instances of the acronym NRLS found within this specification associated to externally hosted examples and tools. These will be updated in due course." %}
 
 # Introduction #
 
