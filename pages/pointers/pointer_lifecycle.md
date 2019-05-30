@@ -16,9 +16,9 @@ A Pointer is a reference to some content. From the perspective of NRL that conte
 ## Pointer Status ##
 
 The Pointer has the concept of a status. It can have one of three possible values: 
-- "current" - Indicates that the Pointer references a clinically relevant record. The definition of “current” is under the control of the Provider but a Consumer should be confident that by selecting the Pointer they will be presented with a document or record that the Provider considers to be appropriate for Consumers to use.
+- "current" - Indicates that the Pointer meta-data and record URL are valid and can be used to inform clinical decision making. The definition of “current” is under the control of the Provider but a Consumer should be confident that by selecting the Pointer they will be presented with a document or record that the Provider considers to be appropriate for Consumers to use.
 - "superseded" – Indicates that this Pointer has been replaced by another. This could be a Pointer with updated meta-data or an updated reference to a document. Note that this represents the status of the pointer and does not necessarily indicate a previous version of a document.  
-- "entered-in-error" – Indicates that the Pointer should not have been entered into the NRL as it is not valid. This could be for a number of reasons, including errors on either the pointer meta-data or the document itself. This status allows a Provider to mark a Pointer as erroneous without needing to delete it.
+- "entered-in-error" – Indicates that the Pointer should not have been entered into the NRL as it is not valid. This could be for a number of reasons, including errors on either the pointer meta-data or the record/document itself. This status allows a Provider to mark a Pointer as erroneous without needing to delete it.
 
 Only pointers with the status of “current” are made available to Consumers. The statuses “superseded” and “entered-in-error” are in use in the Pointer Lifecycle for pointer management and auditing purposes. 
 
