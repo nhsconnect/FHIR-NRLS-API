@@ -37,4 +37,4 @@ In order to support the Consumer and Provider interactions with the NRL the Poin
 |Period of care|0..1|Details the time at which the documented care is relevant|
 
 
-You can explore an indepth view of the lean data model and the full NRL DocumentReference profile in the [FHIR Resources and References section](explore_reference.html).
+You can explore an in-depth view of the lean data model and the full NRL DocumentReference profile in the [FHIR Resources and References section](explore_reference.html).

@@ -14,7 +14,7 @@ summary: To support the update of NRL pointers
 
 ## Supersede ##
 
-API to support the superseding NRL pointers. This functionality is only available for providers.
+API to support superseding NRL pointers. This functionality is only available for providers.
 The supsersede functionality will be used in cases where a Provider wishes to deprecate the current pointer (DocumentReference) and replace it with a new version.
 
 ## Supersede Request Headers ##

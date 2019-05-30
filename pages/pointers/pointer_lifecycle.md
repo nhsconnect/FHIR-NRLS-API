@@ -32,7 +32,7 @@ Not only is the value of a Pointer’s status constrained but the transition fro
 
 All Pointers begin life with a status of current. From there it is possible to move into a superseded state or to an entered-in-error state.
 
-Once in a superseded state, or an entered-in-error state, the Pointer cannot transition anywhere else. One cannot build a chain of Pointers on top of a Pointer whose status is entered-in-error, or a Pointer which has already been superseded. Only the current Pointer can be used in this way by superseding it and replacing it with a new version that becomes the current Pointer. See the Pointer status transition: worked examples section that details how to the NRL allows a Provider to transition the status of their Pointers.
+Once in a superseded state, or an entered-in-error state, the Pointer cannot transition anywhere else. One cannot build a chain of Pointers on top of a Pointer whose status is entered-in-error, or a Pointer which has already been superseded. Only the current Pointer can be used in this way by superseding it and replacing it with a new version that becomes the current Pointer. See the Pointer status transition: worked examples section that details how the NRL allows a Provider to transition the status of their Pointers.
 
 ## Pointer status: making transitions ##
 

@@ -73,4 +73,4 @@ More information is provided in [Pointer maintenance page](pointer_maintenance.h
 
 ### Caching and Storing ###
 
-It is important that consumers of NRL pointers are able to view and make clinical decisions based on the most update to date information available. For this reason NRL recommends that pointers and referenced content returned from search and read requests should not be cached or stored. 
+It is important that consumers of NRL pointers are able to view and make clinical decisions based on the most up to date information available. For this reason NRL recommends that pointers and referenced content returned from search and read requests should not be cached or stored. 
