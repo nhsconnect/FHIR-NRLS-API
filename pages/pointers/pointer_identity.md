@@ -16,7 +16,7 @@ Once persisted within NRL there are up to two ways to refer to a specific Pointe
 
 - Logical identifier – This identifier is assigned by the NRL service when it persists a Pointer. It uniquely identifies that Pointer within the boundary of the NRL service. In effect the NRL service instance is the namespace for a given Pointer’s Logical identifier. 
 
-- Master identifier – This identifier is optional and is under the control of the Provider. Contrast this with the Logical identifier which is under the control of the NRL service. This identifier uniquely identifies the Pointer within the boundary of the NRL service, however it is recommended that the scope of uniqueness extends beyond this (see Uniqueness below).
+- Master identifier – This identifier serves the same purpose as the logical identifier: it uniquely identifies the Pointer within the boundary of the NRL service. However, this identifier is optional and is under the control of the Provider. Contrast this with the Logical identifier which is under the control of the NRL service. For futher detail, see the [Master Identifier](#master-identifier) and [Uniqueness](#uniqueness) sections below.
 
 ### Logical identifier ###
 
