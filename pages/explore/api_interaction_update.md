@@ -106,7 +106,7 @@ Failure:
 The following errors can be triggered when performing this operation:
 
 - [Invalid Request Message](development_general_api_guidance.html#invalid-request-message)
-- [Invalid Resource](development_general_api_guidance.html#invalid-resource)
+- [Invalid Resource](development_general_api_guidance.html#update-invalid-resource-errors)
 - [Invalid Parameter](development_general_api_guidance.html#parameters)
 - [Resource Not Found](development_general_api_guidance.html#resource-not-found)
 - [Inactive Document Reference](development_general_api_guidance.html#inactive-documentreference)
