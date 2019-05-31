@@ -21,7 +21,7 @@ The format of the referenced record is detailed in two meta-data fields:
 
 See [FHIR Resources & References](explore_reference.html) for further detail on the data model. 
 
-The combination of these two meta-data fields describes to a Consumer system the type and structure of the content that will be returned. This gives the Consumer system the information it needs to know to render the referenced record.  
+The combination of these two meta-data fields describes to a Consumer system the type and structure of the content that will be returned. This gives the Consumer system the information it needs to know to render the referenced record. For example, whether the referenced content is a publicly accessible web page, an unstructured PDF document or specific FHIR profile. See Retrieval Formats for further detail and the list of currently supported formats. 
 
 ## Supported Formats ##
 
@@ -38,6 +38,19 @@ Please see the [format code value set](https://fhir.nhs.uk/STU3/ValueSet/NRLS-Fo
 Consumers and Providers SHOULD support PDF as a minimum.
 
 Note that the NRL supports referencing multiple formats of a record document on a single pointer. 
+
+## Multiple Formats ##
+
+Multiple formats of a record or document can be made available through a single pointer on the NRL. For example a pointer can contain a reference to retrieve a record in PDF format and as a structured FHIR resource. Each format must be detailed in a separate content element on the DocumentReference (pointer).
+
+### Multiple Format Example ###
+The example below shows a pointer for a Mental Health Crisis Plan that can be retrieved over the phone (using the contact details listed on the referenced HTML web page) and directly as a PDF document.
+
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight xml %}
+{% include /examples/retrieval_multiple_formats.xml %}
+{% endhighlight %}
+</div>
 
 ## Direct vs Proxy ##
 The record format code also indicates whether the record should be retrieved directly (for publicly accessible URLs) or is secured via the SSP. 

@@ -48,4 +48,4 @@ As the diagram depicts, the step by step process end-to-end for retrieving a rec
 9.	Consumer [system] receives the document/record and processes this in readiness for display back to the end user
 
 
-For further detail on requirements for facilitating retrieval, see the [Consumer](retrieval_consumer_guidance.html) and [Provider](retrieval_provider_guidance.html) guidance pages.
+For further detail on requirements for facilitating retrieval, see the [Retrieval Read Interaction](retrieval_interaction_read.html).

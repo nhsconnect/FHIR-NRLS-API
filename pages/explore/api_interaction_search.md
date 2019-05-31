@@ -147,6 +147,8 @@ Success:
 
 - When a Consumer retrieves a DocumentReference if the relatesTo is set then it should be included in the returned DocumentReference
 
+{% include note.html content="Where a DocumentReference content.format property indicates the referenced resource should be retrieved via the SSP the NRL will automatically pre-fix the content.attachment.url property with the SSP server url. For further detail, see [Retrieval Formats](retrieval_formats.html)." %}
+
 Failure: 
 
 The following errors can be triggered when performing this operation:
