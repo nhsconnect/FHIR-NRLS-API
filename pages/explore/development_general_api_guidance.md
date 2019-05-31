@@ -160,6 +160,8 @@ If the _summary parameter is provided then the only other param that it can be u
 This error code may surface when creating or deleting a DocumentReference. There are a number of properties that make up the DocumentReference which have business rules associated with them. 
 If there are problems with one or more of these properties then this error may be thrown.
 
+This error code may also surface when or updating a DocumentReference using the Parameters resource and HTTP PATCH interaction. This error may be thrown if the resource does not include the specified parameters or does not conform to the associated business rules. 
+
 The below table summarises the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
 
 
@@ -167,26 +169,24 @@ The below table summarises the HTTP response code, along with the values to expe
 |-----------|----------------|------------|--------------|
 |400|error|invalid| INVALID_RESOURCE|
 
-#### mandatory fields ####
+<br/>
+**The following scenarios relate to the [Create](api_interaction_create.html) and [Supersede](api_interaction_supersede.html) interactions (HTTP POST):**
+
+#### Mandatory Fields ####
 If one or more mandatory fields are missing then this error will be thrown. See [DocumentReference](explore_reference.html#2-nrls-pointer-fhir-profile) profile.
 
-#### mandatory field values ####
+#### Mandatory Field Values ####
 If one or more mandatory fields are missing values then this error will be thrown. 
 
-#### custodian ODS code ####
-
+#### DocumentReference.Custodian ####
 If the DocumentReference in the request body contains an ODS code on the custodian element that is not tied to the ASID supplied in the HTTP request header fromASID then this error will result. 
 
-
-#### Attachment.creation ####
+#### DocumentReference.Content.Attachment.Creation ####
 This is an optional field but if supplied:
 - must be a valid FHIR [dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime) 
 
-
 #### DocumentReference.Status ####
-
 If the DocumentReference in the request body specifies a status code that is not supported by the required HL7 FHIR [document-reference-status](http://hl7.org/fhir/ValueSet/document-reference-status) valueset then this error will be thrown. 
-
 
 #### DocumentReference.Type ####
 If the DocumentReference in the request body specifies a type that is not part of the valueset defined in the [NRLS-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1) FHIR profile this error will be thrown. 
@@ -211,14 +211,13 @@ If the DocumentReference in the request body specifies a period then:
 - At least the start date must be populated and must be a valid FHIR [dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime) 
 - If the end date is populated it must be a valid FHIR [dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime)
 
-#### relatesTo ####
+#### DocumentReference.RelatesTo ####
 If multiple relatesTo elements are included in a create request then an error will be returned. 
 
-#### relatesTo.code ####
+#### DocumentReference.RelatesTo.Code ####
 If the code is not set to the "replaces" then an error will be returned.
 
 #### Incorrect permissions to modify ####
-
 When the NRL resolves a DocumentReference through the relatesTo property before modifying its status the NRL should check that 
 the ODS code associated with the fromASID HTTP header is associated with the ODS code specified on the custodian property of the 
 DocumentReference. If not then the NRL should roll back all changes and an error returned.
@@ -227,14 +226,30 @@ DocumentReference. If not then the NRL should roll back all changes and an error
 
 When the NRL resolves a DocumentReference through the relatesTo property the subject property reference value must match the subject property reference on the new DocumentReference being created. If not then the NRL should roll back all changes and an error returned.
 
-#### Update or Delete Request - Provider ODS Code does not match Custodian ODS Code ####
-This error is raised during a provider update or delete interaction. There are two exception scenarios:
-- A provider update pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code in the fromASID header.
-- A provider delete pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code in the fromASID header.
-
 #### DocumentReference does not exist ####
 
 When the NRL fails to resolve a DocumentReference through the relatesTo property then the NRL should roll back all changes and an error returned.
+
+<br/>
+**The following scenarios relate to the [Update](api_interaction_update.html) interaction (HTTP PATCH):**
+
+#### Parameters: Type ####
+When updating a DocumentReference, if the type parameter in the Parameters resource in the request body does not have the value "replace", then an error will be returned. 
+
+#### Parameters: Path ####
+When updating a DocumentReference, If the path parameter in the Parameters resource in the request body does not have the value "DocumentReference.status", then an error will be returned. 
+
+#### Parameters: Value ####
+When updating a DocumentReference, If the value parameter in the Parameters resource in the request body does not have the value "entered-in-error", then an error will be returned. 
+
+#### Provider ODS Code does not match Custodian ODS Code ####
+If a provider update pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code in the fromASID header, then an error will be returned.
+
+<br/>
+**The following scenarios relates to the [Delete](api_interaction_delete.html) interaction (HTTP DELETE):**
+
+#### Provider ODS Code does not match Custodian ODS Code ####
+If a provider delete pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code in the fromASID header, then an error will be returned.
 
 ### Duplicate Resource ###
 
