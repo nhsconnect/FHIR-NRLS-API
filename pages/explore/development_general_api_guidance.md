@@ -228,6 +228,10 @@ DocumentReference. If not then the NRL should roll back all changes and an error
 
 When the NRL resolves a DocumentReference through the relatesTo property the subject property reference value must match the subject property reference on the new DocumentReference being created. If not then the NRL should roll back all changes and an error returned.
 
+#### MasterIdentifier mismatch ####
+
+When the NRL resolves a DocumentReference through the relatesTo property and both the `relatesTo.target.identifier` and `relatesTo.target.reference` properties are populated then the `relatesTo.target.identifier` value must match the masterIdentifier property on the resolved DocumentReference. If not then the NRL should roll back all changes and an error returned.
+
 #### DocumentReference does not exist ####
 
 When the NRL fails to resolve a DocumentReference through the relatesTo property then the NRL should roll back all changes and an error returned.
