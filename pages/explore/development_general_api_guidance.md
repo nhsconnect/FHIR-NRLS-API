@@ -170,8 +170,9 @@ The below table summarises the HTTP response code, along with the values to expe
 |-----------|----------------|------------|--------------|
 |400|error|invalid| INVALID_RESOURCE|
 
-<br/>
-**The following scenarios relate to the [Create](api_interaction_create.html) and [Supersede](api_interaction_supersede.html) interactions (HTTP POST):**
+#### **Create and Supersede Invalid Resource Errors** ####
+
+The following scenarios relate to the [Create](api_interaction_create.html) and [Supersede](api_interaction_supersede.html) interactions (HTTP POST):
 
 #### Mandatory Fields ####
 If one or more mandatory fields are missing then this error will be thrown. See [DocumentReference](explore_reference.html#2-nrls-pointer-fhir-profile) profile.
@@ -231,8 +232,9 @@ When the NRL resolves a DocumentReference through the relatesTo property the sub
 
 When the NRL fails to resolve a DocumentReference through the relatesTo property then the NRL should roll back all changes and an error returned.
 
-<br/>
-**The following scenarios relate to the [Update](api_interaction_update.html) interaction (HTTP PATCH):**
+#### **Update Invalid Resource Errors** ####
+
+The following scenarios relate to the [Update](api_interaction_update.html) interaction (HTTP PATCH):
 
 #### Parameters: Type ####
 When updating a DocumentReference, if the type parameter in the Parameters resource in the request body does not have the value "replace", then an error will be returned. 
@@ -246,8 +248,9 @@ When updating a DocumentReference, If the value parameter in the Parameters reso
 #### Provider ODS Code does not match Custodian ODS Code ####
 If a provider update pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code associated to the ASID value in the fromASID header, then an error will be returned.
 
-<br/>
-**The following scenarios relates to the [Delete](api_interaction_delete.html) interaction (HTTP DELETE):**
+#### **Delete Invalid Resource Errors** ####
+
+The following scenarios relates to the [Delete](api_interaction_delete.html) interaction (HTTP DELETE):
 
 #### Provider ODS Code does not match Custodian ODS Code ####
 If a provider delete pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code associated to the ASID value in the fromASID header, then an error will be returned.
