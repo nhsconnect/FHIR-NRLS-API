@@ -12,7 +12,7 @@ summary: "Overview of the RBAC codes mapped to Pointer Type groups"
 
 ## Overview ##
 
-{% include todo.html content="The RBAC code maps are still under review. We estimate that the maps will be finalised by July 2019." %}
+{% include todo.html content="The RBAC code maps are still under review. This section will be updated in due course." %}
 
 <!--
 ## RBAC Codes ##

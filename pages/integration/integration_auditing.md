@@ -12,8 +12,6 @@ summary: "Overview of audit and provenance requirements for data transported ove
 
 ## Overview ##
 
-Consumers and Providers of NRL are required to operate in accordance with latest NHS Digital IG Audit and Alerts Standards.
-
 Consumers and Providers are required to keep an audit of requests to and responses from the NRL API interfaces.
 
 Consumers and Providers are required to keep an audit of requests and responses related to the retrieval of records and documents.
