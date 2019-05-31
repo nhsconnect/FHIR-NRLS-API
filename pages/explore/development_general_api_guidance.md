@@ -59,9 +59,10 @@ The error codes (including other Spine error codes that are outside the scope of
 
 There are two situations when Spine supports this behaviour:
 
-- When a request references a resource that cannot be resolved. For example This error should be expected when a request references the [unique id](explore_reference.html#2-nrls-pointer-fhir-profile) of a DocumentReference however the id is not known to the NRL. There are two scenarios when the NRL Service supports this exception:
+- When a request references a resource that cannot be resolved. For example This error should be expected when a request references the [unique id](explore_reference.html#2-nrls-pointer-fhir-profile) of a DocumentReference however the id is not known to the NRL. There are three scenarios when the NRL Service supports this exception:
   - provider client retrieval of a DocumentReference by logical id
-  - provider client request to delete a DocumentReference by logical id
+  - provider client request to delete a DocumentReference by logical id or master identifier
+  - provider client request to update a DocumentReference by logical id or master identifier
 
 - When a request supports an NHS Number where no Clinicals record exists in the Spine Clinicals data store for that NHS Number. The NRL Service supports this exception scenario in the consumer and Provider Search API interface.
 
@@ -160,7 +161,7 @@ If the _summary parameter is provided then the only other param that it can be u
 This error code may surface when creating or deleting a DocumentReference. There are a number of properties that make up the DocumentReference which have business rules associated with them. 
 If there are problems with one or more of these properties then this error may be thrown.
 
-This error code may also surface when or updating a DocumentReference using the Parameters resource and HTTP PATCH interaction. This error may be thrown if the resource does not include the specified parameters or does not conform to the associated business rules. 
+This error code may also surface when or updating a DocumentReference using the Parameters resource and Update interaction. This error may be thrown if the resource does not include the specified parameters or does not conform to the associated business rules. 
 
 The below table summarises the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
 
@@ -243,13 +244,13 @@ When updating a DocumentReference, If the path parameter in the Parameters resou
 When updating a DocumentReference, If the value parameter in the Parameters resource in the request body does not have the value "entered-in-error", then an error will be returned. 
 
 #### Provider ODS Code does not match Custodian ODS Code ####
-If a provider update pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code in the fromASID header, then an error will be returned.
+If a provider update pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code associated to the ASID value in the fromASID header, then an error will be returned.
 
 <br/>
 **The following scenarios relates to the [Delete](api_interaction_delete.html) interaction (HTTP DELETE):**
 
 #### Provider ODS Code does not match Custodian ODS Code ####
-If a provider delete pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code in the fromASID header, then an error will be returned.
+If a provider delete pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code associated to the ASID value in the fromASID header, then an error will be returned.
 
 ### Duplicate Resource ###
 

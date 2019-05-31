@@ -51,7 +51,7 @@ PATCH [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.nh
 Providers systems SHALL only update pointers for records where they are the pointer owner (custodian).
 For all update requests the custodian ODS code in the DocumentReference resource SHALL be affiliated with the Client System ASID value in the fromASID HTTP request header sent to the NRL.
 
-The FHIRPath PATCH operation must be encorded in a Parameters resource as follows:
+The FHIRPath PATCH operation must be encoded in a Parameters resource as follows:
 - A single operation as a Parameter named "operation"
 - The single parameter has a series of mandatory parts, with required values as listed in the table below:
 
