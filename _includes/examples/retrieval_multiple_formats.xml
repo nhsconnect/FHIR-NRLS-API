@@ -1,7 +1,7 @@
 <DocumentReference>
     <id value="0353e505-f7be-4c20-8f4e-337e79a32c51-76009894321256642261"/>
     <meta>
-        <profile value="https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1"/>
+        <profile value="https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1"/>
     </meta>
     <masterIdentifier>
         <system value="urn:ietf:rfc:3986"/>
@@ -50,17 +50,17 @@
         </attachment>
         <format>
             <coding>
-                <system value="https://fhir.nhs.uk/STU3/ValueSet/NRLS-Format-1"/>
+                <system value="https://fhir.nhs.uk/STU3/CodeSystem/NRL-Format-1"/>
                 <code value="direct:https://www.iso.org/standard/63534.html"/>
-                <display value="Public PDF"/>
+                <display value="PDF (Publicly accessible)"/>
             </coding>
         </format>
-        <extension url="https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRLS-RecordRetrievalMode-2">
+        <extension url="https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1">
             <valueCodeableConcept>
                 <coding>
-                    <system value="https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordRetrievalMode-2"/>
-                    <code value="SR"/>
-                    <display value="Static Resource"/>
+                    <system value="https://fhir.nhs.uk/STU3/CodeSystem/NRL-ContentStability-1"/>
+                    <code value="static"/>
+                    <display value="Static"/>
                 </coding>
             </valueCodeableConcept>
         </extension>
@@ -73,17 +73,17 @@
         </attachment>
         <format>
             <coding>
-                <system value="https://fhir.nhs.uk/STU3/ValueSet/NRLS-Format-1"/>
+                <system value="https://fhir.nhs.uk/STU3/CodeSystem/NRL-Format-1"/>
                 <code value="direct:https://www.w3.org/TR/html"/>
                 <display value="HTML Web Page (Publicly Accessible)"/>
             </coding>
         </format>
-        <extension url="https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRLS-RecordRetrievalMode-2">
+        <extension url="https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1">
             <valueCodeableConcept>
                 <coding>
-                    <system value="https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordRetrievalMode-2"/>
-                    <code value="SR"/>
-                    <display value="Static Resource"/>
+                    <system value="https://fhir.nhs.uk/STU3/CodeSystem/NRL-ContentStability-1"/>
+                    <code value="static"/>
+                    <display value="Static"/>
                 </coding>
             </valueCodeableConcept>
         </extension>

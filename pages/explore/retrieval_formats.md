@@ -33,7 +33,7 @@ The table below describes the formats that are currently supported:
 |PDF (Publicly accessible)|A publicly accessible PDF detailing contact details for retrieving a record.|
 |PDF|A PDF document. For guidance see the [CareConnect GET Binary specification](https://nhsconnect.github.io/CareConnectAPI/api_documents_binary.html).|
 
-Please see the [format code value set](https://fhir.nhs.uk/STU3/ValueSet/NRLS-Format-1) for the list of codes to use. 
+Please see the [format code value set](https://fhir.nhs.uk/STU3/ValueSet/NRL-FormatCode-1) for the list of codes to use. 
 
 Consumers and Providers SHOULD support PDF as a minimum.
 

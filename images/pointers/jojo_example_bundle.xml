@@ -9,7 +9,7 @@
 				<meta>
 					<versionId value="2"/>
 					<lastUpdated value="2018-07-02T11:39:44+00:00"/>
-					<profile value="https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1"/>
+					<profile value="https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1"/>
 				</meta>
 				<masterIdentifier>
 					<system value="urn:ietf:rfc:3986"/>

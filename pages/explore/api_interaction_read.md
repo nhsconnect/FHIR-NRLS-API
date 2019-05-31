@@ -9,7 +9,7 @@ summary: To support retrieval of an NRL pointer
 
 {% include custom/search.warnbanner.html %}
 
-{% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
+{% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
 
 
 ## Read ##
@@ -42,7 +42,7 @@ Note the status of the pointer must be "current" for the pointer to be retrieved
 Success:
 
 - SHALL return a `200` **SUCCESS** HTTP status code on successful execution of the interaction.
-- SHALL return a response body containing a DocumentReference resource which conforms to the ['NRLS-DocumentReference-1'](https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1) profile and has the status "current".
+- SHALL return a response body containing a DocumentReference resource which conforms to the ['NRL-DocumentReference-1'](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) profile and has the status "current".
 
 {% include note.html content="Where a DocumentReference content.format property indicates the referenced resource should be retrieved via the SSP the NRL will automatically pre-fix the content.attachment.url property with the SSP server url. For further detail, see [Retrieval Formats](retrieval_formats.html)." %}
 
@@ -86,7 +86,7 @@ Return DocumentReference resource (pointer) with logical ID 0353e505-f7be-4c20-8
 ##### **Pointer (DocumentReference) Returned:** ##### 
 
 - HTTP 200-Request was successfully executed
-- DocumentReference that conforms to the `NRLS-DocumentReference-1` profile.
+- DocumentReference that conforms to the `NRL-DocumentReference-1` profile.
 
 <div class="github-sample-wrapper scroll-height-350">
 {% highlight XML %}

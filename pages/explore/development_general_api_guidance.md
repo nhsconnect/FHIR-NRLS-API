@@ -59,7 +59,7 @@ The error codes (including other Spine error codes that are outside the scope of
 
 There are two situations when Spine supports this behaviour:
 
-- When a request references a resource that cannot be resolved. For example This error should be expected when a request references the [unique id](explore_reference.html#2-nrls-pointer-fhir-profile) of a DocumentReference however the id is not known to the NRL. There are three scenarios when the NRL Service supports this exception:
+- When a request references a resource that cannot be resolved. For example This error should be expected when a request references the [unique id](explore_reference.html#2-nrl-data-model-to-fhir-profile-mapping) of a DocumentReference however the id is not known to the NRL. There are three scenarios when the NRL Service supports this exception:
   - provider client retrieval of a DocumentReference by logical id
   - provider client request to delete a DocumentReference by logical id or master identifier
   - provider client request to update a DocumentReference by logical id or master identifier
@@ -175,7 +175,7 @@ The below table summarises the HTTP response code, along with the values to expe
 The following scenarios relate to the [Create](api_interaction_create.html) and [Supersede](api_interaction_supersede.html) interactions (HTTP POST):
 
 #### Mandatory Fields ####
-If one or more mandatory fields are missing then this error will be thrown. See [DocumentReference](explore_reference.html#2-nrls-pointer-fhir-profile) profile.
+If one or more mandatory fields are missing then this error will be thrown. See [DocumentReference](explore_reference.html#2-nrl-data-model-to-fhir-profile-mapping) profile.
 
 #### Mandatory Field Values ####
 If one or more mandatory fields are missing values then this error will be thrown. 
@@ -191,22 +191,22 @@ This is an optional field but if supplied:
 If the DocumentReference in the request body specifies a status code that is not supported by the required HL7 FHIR [document-reference-status](http://hl7.org/fhir/ValueSet/document-reference-status) valueset then this error will be thrown. 
 
 #### DocumentReference.Type ####
-If the DocumentReference in the request body specifies a type that is not part of the valueset defined in the [NRLS-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1) FHIR profile this error will be thrown. 
+If the DocumentReference in the request body specifies a type that is not part of the valueset defined in the [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) FHIR profile this error will be thrown. 
 
 #### DocumentReference.Indexed ####
 If the DocumentReference in the request body specifies an indexed element that is not a valid [instant](http://hl7.org/fhir/STU3/datatypes.html#instant) as per the FHIR specification this error will be thrown. 
 
 #### DocumentReference.Class ####
-If the DocumentReference in the request body specifies a class that is not part of the valueset defined in the [NRLS-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1) FHIR profile this error will be thrown.
+If the DocumentReference in the request body specifies a class that is not part of the valueset defined in the [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) FHIR profile this error will be thrown.
 
 #### DocumentReference.Content.Format ####
-If the DocumentReference in the request body specifies a format that is not part of the valueset defined in the [NRLS-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1) FHIR profile this error will be thrown.
+If the DocumentReference in the request body specifies a format that is not part of the valueset defined in the [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) FHIR profile this error will be thrown.
 
 #### DocumentReference.Content.Extension:RetrievalMode ####
-If the DocumentReference in the request body specifies a retrievalMode that is not part of the valueset defined in the [NRLS-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1) FHIR profile this error will be thrown.
+If the DocumentReference in the request body specifies a retrievalMode that is not part of the valueset defined in the [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) FHIR profile this error will be thrown.
 
 #### DocumentReference.Context.PracticeSetting ####
-If the DocumentReference in the request body specifies a practiceSetting that is not part of the valueset defined in the [NRLS-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1) FHIR profile this error will be thrown.
+If the DocumentReference in the request body specifies a practiceSetting that is not part of the valueset defined in the [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) FHIR profile this error will be thrown.
 
 #### DocumentReference.Context.Period ####
 If the DocumentReference in the request body specifies a period then:

@@ -9,7 +9,7 @@ summary: To support parameterised search of the NRL.
 
 {% include custom/search.warnbanner.html %}
 
-{% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
+{% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
 
 
 ## Search ##
@@ -135,7 +135,7 @@ Success:
 
 - SHALL return a `200` **OK** HTTP status code on successful execution of the interaction.
 - SHALL return a `Bundle` of `type` searchset, containing either:
-    - One or more `documentReference` resource that conforms to the `NRLS-DocumentReference-1` profile and has the status value "current"; or
+    - One or more `documentReference` resource that conforms to the `NRL-DocumentReference-1` profile and has the status value "current"; or
     - A '0' (zero) total value indicating no record was matched i.e. an empty 'Bundle'.
 
       {% include note.html content="The returned searchset bundle does NOT currently support: <br/> <br/> (1) the `self link`, which carries the encoded parameters that were actually used to process the search. <br/> <br/> (2) the identity of resources in the entry using the `fullUrl` element. <br/> <br/> (3) resources matched in a successful search using the `search.mode` element. <br/> <br/> NB: The NRL Service will ONLY return an empty bundle if a Spine Clincals record exists and there is no DocumentReference for that specific Clinicals record." %}
@@ -187,7 +187,7 @@ Return all DocumentReference resources (pointers) for a patient with a NHS Numbe
 ##### **Single Pointer (DocumentReference) Returned:** ##### 
 
 - HTTP 200-Request was successfully executed
-- Bundle resource of type searchset containing a total value '1' DocumentReference resource that conforms to the `nrls-documentReference-1` profile.
+- Bundle resource of type searchset containing a total value '1' DocumentReference resource that conforms to the `NRL-DocumentReference-1` profile.
 
 <div class="github-sample-wrapper scroll-height-350">
 {% highlight XML %}
@@ -198,7 +198,7 @@ Return all DocumentReference resources (pointers) for a patient with a NHS Numbe
 ##### **Multiple Pointers (DocumentReference) Returned:** ##### 
 
 - HTTP 200-Request was successfully executed
-- Bundle resource of type searchset containing a total value '2' DocumentReference resources that conform to the `nrls-documentReference-1` profile
+- Bundle resource of type searchset containing a total value '2' DocumentReference resources that conform to the `NRL-DocumentReference-1` profile
 
 <div class="github-sample-wrapper scroll-height-350">
 {% highlight XML %}

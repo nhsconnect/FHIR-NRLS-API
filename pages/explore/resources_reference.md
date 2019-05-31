@@ -15,14 +15,14 @@ Links to the NRL FHIR profiles on the NHS FHIR Reference Server.
 
 |Profile| Description |
 |-------|-------|
-| [NRLS-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1)| A DocumentReference resource is used to describe a record that is made available to a healthcare system.  |
+| [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1)| A DocumentReference resource is used to describe a record that is made available to a healthcare system.  |
 | [Spine-OperationOutcome-1](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1)| Operation Outcome resource that supports a collection of error, warning or information messages that result from a NRL Service Spine interaction.|
 | [Spine-OperationOutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0)| The default Spine OperationOutcome profile resource that supports exceptions raised by the Spine common requesthandler and not the NRL Service. 
 
 
 ## 2. NRL Data Model to FHIR Profile Mapping ##
 
-The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) to NRLS-DocumentReference-1 profile elements. 
+The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) to NRL-DocumentReference-1 profile elements. 
 
 |Data Item|FHIR Element|Data Type|Card|Description|
 |----|---------|----|-----------|-----|
@@ -76,11 +76,11 @@ Links to the NRL FHIR value sets on the NHS FHIR Reference Server.
 
 |Valueset|Description|
 |-------|-----------|
-|[ValueSet-NRLS-RecordType-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordType-1)| A ValueSet that identifies the NRL record type. |
-|[ValueSet-NRLS-RecordFormat-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-Format-1)| A ValueSet that identifies the NRL record format. |
-|[ValueSet-NRLS-PracticeSetting-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-PracticeSetting-1)| A ValueSet that identifies the NRL record practice setting. |
-|[ValueSet-NRLS-RecordClass-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordClass-1)| A ValueSet that identifies the NRL record class. |
-|[ValueSet-NRLS-ContentStability-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-ContentStability-1)| A ValueSet that identifies the NRL record stability. |
+|[ValueSet-NRL-RecordType-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1)| A ValueSet that identifies the NRL record type. |
+|[ValueSet-NRL-FormatCode-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-FormatCode-1)| A ValueSet that identifies the NRL record format. |
+|[ValueSet-NRL-PracticeSetting-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-PracticeSetting-1)| A ValueSet that identifies the NRL record practice setting. |
+|[ValueSet-NRL-RecordClass-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordClass-1)| A ValueSet that identifies the NRL record class. |
+|[ValueSet-NRL-ContentStability-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-ContentStability-1)| A ValueSet that identifies the NRL record stability. |
 |[ValueSet-Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)| A ValueSet that identifies the Spine error or warning code in response to a request.|
 |[ValueSet-Spine-Response-Code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0)|  A set of codes to indicate low level error information about a Spine 2 error response to a request for patient record details. Exceptions raised by the Spine common requesthandler and not the NRL Service will be returned using the Spine default [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to this default valueSet. |
 
@@ -91,7 +91,7 @@ Links to the NRL FHIR Extensions on the NHS FHIR Reference Server.
 
 |Extension|Description|
 |-------|-----------|
-||NRL Record Content Stability.|
+|[Extension-NRL-ContentStability-1](https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1)|NRL Record Content Stability.|
 
 ## 5. CodeSystems ##
 
@@ -100,8 +100,8 @@ Links to the NRL FHIR CodeSystems on the NHS FHIR Reference Server.
 |CodeSystem|Description|
 |-------|-----------|
 |[CodeSystem-Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1)|Spine error codes and descriptions.|
-
-
+|[NRL-ContentStability-1](https://fhir.nhs.uk/STU3/CodeSystem/NRL-ContentStability-1)|NRL record stability codes and descriptions.|
+|[NRL-FormatCode-1](https://fhir.nhs.uk/STU3/CodeSystem/NRL-FormatCode-1)|NRL record format codes and descriptions.|
 
 ## 6. Identifiers ##
 
