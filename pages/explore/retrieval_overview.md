@@ -27,15 +27,20 @@ The diagram below describes how record retrieval is facilitated through the SSP 
 
 <img src="images/retrieval/retrieval_concept_diagram.png">
 
+*To view the diagram detail, [open the image in a new tab](images/retrieval/retrieval_concept_diagram.png){:target="_blank"}.*
+
 As the diagram depicts, the step by step process end-to-end for retrieving a record or document is as follows: 
 1.	Consumer [system] searches/queries the NRL to see if any Pointers exist for the patient under their care
 2.	Consumer [system] finds a Pointer that references a document/record which could be of value for the provision of care
-3.	Consumer [system] takes the URL property value (see Pointer Data Model for more details )  from the Pointer that was found during search and uses this value to create a request to the Provider system that holds the document/record.
+3.	Consumer [system] takes the URL property value (see [Pointer Data Model](overview_data_model.html) for more details) from the Pointer that was found during search and uses this value to create a request to the Provider system that holds the document/record.
 	
-    *An example URL property value:* https://testspineproxy.nhs.uk/https%3A%2F%2Fprovider.thirdparty.nhs.uk%2FAB1%2FStatic%2Fc1cd026e-e06b-4121-bb08-a3cb8f53c58b 
-4.	Consumer [system] sends the request to the Provider system.	
+    *An example URL property value:* 
+    
+    `https://testspineproxy.nhs.uk/https%3A%2F%2Fprovider.thirdparty.nhs.uk%2FAB1%2FStatic%2Fc1cd026e-e06b-4121-bb08-a3cb8f53c58b`
+    
+    *The URL property in this example is pre-fixed with the URL to the SSP which will ensure that the request goes via the SSP and that all necessary security checks are performed on the request.*
 
-    *The URL property in this example is pre-fixed with the URL to the SSP which will ensure that the request goes via the SSP and that all necessary security checks are performed on the request*
+4.	Consumer [system] sends the request to the Provider system.	
 5.	Request sent by the Consumer goes through the SSP where security checks are performed
 6.	Request is then sent onto the Provider system that holds the document/record once security checks are passed
 7.	Provider system receives and validates the request
