@@ -47,8 +47,6 @@ A Provider transitions an existing Pointer’s status from current to superseded
 	2. resolve the existing DocumentReference using the relatesTo.target
 	3. mark that DocumentReference as superseded
 
-Note also that the NRL will only accept one relatesTo element. Requests that contain multiple relatesTo elements will be rejected. For further detail, see [Error Handling Guidance](development_general_api_guidance.html#relatesto).  
-
 Providers systems SHALL only supersede pointers for records where they are the pointer owner (custodian).
 
 The target property within the relatesTo attribute must be either a reference or a FHIR identifier, depending on whether a provider chooses to supersede by logical ID or supersede by master identifier. 
@@ -82,6 +80,8 @@ Example of a DocumentReference relatesTo property populated using a FHIR identif
 In both cases (use of reference or identifier values) the patient NHS Number on the new (to be created) DocumentReference and the DocumentReference being superseded must match. For further detail, see [Error Handling Guidance](development_general_api_guidance.html#patient-mismatch). 
 
 If both the target.reference property and the target.identifier property are populated then the NRL will use the target.reference property to resolve the DocumentReference. If a DocumentReference is found, then the MasterIdentifier of the returned DocumentReference must match the identifier in the relatesTo collection. For further details, see [Error Handling Guidance](development_general_api_guidance.html#masteridentifier-mismatch).
+
+The NRL will only accept one relatesTo element. Requests that contain multiple relatesTo elements will be rejected. For further detail, see [Error Handling Guidance](development_general_api_guidance.html#documentreferencerelatesto).
 
 ### Supersede by Logical ID XML example ###
 
