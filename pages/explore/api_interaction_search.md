@@ -138,7 +138,9 @@ Success:
     - One or more `documentReference` resource that conforms to the `NRL-DocumentReference-1` profile and has the status value "current"; or
     - A '0' (zero) total value indicating no record was matched i.e. an empty 'Bundle'.
 
-      {% include note.html content="The returned searchset bundle does NOT currently support: <br/> <br/> (1) the `self link`, which carries the encoded parameters that were actually used to process the search. <br/> <br/> (2) the identity of resources in the entry using the `fullUrl` element. <br/> <br/> (3) resources matched in a successful search using the `search.mode` element. <br/> <br/> NB: The NRL Service will ONLY return an empty bundle if a Spine Clincals record exists and there is no DocumentReference for that specific Clinicals record." %}
+      {% include note.html content="The NRL Service will ONLY return an empty bundle if a Spine Clincals record exists and there is no DocumentReference for that specific Clinicals record." %}
+
+    <!--{% include note.html content="The returned searchset bundle does NOT currently support: <br/> <br/> (1) the `self link`, which carries the encoded parameters that were actually used to process the search. <br/> <br/> (2) the identity of resources in the entry using the `fullUrl` element. <br/> <br/> (3) resources matched in a successful search using the `search.mode` element. <br/> <br/> NB: The NRL Service will ONLY return an empty bundle if a Spine Clincals record exists and there is no DocumentReference for that specific Clinicals record." %}-->
 
  
 - Where a documentReference is returned, it SHALL include the versionId <!--and fullUrl--> of the current version of the documentReference resource
@@ -147,7 +149,7 @@ Success:
 
 - When a Consumer retrieves a DocumentReference if the relatesTo is set then it should be included in the returned DocumentReference
 
-{% include note.html content="Where a DocumentReference content.format property indicates the referenced resource should be retrieved via the SSP the NRL will automatically pre-fix the content.attachment.url property with the SSP server url. For further detail, see [Retrieval Formats](retrieval_formats.html)." %}
+{% include note.html content="Where a DocumentReference content.format property indicates the referenced resource should be retrieved via the SSP the NRL will automatically pre-fix the `content.attachment.url` property with the SSP server URL. For further detail, see [Retrieval Formats](retrieval_formats.html)." %}
 
 Failure: 
 
@@ -165,12 +167,6 @@ An authorised NRL Consumer searches for a patient's relevant health record using
 ### Request Query ###
 
 Return all DocumentReference resources (pointers) for a patient with a NHS Number of 9876543210. The format of the response body will be XML. 
-
-<!--Return all DocumentReference resources for a patient with a NHS Number of 9876543210 and a pointer provider ODS code of RR8. The format of the response body will be xml. -->
-
-
-<!--Return all DocumentReference resources for Patient with a NHS Number of 9876543210, and a record created date greater than or equal to 1st Jan 2010, and a record created date less than or equal to 31st Dec 2011, the format of the response body will be xml. Replace 'baseUrl' with the actual base Url of the FHIR Server.-->
-
 
 #### cURL ####
 

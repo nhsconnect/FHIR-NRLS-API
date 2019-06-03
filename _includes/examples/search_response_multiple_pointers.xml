@@ -4,7 +4,12 @@
     <id value="dd9724d1-7b61-44e2-9023-b72e6b966018-54446768443265458908"/>
     <type value="searchset"/>
     <total value="2"/>
+    <link> 
+        <relation value="self"/> 
+        <url value="https://psis-sync.national.ncrs.nhs.uk/DocumentReference?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543211"/> 
+    </link> 
     <entry>
+        <fullUrl value="https://psis-sync.national.ncrs.nhs.uk/DocumentReference/0353e505-f7be-4c20-8f4e-337e79a32c51-58778905432232112312"/> 
         <resource>
             <DocumentReference>
                 <id value="0353e505-f7be-4c20-8f4e-337e79a32c51-58778905432232112312"/>
@@ -79,8 +84,12 @@
                 </context>
             </DocumentReference>
         </resource>
+        <search> 
+            <mode value="match"/>  
+        </search> 
     </entry>
     <entry>
+        <fullUrl value="https://psis-sync.national.ncrs.nhs.uk/DocumentReference/5303c09e-de28-4622-9416-62ab0b22e15a-54598780989231213433"/> 
         <resource>
             <DocumentReference>
                 <id value="5303c09e-de28-4622-9416-62ab0b22e15a-54598780989231213433"/>
@@ -165,5 +174,8 @@
                 </context>
             </DocumentReference>
         </resource>
+        <search> 
+            <mode value="match"/>  
+        </search> 
     </entry>
 </Bundle>
