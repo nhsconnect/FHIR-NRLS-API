@@ -8,12 +8,15 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 ---
 
 {% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRL API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
+
+{% include note.html content="Starting from release 2.0.0-beta, all list items and their sub-lists are considered &quot;general changes&quot; unless otherwise stated. " %}
+
 ## 2.0.0-beta ##
-*Changes to document record/document retrieval requirements, additional API interactions and NRL DocumentReference model changes.*
-  - The service name has changed from NRLS (National Record Locator Service) to NRL (National Record Locator)
-  - The FHIR Resource NRLS-DocumentReference-1 uplifted to NRL-DocumentReference-1
+*Changes to &quot;document&quot; record/document retrieval requirements, new API interactions, NRL DocumentReference model changes, and updated guidance.*
+  - *Breaking Change*{:.label.label-danger} The service name has changed from NRLS (National Record Locator Service) to NRL (National Record Locator)
+  - *Breaking Change*{:.label.label-danger} The FHIR Resource NRLS-DocumentReference-1 uplifted to NRL-DocumentReference-1
     - Data model changes are detailed below
-  - Data model changes 
+  - *Breaking Change*{:.label.label-danger} Data model changes 
     - `Class`: now mandatory and persisted by NRL
     - `Type`: ValueSet URL changed from NRLS-RecordType-1 to NRL-RecordType-1
     - `Context`: now mandatory
@@ -23,20 +26,20 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     - `Content`: has new mandatory extenion of ContentStability (NRL-ContentStability-1)
     - `RelatesTo`: now limited to max of 1
     - `RelatesTo.Code`: now limited to single code of 'replaces'
-  - FHIR Resource examples (JSON/XML)
+  - *Change*{:.label.label-warning} FHIR Resource examples (JSON/XML)
     -	Source of FHIR Resource examples has been changed
     -	FHIR Resource examples are now contained in a shorter scrollable code block
-  -	Assurance page
+  -	*Change*{:.label.label-warning} Assurance page
     -	References to TOM have been changed to SCAL 
     -	Links to the on-boarding guide have been added
-  -	Developer Guidance 
+  -	*Change*{:.label.label-warning} Developer Guidance 
       -	Overview page 
           -	NHS number verification guidance updated 
           -	Actor to interation mapping table updated 
       - FHIR Resource page 
-          - Renamed
-          - Additional data model properties detailed
-          - Additional valuesets, extensions, and codesystems added
+          - *Breaking Change*{:.label.label-danger} Renamed
+          - *Breaking Change*{:.label.label-danger} Additional data model properties detailed
+          - *Breaking Change*{:.label.label-danger} Additional valuesets, extensions, and codesystems added
           -	Master Identifier added to identifiers section
           -	The term 'Record Status' has changed to 'Pointer Status'
       -	General API Guidance 
@@ -47,30 +50,35 @@ summary: Summary release notes of the versions released in NRL API Implementatio
               -	Added masterIdentifier errors added
               -	Inactive DocumentReference guidance added
               -	New data model error handling details added
-  -	Retrieval of Records/Documents Guidance now documented in a new section under Developer Guidance	
-  -	API Interactions
-    -	Update interaction page has been renamed to 'Create (Supersede)'
-    -	'Supersede' now supports supersede by logical id
-    -	Now details additional error responses
-    -	A 'supersede' with multiple `relatesTo` properties will now be rejected
-    -	A 'supersede' with a `relatesTo` property containing a code other than 'replaces' will be rejected
-    -	New 'Update interaction' page created, see below
-    -	RESTful 'read' by logical id now supported which returns a single DocumentReference resource
-    -	RESTful 'update' now supported - using the HTTP PATCH verb
-    -	HTTP PATCH supports update by logical id and master identifier
+      -	*New Feature*{:.label.label-info} Retrieval of Records/Documents Guidance now documented in a new section under Developer Guidance, which includes:
+          - An overview of retrieval
+          - Read interaction requirements
+          - Provider guidance
+          - Consumer guidance
+          - Pointer format code guidance
+  -	*Change*{:.label.label-warning} API Interactions
+    -	*Breaking Change*{:.label.label-danger} Update interaction page has been renamed to 'Create (Supersede)'
+        -	*New Feature*{:.label.label-info} 'Supersede' now supports supersede by logical id
+        -	Now details additional error responses
+        -	*Breaking Change*{:.label.label-danger} A 'supersede' with multiple `relatesTo` properties will now be rejected
+        -	*Breaking Change*{:.label.label-danger} A 'supersede' with a `relatesTo` property containing a code other than 'replaces' will be rejected
+        -	*New Feature*{:.label.label-info} New 'Update interaction' page created, see below
+    -	*New Feature*{:.label.label-info} RESTful 'read' by logical id now supported which returns a single DocumentReference resource
+    -	*New Feature*{:.label.label-info} RESTful 'update' now supported - using the HTTP PATCH verb
+        -	HTTP PATCH supports update by logical id and master identifier
     -	Create interaction page details additional error responses
     -	Delete interaction  
-        -	Now supports RESTful delete by logical id i.e. DELETE [baseUrl]/DocumentReference/[id]
+        -	*New Feature*{:.label.label-info} Now supports RESTful delete by logical id i.e. DELETE [baseUrl]/DocumentReference/[id]
         -	Requirements have been moved into a single section
     -	Search interaction  
-        -	Now only returns DocumentReference's that have a 'status' of current
-        -	DocumentReference's with a format code that indicates the referenced content is to be retrieved via the SSP will have its url property modified to reflect this.
+        -	*Breaking Change*{:.label.label-danger} Now only returns DocumentReference's that have a 'status' of current
+        -	*Breaking Change*{:.label.label-danger} DocumentReference's with a format code that indicates the referenced content is to be retrieved via the SSP will have its url property modified to reflect this.
         -	These changes also apply to Read Interaction
         -	Bundle response now includes additional attributes:
             -	Self link added
             -	Search.mode added
             -	Resource.fullUrl added
-  -	Integrate with spine
+  -	*Change*{:.label.label-warning} Integrate with spine
     -	Security page 
         -	This page has been moved from Developer guidance to the Integrate with spine section
         -	Overview section added
@@ -78,24 +86,23 @@ summary: Summary release notes of the versions released in NRL API Implementatio
         -	Updated the allowed cipher suite list
         -	Guidance added for those that already have a NHS Digital supplied x509 certificate
         -	Guidance document links have been fixed
-    -	Access Token and Audit page renamed to Access Token and page now split into two pages
-    -	New audit page added
+    -	Access Token and Audit page renamed to Access Token (Audit has moved to it's own page)
+    -	*New Feature*{:.label.label-info} New audit page added
     -	PDS Guidance updated
     -	Authentication guidance and requirements updated to reflect content retrieval and related service name changes
-
-  -	Pointer Guidance
+  -	*Change*{:.label.label-warning} Pointer Guidance
     -	More clarity on handling errors
     -	More clarity on use of the master identifier property
-  -	Pointer Lifecycle
-    -	Removed reference to transition from "entered-in-error" to current
+  -	*Change*{:.label.label-warning} Pointer Lifecycle
+    -	*Breaking Change*{:.label.label-danger} Removed reference to transition from "entered-in-error" to current
     -	More clarity on meaning of each status
     -	More guidance on deleting pointers
-  -	Pointer Maintenance
+  -	*Change*{:.label.label-warning} Pointer Maintenance
     -	More clarity on what deleting pointers does
     -	More clarity on handling lineages
-    -	Metailed the new 'update' and 'supersede' interactions
-  -	Solution
-    -	Data model updated to reflect DocumentReference changes detailed above
+    -	Detailed the new 'update' and 'supersede' interactions
+  -	*Change*{:.label.label-warning} Solution
+    -	*Breaking Change*{:.label.label-danger} Data model updated to reflect DocumentReference changes detailed above
     -	Clarity around caching data added
 
 
