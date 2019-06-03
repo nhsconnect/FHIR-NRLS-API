@@ -217,7 +217,7 @@ If the DocumentReference in the request body specifies a period then:
 If multiple relatesTo elements are included in a create request then an error will be returned. 
 
 #### DocumentReference.RelatesTo.Code ####
-If the code is not set to the "replaces" then an error will be returned.
+If the code is not set to the value "replaces" then an error will be returned.
 
 #### Incorrect permissions to modify ####
 When the NRL resolves a DocumentReference through the relatesTo property before modifying its status the NRL should check that 
