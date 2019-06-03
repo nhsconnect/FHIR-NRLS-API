@@ -14,13 +14,13 @@ summary: Consumer requirements and guidance for record and document retrieval.
 
 Retrieval of documents/records is achieved through a HTTP GET request. See the [Retrieval Read Interaction](retrieval_interaction_read.html) page for details of the requirements for creating and sending a HTTP GET request for retrieval.
 
-### Interaction ID ###
+## Interaction ID ##
 
 Consumers MUST include an interaction ID in the HTTP Headers when performing a retrieval request via the SSP.
 
 The interaction ID for retrieving a record is specific to the record format code, which is included in the pointer meta-data. See [Retrieval Formats](retrieval_formats.html) for the mapping between format code and interaction ID. 
 
-### Provider ASID ###
+## Provider ASID ##
 
 Consumers MUST include the provider ASID in the SSP-To HTTP Header when performing a retrieval request via the SSP.
 

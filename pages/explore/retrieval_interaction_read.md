@@ -38,7 +38,7 @@ GET https://[proxy_server]/[record_url]</div>
 
 For pointers returned in a response to a search or read interaction, the record URL metadata attribute will contain the URL for retrieving the record via the SSP.
 
-Consumers and Providers MUST not pre-fix the Pointer url property with the SSP server url.
+Consumers and Providers MUST not pre-fix the Pointer URL property with the SSP server URL.
 
 ### SSP Headers ###
 The HTTP GET request must include a number of Spine specific HTTP headers:
@@ -50,7 +50,7 @@ The HTTP GET request must include a number of Spine specific HTTP headers:
 |`Ssp-To`|Provider's ASID|
 |`Ssp-InteractionID`|Spine's InteractionID|
 
-Please refer to the Spine Secure Proxy Implementation Guide for full technical details. 
+Please refer to the [Spine Secure Proxy Implementation Guide](https://developer.nhs.uk/apis/spine-core-1-0/ssp_overview.html) for full technical details. 
 
 Guidance on obtaining the interaction ID and provider ASID can be found on the [Consumer Guidance](retrieval_consumer_guidance.html#interaction-id) page.
 
