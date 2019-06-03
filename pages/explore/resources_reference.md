@@ -11,6 +11,8 @@ summary: "Developer Cheat Sheet shortcuts for the <br/>technical build of NRL AP
 
 ## 1. Profiles: ##
 
+{% include important.html content="The NRL DocumentReference profile has been updated and has also been renamed from <b>NRLS-DocumentReference-1</b> to <b>NRL-DocumentReference-1</b>." %}
+
 Links to the NRL FHIR profiles on the NHS FHIR Reference Server. 
 
 |Profile| Description |
@@ -71,6 +73,8 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 
 
 ## 3. ValueSets ##
+
+{% include important.html content="The NRL RecordType valueset has been renamed from <b>NRLS-RecordType-1</b> to <b>NRL-RecordType-1</b>." %}
 
 Links to the NRL FHIR value sets on the NHS FHIR Reference Server. 
 
