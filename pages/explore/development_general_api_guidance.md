@@ -170,6 +170,8 @@ The below table summarises the HTTP response code, along with the values to expe
 |-----------|----------------|------------|--------------|
 |400|error|invalid| INVALID_RESOURCE|
 
+{% include note.html content="Although not stated in the table above, the OperationOutcome that the NRL returns in these scenarios will include `Details.display` and `Diagnostics` detail that will aid in indentifiying which property this issue relates to." %}
+
 #### **Create and Supersede Invalid Resource Errors** ####
 
 The following scenarios relate to the [Create](api_interaction_create.html) and [Supersede](api_interaction_supersede.html) interactions (HTTP POST):
