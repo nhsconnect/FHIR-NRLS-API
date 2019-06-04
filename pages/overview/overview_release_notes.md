@@ -35,7 +35,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
   -	Developer Guidance 
       -	Overview page 
           -	NHS number verification guidance updated 
-          -	Actor to interation mapping table updated 
+          -	Actor to interaction mapping table updated 
       - FHIR Resource page 
           - Renamed
           - Additional data model properties detailed
@@ -45,9 +45,9 @@ summary: Summary release notes of the versions released in NRL API Implementatio
       -	General API Guidance 
           -	Error handling updates: 
               -	Invalid resource section re-structured
-              -	Added detail for the 'update iteration' errors
-              -	Added Patient mismatch errors added
-              -	Added masterIdentifier errors added
+              -	Added detail for the 'update interaction' errors
+              -	Added Patient mismatch errors
+              -	Added masterIdentifier errors
               -	Inactive DocumentReference guidance added
               -	New data model error handling details added
       -	*New API Feature*{:.label.label-info} Retrieval of Records/Documents Guidance now documented in a new section under Developer Guidance, which includes:
