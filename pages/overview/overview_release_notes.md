@@ -23,7 +23,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     - `Context.PracticeSetting`: now mandatory and persisted by NRL
     - `Context.Period`: now persisted by NRL
     - `Content.Format`: now mandatory and persisted by NRL
-    - `Content`: has new mandatory extenion of ContentStability (NRL-ContentStability-1)
+    - `Content`: has new mandatory extension of ContentStability (NRL-ContentStability-1)
     - `RelatesTo`: now limited to max of 1
     - `RelatesTo.Code`: now limited to single code of 'replaces'
   - FHIR Resource examples (JSON/XML)
