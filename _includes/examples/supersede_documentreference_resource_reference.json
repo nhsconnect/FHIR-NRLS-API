@@ -46,13 +46,9 @@
                 "creation": "2016-03-08T15:26:00+01:00"
             },
             "format": {
-                "coding": [
-                    {
-                        "system": "https://fhir.nhs.uk/STU3/CodeSystem/NRL-Format-1",
-                        "code": "direct:https://www.iso.org/standard/63534.html",
-                        "display": "Public PDF"
-                    }
-                ]
+                "system": "https://fhir.nhs.uk/STU3/CodeSystem/NRL-Format-1",
+                "code": "direct:https://www.iso.org/standard/63534.html",
+                "display": "PDF (Publicly accessible)"
             },
             "extension": {
                 "url": "https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1",

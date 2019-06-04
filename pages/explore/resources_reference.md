@@ -53,9 +53,9 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Record URL|`content.attachment.url`|uri|1..1|The location of the record on the Provider’s system and/ or a service that allows you to look up information based on the provider url e.g. web page with service contact details|
 |Record creation datetime|`content.attachment.creation`|dateTime|0..1|The date and time (on the Provider’s system) that the record was created. Note that this is an optional field and is meant to convey the concept of a static record.|
 |Record format|`content.format`|Coding|1..1|Describes the technical structure and rules of the record and it’s retrieval route|
-||`content.format.coding.system`|Uri|1..1|Identity of the terminology system|
-||`content.format.coding.code`|Code|1..1|Symbol in syntax defined by the system|
-||`content.format.coding.display`|String|1..1|Representation defined by the system|
+||`content.format.system`|Uri|1..1|Identity of the terminology system|
+||`content.format.code`|Code|1..1|Symbol in syntax defined by the system|
+||`content.format.display`|String|1..1|Representation defined by the system|
 |Record Stability|`content.extension:contentStability`|Extension|1..1|Record content extension|
 ||`content.extension:contentStability.url`|Uri|1..1|identifies the meaning of the extension|
 ||`content.extension:contentStability.`<br />`valueCodeableConcept`|CodeableConcept|1..1|Describes whether the record content at the time of the request is dynamically generated or is static|
