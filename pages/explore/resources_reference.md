@@ -45,7 +45,7 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Patient|`subject`|Reference|1..1|The Patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.| 
 |Record owner|`author`|Reference|1..1|ODS code for the record owner organization.|
 |Pointer owner|`custodian`|Reference|1..1|ODS code for the pointer owner organization.|
-|Related documents|`relatesTo`| BackboneElement| 0..*| Relationships to other documents|
+|Related documents|`relatesTo`| BackboneElement| 0..1| Relationships to other documents|
 ||`relatesTo.code`| Code| 1..1| The type of relationship between the documents. This element is mandatory if the *relatesTo* element is sent. Possible values are *replaces, transforms, signs, appends*.|
 ||`relatesTo.target`| Reference| 1..1| The Target of the relationship. This should contain the logical reference to the target DocumentReference held within the NRL using the identifier property of this [Reference Data Type](https://www.hl7.org/fhir/references.html#logical).|
 |Pointer referenced|`content`| BackboneElement| 1..*| Record referenced|

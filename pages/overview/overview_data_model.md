@@ -30,7 +30,7 @@ In order to support the Consumer and Provider interactions with the NRL the Poin
 |Record class|1..1|A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set|
 |Record URL|1..1|The location of the record on the Provider’s system|
 |Record mime type|1..1|Describes the format of the record such that the Consumer can pick an appropriate mechanism to handle the record. Without it the Consumer would be in the dark as to how to deal with the Record|
-|[Related Documents](pointer_maintenance.html)|0..*|Relationship to other documents|
+|[Related Documents](pointer_maintenance.html)|0..1|Relationship to other documents|
 |Record format|1..1|Describes the technical structure and rules of the record and it’s retrieval route|
 |Record stability|1..1|Describes whether the record content at the time of the request is dynamically generated or is static|
 |Record creation clinical setting|1..1|Describes where the content was created, in what clinical setting|
