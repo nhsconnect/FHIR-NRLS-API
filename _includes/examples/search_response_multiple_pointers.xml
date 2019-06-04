@@ -54,11 +54,9 @@
                         <creation value="2018-07-01T15:26:00+01:00"/>
                     </attachment>
                     <format>
-                        <coding>
-                            <system value="https://fhir.nhs.uk/STU3/CodeSystem/NRL-Format-1"/>
-                            <code value="direct:https://www.iso.org/standard/63534.html"/>
-                            <display value="PDF (Publicly accessible)"/>
-                        </coding>
+                        <system value="https://fhir.nhs.uk/STU3/CodeSystem/NRL-Format-1"/>
+                        <code value="direct:https://www.iso.org/standard/63534.html"/>
+                        <display value="PDF (Publicly accessible)"/>
                     </format>
                     <extension url="https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1">
                         <valueCodeableConcept>
@@ -143,11 +141,9 @@
                         <creation value="2018-07-02T11:25:00+01:00"/>
                     </attachment>
                     <format>
-                        <coding>
-                            <system value="https://fhir.nhs.uk/STU3/CodeSystem/NRL-Format-1"/>
-                            <code value="direct:https://www.iso.org/standard/63534.html"/>
-                            <display value="PDF (Publicly accessible)"/>
-                        </coding>
+                        <system value="https://fhir.nhs.uk/STU3/CodeSystem/NRL-Format-1"/>
+                        <code value="direct:https://www.iso.org/standard/63534.html"/>
+                        <display value="PDF (Publicly accessible)"/>
                     </format>
                     <extension url="https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1">
                         <valueCodeableConcept>
