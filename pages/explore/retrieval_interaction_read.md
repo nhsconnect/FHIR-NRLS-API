@@ -12,7 +12,7 @@ summary: Requirements and guidance for record and document retrieval Read Intera
 
 ## HTTP Request ##
 
-Retrieval of a referenced record is done through an [HTTP(S) GET request](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3) request to the record URL contained on the pointer.
+Retrieval of a referenced record is done through an [HTTP(S) GET](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3) request to the record URL contained on the pointer.
 
 The format metadata attributes on the pointer describe how to render the record. For example, whether the referenced content is a publicly accessible web page, an unstructured PDF document or specific FHIR profile. See [Retrieval Formats](retrieval_formats.html) for further detail.
 
