@@ -13,7 +13,7 @@ summary: Support formats for record and document retrieval
 ## Retrieval Formats ##
 
 
-The NRL supports retrieval of records and documents  in a range of formats, including both unstructured documents and structured data. 
+The NRL may support retrieval of records and documents in a range of formats, this could include both unstructured documents and structured data.
 
 The format of the referenced record is detailed in two meta-data fields:
  - Record format - describes the technical structure and the rules of the document/record and its retrieval route
@@ -36,6 +36,10 @@ The table below describes the formats that are currently supported:
 Please see the [format code value set](https://fhir.nhs.uk/STU3/ValueSet/NRL-FormatCode-1) for the list of codes to use. 
 
 Consumers and Providers SHOULD support PDF as a minimum.
+
+The prefix of `direct` in a Format code MUST be used for publicly accessible contact details only.
+
+{% include note.html content="Format codes related to profiles that support structured data are not currently listed in the above referenced valueset and table. These will be added in due course." %}
 
 Note that the NRL supports referencing multiple formats of a record document on a single pointer. 
 
