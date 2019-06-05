@@ -66,7 +66,9 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     -	*New API Feature*{:.label.label-info} RESTful 'read' by logical id now supported which returns a single DocumentReference resource
     -	*New API Feature*{:.label.label-info} RESTful 'update' now supported - using the HTTP PATCH verb
         -	HTTP PATCH supports update by logical id and master identifier
-    -	Create interaction page details additional error responses
+    -	Create interaction 
+        - Page details additional error responses
+        - *API Breaking Change*{:.label.label-danger} Format of Location response header has been changed to [baseUrl]/DocumentReference/[id]
     -	Delete interaction  
         -	*New API Feature*{:.label.label-info} Now supports RESTful delete by logical id i.e. DELETE [baseUrl]/DocumentReference/[id]
         -	Requirements have been moved into a single section
