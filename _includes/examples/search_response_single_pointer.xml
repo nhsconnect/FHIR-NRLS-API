@@ -1,13 +1,14 @@
-<Bundle xmlns="http://hl7.org/fhir">
+<Bundle
+    xmlns="http://hl7.org/fhir">
     <id value="dd9724d1-7b61-44e2-9023-b72e6b966018-76563212455590986546"/>
     <type value="searchset"/>
     <total value="1"/>
-    <link> 
-        <relation value="self"/> 
-        <url value="https://psis-sync.national.ncrs.nhs.uk/DocumentReference?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210"/> 
-    </link> 
+    <link>
+        <relation value="self"/>
+        <url value="https://psis-sync.national.ncrs.nhs.uk/DocumentReference?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210"/>
+    </link>
     <entry>
-        <fullUrl value="https://psis-sync.national.ncrs.nhs.uk/DocumentReference/0353e505-f7be-4c20-8f4e-337e79a32c51-76009894321256642261"/> 
+        <fullUrl value="https://psis-sync.national.ncrs.nhs.uk/DocumentReference/0353e505-f7be-4c20-8f4e-337e79a32c51-76009894321256642261"/>
         <resource>
             <DocumentReference>
                 <id value="0353e505-f7be-4c20-8f4e-337e79a32c51-76009894321256642261"/>
@@ -89,8 +90,8 @@
                 </context>
             </DocumentReference>
         </resource>
-        <search> 
-            <mode value="match"/>  
-        </search> 
+        <search>
+            <mode value="match"/>
+        </search>
     </entry>
 </Bundle>
