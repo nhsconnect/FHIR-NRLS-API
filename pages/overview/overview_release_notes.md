@@ -4,10 +4,110 @@ keywords: development, versioning
 tags: [development]
 sidebar: overview_sidebar
 permalink: overview_release_notes.html
-summary: Summary release notes of the versions released in NRLS API Implementation Guide
+summary: Summary release notes of the versions released in NRL API Implementation Guide
 ---
 
-{% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRLS API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
+{% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRL API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
+
+{% include note.html content="Starting from release 2.0.0-beta, all list items and their sub-lists are considered &quot;general changes&quot; unless otherwise stated. " %}
+
+## 2.0.0-beta ##
+*Changes to &quot;document&quot; record/document retrieval requirements, new API interactions, NRL DocumentReference model changes, and updated guidance.*
+  - The service name has changed from NRLS (National Record Locator Service) to NRL (National Record Locator)
+  - *API Breaking Change*{:.label.label-danger} The FHIR Resource NRLS-DocumentReference-1 uplifted to NRL-DocumentReference-1
+    - Data model changes are detailed below
+  - *API Breaking Change*{:.label.label-danger} Data model changes 
+    - `Class`: now mandatory and persisted by NRL
+    - `Type`: ValueSet URL changed from NRLS-RecordType-1 to NRL-RecordType-1
+    - `Context`: now mandatory
+    - `Context.PracticeSetting`: now mandatory and persisted by NRL
+    - `Context.Period`: now persisted by NRL
+    - `Content.Format`: now mandatory and persisted by NRL
+    - `Content`: has new mandatory extension of ContentStability (NRL-ContentStability-1)
+    - `RelatesTo`: now limited to max of 1
+    - `RelatesTo.Code`: now limited to single code of 'replaces'
+  - FHIR Resource examples (JSON/XML)
+    -	Source of FHIR Resource examples has been changed
+    -	FHIR Resource examples are now contained in a shorter scrollable code block
+  -	Assurance page
+    -	References to TOM have been changed to SCAL 
+    -	Links to the on-boarding guide have been added
+  -	Developer Guidance 
+      -	Overview page 
+          -	NHS number verification guidance updated 
+          -	Actor to interaction mapping table updated 
+      - FHIR Resource page 
+          - Renamed
+          - Additional data model properties detailed
+          - Additional valuesets, extensions, and codesystems added
+          -	Master Identifier added to identifiers section
+          -	The term 'Record Status' has changed to 'Pointer Status'
+      -	General API Guidance 
+          -	Error handling updates: 
+              -	Invalid resource section re-structured
+              -	Added detail for the 'update interaction' errors
+              -	Added Patient mismatch errors
+              -	Added masterIdentifier errors
+              -	Inactive DocumentReference guidance added
+              -	New data model error handling details added
+      -	*New API Feature*{:.label.label-info} Retrieval of Records/Documents Guidance now documented in a new section under Developer Guidance, which includes:
+          - An overview of retrieval
+          - Read interaction requirements
+          - Provider guidance
+          - Consumer guidance
+          - Pointer format code guidance
+  -	API Interactions
+    - Update interaction page has been renamed to 'Create (Supersede)'
+        -	*New API Feature*{:.label.label-info} 'Supersede' now supports supersede by logical id
+        -	Now details additional error responses
+        -	*API Breaking Change*{:.label.label-danger} A 'supersede' with multiple `relatesTo` properties will now be rejected
+        -	*API Breaking Change*{:.label.label-danger} A 'supersede' with a `relatesTo` property containing a code other than 'replaces' will be rejected
+        -	New 'Update interaction' page created, see below
+    -	*New API Feature*{:.label.label-info} RESTful 'read' by logical id now supported which returns a single DocumentReference resource
+    -	*New API Feature*{:.label.label-info} RESTful 'update' now supported - using the HTTP PATCH verb
+        -	HTTP PATCH supports update by logical id and master identifier
+    -	Create interaction 
+        - Page details additional error responses
+        - *API Breaking Change*{:.label.label-danger} Format of Location response header has been changed to [baseUrl]/DocumentReference/[id]
+    -	Delete interaction  
+        -	*New API Feature*{:.label.label-info} Now supports RESTful delete by logical id i.e. DELETE [baseUrl]/DocumentReference/[id]
+        -	Requirements have been moved into a single section
+    -	Search interaction  
+        -	Now only returns DocumentReference's that have a 'status' of current
+        -	DocumentReference's with a format code that indicates the referenced content is to be retrieved via the SSP will have its url property modified to reflect this.
+        -	These changes also apply to Read Interaction
+        -	Bundle response now includes additional attributes:
+            -	`Self link` added
+            -	`Search.mode` added
+            -	`Resource.fullUrl` added
+  -	Integrate with spine
+    -	Security page 
+        -	This page has been moved from Developer guidance to the Integrate with spine section
+        -	Overview section added
+        -	Further clarity on which protocols can be used
+        -	Updated the allowed cipher suite list
+        -	Guidance added for those that already have a NHS Digital supplied x509 certificate
+        -	Guidance document links have been fixed
+    -	Access Token and Audit page renamed to Access Token (Audit has moved to it's own page)
+    -	New audit page added
+    -	PDS Guidance updated
+    -	Authentication guidance and requirements updated to reflect content retrieval and related service name changes
+  - Pointer Guidance
+    -	More clarity on handling errors
+    -	More clarity on use of the master identifier property
+  -	Pointer Lifecycle
+    -	Removed reference to transition from "entered-in-error" to current
+    -	More clarity on meaning of each status
+    -	More guidance on deleting pointers
+  -	Pointer Maintenance
+    -	More clarity on what deleting pointers does
+    -	More clarity on handling lineages
+    -	Detailed the new 'update' and 'supersede' interactions
+  -	Solution
+    -	Data model updated to reflect DocumentReference changes detailed above
+    -	Clarity around caching data added
+
+
 ## 1.2.3-beta ##
 *Changes to restructure the Implementation Guide*.
 - `versionId` will be incremeted during a supersede transaction - Create API interaction updated to align with implementation.
@@ -50,7 +150,7 @@ summary: Summary release notes of the versions released in NRLS API Implementati
 
 ## 1.1.0-beta ##
 
-*Changes to re-align the NRLS API 1.1.0-beta Specification with the DDC March and May 2018 NRLS Service Development Iterations:*
+*Changes to re-align the NRL API 1.1.0-beta Specification with the DDC March and May 2018 NRL Service Development Iterations:*
 
 - Provider and Consumer API Read interaction removed.
 - Provider and Consumer API Search interaction changes:
@@ -70,20 +170,20 @@ summary: Summary release notes of the versions released in NRLS API Implementati
    - Successful Provider Create and Delete interactions now support positive response code values conveyed in the response body [Spine-OperationOutcome-1](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) payload:
      - RESOURCE_CREATED
      - RESOURCE_ DELETED
-   - Error Handling section updated to reflect API re-alignment with DDC NRLS Service implementation.
-   - Exceptions raised by the Spine Core common requesthandler and not the NRLS Service will be supported by the default Spine OperationOutcome [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to the default Spine valueSet [spine-response-code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0). Codes include:
+   - Error Handling section updated to reflect API re-alignment with DDC NRL Service implementation.
+   - Exceptions raised by the Spine Core common requesthandler and not the NRL Service will be supported by the default Spine OperationOutcome [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to the default Spine valueSet [spine-response-code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0). Codes include:
      - UNSUPPORTED_MEDIA_TYPE
 - Pagination removed from Provider and Consumer search API.
 - CapabilityStatement conformance functionality removed from this release.
-- For this release the NRLS Service returns data as the default format of `XML`. 
+- For this release the NRL Service returns data as the default format of `XML`. 
 - [NRLS-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1) FHIR profile upversioned to 1.1.0. Changes as follows:
   - [ValueSet-NRLS-RecordType-1](https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordType-1) replaces ValueSet/CarePlanType-1
   - ValueSet-NRLS-RecordType-1 supports a single SNOMED concept:  `736253002 - Mental health crisis plan (record artifact)`.
   - All NRLS-DocumentReference-1 API examples updated to support record type: `Mental health crisis plan (record artifact)`. 
 - [Solution Interactions](overview_interactions.html) diagrams updated.
-- NRLS access token (JWT) enhancements:
-  - The NRLS access token conforms to the Spine [JWT](https://nhsconnect.github.io/FHIR-SpineCore/security_jwt.html) definition.
-  - New section [Access Tokens and Audit (JWT)](integration_access_tokens_and_audit_JWT.html) added which replaces the Cross Organisation Audit & Provenance section.
+- NRL access token (JWT) enhancements:
+  - The NRL access token conforms to the Spine [JWT](https://nhsconnect.github.io/FHIR-SpineCore/security_jwt.html) definition.
+  - New section [Access Tokens and Audit (JWT)](integration_access_tokens_JWT.html) added which replaces the Cross Organisation Audit & Provenance section.
  - [Assurance Process](assure.html) overview added to specification.
 
 
@@ -122,7 +222,7 @@ Sprint 5 summary:
 - JWT Claims updated: 
   - 'device' claim added - this is the Identifier (ASID) of the system where the request originates. 
   - 'sub' claim specification/ example has been updated.
-- [Authentication and Autherisation](integration_authentication_authorisation.html) page added - NRLS strategic approach to align with 'Care Access Service' which will become NHS Digital’s national Authentication and Authorisation service. 
+- [Authentication and Autherisation](integration_authentication_authorisation.html) page added - NRL strategic approach to align with 'Care Access Service' which will become NHS Digital’s national Authentication and Authorisation service. 
 - JSON and XML examples added to [Reference](explore_reference.html#7-examples) section.
 
 ## 1.0.0-alpha ##
@@ -137,8 +237,8 @@ Sprint 4 summary:
 Sprint 3 summary:
 
 - Consumer and Provider APIs now support the 'patient' Search parameter. This replaces the 'subject' parameter.
-- Consumer and Provider APIs Search operations will not mandate the '_count' parameter. It is expected that the NRLS Server will support paging as a default to break up result-sets that exceed a pre-determined limit.
-- NRLS API Conformance updated.
+- Consumer and Provider APIs Search operations will not mandate the '_count' parameter. It is expected that the NRL Server will support paging as a default to break up result-sets that exceed a pre-determined limit.
+- NRL API Conformance updated.
 
 Sprint 3 early release summary:
 
@@ -157,14 +257,14 @@ Sprint 1 'internal' review feedback amendments include:
 
 - References to SDS removed
 - Solution principles changed to reflect that the Provider controls the Record retrieval mechanism strategy 
-- NRLS will not be fronted by SSP i.e. requests to read/write Pointers will not go through the SSP in order to reach NRLS
+- NRL will not be fronted by SSP i.e. requests to read/write Pointers will not go through the SSP in order to reach NRL
 
-First release of NRLS FHIR API (STU3) via https://nhsconnect.github.io/. 
+First release of NRL FHIR API (STU3) via https://nhsconnect.github.io/. 
 
 - Project follows the Gov.UK agile delivery phases.   
 
 ## 1.0.0-experimental ##
 
-First draft of NRLS DMS (Version 1.0 Draft A) created to support development of the Spine 2 POC National Record Locator Service interface.
+First draft of NRL DMS (Version 1.0 Draft A) created to support development of the Spine 2 POC National Record Locator interface.
 
 Published on [NHS Developer Network](https://data.developer.nhs.uk/fhir/nrls-v1-draft-a/Chapter.1.About/index.html).

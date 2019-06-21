@@ -1,0 +1,19 @@
+<OperationOutcome
+    xmlns="http://hl7.org/fhir">
+    <id value="5a4171ac-486e-11e8-9ffc-6c3be5a609f5-34326129638901216693"/>
+    <meta>
+        <profile value="https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1"/>
+    </meta>
+    <issue>
+        <severity value="error"/>
+        <code value="invalid"/>
+        <details>
+            <coding>
+                <system value="https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1"/>
+                <code value="INVALID_PARAMETER"/>
+                <display value="Invalid parameter"/>
+            </coding>
+        </details>
+        <diagnostics value="The given resource URL does not conform to the expected format - https://demographics.spineservices.nhs.uk/STU3/Patient/[NHS Number]"/>
+    </issue>
+</OperationOutcome>

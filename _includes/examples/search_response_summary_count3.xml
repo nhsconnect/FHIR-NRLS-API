@@ -1,0 +1,10 @@
+<Bundle
+    xmlns="http://hl7.org/fhir">
+    <id value="de258b7f-2f0b-4b41-afcb-964d9995fdf-98874345667801234356"/>
+    <type value="searchset"/>
+    <total value="3"/>
+    <link>
+        <relation value="self"/>
+        <url value="https://psis-sync.national.ncrs.nhs.uk/DocumentReference?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543214&amp;_summary=count"/>
+    </link>
+</Bundle> 

@@ -1164,7 +1164,7 @@ div.box.box1 {
     position: relative;
     top:0;
     left:0;
-    padding: 43px 0 18px 0;
+    padding: 43px 0 43px 0;
 }
 
 .github-sample-wrapper .github-sample-reference .author-info {
@@ -1192,10 +1192,26 @@ div.box.box1 {
     padding: 10px;
 }
 
-.github-sample-wrapper .highlight pre {
+.github-sample-wrapper .highlight pre  {
     margin-top: 5px;
+    margin-bottom:0;
     border-radius: 0;
 }
+
+.github-sample-wrapper.scroll-height-350 {
+    padding: 0 0 20px 0;
+}
+
+.github-sample-wrapper.scroll-height-350 figure.highlight pre code {
+   white-space: pre;
+}
+
+.github-sample-wrapper.scroll-height-350 figure.highlight pre {
+    max-height: 350px;
+    overflow: auto;
+    word-wrap: normal;
+}
+
 
 /*
  * Let's target IE to respect aspect ratios and sizes for img tags containing SVG files

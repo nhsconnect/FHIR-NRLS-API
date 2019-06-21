@@ -4,17 +4,17 @@ keywords: structured, rest, documentreference
 tags: [rest,fhir,api,noccprofile]
 sidebar: accessrecord_rest_sidebar
 permalink: api_interaction_search.html
-summary: To support parameterised search of the NRLS.
+summary: To support parameterised search of the NRL.
 ---
 
 {% include custom/search.warnbanner.html %}
 
-{% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
+{% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
 
 
 ## Search ##
 
-API to support parameterised search of the NRLS. This functionality is available for both consumer and provider systems.
+API to support parameterised search of the NRL. This functionality is available for both consumer and provider systems.
 
 ## Search Request Headers ##
 
@@ -25,7 +25,7 @@ Provider API search requests support the following HTTP request headers:
 | Header               | Value |Conformance |
 |----------------------|-------|-------|
 | `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](development_general_api_guidance.html#content-types) section. | MAY |
-| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Access Tokens and Audit (JWT)](integration_access_tokens_and_audit_JWT.html) for details. |  MUST |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Access Tokens (JWT)](integration_access_tokens_JWT.html) for details. |  MUST |
 | `fromASID`           | Client System ASID | MUST |
 | `toASID`             | The Spine ASID | MUST |
 
@@ -35,11 +35,11 @@ Provider API search requests support the following HTTP request headers:
 <div markdown="span" class="alert alert-success" role="alert">
 GET [baseUrl]/DocumentReference?[searchParameters]</div>
 
-Though the NRLS does not keep a version history of each DocumentReference each one does hold a versionId. 
+Though the NRL does not keep a version history of each DocumentReference each one does hold a versionId. 
 
-<!--Though the NRLS does not keep a version history of each DocumentReference each one does hold a versionId to support the NRLS update strategy. -->
+<!--Though the NRL does not keep a version history of each DocumentReference each one does hold a versionId to support the NRL update strategy. -->
 
-In responding to a search request the NRLS server will populate the versionId of each matching DocumentReference.
+In responding to a search request the NRL server will populate the versionId of each matching DocumentReference.
 
 ## Search Parameters ##
 
@@ -135,10 +135,12 @@ Success:
 
 - SHALL return a `200` **OK** HTTP status code on successful execution of the interaction.
 - SHALL return a `Bundle` of `type` searchset, containing either:
-    - One or more `documentReference` resource that conforms to the `NRLS-DocumentReference-1` profile; or
+    - One or more `documentReference` resource that conforms to the `NRL-DocumentReference-1` profile and has the status value "current"; or
     - A '0' (zero) total value indicating no record was matched i.e. an empty 'Bundle'.
 
-      {% include note.html content="The returned searchset bundle does NOT currently support: <br/> <br/> (1) the `self link`, which carries the encoded parameters that were actually used to process the search. <br/> <br/> (2) the identity of resources in the entry using the `fullUrl` element. <br/> <br/> (3) resources matched in a successful search using the `search.mode` element. <br/> <br/> NB: The NRLS Service will ONLY return an empty bundle if a Spine Clincals record exists and there is no DocumentReference for that specific Clinicals record." %}
+      {% include note.html content="The NRL Service will ONLY return an empty bundle if a Spine Clincals record exists and there is no DocumentReference for that specific Clinicals record." %}
+
+    <!--{% include note.html content="The returned searchset bundle does NOT currently support: <br/> <br/> (1) the `self link`, which carries the encoded parameters that were actually used to process the search. <br/> <br/> (2) the identity of resources in the entry using the `fullUrl` element. <br/> <br/> (3) resources matched in a successful search using the `search.mode` element. <br/> <br/> NB: The NRL Service will ONLY return an empty bundle if a Spine Clincals record exists and there is no DocumentReference for that specific Clinicals record." %}-->
 
  
 - Where a documentReference is returned, it SHALL include the versionId <!--and fullUrl--> of the current version of the documentReference resource
@@ -146,6 +148,8 @@ Success:
 - When a Consumer retrieves a DocumentReference if the masterIdentifier is set then it should be included in the returned DocumentReference
 
 - When a Consumer retrieves a DocumentReference if the relatesTo is set then it should be included in the returned DocumentReference
+
+{% include note.html content="Where a DocumentReference content.format property indicates the referenced resource should be retrieved via the SSP the NRL will automatically pre-fix the `content.attachment.url` property with the SSP server URL. For further detail, see [Retrieval Formats](retrieval_formats.html)." %}
 
 Failure: 
 
@@ -158,17 +162,11 @@ The following errors can be triggered when performing this operation:
 
 ## Example Scenario ##
 
-An authorised NRLS Consumer searches for a patient's relevant health record using the NRLS to discover potentially vital information to support a patient's emergency crisis care.
+An authorised NRL Consumer searches for a patient's relevant health record using the NRL to discover potentially vital information to support a patient's emergency crisis care.
 
 ### Request Query ###
 
 Return all DocumentReference resources (pointers) for a patient with a NHS Number of 9876543210. The format of the response body will be XML. 
-
-<!--Return all DocumentReference resources for a patient with a NHS Number of 9876543210 and a pointer provider ODS code of RR8. The format of the response body will be xml. -->
-
-
-<!--Return all DocumentReference resources for Patient with a NHS Number of 9876543210, and a record created date greater than or equal to 1st Jan 2010, and a record created date less than or equal to 31st Dec 2011, the format of the response body will be xml. Replace 'baseUrl' with the actual base Url of the FHIR Server.-->
-
 
 #### cURL ####
 
@@ -176,42 +174,57 @@ Return all DocumentReference resources (pointers) for a patient with a NHS Numbe
 
 #### Query Response Http Headers ####
 
-<script src="https://gist.github.com/swk003/1fb79ea938f6f5f984069819a29c2356.js"></script>
-
-
+```
+{% include /examples/search_response_headers %}
+```
 
 #### Query Response ####
 
 ##### **Single Pointer (DocumentReference) Returned:** ##### 
 
 - HTTP 200-Request was successfully executed
-- Bundle resource of type searchset containing a total value '1' DocumentReference resource that conforms to the `nrls-documentReference-1` profile.
+- Bundle resource of type searchset containing a total value '1' DocumentReference resource that conforms to the `NRL-DocumentReference-1` profile.
 
-<script src="https://gist.github.com/sufyanpat/19a6cb827895f327eb5232bcef85f2bf.js"></script>
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight XML %}
+{% include /examples/search_response_single_pointer.xml %}
+{% endhighlight %}
+</div>
 
 ##### **Multiple Pointers (DocumentReference) Returned:** ##### 
 
 - HTTP 200-Request was successfully executed
-- Bundle resource of type searchset containing a total value '2' DocumentReference resources that conform to the `nrls-documentReference-1` profile
+- Bundle resource of type searchset containing a total value '2' DocumentReference resources that conform to the `NRL-DocumentReference-1` profile
 
-<script src="https://gist.github.com/sufyanpat/b85394951c3df416e3001611238ffd3b.js"></script>
-
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight XML %}
+{% include /examples/search_response_multiple_pointers.xml %}
+{% endhighlight %}
+</div>
 
 ##### **No Record (pointer) Matched:** ##### 
 
 - HTTP 200-Request was successfully executed
 - Empty bundle resource of type searchset containing a '0' (zero) total value indicating no record was matched
 
-<script src="https://gist.github.com/sufyanpat/77cb0a918e4aa51381d3c1f8f43c508a.js"></script>
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight XML %}
+{% include /examples/search_response_empty.xml %}
+{% endhighlight %}
+</div>
 
 ##### **Error Response (OperationOutcome) Returned:** ##### 
 
 - HTTP 400-Bad Request. Invalid Parameter. 
 - OperationOutcome resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile if the search cannot be executed (not that there is no match)
 
-<script src="https://gist.github.com/sufyanpat/b4f88d059b4b63ffb2ad5ca3bd836172.js"></script>
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight XML %}
+{% include /examples/search_response_error.xml %}
+{% endhighlight %}
+</div>
 
-See Consumer Search section for all [HTTP Error response codes](api_consumer_documentreference.html#24-search-response) supported by Consumer Search API.
+See the [general API guidance](development_general_api_guidance.html#error-handling) for all HTTP Error response codes supported by the NRL.
 
 ##### **_summary=count response:** ##### 
 
@@ -221,39 +234,46 @@ only include the total number of matching DocumentReferences.
 
 Examples
 - 3 DocumentReferences exist for patient with NHS number passed into the search
-<script src="https://gist.github.com/sufyanpat/5fc773dc35a05fa3778639ff3ff3400a.js"></script>
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight XML %}
+{% include /examples/search_response_summary_count3.xml %}
+{% endhighlight %}
+</div>
 
 - 0 DocumentReferences exist for patient with NHS number passed into the search
-<script src="https://gist.github.com/sufyanpat/907afd0b118b2247f79d6c5a667e4487.js"></script>
-
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight XML %}
+{% include /examples/search_response_summary_count0.xml %}
+{% endhighlight %}
+</div>
 
 ## Code Examples ##
 
 ### GET Pointers with C# ###
 
-The following code samples are taken from the NRLS Demonstrator application which has both Consumer and Provider client implementations built in. More information about the design solution can be found
-on the [NRLS Demonstrator Wiki](https://github.com/nhsconnect/nrls-reference-implementation/wiki)
+The following code samples are taken from the NRL Demonstrator application which has both Consumer and Provider client implementations built in. More information about the design solution can be found
+on the [NRL Demonstrator Wiki](https://github.com/nhsconnect/nrls-reference-implementation/wiki)
 
 First we generate a base pointer request model that includes the patients NHS Number used for the subject parameter. 
 The NHS Number is obtained through a stub PDS Trace performed within the Demonstrator Consumer system.
 
-Then we call our DocumentReference service GetPointersBundle method which will build a GET command request and then start the call to the NRLS API.
+Then we call our DocumentReference service GetPointersBundle method which will build a GET command request and then start the call to the NRL API.
 
 <div class="github-sample-wrapper">
-{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.Services/Service/Nrls/PointerService.cs#L34-L36 %}
+{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.Services/Service/Nrls/PointerService.cs#L34-L36 %}
 {% highlight csharp %}
-{% github_sample /nhsconnect/nrls-reference-implementation/blob/master/Demonstrator/Demonstrator.Services/Service/Nrls/PointerService.cs 33 35 %}
+{% github_sample /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.Services/Service/Nrls/PointerService.cs 33 35 %}
 {% endhighlight %}
 </div>
 
-Once we have received pointers from the NRLS when then look up the custodian (and author) organisation details using the ODS Code's held within each pointer via a stub ODS lookup. We can then present actual organisation details to the end users.
+Once we have received pointers from the NRL when then look up the custodian (and author) organisation details using the ODS Code's held within each pointer via a stub ODS lookup. We can then present actual organisation details to the end users.
 
-<b>Calling the NRLS</b><br />
-Using our GET command request model we create a connection to the NRLS using HttpClient.
+<b>Calling the NRL</b><br />
+Using our GET command request model we create a connection to the NRL using HttpClient.
 
 You can view the common connection code example [here](connectioncode_example.html).
 
-<b>Explore the NRLS</b><br />
-You can explore and test the NRLS GET command using Swagger in our [Reference implementation](https://data.developer.nhs.uk/nrls-ri/index.html#/Nrls/searchPointers).
+<b>Explore the NRL</b><br />
+You can explore and test the NRL GET command using Swagger in our [Reference implementation](https://data.developer.nhs.uk/nrls-ri/index.html#/Nrls/searchPointers).
 
-{% include note.html content="The code in these examples is standard C# v7.2 taken direct from the [NRLS Demonstrator](https://nrls.digital.nhs.uk) code.<br /><br />The official <b>[.NET FHIR Library](https://ewoutkramer.github.io/fhir-net-api/)</b> is utilised to construct, test, parse and serialize FHIR models with ease." %}
+{% include note.html content="The code in these examples is standard C# v7.2 taken direct from the [NRL Demonstrator](https://nrls.digital.nhs.uk) code.<br /><br />The official <b>[.NET FHIR Library](https://ewoutkramer.github.io/fhir-net-api/)</b> is utilised to construct, test, parse and serialize FHIR models with ease." %}

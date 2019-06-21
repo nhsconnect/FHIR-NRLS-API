@@ -1,0 +1,19 @@
+<OperationOutcome
+    xmlns="http://hl7.org/fhir">
+    <id value="5a4171ac-486e-11e8-9ffc-6c3be5a609f5-34326129638901216693"/>
+    <meta>
+        <profile value="https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1"/>
+    </meta>
+    <issue>
+        <severity value="warning"/>
+        <code value="invalid"/>
+        <details>
+            <coding>
+                <system value="https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1"/>
+                <code value="BAD_REQUEST"/>
+                <display value="Bad Request"/>
+            </coding>
+        </details>
+        <diagnostics value="DocumentReference status is not 'current'"/>
+    </issue>
+</OperationOutcome>

@@ -1,5 +1,5 @@
-# FHIR-NRLS-API
-An API for storing and retrieving pointers to records and documents from the national record locator service. 
+# FHIR-NRL-API
+An API for storing and retrieving pointers to records and documents from the national record locator. 
 
 <p align="center">
   <a href="https://v4-alpha.getbootstrap.com">
@@ -7,10 +7,10 @@ An API for storing and retrieving pointers to records and documents from the nat
     <img src="images/logo.png">
   </a>
 
-  <h3 align="center">NRLS API</h3>
+  <h3 align="center">NRL API</h3>
 
   <p align="center">
-    Implementation Guide for creating the NRLS API
+    Implementation Guide for creating the NRL API
     <br>
     <a href="#"><strong>Visit the APIs &raquo;</strong></a>
   </p>
@@ -82,7 +82,7 @@ Editor preferences are available in the [editor config]() for easy use in common
 
 ## Community
 
-Get updates on NRLS APIs development and chat with the project maintainers and community members.
+Get updates on NRL APIs development and chat with the project maintainers and community members.
 
 Details to follow.
 <!--
@@ -93,7 +93,7 @@ Details to follow.
 
 ## Versioning
 
-For transparency into our release cycle and in striving to maintain backward compatibility, the NRLS API is maintained under [the Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
+For transparency into our release cycle and in striving to maintain backward compatibility, the NRL API is maintained under [the Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
 
 See [the Releases section of our GitHub project](https://github.com/nhsconnect/FHIR-NRLS-API/releases) for changelogs for each release version of Bootstrap. 
 

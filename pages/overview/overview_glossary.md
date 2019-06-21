@@ -100,8 +100,8 @@ N3
 NHSD
 : {{site.data.glossary.nhsd}}
 
-NRLS
-: {{site.data.glossary.nrls}}
+NRL
+: {{site.data.glossary.nrl}}
 
 ODS
 : {{site.data.glossary.ods}}

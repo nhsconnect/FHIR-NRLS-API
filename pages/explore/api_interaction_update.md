@@ -4,18 +4,19 @@ keywords: structured, update, rest, documentreference
 tags: [rest,fhir,api,noccprofile]
 sidebar: accessrecord_rest_sidebar
 permalink: api_interaction_update.html
-summary: To support the update of NRLS pointers
+summary: To support the update of NRL pointers
 ---
 
 {% include custom/search.warnbanner.html %}
 
-{% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
+{% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
 
 
 ## Update ##
 
-API to support the update of NRLS pointers. This functionality is only available for providers.
-The update functionality will be used in cases where a Provider wishes to deprecate the Document that the current DocumentReference points to and replace it with a new version.
+{% include important.html content="The Supersede interaction previously detailed on this page has been moved to the [Supersede Interaction](api_interaction_supersede.html) page." %}
+
+API to support the update of NRL pointers. This functionality is only available for providers. The update functionality will be used in cases where a Provider wishes to update a pointer status value, changing it from “current” to “entered-in-error”. 
 
 ## Update Request Headers ##
 
@@ -24,49 +25,88 @@ Provider API update requests support the following HTTP request headers:
 | Header               | Value |Conformance |
 |----------------------|-------|-------|
 | `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](development_general_api_guidance.html#content-types) section. | MAY |
-| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Access Tokens and Audit (JWT)](integration_access_tokens_and_audit_JWT.html) for details. |  MUST |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Access Tokens (JWT)](integration_access_tokens_JWT.html) for details. |  MUST |
 | `fromASID`           | Client System ASID | MUST |
 | `toASID`             | The Spine ASID | MUST |
 
 
 ## Update Operation ##
 
-Currently the API does not allow a true update i.e. the HTTP PUT verb is not supported. 
-At the moment the Provider can only update a DocumentReference’s status property. This is described below.
+Provider system will construct a [FHIRPath PATCH Parameters resource](https://www.hl7.org/fhir/STU3/fhirpatch.html) and submit this to NRL using the FHIR RESTful [patch](https://www.hl7.org/fhir/STU3/http.html#patch) interaction.
 
-### Update status Operation ###
+<div markdown="span" class="alert alert-success" role="alert">
+PATCH [baseUrl]/DocumentReference/[id]</div>
 
-The NRLS will only allow a provider to supersede a Pointer at the moment i.e. to transition a DocumentReference’s status from 
-current to superseded. No other [transitions](pointer_lifecycle.html) are supported at this time.
+The API supports the conditional update interaction which allows a provider to update a pointer using the masterIdentifier so they do not have to persist or query for the NRL generated logical id for the pointer. The query parameters should be used as shown:
 
-Note also that currently the NRLS will only attempt to interpret the first relatesTo element. Subsequent elements will be persisted as part of the containing DocumentReference but their contents will not be processed i.e. no attempt will be made to resolve the relatesTo.reference nor will any validation be applied to the code property. This behaviour is subject to change in future releases of the NRLS API.
+<div markdown="span" class="alert alert-success" role="alert">
+PATCH [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&amp;identifier=[system]%7C[value]</div>
 
-A Provider transitions an existing Pointer’s status from current to superseded as part of the act of creating its replacement. In effect the POSTing of a new DocumentReference provides a means to specify an existing DocumentReference whose status should be moved to superseded. Concretely this is achieved as follows –
+*[nhsNumber]* - The NHS number of the patient whose DocumentReferences the client is requesting
 
-1.	Provider assembles a new DocumentReference resource
-2.	Provider populates the relatesTo property with a new target element which holds  –
-	- an identifier that is the masterIdentifier of the existing DocumentReference
-	- the action code “replaces”
-3.	Provider POSTs the DocumentReference resource
-4.	NRLS will transactionally -
-	1. create the new DocumentReference marking it as current
-	2. resolve the existing DocumentReference using the relatesTo.target.identifer
-	3. mark that DocumentReference as superseded
+*[system]* - The namespace of the masterIdentifier value that is associated with the DocumentReference(s)
 
-### XML Example of a DocumentReference resource that supersedes an existing DocumentReference ###
+*[value]* - The value of the masterIdentifier that is associated with the DocumentReference(s)
 
-<script src="https://gist.github.com/sufyanpat/22bd1935648a7055f0836ed888917b85.js"></script>
+Providers systems SHALL only update pointers for records where they are the pointer owner (custodian).
+For all update requests the custodian ODS code in the DocumentReference resource SHALL be affiliated with the Client System ASID value in the fromASID HTTP request header sent to the NRL.
 
-### JSON Example of a DocumentReference resource that supersedes an existing DocumentReference ###
+The FHIRPath PATCH operation must be encoded in a Parameters resource as follows:
+- A single operation as a Parameter named "operation"
+- The single parameter has a series of mandatory parts, with required values as listed in the table below:
 
-<script src="https://gist.github.com/sufyanpat/fd3f828fe535299752632319257c43ce.js"></script>
+| Parameter | Type | Required Value |
+|-------|-------|-------|
+|`Type`|code|`replaces`|
+|`Path`|string|`DocumentReference.status`|
+|`Value`|string|`entered-in-error`|
+
+Any additional parameters included with the request will not be processed. Further detail on the validation of the Parameters resource can be found in the [error handling guidance](development_general_api_guidance.html#invalid-resource).
+
+XML and JSON eaxmples of the FHIRPath Parameters resource are shown below. 
+
+### XML FHIRPath PATCH Parameters resource ###
+
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight xml %}
+{% include /examples/patch_parameters_resource.xml %}
+{% endhighlight %}
+</div>
+
+### JSON FHIRPath PATCH Parameters resource ###
+
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight json %}
+{% include /examples/patch_parameters_resource.json %}
+{% endhighlight %}
+</div>
 
 ## Response ##
 
-Success and Failure:
+Success:
 
-See [Create Response](api_interaction_create.html#create-response) for the response behaviour and codes.
+- SHALL return a `200` **SUCCESS** HTTP status code on successful execution of the interaction and the entry has been successfully updated in the NRL.
+- SHALL return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Operation Outcome'](http://hl7.org/fhir/STU3/operationoutcome.html) core FHIR resource. See table below.
+- When a resource has been updated it will have a `versionId` of 2.
 
-## Code Examples ##
 
-Code examples about updating the pointer can be found [here](api_interaction_create.html#code-examples).
+{% include note.html content="The versionId is an integer that is assigned and maintained by the NRL server. When a new DocumentReference is created the server assigns it a versionId of 1. The versionId will be incremeted during an update or supersede transaction. <br/><br/> The NRL server will ignore any versionId value sent by a client in a create interaction. Instead the server will ensure that the newly assigned verionId adheres to the rules laid out above. 
+" %}
+
+The table summarises the `update` interaction HTTP response code and the values expected to be conveyed in the successful response body `OperationOutcome` payload:
+
+| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Details.Text |Diagnostics |
+|-----------|----------------|------------|--------------|-----------------|-------------------|
+|200|information|informational|RESOURCE_UPDATED|Resource has been updated| Spine message UUID |Successfully updated resource DocumentReference|
+
+{% include note.html content="Upon successful update of a pointer the NRL Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Update transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
+
+Failure: 
+
+The following errors can be triggered when performing this operation:
+
+- [Invalid Request Message](development_general_api_guidance.html#invalid-request-message)
+- [Invalid Resource](development_general_api_guidance.html#update-invalid-resource-errors)
+- [Invalid Parameter](development_general_api_guidance.html#parameters)
+- [Resource Not Found](development_general_api_guidance.html#resource-not-found)
+- [Inactive Document Reference](development_general_api_guidance.html#inactive-documentreference)

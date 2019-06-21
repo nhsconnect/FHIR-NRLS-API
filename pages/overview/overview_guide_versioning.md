@@ -70,7 +70,7 @@ The following pre-release labels will be used across all products:
 
 {% include todo.html content="The following table is published as a **work in progress** version and as such is subject to change and extension." %}
 
-Taking a similar approach to the [FHIR Maturity Model](http://wiki.hl7.org/index.php?title=FHIR_Maturity_Model){:target="_blank"} NRLS will only freeze / master a technical specification once it has been independently implemented in at least three commercial systems and demonstrated to interoperate.
+Taking a similar approach to the [FHIR Maturity Model](http://wiki.hl7.org/index.php?title=FHIR_Maturity_Model){:target="_blank"} NRL will only freeze / master a technical specification once it has been independently implemented in at least three commercial systems and demonstrated to interoperate.
 
 | Level | Version | Description | 
 |-------|---------|-------------| 
