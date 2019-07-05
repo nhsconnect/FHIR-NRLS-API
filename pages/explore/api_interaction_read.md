@@ -35,6 +35,13 @@ The read interaction allows a consumer or provider to retrieve a single pointer 
 <div markdown="span" class="alert alert-success" role="alert">
 GET [baseUrl]/DocumentReference/[id]</div>
 
+<div class="language-http highlighter-rouge">
+<pre class="highlight">
+<code><span class="err">GET [baseUrl]/DocumentReference/da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142
+</span></code>
+Read the DocumentReference resource for a pointer with the logical id of 'da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142'.</pre>
+</div>
+
 Note the status of the pointer must be "current" for the pointer to be retrieved. 
 
 ## Read Response ##

@@ -37,10 +37,24 @@ Provider system will construct a [FHIRPath PATCH Parameters resource](https://ww
 <div markdown="span" class="alert alert-success" role="alert">
 PATCH [baseUrl]/DocumentReference/[id]</div>
 
+<div class="language-http highlighter-rouge">
+<pre class="highlight">
+<code><span class="err">PATCH [baseUrl]/DocumentReference/da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142
+</span></code>
+Update the DocumentReference resource status for a pointer with the logical id of 'da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142'.</pre>
+</div>
+
 The API supports the conditional update interaction which allows a provider to update a pointer using the masterIdentifier so they do not have to persist or query for the NRL generated logical id for the pointer. The query parameters should be used as shown:
 
 <div markdown="span" class="alert alert-success" role="alert">
 PATCH [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&amp;identifier=[system]%7C[value]</div>
+
+<div class="language-http highlighter-rouge">
+<pre class="highlight">
+<code><span class="err">PATCH [baseUrl]/DocumentReference?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210&identifier=urn:ietf:rfc:3986%7Curn:oid:1.3.6.1.4.1.21367.2005.3.71
+</span></code>
+Update the DocumentReference resource status for a pointer with a subject and identifier.</pre>
+</div>
 
 *[nhsNumber]* - The NHS number of the patient whose DocumentReferences the client is requesting
 

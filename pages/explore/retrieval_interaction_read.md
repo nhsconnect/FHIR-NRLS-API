@@ -36,6 +36,13 @@ Where a record is to be secured via the SSP, the NRL will pre-fix the Pointer UR
 <div markdown="span" class="alert alert-success" role="alert">
 GET https://[proxy_server]/[record_url]</div>
 
+<div class="language-http highlighter-rouge">
+<pre class="highlight">
+<code><span class="err">GET https://[proxy_server]/https%3A%2F%2Fp1.nhs.uk%2FMentalHealthCrisisPlans%2Fda2b6e8a-3c8f-11e8-baae-6c3be5a609f5
+</span></code>
+Read a Mental Health Crisis Plan with the logical id of 'da2b6e8a-3c8f-11e8-baae-6c3be5a609f5' from a Provider system located at 'https://p1.nhs.uk' via the Spine Secure Proxy.</pre>
+</div>
+
 For pointers returned in a response to a search or read interaction, the record URL metadata attribute will contain the URL for retrieving the record via the SSP.
 
 Consumers and Providers MUST not pre-fix the Pointer URL property with the SSP server URL.
