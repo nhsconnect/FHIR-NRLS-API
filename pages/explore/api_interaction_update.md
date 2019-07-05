@@ -75,7 +75,7 @@ The FHIRPath PATCH operation must be encoded in a Parameters resource as follows
 |`Path`|string|`DocumentReference.status`|
 |`Value`|string|`entered-in-error`|
 
-Any additional parameters included with the request will not be processed. Further detail on the validation of the Parameters resource can be found in the [error handling guidance](development_general_api_guidance.html#invalid-resource).
+Only the first parameter within the Parameters resource will be used to perform a PATCH. Any additional parameters included within the request will not be processed. Further detail on the validation of the Parameters resource can be found in the [error handling guidance](development_general_api_guidance.html#invalid-resource).
 
 XML and JSON eaxmples of the FHIRPath Parameters resource are shown below. 
 
