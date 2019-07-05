@@ -71,7 +71,7 @@ The FHIRPath PATCH operation must be encoded in a Parameters resource as follows
 
 | Parameter | Type | Required Value |
 |-------|-------|-------|
-|`Type`|code|`replaces`|
+|`Type`|code|`replace`|
 |`Path`|string|`DocumentReference.status`|
 |`Value`|string|`entered-in-error`|
 
