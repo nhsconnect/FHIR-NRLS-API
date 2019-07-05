@@ -30,25 +30,18 @@ Provider API create requests support the following HTTP request headers:
 
 ## Create Operation ##
 
-Provider system will construct a new Pointer (DocumentReference) and submit this to NRL using the FHIR RESTful [create](https://www.hl7.org/fhir/http.html#create) interaction.
-
 <div markdown="span" class="alert alert-success" role="alert">
 POST [baseUrl]/DocumentReference</div>
 
+Provider systems:
 
-Providers systems SHALL only create pointers for records where they are the pointer owner (custodian). 
+- SHALL construct and send a new Pointer (DocumentReference) resource that conforms to the NRL-DocumentReference-1 profile and submit this to NRL using the FHIR RESTful [create](https://www.hl7.org/fhir/http.html#create) interaction.
+- SHALL include the URI of the NRL-DocumentReference-1 profile StructureDefinition in the DocumentReference.meta.profile element of the DocumentReference resource.
+- SHALL include all of the mandatory data-elements contained in the `NRL-DocumentReference-1` profile when constructing a DocumentReference. The mandatory data-elements are detailed on the [Developer FHIR Resource](explore_reference.html#2-nrl-data-model-to-fhir-profile-mapping) page.
+- SHALL only create pointers for records where they are the pointer owner (custodian). 
 
 For all create requests the `custodian` ODS code in the DocumentReference resource SHALL be affiliated with the `Client System ASID` value in the `fromASID` HTTP request header sent to the NRL.
 
-
-<p>In addition to the base mandatory data-elements, the following data-elements are also mandatory:</p>
-
-- The `type` data-element MUST be included in the payload request.
-
-<!--
-<p>All requests SHALL contain a valid ‘Authorization’ header and SHALL contain an ‘Accept’ header. </p>
-<p>The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>.</p>
--->
 
 ### XML Example of a new DocumentReference resource (pointer) ###
 
