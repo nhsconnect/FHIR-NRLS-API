@@ -38,7 +38,7 @@ As the diagram depicts, the step by step process end-to-end for retrieving a rec
     
     `https://testspineproxy.nhs.uk/https%3A%2F%2Fprovider.thirdparty.nhs.uk%2FAB1%2FStatic%2Fc1cd026e-e06b-4121-bb08-a3cb8f53c58b`
     
-    *The URL property in this example is pre-fixed with the URL to the SSP which will ensure that the request goes via the SSP and that all necessary security checks are performed on the request.*
+    *The URL property in this example is pre-fixed with the URL to the SSP which will ensure that the request goes via the SSP and that all necessary security checks are performed on the request. The SSP base url pre-fix is added by the Consumer system. For further detail, see the [Retrieval Read](retrieval_interaction_read.html#retrieval-via-the-ssp) interaction page.*
 
 4.	Consumer [system] sends the request to the Provider system.	
 5.	Request sent by the Consumer goes through the SSP where security checks are performed

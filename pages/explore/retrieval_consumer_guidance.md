@@ -14,11 +14,17 @@ summary: Consumer requirements and guidance for record and document retrieval.
 
 Retrieval of documents/records is achieved through a HTTP GET request. See the [Retrieval Read Interaction](retrieval_interaction_read.html) page for details of the requirements for creating and sending a HTTP GET request for retrieval.
 
+## Requests via the SSP ##
+
+Where a document/record is to be retrieved via the SSP the Consumer MUST pre-fix the `content.attachment.url` property, taken from an NRL pointer, with the SSP server URL. For further details, see the [Retrieval Read](retrieval_interaction_read.html#retrieval-via-the-ssp) interaction page.
+
 ## Interaction ID ##
 
 Consumers MUST include an interaction ID in the HTTP Headers when performing a retrieval request via the SSP.
 
-The interaction ID for retrieving a record is specific to the record format code, which is included in the pointer meta-data. See [Retrieval Formats](retrieval_formats.html) for the mapping between format code and interaction ID. 
+The interaction ID for retrieving a record referenced in an NRL pointer is specific to the NRL service and is as follows:
+
+`urn:nhs:names:services:nrls:SSPExternalClinical.read`
 
 ## Provider ASID ##
 

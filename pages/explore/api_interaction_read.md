@@ -51,7 +51,9 @@ Success:
 - SHALL return a `200` **SUCCESS** HTTP status code on successful execution of the interaction.
 - SHALL return a response body containing a DocumentReference resource which conforms to the ['NRL-DocumentReference-1'](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) profile and has the status "current".
 
-{% include note.html content="Where a DocumentReference content.format property indicates the referenced resource should be retrieved via the SSP the NRL will automatically pre-fix the content.attachment.url property with the SSP server url. For further detail, see [Retrieval Formats](retrieval_formats.html)." %}
+<!--
+{% include note.html content="When a document/record is to be retrieved via the SSP then the Consumer MUST pre-fix the `content.attachment.url` property with the SSP server URL. For further details, see the [Retrieval Read](retrieval_interaction_read.html#retrieval-via-the-ssp) interaction page." %}
+-->
 
 Example Successful Response:
 

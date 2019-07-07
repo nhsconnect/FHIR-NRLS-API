@@ -145,11 +145,12 @@ Success:
  
 - Where a documentReference is returned, it SHALL include the versionId <!--and fullUrl--> of the current version of the documentReference resource
 
-- When a Consumer retrieves a DocumentReference if the masterIdentifier is set then it should be included in the returned DocumentReference
+- When a Consumer retrieves a DocumentReference if the masterIdentifier is set then it SHOULD be included in the returned DocumentReference
 
-- When a Consumer retrieves a DocumentReference if the relatesTo is set then it should be included in the returned DocumentReference
-
-{% include note.html content="Where a DocumentReference content.format property indicates the referenced resource should be retrieved via the SSP the NRL will automatically pre-fix the `content.attachment.url` property with the SSP server URL. For further detail, see [Retrieval Formats](retrieval_formats.html)." %}
+- When a Consumer retrieves a DocumentReference if the relatesTo is set then it SHOULD be included in the returned DocumentReference
+<!--
+- When a document/record is to be retrieved via the SSP then the Consumer MUST pre-fix the `content.attachment.url` property with the SSP server URL. For further details, see the [Retrieval Read](retrieval_interaction_read.html#retrieval-via-the-ssp) interaction page." %}
+-->
 
 Failure: 
 

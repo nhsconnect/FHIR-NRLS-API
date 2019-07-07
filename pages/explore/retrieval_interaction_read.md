@@ -16,7 +16,7 @@ Retrieval of a referenced record is done through an [HTTP(S) GET](https://www.w3
 
 The format metadata attributes on the pointer describe how to render the record. For example, whether the referenced content is a publicly accessible web page, an unstructured PDF document or specific FHIR profile. See [Retrieval Formats](retrieval_formats.html) for further detail.
 
-Where the format code indicates that the record is secured via proxy, retrieval requests should be made through the SSP. See the section below for details on assembling the HTTP(S) request to the SSP.
+Where the pointer meta-data indicates that the record is secured via proxy, retrieval requests should be made through the SSP. See the section below for details on assembling the HTTP(S) request to the SSP.
 
 HTTP requests SHOULD NOT require custom headers (excluding those required for requests via the SSP) or any additional parameters to be passed in the URL. Custom headers and additional parameters MAY be supported but SHOULD be optional.
 
@@ -29,9 +29,15 @@ The act of sending a request via the SSP is not an automatically adopted mechani
 Retrieval requests via proxy are secured and audited by the SSP. For full technical details, see the [SSP specification](https://developer.nhs.uk/apis/spine-core-1-0/ssp_overview.html).
 
 ### SSP URL ###
-The format code value on the Pointer model also indicates whether the retrieval request should be via proxy (SSP) or not. See [Retrieval Formats](retrieval_formats.html) for further detail.
 
-Where a record is to be secured via the SSP, the NRL will pre-fix the Pointer URL property with the proxy server URL as follows:
+The pointer meta-data will indicate where a document/record is to be securely retrieved via the SSP when:
+
+1. the `content.format` code property does not indicate that the referenced resource is `contact details`, and when
+2. the `content.extension:retrievalRoute` property either:-
+  * does not exist, or
+  * does exist and explicitly states the SSP as the retrieval route
+  
+Where a document/record is to be retrieved via the SSP then Consumers MUST pre-fix the `content.attachment.url` property with the SSP server URL as follows:
 
 <div markdown="span" class="alert alert-success" role="alert">
 GET https://[proxy_server]/[record_url]</div>
@@ -43,12 +49,16 @@ GET https://[proxy_server]/[record_url]</div>
 Read a Mental Health Crisis Plan with the logical id of 'da2b6e8a-3c8f-11e8-baae-6c3be5a609f5' from a Provider system located at 'https://p1.nhs.uk' via the Spine Secure Proxy.</pre>
 </div>
 
-For pointers returned in a response to a search or read interaction, the record URL metadata attribute will contain the URL for retrieving the record via the SSP.
+See [Retrieval Formats](retrieval_formats.html) for further detail.
 
-Consumers and Providers MUST not pre-fix the Pointer URL property with the SSP server URL.
+Providers MUST not pre-fix the Pointer URL property with the SSP server URL.
+
+#### Obtaining the SSP base url ####
+
+[ADD CONTENT HERE]
 
 ### SSP Headers ###
-The HTTP GET request must include a number of Spine specific HTTP headers:
+The HTTP GET request MUST include a number of Spine specific HTTP headers:
 
 |Header|Value|
 |------------------|---------------------------|
@@ -56,6 +66,7 @@ The HTTP GET request must include a number of Spine specific HTTP headers:
 |`Ssp-From`|Consumer's ASID|
 |`Ssp-To`|Provider's ASID|
 |`Ssp-InteractionID`|Spine's InteractionID|
+
 
 Please refer to the [Spine Secure Proxy Implementation Guide](https://developer.nhs.uk/apis/spine-core-1-0/ssp_overview.html) for full technical details. 
 
@@ -67,6 +78,6 @@ The headers must be returned in the response to the SSP for auditing purposes.
 
 Systems that interaction with the SSP MUST meet the secure connection requirements of the SSP.
 
-Consumer systems will ensure that users are authenticated and authorised, using an appropriate access control mechanism, before retrieving records and documents. HTTP(S) requests to the SSP for retrieving records and documents will include an access token (JWT) which can be used in Provider systems for auditing purposes. Providers are not required to perform any further authentication or authorisation. 
+Consumer systems SHALL ensure that users are authenticated and authorised, using an appropriate access control mechanism, before retrieving records and documents. HTTP(S) requests to the SSP for retrieving records and documents will include an access token (JWT) which can be used in Provider systems for auditing purposes. Providers are not required to perform any further authentication or authorisation. 
 
 Further detail can be found on the [Authentication &amp; Authorisation](integration_authentication_authorisation.html) page.
