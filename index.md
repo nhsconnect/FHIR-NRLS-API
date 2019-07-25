@@ -35,17 +35,24 @@ Proving the success of such integrations in Phase 1 will allow all records held 
 
 
 # Phases #
-## Phase One – Alpha / Beta ##
-Phase one aims to provide:
-- Access to 4 Ambulance Trusts
-- Access to 5 Mental Health Trusts
+## Phase One – Alpha / Beta (Live November 2018) ##
+- 4 Ambulance Trusts
+- 5 Mental Health Trusts
 - Connection to Shared Care Record initiatives in Lancashire and Cheshire
-- An agreed tactical IG model
-- Support for STPs and GDEs
+- Summary Care Record application (SCRa) as a national portal for accessing NRL
+- Access to pointers to Mental Health Crisis Plans
+- Sharing contact details for Mental Health Crisis Teams
+- Providing cross-border interoperability
 
 ## Phase Two – NHS Implementation ##
- In Phase two: 
-- The NRL will be accessible to ALL authorised users
-- Fast followers will begin accessing the NRL
-- Additional Shared Care Record initiatives to provide / consume the NRL
-- NRL intends to link up a minimum of two Local Health Care Record Exemplars (LHCRE) through NRL
+- Secured retrieval of records and documents
+- Existing Mental Health Trusts to publish more pointers
+- Existing Ambulance Services to increase use of NRL
+- Onboarding new Ambulance Trusts
+- Onboarding new Mental Health Trusts
+- Working in partnership with Local Health Care Record Exemplars (LHCRE)
+- Integration with NHS Identity, enabling biometric authentication
+- Direct integration with Ambulance systems
+- An IG model to support national sharing
+- Pointers published for Healthy Child records
+- Pointers published for Maternity records
