@@ -24,7 +24,7 @@ In order to support the Consumer and Provider interactions with the NRL the Poin
 |Pointer indexed datetime|0..1|Assigned by the NRL at creation time. The date and time that the pointer was created.|
 |[Master Identifier](pointer_identity.html)|0..1|The masterIdentifier is the identifier of the document as assigned by the source of the document. It is version specific – i.e. a new one is required if the document is updated. It is an optional field, providers do not have to supply a value.|
 |[Pointer Status](pointer_lifecycle.html)|1..1|The status of the pointer|
-|Patient|1..1|The Patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.|
+|Patient|1..1|The NHS number of the patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.|
 |Pointer owner|1..1|The entity who maintains the Pointer. Used to control which systems can modify the Pointer|
 |Record owner|1..1|The entity who maintains the Record. Used to provide the Consumer with context around who they will be interacting with if retrieving the Record.|
 |Record class|1..1|A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set|

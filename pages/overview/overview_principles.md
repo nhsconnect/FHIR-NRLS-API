@@ -53,10 +53,10 @@ The purpose of an indirect Pointer is to provide a lower maturity Provider with 
 
 ### The Consumer controls Pointer access ###
 
-When a Consumer requests that the NRL return the Pointers that it has for a given patient it will return all Pointers. The NRL will not perform any filtering before sending that collection of Pointers back to the Consumer. 
+When a Consumer requests that the NRL return the Pointers that it has for a given patient (NHS number) it will return all Pointers. The NRL will not perform any filtering before sending that collection of Pointers back to the Consumer. 
 
 Once consequence of this is that the end user on the Consumer side may be exposed to Pointers that reveal sensitive information about the Patient, for example it will be possible to infer through a Pointer that a Patient has a certain kind of record. Even though the user may not be able to retrieve the Record, knowing that it exists is in itself revealing a degree of personal information about that patient that may not be appropriate. 
-With this in mind it is acknowledged that there is most likely going to be a need to filter Pointers before they are displayed to the end user. This responsibility is seen as belonging to the Consumer where local access rules will be used to judge whether or not a given user should be permitted to know that a given Pointer exists.
+With this in mind it is acknowledged that there is most likely going to be a need to filter Pointers before they are displayed to the end user. This responsibility is seen as belonging to the Consumer where local access rules will be used to judge whether or not a given user should be permitted to know that a given Pointer exists. This is in addition to the RBAC requirements for NRL (see the [Authentication & Authorisation page](integration_authentication_authorisation.html)).
 
 The mechanism for making this decision is predicated on the [Record type](overview_data_model.html#data-model) that the Pointer references. 
 

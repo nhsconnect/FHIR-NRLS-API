@@ -54,7 +54,7 @@ Search for all records for a patient. Fetches a bundle of all `DocumentReference
     <td><code class="highlighter-rouge">reference</code></td>
     <td>Who/what is the subject of the document</td>
     <td>SHOULD</td>
-    <td>DocumentReference.subject<br>(Patient)</td>
+    <td>DocumentReference.subject<br>(Patient NHS Number)</td>
 </tr>
 <tr>
     <td><code class="highlighter-rouge">period</code></td>

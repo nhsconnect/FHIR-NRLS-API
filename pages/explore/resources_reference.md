@@ -37,7 +37,7 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 ||`masterIdentifier.system`|Uri|1..1|The namespace for the identifier. This element must be completed if the masterIdentifier is to be included.|
 ||`masterIdentifier.value`|String|1..1| The unique value of the identifier. This element must be completed if the masterIdentifier is to be included.|
 |Pointer Status|`status`| Code| 1..1| The status of the pointer|
-|Patient|`subject`|Reference|1..1|The Patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.| 
+|Patient|`subject`|Reference|1..1|The NHS number of the patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.| 
 |Pointer owner|`custodian`|Reference|1..1|ODS code for the pointer owner organization.|
 |Record owner|`author`|Reference|1..1|ODS code for the record owner organization.|
 |Record Class|`class`|CodeableConcept|1..1|A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set|
@@ -117,8 +117,8 @@ NRL supported URI's:
 | identifier | URI | Comment |
 |--------------------------------------------|----------|----|
 | `Logical ID` | [baseurl]/DocumentReference/[id] | Pointer identifier |
-| `Patient` | https://demographics.spineservices.nhs.uk/STU3/Patient/[NHS Number] | Patient |
-| `Organization` | https://directory.spineservices.nhs.uk/STU3/Organization/[ODS Code] | Record author or record owner |
+| `Patient` | https://demographics.spineservices.nhs.uk/STU3/Patient/[NHS Number] | Patient NHS Number |
+| `Organisation` | https://directory.spineservices.nhs.uk/STU3/Organization/[ODS Code] | Record author or record owner ODS code |
 | `Master Identifier` | Identifier=[system]%7C[value] | Pointer local/business indentifier |
 
 {% include warning.html content="The URI's on subdomain `spineservices.nhs.uk` are currently not resolvable, however this will change in the future where references relate to FHIR endpoints in our national systems." %}

@@ -87,16 +87,16 @@ In responding to a search request the NRL server will populate the versionId of 
 <tr>
     <td><code class="highlighter-rouge">custodian</code></td>
     <td><code class="highlighter-rouge">reference</code></td>
-    <td>Organization which maintains the document reference</td>
+    <td>Organisation which maintains the document reference</td>
     <td>MAY</td>
-    <td>DocumentReference.custodian(Organization)</td>
+    <td>DocumentReference.custodian<br>(Organisation ODS Code)</td>
 </tr>
 <tr>
     <td><code class="highlighter-rouge">subject</code></td>
     <td><code class="highlighter-rouge">reference</code></td>
     <td>Who/what is the subject of the document</td>
     <td>SHOULD</td>
-    <td>DocumentReference.subject<br>(Patient)</td>
+    <td>DocumentReference.subject<br>(Patient NHS Number)</td>
 </tr>
 <tr>
     <td><code class="highlighter-rouge">type</code></td>
