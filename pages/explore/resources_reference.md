@@ -29,39 +29,25 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Data Item|FHIR Element|Data Type|Card|Description|
 |----|---------|----|-----------|-----|
 |Identifier|`id`|string|0..1|Assigned by the NRL at creation time. Uniquely identifies this record within the NRL. Used by Providers to update or delete.|
+|Profile|`meta.profile`|uri|0..1|The URI of the FHIR profile that the resource conforms to.|
 |Version|`meta.versionId`|string|0..1|Assigned by the NRL at creation or update time. Used to track the current version of a Pointer.|
+|Pointer last updated datetime|`meta.lastUpdated`|datetime|0..1|Assigned by the NRL at creation and update time. The date and time that the pointer was last updated.|
+|Pointer indexed datetime|`indexed`|datetime|0..1|Assigned by the NRL at creation time. The date and time that the pointer was created.|
 |Master Identifier|`masterIdentifier`|Identifier|0..1|The masterIdentifier is the identifier of the document as assigned by the source of the document. It is version specific – i.e. a new one is required if the document is updated. It is an optional field, providers do not have to supply a value.|
 ||`masterIdentifier.system`|Uri|1..1|The namespace for the identifier. This element must be completed if the masterIdentifier is to be included.|
 ||`masterIdentifier.value`|String|1..1| The unique value of the identifier. This element must be completed if the masterIdentifier is to be included.|
 |Pointer Status|`status`| Code| 1..1| The status of the pointer|
-|Record type|`type`|CodeableConcept|1..1|The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers.|
-||`type.coding.system`|Uri|1..1|Example Value: http://snomed.info/sct.|
-||`type.coding.code`|Code|1..1|Symbol in syntax defined by the system. Example Value: 736253002|
-||`type.coding.display`|String|1..1|Representation defined by the system.|
+|Patient|`subject`|Reference|1..1|The Patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.| 
+|Pointer owner|`custodian`|Reference|1..1|ODS code for the pointer owner organization.|
+|Record owner|`author`|Reference|1..1|ODS code for the record owner organization.|
 |Record Class|`class`|CodeableConcept|1..1|A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set|
 ||`class.coding.system`|Uri|1..1|Identity of the terminology system|
 ||`class.coding.code`|Code|1..1|Symbol in syntax defined by the system|
 ||`class.coding.display`|String|1..1|Representation defined by the system|
-|Patient|`subject`|Reference|1..1|The Patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.| 
-|Record owner|`author`|Reference|1..1|ODS code for the record owner organization.|
-|Pointer owner|`custodian`|Reference|1..1|ODS code for the pointer owner organization.|
-|Related documents|`relatesTo`| BackboneElement| 0..1| Relationships to other documents|
-||`relatesTo.code`| Code| 1..1| The type of relationship between the documents. This element is mandatory if the *relatesTo* element is sent. Possible values are *replaces, transforms, signs, appends*.|
-||`relatesTo.target`| Reference| 1..1| The Target of the relationship. This should contain the logical reference to the target DocumentReference held within the NRL using the identifier property of this [Reference Data Type](https://www.hl7.org/fhir/references.html#logical).|
-|Pointer referenced|`content`| BackboneElement| 1..*| Record referenced|
-|Record mime type|`content.attachment.contentType`|code|1..1|Describes the format of the record such that the Consumer can pick an appropriate mechanism to handle the record. Without it the Consumer would be in the dark as to how to deal with the Record|
-|Record URL|`content.attachment.url`|uri|1..1|The location of the record on the Provider’s system and/ or a service that allows you to look up information based on the provider url e.g. web page with service contact details|
-|Record creation datetime|`content.attachment.creation`|dateTime|0..1|The date and time (on the Provider’s system) that the record was created. Note that this is an optional field and is meant to convey the concept of a static record.|
-|Record format|`content.format`|Coding|1..1|Describes the technical structure and rules of the record and it’s retrieval route|
-||`content.format.system`|Uri|1..1|Identity of the terminology system|
-||`content.format.code`|Code|1..1|Symbol in syntax defined by the system|
-||`content.format.display`|String|1..1|Representation defined by the system|
-|Record Stability|`content.extension:contentStability`|Extension|1..1|Record content extension|
-||`content.extension:contentStability.url`|Uri|1..1|identifies the meaning of the extension|
-||`content.extension:contentStability.`<br />`valueCodeableConcept`|CodeableConcept|1..1|Describes whether the record content at the time of the request is dynamically generated or is static|
-||`content.extension:contentStability.`<br />`valueCodableConcept.coding.system`|Uri|1..1|Identity of the terminology system|
-||`content.extension:contentStability.`<br />`valueCodableConcept.coding.code`|Code|1..1|Symbol in syntax defined by the system|
-||`content.extension:contentStability.`<br />`valueCodableConcept.coding.display`|String|1..1|Representation defined by the system|
+|Record type|`type`|CodeableConcept|1..1|The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers.|
+||`type.coding.system`|Uri|1..1|Example Value: http://snomed.info/sct.|
+||`type.coding.code`|Code|1..1|Symbol in syntax defined by the system. Example Value: 736253002|
+||`type.coding.display`|String|1..1|Representation defined by the system.|
 |Record creation clinical setting|`context.practiceSetting`|CodeableConcept|1..1|Describes where the content was created, in what clinical setting|
 ||`context.practiceSetting.coding.system`|Uri|1..1|Identity of the terminology system|
 ||`context.practiceSetting.coding.code`|Code|1..1|Symbol in syntax defined by the system|
@@ -69,6 +55,23 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Period of care|`context.period`|Period|0..1|Details the time at which the documented care is relevant|
 ||`context.period.start`|dateTime|1..1|Starting time with inclusive boundary|
 ||`context.period.end`|dateTime|0..1|End time with inclusive boundary, if not ongoing|
+|Pointer referenced|`content`| BackboneElement| 1..*| Record referenced|
+|Record creation datetime|`content.attachment.creation`|dateTime|0..1|The date and time (on the Provider’s system) that the record was created, for static records.|
+|Record URL|`content.attachment.url`|uri|1..1|The location of the record on the Provider’s system and/ or a service that allows you to look up information based on the provider url e.g. web page with service contact details|
+|Record format|`content.format`|Coding|1..1|Describes the technical structure and rules of the record such that the Consumer can pick an appropriate mechanism to handle the record.|
+||`content.format.system`|Uri|1..1|Identity of the terminology system|
+||`content.format.code`|Code|1..1|Symbol in syntax defined by the system|
+||`content.format.display`|String|1..1|Representation defined by the system|
+|Record mime type|`content.attachment.contentType`|code|1..1|Describes the type of data such that the Consumer can pick an appropriate mechanism to handle the record. Without it the Consumer would be in the dark as to how to deal with the Record|
+|Record Stability|`content.extension:contentStability`|Extension|1..1|Record content extension|
+||`content.extension:contentStability.url`|Uri|1..1|identifies the meaning of the extension|
+||`content.extension:contentStability.`<br />`valueCodeableConcept`|CodeableConcept|1..1|Describes whether the record content at the time of the request is dynamically generated or is static|
+||`content.extension:contentStability.`<br />`valueCodableConcept.coding.system`|Uri|1..1|Identity of the terminology system|
+||`content.extension:contentStability.`<br />`valueCodableConcept.coding.code`|Code|1..1|Symbol in syntax defined by the system|
+||`content.extension:contentStability.`<br />`valueCodableConcept.coding.display`|String|1..1|Representation defined by the system|
+|Related documents|`relatesTo`| BackboneElement| 0..1| Relationship to another pointer|
+||`relatesTo.code`| Code| 1..1| The type of relationship between the documents. This element is mandatory if the *relatesTo* element is sent and the value MUST be *replaces*.|
+||`relatesTo.target`| Reference| 1..1| The Target of the relationship. This should contain the logical reference to the target DocumentReference held within the NRL using the identifier property of this [Reference Data Type](https://www.hl7.org/fhir/references.html#logical).|
 
 
 
