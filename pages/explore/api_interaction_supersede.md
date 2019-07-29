@@ -18,6 +18,10 @@ API to support superseding NRL pointers. This functionality is only available fo
 Create with Supersede (abbreviated to Supersede) is an extension of the [Create Interaction](api_interaction_create.html).
 The Supersede functionality will be used in cases where a Provider wishes to replace one DocumentReference with another, newer one.
 
+## Pre-requisites ##
+
+In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-pre-requisites-for-nrl-api) page SHALL be followed when using this interaction.
+
 ## Supersede Request Headers ##
 
 Provider API supersede requests support the following HTTP request headers:
@@ -47,7 +51,7 @@ A Provider transitions an existing Pointer’s status from current to superseded
 	2. resolve the existing DocumentReference using the relatesTo.target
 	3. mark that DocumentReference as superseded
 
-Providers systems SHALL only supersede pointers for records where they are the pointer owner (custodian).
+Provider systems SHALL only supersede pointers for records where they are the pointer owner (custodian).
 
 The target property within the relatesTo attribute must be either a reference or a FHIR identifier, depending on whether a provider chooses to supersede by logical ID or supersede by master identifier. 
 

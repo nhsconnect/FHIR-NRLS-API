@@ -14,12 +14,15 @@ summary: To support parameterised search of the NRL.
 
 ## Search ##
 
-API to support parameterised search of the NRL. This functionality is available for both consumer and provider systems.
+API to support parameterised search of the NRL. This functionality is available for both Consumer and Provider systems.
+
+## Pre-requisites ##
+
+In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-pre-requisites-for-nrl-api) page SHALL be followed when using this interaction.
 
 ## Search Request Headers ##
 
-
-Provider API search requests support the following HTTP request headers:
+Consumer and Provider API search requests support the following HTTP request headers:
 
 
 | Header               | Value |Conformance |

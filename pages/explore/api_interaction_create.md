@@ -16,6 +16,10 @@ summary: To support the creation of NRL pointers
 
 API to support the creation of NRL pointers. This functionality is only available for providers.
 
+## Pre-requisites ##
+
+In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-pre-requisites-for-nrl-api) page SHALL be followed when using this interaction.
+
 ## Create Request Headers ##
 
 Provider API create requests support the following HTTP request headers:
@@ -41,7 +45,6 @@ Provider systems:
 - SHALL only create pointers for records where they are the pointer owner (custodian). 
 
 For all create requests the `custodian` ODS code in the DocumentReference resource SHALL be affiliated with the `Client System ASID` value in the `fromASID` HTTP request header sent to the NRL.
-
 
 ### XML Example of a new DocumentReference resource (pointer) ###
 

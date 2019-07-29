@@ -16,6 +16,10 @@ summary: To support retrieval of an NRL pointer
 
 API to support the retrieval of a single NRL pointer. This functionality is available for consumers and providers.
 
+## Pre-requisites ##
+
+In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-pre-requisites-for-nrl-api) page SHALL be followed when using this interaction.
+
 ## Read Request Headers ##
 
 Consumer and Provider API read requests support the following HTTP request headers:

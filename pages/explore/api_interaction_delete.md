@@ -16,8 +16,11 @@ summary: To support the deletion of NRL pointers.
 
 API to support the deletion of NRL pointers. This functionality is only available for providers.
 
-## Delete Request Headers ##
+## Pre-requisites ##
 
+In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-pre-requisites-for-nrl-api) page SHALL be followed when using this interaction.
+
+## Delete Request Headers ##
 
 Provider API delete requests support the following HTTP request headers:
 
@@ -30,12 +33,11 @@ Provider API delete requests support the following HTTP request headers:
 
 
 
-
 ## Delete Operation ##
 
 {% include note.html content="Please make sure that all query parameters are URL encoded. In particular the pipe (|) character must be URL encoded (%7C)." %}
 
-Providers systems SHALL only delete pointers for records where they are the pointer owner (custodian). 
+Provider systems SHALL only delete pointers for records where they are the pointer owner (custodian). 
 
 For all delete requests the `custodian` ODS code in the DocumentReference to be deleted SHALL be affiliated with the Client System `ASID` value in the `fromASID` HTTP request header sent to the NRL.
 

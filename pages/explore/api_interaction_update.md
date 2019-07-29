@@ -18,6 +18,10 @@ summary: To support the update of NRL pointers
 
 API to support the update of NRL pointers. This functionality is only available for providers. The update functionality will be used in cases where a Provider wishes to update a pointer status value, changing it from “current” to “entered-in-error”. 
 
+## Pre-requisites ##
+
+In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-pre-requisites-for-nrl-api) page SHALL be followed when using this interaction.
+
 ## Update Request Headers ##
 
 Provider API update requests support the following HTTP request headers:
@@ -32,7 +36,7 @@ Provider API update requests support the following HTTP request headers:
 
 ## Update Operation ##
 
-Provider system will construct a [FHIRPath PATCH Parameters resource](https://www.hl7.org/fhir/STU3/fhirpatch.html) and submit this to NRL using the FHIR RESTful [patch](https://www.hl7.org/fhir/STU3/http.html#patch) interaction.
+Provider systems SHALL construct a [FHIRPath PATCH Parameters resource](https://www.hl7.org/fhir/STU3/fhirpatch.html) and submit this to NRL using the FHIR RESTful [patch](https://www.hl7.org/fhir/STU3/http.html#patch) interaction.
 
 <div markdown="span" class="alert alert-success" role="alert">
 PATCH [baseUrl]/DocumentReference/[id]</div>
