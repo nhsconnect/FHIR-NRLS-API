@@ -1,12 +1,11 @@
 <Bundle
-    xmlns="http://hl7.org/fhir"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file:///C:/Users/supa1/Desktop/STU3%20Schemas/bundle.xsd">
+    xmlns="http://hl7.org/fhir">
     <id value="dd9724d1-7b61-44e2-9023-b72e6b966018-54446768443265458908"/>
     <type value="searchset"/>
     <total value="2"/>
     <link>
         <relation value="self"/>
-        <url value="https://psis-sync.national.ncrs.nhs.uk/DocumentReference?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543211"/>
+        <url value="https://psis-sync.national.ncrs.nhs.uk/DocumentReference?subject=https%3A%2F%2Fdemographics.spineservices.nhs.uk%2FSTU3%2FPatient%2F9876543211"/>
     </link>
     <entry>
         <fullUrl value="https://psis-sync.national.ncrs.nhs.uk/DocumentReference/0353e505-f7be-4c20-8f4e-337e79a32c51-58778905432232112312"/>
@@ -15,6 +14,8 @@
                 <id value="0353e505-f7be-4c20-8f4e-337e79a32c51-58778905432232112312"/>
                 <meta>
                     <profile value="https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1"/>
+                    <version value="1"/>
+                    <lastUpdate value="2016-03-08T15:26:00+01:00"/> 
                 </meta>
                 <masterIdentifier>
                     <system value="urn:ietf:rfc:3986"/>
@@ -38,7 +39,6 @@
                 <subject>
                     <reference value="https://demographics.spineservices.nhs.uk/STU3/Patient/9876543211"/>
                 </subject>
-                <created value="2018-07-01T15:26:00+01:00"/>
                 <indexed value="2018-07-01T15:26:01+01:00"/>
                 <author>
                     <reference value="https://directory.spineservices.nhs.uk/STU3/Organization/RGD"/>
@@ -49,14 +49,13 @@
                 <content>
                     <attachment>
                         <contentType value="application/pdf"/>
-                        <url value="https://spine-proxy.national.ncrs.nhs.uk/p1.nhs.uk/MentalhealthCrisisPlanReportRGD.pdf"/>
-                        <title value="Mental health Crisis Plan Report"/>
+                        <url value="https://spine-proxy.national.ncrs.nhs.uk/https%3A%2F%2Fp1.nhs.uk%2FMentalhealthCrisisTeam"/>
                         <creation value="2018-07-01T15:26:00+01:00"/>
                     </attachment>
                     <format>
-                        <system value="https://fhir.nhs.uk/STU3/CodeSystem/NRL-Format-1"/>
-                        <code value="direct:https://www.iso.org/standard/63534.html"/>
-                        <display value="PDF (Publicly accessible)"/>
+                        <system value="https://fhir.nhs.uk/STU3/CodeSystem/NRL-FormatCode-1"/>
+                        <code value="urn:nhs-ic:record-contact"/>
+                        <display value="Contact details (HTTP Unsecured)"/>
                     </format>
                     <extension url="https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1">
                         <valueCodeableConcept>
@@ -75,8 +74,8 @@
                     <practiceSetting>
                         <coding>
                             <system value="http://snomed.info/sct"/>
-                            <code value="892811000000109"/>
-                            <display value="Adult mental health service"/>
+                            <code value="708168004"/>
+                            <display value="Mental health service (qualifier value)"/>
                         </coding>
                     </practiceSetting>
                 </context>
@@ -93,6 +92,8 @@
                 <id value="5303c09e-de28-4622-9416-62ab0b22e15a-54598780989231213433"/>
                 <meta>
                     <profile value="https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1"/>
+                    <version value="1"/>
+                    <lastUpdate value="2016-03-08T15:26:00+01:00"/> 
                 </meta>
                 <masterIdentifier>
                     <system value="urn:ietf:rfc:3986"/>
@@ -116,7 +117,6 @@
                 <subject>
                     <reference value="https://demographics.spineservices.nhs.uk/STU3/Patient/9876543211"/>
                 </subject>
-                <created value="2018-07-02T11:25:00+01:00"/>
                 <indexed value="2018-07-02T11:25:01+01:00"/>
                 <author>
                     <reference value="https://directory.spineservices.nhs.uk/STU3/Organization/RGD"/>
@@ -136,14 +136,13 @@
                 <content>
                     <attachment>
                         <contentType value="application/pdf"/>
-                        <url value="https://spine-proxy.national.ncrs.nhs.uk/p1.nhs.uk/MentalhealthCrisisPlanReportRGD.pdf"/>
-                        <title value="Mental health Crisis Plan Report"/>
-                        <creation value="2018-07-02T11:25:00+01:00"/>
+                        <url value="https://spine-proxy.national.ncrs.nhs.uk/https%3A%2F%2Fp1.nhs.uk%2FMentalhealthCrisisPlanReport.pdf"/>
+                        <creation value="2016-03-08T15:26:00+01:00"/>
                     </attachment>
                     <format>
-                        <system value="https://fhir.nhs.uk/STU3/CodeSystem/NRL-Format-1"/>
-                        <code value="direct:https://www.iso.org/standard/63534.html"/>
-                        <display value="PDF (Publicly accessible)"/>
+                        <system value="https://fhir.nhs.uk/STU3/CodeSystem/NRL-FormatCode-1"/>
+                        <code value="urn:nhs-ic:unstructured"/>
+                        <display value="Unstructured Document"/>
                     </format>
                     <extension url="https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1">
                         <valueCodeableConcept>
@@ -163,8 +162,8 @@
                     <practiceSetting>
                         <coding>
                             <system value="http://snomed.info/sct"/>
-                            <code value="892811000000109"/>
-                            <display value="Adult mental health service"/>
+                            <code value="708168004"/>
+                            <display value="Mental health service (qualifier value)"/>
                         </coding>
                     </practiceSetting>
                 </context>

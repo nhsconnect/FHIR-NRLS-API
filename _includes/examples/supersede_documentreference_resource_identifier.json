@@ -31,7 +31,6 @@
     "subject": {
         "reference": "https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210"
     },
-    "created": "2016-03-08T15:26:00+01:00",
     "indexed": "2016-03-08T15:26:00+01:00",
     "author": [
         {
@@ -45,14 +44,13 @@
         {
             "attachment": {
                 "contentType": "application/pdf",
-                "url": "https://spine-proxy.national.ncrs.nhs.uk/p1.nhs.uk/MentalHealthCrisisPlanReportRGD.pdf",
-                "title": "Mental health Crisis Plan Report",
+                "url": "https://spine-proxy.national.ncrs.nhs.uk/https%3A%2F%2Fp1.nhs.uk%2FMentalhealthCrisisPlanReport.pdf",
                 "creation": "2016-03-08T15:26:00+01:00"
             },
             "format": {
-                "system": "https://fhir.nhs.uk/STU3/CodeSystem/NRL-Format-1",
-                "code": "direct:https://www.iso.org/standard/63534.html",
-                "display": "PDF (Publicly accessible)"
+                "system": "https://fhir.nhs.uk/STU3/CodeSystem/NRL-FormatCode-1",
+                "code": "urn:nhs-ic:unstructured",
+                "display": "Unstructured Document"
             },
             "extension": {
                 "url": "https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1",
@@ -87,8 +85,8 @@
             "coding": [
                 {
                     "system": "http://snomed.info/sct",
-                    "code": "892811000000109",
-                    "display": "Adult mental health service"
+                    "code": "708168004",
+                    "display": "Mental health service (qualifier value)"
                 }
             ]
         }

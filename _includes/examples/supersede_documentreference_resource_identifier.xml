@@ -1,5 +1,4 @@
 <DocumentReference>
-    <id value="0353e505-f7be-4c20-8f4e-337e79a32c51-76567690043214346653"/>
     <meta>
         <profile value="https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1"/>
     </meta>
@@ -25,7 +24,6 @@
     <subject>
         <reference value="https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210"/>
     </subject>
-    <created value="2016-03-08T15:26:00+01:00"/>
     <indexed value="2016-03-08T15:26:01+01:00"/>
     <author>
         <reference value="https://directory.spineservices.nhs.uk/STU3/Organization/RGD"/>
@@ -45,14 +43,13 @@
     <content>
         <attachment>
             <contentType value="application/pdf"/>
-            <url value="https://spine-proxy.national.ncrs.nhs.uk/p1.nhs.uk/MentalhealthCrisisPlanReportRGD.pdf"/>
-            <title value="Mental health Crisis Plan Report"/>
+            <url value="https://spine-proxy.national.ncrs.nhs.uk/https%3A%2F%2Fp1.nhs.uk%2FMentalhealthCrisisPlanReport.pdf"/>
             <creation value="2016-03-08T15:26:00+01:00"/>
         </attachment>
         <format>
-            <system value="https://fhir.nhs.uk/STU3/CodeSystem/NRL-Format-1"/>
-            <code value="direct:https://www.iso.org/standard/63534.html"/>
-            <display value="PDF (Publicly accessible)"/>
+            <system value="https://fhir.nhs.uk/STU3/CodeSystem/NRL-FormatCode-1"/>
+            <code value="urn:nhs-ic:unstructured"/>
+            <display value="Unstructured Document"/>
         </format>
         <extension url="https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1">
             <valueCodeableConcept>
@@ -71,8 +68,8 @@
         <practiceSetting>
             <coding>
                 <system value="http://snomed.info/sct"/>
-                <code value="892811000000109"/>
-                <display value="Adult mental health service"/>
+                <code value="708168004"/>
+                <display value="Mental health service (qualifier value)"/>
             </coding>
         </practiceSetting>
     </context>

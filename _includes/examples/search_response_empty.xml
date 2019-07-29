@@ -5,6 +5,6 @@
     <total value="0"/>
     <link>
         <relation value="self"/>
-        <url value="https://psis-sync.national.ncrs.nhs.uk/DocumentReference?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543213"/>
+        <url value="https://psis-sync.national.ncrs.nhs.uk/DocumentReference?subject=https%3A%2F%2Fdemographics.spineservices.nhs.uk%2FSTU3%2FPatient%2F9876543213"/>
     </link>
 </Bundle>
