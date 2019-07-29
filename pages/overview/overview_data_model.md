@@ -19,7 +19,7 @@ In order to support the Consumer and Provider interactions with the NRL the Poin
 |-----------|----------------|------------|
 |[Identifier](pointer_identity.html)|0..1|Assigned by the NRL at creation time. Uniquely identifies this record within the NRL. Used by Providers to update or delete.|
 |Profile|0..1|The URI of the FHIR profile that the resource conforms to.|
-|Pointer Version |0..1|Assigned by the NRL at creation or update time. Used to track the current version of a Pointer.|
+|Pointer version |0..1|Assigned by the NRL at creation or update time. Used to track the current version of a Pointer.|
 |Pointer last updated datetime|0..1|Assigned by the NRL at creation and update time. The date and time that the pointer was last updated.|
 |Pointer indexed datetime|0..1|Assigned by the NRL at creation time. The date and time that the pointer was created.|
 |[Master Identifier](pointer_identity.html)|0..1|The masterIdentifier is the identifier of the document as assigned by the source of the document. It is version specific – i.e. a new one is required if the document is updated. It is an optional field, providers do not have to supply a value.|
@@ -37,7 +37,7 @@ In order to support the Consumer and Provider interactions with the NRL the Poin
 |Record format|1..1|Describes the technical structure and rules of the record such that the Consumer can pick an appropriate mechanism to handle the record.|
 |Record mime type|1..1|Describes the type of data such that the Consumer can pick an appropriate mechanism to handle the record.|
 |Record stability|1..1|Describes whether the record content at the time of the request is dynamically generated or is static|
-|[Related Documents](pointer_maintenance.html)|0..1|Relationship to another pointers|
+|[Related Documents](pointer_maintenance.html)|0..1|Relationship to another pointer|
 
 
 You can explore an in-depth view of the lean data model and the full NRL DocumentReference profile in the [FHIR Resources and References section](explore_reference.html).
