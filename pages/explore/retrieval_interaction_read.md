@@ -28,8 +28,6 @@ Requests SHOULD NOT require any additional custom headers.
 
 Requests SHOULD NOT require any additional parameters to be passed in the URL.
 
-Note the status of the pointer must be "current" for the pointer to be retrieved. 
-
 ## Read Response ##
 
 Success:
@@ -38,12 +36,10 @@ Success:
 - SHALL return a response body containing the requested record/document in the format described in the format metadata attributes on the pointer. See [Retrieval Formats](retrieval_formats.html) for further detail.
 
 Failure: 
-- SHALL return an HTTP status code
+- SHALL return an error type HTTP status code
 - SHOULD return a response body with diagnostic details.
 
 ## Retrieval via the SSP ##
-
-
 
 The role of the SSP in retrieval of documents/records is to be a single common authentication and authorisation gateway for all Consumers and Providers.
 
