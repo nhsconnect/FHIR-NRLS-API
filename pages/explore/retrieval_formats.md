@@ -16,7 +16,7 @@ summary: Support formats for record and document retrieval
 The NRL may support retrieval of records and documents in a range of formats, this could include both unstructured documents and structured data.
 
 The format of the referenced document/record is detailed in two meta-data fields:
- - Record format - describes the technical structure and the rules of the document/record and its retrieval route
+ - Record format - describes the technical structure and the rules of the document/record
  - Record mime type - describes the data type of the document/record
 
 See [FHIR Resources & References](explore_reference.html) for further detail on the data model. 
@@ -29,18 +29,14 @@ The table below describes the formats that are currently supported:
 
 | Format | Description |
 |-----------|----------------|
-|HTML Web Page (Publicly accessible)|A publicly accessible HTML web page detailing contact details for retrieving a record.|
-|PDF (Publicly accessible)|A publicly accessible PDF detailing contact details for retrieving a record.|
-|PDF|A PDF document. For guidance see the [CareConnect GET Binary specification](https://nhsconnect.github.io/CareConnectAPI/api_documents_binary.html).|
-
+|Contact Details (HTTP Unsecured)|A publicly accessible HTML web page detailing contact details for retrieving a record. <br> Note that retrieval requests for contact details should be made directly and not via the SSP.| 
+|Unstructured Document|An unstructured document e.g. PDF. The document  SHOULD be returned in the format described in the mime-type on the pointer metadata. <br> For guidance see the [CareConnect GET Binary specification](https://nhsconnect.github.io/CareConnectAPI/api_documents_binary.html). <br> For unstructed documents, Consumers and Providers SHOULD support PDF as a minimum. | 
 
 Please see the [format code value set](https://fhir.nhs.uk/STU3/ValueSet/NRL-FormatCode-1) for the list of codes to use. 
 
-Consumers and Providers SHOULD support PDF as a minimum.
-
 {% include note.html content="Format codes related to profiles that support structured data are not currently listed in the above referenced valueset and table. These will be added in due course." %}
 
-Note that the NRL supports referencing multiple formats of a record document on a single pointer. 
+Note that the NRL supports referencing multiple formats of a record document on a single pointer, see below for details. 
 
 ## Multiple Formats ##
 

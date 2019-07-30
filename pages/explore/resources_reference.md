@@ -62,7 +62,7 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 ||`content.format.system`|Uri|1..1|Identity of the terminology system|
 ||`content.format.code`|Code|1..1|Symbol in syntax defined by the system|
 ||`content.format.display`|String|1..1|Representation defined by the system|
-|Record mime type|`content.attachment.contentType`|code|1..1|Describes the type of data such that the Consumer can pick an appropriate mechanism to handle the record. Without it the Consumer would be in the dark as to how to deal with the Record|
+|Record mime type|`content.attachment.contentType`|code|1..1|Describes the type of data such that the Consumer can pick an appropriate mechanism to handle the record.|
 |Record Stability|`content.extension:contentStability`|Extension|1..1|Record content extension|
 ||`content.extension:contentStability.url`|Uri|1..1|identifies the meaning of the extension|
 ||`content.extension:contentStability.`<br />`valueCodeableConcept`|CodeableConcept|1..1|Describes whether the record content at the time of the request is dynamically generated or is static|
