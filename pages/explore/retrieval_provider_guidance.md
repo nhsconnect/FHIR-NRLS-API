@@ -11,7 +11,7 @@ summary: Provider requirements and guidance for record and document retrieval.
 
 ## HTTP Request ##
 
-Retrieval of documents/records is achieved through a HTTP GET request. See the [Retrieval Read Interaction](retrieval_interaction_read.html) page for details of the requirements for creating and sending a HTTP GET request for retrieval. 
+Retrieval of documents/records is achieved through an HTTP GET request. See the [Retrieval Read Interaction](retrieval_interaction_read.html) page for details of the requirements for responding to an HTTP GET request for retrieval. 
 
 ## Provider Endpoint and Interaction ID registration ##
 
@@ -19,7 +19,7 @@ Endpoints for retrieval must be registered on the Spine Directory Service (SDS).
 
 Providers MUST ensure that the record author ODS code on the pointer metadata matches the ODS code for the endpoint registered in SDS.
 
-Providers MUST ensure that endpoints for retrieval are registered with the correct interaction ID. For further detail on interaction ID's, see the  [Consumer Guidance](retrieval_consumer_guidance.html#interaction-id) page.
+Providers MUST ensure that endpoints for retrieval are registered on SDS with the correct interaction ID. 
 
 ## Fully Qualified Doman Name (FQDN) ##
 
