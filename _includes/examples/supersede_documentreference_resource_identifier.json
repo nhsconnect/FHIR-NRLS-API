@@ -15,7 +15,7 @@
             {
                 "system": "http://snomed.info/sct",
                 "code": "736253002",
-                "display": "Mental health crisis plan (record artifact)"
+                "display": "Mental health crisis plan"
             }
         ]
     },
@@ -24,7 +24,7 @@
             {
                 "system": "http://snomed.info/sct",
                 "code": "734163000",
-                "display": "Care plan (record artifact)"
+                "display": "Care plan"
             }
         ]
     },

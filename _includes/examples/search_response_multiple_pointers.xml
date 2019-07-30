@@ -15,7 +15,7 @@
                 <meta>
                     <profile value="https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1"/>
                     <version value="1"/>
-                    <lastUpdate value="2016-03-08T15:26:00+01:00"/> 
+                    <lastUpdated value="2016-03-08T15:26:00+01:00"/> 
                 </meta>
                 <masterIdentifier>
                     <system value="urn:ietf:rfc:3986"/>
@@ -26,14 +26,14 @@
                     <coding>
                         <system value="http://snomed.info/sct"/>
                         <code value="736253002"/>
-                        <display value="Mental health crisis plan (record artifact)"/>
+                        <display value="Mental health crisis plan"/>
                     </coding>
                 </type>
                 <class>
                     <coding>
                         <system value="http://snomed.info/sct"/>
                         <code value="734163000"/>
-                        <display value="Care plan (record artifact)"/>
+                        <display value="Care plan"/>
                     </coding>
                 </class>
                 <subject>
@@ -93,7 +93,7 @@
                 <meta>
                     <profile value="https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1"/>
                     <version value="1"/>
-                    <lastUpdate value="2016-03-08T15:26:00+01:00"/> 
+                    <lastUpdated value="2016-03-08T15:26:00+01:00"/> 
                 </meta>
                 <masterIdentifier>
                     <system value="urn:ietf:rfc:3986"/>
@@ -104,14 +104,14 @@
                     <coding>
                         <system value="http://snomed.info/sct"/>
                         <code value="736253002"/>
-                        <display value="Mental health crisis plan (record artifact)"/>
+                        <display value="Mental health crisis plan"/>
                     </coding>
                 </type>
                 <class>
                     <coding>
                         <system value="http://snomed.info/sct"/>
                         <code value="734163000"/>
-                        <display value="Care plan (record artifact)"/>
+                        <display value="Care plan"/>
                     </coding>
                 </class>
                 <subject>
