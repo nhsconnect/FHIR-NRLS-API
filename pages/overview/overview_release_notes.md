@@ -11,8 +11,21 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 
 {% include note.html content="Starting from release 2.0.0-beta, all list items and their sub-lists are considered &quot;general changes&quot; unless otherwise stated. " %}
 
+## 2.1.0-beta ##
+*Changes to record/document retrieval requirements and updated guidance*
+ - *API Breaking Change*{:.label.label-danger} The custodian search parameter format has been updated
+ - *API Breaking Change*{:.label.label-danger} The supported formats for retrieval have been updated
+ - Consumer guidance on assembling SSP request updated
+ - Change to interaction ID for record retrieval via the SSP
+ - Restructuring of record retrieval read interaction guidance
+ - Added definition of FHIR `meta` attributes to the data model
+ - API interaction examples updated
+ - Guidance on pre-requisites added to API interactions
+ - Audit requirements elaborated
+ - Phase 1 and Phase 2 overview updated
+
 ## 2.0.0-beta ##
-*Changes to &quot;document&quot; record/document retrieval requirements, new API interactions, NRL DocumentReference model changes, and updated guidance.*
+*Changes to record/document retrieval requirements, new API interactions, NRL DocumentReference model changes, and updated guidance.*
   - The service name has changed from NRLS (National Record Locator Service) to NRL (National Record Locator)
   - *API Breaking Change*{:.label.label-danger} The FHIR Resource NRLS-DocumentReference-1 uplifted to NRL-DocumentReference-1
     - Data model changes are detailed below
