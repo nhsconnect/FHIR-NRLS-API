@@ -151,6 +151,7 @@ Success:
 - When a Consumer retrieves a DocumentReference if the masterIdentifier is set then it SHOULD be included in the returned DocumentReference
 
 - When a Consumer retrieves a DocumentReference if the relatesTo is set then it SHOULD be included in the returned DocumentReference
+
 <!--
 - When a document/record is to be retrieved via the SSP then the Consumer MUST pre-fix the `content.attachment.url` property with the SSP server URL. For further details, see the [Retrieval Read](retrieval_interaction_read.html#retrieval-via-the-ssp) interaction page." %}
 -->
