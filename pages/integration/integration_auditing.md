@@ -62,19 +62,19 @@ Providers MUST record the following in audit logs for each NRL maintenance inter
 
 #### For requests to NRL ####
 
-- User ID
 - ASID
+- HTTP Request Body (for POST and PATCH only)
+- HTTP Request URL
+- HTTP Verb
 - ODS Code
-- Request Datetime
 - NHS Number
-- Request URL
-- Request HTTP verb
-- Request Body (POST and PATCH only)
+- Request Datetime
+- User ID
 
 #### For responses from NRL ####
 
-- Response Outcome
-- Message
+- HTTP Response Body
+- HTTP Status Code
 - Response Datetime
 
 ### Provider Document/Record Retrieval ###
@@ -83,14 +83,14 @@ Providers MUST record the following in audit logs for each Document/Record retri
 
 #### For requests from Consumers ####
 
-- User ID
 - ASID
+- HTTP Request URL
+- HTTP Status Code
 - ODS Code
+- Record version or equivalent
 - Request Datetime
 - Trace ID
-- Record version or equivalent
-- Record URL
-- Response Outcome
+- User ID
 
 ### Consumer Pointer Search/Read ###
 
@@ -98,18 +98,18 @@ Consumers MUST record the following in audit logs for each NRL search interactio
 
 #### For requests to NRL ####
 
-- User ID
 - ASID
+- HTTP Request URL
+- HTTP Verb
 - ODS Code
-- Request Datetime
 - NHS Number
-- Request URL
-- Request HTTP verb
+- Request Datetime
+- User ID
 
 #### For responses from NRL ####
 
-- Response Outcome
-- Message
+- HTTP Response Body
+- HTTP Status Code
 - Response Datetime
 
 ### Consumer Document/Record Retrieval ###
@@ -118,53 +118,20 @@ Consumers MUST record the following in audit logs for each Document/Record retri
 
 #### For requests to Providers ####
 
-- User ID
 - ASID
-- ODS Code
-- Request Datetime
+- HTTP Request URL
 - NHS Number
-- Trace ID
+- ODS Code
 - Pointer Logical ID
+- Request Datetime
+- Trace ID
+- User ID
 
 #### For responses from Providers ####
 
-- Response Outcome
-- Message (if the request failed)
+- HTTP Response Body (if the request failed)
+- HTTP Status Code
 - Response Datetime
-
-### NRL Service Pointer Interactions ###
-
-The NRL service MUST record the following in audit logs for each NRL pointer interaction from a Consumer/Provider.
-
-#### For requests to the NRL ####
-
-- User ID
-- ASID
-- ODS Code
-- Request Datetime
-- NHS Number
-- roleProfileID
-- interactionID
-- interactionName
-- Service
-
-### SSP Document/Record Retrieval Interactions ###
-
-The SSP MUST record the following in audit logs for each interaction.
-
-#### For requests from a Consumer ####
-
-- User ID
-- ASID
-- ODS Code
-- Request Datetime
-- Trace ID
-
-#### For responses from a Provider ####
-
-- Response Outcome
-- Response Datetime
-
 
 ### Audit Log Attributes ###
 
@@ -173,21 +140,18 @@ The following table details the audit log attributes and the source of the value
 | Attribute | Source |
 | -------- | ----------------------------------------------------------- |
 | ASID | `requesting_system` from JWT. Only the ASID portion is required e.g. https://fhir.nhs.uk/Id/accredited-system\|[ASID] |
-| Request Datetime | Datetime that audit log was written |
-| NHS Number | This is taken from the value of the subject (e.g. https://demographics.spineservices.nhs.uk/STU3/Patient/[NHS_Number]) which may exist as an attribute or a parameter depending on the action being performed as per below.<br><br>POST (create / supersede)<br>The patient NHS Number defined in the `subject` attribute of the DocumentReference that makes up the HTTP request body<br><br>GET (search)<br>The patient NHS Number defined in the HTTP Parameter `subject`<br><br>PATCH (update)<br>The patient NHS Number defined in the `subject` attribute of the DocumentReference being 'patched'<br><br>DELETE (delete)<br>The patient NHS Number defined in the `subject` attribute of the DocumentReference being 'deleted' |
+| HTTP Request Body | HTTP Request Body (where applicable i.e. POST or PATCH) | 
+| HTTP Request URL | e.g. URL of the NRL service that was called, or the URL used for the document/record retrieval request which includes the value of `content.attachment.url` property defined on the associated NRL pointer. |
+| HTTP Response Body | Response Message |
+| HTTP Status Code | Describes the response outcome (Success: 2xx \| Fail: 4xx or 5xx) |
+| HTTP Verb | POST, PATCH, GET or DELETE |
+| NHS Number | This is the value used as part of the pointer subject reference (e.g. https://demographics.spineservices.nhs.uk/STU3/Patient/[NHS_Number]) which may be an attribute on the pointer or a search query parameter depending on the action being performed. |
 | ODS Code | `requesting_organization` from JWT. Only the ODSCode portion is required e.g. https://fhir.nhs.uk/Id/ods-organization-code\|[ODSCode] |
-| interactionName | NRLSREGISTER_REQUEST for HTTP POST,  NRLSDISCOVER_REQUEST for HTTP GET, NRLSREMOVE_REQUEST for HTTP DELETE |
-| interactionID | NRLSREGISTER_REQUEST for HTTP POST,  NRLSDISCOVER_REQUEST for HTTP GET, NRLSREMOVE_REQUEST for HTTP DELETE |
-| roleProfileID | `requesting_user` from JWT. This will be 'NotProvided' if requesting_user isn't available in JWT. |
 | Pointer Logical ID | The Logical ID of the pointer (generated by the NRL) from which the retrieval request has been made |
-| Request Body | HTTP Request Body (where applicable i.e. POST or PATCH) | 
-| Request HTTP verb | POST, PATCH, GET or DELETE |
-| Request URL | URL of the NRL service that was called |
-| Record URL | URL of the record that was provided in response to the document/record retrieval request. This is the same as the `content.attachment.url` property defined on the associated NRL pointer. |
-| Trace ID | The Consumer generated ID of the retrieval request |
-| User ID | `requesting_user` from JWT. This will be 'NotProvided' if requesting_user isn't available in JWT.<br>This is not mandatory where the request is completed as a non-interactive process |
-| Service | `urn:nhs:names:services:nrls` |
-| Response Message | HTTP Response Body |
-| Response Datetime | Datetime that the response was recieved from NHS Digital service (NRL or SSP) |
-| Response Outcome | HTTP status code (Success: 2xx \| Fail: 4xx or 5xx) |
 | Record version or equivalent | Reference to the version ID (or equivalent) from which the NRL Provider can identity what version of a record was provided |
+| Request Datetime | Datetime that audit log was written |
+| Response Datetime | Datetime that the response was recieved from NHS Digital service (NRL or SSP) |
+| Trace ID | The Consumer generated ID of the retrieval request. This is only used for requests via the SSP and is for use in the Ssp-TraceID HTTP Request Header. |
+| User ID | `requesting_user` from JWT. This will be 'NotProvided' if requesting_user isn't available in JWT.<br>This is not mandatory where the request is completed as a non-interactive process |
+
+
