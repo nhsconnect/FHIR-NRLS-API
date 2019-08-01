@@ -42,9 +42,11 @@ Provider systems:
 - SHALL construct and send a new Pointer (DocumentReference) resource that conforms to the NRL-DocumentReference-1 profile and submit this to NRL using the FHIR RESTful [create](https://www.hl7.org/fhir/http.html#create) interaction.
 - SHALL include the URI of the NRL-DocumentReference-1 profile StructureDefinition in the DocumentReference.meta.profile element of the DocumentReference resource.
 - SHALL include all of the mandatory data-elements contained in the `NRL-DocumentReference-1` profile when constructing a DocumentReference. The mandatory data-elements are detailed on the [Developer FHIR Resource](explore_reference.html#2-nrl-data-model-to-fhir-profile-mapping) page.
+- SHALL supply `subject`, `custodian` and `author` attributes as absolute literal references, the formats of which can be found on the [Developer FHIR Resource](explore_reference.html#6-identifiers) page.
 - SHALL only create pointers for records where they are the pointer owner (custodian). 
 
 For all create requests the `custodian` ODS code in the DocumentReference resource SHALL be affiliated with the `Client System ASID` value in the `fromASID` HTTP request header sent to the NRL.
+
 
 ### XML Example of a new DocumentReference resource (pointer) ###
 

@@ -22,6 +22,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
  - Restructuring of record retrieval read interaction guidance
  - Added definition of FHIR `meta` attributes to the data model
  - Added clarity to the rules on the use of PATCH
+ - Added clarity to the use of reference type metadata attributes
  - Added clarity on the use of NHS Number with subject/patient
  - API interaction examples updated
  - Guidance on pre-requisites added to API interactions
