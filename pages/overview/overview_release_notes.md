@@ -15,10 +15,13 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 *Changes to record/document retrieval requirements and updated guidance*
  - *API Breaking Change*{:.label.label-danger} The custodian search parameter format has been updated
  - *API Breaking Change*{:.label.label-danger} The supported formats for retrieval have been updated
+ - *API Breaking Change*{:.label.label-danger} The inclusion of the `meta.profile` element on the create and supersede interactions are now enforced
  - Consumer guidance on assembling SSP request updated
  - Change to interaction ID for record retrieval via the SSP
  - Restructuring of record retrieval read interaction guidance
  - Added definition of FHIR `meta` attributes to the data model
+ - Added clarity to the rules on the use of PATCH
+ - Added clarity on the use of NHS Number with subject/patient
  - API interaction examples updated
  - Guidance on pre-requisites added to API interactions
  - Audit requirements elaborated
