@@ -69,7 +69,7 @@ The HTTP GET request MUST include a number of Spine specific HTTP headers:
 |`Ssp-TraceID`|Consumer's TraceID (i.e. GUID/UUID)|
 |`Ssp-From`|Consumer's ASID|
 |`Ssp-To`|Provider's ASID|
-|`Ssp-InteractionID`|Spine's InteractionID. <br> <br> The interaction ID for retrieving a record referenced in an NRL pointer is specific to the NRL service and is as follows: <br> `urn:nhs:names:services:nrls:SSPExternalClinical.read`|
+|`Ssp-InteractionID`|Spine's InteractionID. <br> <br> The interaction ID for retrieving a record referenced in an NRL pointer is specific to the NRL service and is as follows: <br> `urn:nhs:names:services:nrl:SspRetrieval.read`|
 
 
 Please refer to the [Spine Secure Proxy Implementation Guide](https://developer.nhs.uk/apis/spine-core-1-0/ssp_overview.html) for full technical details. 
