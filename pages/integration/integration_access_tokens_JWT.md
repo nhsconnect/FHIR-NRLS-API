@@ -11,14 +11,14 @@ redirect_from: "/integration_access_tokens_and_audit_JWT.html"
 ## Access Tokens (JWT)##
 
 
-In order to access the NRL clients MUST send an access token (JWT) with each request using the standard HTTP Authorization request header. The JWT MUST conform to the [Spine JWT](https://developer.nhs.uk/apis/spine-core/security_jwt.html) definition.
+Clients MUST send an access token (JWT) with each request to the NRL or the SSP using the standard HTTP Authorization request header. The JWT MUST conform to the [Spine JWT](https://developer.nhs.uk/apis/spine-core/security_jwt.html) definition.
 
-The claims of the NRL JWT is the same as those defined in the Spine Core JWT however the rules that govern the validation of those claims are different. From an NRL perspective the rules defined here override rules defined for the Spine Core. 
+The claims of the JWT are the same as those defined in the Spine Core JWT however the rules that govern the validation of those claims are different. From an NRL perspective the rules defined here override rules defined for the Spine Core. 
 Where a Spine Core rule is not explicitly replaced here then the Spine Core rule stands.
 
 ### Claims ###
 
-In the Spine JWT definition the `requesting_organistion` claim is marked as optional however for NRL this claim MUST be supplied.
+In the Spine JWT definition the `requesting_organisation` claim is marked as optional however this claim MUST be supplied for all NRL and SSP requests.
 
 ### Validation ###
 
@@ -88,7 +88,8 @@ Example 4: Claim’s value is invalid - the Authorization header is present and 
 | sub | No requesting_user has been supplied and the sub claims’ value does not match the value of the requesting_system claim| requesting_system ([requesting_system]) and sub ([sub]) claim’s values must match| 
 | sub | requesting_user has been supplied and the sub claims’ value does not match the value of the requesting_user claim | requesting_user ([requesting_user]) and sub ([sub]) claim’s values must match|
 | reason_for_request | Reason for request does not have the value “directcare”  | reason_for_request ([reason_for_request]) must be ‘directcare’ |
-| scope | Scope is not one of patient/DocumentReference.read OR patient/DocumentReference.write | scope ([scope]) must match either ‘patient/DocumentReference.read’ or ‘patient/DocumentReference.write’|
+| scope | For requests to the NRL: scope is not one of patient/DocumentReference.read OR patient/DocumentReference.write | scope ([scope]) must match either ‘patient/DocumentReference.read’ or ‘patient/DocumentReference.write’|
+| scope | For requests to the SSP: scope is not patient/*.read | scope ([scope]) must match ‘patient/*.read’ |
 | requesting_system | Requesting system is not of the form [https://fhir.nhs.uk/Id/accredited-system/[ASID] | requesting_system ([requesting_system]) must be of the form [https://fhir.nhs.uk/Id/accredited-system/[ASID]] | 
 | requesting_system | Requesting system is not an ASID that is known to Spine | The ASID defined in the requesting_system ([ASID]) is unknown | 
 | requesting_organisation  | Requesting organisation is not of the form [https://fhir.nhs.uk/Id/ods-organization-code/[ODSCode] | requesting_organisation ([requesting_ organisation]) must be of the form [https://fhir.nhs.uk/Id/ods-organization-code/[ODSCode] |
@@ -108,7 +109,7 @@ No specific validation rules apply.
 
 #### Consumer Validation ####
 
-In the context of a Consumer request the `requesting_user` claim is mandatory. 
+In the context of a Consumer request the `requesting_user` claim is mandatory for all NRL and SSP requests.
 
 
 
