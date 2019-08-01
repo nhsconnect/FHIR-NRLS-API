@@ -17,6 +17,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
  - *API Breaking Change*{:.label.label-danger} The supported formats for retrieval have been updated
  - *API Breaking Change*{:.label.label-danger} The inclusion of the `meta.profile` element on the create and supersede interactions are now enforced
  - Consumer guidance on assembling SSP request updated
+ - Updated JWT requirements for document/record retrieval via the SSP
  - Change to interaction ID for record retrieval via the SSP
  - Restructuring of record retrieval read interaction guidance
  - Added definition of FHIR `meta` attributes to the data model
