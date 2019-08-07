@@ -48,14 +48,15 @@ The NRL API is accessed through the NHS Spine. As such, providers and consumers 
 
 Detailed Spine services pre-requisites:
 
-To use this API, provider/ consumer systems:
+To use this API, Provider/Consumer systems:
 
 - SHALL have gone through accreditation and received an endpoint certificate and associated ASID (Accredited System ID) for the client system.
-- SHALL have either:
-	- Authenticated the user using national smartcard authentication, and obtained a the UUID from the user's smartcard (and associated RBAC role from CIS), or
-	- Authenticated the user using an assured local mechanism, and obtained a local user ID and role
-	- And pass this user information in a JSON web token - see [Access Tokens (JWT)](integration_access_tokens_JWT.html) for details.
+- SHALL pass the system/organisation's information in a JSON web token - see [Access Tokens (JWT)](integration_access_tokens_JWT.html) for details
 - SHALL have previously traced the patient's NHS Number using PDS or an equivalent service.
+
+In addition, Consumer systems:
+- SHALL have authenticated the user using NHS Identity or national smartcard authentication, and obtained a the user's UUID and associated RBAC role
+- SHALL pass the user's information in the JSON web token
 
 ### 2.4 NHS Number ###
 
