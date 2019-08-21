@@ -11,6 +11,9 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 
 {% include note.html content="Starting from release 2.0.0-beta, all list items and their sub-lists are considered &quot;general changes&quot; unless otherwise stated. " %}
 
+## 2.1.1-beta ##
+ - Updated guidance on usage of SNOMED CT concepts in FHIR value sets
+
 ## 2.1.0-beta ##
 *Changes to record/document retrieval requirements and updated guidance*
  - *API Breaking Change*{:.label.label-danger} The custodian search parameter format has been updated

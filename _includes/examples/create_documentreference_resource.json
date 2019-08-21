@@ -74,7 +74,7 @@
         {
           "system": "http://snomed.info/sct",
           "code": "708168004",
-          "display": "Mental health service (qualifier value)"
+          "display": "Mental health service"
         }
       ]
     }

@@ -75,7 +75,7 @@
                         <coding>
                             <system value="http://snomed.info/sct"/>
                             <code value="708168004"/>
-                            <display value="Mental health service (qualifier value)"/>
+                            <display value="Mental health service"/>
                         </coding>
                     </practiceSetting>
                 </context>
@@ -163,7 +163,7 @@
                         <coding>
                             <system value="http://snomed.info/sct"/>
                             <code value="708168004"/>
-                            <display value="Mental health service (qualifier value)"/>
+                            <display value="Mental health service"/>
                         </coding>
                     </practiceSetting>
                 </context>

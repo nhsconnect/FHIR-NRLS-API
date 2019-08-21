@@ -91,6 +91,7 @@ Links to the NRL FHIR value sets on the NHS FHIR Reference Server.
 |[Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)| A ValueSet that identifies the Spine error or warning code in response to a request.|
 |[Spine-Response-Code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0)|  A set of codes to indicate low level error information about a Spine 2 error response to a request for patient record details. Exceptions raised by the Spine common requesthandler and not the NRL Service will be returned using the Spine default [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to this default valueSet. |
 
+{% include note.html content="Display values for SNOMED CT concepts MUST be as listed in the FHIR value sets. The display value is the preferred term and one of the synonyms for the concept, not the Fully Specified Name, as described in the [FHIR guidance for usage of SNOMED CT](https://www.hl7.org/fhir/STU3/snomedct.html)." %}
 
 ## 4. Extensions ##
 
