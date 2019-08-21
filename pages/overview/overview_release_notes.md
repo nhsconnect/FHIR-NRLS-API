@@ -13,6 +13,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 
 ## 2.1.1-beta ##
  - Updated guidance on usage of SNOMED CT concepts in FHIR value sets
+ - API interaction examples updated
 
 ## 2.1.0-beta ##
 *Changes to record/document retrieval requirements and updated guidance*
