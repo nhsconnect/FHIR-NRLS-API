@@ -18,7 +18,7 @@ In order to support the Consumer and Provider interactions with the NRL the Poin
 | Property | Cardinality | Description | 
 |-----------|----------------|------------|
 |[Identifier](pointer_identity.html)|0..1|Assigned by the NRL at creation time. Uniquely identifies this record within the NRL. Used by Providers to update or delete.|
-|Profile|0..1|The URI of the FHIR profile that the resource conforms to.|
+|Profile|0..1|The URI of the FHIR profile that the resource conforms to. Indicates the version of the pointer model.|
 |Pointer version |0..1|Assigned by the NRL at creation or update time. Used to track the current version of a Pointer.|
 |Pointer last updated datetime|0..1|Assigned by the NRL at creation and update time. The date and time that the pointer was last updated.|
 |Pointer indexed datetime|0..1|Assigned by the NRL at creation time. The date and time that the pointer was created.|

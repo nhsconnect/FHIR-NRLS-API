@@ -21,6 +21,7 @@ Links to the NRL FHIR profiles on the NHS FHIR Reference Server.
 | [Spine-OperationOutcome-1](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1)| Operation Outcome resource that supports a collection of error, warning or information messages that result from a NRL Service Spine interaction.|
 | [Spine-OperationOutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0)| The default Spine OperationOutcome profile resource that supports exceptions raised by the Spine common requesthandler and not the NRL Service. 
 
+{% include note.html content="Major changes to the pointer model will be reflected in the NRL DocumentReference FHIR profile, using the naming convention `NRL-DocumentReference-[major_version]`. <br/> <br/> The FHIR profile which the pointer conforms to will be indicated in the `DocumentReference.meta.profile` metadata attribute to enable Consumers to support the different versions of the pointer model. Pointers conforming to the NRLS-DocumentReference-1 profile (v1.2.3-beta specification) will not have this attribute populated." %}
 
 ## 2. NRL Data Model to FHIR Profile Mapping ##
 
@@ -29,7 +30,7 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Data Item|FHIR Element|Data Type|Card|Description|
 |----|---------|----|-----------|-----|
 |Identifier|`id`|string|0..1|Assigned by the NRL at creation time. Uniquely identifies this record within the NRL. Used by Providers to update or delete.|
-|Profile|`meta.profile`|uri|0..1|The URI of the FHIR profile that the resource conforms to.|
+|Profile|`meta.profile`|uri|0..1|The URI of the FHIR profile that the resource conforms to. Indicates the version of the pointer model. |
 |Version|`meta.versionId`|string|0..1|Assigned by the NRL at creation or update time. Used to track the current version of a Pointer.|
 |Pointer last updated datetime|`meta.lastUpdated`|datetime|0..1|Assigned by the NRL at creation and update time. The date and time that the pointer was last updated.|
 |Pointer indexed datetime|`indexed`|datetime|0..1|Assigned by the NRL at creation time. The date and time that the pointer was created.|
