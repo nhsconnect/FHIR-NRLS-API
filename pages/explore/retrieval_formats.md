@@ -30,7 +30,7 @@ The table below describes the formats that are currently supported:
 | Format | Description |
 |-----------|----------------|
 |Contact Details (HTTP Unsecured)|A publicly accessible HTML web page or PDF detailing contact details for retrieving a record. <br> Note that retrieval requests for contact details should be made directly and not via the SSP.| 
-|Unstructured Document|An unstructured document e.g. PDF. The document  SHOULD be returned in the format described in the mime-type on the pointer metadata. <br> For unstructed documents, Consumers and Providers SHOULD support PDF as a minimum. <br> An example API endpoint for handling unstructured documents can be seen in the [CareConnect GET Binary specification ("Query 1 - Default Query" in section 1.1)](https://nhsconnect.github.io/CareConnectAPI/api_documents_binary.html#readresponse).  | 
+|Unstructured Document|An unstructured document e.g. PDF. The content-type of the document returned SHOULD be in the mime-type as described on the pointer metadata (`DocumentReference.content[x].attachment.contentType`). <br> For unstructured documents, Consumers and Providers SHOULD support PDF as a minimum. <br> An example API endpoint for handling unstructured documents can be seen in the [CareConnect GET Binary specification ("Query 1 - Default Query" in section 1.1)](https://nhsconnect.github.io/CareConnectAPI/api_documents_binary.html#readresponse).  | 
 
 Please see the [format code value set](https://fhir.nhs.uk/STU3/ValueSet/NRL-FormatCode-1) for the list of codes to use. 
 
