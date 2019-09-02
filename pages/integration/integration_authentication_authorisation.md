@@ -33,6 +33,3 @@ Please see the [NRL RBAC mapping table](explore_rbac_mapping.html) for details o
 ### Authorisation ###
 
 The NRL and SSP use the well established ASID + interactionId approach to control access to these services. Each RESTful endpoint is associated with a unique interactionId. Each system that is accredited by NHS Digital as being a Consumer or Provider will be issued with an ASID and assigned a set of interactions that they have been authorised to perform. These interactions are mapped to interactionIds. Each ASID is associated with a set of interactionIds. It is this combination of interactionIds that govern what RESTful endpoints a particular system can interact with.
-
-Interaction IDs for retrieval are specific to the format code for the record or document. Please see the [Formats](retrieval_formats.html) page for details.
-
