@@ -27,7 +27,7 @@ In order to support the Consumer and Provider interactions with the NRL the Poin
 |Patient|1..1|The NHS number of the patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.|
 |Pointer owner|1..1|The entity who maintains the Pointer. Used to control which systems can modify the Pointer|
 |Record owner|1..1|The entity who maintains the Record. Used to provide the Consumer with context around who they will be interacting with if retrieving the Record.|
-|Record Category|1..1|A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set|
+|Record category|1..1|A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set|
 |Record type|1..1|The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers. The clinical type will be one of a controlled set. It will not be possible to create a pointer with a type that does not exist within this controlled set.|
 |Record creation clinical setting|1..1|Describes where the content was created, in what clinical setting|
 |Period of care|0..1|Details the time at which the documented care is relevant|

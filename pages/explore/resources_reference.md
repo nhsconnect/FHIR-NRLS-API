@@ -41,7 +41,7 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Patient|`subject`|Reference|1..1|The NHS number of the patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.| 
 |Pointer owner|`custodian`|Reference|1..1|ODS code for the pointer owner organization.|
 |Record owner|`author`|Reference|1..1|ODS code for the record owner organization.|
-|Record Category|`class`|CodeableConcept|1..1|A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set|
+|Record category|`class`|CodeableConcept|1..1|A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set|
 ||`class.coding.system`|Uri|1..1|Identity of the terminology system|
 ||`class.coding.code`|Code|1..1|Symbol in syntax defined by the system|
 ||`class.coding.display`|String|1..1|Representation defined by the system|

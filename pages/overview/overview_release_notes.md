@@ -12,7 +12,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 {% include note.html content="Starting from release 2.0.0-beta, all list items and their sub-lists are considered &quot;general changes&quot; unless otherwise stated. " %}
 
 ## 2.1.2-beta ##
- - Renamed metadata 'Record Class' to 'Record Category'
+ - Renamed metadata 'Record class' to 'Record category'
  - Updated guidance on request headers for the retrieval read interaction
  - Updated guidance on use of CareConnect GET Binary API for unstructured retrieval
  - Added guidance on pointer model versioning
