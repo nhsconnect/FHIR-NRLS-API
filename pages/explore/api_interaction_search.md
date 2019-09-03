@@ -138,7 +138,7 @@ Success:
 
 - SHALL return a `200` **OK** HTTP status code on successful execution of the interaction.
 - SHALL return a `Bundle` of `type` searchset, containing either:
-    - One or more `DocumentReference` resource that conforms to the NRL DocumentReference FHIR profile and has the status value "current". 
+    - One or more `DocumentReference` resources that conform to the NRL DocumentReference FHIR profile and that have the status value of "current". 
     
       {% include note.html content="The version of the pointer model (FHIR profile) will be indicated in the `DocumentReference.meta.profile` metadata attribute for each pointer (see [FHIR Resources & References](explore_reference.html#1-profiles)). A 'Bundle' may contain pointers which conform to different versions of the pointer model." %}
 
