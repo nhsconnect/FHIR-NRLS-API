@@ -14,7 +14,7 @@ summary: To support parameterised search of the NRL.
 
 ## Search ##
 
-API to support parameterised search of the NRL. This functionality is available for both Consumer and Provider systems.
+Consumer interaction to support parameterised search of the NRL. 
 
 ## Pre-requisites ##
 

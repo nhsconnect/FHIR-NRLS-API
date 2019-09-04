@@ -14,7 +14,7 @@ summary: To support the deletion of NRL pointers.
 
 ## Delete ##
 
-API to support the deletion of NRL pointers. This functionality is only available for providers.
+Provider interaction to support the deletion of NRL pointers. 
 
 ## Pre-requisites ##
 

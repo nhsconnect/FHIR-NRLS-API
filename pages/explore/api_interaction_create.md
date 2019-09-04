@@ -14,7 +14,7 @@ summary: To support the creation of NRL pointers
 
 ## Create ##
 
-API to support the creation of NRL pointers. This functionality is only available for providers.
+Provider interaction to support the creation of NRL pointers.
 
 ## Pre-requisites ##
 

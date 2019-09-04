@@ -14,7 +14,7 @@ summary: To support retrieval of an NRL pointer
 
 ## Read ##
 
-API to support the retrieval of a single NRL pointer. This functionality is available for consumers and providers.
+Consumer interaction to support the retrieval of a single NRL pointer. 
 
 ## Pre-requisites ##
 

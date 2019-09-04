@@ -14,7 +14,7 @@ summary: To support the superseding of NRL pointers
 
 ## Create (Supersede) ##
 
-API to support superseding NRL pointers. This functionality is only available for providers.
+Provider interaction to support superseding NRL pointers. 
 Create with Supersede (abbreviated to Supersede) is an extension of the [Create Interaction](api_interaction_create.html).
 The Supersede functionality will be used in cases where a Provider wishes to replace one DocumentReference with another, newer one.
 
