@@ -21,22 +21,6 @@ In the first instance the NRL mandates a single access mechanism; a HTTPS GET to
 Clearly issuing a GET to retrieve a record is only one part of the task. Accessing records in a secure fashion is also an important consideration. Again, just as there are many ways to expose a Record, there are many ways to securely expose a Record. Taking a similar tack, the NRL is predicated around the principle of placing a degree of control over how Providers securely expose their Records for consumption via a Pointer. The mechanism that has been selected in the first instance is mutual authentication over HTTPS. More detail can be found in the security section. Again as with the control around the mechanism of Record retrieval, the NRL sees the use of mutual authentication as the initial offering, the ambition is to increase the supported security models as more information is gathered.
 -->
 
-### The Provider controls Record retrieval ###
-
-The NRL takes the stance that it is for the Provider to determine the mechanism employed to retrieve the Record.
-
-A consequence of this principle is that in some circumstances it may not be possible for a Pointer to describe all of the information needed to retrieve the Record. For example if there are dynamic parameters that need to be passed to the Provider’s system that are not known a priori. In these instances, a Pointer will give the Provider a place to record some optional guidance to advise the Consuming organisation around how to integrate with the Provider.
-
-Having said that if a Record is exposed using National standards then the aspiration is that the NRL Pointer can be used to retrieve a Record using a National broker without the need for the Consumer to perform custom integration.
-
-### The NRL does not guarantee that Records can be retrieved by following a Pointer ###
-
-There are the complexities associated with retrieving data over a network that are outside of the scope of the meta data that will be captured by a Pointer. As an example, consider the need to define firewall rules to allow traffic to flow between a Consumer and a Provider; this kind of consideration will not be captured in a Pointer however if it is not addressed then record retrieval will not be possible even if the actual meta data in the Pointer is correct.
-
-Acknowledging that this complexity exists and sits outside of the NRL’ control means that it should not be assumed by Consumers that a Pointer’s Record is automatically resolvable. There may be additional integration for the Consumer system to do before Pointers from the given Provider can used to resolve their Record. To provide Consumers with some support in this context each Pointer may carry some integration guidance. This audience for this guidance is a technical one. It is envisaged that these will be the people working to integrate Consumer with Provider.
-
-
-
 ### The NRL supports varying levels of digital maturity ###
 
 The NRL recognises that there will be varying levels of digital maturity across Providers and Consumers. The format of and way that a Record can be retrieved are under the control of the Provider system. At this stage 2 record retrieval scenarios are envisaged: 
@@ -44,12 +28,13 @@ The NRL recognises that there will be varying levels of digital maturity across 
 - A Provider exposes a Record for direct retrieval such that using the context available in the Pointer, a Consumer is able to retrieve the Record by electronic means. 
 - A Provider exposes a set of contact details that a Consumer can use to retrieve the Record. The Consumer does not retrieve the Record electronically, instead they use the contact details as an intermediate step to get to the Record e.g. by phoning a healthcare service found in the contact details, who then can relay the Record to the Consumer via another mechanism.
 
+### Records should be exposed using National Standards ###
 
-<!--
-To accommodate this the NRL has the concept of direct and indirect Pointers which have been discussed elsewhere.
+To enable Consumers to retreive records with minimal custom integration between Consumer and Provider systems, records should be exposed using national standards. 
 
-The purpose of an indirect Pointer is to provide a lower maturity Provider with a means to surface Records to  Consumers without the need to expose them digitally. An indirect Pointer could point to a set of contact details for a service that can be called to relay a Record over the phone. Similarly if a Consumer does not have the capability to integrate a digital Record into their system an indirect Pointer gives them another mechanism to allow their users to access Records.
--->
+The NRL defines a [Read interaction](retrieval_interaction_read.html) for retrieval of a record via the SSP, which enables a retrieval of records using a standard HTTP GET interaction for a set of specified formats and data structures. There may be exceptions where record retrieval takes place using an alternative retrieval mechanism. 
+
+The pointer model includes a 'Record format' metadata attribute, which describes the technical structure of the record and the mechanism for retrieval. The set of supported formats for retrieval is described on the [retrieval formats page](retrieval_formats.html).
 
 ### The Consumer controls Pointer access ###
 
@@ -59,10 +44,6 @@ Once consequence of this is that the end user on the Consumer side may be expose
 With this in mind it is acknowledged that there is most likely going to be a need to filter Pointers before they are displayed to the end user. This responsibility is seen as belonging to the Consumer where local access rules will be used to judge whether or not a given user should be permitted to know that a given Pointer exists. This is in addition to the RBAC requirements for NRL (see the [Authentication & Authorisation page](integration_authentication_authorisation.html)).
 
 The mechanism for making this decision is predicated on the [Record type](overview_data_model.html#data-model) that the Pointer references. 
-
-### The Provider controls Record format ###
-
-The NRL takes the stance that it is for the Provider to determine what format its Records should be delivered in. The NRL does not restrict the format of Records that are pointed to. Whether or not the Consumer can handle that format is not the concern of the Provider and nor is it the concern of the NRL. The NRL expects that a Provider will create a Pointer with additional contextual information (i.e. mime type) to help the Consumer determine the appropriate way to handle the Record.
 
 ### Pointers should not be removed ### 
 

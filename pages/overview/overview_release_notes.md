@@ -16,6 +16,11 @@ summary: Summary release notes of the versions released in NRL API Implementatio
  - Updated guidance on request headers for the retrieval read interaction
  - Updated guidance on use of CareConnect GET Binary API for unstructured retrieval
  - Added guidance on pointer model versioning
+ - Updated guidance on Consumer and Provider interactions on:
+    - Solution behaviour page
+    - Solution interactions page
+    - Development guidance overview page
+ - Updated solution principles
 
 ## 2.1.1-beta ##
  - Updated guidance on usage of SNOMED CT concepts in FHIR value sets
