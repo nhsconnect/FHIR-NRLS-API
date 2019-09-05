@@ -120,6 +120,9 @@ entries:
     - title: Authentication & Authorisation
       url: /integration_authentication_authorisation.html
       output: web
+    - title: Access Control
+      url: /explore_rbac_mapping.html
+      output: web
     - title: Security
       url: /development_api_security_guidance.html
       output: web

@@ -21,6 +21,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     - Solution interactions page
     - Development guidance overview page
  - Updated solution principles
+ - Added detail on access control and RBAC codes
 
 ## 2.1.1-beta ##
  - Updated guidance on usage of SNOMED CT concepts in FHIR value sets
