@@ -47,12 +47,14 @@ This table outlines which records an RBAC code gives access to and whether it **
         </tr>
         <tr>
             <td>Pointer and record access</td>
-            <td>B0268</td>
+            <td>B0269</td>
         </tr>
   </tbody>
 </table>
 
-There is currently only one Record Type (Mental Health Crisis Plan) but as additional Record Types are added to the NRL they will be added to this table. The Record Group that a Record Type fits into depends on its sensitivity. Record group 1, is a general grouping, to contain the majority of Record Types that are not deemed to be sensitive. It may be that further Record Groups are required if additional Record Types are deemed to need more restrictive controls. Using additional Record Groups for such Record Types ensures that they are protected by further access controls and will not routinely be available to the majority of NRL users. 
+The RBAC codes listed in the mapping table above are limited by the number of Record Types currently available on the NRL. As additional Record Types are added to the NRL the associated RBAC codes will be added to this table. 
+
+The Record Group that a Record Type fits into depends on its sensitivity. Record group 1, is a general grouping, to contain the majority of Record Types that are not deemed to be sensitive. Further Record Groups will be added if additional Record Types are deemed to need more restrictive controls. Using additional Record Groups for such Record Types ensures that they are protected by further access controls and will not routinely be available to the majority of NRL users. 
 
 ### Definitions ###
 
