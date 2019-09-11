@@ -16,7 +16,7 @@ The NRL API supports the following operations as detailed in the [Solution Inter
 |Read|GET|Consumer|Retrieve a single pointer by Logical ID|
 |Search|GET|Consumer|Parameterised search for pointers on the NRL|
 |Create|POST|Provider|Create a pointer on NRL|
-|Create (Supersede)|POST|Provider|Replace an NRL pointer|
+|Create (Supersede)|POST|Provider|Replace an NRL pointer, changing the status of the replaced pointer to "superseded"|
 |Update|PATCH|Provider|Update an NRL pointer to change the status to "entered-in-error"|
 |Delete|DELETE|Provider|Delete an NRL pointer|
 
