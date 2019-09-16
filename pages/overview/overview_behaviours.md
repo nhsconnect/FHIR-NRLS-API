@@ -22,7 +22,7 @@ A Consumer can be thought of as a system that has <b>read-access</b> to the NRL 
 
 ### Identity on the NRL ###
 
-The NRL has two roles – Provider and Consumer. A Consumer is a read-only view of the NRL and a Provider is a write-only view of the NRL. A system can be assured to be both a Consumer and a Provider, provided that all relevant pre-requisites and requirements are met. 
+The NRL has two roles – Provider and Consumer. A Consumer has a read-only role with the NRL and a Provider has a write-only role with the NRL. A system can be assured to be both a Consumer and a Provider, provided that all relevant pre-requisites and requirements are met.
 
 Each client system will be given an Accredited System ID (ASID) by NHS Digital. Each ASID will be associated with one or more interaction IDs. An interaction ID defines an action that can be performed against NRL (for example creating a new DocumentReference). As part of a request, a client will supply thier ASID and the interaction ID that relates to the action that they are trying to perform. If the interaction ID is not associated with the client's ASID then the request will be blocked.
 
@@ -39,7 +39,7 @@ Consumer NRL interactions are read-only. A system can search for a collection of
 
 The NRL search interaction is predicated on the Consumer having a verified NHS number prior to retrieving Pointers. See the [Personal Demographics Service page](integration_personal_demographics_service.html) for further detail on NHS number verification.
 
-Once the Consumer has a verified NHS number the NRL can be asked to retrieve a collection of all "current" Pointers that relate to that NHS number. The NRL looks for Pointer’s whose Patient property matches the NHS number query parameter. On this basis the NRL will return a collection of zero or more matching Pointers. See the [search interaction page](api_interaction_search.html) for further detail. 
+Once the Consumer has a verified NHS number the NRL can be asked to retrieve a collection of all "current" Pointers that relate to that NHS number. The NRL looks for Pointer’s whose Subject (Patient) property matches the NHS number query parameter. On this basis the NRL will return a collection of zero or more matching Pointers. See the [search interaction page](api_interaction_search.html) for further detail. 
 
 In order to retrieve a single pointer using the read interaction, the Consumer must know the logical identifier of the pointer. See the [read interaction page](api_interaction_read.html) for further detail. 
 
@@ -47,7 +47,7 @@ In order to retrieve a single pointer using the read interaction, the Consumer m
 
 The NRL does not take part in Record retrieval. The Pointers that is holds can be seen as signposts that show the way. Retrieval of referenced documents and records can be facilitated by the Spine Secure Proxy (SSP). 
 
-Briefly, the SSP is a forward HTTP proxy which is used as a front-end to control and protect access to Provider IT systems that will be exposing Records in a standards compliant way. It provides a single security point for both authentication and authorisation for systems. Further detail how document/record retrieval can be facilitated by the SSP can be found on the [retrieval overview page](retrieval_overview.html).
+Briefly, the SSP is a forward HTTP proxy which is used as a front-end to control and protect access to Provider IT systems that will be exposing Records in a standards compliant way. It provides a single security point for both authentication and authorisation for systems. Further detail on how document/record retrieval can be facilitated by the SSP can be found on the [retrieval overview page](retrieval_overview.html).
 
 ## Auditing ##
 The NRL and the SSP will capture an audit trail for each request-response interaction that a client (Consumer or Provider) has with the system. Once captured the audit trail can be retrieved.

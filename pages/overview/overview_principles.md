@@ -36,6 +36,10 @@ The NRL defines a [Read interaction](retrieval_interaction_read.html) for retrie
 
 The pointer model includes a 'Record format' metadata attribute, which describes the technical structure of the record and the mechanism for retrieval. The set of supported formats for retrieval is described on the [retrieval formats page](retrieval_formats.html).
 
+### The NRL does not guarantee that Records can be retrieved by following a Pointer ###
+
+There are the complexities associated with retrieving data over a network that are outside of the scope of the meta data that will be captured by a Pointer. As an example, consider the need to define firewall rules to allow traffic to flow between a Consumer and a Provider. The NRL aims to facilitate record retrieval through the [SSP Read Interaction](retrieval_interaction_read.html), reducing the need for point to point integration between Consumer and Provider systems. However, Providers have a responsibility to ensure that Pointer metadata accurately reflects the retrieval mechanism and format of the referenced document/record. 
+
 ### The Consumer controls Pointer access ###
 
 When a Consumer requests that the NRL return the Pointers that it has for a given patient (NHS number) it will return all Pointers. The NRL will not perform any filtering before sending that collection of Pointers back to the Consumer. 

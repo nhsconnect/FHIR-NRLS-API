@@ -32,9 +32,9 @@ When an event occurs within a Provider organisation that requires the creation o
 
 Once assembled the Provider sends the Pointer to the [create interaction](api_interaction_create.html) that is exposed on the NRL maintenance interface. 
 
-After successfully persisting the Pointer, the NRL will return the address of the new Pointer to the Provider client.
+After successfully persisting the Pointer, the NRL will inform the Provider client of this in the returned response which will include the address of the new Pointer.
 
-If there were any problems that meant the Pointer could not be created the NRL will inform the client, otherwise the client should assume that the Pointer has been successfully created.
+If there were any problems that meant the Pointer could not be created, the NRL will inform the client of this in the returned response.
 
 #### Pointer replacement ####
 
@@ -42,23 +42,27 @@ When an event occurs within a Provider organisation that requires a Pointer's me
 
 The creation of the new pointer with the 'Related document' metadata item will consequently update the existing Pointer to change the status to "superseded" and increment the pointer version. The superseded pointer will no longer be available to Consumers. 
 
-After successfully persisting the superseding Pointer, the NRL will return the address of the new Pointer to the Provider client.
+After successfully persisting the Pointer, the NRL will inform the Provider client of this in the returned response which will include the address of the new Pointer.
 
-If there were any problems that meant the Pointer could not be replaced the NRL will inform the client, otherwise the client should assume that the existing pointer has been successfully updated and the new Pointer has been successfully created. In the case of any error occuring, all updates to the superseded pointer will be rolled back. 
+If there were any problems that meant the Pointer could not be created, the NRL will inform the client of this in the returned response. In the case of an error occuring, all updates to the superseded pointer will be rolled back. 
 
 #### Pointer update ####
 
-When an error is identified with a Pointer which ascertains that it should not exist on NRL, whether the error on the pointer metadata or is with the referenced record itself, the Provider should update the pointer status to "entered-in-error". 
+When an error is identified with a Pointer which ascertains that it should not exist on NRL, whether the error is on the pointer metadata or is with the referenced record itself, the Provider should update the pointer status to "entered-in-error". 
 
 The Provider does this using the [update interaction](api_interaction_update.html) that is exposed on the NRL maintenance interface.
 
-If there were any problems that meant the Pointer could not be updated the NRL will inform the client, otherwise the client should assume that the Pointer has been successfully updated. The updated pointer will no longer be available to Consumers. 
+After successfully updating the Pointer, the NRL will inform the Provider client of this in the returned response.
+
+If there were any problems that meant the Pointer could not be updated, the NRL will inform the client of this in the returned response. The updated pointer will no longer be available to Consumers. 
 
 #### Pointer removal ####
 
 When an event occurs within a Provider organisation that requires the removal of an existing Pointer from the NRL the Provider uses the [delete interaction](api_interaction_delete.html) that is exposed in the NRL maintenance interface passing it the address of the Pointer that is to be removed.
 
-If there were any problems that meant the Pointer could not be removed the NRL will inform the client, otherwise the client should assume that the Pointer has been successfully deleted. The deleted pointer will no longer be available to Consumers. 
+After successfully deleting the Pointer, the NRL will inform the Provider client of this in the returned response.
+
+If there were any problems that meant the Pointer could not be removed the NRL will inform the client. The deleted pointer will no longer be available to Consumers. 
 
 ### Consumer Interactions ###
 
