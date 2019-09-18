@@ -11,7 +11,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 
 {% include note.html content="Starting from release 2.0.0-beta, all list items and their sub-lists are considered &quot;general changes&quot; unless otherwise stated. " %}
 
-## 2.1.2-beta ##
+## 2.2.0-beta ##
  - Renamed metadata 'Record class' to 'Record category'
  - Updated guidance on request headers for the retrieval read interaction
  - Updated guidance on use of CareConnect GET Binary API for unstructured retrieval
@@ -22,6 +22,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     - Development guidance overview page
  - Updated solution principles
  - Added detail on access control and RBAC codes
+ - Changed interaction ID for registering Provider document/record retrieval endpoints (and Consumer SDS look-up for Provider ASID)
 
 ## 2.1.1-beta ##
  - Updated guidance on usage of SNOMED CT concepts in FHIR value sets
