@@ -77,6 +77,9 @@ entries:
           - title: Create (Supersede)
             url: /api_interaction_supersede.html
             output: web
+          - title: Update
+            url: /api_interaction_update.html
+            output: web  
           - title: Delete
             url: /api_interaction_delete.html
             output: web
@@ -86,9 +89,6 @@ entries:
           - title: Search
             url: /api_interaction_search.html
             output: web   
-          - title: Update
-            url: /api_interaction_update.html
-            output: web  
       - title: Record Retrieval Guidance
         output: web  
         subfolderitems:

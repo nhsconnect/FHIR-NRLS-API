@@ -13,12 +13,12 @@ The NRL API supports the following operations as detailed in the [Solution Inter
 
 |Interaction|HTTP Verb|Actor|Description|
 | ------------- | ------------- | ------------- | ------------- | ------------- | 
-|Read|GET|Consumer|Retrieve a single pointer by Logical ID|
-|Search|GET|Consumer|Parameterised search for pointers on the NRL|
-|Create|POST|Provider|Create a pointer on NRL|
-|Create (Supersede)|POST|Provider|Replace an NRL pointer, changing the status of the replaced pointer to "superseded"|
-|Update|PATCH|Provider|Update an NRL pointer to change the status to "entered-in-error"|
-|Delete|DELETE|Provider|Delete an NRL pointer|
+|[Read](api_interaction_read.html)|GET|Consumer|Retrieve a single pointer by Logical ID|
+|[Search](api_interaction_search.html)|GET|Consumer|Parameterised search for pointers on the NRL|
+|[Create](api_interaction_create.html)|POST|Provider|Create a pointer on NRL|
+|[Create (Supersede)](api_interaction_supersede.html)|POST|Provider|Replace an NRL pointer, changing the status of the replaced pointer to "superseded"|
+|[Update](api_interaction_update.html)|PATCH|Provider|Update an NRL pointer to change the status to "entered-in-error"|
+|[Delete](api_interaction_delete.html)|DELETE|Provider|Delete an NRL pointer|
 
 A system can be assured to perform both Consumer and Provider interactions, provided that all relevant pre-requisites and requirements are met. 
 
