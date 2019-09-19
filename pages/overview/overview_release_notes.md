@@ -22,7 +22,9 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     - Development guidance overview page
  - Updated solution principles
  - Added detail on access control and RBAC codes
- - Changed interaction ID for registering Provider document/record retrieval endpoints (and Consumer SDS look-up for Provider ASID)
+ - Changed the interaction ID that must be used:
+    - for registering Provider document/record retrieval endpoints on SDS
+    - for when Consumers perform a look-up of a Provider ASID on SDS
 
 ## 2.1.1-beta ##
  - Updated guidance on usage of SNOMED CT concepts in FHIR value sets
