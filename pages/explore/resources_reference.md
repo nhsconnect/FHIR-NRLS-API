@@ -58,7 +58,7 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 ||`context.period.end`|dateTime|0..1|End time with inclusive boundary, if not ongoing|
 |Pointer referenced|`content`| BackboneElement| 1..*| Record referenced|
 |Record creation datetime|`content.attachment.creation`|dateTime|0..1|The date and time (on the Provider’s system) that the record was created, for static records.|
-|Record URL|`content.attachment.url`|uri|1..1|The location of the record on the Provider’s system and/ or a service that allows you to look up information based on the provider url e.g. web page with service contact details|
+|Record URL|`content.attachment.url`|uri|1..1|Absolute URL for the location of the record on the Provider’s system and/ or a service that allows you to look up information based on the provider url e.g. web page with service contact details.|
 |Record format|`content.format`|Coding|1..1|Describes the technical structure and rules of the record such that the Consumer can pick an appropriate mechanism to handle the record.|
 ||`content.format.system`|Uri|1..1|Identity of the terminology system|
 ||`content.format.code`|Code|1..1|Symbol in syntax defined by the system|

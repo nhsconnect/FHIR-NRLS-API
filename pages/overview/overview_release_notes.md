@@ -25,6 +25,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
  - Changed the interaction ID that must be used:
     - for registering Provider document/record retrieval endpoints on SDS
     - for when Consumers perform a look-up of a Provider ASID on SDS
+ - Added clarification on using absolute URLs in the Record URL metadata attribute
 
 ## 2.1.1-beta ##
  - Updated guidance on usage of SNOMED CT concepts in FHIR value sets

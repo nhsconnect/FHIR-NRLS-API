@@ -33,7 +33,7 @@ In order to support the Consumer and Provider interactions with the NRL the Poin
 |Period of care|0..1|Details the time at which the documented care is relevant|
 |Pointer reference|1..*|The record that is being referenced|
 |Record creation datetime|0..1|The date and time (on the Provider’s system) that the record was created, for static records.|
-|Record URL|1..1|The location of the record on the Provider’s system|
+|Record URL|1..1|Absolute URL for the location of the record on the Provider’s system|
 |Record format|1..1|Describes the technical structure and rules of the record such that the Consumer can pick an appropriate mechanism to handle the record.|
 |Record mime type|1..1|Describes the type of data such that the Consumer can pick an appropriate mechanism to handle the record.|
 |Record stability|1..1|Describes whether the record content at the time of the request is dynamically generated or is static|
