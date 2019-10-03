@@ -19,7 +19,7 @@ Endpoints for retrieval must be registered on the Spine Directory Service (SDS).
 
 Providers MUST ensure that the record author ODS code on the pointer metadata matches the ODS code for the endpoint registered in SDS.
 
-Providers MUST ensure that endpoints for retrieval are registered on SDS with the correct interaction ID. 
+Providers MUST ensure that endpoints for retrieval are registered on SDS with the interaction ID `urn:nhs:names:services:nrl:DocumentReference.content`. 
 
 ## Fully Qualified Doman Name (FQDN) ##
 

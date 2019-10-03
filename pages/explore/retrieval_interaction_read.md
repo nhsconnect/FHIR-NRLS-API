@@ -20,7 +20,6 @@ Consumer and Provider retrieval HTTP requests support the following HTTP request
 
 | Header(s)               | Value |Conformance |
 |----------------------|-------|-------|
-| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be the mime-type as described in the pointer metadata (`DocumentReference.content.attachment.contentType`). | MAY |
 | `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Access Tokens (JWT)](integration_access_tokens_JWT.html) for details. |  MUST |
 | SSP Headers          | See below for details |  |
 

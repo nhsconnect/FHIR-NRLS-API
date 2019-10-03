@@ -21,6 +21,7 @@ Links to the NRL FHIR profiles on the NHS FHIR Reference Server.
 | [Spine-OperationOutcome-1](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1)| Operation Outcome resource that supports a collection of error, warning or information messages that result from a NRL Service Spine interaction.|
 | [Spine-OperationOutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0)| The default Spine OperationOutcome profile resource that supports exceptions raised by the Spine common requesthandler and not the NRL Service. 
 
+{% include note.html content="Major changes to the pointer model will be reflected in the NRL DocumentReference FHIR profile, using the naming convention `NRL-DocumentReference-[major_version]`. <br/> <br/> The FHIR profile which the pointer conforms to will be indicated in the `DocumentReference.meta.profile` metadata attribute to enable Consumers to support the different versions of the pointer model. Pointers conforming to the NRLS-DocumentReference-1 profile (v1.2.3-beta specification) will not have this attribute populated." %}
 
 ## 2. NRL Data Model to FHIR Profile Mapping ##
 
@@ -29,7 +30,7 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Data Item|FHIR Element|Data Type|Card|Description|
 |----|---------|----|-----------|-----|
 |Identifier|`id`|string|0..1|Assigned by the NRL at creation time. Uniquely identifies this record within the NRL. Used by Providers to update or delete.|
-|Profile|`meta.profile`|uri|0..1|The URI of the FHIR profile that the resource conforms to.|
+|Profile|`meta.profile`|uri|0..1|The URI of the FHIR profile that the resource conforms to. Indicates the version of the pointer model. |
 |Version|`meta.versionId`|string|0..1|Assigned by the NRL at creation or update time. Used to track the current version of a Pointer.|
 |Pointer last updated datetime|`meta.lastUpdated`|datetime|0..1|Assigned by the NRL at creation and update time. The date and time that the pointer was last updated.|
 |Pointer indexed datetime|`indexed`|datetime|0..1|Assigned by the NRL at creation time. The date and time that the pointer was created.|
@@ -40,7 +41,7 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Patient|`subject`|Reference|1..1|The NHS number of the patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.| 
 |Pointer owner|`custodian`|Reference|1..1|ODS code for the pointer owner organization.|
 |Record owner|`author`|Reference|1..1|ODS code for the record owner organization.|
-|Record Class|`class`|CodeableConcept|1..1|A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set|
+|Record category|`class`|CodeableConcept|1..1|A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set|
 ||`class.coding.system`|Uri|1..1|Identity of the terminology system|
 ||`class.coding.code`|Code|1..1|Symbol in syntax defined by the system|
 ||`class.coding.display`|String|1..1|Representation defined by the system|
@@ -57,7 +58,7 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 ||`context.period.end`|dateTime|0..1|End time with inclusive boundary, if not ongoing|
 |Pointer referenced|`content`| BackboneElement| 1..*| Record referenced|
 |Record creation datetime|`content.attachment.creation`|dateTime|0..1|The date and time (on the Provider’s system) that the record was created, for static records.|
-|Record URL|`content.attachment.url`|uri|1..1|The location of the record on the Provider’s system and/ or a service that allows you to look up information based on the provider url e.g. web page with service contact details|
+|Record URL|`content.attachment.url`|uri|1..1|Absolute URL for the location of the record on the Provider’s system and/ or a service that allows you to look up information based on the provider url e.g. web page with service contact details.|
 |Record format|`content.format`|Coding|1..1|Describes the technical structure and rules of the record such that the Consumer can pick an appropriate mechanism to handle the record.|
 ||`content.format.system`|Uri|1..1|Identity of the terminology system|
 ||`content.format.code`|Code|1..1|Symbol in syntax defined by the system|
@@ -86,7 +87,7 @@ Links to the NRL FHIR value sets on the NHS FHIR Reference Server.
 |[NRL-RecordType-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1)| A ValueSet that identifies the NRL record type. |
 |[NRL-FormatCode-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-FormatCode-1)| A ValueSet that identifies the NRL record format. |
 |[NRL-PracticeSetting-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-PracticeSetting-1)| A ValueSet that identifies the NRL record practice setting. |
-|[NRL-RecordClass-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordClass-1)| A ValueSet that identifies the NRL record class. |
+|[NRL-RecordClass-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordClass-1)| A ValueSet that identifies the NRL record category. |
 |[NRL-ContentStability-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-ContentStability-1)| A ValueSet that identifies the NRL record stability. |
 |[Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)| A ValueSet that identifies the Spine error or warning code in response to a request.|
 |[Spine-Response-Code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0)|  A set of codes to indicate low level error information about a Spine 2 error response to a request for patient record details. Exceptions raised by the Spine common requesthandler and not the NRL Service will be returned using the Spine default [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to this default valueSet. |

@@ -1,7 +1,7 @@
 entries:
 - title: NRL
   product: NRL
-  version: 2.1.1-beta API <i>specification</i>
+  version: 2.2.0-beta API <i>specification</i>
   levels: one
   folders:
 
@@ -77,6 +77,9 @@ entries:
           - title: Create (Supersede)
             url: /api_interaction_supersede.html
             output: web
+          - title: Update
+            url: /api_interaction_update.html
+            output: web  
           - title: Delete
             url: /api_interaction_delete.html
             output: web
@@ -86,9 +89,6 @@ entries:
           - title: Search
             url: /api_interaction_search.html
             output: web   
-          - title: Update
-            url: /api_interaction_update.html
-            output: web  
       - title: Record Retrieval Guidance
         output: web  
         subfolderitems:
@@ -119,6 +119,9 @@ entries:
     folderitems:
     - title: Authentication & Authorisation
       url: /integration_authentication_authorisation.html
+      output: web
+    - title: Access Control
+      url: /explore_rbac_mapping.html
       output: web
     - title: Security
       url: /development_api_security_guidance.html

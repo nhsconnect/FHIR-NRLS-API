@@ -23,7 +23,7 @@ Where a document/record is to be retrieved via the SSP the Consumer MUST pre-fix
 Consumers MUST include the provider ASID in the SSP-To HTTP Header when performing a retrieval request via the SSP.
 
 The provider ASID can be obtained through performing a [Spine Directory Services (SDS)](https://developer.nhs.uk/apis/spine-core-1-0/build_directory.html) look-up. 
-This can be done using the record author ODS code, which is included in the pointer metadata, and the spine interaction ID. 
+This can be done using the record author ODS code, which is included in the pointer metadata, and the interaction ID `urn:nhs:names:services:nrl:DocumentReference.content`. 
 
 A worked example of the endpoint look-up process can be found on the [Spine Core specification](https://developer.nhs.uk/apis/spine-core-1-0/build_endpoints_example_spine_fhir.html).
 

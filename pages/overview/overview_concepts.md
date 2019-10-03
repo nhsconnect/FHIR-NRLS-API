@@ -26,7 +26,7 @@ The <b>NRL</b> is acting as a registry with the repository function carried out 
 
 <b>Pointers</b> are really at the core of the NRL. The NRL can be thought of as a collection of Pointers. Each Pointer describes how to retrieve a particular record from the Provider’s system or repository. It is key to the success of the NRL that Pointers are accurate. It is the responsibility of Providers to create and manage Pointers on the NRL in order to maintain this accuracy. 
 
-Accuracy is important from the perspective of those systems who wish to understand what records are available and from there may wish to retrieve records from the Provider. This category of actor is known as a <b>Consumer</b>. Without accurate Pointer data the Consumer’s life is made harder as they cannot be assured that a given Pointer describes what is purports to.
+Accuracy is important from the perspective of those systems who wish to understand what records are available and from there may wish to retrieve records from the Provider. This category of actor is known as a <b>Consumer</b>. Without accurate Pointer data the Consumer’s life is made harder as they cannot be assured that a given Pointer describes what it purports to.
 
 The NRL does not take part in Record retrieval. The actual retrieval of the Record referenced by a given Pointer can be facilitated by the <b>Spine Security Proxy (SSP)</b>. 
 
@@ -38,9 +38,7 @@ A Record exists on a remote system and collects together related data into a log
 
 Records come in a variety of formats but the NRL broadly makes a distinction based on the notion of <b>structured</b> and <b>unstructured</b> Records. Structured Records are made up of clearly defined data types whose composition makes them relatively easy to manipulate. Contrast this with unstructured Records which crudely could be said to be “everything else” and are comprised of data that is usually not as easy to manipulate.
 
- <!--whose composition makes them easily searchable. -->
-
-The NRL also acknowledges that there is a difference to be drawn between how the contents of a Record can change over time (see the [Record creation datetime](overview_data_model.html#data-model) field on Pointer). To the NRL a <b>static</b> Record is one whose contents will never change whereas a <b>dynamic</b> Record’s contents is not guaranteed to be the same from one point in time to another in the future.
+The NRL also acknowledges that there is a difference to be drawn between how the contents of a Record can change over time (see the [Record creation datetime](overview_data_model.html#data-model) field on Pointer). To the NRL a <b>static</b> Record is one whose contents will never change whereas a <b>dynamic</b> Record’s contents are not guaranteed to be the same from one point in time to another in the future.
 
 ### Pointer ###
 
