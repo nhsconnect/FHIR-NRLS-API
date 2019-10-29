@@ -8,45 +8,40 @@ summary: Access token required for interacting with the NRL and SSP.
 redirect_from: "/integration_access_tokens_and_audit_JWT.html"
 ---
 
-## Access Tokens (JWT)##
-
+## Access Tokens (JWT)
 
 Clients MUST send an access token (JWT) with each request to the NRL or the SSP using the standard HTTP Authorization request header. The JWT MUST conform to the [Spine JWT](https://developer.nhs.uk/apis/spine-core/security_jwt.html) definition.
 
-The claims of the JWT are the same as those defined in the Spine Core JWT however the rules that govern the validation of those claims are different. From an NRL perspective the rules defined here override rules defined for the Spine Core. 
-Where a Spine Core rule is not explicitly replaced here then the Spine Core rule stands.
+The claims of the JWT are the same as those defined in the Spine Core JWT. However, the rules that govern the validation of those claims are different. From an NRL perspective, the rules defined here override rules defined for the Spine Core.
 
-### Claims ###
+Where a Spine Core rule is not explicitly replaced here, the Spine Core rule stands.
 
-In the Spine JWT definition the `requesting_organisation` claim is marked as optional however this claim MUST be supplied for all NRL and SSP requests.
+### Claims
 
-### Validation ###
+In the Spine JWT definition, the `requesting_organisation` claim is marked as optional. However, this claim MUST be supplied for all NRL and SSP requests.
 
-Depending upon the client’s role (Provider or Consumer) the validation that is applied to the JWT varies. The following section is broken down into three parts –  
+### Validation
 
-1. Common – validation that is common across Providers and Consumers 
+Depending upon the client’s role (Provider or Consumer) the validation that is applied to the JWT varies. The following section is broken down into three parts:
 
-2. Provider – validation rules that only apply where the client is a Provider 
+1. Common – validation that is common across Providers and Consumers
+2. Provider – validation rules that only apply where the client is a Provider
+3. Consumer – validation rules that only apply where the client is a Consumer
 
-3. Consumer – validation rules that only apply where the client is a Consumer 
+#### Common Validation
 
-#### Common Validation ####
-
-Where there has been a validation failure then the following response will be returned to the client. In all instances the response will be the same however the diagnostics text will vary depending upon the nature of the error. 
-
-|
-
+Where there has been a validation failure, the following response will be returned to the client. In all instances, the response will be the same. However, the diagnostics text will vary depending upon the nature of the error.
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
-|400|error|structure|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|<font color="blue">Note:</font> See [MISSING_OR_INVALID_HEADER Exception Scenarios](integration_access_tokens_JWT.html#missing_or_invalid_header-exception-scenarios)|
+|400|error|structure|MISSING_OR_INVALID_HEADER|There is a required header that is missing or invalid| **Note:** See [MISSING_OR_INVALID_HEADER Exception Scenarios](integration_access_tokens_JWT.html#missing_or_invalid_header-exception-scenarios)|
 
 
-#### MISSING_OR_INVALID_HEADER Exception Scenarios: ####
+#### MISSING_OR_INVALID_HEADER Exception Scenarios:
 
-Example 1: JWT missing – the Authorization header has not been supplied. The following response SHALL be returned to the client.
+Example 1: JWT missing – the Authorization header has not been supplied. The following response MUST be returned to the client.
 
-<i> Diagnostics - The Authorisation header must be supplied <i/>
+_Diagnostics - The Authorisation header must be supplied_
 
 <!--
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
@@ -55,10 +50,9 @@ Example 1: JWT missing – the Authorization header has not been supplied. The f
 
 Diagnostics - The Authorisation header must be supplied-->
 
+Example 2: JWT structure invalid – the Authorization header is present. However, the value is not a structurally valid JWT. In other words, one or more of the required elements of header, payload, and signature is missing.
 
-Example 2: JWT structure invalid – the Authorization header is present however the value is not a structurally valid JWT ie one or more of the required elements of header, payload and signature is missing. 
-
-<i> Diagnostics - The JWT associated with the Authorisation header must have the 3 sections <i/>
+_Diagnostics - The JWT associated with the Authorisation header must have all 3 sections_
 
 <!--
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
@@ -67,11 +61,9 @@ Example 2: JWT structure invalid – the Authorization header is present however
 
 Diagnostics - The JWT associated with the Authorisation header must have the 3 sections -->
 
+Example 3: Mandatory claim missing – the Authorization header is present and the JWT is structurally valid. However, one or more of the mandatory claims is missing from the JWT.
 
-Example 3: Mandatory claim missing – the Authorization header is present and the JWT is structurally valid however one or more of the mandatory claims is missing from the JWT 
-
-<i> Diagnostics - The mandatory claim [claim] from the JWT associated with the Authorisation header is missing <i/>
-
+_Diagnostics - The mandatory claim [claim] from the JWT associated with the Authorisation header is missing_
 
 <!--
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
@@ -80,41 +72,35 @@ Example 3: Mandatory claim missing – the Authorization header is present and t
 
 Diagnostics - The mandatory claim [claim] from the JWT associated with the Authorisation header is missing -->
 
-Example 4: Claim’s value is invalid - the Authorization header is present and the JWT is structurally valid a mandatory claim is present in the JWT however it’s value is not valid. The table below shows the various checking that is applied to each claim in the JWT and the associated diagnostics message:
-
+Example 4: Claim’s value is invalid — the Authorization header is present, the JWT is structurally valid, and a mandatory claim is present in the JWT, but its value is not valid. The following table shows the various checking that is applied to each claim in the JWT and the associated diagnostics message:
 
 | Claim being validated | Error scenario | Diagnostics | 
 |-------|----------|-------------|
-| sub | No requesting_user has been supplied and the sub claims’ value does not match the value of the requesting_system claim| requesting_system ([requesting_system]) and sub ([sub]) claim’s values must match| 
-| sub | requesting_user has been supplied and the sub claims’ value does not match the value of the requesting_user claim | requesting_user ([requesting_user]) and sub ([sub]) claim’s values must match|
-| reason_for_request | Reason for request does not have the value “directcare”  | reason_for_request ([reason_for_request]) must be ‘directcare’ |
-| scope | For requests to the NRL: scope is not one of patient/DocumentReference.read OR patient/DocumentReference.write | scope ([scope]) must match either ‘patient/DocumentReference.read’ or ‘patient/DocumentReference.write’|
-| scope | For requests to the SSP: scope is not patient/*.read | scope ([scope]) must match ‘patient/*.read’ |
-| requesting_system | Requesting system is not of the form [https://fhir.nhs.uk/Id/accredited-system/[ASID] | requesting_system ([requesting_system]) must be of the form [https://fhir.nhs.uk/Id/accredited-system/[ASID]] | 
-| requesting_system | Requesting system is not an ASID that is known to Spine | The ASID defined in the requesting_system ([ASID]) is unknown | 
-| requesting_organisation  | Requesting organisation is not of the form [https://fhir.nhs.uk/Id/ods-organization-code/[ODSCode] | requesting_organisation ([requesting_ organisation]) must be of the form [https://fhir.nhs.uk/Id/ods-organization-code/[ODSCode] |
-| requesting_organisation  | Requesting organisation is not known to Spine | The ODS code defined in the requesting_organisation([ODS]) is unknown |
-| requesting_organisation  | Requesting organisation is not associated with the ASID from the requesting_system claim  | requesting_system ASID ([ASID]) is not associated with the requesting_organisation ODS code ([ODS]) |
+| `sub` | No `requesting_user` has been supplied and the sub claims’ value does not match the value of the `requesting_system` claim.| `requesting_system` and `sub` claim’s values must match.| 
+| `sub` | `requesting_user` has been supplied and the sub claims’ value does not match the value of the `requesting_user` claim. | `requesting_user` and `sub` claim’s values must match.|
+| `reason_for_request` | Reason for request does not have the value “directcare”.  | `reason_for_request` must be “directcare”. |
+| `scope` | For requests to the NRL: scope is not one of `patient/DocumentReference.read` or `patient/DocumentReference.write`. | `scope` must match either `patient/DocumentReference.read` or `patient/DocumentReference.write`. |
+| `scope` | For requests to the SSP: scope is not `patient/*.read`. | `scope` must match `patient/*.read`. |
+| `requesting_system` | Requesting system is not of the form `https://fhir.nhs.uk/Id/accredited-system/[ASID]`. | `requesting_system` must be of the form `https://fhir.nhs.uk/Id/accredited-system/[ASID]`. | 
+| `requesting_system` | `requesting_system` is not an ASID that is known to Spine. | The ASID must be known to Spine. | 
+| `requesting_organisation`  | `requesting_organisation` is not of the form `https://fhir.nhs.uk/Id/ods-organization-code/[ODSCode]`. | `requesting_organisation` must be of the form `https://fhir.nhs.uk/Id/ods-organization-code/[ODSCode]`. |
+| `requesting_organisation`  | The ODS code of the `requesting_organisation` is not known to Spine. | The ODS code of the `requesting_organisation` must be known to Spine. |
+| `requesting_organisation`  | `requesting_organisation` is not associated with the ASID from the `requesting_system` claim. | The `requesting_system` ASID must be associated with the `requesting_organisation` ODS code. |
 
-
-
-<b> Precedence of requesting_user over requesting_system <b/>
+**Precedence of `requesting_user` over `requesting_system`**
 
 If both the `requesting_system` and `requesting_user` claims have been provided, then the `sub` claim MUST match the `requesting_user` claim.
 
-
-#### Provider Validation ####
+#### Provider Validation
 
 No specific validation rules apply.
 
-#### Consumer Validation ####
+#### Consumer Validation
 
-In the context of a Consumer request the `requesting_user` claim is mandatory for all NRL and SSP requests.
-
-
+In the context of a Consumer request, the `requesting_user` claim is mandatory for all NRL and SSP requests.
 
 <!--
-Consumer systems SHALL provided audit and provenance details in the HTTP authorization header as an oAuth bearer token (as outlined in [RFC 6749](https://tools.ietf.org/html/rfc6749){:target="_blank"}) in the form of a JSON Web Token (JWT) as defined in [RFC 7519](https://tools.ietf.org/html/rfc7519){:target="_blank"}.
+Consumer systems MUST provided audit and provenance details in the HTTP authorization header as an oAuth bearer token (as outlined in [RFC 6749](https://tools.ietf.org/html/rfc6749){:target="_blank"}) in the form of a JSON Web Token (JWT) as defined in [RFC 7519](https://tools.ietf.org/html/rfc7519){:target="_blank"}.
 
 An example such an HTTP header is given below:
 
@@ -127,9 +113,9 @@ In future, national authentication and authorisation services will be made avail
 
 It is highly recommended that standard libraries are used for creating the JWT as constructing and encoding the token manually may lead to issues with parsing the token in Spine. A good source of information about JWT and libraries to use can be found on the [JWT.io site](https://jwt.io/)
 
-### JSON Web Tokens (JWT) ###
+### JSON Web Tokens (JWT)
 
-Consumer system SHALL generate a new JWT for each API request. The Payload section of the JWT (see "JWT Generation" below for futher details) shall be populated as follows:
+Consumer system MUST generate a new JWT for each API request. The Payload section of the JWT (see "JWT Generation" below for futher details) MUST be populated as follows:
 
 | Claim | Priority | Description | Fixed Value | Dynamic Value | Specification / Example |
 |-------|----------|-------------|-------------|---------------|-------------------------|
@@ -144,8 +130,8 @@ Consumer system SHALL generate a new JWT for each API request. The Payload secti
 {% include important.html content="In topologies where consumer applications are provisioned via a portal or middleware hosted by another organisation (e.g. a 'mini service' provider) it is important for audit purposes that the practitioner and organisation populated in the JWT reflect the originating organisation rather than the hosting organisation." %}
 -->
 <!--
-#### JWT Generation ####
-Consumer systems SHALL generate the JSON Web Token (JWT) consisting of three parts seperated by dots (.), which are:
+#### JWT Generation
+Consumer systems MUST generate the JSON Web Token (JWT) consisting of three parts seperated by dots (.), which are:
 
 - Header
 - Payload
@@ -160,7 +146,7 @@ The Spine does not currently validate the signature in the JWT that is sent, so 
 }
 ```
 
-If using unsigned tokens, the consumer systems SHALL generate an empty signature.
+If using unsigned tokens, the consumer systems MUST generate an empty signature.
 
 The final output is three base64url encoded strings separated by dots (note - there is some canonicalisation done to the JSON before it is base64url encoded, which the JWT code libraries will do for you).
 
@@ -174,11 +160,11 @@ NOTE: As this is an unsigned token, the final section (the signature) is empty, 
 
 {% include tip.html content="The [JWT.io](https://jwt.io/) website includes a number of rich resources to aid in developing JWT enabled applications." %}
 
-## Audit Trail ##
+## Audit Trail
 
 The various parts of an audit trail will be assembled from different parts of the request and in some cases will be calculated properties
 
-### Request audit trail ###
+### Request audit trail
 _"This [local user on this] (1) system (2) from this organisation (3) with this legitimate relationship (4) has sent this request (5) at this time (6)..."_
 
 1.  local user - taken from the sub claim on the JWT which is sent under the mandatory Authorization HTTP header. Note that the sub claim may or may not be provided (see [JWT](integration_cross_organisation_audit_and_provenance.html#json-web-tokens-jwt) table above)
@@ -189,7 +175,7 @@ are valid in their use of direct care as the kind of relationship
 5.  request- the request URL, HTTP verb and the body of the request (in the case of a Provider's create and update actions)
 6.  time - the datetime that the request landed on the NRL web server
 
-### Response audit trail ###
+### Response audit trail
 _"...which resulted in this response (1) at this time (2)"_
 
 1.  response - HTTP response code, response body (if present), Location header (for create and update)

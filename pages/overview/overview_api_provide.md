@@ -10,7 +10,7 @@ summary: Providing a RESTful API for the first time is a journey. This page expl
 {% include important.html content="All phases outlined below are indicative and subject to on-going review." %}
 
 	
-# How to provide an API #
+# How to provide an API
 
 The diagram below explains the parts involded in providing APIs. This implementation guide provides :
 - the starting point of providing APIs (in white);
@@ -21,7 +21,7 @@ The diagram below explains the parts involded in providing APIs. This implementa
 
 Please see the explanation of the complete development roadmap.
 
-# Approach to developing an API #
+# Approach to developing an API
 
 The current site focuses on a typical API Developer's Journey as highlighted by the green boxes below in the developer journey:
 

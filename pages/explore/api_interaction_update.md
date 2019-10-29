@@ -12,34 +12,35 @@ summary: To support the update of NRL pointers
 {% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
 
 
-## Update ##
+## Update
 
 {% include important.html content="The Supersede interaction previously detailed on this page has been moved to the [Supersede Interaction](api_interaction_supersede.html) page." %}
 
 Provider interaction to support the update of NRL pointers. The update functionality will be used in cases where a Provider wishes to update a pointer status value, changing it from “current” to “entered-in-error”. 
 
-## Pre-requisites ##
+## Pre-requisites
 
-In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-pre-requisites-for-nrl-api) page SHALL be followed when using this interaction.
+In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-pre-requisites-for-nrl-api) page MUST be followed when using this interaction.
 
-## Update Request Headers ##
+## Update Request Headers
 
 Provider API update requests support the following HTTP request headers:
 
 | Header               | Value |Conformance |
 |----------------------|-------|-------|
-| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](development_general_api_guidance.html#content-types) section. | MAY |
-| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Access Tokens (JWT)](integration_access_tokens_JWT.html) for details. |  MUST |
-| `fromASID`           | Client System ASID | MUST |
-| `toASID`             | The Spine ASID | MUST |
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](development_general_api_guidance.html#content-types) section. | OPTIONAL |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Access Tokens (JWT)](integration_access_tokens_JWT.html) for details. | REQUIRED |
+| `fromASID`           | Client System ASID | REQUIRED |
+| `toASID`             | The Spine ASID | REQUIRED |
 
 
-## Update Operation ##
+## Update Operation
 
-Provider systems SHALL construct a [FHIRPath PATCH Parameters resource](https://www.hl7.org/fhir/STU3/fhirpatch.html) and submit this to NRL using the FHIR RESTful [patch](https://www.hl7.org/fhir/STU3/http.html#patch) interaction.
+Provider systems MUST construct a [FHIRPath PATCH Parameters resource](https://www.hl7.org/fhir/STU3/fhirpatch.html) and submit this to NRL using the FHIR RESTful [patch](https://www.hl7.org/fhir/STU3/http.html#patch) interaction.
 
 <div markdown="span" class="alert alert-success" role="alert">
-PATCH [baseUrl]/DocumentReference/[id]</div>
+`PATCH [baseUrl]/DocumentReference/[id]`
+</div>
 
 <div class="language-http highlighter-rouge">
 <pre class="highlight">
@@ -51,7 +52,8 @@ Update the DocumentReference resource status for a pointer with the logical id o
 The API supports the conditional update interaction which allows a provider to update a pointer using the masterIdentifier so they do not have to persist or query for the NRL generated logical id for the pointer. The query parameters should be used as shown:
 
 <div markdown="span" class="alert alert-success" role="alert">
-PATCH [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&amp;identifier=[system]%7C[value]</div>
+`PATCH [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&amp;identifier=[system]%7C[value]`
+</div>
 
 <div class="language-http highlighter-rouge">
 <pre class="highlight">
@@ -66,12 +68,12 @@ Update the DocumentReference resource status for a pointer with a subject and id
 
 *[value]* - The value of the masterIdentifier that is associated with the DocumentReference(s)
 
-Providers systems SHALL only update pointers for records where they are the pointer owner (custodian).
-For all update requests the custodian ODS code in the DocumentReference resource SHALL be affiliated with the Client System ASID value in the fromASID HTTP request header sent to the NRL.
+Providers systems MUST only update pointers for records where they are the pointer owner (custodian).
+For all update requests the custodian ODS code in the DocumentReference resource MUST be affiliated with the Client System ASID value in the fromASID HTTP request header sent to the NRL.
 
 The FHIRPath PATCH operation must be encoded in a Parameters resource as follows:
 - A single operation as a Parameter named "operation"
-- The single parameter has a series of mandatory parts, with required values as listed in the table below:
+- The single parameter has a series of mandatory parts, with required values as listed in  following table:
 
 | Parameter | Type | Required Value |
 |-------|-------|-------|
@@ -79,11 +81,11 @@ The FHIRPath PATCH operation must be encoded in a Parameters resource as follows
 |`Path`|string|`DocumentReference.status`|
 |`Value`|string|`entered-in-error`|
 
-Only the first parameter within the Parameters resource will be used to perform a PATCH. Any additional parameters included within the request will not be processed. Further detail on the validation of the Parameters resource can be found in the [error handling guidance](development_general_api_guidance.html#invalid-resource).
+Only the first parameter within the Parameters resource will be used to perform a PATCH. Any additional parameters included within the request will not be processed. More details on the validation of the Parameters resource can be found in the [error handling guidance](development_general_api_guidance.html#invalid-resource).
 
 XML and JSON eaxmples of the FHIRPath Parameters resource are shown below. 
 
-### XML FHIRPath PATCH Parameters resource ###
+### XML FHIRPath PATCH Parameters resource
 
 <div class="github-sample-wrapper scroll-height-350">
 {% highlight xml %}
@@ -91,7 +93,7 @@ XML and JSON eaxmples of the FHIRPath Parameters resource are shown below.
 {% endhighlight %}
 </div>
 
-### JSON FHIRPath PATCH Parameters resource ###
+### JSON FHIRPath PATCH Parameters resource
 
 <div class="github-sample-wrapper scroll-height-350">
 {% highlight json %}
@@ -99,12 +101,12 @@ XML and JSON eaxmples of the FHIRPath Parameters resource are shown below.
 {% endhighlight %}
 </div>
 
-## Response ##
+## Response
 
 Success:
 
-- SHALL return a `200` **SUCCESS** HTTP status code on successful execution of the interaction and the entry has been successfully updated in the NRL.
-- SHALL return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Operation Outcome'](http://hl7.org/fhir/STU3/operationoutcome.html) core FHIR resource. See table below.
+- MUST return a `200` **SUCCESS** HTTP status code on successful execution of the interaction and the entry has been successfully updated in the NRL.
+- MUST return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Operation Outcome'](http://hl7.org/fhir/STU3/operationoutcome.html) core FHIR resource. See the following table.
 - When a resource has been updated it will have a `versionId` of 2.
 
 

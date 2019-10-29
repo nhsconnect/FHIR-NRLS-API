@@ -11,7 +11,7 @@ summary: "Details of open source FHIR libraries."
 
 {% include custom/search.warnbanner.html %}
 
-## 1. Open Source FHIR Libraries ##
+## 1. Open Source FHIR Libraries
 
 The following open source FHIR libraries are available on GitHub:
 
@@ -20,7 +20,7 @@ The following open source FHIR libraries are available on GitHub:
 - JavaScript [Smart on FHIR](https://github.com/smart-on-fhir/client-js){:target="_blank"}
 - Python [Smart on FHIR](https://github.com/smart-on-fhir/client-py){:target="_blank"}
 
-## 2. Open Source FHIR Reference Servers ##
+## 2. Open Source FHIR Reference Servers
 
 The following open source FHIR Reference servers:
 

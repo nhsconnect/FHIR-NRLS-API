@@ -7,11 +7,11 @@ permalink: overview_release_notes.html
 summary: Summary release notes of the versions released in NRL API Implementation Guide
 ---
 
-{% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop the NRL API. This project is being developed using an agile methodology so iterative updates to content will be added on a regular basis." %}
+{% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop with the NRL API. This project is being developed using an agile methodology, so iterative updates to content will be added on a regular basis." %}
 
 {% include note.html content="Starting from release 2.0.0-beta, all list items and their sub-lists are considered &quot;general changes&quot; unless otherwise stated. " %}
 
-## 2.2.0-beta ##
+## 2.2.0-beta
  - Renamed metadata 'Record class' to 'Record category'
  - Updated guidance on request headers for the retrieval read interaction
  - Updated guidance on use of CareConnect GET Binary API for unstructured retrieval
@@ -27,11 +27,11 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     - for when Consumers perform a look-up of a Provider ASID on SDS
  - Added clarification on using absolute URLs in the Record URL metadata attribute
 
-## 2.1.1-beta ##
+## 2.1.1-beta
  - Updated guidance on usage of SNOMED CT concepts in FHIR value sets
  - API interaction examples updated
 
-## 2.1.0-beta ##
+## 2.1.0-beta
 *Changes to record/document retrieval requirements and updated guidance*
  - *API Breaking Change*{:.label.label-danger} The custodian search parameter format has been updated
  - *API Breaking Change*{:.label.label-danger} The supported formats for retrieval have been updated
@@ -49,7 +49,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
  - Audit requirements elaborated
  - Phase 1 and Phase 2 overview updated
 
-## 2.0.0-beta ##
+## 2.0.0-beta
 *Changes to record/document retrieval requirements, new API interactions, NRL DocumentReference model changes, and updated guidance.*
   - The service name has changed from NRLS (National Record Locator Service) to NRL (National Record Locator)
   - *API Breaking Change*{:.label.label-danger} The FHIR Resource NRLS-DocumentReference-1 uplifted to NRL-DocumentReference-1
@@ -124,9 +124,9 @@ summary: Summary release notes of the versions released in NRL API Implementatio
         -	Overview section added
         -	Further clarity on which protocols can be used
         -	Updated the allowed cipher suite list
-        -	Guidance added for those that already have a NHS Digital supplied x509 certificate
+        -	Guidance added for those that already have a NHS Digital supplied X.509 certificate
         -	Guidance document links have been fixed
-    -	Access Token and Audit page renamed to Access Token (Audit has moved to it's own page)
+    -	Access Token and Audit page renamed to Access Token (Audit has moved to its own page)
     -	New audit page added
     -	PDS Guidance updated
     -	Authentication guidance and requirements updated to reflect content retrieval and related service name changes
@@ -146,19 +146,19 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     -	Clarity around caching data added
 
 
-## 1.2.3-beta ##
+## 1.2.3-beta
 *Changes to restructure the Implementation Guide*.
 - `versionId` will be incremeted during a supersede transaction - Create API interaction updated to align with implementation.
 - 500 Internal server error HTTP response guidance modified to match Spine Core output - Spine does not return an operation outcome.
 - NRLS-DocumentReference-1 FHIR profile element guidance explicitly supports `relatesTo.target` element.
 
-## 1.2.2-beta ##
+## 1.2.2-beta
 *Changes to restructure the Implementation Guide*.
 - Introduction of C# example code.
 - Warnings about encoding query parameters.
 - Additional guidance regarding JWT added.
 
-## 1.2.1-beta ##
+## 1.2.1-beta
 *Changes to restructure the Implementation Guide*.
 - Wording change for Internal errors.
 - Clearer guidance for pointer transitions (*Current to Superseded*).
@@ -167,13 +167,13 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 - Pointer error handling and pointer lineage guidance added. 
 
 
-## 1.2.0-beta ##
+## 1.2.0-beta
 *Changes to restructure the Implementation Guide*.
 - Additional guidance added to the Data model page.
  - Cardinality corrected for *Related Documents*
  - Added *Status* to the model.
  - Description updated for the elements.
-- Addition of new *API Interaction* section to describe the RESTful functionalities (Create, Delete, Search and Update).
+- Addition of new *API Interaction* section to describe the RESTful functionalities (Create, Delete, Search, and Update).
 - API Guidance > Search page
  - Format guidance added for Custodian.
  - Inclusion of the `_summary=count` functionality. 
@@ -186,7 +186,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 - Assure menu option removed
 
 
-## 1.1.0-beta ##
+## 1.1.0-beta
 
 *Changes to re-align the NRL API 1.1.0-beta Specification with the DDC March and May 2018 NRL Service Development Iterations:*
 
@@ -246,7 +246,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 
 
 
-## 1.0.0-beta ##
+## 1.0.0-beta
 
 Sprint 5 summary:
 
@@ -263,7 +263,7 @@ Sprint 5 summary:
 - [Authentication and Autherisation](integration_authentication_authorisation.html) page added - NRL strategic approach to align with 'Care Access Service' which will become NHS Digital’s national Authentication and Authorisation service. 
 - JSON and XML examples added to [Reference](explore_reference.html#7-examples) section.
 
-## 1.0.0-alpha ##
+## 1.0.0-alpha
 
 Sprint 4 summary:
 
@@ -301,7 +301,7 @@ First release of NRL FHIR API (STU3) via https://nhsconnect.github.io/.
 
 - Project follows the Gov.UK agile delivery phases.   
 
-## 1.0.0-experimental ##
+## 1.0.0-experimental
 
 First draft of NRL DMS (Version 1.0 Draft A) created to support development of the Spine 2 POC National Record Locator interface.
 

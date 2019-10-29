@@ -9,7 +9,7 @@ summary: "The security page shows how to establish initial security credentials 
 
 {% include important.html content="The API security described in this section is not meant to be complete but a starting point to understand some design considerations to consider when implementing APIs." %}
 
-# Security within Test #
+# Security within Test
 
 Security starts to be a key element of the design and process for testing at this point. The following four key principles should be considered:
 
@@ -18,7 +18,7 @@ Security starts to be a key element of the design and process for testing at thi
 - Encryption
 - Signatures
 
-# Security examples #
+# Security examples
 
 The following non-exhaustive list describes common security patterns and links to example cases where they are used:
 
@@ -31,13 +31,13 @@ The following non-exhaustive list describes common security patterns and links t
 - Citizen Id (UK only)
 - SmartCards (UK only)
 
-Depending on the chosen end usage, channel and network will influence the chosen security choice.
+Depending on the chosen end usage, channel, and network will influence the chosen security choice.
 
 
-# API Considerations #
+# API Considerations
 
 Other API consideration are shown below. Please click on the parts of the API process to continue your API creation journey.
 
 {% include custom/provide_api.svg %}
 
-{% include custom/contribute.html content="Get in involved and contribute to the above API considerations interoperabilityteam@nhs.net"%}
+{% include custom/contribute.html content="Get involved and contribute to the above API considerations by contacting [nrls@interoperabilityteam.net](mailto:nrls@interoperabilityteam.net)."%}

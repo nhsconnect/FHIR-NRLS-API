@@ -9,11 +9,11 @@ summary: An overview of how capability packs (and other technical assets) are ve
 
 <!--tags: [development]-->
 
-## Product Versioning ##
+## Product Versioning
 
 Versioning of each technical "Product" or asset (i.e. API, Design Principle(s), Data Library) is managed using [Semantic Versioning 2.0.0](http://semver.org/){:target="_blank"}.
 
-### Semantic Versioning ###
+### Semantic Versioning
 
 Given a version number MAJOR.MINOR.PATCH, increment the:
 
@@ -27,7 +27,7 @@ A pre-release version MAY be denoted by appending a hyphen (refer to [Semantic V
 
 For examples: 1.0.0-alpha.1 is a valid pre-release version.
 
-### Pre-release Labels ###
+### Pre-release Labels
 
 The following pre-release labels will be used across all products:
 
@@ -40,7 +40,7 @@ The following pre-release labels will be used across all products:
 
 > rc = Release Candidate. 
 
-### Maturity Levels ###
+### Maturity Levels
 
 {% include todo.html content="The following table is published as a **work in progress** version and as such is subject to change and extension." %}
 

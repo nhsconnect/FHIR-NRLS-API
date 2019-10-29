@@ -10,7 +10,7 @@ summary: NRL API journey outlines the approach of developing a RESTful API and t
 {% include important.html content="All phases outlined below are indicative and subject to on-going review." %}
 
 
-# The Journey #
+# The Journey
 
 The API Journey is a guide from imagination and exploring to development and deploying a live API.  
 
@@ -18,7 +18,7 @@ The API Journey is a guide from imagination and exploring to development and dep
 
 The above steps outline a complete API journey.
 
-# Profile journey #
+# Profile journey
 
 The current site focuses on a typical API Developer's Journey as highlighted by the green boxes below in the developer journey:
 
@@ -28,7 +28,7 @@ NHS Digital is contributing to progressing the profile development, the testing 
 
 <!--{% include custom/contribute.html content="Please contact [careconnect@interopen.org] to get involved." %}-->
 
-# How this fits into the wider journey? #
+# How this fits into the wider journey?
 
 The current site focuses on a typical API Developer's Journey as highlighted by the green boxes below in the developer journey:
 

@@ -4,7 +4,7 @@ keywords: getcarerecord, structured, rest, documentreference
 tags: 
 sidebar: accessrecord_rest_sidebar
 permalink: api_foundation_documentreference.html
-summary: A DocumentReference resource is used to describe a document that is made available to a healthcare system. A document is some sequence of bytes that is identifiable, establishes its own context (e.g., what subject, author, etc. can be displayed to the user), and has defined update management. The DocumentReference resource can be used with any document format that has a recognized mime type and that conforms to this definition.
+summary: A DocumentReference resource is used to describe a document that is made available to a healthcare system. A document is some sequence of bytes that is identifiable, establishes its own context (e.g., what subject, author, etc. can be displayed to the user), and has defined update management. The DocumentReference resource can be used with any document format that has a recognized MIME type and that conforms to this definition.
 ---
 
 <!--tags: [rest,fhir,documents,api,noccprofile]-->
@@ -14,30 +14,32 @@ summary: A DocumentReference resource is used to describe a document that is mad
 
 <!--[SKETCH profile. Not official]-->
 
-## Consumer Guidance ##
+## Consumer Guidance
 
 <!--
-## 1. Read Operation ##
+## 1. Read Operation
 
 <div markdown="span" class="alert alert-success" role="alert">
-GET [baseUrl]/DocumentReference/[id]</div>
+`GET [baseUrl]/DocumentReference/[id]`
+</div>
 
 {% include custom/read.response.html resource="DocumentReference" content="" %}
 -->
 
 
-## 1. Search ##
+## 1. Search
 
 TBC
 
 <div markdown="span" class="alert alert-success" role="alert">
-GET [baseUrl]/DocumentReference?[searchParameters]</div>
+`GET [baseUrl]/DocumentReference?[searchParameters]`
+</div>
 
 Search for all records for a patient. Fetches a bundle of all `DocumentReference` resources for the specified patient.
 
 {% include custom/search.header.html resource="DocumentReference" %}
 
-### 1.1. Search Parameters ###
+### 1.1. Search Parameters
 
 {% include custom/search.parameters.html resource="DocumentReference"     link="https://www.hl7.org/fhir/STU3/documentreference.html#search" %}
 
@@ -53,28 +55,28 @@ Search for all records for a patient. Fetches a bundle of all `DocumentReference
     <td><code class="highlighter-rouge">patient</code></td>
     <td><code class="highlighter-rouge">reference</code></td>
     <td>Who/what is the subject of the document</td>
-    <td>SHOULD</td>
+    <td>RECOMMENDED</td>
     <td>DocumentReference.subject<br>(Patient NHS Number)</td>
 </tr>
 <tr>
     <td><code class="highlighter-rouge">period</code></td>
     <td><code class="highlighter-rouge">date</code></td>
     <td>Time of service that is being documented</td>
-    <td>SHOULD</td>
+    <td>RECOMMENDED</td>
     <td>DocumentReference.context.period</td>
 </tr>
 <tr>
     <td><code class="highlighter-rouge">type</code></td>
     <td><code class="highlighter-rouge">token</code></td>
     <td>Kind of document (SNOMED CT if possible)</td>
-    <td>SHOULD</td>
+    <td>RECOMMENDED</td>
     <td>DocumentReference.type</td>
 </tr>
 <tr>
     <td><code class="highlighter-rouge">custodian</code></td>
     <td><code class="highlighter-rouge">reference</code></td>
     <td>Organization which maintains the document</td>
-    <td>SHOULD</td>
+    <td>RECOMMENDED</td>
     <td>DocumentReference.custodian</td>
 </tr>
 </table>
@@ -94,34 +96,37 @@ Systems SHOULD support the following search combinations:
 <!--{% include custom/search.response.html resource="DocumentReference" %}-->
 
 
-## 2. Create Operation ##
+## 2. Create Operation
 
 <div markdown="span" class="alert alert-success" role="alert">
-GET [baseUrl]/DocumentReference/[id]</div>
+`GET [baseUrl]/DocumentReference/[id]`
+</div>
 
 {% include custom/read.response.html resource="DocumentReference" content="" %}
 
-## 3. Update Operation ##
+## 3. Update Operation
 
 <div markdown="span" class="alert alert-success" role="alert">
-GET [baseUrl]/DocumentReference/[id]</div>
+`GET [baseUrl]/DocumentReference/[id]`
+</div>
 
 {% include custom/read.response.html resource="DocumentReference" content="" %}
 
-## 4. Delete Operation ##
+## 4. Delete Operation
 
 <div markdown="span" class="alert alert-success" role="alert">
-GET [baseUrl]/DocumentReference/[id]</div>
+`GET [baseUrl]/DocumentReference/[id]`
+</div>
 
 {% include custom/read.response.html resource="DocumentReference" content="" %}
 
-## 3. Example ##
+## 3. Example
 
-### 3.1 Request Query ###
+### 3.1 Request Query
 
 Return all DocumentReference resources for Patient with a NHS Number of 9876543210, the format of the response body will be xml. Replace 'baseUrl' with the actual base Url of the FHIR Server.
 
-#### 3.1.1. cURL ####
+#### 3.1.1. cURL
 
 {% include custom/embedcurl.html title="Search DocumentReference" command="curl -H 'Accept: application/xml+fhir' -H 'Authorization: BEARER [token]' -X GET  '[baseUrl]/DocumentReference?patient.identifier=https://fhir.nhs.uk/Id/nhs-number|9876543210'" %}
 

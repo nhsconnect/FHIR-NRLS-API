@@ -21,7 +21,6 @@ entries:
     - title: Glossary
       url: /overview_glossary.html
       output: web
-      subfolders:
 
   - title: Solution
     output: web
@@ -106,18 +105,15 @@ entries:
             output: web
           - title: Formats
             url: /retrieval_formats.html
-            output: web          
-      - title: API Guidance | FHIR&reg;
-        output: web
-        subfolderitems:
-          - title: FHIR&reg; Resources &amp; References
-            url: /explore_reference.html
             output: web
+    - title: FHIR&reg; Resources &amp; References
+      url: /explore_reference.html
+      output: web
 
   - title: Integrate With Spine
     output: web
     folderitems:
-    - title: Authentication & Authorisation
+    - title: Authentication &amp; Authorisation
       url: /integration_authentication_authorisation.html
       output: web
     - title: Access Control
@@ -142,7 +138,7 @@ entries:
       url: /assure.html
       output: web
 
-  - title: Help & Support
+  - title: Help &amp; Support
     output: web
     folderitems:
     - title: Frequently Asked Questions (FAQ)
