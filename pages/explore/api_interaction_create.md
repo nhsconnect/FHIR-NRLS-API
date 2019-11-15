@@ -67,7 +67,7 @@ For all create requests the `custodian` ODS code in the DocumentReference resour
 Success:
 
 - MUST return a `201` **CREATED** HTTP status code on successful execution of the interaction and the entry has been successfully created in the NRL.
-- MUST return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Operation Outcome'](http://hl7.org/fhir/STU3/operationoutcome.html) core FHIR resource. See the following table.
+- MUST return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Operation Outcome'](http://hl7.org/fhir/STU3/operationoutcome.html) core FHIR resource (see the table below).
 - MUST return an HTTP `Location` response header containing the full resolvable URL to the newly created 'single' DocumentReference. 
   - The URL will contain the 'server' assigned `logical Id` of the new DocumentReference resource.
   - The URL format MUST be: `https://[host]/[path]/[id]`. 

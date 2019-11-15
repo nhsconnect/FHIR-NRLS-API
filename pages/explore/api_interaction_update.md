@@ -106,11 +106,10 @@ XML and JSON eaxmples of the FHIRPath Parameters resource are shown below.
 Success:
 
 - MUST return a `200` **SUCCESS** HTTP status code on successful execution of the interaction and the entry has been successfully updated in the NRL.
-- MUST return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Operation Outcome'](http://hl7.org/fhir/STU3/operationoutcome.html) core FHIR resource. See the following table.
-- When a resource has been updated it will have a `versionId` of 2.
+- MUST return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Operation Outcome'](http://hl7.org/fhir/STU3/operationoutcome.html) core FHIR resource (see the table below).
+- When a resource has been updated, its `versionId` will be incremented.
 
-
-{% include note.html content="The versionId is an integer that is assigned and maintained by the NRL server. When a new DocumentReference is created the server assigns it a versionId of 1. The versionId will be incremeted during an update or supersede transaction. <br/><br/> The NRL server will ignore any versionId value sent by a client in a create interaction. Instead the server will ensure that the newly assigned verionId adheres to the rules laid out above. 
+{% include note.html content="The `versionId` is an integer that is assigned and maintained by the NRL server. When a new DocumentReference is created, the server assigns it a `versionId` of 1. The `versionId` will be incremeted during an update or supersede transaction. <br/><br/> The NRL server will ignore any `versionId` value sent by a client in a `create` interaction. Instead, the server will ensure that the newly assigned `versionId` adheres to the rules laid out above.
 " %}
 
 The table summarises the `update` interaction HTTP response code and the values expected to be conveyed in the successful response body `OperationOutcome` payload:

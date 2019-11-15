@@ -36,20 +36,22 @@ Provider API supersede requests support the following HTTP request headers:
 
 ## Supersede Operation
 
-The NRL API does not allow a true update i.e. the HTTP PUT verb is not supported. 
-A pointer can be replaced by superseding it with a newer pointer that contains the updated attributes. 
+The NRL API does not allow a true Update operation (the HTTP `PUT` verb is not supported).
 
-A Provider transitions an existing Pointer’s status from current to superseded as part of the act of creating its replacement. In effect the POSTing of a new DocumentReference provides a means to specify an existing DocumentReference whose status should be moved to superseded. Concretely this is achieved as follows:
+Instead, a pointer can be replaced by superseding it with a newer version that contains the updated attributes. 
 
-1.	Provider assembles a new DocumentReference resource
-2.	Provider populates the relatesTo property with a new target element which holds  –
-	- a reference that is the logical identifier of the existing DocumentReference or an identifier that is the masterIdentifier of the existing DocumentReference
-	- the action code “replaces”
-3.	Provider POSTs the DocumentReference resource
-4.	NRL will transactionally -
-	1. create the new DocumentReference marking it as current
-	2. resolve the existing DocumentReference using the relatesTo.target
-	3. mark that DocumentReference as superseded
+A Provider transitions an existing Pointer's status from "current" to "superseded" as part of the act of creating its replacement. The Create action allows specifying an existing DocumentReference to be superseded. The process is as follows:
+
+1. The Provider assembles a new DocumentReference resource
+2. The Provider populates the `relatesTo` property with a new target element which holds:
+   - A reference that is the logical identifier of the existing DocumentReference or an identifier that is the masterIdentifier of the existing DocumentReference
+   - The action code "replaces"
+3. The Provider POSTs the DocumentReference resource
+4. The NRL will transactionally:
+   1. Create the new DocumentReference, marking it as "current"
+   2. Resolve the existing DocumentReference using `relatesTo.target`
+   3. Mark that DocumentReference as "superseded"
+   4. Set the version number of the newly-created DocumentReference to its predecessor's version +1
 
 Provider systems MUST only supersede pointers for records where they are the pointer owner (custodian).
 
