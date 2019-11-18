@@ -42,10 +42,20 @@ Multiple formats of a record or document can be made available through a single 
 
 ### Multiple Format Example
 
-The following example shows a pointer for a Mental Health Crisis Plan that can be retrieved over the phone (using the contact details listed on the referenced HTML web page) and directly as a PDF document.
+The following examples show a pointer for a Mental Health Crisis Plan that can be retrieved over the phone (using the contact details listed on the referenced HTML web page) and directly as a PDF document.
+
+#### XML
 
 <div class="github-sample-wrapper scroll-height-350">
 {% highlight xml %}
 {% include /examples/retrieval_multiple_formats.xml %}
+{% endhighlight %}
+</div>
+
+#### JSON
+
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight json %}
+{% include /examples/retrieval_multiple_formats.json %}
 {% endhighlight %}
 </div>

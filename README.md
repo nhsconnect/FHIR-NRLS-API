@@ -1,4 +1,5 @@
 # FHIR-NRL-API
+
 An API for storing and retrieving pointers to records and documents from the national record locator. 
 
 <p align="center">
@@ -57,18 +58,13 @@ ValueSets
 
 We provide a complete set of instructions for you to get your API working and compiled locally.
 
-### Running documentation locally
+## Running documentation locally
 
 Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/home/).
 
 ## Bugs and feature requests
 
 Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/nhsconnect/FHIR-NRLS-API/master/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/nhsconnect/FHIR-NRLS-API/issues/new).
-
-
-### Documentation for previous releases
-
-
 
 ## Contributing
 
@@ -77,8 +73,6 @@ Please read through our [contributing guidelines](). Included are directions for
 Moreover, if your pull request contains patches or features, you must include [relevant unit tests](). All HTML and CSS should conform to the [Code Guide](), maintained by [XYZ]().
 
 Editor preferences are available in the [editor config]() for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
-
-
 
 ## Community
 
@@ -99,11 +93,6 @@ See [the Releases section of our GitHub project](https://github.com/nhsconnect/F
 
 <!--Release announcement posts on [the official CareConnect API blog](#) contain summaries of the most noteworthy changes made in each release.-->
 
-
-
 ## Copyright and license
 
-Code and documentation copyright 2011-2017 the [NHS Digital](#) Code released under the [MIT License](#). Docs released under [Creative Commons](#).
-
-
- 
+Code and documentation copyright 2011-2017 the [NHS Digital](#) Code released under the [MIT License](#). Docs released under [Creative Commons](#). 

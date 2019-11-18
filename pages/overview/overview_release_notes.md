@@ -9,7 +9,16 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 
 {% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop with the NRL API. This project is being developed using an agile methodology, so iterative updates to content will be added on a regular basis." %}
 
-{% include note.html content="Starting from release 2.0.0-beta, all list items and their sub-lists are considered &quot;general changes&quot; unless otherwise stated. " %}
+{% include note.html content="Starting from release 2.0.0-beta, all items are considered “general changes” unless otherwise stated." %}
+
+## 2.2.1-beta <!-- ? TODO -->
+
+- Add clarification about use of `versionId` to [Supersede interaction page](api_interaction_supersede.html)
+- Update ODS code and endpoint requirements guidance
+- Remove SSP prefix from example DocumentReferences
+- Update guidance on constructing SSP URLs and percent-encoding for document retrieval 
+- Expand glossary of terms
+- Miscellaneous copy-edits
 
 ## 2.2.0-beta
  - Renamed metadata 'Record class' to 'Record category'
@@ -166,7 +175,6 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 - Addition of example for deleting a pointer using masterIdentifier.
 - Pointer error handling and pointer lineage guidance added. 
 
-
 ## 1.2.0-beta
 *Changes to restructure the Implementation Guide*.
 - Additional guidance added to the Data model page.
@@ -184,7 +192,6 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 - Exception tables moved from the API Interaction page to the General API Guidance page.
 - Deploy menu option removed
 - Assure menu option removed
-
 
 ## 1.1.0-beta
 

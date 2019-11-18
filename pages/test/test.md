@@ -12,7 +12,7 @@ summary: "These pages assist with requirements for testing the API."
 
 <!--
 ### 1. Testing Overview
-The Test section contains a common baseline for testing FHIR based API's to ensure a satisfactory level of technical conformance has been reached. A FHIR based API contains individual layers that require testing, which when combined will form a complete and detailed test log for the API prior to any formal assurance activities being carried out.
+The Test section contains a common baseline for testing FHIR-based APIs to ensure a satisfactory level of technical conformance has been reached. A FHIR-based API contains individual layers that require testing, which when combined will form a complete and detailed test log for the API prior to any formal assurance activities being carried out.
 
 Testing may include the following:
 
