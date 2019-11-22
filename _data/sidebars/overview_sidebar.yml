@@ -18,9 +18,6 @@ entries:
     - title: Release Notes
       url: /overview_release_notes.html
       output: web
-    - title: Glossary
-      url: /overview_glossary.html
-      output: web
 
   - title: Solution
     output: web
@@ -150,16 +147,10 @@ entries:
 
   - title: Tags
     output: web
-    folderitems:
-    - title: Introduction
-      url: /tag_overview.html
-      output: web
-    - title: FHIR&reg;
-      url: /tag_fhir.html
-      output: web
-    - title: Development
-      url: /tag_development.html
-      output: web
-    - title: Support
-      url: /tag_support.html
-      output: web
+    flat: true
+    url: /tags.html
+
+  - title: Glossary
+    output: web
+    flat: true
+    url: /overview_glossary.html

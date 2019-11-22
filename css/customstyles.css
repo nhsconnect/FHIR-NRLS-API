@@ -2,6 +2,46 @@ body {
     font-size:15px;
 }
 
+.tag-page {
+    margin: 2em 0;
+}
+
+.tag-page a {
+    padding-right: .5em;
+}
+
+.alert-badge {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 1px 5px;
+    margin: 0 4px 0 0 !important;
+}
+
+.form-check-inline {
+    display: inline;
+}
+
+.form-check .form-check-label {
+    display: inline-flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0;
+
+    cursor: pointer;
+    padding: 0 10px 10px 0;
+    margin-right: .75rem;
+}
+
+.form-check .form-check-input {
+    margin: 0;
+    margin-right: 5px;
+}
+
+.form-check-inline .form-check-label {
+    margin: 0;
+    font-weight: normal;
+}
+
 .bs-callout {
     padding: 20px;
     margin: 20px 0;

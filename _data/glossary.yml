@@ -53,6 +53,9 @@
 - term: ERS
   definition: "The NHS _e-Referral Service_ combines electronic booking with a choice of place, date, and time for first hospital or clinic appointments. Patients can choose their initial hospital or clinic appointment, book it in the GP surgery at the point of referral, or later at home on the phone or online"
 
+- term: EUOD
+  definition: "_End User Organisation Declaration_"
+
 - term: FHIR
   definition: "FHIR is the latest standard to be developed under the HL7 organization. Pronounced 'Fire' and stands for Fast Healthcare Interoperability Resources"
 
@@ -64,6 +67,9 @@
 
 - term: FMM
   definition: "The _FHIR Maturity Model_ provides a sense of how mature a resource is based on the level and types of review it has been subject to."
+
+- term: FQDN
+  definition: "A [_Fully Qualified Domain Name_](http://www.linfo.org/fqdn.html) consists of a host name (including all subnames) and a domain name, including the top-level domain (TLD)."
 
 - term: GP2GP
   definition: "System transferring full GP records between GP systems when patients register with a new GP. (Implemented using HL7 v3)"
@@ -108,7 +114,7 @@
   definition: "_NHS Digital_"
 
 - term: NRL
-  definition: "The _National Record Locator_ The National Record Locator is technical proof of concept acting as a national index to identify available records for patients and locate them across local and national care record solutions (such as SCR)."
+  definition: "The _National Record Locator_ is a national index to identify available records for patients and locate them across local and national care record solutions (such as SCR)."
 
 - term: ODS
   definition: "The _Organisational Data Service_ is responsible for publishing organisation and practitioner codes, along with related national policies and standards. They're also responsible for the ongoing maintenance of the organisation and person nodes of the Spine Directory Service, the central data repository used within various NHS systems and services."
