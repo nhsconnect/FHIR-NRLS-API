@@ -1,16 +1,13 @@
 ---
 title: API Read Interaction
-keywords: structured, rest, documentreference
-tags: [rest,fhir,api,noccprofile]
+keywords: structured rest documentreference
+tags: [fhir,pointers,for_consumers]
 sidebar: accessrecord_rest_sidebar
 permalink: api_interaction_read.html
 summary: To support retrieval of an NRL pointer
 ---
 
-{% include custom/search.warnbanner.html %}
-
 {% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
-
 
 ## Read
 
@@ -30,7 +27,6 @@ Consumer and Provider API read requests support the following HTTP request heade
 | `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Access Tokens (JWT)](integration_access_tokens_JWT.html) for details. | REQUIRED |
 | `fromASID`           | Client System ASID | REQUIRED |
 | `toASID`             | The Spine ASID | REQUIRED |
-
 
 ## Read Operation
 

@@ -4,8 +4,7 @@ An API for storing and retrieving pointers to records and documents from the nat
 
 <p align="center">
   <a href="https://v4-alpha.getbootstrap.com">
-  	
-    <img src="images/logo.png">
+  <img src="images/logo.png">
   </a>
 
   <h3 align="center">NRL API</h3>

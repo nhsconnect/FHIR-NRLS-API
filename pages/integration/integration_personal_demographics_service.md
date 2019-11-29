@@ -1,6 +1,6 @@
 ---
 title: Personal Demographic Service
-keywords: spine, pds, integration, patient, demographics
+keywords: spine pds integration patient, demographics
 tags: [integration]
 sidebar: overview_sidebar
 permalink: integration_personal_demographics_service.html

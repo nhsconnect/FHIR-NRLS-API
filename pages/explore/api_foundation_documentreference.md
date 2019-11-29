@@ -1,14 +1,11 @@
 ---
 title: Documents | DocumentReference
-keywords: getcarerecord, structured, rest, documentreference
-tags: 
+keywords: getcarerecord structured rest documentreference
+tags: [fhir]
 sidebar: accessrecord_rest_sidebar
 permalink: api_foundation_documentreference.html
 summary: A DocumentReference resource is used to describe a document that is made available to a healthcare system. A document is some sequence of bytes that is identifiable, establishes its own context (e.g., what subject, author, etc. can be displayed to the user), and has defined update management. The DocumentReference resource can be used with any document format that has a recognized MIME type and that conforms to this definition.
 ---
-
-<!--tags: [rest,fhir,documents,api,noccprofile]-->
-{% include custom/search.warnbanner.html %}
 
 {% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
 
@@ -25,7 +22,6 @@ summary: A DocumentReference resource is used to describe a document that is mad
 
 {% include custom/read.response.html resource="DocumentReference" content="" %}
 -->
-
 
 ## 1. Search
 
@@ -94,7 +90,6 @@ Systems SHOULD support the following search combinations:
 {% include custom/search.response.html para="1.2." content="DocumentReference" %}
 
 <!--{% include custom/search.response.html resource="DocumentReference" %}-->
-
 
 ## 2. Create Operation
 

@@ -1,6 +1,7 @@
 ---
 title: Overview | Design & Build 
-keywords: design, build, access, security, overview
+keywords: design build access security overview
+tags: [design]
 sidebar: foundations_sidebar
 permalink: design.html
 summary: "Describes the steps required to design & build an API described in Explore"
@@ -20,7 +21,6 @@ The Design & Build section contains descriptions of approaches and suggestions f
 
 Please see or contribute to INTEROPen to support the wider community efforts of providing a completely defined API service.
 
-
 # Providing an API
 
 The following diagram explains the elements of APIs allowing the development of APIs:
@@ -28,7 +28,6 @@ The following diagram explains the elements of APIs allowing the development of 
 {% include custom/provide_api.svg %}
 
 NHS Digital is contributing to progressing the profile development (see Overview section). Invitations are open for the health and social care community to get involved and progress the wider developer ecosystem as defined above. 
-
 
 # Contribute
 

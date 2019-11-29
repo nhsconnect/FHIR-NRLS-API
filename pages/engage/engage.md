@@ -1,7 +1,7 @@
 ---
 title: Engage with NRL
-keywords: engage, care connect process, process, introduction
-tags: [userstories,casestudies]
+keywords: engage careconnect process process introduction
+tags: []
 sidebar: foundations_sidebar
 permalink: engage.html
 summary: "These pages assist with requirements gathering and mapping stages of a FHIR&reg; API development process."
@@ -31,7 +31,7 @@ The process is broken down into 15 discrete steps that are broadly organised ont
 <thead><tr id="step1"><th style="width:3em;"></th><th style="width:11em;">Step</th><th>Description</th><th style="width:11em;">Formal Output</th></tr></thead>
 <tr id="step2"><td>1</td><td>Document Client's Context</td><td>Give a brief description of the client we are engaging with and what led them to the business need for interoperability.</td><td><ul style="padding-left:1em;padding-top:0"><li style="margin:0;">Short Textual Statement</li></ul></td></tr>
 <tr id="step3"><td>2</td><td>Document Case Overview</td><td>Description of the client's business needs and expectations.</td><td><ul style="padding-left:1em;"><li style="margin:0;">Short Textual Statement</li></ul></td></tr>
-<tr id="step4"><td>3</td><td>Document Problem Statement</td><td>Describe the current ineroperability issues.</td><td><ul style="padding-left:1em;"><li style="margin:0;">Problem Statement Diagram</li></ul></td></tr>
+<tr id="step4"><td>3</td><td>Document Problem Statement</td><td>Describe the current interoperability issues.</td><td><ul style="padding-left:1em;"><li style="margin:0;">Problem Statement Diagram</li></ul></td></tr>
 <tr id="step5"><td>4</td><td>Identify Business Requirements</td><td>Visually represent the business case to confirm understanding of the problem with the client.</td><td><ul style="padding-left:1em;"><li style="margin:0;">Business Process Model</li><li>Use Case Diagrams</li><li><a href="./engage_userstories.html">User Stories</a></li></ul></td></tr>
 <tr><td>5</td><td>Identify Dataset</td><td>Given that the solution is likely to be implemented against existing systems it should be straightforward to identify which data items the client wants to send or receive between those systems. Get XML representation of the data structure if possible.</td><td><ul style="padding-left:1em;"><li style="margin:0;">Data Set</li><li>Data Structure</li></ul></td></tr>
 </table>

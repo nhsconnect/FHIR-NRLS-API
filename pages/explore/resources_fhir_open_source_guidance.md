@@ -1,7 +1,7 @@
 ---
 title: Open Source Guidance
-keywords: fhir, development, open source
-tags:
+keywords: fhir development open source
+tags: [development]
 sidebar: overview_sidebar
 permalink: explore_fhir_open_source_guidance.html
 summary: "Details of open source FHIR libraries."
@@ -9,9 +9,7 @@ summary: "Details of open source FHIR libraries."
 
 <!--tags: [fhir,development]-->
 
-{% include custom/search.warnbanner.html %}
-
-## 1. Open Source FHIR Libraries
+## 1. Open-Source FHIR Libraries
 
 The following open source FHIR libraries are available on GitHub:
 

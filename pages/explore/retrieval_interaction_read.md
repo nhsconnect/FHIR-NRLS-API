@@ -1,13 +1,11 @@
 ---
 title: Retrieval Read Interaction
-keywords: structured, rest, documentreference
-tags: [rest,fhir,api,noccprofile]
+keywords: structured rest documentreference
+tags: [for_consumers,record_retrieval]
 sidebar: accessrecord_rest_sidebar
 permalink: retrieval_interaction_read.html
 summary: Requirements and guidance for record and document retrieval Read Interaction. 
 ---
-
-{% include custom/search.warnbanner.html %}
 
 ## Read Request
 

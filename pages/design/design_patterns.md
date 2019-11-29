@@ -1,6 +1,6 @@
 ---
 title: Design Patterns / Topology
-keywords: design, build, access, security
+keywords: design build access security
 tags: [design]
 sidebar: foundations_sidebar
 permalink: design_patterns.html

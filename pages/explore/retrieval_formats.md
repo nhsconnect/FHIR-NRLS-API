@@ -1,13 +1,11 @@
 ---
 title: Retrieval Formats
-keywords: structured, rest, documentreference
-tags: [rest,fhir,api,noccprofile]
+keywords: structured rest documentreference
+tags: [fhir,pointers,record_retrieval]
 sidebar: accessrecord_rest_sidebar
 permalink: retrieval_formats.html
 summary: Formats for record and document retrieval
 ---
-
-{% include custom/search.warnbanner.html %}
 
 ## Retrieval Formats
 

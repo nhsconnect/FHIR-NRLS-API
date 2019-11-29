@@ -1,6 +1,6 @@
 ---
 title: Communication Channels
-keywords: support, communications, community 
+keywords: support communications community 
 tags: [support]
 toc: false
 sidebar: overview_sidebar

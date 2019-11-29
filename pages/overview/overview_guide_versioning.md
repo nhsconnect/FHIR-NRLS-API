@@ -1,6 +1,6 @@
 ---
 title: Product Versioning
-keywords: development, versioning
+keywords: development versioning
 tags: [development]
 sidebar: overview_sidebar
 permalink: overview_guide_versioning.html
@@ -24,7 +24,6 @@ Additional labels for pre-release and build metadata are available as extensions
 A pre-release version MAY be denoted by appending a hyphen (refer to [Semantic Versioning - Item 9](http://semver.org/#spec-item-9){:target="_blank"})
 
 For examples: 1.0.0-alpha.1 is a valid pre-release version.
-
 
 ### Pre-release Labels
 
@@ -53,7 +52,6 @@ When FHIR API implementation guides are published, they MUST have an associated 
   <li><strong>Live</strong>: Release live APIs.</li>
   <li><strong>Discontinued</strong>: APIs which have been discontinued and should not be used for new development.</li>
 </ul>
-
 
 The following pre-release labels will be used across all products:
 

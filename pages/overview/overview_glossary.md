@@ -1,6 +1,6 @@
 ---
 title: Glossary
-keywords: abbreviations, definitions, glossaries, terms
+keywords: abbreviations definitions glossaries terms
 tags: [overview]
 sidebar: overview_sidebar
 permalink: overview_glossary.html

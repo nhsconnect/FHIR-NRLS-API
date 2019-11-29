@@ -1,8 +1,9 @@
 ---
 title: Getting involved with NRL
-keywords: engage, about
-tags: [overview]
+keywords: engage about
+tags: []
 sidebar: overview_sidebar
+search: exclude
 permalink: overview_engage.html
 summary: Getting involved with NRL
 ---

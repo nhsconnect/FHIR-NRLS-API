@@ -1,7 +1,7 @@
 ---
 title: Development Overview
-keywords: getcarerecord, structured, rest, resource
-tags: [rest,fhir,api]
+keywords: getcarerecord structured rest resource
+tags: [development,for_providers,for_consumers]
 sidebar: foundations_sidebar
 permalink: explore.html
 summary: "Overview of the Development section"

@@ -1,7 +1,7 @@
 ---
 title: Test Data
-keywords: test, pattern, security
-tags: [test, security]
+keywords: test pattern security
+tags: [testing,security]
 sidebar: foundations_sidebar
 permalink: test_data.html
 summary: "The test data expected to be delivered by "
@@ -14,7 +14,6 @@ summary: "The test data expected to be delivered by "
 The test data allows the testing of an API at the individual response level.
 
 {% include note.html content="Provided as an overview" %}
-
 
 # API Considerations
 

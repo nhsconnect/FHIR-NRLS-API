@@ -1,13 +1,11 @@
 ---
 title: Access Controls
-keywords: RBAC, Authentication, Authorisation, documentreference
-tags: [rbac,security,authentication,authorisation]
+keywords: RBAC authorisation documentreference
+tags: [security,authorisation,spine_secure_proxy]
 sidebar: accessrecord_rest_sidebar
 permalink: explore_rbac_mapping.html
 summary: "Overview of the access controls for NRL pointers"
 ---
-
-{% include custom/search.warnbanner.html %}
 
 ## Overview
 

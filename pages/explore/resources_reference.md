@@ -1,15 +1,13 @@
 ---
 title: NRL | FHIR&reg; Resources &amp; References
-keywords: development Reference
-tags: [development,fhir,profiles]
+keywords: development reference
+tags: [development,fhir]
 sidebar: overview_sidebar
 permalink: explore_reference.html
 summary: "Developer Cheat Sheet shortcuts for the technical build of NRL API."
 ---
 
-{% include custom/search.warnbanner.html %}
-
-## 1. Profiles:
+## 1. Profiles
 
 {% include important.html content="The NRL DocumentReference profile has been updated and has also been renamed from <b>NRLS-DocumentReference-1</b> to <b>NRL-DocumentReference-1</b>." %}
 

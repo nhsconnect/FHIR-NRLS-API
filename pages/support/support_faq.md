@@ -1,6 +1,6 @@
 ---
 title: Frequently Asked Questions (FAQ)
-keywords: support, faq, questions
+keywords: support faq questions
 tags: [support]
 toc: false
 sidebar: overview_sidebar

@@ -1,13 +1,11 @@
 ---
 title: Assure Overview
-keywords: assure, accredit
-tags: [overview]
+keywords: assure accredit
+tags: [assurance,for_providers,for_consumers]
 sidebar: foundations_sidebar
 permalink: assure.html
 summary: "These pages assist with the NRL Service Assurance Process"
 ---
-
-<!--{% include custom/under.construction.html content="Please check back later for any updates to this page." %}-->
 
 ### Solution Assurance Process Overview
 

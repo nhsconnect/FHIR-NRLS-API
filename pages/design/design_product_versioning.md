@@ -1,13 +1,11 @@
 ---
 title: Product Versioning
-keywords: development, versioning
-tags:
+keywords: development versioning
+tags: [design,development]
 sidebar: overview_sidebar
 permalink: design_product_versioning.html
 summary: An overview of how capability packs (and other technical assets) are versioned.
 ---
-
-<!--tags: [development]-->
 
 ## Product Versioning
 

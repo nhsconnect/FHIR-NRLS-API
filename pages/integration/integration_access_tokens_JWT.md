@@ -1,7 +1,7 @@
 ---
 title: Access Tokens (JWT)
-keywords: spine, ssp, integration, provenance
-tags: [integration]
+keywords: spine ssp integration provenance
+tags: [integration,security,authorisation,spine_secure_proxy]
 sidebar: overview_sidebar
 permalink: integration_access_tokens_JWT.html
 summary: Access token required for interacting with the NRL and SSP. 
@@ -35,7 +35,6 @@ Where there has been a validation failure, the following response will be return
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |400|error|structure|MISSING_OR_INVALID_HEADER|There is a required header that is missing or invalid| **Note:** See [MISSING_OR_INVALID_HEADER Exception Scenarios](integration_access_tokens_JWT.html#missing_or_invalid_header-exception-scenarios)|
-
 
 #### MISSING_OR_INVALID_HEADER Exception Scenarios:
 
@@ -107,7 +106,6 @@ An example such an HTTP header is given below:
 ```
      Authorization: Bearer jwt_token_string
 ```
-
 
 In future, national authentication and authorisation services will be made available which will issue a bearer token which can be used directly for accessing this API. In the interrim however, the client will need to construct the JWT themselves.
 

@@ -1,13 +1,11 @@
 ---
 title: API Delete Interaction
-keywords: structured, rest, documentreference
-tags: [rest,fhir,api,noccprofile]
+keywords: structured rest documentreference
+tags: [fhir,for_providers]
 sidebar: accessrecord_rest_sidebar
 permalink: api_interaction_delete.html
 summary: To support the deletion of NRL pointers.
 ---
-
-{% include custom/search.warnbanner.html %}
 
 {% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
 
@@ -77,7 +75,6 @@ Delete the DocumentReference resource for a pointer conditionally with a logical
 
 {% include important.html content="Conditional delete by logical ID may be deprecated in the future, therefore it is recommended to implement [delete by ID](#delete-by-id) as a path variable." %}
 
-
 ### Conditional Delete by *'masterIdentifier'*
 
 The API supports the conditional delete by `masterIdentifier` interaction which allows a provider to delete an existing pointer using the masterIdentifier
@@ -102,11 +99,9 @@ To accomplish this, the provider issues an HTTP DELETE as shown:
 Delete the DocumentReference resource for a pointer with a subject and identifier.</pre>
 </div>
 
-
 ## Delete Response
 
 <p>The 'delete' interaction removes an existing resource. The interaction is performed by an HTTP DELETE of the <code class="highlighter-rouge">DocumentReference</code> resource.</p>
-
 
 Success:
 
@@ -115,13 +110,11 @@ Success:
 
 The table summarises the successful `delete` interaction scenario and includes HTTP response code and the values expected to be conveyed in the response body `OperationOutcome` payload:
 
-
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Details.Text |Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |200|information|informational|RESOURCE_DELETED|Resource removed | Spine message UUID |Successfully removed resource DocumentReference: [url]|
 
 {% include note.html content="Upon successful deletion of a pointer the NRL Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Delete transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
-
 
 Failure: 
 
@@ -129,7 +122,6 @@ The following errors can be triggered when performing this operation:
 
 - [No record found](development_general_api_guidance.html#resource-not-found)
 - [Invalid Resource](development_general_api_guidance.html#invalid-resource)
-
 
 ## Code Examples
 
@@ -143,7 +135,6 @@ The logical id is obtained from a mapping stored within the Demonstrator that ma
 
 Then we call our DocumentReference service DeletePointer method which will build a DELETE command request and then start the call to the NRL API.
 
-
 <div class="github-sample-wrapper">
 {% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.Services/Service/Epr/CrisisPlanService.cs#L158-L160 %}
 {% highlight csharp %}
@@ -155,7 +146,6 @@ Then we call our DocumentReference service DeletePointer method which will build
 Using our DELETE command request model we create a connection to the NRL using HttpClient.
 
 You can view the common connection code example [here](connectioncode_example.html).
-
 
 <b>Explore the NRL</b><br />
 You can explore and test the NRL DELETE command using Swagger in the [NRL API Reference Implementation](https://data.developer.nhs.uk/nrls-ri/index.html#/Nrls/deletePointer).

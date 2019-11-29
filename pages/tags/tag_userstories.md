@@ -1,6 +1,6 @@
 ---
 title: "User Stories"
-tagName: userstories
+tagName: user_stories
 search: exclude
 permalink: tag_user_stories.html
 sidebar: overview_sidebar

@@ -1,7 +1,7 @@
 ---
 title: Authentication & Authorisation
-keywords: spine, security
-tags: [integration]
+keywords: spine security
+tags: [integration,security,authentication,authorisation,spine_secure_proxy]
 sidebar: overview_sidebar
 permalink: integration_authentication_authorisation.html
 summary: "Authentication and Authorisation"

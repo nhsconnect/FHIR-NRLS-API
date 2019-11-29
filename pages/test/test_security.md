@@ -1,7 +1,7 @@
 ---
 title: Security
-keywords: test, pattern, security
-tags: [test, security]
+keywords: test pattern security
+tags: [testing,security,authentication,authorisation]
 sidebar: foundations_sidebar
 permalink: test_security.html
 summary: "The security page shows how to establish initial security credentials (where necessary) with the API provided"
@@ -32,7 +32,6 @@ The following non-exhaustive list describes common security patterns and links t
 - SmartCards (UK only)
 
 Depending on the chosen end usage, channel, and network will influence the chosen security choice.
-
 
 # API Considerations
 

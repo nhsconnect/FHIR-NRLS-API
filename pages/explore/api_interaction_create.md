@@ -1,13 +1,11 @@
 ---
 title: API Create Interaction
-keywords: structured, rest, documentreference
-tags: [rest,fhir,api,noccprofile]
+keywords: structured rest documentreference
+tags: [fhir,for_providers]
 sidebar: accessrecord_rest_sidebar
 permalink: api_interaction_create.html
 summary: To support the creation of NRL pointers
 ---
-
-{% include custom/search.warnbanner.html %}
 
 {% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
 
@@ -46,7 +44,6 @@ Provider systems:
 
 For all create requests the `custodian` ODS code in the DocumentReference resource MUST be affiliated with the `Client System ASID` value in the `fromASID` HTTP request header sent to the NRL.
 
-
 ### XML Example of a new DocumentReference resource (pointer)
 
 <div class="github-sample-wrapper scroll-height-350">
@@ -77,13 +74,10 @@ Success:
 
  
 
-
 {% include note.html content="The versionId is an integer that is assigned and maintained by the NRL server. When a new DocumentReference is created the server assigns it a versionId of 1. The versionId will be incremeted during an update or supersede transaction. See [API Interaction - Update](api_interaction_update.html) and [API Interaction - Supersede](api_interaction_supersede.html) for more details on these transactions.<br/><br/> The NRL server will ignore any versionId value sent by a client in a create interaction. Instead the server will ensure that the newly assigned verionId adheres to the rules laid out above. 
 " %}
 
-
 The table summarises the `create` interaction HTTP response code and the values expected to be conveyed in the successful response body `OperationOutcome` payload:
-
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Details.Text |Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
@@ -103,7 +97,6 @@ The following errors can be triggered when performing this operation:
 - [Duplicate Resource](development_general_api_guidance.html#duplicate-resource)
 - [Missing or Invalid Headers](development_general_api_guidance.html#headers)
 
-
 ### Ensuring that masterIdentifier is unique
 
 The masterIdentifier should be unique within the NRL. For more information see the discussion on [Pointer identifiers](pointer_identity.html). The masterIdentifer is a [FHIR identifier](https://www.hl7.org/fhir/datatypes.html#Identifier) and for NRL the system and value properties are mandatory.
@@ -116,7 +109,6 @@ The NRL recommends the use of either an OID or a UUID as an Identifier in keepin
 •	UUID - urn:uuid:[uuidValue]
 
 See the [example](https://www.hl7.org/fhir/datatypes-examples.html#Identifier) OID and UUID based Identifiers from the FHIR specification.
-
 
 ## Code Examples
 
@@ -139,7 +131,6 @@ Then we call our DocumentReference service GenerateAndCreatePointer method which
 
 <br/>
 Within the DocumentReference service GenerateAndCreatePointer method we generate our pointer model and then serialise this generated model ready for posting:
-
 
 <div class="github-sample-wrapper">
 {% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.NRLSAdapter/DocumentReferences/DocumentReferenceServices.cs#L53-L54 %}

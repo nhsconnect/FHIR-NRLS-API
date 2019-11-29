@@ -1,13 +1,11 @@
 ---
 title: Capability Statement
-keywords: foundations, fhir
-tags: [rest,fhir,use_case,api,foundation,noccprofile]
+keywords: foundations fhir
+tags: [fhir]
 sidebar: accessrecord_rest_sidebar
 permalink: api_foundation_conformance.html
 summary: A capability statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
 ---
-
-{% include custom/search.warnbanner.html %}
 
 {% include custom/fhir.referencemin.html resource="" page="" fhirlink="[CapabilityStatement](http://www.hl7.org/fhir/STU3/capabilitystatement.html)" content="User Stories" userlink="" %}
 
@@ -82,8 +80,6 @@ Retrieve the capability statement from the NRL Server, the format of the respons
 
 {% include custom/embedcurl.html title="Read Server Capability Statement" command="curl -H 'Accept: application/fhir+xml' -H 'Authorization: BEARER [token]' -X GET '[baseUrl]/metadata'" %}
 
-
-
 {% include custom/search.response.headers.html resource="Conformance"  %}
 
 <h4 id="32-response-headers">2.2.2 Response Body</h4>
@@ -92,15 +88,9 @@ Retrieve the capability statement from the NRL Server, the format of the respons
 
 <p>An example NRL CapabilityStatement of kind <code class="highlighter-rouge">Requirements</code> is shown below:</p>
 
-
-
-
 <script src="https://gist.github.com/swk003/2961c7f768ff4ddc44c483fb6ac80833.js"></script>
 
-
 <!--<script src="https://gist.github.com/IOPS-DEV/873579911893ce480f15393917812587.js"></script>-->
-
-
 
 ### 2.3 C#
 

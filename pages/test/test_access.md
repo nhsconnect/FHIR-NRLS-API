@@ -1,7 +1,7 @@
 ---
 title: Access | Test
-keywords: test, access, security
-tags: [test, access]
+keywords: test access security
+tags: [testing]
 sidebar: foundations_sidebar
 permalink: test_access.html
 summary: "The Access page shows developers and users of the API how to access and call the API in the test environment"
@@ -18,7 +18,6 @@ Access at the Test stage of API development needs careful consideration of the f
 - Versioning
 
 {% include note.html content="Provided as an overview" %}
-
 
 # API Considerations
 

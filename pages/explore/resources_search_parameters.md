@@ -1,15 +1,11 @@
 ---
 title: Search Parameters
 keywords: foundations
-tags:
+tags: []
 sidebar: foundations_sidebar
 permalink: explore_search_parameters.html
 summary: "Describes the process of creating the search parameters"
 ---
-
-<!--tags: [fhir,rest]-->
-
-{% include custom/search.warnbanner.html %}
 
 ## 1. How they were created?
 

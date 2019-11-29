@@ -1,7 +1,7 @@
 ---
 title: Security guidance
 keywords: development
-tags: [development]
+tags: [development,security,spine_secure_proxy]
 sidebar: overview_sidebar
 permalink: development_api_security_guidance.html
 summary: "Details of the API security model and supported protocols"

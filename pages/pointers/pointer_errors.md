@@ -1,13 +1,11 @@
 ---
 title: Pointer Errors
-keywords: engage, about
-tags: [pointer]
+keywords: engage about
+tags: [pointers,for_providers]
 sidebar: overview_sidebar
 permalink: pointer_errors.html
 summary: NRL Pointer Errors
 ---
-
-{% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop with the NRL API. This project is being developed using an agile methodology, so iterative updates to content will be added on a regular basis." %}
 
 ## Pointer Errors
 

@@ -1,7 +1,7 @@
 ---
 title: Build
-keywords: design, build, access, security
-tags: [design, new]
+keywords: design build
+tags: [design,development]
 sidebar: foundations_sidebar
 permalink: design_build.html
 summary: "The Access page shows developers and users of the API how to access and call the API"

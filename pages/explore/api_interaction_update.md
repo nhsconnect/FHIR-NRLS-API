@@ -1,16 +1,13 @@
 ---
 title: API Update Interaction
-keywords: structured, update, rest, documentreference
-tags: [rest,fhir,api,noccprofile]
+keywords: structured update rest documentreference
+tags: [fhir,for_providers]
 sidebar: accessrecord_rest_sidebar
 permalink: api_interaction_update.html
 summary: To support the update of NRL pointers
 ---
 
-{% include custom/search.warnbanner.html %}
-
 {% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
-
 
 ## Update
 
@@ -32,7 +29,6 @@ Provider API update requests support the following HTTP request headers:
 | `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Access Tokens (JWT)](integration_access_tokens_JWT.html) for details. | REQUIRED |
 | `fromASID`           | Client System ASID | REQUIRED |
 | `toASID`             | The Spine ASID | REQUIRED |
-
 
 ## Update Operation
 

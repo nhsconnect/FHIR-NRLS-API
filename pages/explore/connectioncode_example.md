@@ -1,13 +1,11 @@
 ---
 title: Connection Code
-keywords: structured, rest
-tags: [rest,fhir,api,noccprofile]
+keywords: structured rest
+tags: [development,fhir]
 sidebar: accessrecord_rest_sidebar
 permalink: connectioncode_example.html
 summary: Connection code Examples
 ---
-
-{% include custom/search.warnbanner.html %}
 
 ## Common NRL Connection Code Examples
 

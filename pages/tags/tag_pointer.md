@@ -1,6 +1,6 @@
 ---
 title: "Pointers"
-tagName: pointer
+tagName: pointers
 search: exclude
 permalink: tag_pointer.html
 sidebar: overview_sidebar

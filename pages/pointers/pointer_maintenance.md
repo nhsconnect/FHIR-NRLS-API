@@ -1,13 +1,11 @@
 ---
 title: Pointer Maintenance
-keywords: engage, about
-tags: [pointer]
+keywords: engage about
+tags: [pointers,for_providers,for_consumers]
 sidebar: overview_sidebar
 permalink: pointer_maintenance.html
 summary: NRL Pointer Maintenance
 ---
-
-{% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop with the NRL API. This project is being developed using an agile methodology, so iterative updates to content will be added on a regular basis." %}
 
 ## Overview
 
@@ -105,7 +103,7 @@ Upon receipt of this Pointer, the NRL resolves the related Pointer and sets its 
 
 ## Pointer lineage
 
-A consequence of creating a relationship between Pointers where one supersedes another is that a lineage of Pointers is created. 
+A consequence of creating a relationship between Pointers where one supersedes another is that a lineage of Pointers is created.
 
 In this context, "lineage" describes the line of descendants of an original Pointer. This line in effect describes each of the different versions of the content that each Pointer references. It is a view of the evolution of the content, with the oldest content being replaced by newer content.
 

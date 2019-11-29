@@ -1,14 +1,13 @@
 ---
 title: Provide API
-keywords: development,overview, API
-tags: [explanation]
+keywords: development overview API
+tags: [overview]
 sidebar: overview_sidebar
 permalink: overview_api_provide.html
 summary: Providing a RESTful API for the first time is a journey. This page explains a starting point of the work involved in providing an API.
 ---
 
 {% include important.html content="All phases outlined below are indicative and subject to on-going review." %}
-
 	
 # How to provide an API
 
@@ -28,4 +27,3 @@ The current site focuses on a typical API Developer's Journey as highlighted by 
 <img src="images/roadmap/guide-focus.png" style="width:100%;max-width: 100%;"> 
 
 Please see the explanation of the complete development roadmap.
-

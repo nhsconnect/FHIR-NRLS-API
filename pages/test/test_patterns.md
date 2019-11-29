@@ -1,7 +1,7 @@
 ---
 title: Design Patterns / Topology
-keywords: test, pattern, security
-tags: [test, pattern]
+keywords: test pattern security
+tags: [testing]
 sidebar: foundations_sidebar
 permalink: test_patterns.html
 summary: "The Design Patterns / Topology demonstrates and describes how various design patterns can influence access, security, and use of APIs"
@@ -27,7 +27,6 @@ The same choice of testing your design pattern will need to meet your Assurance 
 
 {% include note.html content="Provided as an overview" %}
 
-
 # API Considerations
 
 Other API consideration are shown below. Please click on the parts of the API process to continue your API creation journey.
@@ -35,4 +34,3 @@ Other API consideration are shown below. Please click on the parts of the API pr
 {% include custom/provide_api.svg %}
 
 {% include custom/contribute.html content="Get involved and contribute to the above API considerations by contacting [interoperabilityteam@nhs.net](mailto:interoperabilityteam@nhs.net)."%}
-

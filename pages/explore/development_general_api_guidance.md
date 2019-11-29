@@ -1,7 +1,7 @@
 ---
 title: General API guidance
 keywords: fhir development
-tags: [fhir,development]
+tags: [fhir,development,for_providers,for_consumers]
 sidebar: overview_sidebar
 permalink: development_general_api_guidance.html
 summary: "Implementation guidance for developers - focusing on general API implementation guidance"
@@ -72,7 +72,6 @@ The following table summarises the HTTP response codes, along with the values to
 |404|error|not-found |NO_RECORD_FOUND|No record found|No record found for supplied DocumentReference identifier - [id]|
 |404|error|not-found|NO_RECORD_FOUND|No record found|The given NHS number could not be found [nhsNumber]|
 
-
 ### Headers
 
 This error will be thrown in relation to the mandatory HTTP request headers. Scenarios where this error might be thrown:
@@ -84,7 +83,6 @@ This error will be thrown in relation to the mandatory HTTP request headers. Sce
     |-----------|----------------|------------|--------------|-----------------|-------------------|
     |400|error|invalid| MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|fromASID HTTP Header is missing|
 
-
 - The mandatory `toASID` HTTP Header is missing in the request
 
     The table details the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this scenario.
@@ -92,7 +90,6 @@ This error will be thrown in relation to the mandatory HTTP request headers. Sce
     | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
     |-----------|----------------|------------|--------------|-----------------|-------------------|
     |400|error|invalid| MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|toASID HTTP Header is missing|
-
 
 - The mandatory `Authorization` HTTP Header is missing in the request
 

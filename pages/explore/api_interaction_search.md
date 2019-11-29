@@ -1,16 +1,13 @@
 ---
 title: API Search Interaction
-keywords: structured, rest, documentreference
-tags: [rest,fhir,api,noccprofile]
+keywords: structured rest documentreference
+tags: [fhir,pointers,for_consumers]
 sidebar: accessrecord_rest_sidebar
 permalink: api_interaction_search.html
 summary: To support parameterised search of the NRL.
 ---
 
-{% include custom/search.warnbanner.html %}
-
 {% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
-
 
 ## Search
 
@@ -24,14 +21,12 @@ In addition to the requirements on this page the general guidance and requiremen
 
 Consumer and Provider API search requests support the following HTTP request headers:
 
-
 | Header               | Value |Conformance |
 |----------------------|-------|-------|
 | `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](development_general_api_guidance.html#content-types) section. | OPTIONAL |
 | `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Access Tokens (JWT)](integration_access_tokens_JWT.html) for details. | REQUIRED |
 | `fromASID`           | Client System ASID | REQUIRED |
 | `toASID`             | The Spine ASID | REQUIRED |
-
 
 ## Search DocumentReference
 
@@ -161,7 +156,6 @@ The following errors can be triggered when performing this operation:
 - [Invalid NHS number](development_general_api_guidance.html#invalid-nhs-number)
 - [Invalid parameter](development_general_api_guidance.html#parameters)
 - [No record found](development_general_api_guidance.html#resource-not-found)
-
 
 ## Example Scenario
 

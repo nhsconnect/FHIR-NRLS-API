@@ -1,13 +1,11 @@
 ---
 title: Auditing
-keywords: structured, rest, documentreference
-tags: [rest,fhir,api,noccprofile]
+keywords: structured rest documentreference
+tags: [integration,auditing,fhir,spine_secure_proxy]
 sidebar: accessrecord_rest_sidebar
 permalink: integration_auditing.html
 summary: "Overview of audit and provenance requirements for data transported over NRL FHIR and SSP interfaces."
 ---
-
-{% include custom/search.warnbanner.html %}
 
 ## Overview
 

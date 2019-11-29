@@ -1,7 +1,7 @@
 ---
 title: Security
-keywords: design, build, access, security
-tags: [design]
+keywords: design build access security
+tags: [design,security,authentication,authorisation]
 sidebar: foundations_sidebar
 permalink: design_security.html
 summary: "The security page shows how to establish initial security credentials (where necessary) with the API provided"
@@ -22,7 +22,6 @@ Two common ways of accessing and managing API use within API security based on t
 - Federation: reusing Credentials & Spreading Resources
 - Delegation: access and rights can be given to authorized users
 
-
 ## Authentication and Authorisation
 
 Authentication and authorisation are commonly used together:
@@ -38,7 +37,6 @@ Authentication is most often implemented with a username and password. To increa
 
 Authorisation occurs once the user is authenticated, the system decides which resources or data to allow access to. For APIs this is often some kind of access token, either obtained through an external process (e.g. when signing up for the API) or through a separate mechanism (e.g. OAuth). This token is then passed with each request to an API and is validated by the API before processing the request. 
 
-
 ## Encryption and Signatures
 
 A brief description of encryption and signatures is shown below:
@@ -50,7 +48,6 @@ Encryption and Signatures are used together i.e.:
 
 - The signature could be encrypted to only allow certain parties to validate if a signature is valid, or 
 - The encrypted data could be signed to further ensure that data is neither seen or modified by unwanted parties.
-
 
 # Security and APIs
 
@@ -67,7 +64,6 @@ For more information on the wider design decisions involved in providing safe ac
 
 - [Safe, legal, and secure](https://developer.nhs.uk/library/save-legal-secure/) guide from developer.nhs.uk provides an overview of some design decisions and considerations to consider when implementing APIs. 
 - [Case Studies](/engage_case_studies.html) illustrates design and security decisions used to solve the challenges faced within the context and design pattern encountered.
-
 
 {% include custom/contribute.html content="Provide design patterns and API usage case studies by getting in touch with [interoperabilityteam@nhs.net](mailto:interoperabilityteam@nhs.net)."%}
 

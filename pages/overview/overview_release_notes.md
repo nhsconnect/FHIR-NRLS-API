@@ -1,17 +1,15 @@
 ---
 title: Release Notes
-keywords: development, versioning
-tags: [development]
+keywords: development versioning
+tags: [overview]
 sidebar: overview_sidebar
 permalink: overview_release_notes.html
 summary: Summary release notes of the versions released in NRL API Implementation Guide
 ---
 
-{% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop with the NRL API. This project is being developed using an agile methodology, so iterative updates to content will be added on a regular basis." %}
-
 {% include note.html content="Starting from release 2.0.0-beta, all items are considered “general changes” unless otherwise stated." %}
 
-## 2.2.1-beta <!-- ? TODO -->
+## 2.2.1-beta <!-- ? check version # -->
 
 - Add clarification about use of `versionId` to [Supersede interaction page](api_interaction_supersede.html)
 - Update ODS code and endpoint requirements guidance
@@ -154,7 +152,6 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     -	Data model updated to reflect DocumentReference changes detailed above
     -	Clarity around caching data added
 
-
 ## 1.2.3-beta
 *Changes to restructure the Implementation Guide*.
 - `versionId` will be incremeted during a supersede transaction - Create API interaction updated to align with implementation.
@@ -231,8 +228,6 @@ summary: Summary release notes of the versions released in NRL API Implementatio
   - New section [Access Tokens and Audit (JWT)](integration_access_tokens_JWT.html) added which replaces the Cross Organisation Audit & Provenance section.
  - [Assurance Process](assure.html) overview added to specification.
 
-
-
 *Sprint 6 Summary:*
 
 - Concept of direct and indirect pointers removed from API. Changes to the [Data Model](overview_data_model.html#data-model) and the [NRLS-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1) FHIR profile as follows: 
@@ -250,8 +245,6 @@ summary: Summary release notes of the versions released in NRL API Implementatio
   - Ssp-From and Ssp-To - Header name change to `fromASID` and `toASID`
   - Error Handling section reflects these changes
 - Consumer and Provider API `INVALID_PARAMETER` error response code aligned to `400` *BAD REQUEST* HTTP response code.
-
-
 
 ## 1.0.0-beta
 
