@@ -26,6 +26,6 @@ See the [Spine Core specification](https://developer.nhs.uk/apis/spine-core/ssp_
 
 Providers MUST ensure that the record author ODS code on the pointer metadata matches the ODS code for the endpoint registered in SDS. This is required to enable Consumers to perform an SDS lookup to obtain the Provider system ASID and populate the Ssp-To header in the retrieval request. 
 
-## Fully-qualified doman name (FQDN)
+## Fully qualified domain name (FQDN)
 
 Following completion of assurance, Providers will be supplied with an [X.509 Certificate](https://tools.ietf.org/html/rfc5280){:target='_blank'} and an FQDN. The FQDN will form the base of Provider Endpoints as detailed above. For more details, see the [Security page](development_api_security_guidance.html).

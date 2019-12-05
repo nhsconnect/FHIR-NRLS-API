@@ -167,7 +167,7 @@ The following table summarises the HTTP response code, along with the values to 
 |-----------|----------------|------------|--------------|
 |400|error|invalid| INVALID_RESOURCE|
 
-{% include note.html content="Although not stated in the table above, the OperationOutcome that the NRL returns in these scenarios will include `Details.display` and `Diagnostics` detail, which will aid in indentifiying which property this issue relates to." %}
+{% include note.html content="Although not stated in the table above, the OperationOutcome that the NRL returns in these scenarios will include `Details.display` and `Diagnostics` detail, which will aid in identifying which property this issue relates to." %}
 
 #### Create and supersede invalid resource errors
 
@@ -321,7 +321,7 @@ There are three scenarios when an Unsupported Media Type business response code 
 - Request contains a supported `Accept` header and an unsupported `_format` parameter.
 - Retrieval search query request parameters are valid, but the URL contains an unsupported `_format` parameter value. 
 
-These exceptions are raised by the Spine Core common requesthandler and not the NRL Service. They are supported by the default Spine OperationOutcome [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile, which binds to the default Spine valueSet [spine-response-code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0). The following table summarises the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body for these exception scenarios.
+These exceptions are raised by the Spine Core common requesthandler and not the NRL Service. They are supported by the default Spine OperationOutcome [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile, which binds to the default Spine ValueSet [spine-response-code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0). The following table summarises the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body for these exception scenarios.
 
 | HTTP Code | issue-severity | issue-type | Details.System | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|

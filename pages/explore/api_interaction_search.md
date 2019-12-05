@@ -38,8 +38,6 @@ Though the NRL does not keep a version history of each DocumentReference, each o
 
 <!--Though the NRL does not keep a version history of each DocumentReference, each one does hold a versionId to support the NRL update strategy. -->
 
-In responding to a search request, the NRL server will populate the versionId of each matching DocumentReference.
-
 ## Search Parameters
 
 {% include custom/search.parameters.html resource="DocumentReference" link="https://www.hl7.org/fhir/STU3/documentreference.html#search" %}
@@ -143,7 +141,7 @@ Success:
     <!--{% include note.html content="The returned searchset bundle does NOT currently support: <br/> <br/> (1) the `self link`, which carries the encoded parameters that were actually used to process the search. <br/> <br/> (2) the identity of resources in the entry using the `fullUrl` element. <br/> <br/> (3) resources matched in a successful search using the `search.mode` element. <br/> <br/> NB: The NRL Service will ONLY return an empty bundle if a Spine Clincals record exists and there is no DocumentReference for that specific Clinicals record." %}-->
 
  
-- Where a documentReference is returned, it MUST include the versionId <!--and fullUrl--> of the current version of the documentReference resource
+- Where a DocumentReference is returned, it MUST include the versionId <!--and fullUrl--> of the current version of the DocumentReference resource
 
 - When a Consumer retrieves a DocumentReference if the masterIdentifier is set then it SHOULD be included in the returned DocumentReference
 
@@ -227,17 +225,17 @@ See the [general API guidance](development_general_api_guidance.html#error-handl
 
 - Response body MUST return a valid XML or JSON formatted Bundle of type searchset, containing a bundle that reports the 
 total number of resources that match in Bundle.total, but with no entries, and no prev/next/last links. Note that the Bundle.total 
-only include the total number of matching DocumentReferences.
+only include the total number of matching `DocumentReference`s.
 
 Examples
-- 3 DocumentReferences exist for patient with NHS number passed into the search
+- Three `DocumentReference`s exist for patient with NHS number passed into the search
 <div class="github-sample-wrapper scroll-height-350">
 {% highlight XML %}
 {% include /examples/search_response_summary_count3.xml %}
 {% endhighlight %}
 </div>
 
-- 0 DocumentReferences exist for patient with NHS number passed into the search
+- No `DocumentReference`s exist for patient with NHS number passed into the search
 <div class="github-sample-wrapper scroll-height-350">
 {% highlight XML %}
 {% include /examples/search_response_summary_count0.xml %}
@@ -250,7 +248,7 @@ Examples
 
 The following code samples are taken from the NRL Demonstrator application which has both Consumer and Provider client implementations built in. More information about the design solution can be found on the [NRL Demonstrator Wiki](https://github.com/nhsconnect/nrls-reference-implementation/wiki)
 
-First we generate a base pointer request model that includes the patients NHS Number used for the subject parameter. 
+First we generate a base pointer request model that includes the patient's NHS Number used for the subject parameter. 
 The NHS Number is obtained through a stub PDS Trace performed within the Demonstrator Consumer system.
 
 Then we call our DocumentReference service GetPointersBundle method which will build a GET command request and then start the call to the NRL API.

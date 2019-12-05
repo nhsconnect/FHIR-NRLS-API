@@ -27,7 +27,7 @@ The NRL recognises that there exist varying levels of digital maturity across Pr
 
 ### Records should be exposed using National Standards
 
-To enable Consumers to retreive records with minimal custom integration between Consumer and Provider systems, records should be exposed using national standards. 
+To enable Consumers to retrieve records with minimal custom integration between Consumer and Provider systems, records should be exposed using national standards. 
 
 The NRL defines a [Read interaction](retrieval_interaction_read.html) for retrieval of a record via the SSP, which enables a retrieval of records using a standard HTTP GET interaction for a set of specified formats and data structures. There may be exceptions where record retrieval takes place using an alternative retrieval mechanism. 
 

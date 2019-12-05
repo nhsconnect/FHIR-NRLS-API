@@ -38,7 +38,7 @@ This table outlines which records an RBAC code gives access to and whether it pr
     <tbody>
         <tr>
             <td rowspan="2">Record Group 1</td>
-            <td rowspan="2">Mental Health Crisis Plan</td>
+            <td rowspan="2">Mental health crisis plan</td>
             <td>Pointer-only access</td>
             <td>B0268</td>
         </tr>

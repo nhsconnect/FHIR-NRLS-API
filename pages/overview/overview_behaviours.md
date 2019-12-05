@@ -60,7 +60,7 @@ Details on the audit requirements for Consumers and Providers can be found on th
 
 ### Retrieving an audit trail
 
-Providers can retrieve the following two types of audit trail data from NHS Digital:
+Providers can request the following two types of audit trail data from NHS Digital:
 * All audit trails for a given patient (identified by their NHS number)
 * All audit trails for the Pointers the Provider owns
 

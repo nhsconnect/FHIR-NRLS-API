@@ -8,7 +8,7 @@
   definition: "_Accredited System ID_ (obtained by completing [SCAL](#scal))"
 
 - term: Argonaut
-  definition: "An initiative launched by HL7 to accelerate the development and adoption of FHIR. Supported by 11 organizations, including EHR vendors Epic and Cerner and health systems Mayo Clinic and Intermountain Healthcare."
+  definition: "An initiative launched by HL7 to accelerate the development and adoption of FHIR. Supported by 11 organisations, including EHR vendors Epic and Cerner and health systems Mayo Clinic and Intermountain Healthcare."
 
 - term: CAP
   definition: "The _Common Assurance Process_ is an NHS process that needs to be followed to gain accreditation allowing for connection directly to the Spine and PDS."
@@ -57,7 +57,7 @@
   definition: "_End User Organisation Declaration_"
 
 - term: FHIR
-  definition: "FHIR is the latest standard to be developed under the HL7 organization. Pronounced 'Fire' and stands for Fast Healthcare Interoperability Resources"
+  definition: "FHIR is the latest standard to be developed under the HL7 organisation. Pronounced 'Fire' and stands for Fast Healthcare Interoperability Resources."
 
 - term: FHIRPath
   definition: "[FHIRPath](https://hl7.org/fhirpath/) is a path-based navigation and extraction language, somewhat like XPath. Operations are expressed in terms of the logical content of hierarchical data models, supporting traversal, selection, and filtering of data."
@@ -101,6 +101,9 @@
 - term: MIM
   definition: "The _Message Implementation Manual_ describes the HL7 messages used for communications across the NPfIT programme.<br>- Not all messages are HL7v3<br>- Not all messages are in the MIM"
 
+- term: MPV
+  definition: "_Manufacturer Product Version_"
+
 - term: N3
   definition: "N3 is a Wide Area IP Network (WAN), connecting many different sites across the NHS within England & Scotland. It also connects to other networks via Gateways, notably to the Internet via the Internet Gateway."
 
@@ -122,11 +125,12 @@
 - term: PAS
   definition: "The _Patient Administration System_ records the patient's demographics (e.g. name, home address, date of birth) and details all patient contact with the hospital, both outpatient and inpatient.<br><br>Some PAS systems do support additional clinical behaviours."
 
+- term: PDS
+  definition: "The _[Personal Demographics Service](https://digital.nhs.uk/services/demographics){:target='_blank'}_ is a national electronic database of NHS patients containing details such as name, address, date of birth and NHS Number (known as demographic information). (Implemented with HL7 v3)"
+
 - term: PID
   definition: "The HL7 _Patient Identification_ segment is found in every type of ADT message (i.e. ADT-A01, ADT-A08, etc.) and contains 30 different fields with values ranging from patient ID number, to patient sex, to address, to marital status, to citizenship. The PID segment provides important identification information about the patient and, in fact, is used as the primary means of communicating the identifying and demographic information about a patient between systems."
 
-- term: PDS
-  definition: "The _Patient Demographic Service_ is a national electronic database of NHS patients containing details such as name, address, date of birth and NHS Number (known as demographic information). (Implemented with HL7 v3)"
 
 - term: RBAC
   definition: "_Role Based Access Control_ defines roles and allowed business activities associated with a user (via their smartcard). (Implemented using SAML)"
@@ -184,6 +188,12 @@
 
 - term: TKW
   definition: "[_Toolkit Workbench_](https://digital.nhs.uk/services/interoperability-toolkit/developer-resources/itk-test-centre/itk-testbench){:target='_blank'}"
+
+- term: TLS
+  definition: "_Transport Layer Security_"
+
+- term: TLSMA
+  definition: "_[TLS](#tls) Mutual Authentication_"
 
 - term: XML
   definition: "_eXtensible Markup Language_ is a protocol designed to store and transport data. XML was designed to be both human and machine readable."

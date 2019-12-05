@@ -58,7 +58,7 @@ The API supports the conditional update interaction which allows a provider to u
 Update the DocumentReference resource status for a pointer with a subject and identifier.</pre>
 </div>
 
-*[nhsNumber]* - The NHS number of the patient whose DocumentReferences the client is requesting
+*[nhsNumber]* - The NHS number of the patient whose `DocumentReference`s the client is requesting
 
 *[system]* - The namespace of the masterIdentifier value that is associated with the DocumentReference(s)
 
@@ -79,7 +79,7 @@ The FHIRPath PATCH operation must be encoded in a Parameters resource as follows
 
 Only the first parameter within the Parameters resource will be used to perform a PATCH. Any additional parameters included within the request will not be processed. More details on the validation of the Parameters resource can be found in the [error handling guidance](development_general_api_guidance.html#invalid-resource).
 
-XML and JSON eaxmples of the FHIRPath Parameters resource are shown below. 
+XML and JSON examples of the FHIRPath Parameters resource are shown below. 
 
 ### XML FHIRPath PATCH Parameters resource
 
@@ -105,7 +105,7 @@ Success:
 - MUST return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Operation Outcome'](http://hl7.org/fhir/STU3/operationoutcome.html) core FHIR resource (see the table below).
 - When a resource has been updated, its `versionId` will be incremented.
 
-{% include note.html content="The `versionId` is an integer that is assigned and maintained by the NRL server. When a new DocumentReference is created, the server assigns it a `versionId` of 1. The `versionId` will be incremeted during an update or supersede transaction. <br/><br/> The NRL server will ignore any `versionId` value sent by a client in a `create` interaction. Instead, the server will ensure that the newly assigned `versionId` adheres to the rules laid out above.
+{% include note.html content="The `versionId` is an integer that is assigned and maintained by the NRL server. When a new DocumentReference is created, the server assigns it a `versionId` of 1. The `versionId` will be incremented during an update or supersede transaction. <br/><br/> The NRL server will ignore any `versionId` value sent by a client in a `create` interaction. Instead, the server will ensure that the newly assigned `versionId` adheres to the rules laid out above.
 " %}
 
 The table summarises the `update` interaction HTTP response code and the values expected to be conveyed in the successful response body `OperationOutcome` payload:
@@ -114,7 +114,7 @@ The table summarises the `update` interaction HTTP response code and the values 
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |200|information|informational|RESOURCE_UPDATED|Resource has been updated| Spine message UUID |Successfully updated resource DocumentReference|
 
-{% include note.html content="Upon successful update of a pointer the NRL Service returns in the reponse payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Update transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
+{% include note.html content="Upon successful update of a pointer the NRL Service returns in the response payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Update transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
 
 Failure: 
 

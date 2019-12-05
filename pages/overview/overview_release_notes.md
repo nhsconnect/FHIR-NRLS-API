@@ -13,7 +13,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 
 - Add clarification about use of `versionId` to [Supersede interaction page](api_interaction_supersede.html)
 - Update ODS code and endpoint requirements guidance
-- Remove SSP prefix from example DocumentReferences
+- Remove SSP prefix from example `DocumentReference`s
 - Update guidance on constructing SSP URLs and percent-encoding for document retrieval 
 - Expand glossary of terms
 - Miscellaneous copy-edits
@@ -154,7 +154,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 
 ## 1.2.3-beta
 *Changes to restructure the Implementation Guide*.
-- `versionId` will be incremeted during a supersede transaction - Create API interaction updated to align with implementation.
+- `versionId` will be incremented during a supersede transaction - Create API interaction updated to align with implementation.
 - 500 Internal server error HTTP response guidance modified to match Spine Core output - Spine does not return an operation outcome.
 - NRLS-DocumentReference-1 FHIR profile element guidance explicitly supports `relatesTo.target` element.
 
@@ -213,7 +213,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
      - RESOURCE_CREATED
      - RESOURCE_ DELETED
    - Error Handling section updated to reflect API re-alignment with DDC NRL Service implementation.
-   - Exceptions raised by the Spine Core common requesthandler and not the NRL Service will be supported by the default Spine OperationOutcome [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to the default Spine valueSet [spine-response-code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0). Codes include:
+   - Exceptions raised by the Spine Core common requesthandler and not the NRL Service will be supported by the default Spine OperationOutcome [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to the default Spine ValueSet [spine-response-code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0). Codes include:
      - UNSUPPORTED_MEDIA_TYPE
 - Pagination removed from Provider and Consumer search API.
 - CapabilityStatement conformance functionality removed from this release.
@@ -260,7 +260,7 @@ Sprint 5 summary:
 - JWT Claims updated: 
   - 'device' claim added - this is the Identifier (ASID) of the system where the request originates. 
   - 'sub' claim specification/ example has been updated.
-- [Authentication and Autherisation](integration_authentication_authorisation.html) page added - NRL strategic approach to align with 'Care Access Service' which will become NHS Digital’s national Authentication and Authorisation service. 
+- [Authentication and Authorisation](integration_authentication_authorisation.html) page added - NRL strategic approach to align with 'Care Access Service' which will become NHS Digital’s national Authentication and Authorisation service. 
 - JSON and XML examples added to [Reference](explore_reference.html#7-examples) section.
 
 ## 1.0.0-alpha

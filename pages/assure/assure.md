@@ -15,7 +15,7 @@ summary: "These pages assist with the NRL Service Assurance Process"
 	
 	*Note*: The Usage and Settings document is not needed for the pilot stage.
  
-3. The [Solution Assurance team](mailto:itkconformance@nhs.net) will work with the supplier throughout development and assurance, providing assistance with technical support and test and assurance queries and reviewing Supplier submissions.
+3. The [Solution Assurance team](mailto:itkconformance@nhs.net) will work with the supplier throughout development and assurance, providing assistance with technical support and test and assurance queries. They are also responsible for reviewing and certifying Supplier submissions.
 
 4. As part of this process, the supplier will need to complete a SCAL (Supplier Conformance and Assessment List). The SCAL should be completed by adding comments and referencing evidence where needed.
 

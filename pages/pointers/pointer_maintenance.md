@@ -15,7 +15,7 @@ The NRL allows a Provider to perform four interactions in relation to Pointers:
 - Supersede — Replace a pointer. This interaction marks the pointer as superseded and creates a new Pointer in the NRL
 - Delete — Remove an existing Pointer from NRL. This Pointer will no longer appear in search results
 
-A Pointer’s main role is to refer to another entity, which is some kind of content. The content may be static or dynamic, structured or unstructured.
+A Pointer’s main role is to refer to another entity, which is some kind of content. The content may be static or dynamic.
 
 Because of this, when considering Pointer maintenance, we must consider the maintenance of two entities:
 * Changes to the Pointer’s data — the referenced content has not changed, but one or more of the data items captured on the Pointer needs to be modified. In this case, Providers should supersede the existing resource, resulting in the creation of a new Pointer with updated data items.

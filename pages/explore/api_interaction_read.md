@@ -50,7 +50,7 @@ Note the status of the pointer must be "current" for the pointer to be retrieved
 Success:
 
 - MUST return a `200` **SUCCESS** HTTP status code on successful execution of the interaction.
-- MUST return a response body containing a DocumentReference resource which conforms to the [NRL-DocumentReference-1 FIHR profile](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) and has the status "current".
+- MUST return a response body containing a DocumentReference resource which conforms to the [NRL-DocumentReference-1 FHIR profile](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) and has the status "current".
 
 <!--
 {% include note.html content="When a document/record is to be retrieved via the SSP then the Consumer MUST percent encode the `content.attachment.url` property, taken from an NRL pointer, and prefix it with the SSP server URL. For more details, see the [Retrieval Read](retrieval_interaction_read.html#retrieval-via-the-ssp) interaction page." %}
