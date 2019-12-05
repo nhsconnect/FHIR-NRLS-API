@@ -173,87 +173,107 @@ The following table summarises the HTTP response code, along with the values to 
 
 The following scenarios relate to the [create](api_interaction_create.html) and [supersede](api_interaction_supersede.html) interactions (HTTP POST):
 
-##### Mandatory fields
-If one or more mandatory fields are missing, this error will be thrown. See [DocumentReference](explore_reference.html#2-nrl-data-model-to-fhir-profile-mapping) profile.
+* **Mandatory fields**
 
-##### Mandatory field values
-If one or more mandatory fields are missing values, this error will be thrown. 
+  If one or more mandatory fields are missing, this error will be thrown. See [DocumentReference](explore_reference.html#2-nrl-data-model-to-fhir-profile-mapping) profile.
 
-##### DocumentReference.Custodian
-If the DocumentReference in the request body contains an ODS code on the custodian element that is not tied to the ASID supplied in the HTTP request header fromASID, this error will result. 
+* **Mandatory field values**
 
-##### DocumentReference.Content.Attachment.Creation
-If this optional field is supplied, it must be a valid [FHIR dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime) 
+  If one or more mandatory fields are missing values, this error will be thrown. 
 
-##### DocumentReference.Status
-If the DocumentReference in the request body specifies a status code that is not supported by the required HL7 FHIR [document-reference-status](http://hl7.org/fhir/ValueSet/document-reference-status) valueset, this error will be thrown. 
+* **DocumentReference.Custodian**
 
-##### DocumentReference.Type
-If the DocumentReference in the request body specifies a type that is not part of the valueset defined in the [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) FHIR profile, this error will be thrown.
+  If the DocumentReference in the request body contains an ODS code on the custodian element that is not tied to the ASID supplied in the HTTP request header fromASID, this error will result. 
 
-##### DocumentReference.Indexed
-If the DocumentReference in the request body specifies an indexed element that is not a valid [FHIR instant](http://hl7.org/fhir/STU3/datatypes.html#instant), this error will be thrown.
+* **DocumentReference.Content.Attachment.Creation**
 
-##### DocumentReference.Class
-If the DocumentReference in the request body specifies a class that is not part of the valueset defined in the [NRL-DocumentReference-1 FHIR profile](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1), this error will be thrown.
+  If this optional field is supplied, it must be a valid [FHIR dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime) 
 
-##### DocumentReference.Content.Format
-If the DocumentReference in the request body specifies a format that is not part of the valueset defined in the [NRL-DocumentReference-1 FHIR profile](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1), this error will be thrown.
+* **DocumentReference.Status**
 
-##### DocumentReference.Content.Extension:RetrievalMode
-If the DocumentReference in the request body specifies a retrievalMode that is not part of the valueset defined in the [NRL-DocumentReference-1 FHIR profile](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1), this error will be thrown.
+  If the DocumentReference in the request body specifies a status code that is not supported by the required HL7 FHIR [document-reference-status](http://hl7.org/fhir/ValueSet/document-reference-status) valueset, this error will be thrown. 
 
-##### DocumentReference.Context.PracticeSetting
-If the DocumentReference in the request body specifies a practiceSetting that is not part of the valueset defined in the [NRL-DocumentReference-1 FHIR profile](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1), this error will be thrown.
+* **DocumentReference.Type**
 
-##### DocumentReference.Context.Period
-If the DocumentReference in the request body specifies a period:
-- At least the start date must be populated and must be a valid [FHIR dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime).
-- If the end date is populated it must be a valid [FHIR dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime).
+  If the DocumentReference in the request body specifies a type that is not part of the valueset defined in the [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) FHIR profile, this error will be thrown.
 
-##### DocumentReference.RelatesTo
-If multiple relatesTo elements are included in a create request, an error will be returned. 
+* **DocumentReference.Indexed**
 
-##### DocumentReference.RelatesTo.Code
-If the code is not set to the value "replaces", an error will be returned.
+  If the DocumentReference in the request body specifies an indexed element that is not a valid [FHIR instant](http://hl7.org/fhir/STU3/datatypes.html#instant), this error will be thrown.
 
-##### Incorrect permissions to modify
-When the NRL resolves a DocumentReference through the relatesTo property before modifying its status, the NRL should check that the ODS code associated with the fromASID HTTP header is associated with the ODS code specified on the custodian property of the DocumentReference. If not, the NRL should roll back all changes and return an error.
+* **DocumentReference.Class**
 
-##### Patient mismatch
+  If the DocumentReference in the request body specifies a class that is not part of the valueset defined in the [NRL-DocumentReference-1 FHIR profile](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1), this error will be thrown.
 
-When the NRL resolves a DocumentReference through the relatesTo property, the subject property reference value must match the subject property reference on the new DocumentReference being created. If not, the NRL should roll back all changes and return an error.
+* **DocumentReference.Content.Format**
 
-##### MasterIdentifier mismatch
+  If the DocumentReference in the request body specifies a format that is not part of the valueset defined in the [NRL-DocumentReference-1 FHIR profile](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1), this error will be thrown.
 
-When the NRL resolves a DocumentReference through the relatesTo property and both the `relatesTo.target.identifier` and `relatesTo.target.reference` properties are populated, the `relatesTo.target.identifier` value must match the masterIdentifier property on the resolved DocumentReference. If not, the NRL should roll back all changes and return an error.
+* **DocumentReference.Content.Extension:RetrievalMode**
 
-##### DocumentReference does not exist
+  If the DocumentReference in the request body specifies a retrievalMode that is not part of the valueset defined in the [NRL-DocumentReference-1 FHIR profile](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1), this error will be thrown.
 
-If the NRL fails to resolve a DocumentReference through the relatesTo property, the NRL should roll back all changes and return an error.
+* **DocumentReference.Context.PracticeSetting**
+
+  If the DocumentReference in the request body specifies a practiceSetting that is not part of the valueset defined in the [NRL-DocumentReference-1 FHIR profile](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1), this error will be thrown.
+
+* **DocumentReference.Context.Period**
+
+  If the DocumentReference in the request body specifies a period:
+  - At least the start date must be populated and must be a valid [FHIR dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime).
+  - If the end date is populated it must be a valid [FHIR dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime).
+
+* **DocumentReference.RelatesTo**
+
+  If multiple relatesTo elements are included in a create request, an error will be returned. 
+
+* **DocumentReference.RelatesTo.Code**
+
+  If the code is not set to the value "replaces", an error will be returned.
+
+* **Incorrect permissions to modify**
+
+  When the NRL resolves a DocumentReference through the relatesTo property before modifying its status, the NRL should check that the ODS code associated with the fromASID HTTP header is associated with the ODS code specified on the custodian property of the DocumentReference. If not, the NRL should roll back all changes and return an error.
+
+* **Patient mismatch**
+
+  When the NRL resolves a DocumentReference through the relatesTo property, the subject property reference value must match the subject property reference on the new DocumentReference being created. If not, the NRL should roll back all changes and return an error.
+
+* **MasterIdentifier mismatch**
+
+  When the NRL resolves a DocumentReference through the relatesTo property and both the `relatesTo.target.identifier` and `relatesTo.target.reference` properties are populated, the `relatesTo.target.identifier` value must match the masterIdentifier property on the resolved DocumentReference. If not, the NRL should roll back all changes and return an error.
+
+* **DocumentReference does not exist**
+
+  If the NRL fails to resolve a DocumentReference through the relatesTo property, the NRL should roll back all changes and return an error.
 
 #### Update Invalid Resource Errors
 
 The following scenarios relate to the [Update](api_interaction_update.html) interaction (HTTP PATCH):
 
-##### Parameters: Type
-When updating a DocumentReference, if the type parameter in the Parameters resource in the request body does not have the value "replace", an error will be returned.
+* **Parameters: Type**
 
-##### Parameters: Path
-When updating a DocumentReference, if the path parameter in the Parameters resource in the request body does not have the value "DocumentReference.status", an error will be returned.
+  When updating a DocumentReference, if the type parameter in the Parameters resource in the request body does not have the value "replace", an error will be returned.
 
-##### Parameters: Value
-When updating a DocumentReference, if the value parameter in the Parameters resource in the request body does not have the value "entered-in-error", an error will be returned.
+* **Parameters: Path**
 
-##### Provider ODS Code does not match Custodian ODS Code
-If a provider update pointer request contains a URL that resolves to a single DocumentReference, but the custodian property does not match the ODS code associated to the ASID value in the fromASID header, an error will be returned.
+  When updating a DocumentReference, if the path parameter in the Parameters resource in the request body does not have the value "DocumentReference.status", an error will be returned.
+
+* **Parameters: Value**
+
+  When updating a DocumentReference, if the value parameter in the Parameters resource in the request body does not have the value "entered-in-error", an error will be returned.
+
+* **Provider ODS Code does not match Custodian ODS Code**
+
+  If a provider update pointer request contains a URL that resolves to a single DocumentReference, but the custodian property does not match the ODS code associated to the ASID value in the fromASID header, an error will be returned.
 
 #### Delete Invalid Resource Errors
 
 The following scenarios relate to the [Delete](api_interaction_delete.html) interaction (HTTP DELETE):
 
-##### Provider ODS Code does not match Custodian ODS Code
-If a provider delete pointer request contains a URL that resolves to a single DocumentReference, but the custodian property does not match the ODS code associated to the ASID value in the fromASID header, an error will be returned.
+* **Provider ODS Code does not match Custodian ODS Code**
+
+  If a provider delete pointer request contains a URL that resolves to a single DocumentReference, but the custodian property does not match the ODS code associated to the ASID value in the fromASID header, an error will be returned.
 
 #### Duplicate Resource
 

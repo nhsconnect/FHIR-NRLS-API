@@ -1,5 +1,5 @@
 ---
-title: NRL | FHIR&reg; Resources &amp; References
+title: FHIR Profile Reference
 keywords: development reference
 tags: [development,fhir]
 sidebar: overview_sidebar
@@ -64,13 +64,17 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Record MIME type| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.attachment<wbr>.contentType</code> |code|1..1|Describes the type of data such that the Consumer can pick an appropriate mechanism to handle the record.|
 |Record Stability| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability</code> |Extension|1..1|Record content extension|
 || <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability<wbr>.url</code> |Uri|1..1|identifies the meaning of the extension|
-|| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability.<wbr>valueCodeableConcept</code> |CodeableConcept|1..1|Describes whether the record content at the time of the request is dynamically generated or is static|
-|| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability.<wbr>valueCodableConcept<wbr>.coding<!--[0]--><wbr>.system</code> |Uri|1..1|Identity of the terminology system|
-|| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability.<wbr>valueCodableConcept<wbr>.coding<!--[0]--><wbr>.code</code> |Code|1..1|Symbol in syntax defined by the system|
-|| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability.<wbr>valueCodableConcept<wbr>.coding<!--[0]--><wbr>.display</code> |String|1..1|Representation defined by the system|
+|| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability.<wbr>valueCodeableConcept</code> |CodeableConcept[^codeable_concept]|1..1|Describes whether the record content at the time of the request is dynamically generated or is static|
+|| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability.<wbr>valueCodeableConcept<wbr>.coding<!--[0]--><wbr>.system</code> |Uri|1..1|Identity of the terminology system|
+|| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability.<wbr>valueCodeableConcept<wbr>.coding<!--[0]--><wbr>.code</code> |Code|1..1|Symbol in syntax defined by the system|
+|| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability.<wbr>valueCodeableConcept<wbr>.coding<!--[0]--><wbr>.display</code> |String|1..1|Representation defined by the system|
 |Related documents| <code class="highlighter-rouge">relatesTo</code> | BackboneElement| 0..1| Relationship to another pointer|
 || <code class="highlighter-rouge">relatesTo<wbr>.code</code> | Code| 1..1| The type of relationship between the documents. This element is mandatory if the *relatesTo* element is sent and the value MUST be *replaces*.|
 || <code class="highlighter-rouge">relatesTo<wbr>.target</code> | Reference| 1..1| The Target of the relationship. This should contain the logical reference to the target DocumentReference held within the NRL using the identifier property of this [Reference Data Type](https://www.hl7.org/fhir/references.html#logical).|
+
+<!-- footnotes -->
+[^codeable_concept]: A `CodeableConcept` represents a value that is usually supplied by providing a reference to one or more terminologies or ontologies but may also be defined by the provision of text. [Source](https://www.hl7.org/fhir/datatypes.html#CodeableConcept)
+<!-- /footnotes -->
 
 ## 3. ValueSets
 

@@ -1,5 +1,5 @@
 ---
-title: Open Source Guidance
+title: FHIR Open Source Resources
 keywords: fhir development open source
 tags: [development]
 sidebar: overview_sidebar

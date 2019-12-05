@@ -9,14 +9,16 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 
 {% include note.html content="Starting from release 2.0.0-beta, all items are considered “general changes” unless otherwise stated." %}
 
-## 2.2.1-beta <!-- ? check version # -->
+## 2.3.0-beta <!-- ? check version # -->
 
 - Add clarification about use of `versionId` to [Supersede interaction page](api_interaction_supersede.html)
 - Update ODS code and endpoint requirements guidance
 - Remove SSP prefix from example `DocumentReference`s
 - Update guidance on constructing SSP URLs and percent-encoding for document retrieval 
 - Expand glossary of terms
-- Miscellaneous copy-edits
+- Update tags and enable filtering by tag name
+- Remove obsolete pages
+- Miscellaneous copy-edits and minor restructuring
 
 ## 2.2.0-beta
  - Renamed metadata 'Record class' to 'Record category'

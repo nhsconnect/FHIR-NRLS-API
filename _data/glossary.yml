@@ -131,7 +131,6 @@
 - term: PID
   definition: "The HL7 _Patient Identification_ segment is found in every type of ADT message (i.e. ADT-A01, ADT-A08, etc.) and contains 30 different fields with values ranging from patient ID number, to patient sex, to address, to marital status, to citizenship. The PID segment provides important identification information about the patient and, in fact, is used as the primary means of communicating the identifying and demographic information about a patient between systems."
 
-
 - term: RBAC
   definition: "_Role Based Access Control_ defines roles and allowed business activities associated with a user (via their smartcard). (Implemented using SAML)"
 
@@ -145,7 +144,7 @@
   definition: "_Representational State Transfer_ is a protocol based upon a network of Web resources (a virtual state-machine) where the user progresses through the application by selecting links, such as /user/tom, and operations such as GET or DELETE (state transitions), resulting in the next resource (representing the next state of the application) being transferred to the user for their use. Typically preferred due to it being \"stateless\" so no information about the client session needs to be maintained on the server."
 
 - term: RESTful
-  definition: "Interfaces are often referred to as being \"RESTful\" when they follow principles of \"REST\" to avoid debate about whether they conform to \"REST\"."
+  definition: "Interfaces are often referred to as being \"RESTful\" when they follow principles of [REST](#rest) to avoid debate about whether they fully conform to REST."
 
 - term: RIM
   definition: "The _Reference Information Model_ is the cornerstone of the HL7 Version 3 development process. An object model created as part of the Version 3 methodology, the RIM is a large, pictorial representation of the HL7 clinical data (domains) and identifies the life cycle that a message or groups of related messages will carry. It is a shared model between all domains and, as such, is the model from which all domains create their messages."

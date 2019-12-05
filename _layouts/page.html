@@ -14,10 +14,18 @@ layout: default
    <h1 class="post-title-main">{{ page.title }}</h1>
 </div>
 
+<script>
+    $(function() {
+        $('a[href^="http://"], a[href^="https://"]')
+            .attr('target', '_blank') // open all external links in new tab
+            .attr('rel', 'noopener noreferrer'); // https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/
+    });
+</script>
+
 {% if page.simple_map == true %}
 
 <script>
-    $(document).ready ( function(){
+    $(function() {
         $('.box{{page.box_number}}').addClass('active');
     });
 </script>
@@ -27,7 +35,7 @@ layout: default
 {% elsif page.complex_map == true %}
 
 <script>
-    $(document).ready ( function(){
+    $(function() {
         $('.modalButton{{page.box_number}}').addClass('active');
     });
 </script>

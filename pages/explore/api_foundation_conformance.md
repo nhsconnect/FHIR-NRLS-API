@@ -3,6 +3,7 @@ title: Capability Statement
 keywords: foundations fhir
 tags: [fhir]
 sidebar: accessrecord_rest_sidebar
+search: exclude # TODO
 permalink: api_foundation_conformance.html
 summary: A capability statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
 ---

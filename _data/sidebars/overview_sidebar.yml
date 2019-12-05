@@ -1,7 +1,7 @@
 entries:
 - title: NRL
   product: NRL
-  version: 2.2.0-beta API <i>specification</i>
+  version: 2.3.0-beta API <i>specification</i>
   levels: one
   folders:
 
@@ -103,8 +103,11 @@ entries:
           - title: Formats
             url: /retrieval_formats.html
             output: web
-    - title: FHIR&reg; Resources &amp; References
+    - title: FHIR Profile Reference
       url: /explore_reference.html
+      output: web
+    - title: FHIR Open Source Resources
+      url: /explore_fhir_open_source_guidance.html
       output: web
 
   - title: Integrate With Spine
@@ -128,12 +131,11 @@ entries:
     - title: Personal Demographics Service
       url: /integration_personal_demographics_service.html
       output: web
+
   - title: Assure
     output: web
-    folderitems:
-    - title: Overview
-      url: /assure.html
-      output: web
+    flat: true
+    url: /assure.html
 
   - title: Help &amp; Support
     output: web
