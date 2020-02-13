@@ -15,9 +15,9 @@ summary: To support the update of NRL pointers
 
 Provider interaction to support the update of NRL pointers. The update functionality will be used in cases where a Provider wishes to update a pointer status value, changing it from “current” to “entered-in-error”. 
 
-## Pre-requisites
+## Prerequisites
 
-In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-pre-requisites-for-nrl-api) page MUST be followed when using this interaction.
+In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-prerequisites-for-nrl-api) page MUST be followed when using this interaction.
 
 ## Update Request Headers
 
@@ -81,7 +81,7 @@ Only the first parameter within the Parameters resource will be used to perform 
 
 XML and JSON examples of the FHIRPath Parameters resource are shown below. 
 
-### XML FHIRPath PATCH Parameters resource
+### XML FHIRPath PATCH Parameters Resource
 
 <div class="github-sample-wrapper scroll-height-350">
 {% highlight xml %}
@@ -89,7 +89,7 @@ XML and JSON examples of the FHIRPath Parameters resource are shown below.
 {% endhighlight %}
 </div>
 
-### JSON FHIRPath PATCH Parameters resource
+### JSON FHIRPath PATCH Parameters Resource
 
 <div class="github-sample-wrapper scroll-height-350">
 {% highlight json %}

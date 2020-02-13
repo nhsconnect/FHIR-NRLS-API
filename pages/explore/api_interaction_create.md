@@ -13,9 +13,9 @@ summary: To support the creation of NRL pointers
 
 Provider interaction to support the creation of NRL pointers.
 
-## Pre-requisites
+## Prerequisites
 
-In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-pre-requisites-for-nrl-api) page MUST be followed when using this interaction.
+In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-prerequisites-for-nrl-api) page MUST be followed when using this interaction.
 
 ## Create Request Headers
 
@@ -44,7 +44,7 @@ Provider systems:
 
 For all create requests the `custodian` ODS code in the DocumentReference resource MUST be affiliated with the `Client System ASID` value in the `fromASID` HTTP request header sent to the NRL.
 
-### XML Example of a new DocumentReference resource (pointer)
+### XML Example of a New DocumentReference Resource (Pointer)
 
 <div class="github-sample-wrapper scroll-height-350">
 {% highlight xml %}
@@ -52,7 +52,7 @@ For all create requests the `custodian` ODS code in the DocumentReference resour
 {% endhighlight %}
 </div>
 
-### JSON Example of a new DocumentReference resource (pointer)
+### JSON Example of a New DocumentReference Resource (Pointer)
 <div class="github-sample-wrapper scroll-height-350">
 {% highlight json %}
 {% include /examples/create_documentreference_resource.json  %}
@@ -61,7 +61,7 @@ For all create requests the `custodian` ODS code in the DocumentReference resour
 
 ## Create Response
 
-Success:
+### Success
 
 - MUST return a `201` **CREATED** HTTP status code on successful execution of the interaction and the entry has been successfully created in the NRL.
 - MUST return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Operation Outcome'](http://hl7.org/fhir/STU3/operationoutcome.html) core FHIR resource (see the table below).
@@ -72,9 +72,7 @@ Success:
     - `https://psis-sync.national.ncrs.nhs.uk/DocumentReference/297c3492-3b78-11e8-b333-6c3be5a609f5-54477876544511209789`
 - When a resource has been created it will have a `versionId` of 1.
 
- 
-
-{% include note.html content="The versionId is an integer that is assigned and maintained by the NRL server. When a new DocumentReference is created the server assigns it a versionId of 1. The versionId will be incremented during an update or supersede transaction. See [API Interaction - Update](api_interaction_update.html) and [API Interaction - Supersede](api_interaction_supersede.html) for more details on these transactions.<br/><br/> The NRL server will ignore any versionId value sent by a client in a create interaction. Instead the server will ensure that the newly assigned verionId adheres to the rules laid out above. 
+{% include note.html content="The versionId is an integer that is assigned and maintained by the NRL server. When a new DocumentReference is created the server assigns it a versionId of 1. The versionId will be incremented during an update or supersede transaction. See [API Interaction - Update](api_interaction_update.html) and [API Interaction - Supersede](api_interaction_supersede.html) for more details on these transactions.<br/><br/> The NRL server will ignore any versionId value sent by a client in a create interaction. Instead, the server will ensure that the newly assigned versionId adheres to the rules laid out above. 
 " %}
 
 The table summarises the `create` interaction HTTP response code and the values expected to be conveyed in the successful response body `OperationOutcome` payload:
@@ -85,7 +83,7 @@ The table summarises the `create` interaction HTTP response code and the values 
 
 {% include note.html content="Upon successful creation of a pointer the NRL Service returns in the response payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
 
-Failure: 
+### Failure
 
 The following errors can be triggered when performing this operation:
 
@@ -97,7 +95,7 @@ The following errors can be triggered when performing this operation:
 - [Duplicate Resource](development_general_api_guidance.html#duplicate-resource)
 - [Missing or Invalid Headers](development_general_api_guidance.html#headers)
 
-### Ensuring that masterIdentifier is unique
+### Ensuring that `masterIdentifier` Is Unique
 
 The masterIdentifier should be unique within the NRL. For more information see the discussion on [Pointer identifiers](pointer_identity.html). The masterIdentifer is a [FHIR identifier](https://www.hl7.org/fhir/datatypes.html#Identifier) and for NRL the system and value properties are mandatory.
 

@@ -11,13 +11,13 @@ summary: "Implementation guidance for developers - focusing on general API imple
 
 This implementation guide is intended for use by software developers looking to build a conformant NRL API interface using the FHIR&reg; standard, with a focus on general API implementation guidance.
 
-### Notational conventions
+### Notational Conventions
 
 The keywords ‘**MUST**’, ‘**MUST NOT**’, ‘**REQUIRED**’, ‘**SHALL**’, ‘**SHALL NOT**’, ‘**SHOULD**’, ‘**SHOULD NOT**’, ‘**RECOMMENDED**’, ‘**MAY**’, and ‘**OPTIONAL**’ in this implementation guide are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
 
 ## RESTful API
 
-### Content types
+### Content Types
 
 - The NRL Server MUST support both formal [MIME-types](https://www.hl7.org/fhir/STU3/http.html#mime-type) for FHIR resources:
   - XML: `application/fhir+xml`
@@ -36,7 +36,7 @@ The keywords ‘**MUST**’, ‘**MUST NOT**’, ‘**REQUIRED**’, ‘**SHALL*
 
 - If neither the `Accept` header nor the `_format` parameter are supplied by the client system, the NRL Server MUST return data in the default format of `application/fhir+xml`.
 
-## Error handling
+## Error Handling
 
 The NRL API defines many categories of errors, each of which encapsulates a specific part of the request sent to the NRL. Each type of error is discussed in its own section below with the relevant Spine response code:
 - [Resource not found](development_general_api_guidance.html#resource-not-found) — Spine supports this behaviour when:
@@ -54,7 +54,7 @@ The NRL API defines many categories of errors, each of which encapsulates a spec
 
 The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1).
 
-### Resource not found
+### Resource Not Found
 
 There are two situations when Spine supports this behaviour:
 
@@ -109,14 +109,14 @@ The following table summarises the HTTP response codes, along with the values to
 |-----------|----------------|------------|--------------|-----------------|
 |400|error|invlid| INVALID_PARAMETER|Invalid parameter|
 
-#### Subject parameter
+#### Subject Parameter
 
 When using the REQUIRED `subject` parameter, the client is referring to a Patient FHIR resource by reference. Two pieces of information are needed:
 - The URL of the FHIR server that hosts the Patient resource.  If the URL of the server is not `https://demographics.spineservices.nhs.uk/STU3/Patient/`, this error will be thrown.
 
 - An identifier for the Patient resource being referenced. The identifier must be known to the server. In addition, where NHS Digital owns the business identifier scheme for a given type of FHIR resource, the logical and business identifiers will be the same. In this case, the NHS number of a Patient resource is both a logical and business identifier, meaning that it can be specified without the need to supply the identifier scheme. If the NHS number is missing from the patient parameter, this error will be thrown.
 
-#### Custodian parameter
+#### Custodian Parameter
 
 When using the OPTIONAL `custodian` parameter, the client is referring to an Organisation by a business identifier, specifically its ODS code. Two pieces of information are needed:
  - The business identifier scheme. In this case, it must be `https://fhir.nhs.uk/Id/ods-organization-code`.
@@ -125,7 +125,7 @@ When using the OPTIONAL `custodian` parameter, the client is referring to an Org
    - The ODS code must be an organisation that is known to the NRL.
    - The ODS code must be in the Provider role.
 
-#### _format request parameter
+#### `_format` Request Parameter
 
 This parameter must specify one of the [mime types](development_general_api_guidance.html#restful-api) recognised by the NRL.
 
@@ -135,7 +135,7 @@ This error is raised during a provider create interaction. There are two excepti
 - The DocumentReference in the request body specifies an incorrect URL for the FHIR server that hosts the Patient resource. 
 - The DocumentReference in the request body specifies an incorrect URL for the author and custodian Organization resource. 
 
-#### Type parameter
+#### `type` Parameter
 
 When using the REQUIRED `type` parameter, the client is referring to a pointer by record type. Two pieces of information are needed: 
 - The identity of the [SNOMED URI](http://snomed.info/sct) terminology system
@@ -143,17 +143,17 @@ When using the REQUIRED `type` parameter, the client is referring to a pointer b
 
 If the search request specifies unsupported parameter values in the request, this error will be thrown. 
 
-#### masterIdentifier parameter
+#### `masterIdentifier` Parameter
 
 Where masterIdentifier is a search term, both the system and value parameters must be supplied.
 
-#### _summary parameter
+#### `_summary` Parameter
 
 The _summary parameter must have a value of “count”. If it is anything else, an error should be returned to the client.
 
 If the _summary parameter is provided then the only other parameter that it can be used with is the optional _format param. If any other parameters are provided, an error should be returned to the client.
 
-### Payload business rules
+### Payload Business Rules
 
 #### Invalid Resource
 
@@ -169,7 +169,7 @@ The following table summarises the HTTP response code, along with the values to 
 
 {% include note.html content="Although not stated in the table above, the OperationOutcome that the NRL returns in these scenarios will include `Details.display` and `Diagnostics` detail, which will aid in identifying which property this issue relates to." %}
 
-#### Create and supersede invalid resource errors
+#### Create and Supersede Invalid Resource Errors
 
 The following scenarios relate to the [create](api_interaction_create.html) and [supersede](api_interaction_supersede.html) interactions (HTTP POST):
 
@@ -296,9 +296,9 @@ The following table summarises the HTTP response code, along with the values to 
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |400|warning|invalid| BAD_REQUEST|Bad Request|DocumentReference status is not "current"|
 
-### Payload syntax
+### Payload Syntax
 
-#### Invalid request message
+#### Invalid Request Message
 
 The INVALID_REQUEST_MESSAGE error is triggered when there is an XML or JSON syntax error in the DocumentReference resource in the request payload.
 
@@ -310,7 +310,7 @@ The following table summarises the HTTP response codes, along with the values to
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |400|error|value| INVALID_REQUEST_MESSAGE|Invalid Request Message|Invalid Request Message|
 
-### Organisation not found
+### Organisation Not Found
 
 Organisations referenced in a DocumentReference must point to a resolvable FHIR Organisation resource. If the URL being used to reference a given Organisation is invalid, this error will result.
 
@@ -334,7 +334,7 @@ The following table summarises the HTTP response codes, along with the values to
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |400|error|invalid| INVALID_NHS_NUMBER|Invalid NHS number|The NHS number does not conform to the NHS Number format: [nhs number].|
 
-### Unsupported media type
+### Unsupported Media Type
 
 There are three scenarios when an Unsupported Media Type business response code MUST be returned to a client:
 - Request contains an unsupported `Accept` header and an unsupported `_format` parameter.
@@ -347,7 +347,7 @@ These exceptions are raised by the Spine Core common requesthandler and not the 
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |415|error|invalid|http://fhir.nhs.net/ValueSet/spine-response-code-1-0 | UNSUPPORTED_MEDIA_TYPE|Unsupported Media Type|Unsupported Media Type|
 
-### Internal error
+### Internal Error
 
 Where the request cannot be processed, but the fault is with the NRL service and not the client, the NRL service will return a 500 HTTP response code, along with a descriptive message in the response body, such as:
 

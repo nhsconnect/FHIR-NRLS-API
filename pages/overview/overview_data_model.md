@@ -7,7 +7,7 @@ permalink: overview_data_model.html
 summary: Solution Data Model
 ---
 
-## Data model
+## Data Model
 
 In order to support the Consumer and Provider interactions with the NRL, a data model is provided for the Pointer. The data model is purposefully lean, each property has a clear reason to exist, and it directly supports the activities of Consumers and Providers.
 

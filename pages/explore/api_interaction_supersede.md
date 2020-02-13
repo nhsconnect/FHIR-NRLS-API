@@ -15,9 +15,9 @@ Provider interaction to support superseding NRL pointers.
 Create with Supersede (abbreviated to Supersede) is an extension of the [Create Interaction](api_interaction_create.html).
 The Supersede functionality will be used in cases where a Provider wishes to replace one DocumentReference with another, newer one.
 
-## Pre-requisites
+## Prerequisites
 
-In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-pre-requisites-for-nrl-api) page MUST be followed when using this interaction.
+In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-prerequisites-for-nrl-api) page MUST be followed when using this interaction.
 
 ## Supersede Request Headers
 
@@ -85,7 +85,7 @@ If both the target.reference property and the target.identifier property are pop
 
 The NRL will only accept one relatesTo element. Requests that contain multiple relatesTo elements will be rejected. For more details, see [Error Handling Guidance](development_general_api_guidance.html#documentreferencerelatesto).
 
-### Supersede by Logical ID XML example
+### Supersede by Logical ID XML Example
 
 An XML Example of a DocumentReference resource that supersedes an existing DocumentReference by Logical ID.
 
@@ -97,7 +97,7 @@ Please note the addition of the relatesTo property within the DocumentReference 
 {% endhighlight %}
 </div>
 
-### Supersede by Logical ID JSON example
+### Supersede by Logical ID JSON Example
 
 A JSON Example of a DocumentReference resource that supersedes an existing DocumentReference by Logical ID.
 
@@ -109,7 +109,7 @@ Please note the addition of the relatesTo property within the DocumentReference 
 {% endhighlight %}
 </div>
 
-### Supersede by Master Identifier XML example
+### Supersede by Master Identifier XML Example
 
 An XML Example of a DocumentReference resource that supersedes an existing DocumentReference by Master Identifier.
 
@@ -121,7 +121,7 @@ Please note the addition of the relatesTo property within the DocumentReference 
 {% endhighlight %}
 </div>
 
-### Supersede by Master Identifier JSON example
+### Supersede by Master Identifier JSON Example
 
 A JSON Example of a DocumentReference resource that supersedes an existing DocumentReference by Master Identifier.
 

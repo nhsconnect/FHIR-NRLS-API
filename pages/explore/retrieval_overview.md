@@ -17,7 +17,7 @@ The process of retrieving a document or record from a provider in this way may b
 
 The SSP is a content agnostic forward proxy, which is used to control and protect access to health systems. It provides a single security point for both authentication and authorisation for systems. See the [SSP specification]( https://developer.nhs.uk/apis/spine-core/ssp_overview.html) for more details.
 
-## Retrieval solution end-to-end
+## End-to-End Retrieval Solution
 
 The following diagram describes how record retrieval is facilitated through the SSP using the Record URL stored on the pointer.
 
@@ -33,7 +33,7 @@ As the diagram depicts, the step-by-step process end-to-end for retrieving a rec
 
    The URL property is prefixed with the URL to the SSP, which will ensure that the request goes via the SSP and that all necessary security checks are performed on the request. The SSP base url prefix is added by the Consumer system. For more details, see the [Retrieval Read](retrieval_interaction_read.html#retrieval-via-the-ssp) interaction page.
 
-   {% include note.html content="The URL property should be [percent encoded per RFC 3986](https://tools.ietf.org/html/rfc3986#section-2.1) to prevent any possibility of parsing errors." %}
+   {% include note.html content="The URL property should be fully [percent encoded per RFC 3986](https://tools.ietf.org/html/rfc3986#section-2.1) to prevent any possibility of parsing errors." %}
 
    An example SSP-prefixed URL:
 

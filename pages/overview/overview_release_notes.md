@@ -54,7 +54,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
  - Added clarity to the use of reference type metadata attributes
  - Added clarity on the use of NHS Number with subject/patient
  - API interaction examples updated
- - Guidance on pre-requisites added to API interactions
+ - Guidance on prerequisites added to API interactions
  - Audit requirements elaborated
  - Phase 1 and Phase 2 overview updated
 

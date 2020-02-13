@@ -15,14 +15,14 @@ The first is where a Provider replaces one DocumentReference with another, known
 
 The second is by performing a update to directly change the status of the pointer. See [API Interaction - Update](api_interaction_update.html) for details.
 
-## Pointer error handling
+## Pointer Error Handling
 
 Errors happen. It is important to acknowledge this reality and to design a solution with this in mind. To that end, the NRL makes a distinction between the following kinds of error:
 
 * Errors with the Pointer metadata
 * Errors with the content (record/document) that the Pointer references
 
-## Errors with the Pointer metadata
+## Errors with the Pointer Metadata
 
 There are two scenarios in which a Pointer metadata error may occur:
 * Error with the data that the Provider system is using to create a Pointer
@@ -34,7 +34,7 @@ These errors may lead to one the following two situations:
 
 When the Provider realises there is a problem with the Pointer, action must be taken by the Provider. Depending on the nature of the problem, the Provider has different options when it comes to dealing with the issue.
 
-### Pointer should not have been added to NRL
+### Pointer Should Not Have Been Added to NRL
 
 In this case, as soon as the issue is recognised, the Provider should mark that Pointer’s status as entered-in-error.
 
@@ -44,10 +44,10 @@ If a Provider finds that one of its superseded Pointers should not have been reg
 
 The Provider should then recreate a new "current" pointer with the correct information in place of the Pointer that was marked as entered-in-error.
 
-### Pointer’s data is invalid
+### Pointer Data Is Invalid
 
 Where the presence of the Pointer on NRL is valid but the data it holds is invalid, the Provider should update the pointer’s status to entered-in-error and create a new pointer that contains the correct data.
 
-## Errors with the content (record/document) that the Pointer references
+## Errors with the Content (Record/Document) that the Pointer References
 
 The Provider should correct the content using whatever local processes are in place. This may necessitate the creation of a new version of the content, in which case it may be appropriate to replace the current Pointer with a new one. Alternatively, the correction to the content may be such that the existing Pointer transparently references the corrected content. In either case, responsibility for ensuring that the referenced content is correct rests with the Provider.

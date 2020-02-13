@@ -42,7 +42,7 @@ The role of the SSP in retrieval of documents/records is to be a single common a
 Retrieval requests via proxy are secured and audited by the SSP. For full technical details, see the [SSP specification](https://developer.nhs.uk/apis/spine-core-1-0/ssp_overview.html).
 
 ### SSP URL
-  
+
 Where a document/record is to be retrieved via the SSP then Consumers MUST percent encode the `content.attachment.url` property and prefix it with the SSP server URL as follows:
 
 <div markdown="span" class="alert alert-success" role="alert">

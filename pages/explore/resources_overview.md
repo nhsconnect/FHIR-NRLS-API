@@ -20,9 +20,9 @@ The NRL API supports the following operations as detailed in the [Solution Inter
 |[Update](api_interaction_update.html)|PATCH|Provider|Update an NRL pointer to change the status to "entered-in-error"|
 |[Delete](api_interaction_delete.html)|DELETE|Provider|Delete an NRL pointer|
 
-A system can be assured to perform both Consumer and Provider interactions, provided that all relevant pre-requisites and requirements are met. 
+A system can be assured to perform both Consumer and Provider interactions, provided that all relevant prerequisites and requirements are met. 
 
-## 2. Pre-Requisites for NRL API
+## 2. Prerequisites for NRL API
 
 ### 2.1 NRL Server API Conformance
 
@@ -48,7 +48,7 @@ The NRL API is accessed through the NHS Spine. Providers and consumers of the NR
 | ------------- | ------------- |
 |Personal Demographics Service (PDS)|National database of NHS patients containing details such as name, address, date of birth, and NHS Number (known as demographic information).|
 
-#### Detailed Spine services pre-requisites
+#### Detailed Spine Services Prerequisites
 
 To use this API, both Provider and Consumer systems:
 

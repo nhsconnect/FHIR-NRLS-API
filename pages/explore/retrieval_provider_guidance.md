@@ -11,7 +11,7 @@ summary: Provider requirements and guidance for record and document retrieval.
 
 Retrieval of documents/records is achieved through an HTTP GET request. See the [Retrieval Read Interaction](retrieval_interaction_read.html) page for details of the requirements for responding to an HTTP GET request for retrieval.
 
-## Provider endpoint and interaction ID registration
+## Provider Endpoint and Interaction ID Registration
 
 Endpoints for retrieval must be registered on the Spine Directory Service (SDS). For the Beta phase, this will be done by the NHS Digital Deployment Issue and Resolution (DIR) team following completion of assurance.
 
@@ -26,6 +26,6 @@ See the [Spine Core specification](https://developer.nhs.uk/apis/spine-core/ssp_
 
 Providers MUST ensure that the record author ODS code on the pointer metadata matches the ODS code for the endpoint registered in SDS. This is required to enable Consumers to perform an SDS lookup to obtain the Provider system ASID and populate the Ssp-To header in the retrieval request. 
 
-## Fully qualified domain name (FQDN)
+## Fully Qualified Domain Name (FQDN)
 
 Following completion of assurance, Providers will be supplied with an [X.509 Certificate](https://tools.ietf.org/html/rfc5280){:target='_blank'} and an FQDN. The FQDN will form the base of Provider Endpoints as detailed above. For more details, see the [Security page](development_api_security_guidance.html).

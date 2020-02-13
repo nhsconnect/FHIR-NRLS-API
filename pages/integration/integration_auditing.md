@@ -51,7 +51,7 @@ The following sections detail what information each actor (Consumer/Provider/NRL
 
 Providers MUST record the following in audit logs for each NRL maintenance interaction (POST, PATCH, DELETE).
 
-#### For requests to NRL
+#### For Requests to NRL
 
 - ASID
 - HTTP Request Body (for POST and PATCH only)
@@ -62,7 +62,7 @@ Providers MUST record the following in audit logs for each NRL maintenance inter
 - Request Datetime
 - User ID
 
-#### For responses from NRL
+#### For Responses from NRL
 
 - HTTP Response Body
 - HTTP Status Code
@@ -72,7 +72,7 @@ Providers MUST record the following in audit logs for each NRL maintenance inter
 
 Providers MUST record the following in audit logs for each record retrieval request from a Consumer via the SSP.
 
-#### For requests from Consumers
+#### For Requests from Consumers
 
 - ASID
 - HTTP Request URL
@@ -87,7 +87,7 @@ Providers MUST record the following in audit logs for each record retrieval requ
 
 Consumers MUST record the following in audit logs for each NRL search interaction (GET).
 
-#### For requests to NRL
+#### For Requests to NRL
 
 - ASID
 - HTTP Request URL
@@ -97,7 +97,7 @@ Consumers MUST record the following in audit logs for each NRL search interactio
 - Request Datetime
 - User ID
 
-#### For responses from NRL
+#### For Responses from NRL
 
 - HTTP Response Body
 - HTTP Status Code
@@ -107,7 +107,7 @@ Consumers MUST record the following in audit logs for each NRL search interactio
 
 Consumers MUST record the following in audit logs for each Document/Record retrieval request to a Provider via the SSP.
 
-#### For requests to Providers
+#### For Requests to Providers
 
 - ASID
 - HTTP Request URL
@@ -118,7 +118,7 @@ Consumers MUST record the following in audit logs for each Document/Record retri
 - Trace ID
 - User ID
 
-#### For responses from Providers
+#### For Responses from Providers
 
 - HTTP Response Body (if the request failed)
 - HTTP Status Code

@@ -162,7 +162,7 @@ NOTE: As this is an unsigned token, the final section (the signature) is empty, 
 
 The various parts of an audit trail will be assembled from different parts of the request and in some cases will be calculated properties
 
-### Request audit trail
+### Request Audit Trail
 _"This [local user on this] (1) system (2) from this organisation (3) with this legitimate relationship (4) has sent this request (5) at this time (6)..."_
 
 1.  local user - taken from the sub claim on the JWT which is sent under the mandatory Authorization HTTP header. Note that the sub claim may or may not be provided (see [JWT](integration_cross_organisation_audit_and_provenance.html#json-web-tokens-jwt) table above)
@@ -173,7 +173,7 @@ are valid in their use of direct care as the kind of relationship
 5.  request- the request URL, HTTP verb and the body of the request (in the case of a Provider's create and update actions)
 6.  time - the datetime that the request landed on the NRL web server
 
-### Response audit trail
+### Response Audit Trail
 _"...which resulted in this response (1) at this time (2)"_
 
 1.  response - HTTP response code, response body (if present), Location header (for create and update)

@@ -7,11 +7,11 @@ permalink: pointer_lifecycle.html
 summary: NRL Pointer Lifecycle
 ---
 
-## Pointer lifecycle
+## Pointer Lifecycle
 
 A Pointer is a reference to some content, which is stored on a system external to NRL. It has its own lifecycle that is managed by a third party (the Record owner). The Pointer lifecycle as described by NRL defines the statuses and permitted transitions between those statuses for the pointer. The statuses and transitions ensure that only the appropriate pointers are shown to Consumers.
 
-## Pointer status
+## Pointer Status
 
 A Pointer can be in one of three possible statuses: 
 - "current" - Indicates that the Pointer metadata and record URL are valid and can be used to inform clinical decision making. The definition of “current” is under the control of the Provider, but a Consumer should be confident that by selecting the Pointer they will be presented with a document or record that the Provider considers to be appropriate for Consumers to use.
@@ -20,7 +20,7 @@ A Pointer can be in one of three possible statuses:
 
 Only pointers with the status of “current” are made available to Consumers. The statuses “superseded” and “entered-in-error” are in use in the Pointer Lifecycle for pointer management and auditing purposes. 
 
-## Pointer status: legal transitions
+## Pointer Status: Legal Transitions
 
 Not only is the value of a Pointer’s status constrained, but the transition from one status to another is also tightly controlled.
 
@@ -32,7 +32,7 @@ All Pointers begin life with a status of current. From there, it is possible to 
 
 Once in the superseded or entered-in-error statuses, the Pointer cannot transition anywhere else. One cannot build a chain of Pointers on top of a Pointer with a status other than current. Only the current Pointer can be used in this way by superseding it and replacing it with a new version that becomes the current Pointer. See the [Pointer status transition: worked examples](#pointer-status-transition-worked-examples) section for details on how the NRL allows a Provider to transition the status of its Pointers.
 
-## Pointer status: making transitions
+## Pointer Status: Making Transitions
 
 When a Pointer is first created it will always have a status of current. 
 From there it is possible to supersede that Pointer or to mark it as entered-in-error. Figure 2 below illustrates the NRL functions that must be invoked in order to trigger the transition from one state to another (legal) state.
@@ -46,7 +46,7 @@ One transition that is worth expanding on is the transition from current to supe
 
 In order to supersede a pointer, there must always be a newer version. Therefore, to ensure the transactional integrity of this activity, which spans two Pointers (P1 and P2 in our example), the action is wrapped up into the CREATE of P2. More details on the mechanics of this are provided in the [Managing Pointers to content](pointer_maintenance.html#managing-pointers-to-content) section.
 
-## Pointer status transition: worked examples
+## Pointer Status Transition: Worked Examples
 
 Note that in the diagrams below, three properties from the Pointer data model are referenced. One of them is the version. 
 This is the version of the Pointer, not the version of the content referenced. Each time a particular instance of a Pointer is modified, the NRL service will increment the version by one, as can be seen in several of the worked examples.

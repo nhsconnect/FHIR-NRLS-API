@@ -25,7 +25,7 @@ A pre-release version MAY be denoted by appending a hyphen (see [Semantic Versio
 
 For examples: 1.0.0-alpha.1 is a valid pre-release version.
 
-### Pre-release Labels
+### Pre-Release Labels
 
 When FHIR API implementation guides are published, they MUST have an associated maturity label. These labels are based on the GDS development process stages and MUST conform to one of the labels defined in the [FHIR-PUB-04: FHIR API Maturity](https://nhsconnect.github.io/fhir-policy/publication.html) 'Publication Requirements' section of the [NHS FHIR Policy](https://nhsconnect.github.io/fhir-policy/index.html).
 

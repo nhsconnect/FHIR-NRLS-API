@@ -21,7 +21,7 @@ There are three main types of systems that need to integrate in order to share d
 
 A Provider is responsible for maintaining a set of Pointers. This involves creating, replacing, updating, and deleting Pointers.
 
-#### Pointer creation
+#### Pointer Creation
 
 When a relevant event occurs within a Provider organisation, the Provider generates a Pointer referencing a record that the Provider wishes to expose to NRL Consumers.
 
@@ -31,7 +31,7 @@ After successfully persisting the Pointer, the NRL informs the Provider client o
 
 If any problems prevent the Pointer from being created, the NRL will inform the client of this in the returned response.
 
-#### Pointer replacement
+#### Pointer Replacement
 
 When an event occurs within a Provider organisation that requires a Pointer's metadata, such as the record URL, to be updated on the NRL, the Provider should create a new pointer with the updated metadata which supersedes (replaces) the existing pointer. This can be done using the [create (supersede) interaction](api_interaction_supersede.html), creating a new pointer that references the superseded pointer using the 'Related document' metadata item.
 
@@ -41,7 +41,7 @@ After successfully persisting the Pointer, the NRL will inform the Provider clie
 
 If there were any problems that meant the Pointer could not be created, the NRL will inform the client of this in the returned response. In the case of an error occuring, all updates to the superseded pointer will be rolled back. 
 
-#### Pointer update
+#### Pointer Update
 
 When an error is identified with a Pointer that means it should not exist on NRL, whether the error concerns the pointer metadata or the referenced record itself, the Provider should update the pointer status to "entered-in-error".
 
@@ -51,7 +51,7 @@ After successfully updating the Pointer, the NRL will inform the Provider client
 
 If there were any problems that meant the Pointer could not be updated, the NRL will inform the client of this in the returned response.
 
-#### Pointer removal
+#### Pointer Removal
 
 When an event occurs within a Provider organisation that requires the removal of an existing Pointer from the NRL the Provider uses the [delete interaction](api_interaction_delete.html) exposed in the NRL maintenance interface, passing it the address of the Pointer to be removed.
 
@@ -63,11 +63,11 @@ If there were any problems that meant the Pointer could not be removed, the NRL 
 
 Consumers can retrieve pointers using the search or read interactions. Only pointers with the status of "current" can be retrieved by Consumers.
 
-#### Read pointer
+#### Read Pointer
 
 A Consumer can perform a [read interaction](api_interaction_read.html) to retrieve a single pointer by its logical identifier. 
 
-#### Pointer search
+#### Pointer Search
 
 A Consumer can perform parameterised searches of the Pointers held within the NRL using a [search interaction](api_interaction_search.html):
 

@@ -13,9 +13,9 @@ summary: To support retrieval of an NRL pointer
 
 Consumer interaction to support the retrieval of a single NRL pointer. 
 
-## Pre-requisites
+## Prerequisites
 
-In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-pre-requisites-for-nrl-api) page MUST be followed when using this interaction.
+In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-prerequisites-for-nrl-api) page MUST be followed when using this interaction.
 
 ## Read Request Headers
 
@@ -104,7 +104,7 @@ Return DocumentReference resource (pointer) with logical ID 0353e505-f7be-4c20-8
 {% endhighlight %}
 </div>
 
-##### **No Record (pointer) Matched:**
+##### **No Record (Pointer) Matched:**
 
 - HTTP 404-Not Found. No record found.
 - OperationOutcome resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) profile

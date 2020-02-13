@@ -17,13 +17,13 @@ A Consumer can be thought of as a system that has **read access** to the NRL, to
 
 <img alt="Consumer API includes functionality such as basic read and search; Provider API includes functionality such as create, supersede, update, and delete" src="images/solution/Solution_Behaviour_diagram.png" style="width:100%;max-width: 100%;">
 
-A system can be assured as both a Consumer and a Provider, provided that all relevant pre-requisites and requirements are met.
+A system can be assured as both a Consumer and a Provider, provided that all relevant prerequisites and requirements are met.
 
 ### Identity on the NRL
 
 Each client system will be given an Accredited System ID (ASID) by NHS Digital. Each ASID will be associated with one or more interaction IDs. An interaction ID defines an action that can be performed against NRL (for example, creating a new DocumentReference). As part of a request, a client will supply its ASID and the interaction ID that relates to the action that it is trying to perform. If the interaction ID is not associated with the client's ASID, the request will be blocked.
 
-### Pointer maintenance by Providers
+### Pointer Maintenance by Providers
 
 If a client system is in the Provider role, it can create, supersede, update, and delete Pointers. When it comes to the modification of existing Pointers, the Provider is only permitted to change Pointers that it owns. The concept of ownership is carried on the Pointer itself and is again centered around the ODS code. The client can modify a Pointer as long as it satisfies the following two conditions:
 * The ASID of the client system verifies that the client has the Provider role.
@@ -31,7 +31,7 @@ If a client system is in the Provider role, it can create, supersede, update, an
 
 To manipulate a Pointer, a Provider must know the logical identifier _or_ the master identifier of that Pointer. The logical identifier is an NRL-generated value that uniquely identifies a Pointer within an instance of the NRL. The master identifier is a unique identifier for the pointer which is under the control of the Provider. See the [Pointer Identity page](pointer_identity.html) for more details on identifiers.
 
-### Pointer retrieval by Consumers
+### Pointer Retrieval by Consumers
 
 Consumer NRL interactions are read only. A system can search for a collection of pointers or retrieve a single pointer by logical identifier. 
 
@@ -41,7 +41,7 @@ Once the Consumer has a verified NHS number, the NRL can be asked to retrieve a 
 
 In order to retrieve a single pointer using the read interaction, the Consumer must know the logical identifier of the pointer. See the [read interaction page](api_interaction_read.html) for more details.
 
-### Record retrieval by Consumers
+### Record Retrieval by Consumers
 
 The NRL does not take part in Record retrieval. The Pointers it holds can be seen as signposts that show the way. Retrieval of referenced documents and records can be facilitated by the Spine Secure Proxy (SSP).
 
@@ -50,7 +50,7 @@ The SSP is a forward HTTP proxy which is used as a front-end to control and prot
 ## Auditing
 The NRL and the SSP will capture an audit trail for each request-response interaction that a client (Consumer or Provider) has with the system. Once captured, the audit trail can be retrieved.
 
-### Capturing an audit trail
+### Capturing an Audit Trail
 The audit trail begins with capturing key data from a client request, and it ends with capturing the NRL's response to that request. The request audit trail and response audit
 trail will be combined to form a full end-to-end audit of a given request and response interaction with the NRL.
 
@@ -58,7 +58,7 @@ An audit trail will capture different information about who or what is making th
 
 Details on the audit requirements for Consumers and Providers can be found on the [auditing page](integration_auditing.html).
 
-### Retrieving an audit trail
+### Retrieving an Audit Trail
 
 Providers can request the following two types of audit trail data from NHS Digital:
 * All audit trails for a given patient (identified by their NHS number)

@@ -18,7 +18,7 @@ Security starts to be a key element of the design and process for testing at thi
 - Encryption
 - Signatures
 
-# Security examples
+# Security Examples
 
 The following non-exhaustive list describes common security patterns and links to example cases where they are used:
 

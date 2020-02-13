@@ -13,9 +13,9 @@ summary: To support parameterised search of the NRL.
 
 Consumer interaction to support parameterised search of the NRL. 
 
-## Pre-requisites
+## Prerequisites
 
-In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-pre-requisites-for-nrl-api) page MUST be followed when using this interaction.
+In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-prerequisites-for-nrl-api) page MUST be followed when using this interaction.
 
 ## Search Request Headers
 
@@ -112,7 +112,7 @@ Though the NRL does not keep a version history of each DocumentReference, each o
 </table>
 
 {% include custom/search.warn.subject.custodian.html %}
-{% include note.html content="Please make sure that all query parameters are URL encoded. In particular the pipe (|) character must be URL encoded (%7C)." %}
+{% include note.html content="Please make sure that all query parameters are percent encoded. In particular the pipe (|) character must be percent encoded (%7C)." %}
 
 {% include custom/search._id.html values="" content="DocumentReference" %}
 
@@ -141,11 +141,11 @@ Success:
     <!--{% include note.html content="The returned searchset bundle does NOT currently support: <br/> <br/> (1) the `self link`, which carries the encoded parameters that were actually used to process the search. <br/> <br/> (2) the identity of resources in the entry using the `fullUrl` element. <br/> <br/> (3) resources matched in a successful search using the `search.mode` element. <br/> <br/> NB: The NRL Service will ONLY return an empty bundle if a Spine Clincals record exists and there is no DocumentReference for that specific Clinicals record." %}-->
 
  
-- Where a DocumentReference is returned, it MUST include the versionId <!--and fullUrl--> of the current version of the DocumentReference resource
+- Where a DocumentReference is returned, it MUST include the versionId <!--and fullUrl--> of the current version of the DocumentReference resource.
 
-- When a Consumer retrieves a DocumentReference if the masterIdentifier is set then it SHOULD be included in the returned DocumentReference
+- When a Consumer retrieves a DocumentReference if the masterIdentifier is set then it SHOULD be included in the returned DocumentReference.
 
-- When a Consumer retrieves a DocumentReference if the relatesTo is set then it SHOULD be included in the returned DocumentReference
+- When a Consumer retrieves a DocumentReference if the relatesTo is set then it SHOULD be included in the returned DocumentReference.
 
 Failure: 
 
@@ -197,7 +197,7 @@ Return all DocumentReference resources (pointers) for a patient with a NHS Numbe
 {% endhighlight %}
 </div>
 
-##### **No Record (pointer) Matched:**
+##### **No Record (Pointer) Matched:**
 
 - HTTP 200-Request was successfully executed
 - Empty bundle resource of type searchset containing a '0' (zero) total value indicating no record was matched
@@ -221,7 +221,7 @@ Return all DocumentReference resources (pointers) for a patient with a NHS Numbe
 
 See the [general API guidance](development_general_api_guidance.html#error-handling) for all HTTP Error response codes supported by the NRL.
 
-##### **_summary=count response:**
+##### **`_summary=count` Response:**
 
 - Response body MUST return a valid XML or JSON formatted Bundle of type searchset, containing a bundle that reports the 
 total number of resources that match in Bundle.total, but with no entries, and no prev/next/last links. Note that the Bundle.total 

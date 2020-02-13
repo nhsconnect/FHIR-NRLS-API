@@ -25,7 +25,7 @@ The NRL recognises that there exist varying levels of digital maturity across Pr
 - A Provider exposes a Record for direct retrieval, such that using the context available in the Pointer, a Consumer can retrieve the Record electronically. 
 - A Provider exposes a set of contact details that a Consumer can use to retrieve the Record. The Consumer does not retrieve the Record electronically. Instead, they use the contact details as an intermediate step to get to the Record, such as by phoning a healthcare service found in the contact details, who can then relay the Record to the Consumer by other means.
 
-### Records should be exposed using National Standards
+### Records should be exposed using national standards
 
 To enable Consumers to retrieve records with minimal custom integration between Consumer and Provider systems, records should be exposed using national standards. 
 

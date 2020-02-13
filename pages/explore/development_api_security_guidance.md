@@ -13,7 +13,7 @@ Providers and Consumers are required to maintain a secure connection to the NRL 
 
 The technical requirements that support this are detailed below.
 
-## Secure Socket Layer (SSL) and Transport Layer Security (TLS) protocols
+## Secure Socket Layer (SSL) and Transport Layer Security (TLS) Protocols
 
 Following consultation with the Infrastructure Security, Operational Security, and Spine DDC teams, the following SSL protocols MUST be supported.
 
