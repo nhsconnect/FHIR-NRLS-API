@@ -19,13 +19,15 @@ Links to the NRL FHIR profiles on the NHS FHIR Reference Server.
 | [Spine-OperationOutcome-1](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1)| Operation Outcome resource that supports a collection of error, warning or information messages that result from a NRL Service Spine interaction.|
 | [Spine-OperationOutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0)| The default Spine OperationOutcome profile resource that supports exceptions raised by the Spine common requesthandler and not the NRL Service. 
 
-{% include note.html content="Major changes to the pointer model will be reflected in the NRL DocumentReference FHIR profile, using the naming convention `NRL-DocumentReference-[major_version]`. <br/> <br/> The FHIR profile which the pointer conforms to will be indicated in the `DocumentReference.meta.profile` metadata attribute to enable Consumers to support the different versions of the pointer model. Pointers conforming to the NRLS-DocumentReference-1 profile (v1.2.3-beta specification) will not have this attribute populated." %}
+{% include note.html content="Major changes to the pointer model will be reflected in the NRL DocumentReference FHIR profile, using the naming convention `NRL-DocumentReference-[major_version]`. <br><br> The FHIR profile which the pointer conforms to will be indicated in the `DocumentReference.meta.profile` metadata attribute to enable Consumers to support the different versions of the pointer model. Pointers conforming to the NRLS-DocumentReference-1 profile (v1.2.3-beta specification) will not have this attribute populated." %}
 
 ## 2. NRL Data Model to FHIR Profile Mapping
 
 The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) to NRL-DocumentReference-1 profile elements. 
 
-|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Card|Description|
+{% include important.html content="`NRL-DocumentReference-1` inherits from the base HL7 `DocumentReference` and restricts some fields that are cardinality `0..*` or `1..*` in the base profile to `1..1`. In addition, due to the mapping between XML elements and JSON properties, FHIR views JSON arrays with a single entry as “flat”.<br><br>However, to ensure interoperability, JSON arrays with cardinality 1 MUST NOT be flattened. For example, `class.coding` MUST be an array containing a single object, rather than a object. For details, see [the JSON example](#json-example) below." %}
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|<abbr title="cardinality">Card</abbr>|Description|
 |----|---------|----|-----------|-----|
 |Identifier| <code class="highlighter-rouge">id</code> |string|0..1|Assigned by the NRL at creation time. Uniquely identifies this record within the NRL. Used by Providers to update or delete.|
 |Profile| <code class="highlighter-rouge">meta<wbr>.profile</code> |uri|0..1|The URI of the FHIR profile that the resource conforms to. Indicates the version of the pointer model. |
@@ -39,15 +41,15 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Patient| <code class="highlighter-rouge">subject</code> |Reference|1..1|The NHS number of the patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.| 
 |Pointer owner| <code class="highlighter-rouge">custodian</code> |Reference|1..1|ODS code for the pointer owner organization.|
 |Record owner| <code class="highlighter-rouge">author</code> |Reference|1..1|ODS code for the record owner organization.|
-|Record category| <code class="highlighter-rouge">class</code> |CodeableConcept|1..1|A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set|
+|Record category| <code class="highlighter-rouge">class</code> | {% include gloss.html term="CodeableConcept" %} |1..1|A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set|
 || <code class="highlighter-rouge">class<wbr>.coding<!--[0]--><wbr>.system</code> |Uri|1..1|Identity of the terminology system|
 || <code class="highlighter-rouge">class<wbr>.coding<!--[0]--><wbr>.code</code> |Code|1..1|Symbol in syntax defined by the system|
 || <code class="highlighter-rouge">class<wbr>.coding<!--[0]--><wbr>.display</code> |String|1..1|Representation defined by the system|
-|Record type| <code class="highlighter-rouge">type</code> |CodeableConcept|1..1|The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers.|
+|Record type| <code class="highlighter-rouge">type</code> | {% include gloss.html term="CodeableConcept" %} |1..1|The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers.|
 || <code class="highlighter-rouge">type<wbr>.coding<!--[0]--><wbr>.system</code> |Uri|1..1|Example Value: http://snomed.info/sct.|
 || <code class="highlighter-rouge">type<wbr>.coding<!--[0]--><wbr>.code</code> |Code|1..1|Symbol in syntax defined by the system. Example Value: 736253002|
 || <code class="highlighter-rouge">type<wbr>.coding<!--[0]--><wbr>.display</code> |String|1..1|Representation defined by the system.|
-|Record creation clinical setting| <code class="highlighter-rouge">context<wbr>.practiceSetting</code> |CodeableConcept|1..1|Describes where the content was created, in what clinical setting|
+|Record creation clinical setting| <code class="highlighter-rouge">context<wbr>.practiceSetting</code> | {% include gloss.html term="CodeableConcept" %} |1..1|Describes where the content was created, in what clinical setting|
 || <code class="highlighter-rouge">context<wbr>.practiceSetting<wbr>.coding<!--[0]--><wbr>.system</code> |Uri|1..1|Identity of the terminology system|
 || <code class="highlighter-rouge">context<wbr>.practiceSetting<wbr>.coding<!--[0]--><wbr>.code</code> |Code|1..1|Symbol in syntax defined by the system|
 || <code class="highlighter-rouge">context<wbr>.practiceSetting<wbr>.coding<!--[0]--><wbr>.display</code> |String|1..1|Representation defined by the system|
@@ -64,17 +66,13 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Record MIME type| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.attachment<wbr>.contentType</code> |code|1..1|Describes the type of data such that the Consumer can pick an appropriate mechanism to handle the record.|
 |Record Stability| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability</code> |Extension|1..1|Record content extension|
 || <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability<wbr>.url</code> |Uri|1..1|identifies the meaning of the extension|
-|| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability.<wbr>valueCodeableConcept</code> |CodeableConcept[^codeable_concept]|1..1|Describes whether the record content at the time of the request is dynamically generated or is static|
+|| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability.<wbr>valueCodeableConcept</code> | {% include gloss.html term="CodeableConcept" %} |1..1|Describes whether the record content at the time of the request is dynamically generated or is static|
 || <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability.<wbr>valueCodeableConcept<wbr>.coding<!--[0]--><wbr>.system</code> |Uri|1..1|Identity of the terminology system|
 || <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability.<wbr>valueCodeableConcept<wbr>.coding<!--[0]--><wbr>.code</code> |Code|1..1|Symbol in syntax defined by the system|
 || <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability.<wbr>valueCodeableConcept<wbr>.coding<!--[0]--><wbr>.display</code> |String|1..1|Representation defined by the system|
 |Related documents| <code class="highlighter-rouge">relatesTo</code> | BackboneElement| 0..1| Relationship to another pointer|
 || <code class="highlighter-rouge">relatesTo<wbr>.code</code> | Code| 1..1| The type of relationship between the documents. This element is mandatory if the *relatesTo* element is sent and the value MUST be *replaces*.|
 || <code class="highlighter-rouge">relatesTo<wbr>.target</code> | Reference| 1..1| The Target of the relationship. This should contain the logical reference to the target DocumentReference held within the NRL using the identifier property of this [Reference Data Type](https://www.hl7.org/fhir/references.html#logical).|
-
-<!-- footnotes -->
-[^codeable_concept]: A `CodeableConcept` represents a value that is usually supplied by providing a reference to one or more terminologies or ontologies but may also be defined by the provision of text. [Source](https://www.hl7.org/fhir/datatypes.html#CodeableConcept)
-<!-- /footnotes -->
 
 ## 3. ValueSets
 

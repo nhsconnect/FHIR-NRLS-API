@@ -6,6 +6,17 @@ h5 {
     font-weight: bold;
 }
 
+a[data-toggle=tooltip] {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    cursor: pointer !important;
+    font-style: normal !important;
+}
+
+a[data-toggle=tooltip]:hover {
+    text-decoration-style: solid;
+}
+
 .tag-page {
     margin: 2em 0;
 }

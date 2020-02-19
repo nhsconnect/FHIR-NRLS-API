@@ -1,6 +1,9 @@
 - term: ADT
   definition: "HL7 _Admit/Discharge & Transfer_ messages carry patient demographic information for HL7 communications but also provide important information about trigger events (such as patient admit, discharge, transfer, registration, etc.). Some of the most important segments in the ADT message are the PID segment, the PV1 (Patient Visit). ADT messages are extremely common in HL7 processing and are among the most widely used of all message types."
 
+- term: AIDA
+  definition: "_Applications and Infrastructure Design Authority_"
+
 - term: API
   definition: "The term _Application Programming Interface_ is quite a confused term in the context of FHIR. Strictly speaking, an API is a set or services offered by a programming library that can be made use of by another application. Historically these would have been made available from a single machine although now they are available across networks.<br><br>In the service/message/document categorisation, an API is a service interface, though this categorisation is contentious. As technology became increasingly capable of supporting distributed operations, the differences between SOA (Service Oriented Architecture) and APIs became blurred. In the context of FHIR, we define APIs as RESTful interfaces."
 
@@ -9,6 +12,9 @@
 
 - term: Argonaut
   definition: "An initiative launched by HL7 to accelerate the development and adoption of FHIR. Supported by 11 organisations, including EHR vendors Epic and Cerner and health systems Mayo Clinic and Intermountain Healthcare."
+
+- term: BIDA
+  definition: "_Business Interoperability Design Authority_"
 
 - term: CAP
   definition: "The _Common Assurance Process_ is an NHS process that needs to be followed to gain accreditation allowing for connection directly to the Spine and PDS."
@@ -29,6 +35,9 @@
 - term: CIMI
   definition: "_Clinical Information Modeling Initiative_ An international collaboration dedicated to providing a common format for detailed specifications for the representation of health information content. In this way semantically interoperable information may be created and shared in health records, messages, and documents."
 
+- term: CodeableConcept
+  definition: "A `CodeableConcept` represents a value that is usually supplied by providing a reference to one or more terminologies or ontologies but may also be defined by the provision of text. [FHIR data type definition](https://www.hl7.org/fhir/datatypes.html#CodeableConcept)"
+
 - term: DDC
   definition: "_Digital Delivery Centre_"
 
@@ -46,6 +55,9 @@
 
 - term: DSTU
   definition: "_Draft Standard for Trial Use_"
+
+- term: EAB
+  definition: "_Enterprise Architecture Board_"
 
 - term: EPS
   definition: "_Electronic Prescription Service_ (Prescribe & Dispense implemented in HL7v3/ebXML),(Prescription search Implemented with HL3 v3 RESTful) There is an inflight proprietary Restful API"

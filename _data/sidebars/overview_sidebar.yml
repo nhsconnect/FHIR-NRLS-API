@@ -106,7 +106,7 @@ entries:
     - title: FHIR Profile Reference
       url: /explore_reference.html
       output: web
-    - title: FHIR Open Source Resources
+    - title: FHIR Open-Source Resources
       url: /explore_fhir_open_source_guidance.html
       output: web
 

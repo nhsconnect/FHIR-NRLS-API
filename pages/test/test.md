@@ -45,7 +45,7 @@ There are two well supported FHIR servers that can be downloaded and used for te
 
 **HAPI-FHIR**
 
-A servlet based RESTful server, which is an Open Source application written in Java. More information can be found at [http://hapifhir.io/](http://hapifhir.io/).
+A servlet based RESTful server, which is an open-source application written in Java. More information can be found at [http://hapifhir.io/](http://hapifhir.io/).
 
 **Furore Vonk**
 

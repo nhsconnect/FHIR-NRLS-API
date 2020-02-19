@@ -49,17 +49,6 @@ This table outlines which records an RBAC code gives access to and whether it pr
   </tbody>
 </table>
 
-The RBAC codes listed in this mapping table are limited by the number of Record Types currently available on the NRL. As additional Record Types are added to the NRL, the associated RBAC codes will be added to this table.
+The RBAC codes listed in this mapping table are limited by the number of {% include gloss.html text="Record Types" term="Record Type" %} currently available on the NRL. As additional Record Types are added to the NRL, the associated RBAC codes will be added to this table.
 
-The Record Group that a Record Type fits into depends on its sensitivity. Record group 1 is a general grouping, to contain the majority of Record Types that are not deemed to be sensitive. Further Record Groups will be added if additional Record Types are deemed to need more restrictive controls. Using additional Record Groups for such Record Types ensures that they are protected by further access controls and will not routinely be available to the majority of NRL users. 
-
-### Definitions
-
-{% assign record_type = site.data.glossary | where: "term", "Record Type" | first %}
-{% assign record_group = site.data.glossary | where: "term", "Record Group" | first %}
-
-Record Type
-: {{ record_type.definition }}
-
-Record Group
-: {{ record_group.definition }}
+The {% include gloss.html term="Record Group" %} that a Record Type fits into depends on its sensitivity. Record group 1 is a general grouping, to contain the majority of Record Types that are not deemed to be sensitive. Further Record Groups will be added if additional Record Types are deemed to need more restrictive controls. Using additional Record Groups for such Record Types ensures that they are protected by further access controls and will not routinely be available to the majority of NRL users. 
