@@ -10,7 +10,7 @@ redirect_from: "/integration_access_tokens_and_audit_JWT.html"
 
 ## Access Tokens (JWT)
 
-Clients MUST send an access token (JWT) with each request to the NRL or the SSP using the standard HTTP Authorization request header. The JWT MUST conform to the [Spine JWT](https://developer.nhs.uk/apis/spine-core/security_jwt.html) definition.
+Clients MUST send an access token ({% include gloss.html term="JWT" %}) with each request to the NRL or the SSP using the standard HTTP Authorization request header. The JWT MUST conform to the [Spine JWT](https://developer.nhs.uk/apis/spine-core/security_jwt.html) definition.
 
 The claims of the JWT are the same as those defined in the Spine Core JWT. However, the rules that govern the validation of those claims are different. From an NRL perspective, the rules defined here override rules defined for the Spine Core.
 

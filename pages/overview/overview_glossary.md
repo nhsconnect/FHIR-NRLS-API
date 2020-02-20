@@ -14,7 +14,7 @@ Glossary of common terms and abbreviations used throughout this documentation si
 
 <dl>
 {% for entry in glossary %}
-<dt markdown="0">{{ entry.term }}</dt>
+<dt id="{{ entry.term | slugify }}" markdown="0">{{ entry.term }}</dt>
 <dd markdown="1">
 {{ entry.definition }}
 </dd>
