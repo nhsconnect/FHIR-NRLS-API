@@ -134,13 +134,12 @@ Success:
     
       {% include note.html content="The version of the pointer model (FHIR profile) will be indicated in the `DocumentReference.meta.profile` metadata attribute for each pointer (see [FHIR Resources & References](explore_reference.html#1-profiles)). A 'Bundle' may contain pointers which conform to different versions of the pointer model." %}
 
-    - A '0' (zero) total value indicating no record was matched i.e. an empty 'Bundle'.
+    - A `0` (zero) total value indicating no record was matched, i.e. an empty `Bundle`.
 
       {% include note.html content="The NRL Service will ONLY return an empty bundle if a Spine Clincals record exists and there is no DocumentReference for that specific Clinicals record." %}
 
     <!--{% include note.html content="The returned searchset bundle does NOT currently support: <br/> <br/> (1) the `self link`, which carries the encoded parameters that were actually used to process the search. <br/> <br/> (2) the identity of resources in the entry using the `fullUrl` element. <br/> <br/> (3) resources matched in a successful search using the `search.mode` element. <br/> <br/> NB: The NRL Service will ONLY return an empty bundle if a Spine Clincals record exists and there is no DocumentReference for that specific Clinicals record." %}-->
 
- 
 - Where a DocumentReference is returned, it MUST include the versionId <!--and fullUrl--> of the current version of the DocumentReference resource.
 
 - When a Consumer retrieves a DocumentReference if the masterIdentifier is set then it SHOULD be included in the returned DocumentReference.

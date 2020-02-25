@@ -48,7 +48,7 @@ For all create requests the `custodian` ODS code in the DocumentReference resour
 
 <div class="github-sample-wrapper scroll-height-350">
 {% highlight xml %}
-{% include /examples/create_documentreference_resource.xml  %}
+{% include /examples/create_documentreference_resource.xml %}
 {% endhighlight %}
 </div>
 

@@ -24,7 +24,8 @@ The two RBAC codes support the needs of different roles. For example, many cleri
 A user may have access to one or more Record Groups depending on the information needs of their role. Please note that there is currently only one Record Group, but this is expected to change as more Record Types are added to the NRL. To work out which RBAC codes should be applied to a user, refer to the RBAC Mapping Table in the following section. A user should have only one RBAC code for each Record Group assigned to them by their Trust’s RA Manager.
 
 ## RBAC Mapping Table
-This table outlines which records an RBAC code gives access to and whether it provides **pointer-only access** or **pointer and record access**.
+
+This table outlines how records are allocated to different RBAC codes and whether an RBAC code provides **pointer-only access** or **pointer and record access**. The exact RBAC codes will be provided to an organisation once they complete the onboarding process.
 
 <table>
     <thead>
@@ -40,11 +41,11 @@ This table outlines which records an RBAC code gives access to and whether it pr
             <td rowspan="2">Record Group 1</td>
             <td rowspan="2">Mental health crisis plan</td>
             <td>Pointer-only access</td>
-            <td>B0268</td>
+            <td>Bxxxx</td>
         </tr>
         <tr>
             <td>Pointer and record access</td>
-            <td>B0269</td>
+            <td>Bxxxy</td>
         </tr>
   </tbody>
 </table>

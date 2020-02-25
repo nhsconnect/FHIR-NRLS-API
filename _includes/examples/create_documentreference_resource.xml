@@ -1,5 +1,4 @@
-<DocumentReference
-    xmlns="http://hl7.org/fhir">
+<DocumentReference xmlns="http://hl7.org/fhir">
     <id value="c037a0cb-0c77-4976-83a1-a5d2703e6aa3-23325861873450086113"/>
     <meta>
         <profile value="https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1"/>
