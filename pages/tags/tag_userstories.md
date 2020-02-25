@@ -1,9 +1,9 @@
 ---
 title: "User Stories"
-tagName: userstories
+tagName: user_stories
 search: exclude
 permalink: tag_user_stories.html
 sidebar: overview_sidebar
 folder: tags
 ---
-{% include taglogic.html %}
+{% include tag_redirect.html %}

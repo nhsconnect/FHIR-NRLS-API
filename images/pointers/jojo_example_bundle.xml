@@ -46,7 +46,7 @@
 				<content>
 					<attachment>
 						<contentType value="application/pdf"/>
-						<url value="https://spine-proxy.national.ncrs.nhs.uk/p1.nhs.uk/MentalhealthCarePlanReportRGD.pdf"/>
+						<url value="https://p1.nhs.uk/MentalhealthCarePlanReportRGD.pdf"/>
 						<title value="Mental health Care Plan Report"/>
 						<creation value="2016-03-08T15:26:00+01:00"/>
 					</attachment>

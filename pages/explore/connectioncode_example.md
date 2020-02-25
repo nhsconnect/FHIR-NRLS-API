@@ -1,17 +1,15 @@
 ---
 title: Connection Code
-keywords: structured, rest
-tags: [rest,fhir,api,noccprofile]
+keywords: structured rest
+tags: [development,fhir]
 sidebar: accessrecord_rest_sidebar
 permalink: connectioncode_example.html
 summary: Connection code Examples
 ---
 
-{% include custom/search.warnbanner.html %}
+## Common NRL Connection Code Examples
 
-## Common NRL Connection Code Examples ##
-
-### Connecting with C# ###
+### Connecting with C#
 
 The following code samples are taken from the NRL Demonstrator application which has both Consumer and Provider client implementations built in. More information about the design solution can be found
 on the [NRL Demonstrator Wiki](https://github.com/nhsconnect/nrls-reference-implementation/wiki)
@@ -59,4 +57,4 @@ There is a check here to see if we have a success type HTTP response code. If no
 {% endhighlight %}
 </div>
 
-{% include note.html content="The code in these examples is standard C# v7.2 taken direct from the [NRL Demonstrator](https://nrls.digital.nhs.uk) code.<br /><br />The official <b>[.NET FHIR Library](https://ewoutkramer.github.io/fhir-net-api/)</b> is utilised to construct, test, parse and serialize FHIR models with ease." %}
+{% include note.html content="The code in these examples is standard C# v7.2 taken directly from the [NRL Demonstrator](https://nrls.digital.nhs.uk) code.<br /><br />The official <b>[.NET FHIR Library](https://ewoutkramer.github.io/fhir-net-api/)</b> is utilised to construct, test, parse, and serialize FHIR models with ease." %}

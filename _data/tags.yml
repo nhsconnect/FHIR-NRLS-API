@@ -1,22 +1,18 @@
 allowed-tags:
+  - support
   - overview
-  - casestudies
-  - fhir
   - design
   - development
-  - clinical
-  - identification
-  - workflow
-  - rest
-  - userstories
-  - support
-  - documents
-  - diagnostics
-  - clinical
-  - medication
-  - individuals
-  - entities
-  - foundation
-  - api
-  - noccprofile
-  - pointer
+  - assurance
+  - authorisation
+  - authentication
+  - auditing
+  - pointers
+  - security
+  - fhir
+  - testing
+  - for_providers
+  - for_consumers
+  - record_retrieval
+  - spine_secure_proxy
+  - integration

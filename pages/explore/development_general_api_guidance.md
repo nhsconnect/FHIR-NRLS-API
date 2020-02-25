@@ -1,346 +1,354 @@
 ---
 title: General API guidance
 keywords: fhir development
-tags: [fhir,development]
+tags: [fhir,development,for_providers,for_consumers]
 sidebar: overview_sidebar
 permalink: development_general_api_guidance.html
 summary: "Implementation guidance for developers - focusing on general API implementation guidance"
 ---
 
-## Purpose ##
+## Purpose
 
-This implementation guide is intended for use by software developers looking to build a conformant NRL API interface using the FHIR&reg; standard with a focus on general API implementation guidance.
+This implementation guide is intended for use by software developers looking to build a conformant NRL API interface using the FHIR&reg; standard, with a focus on general API implementation guidance.
 
-### Notational conventions ###
+### Notational Conventions
 
 The keywords ‘**MUST**’, ‘**MUST NOT**’, ‘**REQUIRED**’, ‘**SHALL**’, ‘**SHALL NOT**’, ‘**SHOULD**’, ‘**SHOULD NOT**’, ‘**RECOMMENDED**’, ‘**MAY**’, and ‘**OPTIONAL**’ in this implementation guide are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
 
-## RESTful API ##
+## RESTful API
 
-### Content types ###
+### Content Types
 
-- The NRL Server SHALL support both formal [MIME-types](https://www.hl7.org/fhir/STU3/http.html#mime-type) for FHIR resources:
+- The NRL Server MUST support both formal [MIME-types](https://www.hl7.org/fhir/STU3/http.html#mime-type) for FHIR resources:
   - XML: `application/fhir+xml`
   - JSON: `application/fhir+json`
   
-- The NRL Server SHALL also support DSTU2 [MIME-types](https://www.hl7.org/fhir/DSTU2/http.html#mime-type) for backwards compatibility:
+- The NRL Server MUST also support DSTU2 [MIME-types](https://www.hl7.org/fhir/DSTU2/http.html#mime-type) for backwards compatibility:
   - XML: `application/xml+fhir`
   - JSON: `application/json+fhir`
   
-- The NRL Server SHALL also gracefully handle generic XML and JSON MIME types:
+- The NRL Server MUST also gracefully handle generic XML and JSON MIME types:
   - XML: `application/xml`
   - JSON: `application/json`
   - JSON: `text/json`
   
-- The NRL Server SHALL support the optional `_format` parameter in order to allow the client to specify the response format by its MIME-type. If both are present, the `_format` parameter overrides the `Accept` header value in the request.
+- The NRL Server MUST support the optional `_format` parameter in order to allow the client to specify the response format by its MIME type. If both are present, the `_format` parameter overrides the `Accept` header value in the request.
 
-- If neither the `Accept` header nor the `_format` parameter are supplied by the client system the NRL Server SHALL return data in the default format of `application/fhir+xml`.
+- If neither the `Accept` header nor the `_format` parameter are supplied by the client system, the NRL Server MUST return data in the default format of `application/fhir+xml`.
 
-## Error handling ##
+## Error Handling
 
-The NRL API defines numerous categories of error, each of which encapsulates a specific part of the request that is sent to the NRL. Each type of error will be discussed in its own section below with the relevant Spine response code:
-- [Resource Not found](development_general_api_guidance.html#resource-not-found) - Spine supports this behaviour when:
-  - a request references a resource that cannot be resolved be it a DocumentReference, Patient.
-  - a request supports an NHS Number where no Spine Clinicals record exists for that NHS Number.
-- [Headers](development_general_api_guidance.html#headers) - There are a number of HTTP headers that must be supplied with any request. In addition that values associated with those headers have their own validation rules. 
-- [Parameters](development_general_api_guidance.html#parameters) – Certain actions against the NRL allow a client to specify HTTP parameters. This class of error covers problems with the way that those parameters may have been presented
-- [Payload business rules](development_general_api_guidance.html#payload-business-rules) - Errors of this nature will arise when the request payload (DocumentReference) does not conform to the business rules associated with its use as an NRL Pointer
-- [Payload syntax](development_general_api_guidance.html#payload-syntax) - Used to inform the client that the syntax of the request payload (DocumentReference) is invalid. For example, if using JSON to carry the DocumentReference then the structure of the payload may not conform to JSON notation.
-- [Organisation not found](development_general_api_guidance.html#organisation-not-found) - Used to inform the client that the URL being used to reference a given Organisation is invalid.
-- [Invalid NHS Number](development_general_api_guidance.html#invalid-nhs-number) - Used to inform a client that the the NHS Number used in a provider pointer create or consumer search interaction is invalid.
-- [Unsupported Media Type](development_general_api_guidance.html#unsupported-media-type) - Used to inform the client that requested content types are not supported by NRL Service.
-- [Access Denied](development_general_api_guidance.html#access-denied) - Used to inform the client that access has been denied to perform the interaction.
-- [Internal Error](development_general_api_guidance.html#internal-error) - Used to inform the client if there is a failure during the change of the DocumentReference status.
+The NRL API defines many categories of errors, each of which encapsulates a specific part of the request sent to the NRL. Each type of error is discussed in its own section below with the relevant Spine response code:
+- [Resource not found](development_general_api_guidance.html#resource-not-found) — Spine supports this behaviour when:
+  - A request references a resource, such as a DocumentReference or Patient, that cannot be resolved.
+  - A request supports an NHS Number where no Spine Clinicals record exists for that NHS Number.
+- [Headers](development_general_api_guidance.html#headers) — There are a number of HTTP headers that must be supplied with any request. In addition, values associated with those headers have their own validation rules.
+- [Parameters](development_general_api_guidance.html#parameters) – Certain actions against the NRL allow a client to specify HTTP parameters. This class of error covers problems with the way those parameters are presented.
+- [Payload business rules](development_general_api_guidance.html#payload-business-rules) — Errors of this nature will arise when the request payload (DocumentReference) does not conform to the business rules associated with its use as an NRL Pointer.
+- [Payload syntax](development_general_api_guidance.html#payload-syntax) — Used to inform the client that the syntax of the request payload (DocumentReference) is invalid. For example, if using JSON to carry the DocumentReference, the structure of the payload may not conform to JSON notation.
+- [Organisation not found](development_general_api_guidance.html#organisation-not-found) — Used to inform the client that the URL being used to reference a given Organisation is invalid.
+- [Invalid NHS Number](development_general_api_guidance.html#invalid-nhs-number) — Used to inform a client that  NHS Number used in a Provider pointer create or Consumer search interaction is invalid.
+- [Unsupported Media Type](development_general_api_guidance.html#unsupported-media-type) — Used to inform the client that requested content types are not supported by the NRL service.
+- [Access denied](development_general_api_guidance.html#access-denied) — Used to inform the client that access to perform the interaction has been denied.
+- [Internal error](development_general_api_guidance.html#internal-error) — Used to inform the client if there is a failure during the change of the DocumentReference status.
 
 The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1).
 
-
-### <u>Resource not found</u> ###
+### Resource Not Found
 
 There are two situations when Spine supports this behaviour:
 
-- When a request references a resource that cannot be resolved. For example This error should be expected when a request references the [unique id](explore_reference.html#2-nrl-data-model-to-fhir-profile-mapping) of a DocumentReference however the id is not known to the NRL. There are three scenarios when the NRL Service supports this exception:
-  - provider client retrieval of a DocumentReference by logical id
-  - provider client request to delete a DocumentReference by logical id or master identifier
-  - provider client request to update a DocumentReference by logical id or master identifier
+- When a request references a resource that cannot be resolved. For example, this error should be expected when a request references the [unique ID](explore_reference.html#2-nrl-data-model-to-fhir-profile-mapping) of a DocumentReference, but the ID is not known to the NRL. There are three scenarios in which the NRL Service supports this exception:
+  - Provider client retrieval of a DocumentReference by logical identifier
+  - Provider client request to delete a DocumentReference by logical identifier or master identifier
+  - Provider client request to update a DocumentReference by logical identifier or master identifier
 
-- When a request supports an NHS Number where no Clinicals record exists in the Spine Clinicals data store for that NHS Number. The NRL Service supports this exception scenario in the consumer and Provider Search API interface.
+- When a request specifies an NHS Number for which no corresponding Clinicals record exists in the Spine Clinicals data store. The NRL Service supports this exception scenario in the consumer and Provider Search API interface.
 
-The below table summarises the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body for these exception scenarios.
-
+The following table summarises the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body for these exception scenarios.
 
 | HTTP Code | issue-severity | issue-type |  Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |404|error|not-found |NO_RECORD_FOUND|No record found|No record found for supplied DocumentReference identifier - [id]|
 |404|error|not-found|NO_RECORD_FOUND|No record found|The given NHS number could not be found [nhsNumber]|
 
+### Headers
 
-### <u>Headers</u> ###
+This error will be thrown in relation to the mandatory HTTP request headers. Scenarios where this error might be thrown:
+- The  mandatory `fromASID` HTTP Header is missing in the request.
 
-This error will be thrown in relation to the mandatory HTTP request headers. The scenarios when this error might be thrown:
-- The  mandatory `fromASID` HTTP Header is missing in the request
-  - The table details the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this scenario.
+    The table details the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this scenario. Note that the header name is case-sensitive.
 
-Note that the header name is case-sensitive.
-
-| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
-|-----------|----------------|------------|--------------|-----------------|-------------------|
-|400|error|invalid| MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|fromASID HTTP Header is missing|
-
+    | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
+    |-----------|----------------|------------|--------------|-----------------|-------------------|
+    |400|error|invalid| MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|fromASID HTTP Header is missing|
 
 - The mandatory `toASID` HTTP Header is missing in the request
-  - The table details the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this scenario.
 
-| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
-|-----------|----------------|------------|--------------|-----------------|-------------------|
-|400|error|invalid| MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|toASID HTTP Header is missing|
+    The table details the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this scenario.
 
+    | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
+    |-----------|----------------|------------|--------------|-----------------|-------------------|
+    |400|error|invalid| MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|toASID HTTP Header is missing|
 
 - The mandatory `Authorization` HTTP Header is missing in the request
-  - The table details the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this scenario.
 
-| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
-|-----------|----------------|------------|--------------|-----------------|-------------------|
-|400|error|invalid| MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|Authorization HTTP Header is missing|
+    The table details the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this scenario.
 
+    | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
+    |-----------|----------------|------------|--------------|-----------------|-------------------|
+    |400|error|invalid| MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|Authorization HTTP Header is missing|
 
-### <u>Parameters</u> ###
+### Parameters
 
-This error will be raised in relation to request parameters that the client may have specified. As such this error can be raised in a variety of circumstances:
+This error will be raised in relation to request parameters that the client may have specified. This error can be raised in a variety of circumstances.
 
-The below table summarises the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
+The following table summarises the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |
 |-----------|----------------|------------|--------------|-----------------|
 |400|error|invlid| INVALID_PARAMETER|Invalid parameter|
 
+#### Subject Parameter
 
-#### Subject parameter ####
-When using the MANDATORY `subject` parameter the client is referring to a Patient FHIR resource by reference. Two pieces of information are needed: 
-- the URL of the FHIR server that hosts the Patient resource.  If the URL of the server is not `https://demographics.spineservices.nhs.uk/STU3/Patient/` then this error will be thrown.
+When using the REQUIRED `subject` parameter, the client is referring to a Patient FHIR resource by reference. Two pieces of information are needed:
+- The URL of the FHIR server that hosts the Patient resource.  If the URL of the server is not `https://demographics.spineservices.nhs.uk/STU3/Patient/`, this error will be thrown.
 
-- an identifier for the Patient resource being referenced. The identifier must be known to the server. In addition where NHS Digital own the business identifier scheme for a given type of FHIR resource then the logical and business identifiers will be the same. In this case the NHS number of a Patient resource is both a logical and business identifier meaning that it can be specified without the need to supply the identifier scheme. If the NHS number is missing from the patient parameter then this error will be thrown.
+- An identifier for the Patient resource being referenced. The identifier must be known to the server. In addition, where NHS Digital owns the business identifier scheme for a given type of FHIR resource, the logical and business identifiers will be the same. In this case, the NHS number of a Patient resource is both a logical and business identifier, meaning that it can be specified without the need to supply the identifier scheme. If the NHS number is missing from the patient parameter, this error will be thrown.
 
-#### Custodian parameter ####
-When using the OPTIONAL `custodian` parameter the client is referring to an Organisation by a business identifier, specifically its ODS code. Two pieces of information are needed:
- - The business identifier scheme. In this case it must be `https://fhir.nhs.uk/Id/ods-organization-code`
+#### Custodian Parameter
+
+When using the OPTIONAL `custodian` parameter, the client is referring to an Organisation by a business identifier, specifically its ODS code. Two pieces of information are needed:
+ - The business identifier scheme. In this case, it must be `https://fhir.nhs.uk/Id/ods-organization-code`.
  - The business identifier. The identifier must meet the following requirements:
-   - It must be a valid ODS code. 
+   - It must be a valid ODS code.
    - The ODS code must be an organisation that is known to the NRL.
    - The ODS code must be in the Provider role.
 
-#### `_format` request parameter ####
+#### `_format` Request Parameter
+
 This parameter must specify one of the [mime types](development_general_api_guidance.html#restful-api) recognised by the NRL.
 
-#### Invalid Reference URL in Pointer Create Request ####
+#### Invalid Reference URL in Pointer Create Request
+
 This error is raised during a provider create interaction. There are two exception scenarios:
-- The DocumentReference in the request body specifies an incorrect URL of the FHIR server that hosts the Patient resource. 
-- The DocumentReference in the request body specifies an incorrect URL of the author and custodian Organization resource. 
+- The DocumentReference in the request body specifies an incorrect URL for the FHIR server that hosts the Patient resource. 
+- The DocumentReference in the request body specifies an incorrect URL for the author and custodian Organization resource. 
 
+#### `type` Parameter
 
-#### Type parameter ####
-When using the MANDATORY `type` parameter the client is referring to a pointer by record type. Two pieces of information are needed: 
-- the Identity of the [SNOMED URI](http://snomed.info/sct) terminology system
-- the pointer record type SNOMED concept e.g. 736253002
+When using the REQUIRED `type` parameter, the client is referring to a pointer by record type. Two pieces of information are needed: 
+- The identity of the [SNOMED URI](http://snomed.info/sct) terminology system
+- The pointer record type SNOMED concept, such as 736253002
 
 If the search request specifies unsupported parameter values in the request, this error will be thrown. 
 
-#### masterIdentifier parameter ####
-Where masterIdentifier is a search term both the system and value parameters must be supplied.
+#### `masterIdentifier` Parameter
 
-#### _summary parameter ####
-The _summary parameter must have a value of “count”. If it is anything else then an error should be returned to the client.
+Where masterIdentifier is a search term, both the system and value parameters must be supplied.
 
-If the _summary parameter is provided then the only other param that it can be used with is the optional _format param. If any other parameters are provided then an error should be returned to the client.
+#### `_summary` Parameter
 
+The _summary parameter must have a value of “count”. If it is anything else, an error should be returned to the client.
 
-### <u>Payload business rules</u> ###
+If the _summary parameter is provided then the only other parameter that it can be used with is the optional _format param. If any other parameters are provided, an error should be returned to the client.
 
+### Payload Business Rules
 
-### Invalid Resource ###
-This error code may surface when creating or deleting a DocumentReference. There are a number of properties that make up the DocumentReference which have business rules associated with them. 
-If there are problems with one or more of these properties then this error may be thrown.
+#### Invalid Resource
 
-This error code may also surface when or updating a DocumentReference using the Parameters resource and Update interaction. This error may be thrown if the resource does not include the specified parameters or does not conform to the associated business rules. 
+This error code may surface when creating or deleting a DocumentReference. There are a number of properties that make up the DocumentReference which have business rules associated with them. If there are problems with one or more of these properties, this error may be thrown.
 
-The below table summarises the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
+This error code may also surface when updating a DocumentReference using the Parameters resource and Update interaction. This error may be thrown if the resource does not include the specified parameters or does not conform to the associated business rules. 
 
+The following table summarises the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
 
 | HTTP Code | issue-severity | issue-type | Details.Code | 
 |-----------|----------------|------------|--------------|
 |400|error|invalid| INVALID_RESOURCE|
 
-{% include note.html content="Although not stated in the table above, the OperationOutcome that the NRL returns in these scenarios will include `Details.display` and `Diagnostics` detail that will aid in indentifiying which property this issue relates to." %}
+{% include note.html content="Although not stated in the table above, the OperationOutcome that the NRL returns in these scenarios will include `Details.display` and `Diagnostics` detail, which will aid in identifying which property this issue relates to." %}
 
-#### **Create and Supersede Invalid Resource Errors** ####
+#### Create and Supersede Invalid Resource Errors
 
-The following scenarios relate to the [Create](api_interaction_create.html) and [Supersede](api_interaction_supersede.html) interactions (HTTP POST):
+The following scenarios relate to the [create](api_interaction_create.html) and [supersede](api_interaction_supersede.html) interactions (HTTP POST):
 
-#### Mandatory Fields ####
-If one or more mandatory fields are missing then this error will be thrown. See [DocumentReference](explore_reference.html#2-nrl-data-model-to-fhir-profile-mapping) profile.
+* **Mandatory fields**
 
-#### Mandatory Field Values ####
-If one or more mandatory fields are missing values then this error will be thrown. 
+  If one or more mandatory fields are missing, this error will be thrown. See [DocumentReference](explore_reference.html#2-nrl-data-model-to-fhir-profile-mapping) profile.
 
-#### DocumentReference.Custodian ####
-If the DocumentReference in the request body contains an ODS code on the custodian element that is not tied to the ASID supplied in the HTTP request header fromASID then this error will result. 
+* **Mandatory field values**
 
-#### DocumentReference.Content.Attachment.Creation ####
-This is an optional field but if supplied:
-- must be a valid FHIR [dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime) 
+  If one or more mandatory fields are missing values, this error will be thrown. 
 
-#### DocumentReference.Status ####
-If the DocumentReference in the request body specifies a status code that is not supported by the required HL7 FHIR [document-reference-status](http://hl7.org/fhir/ValueSet/document-reference-status) valueset then this error will be thrown. 
+* **DocumentReference.Custodian**
 
-#### DocumentReference.Type ####
-If the DocumentReference in the request body specifies a type that is not part of the valueset defined in the [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) FHIR profile this error will be thrown. 
+  If the DocumentReference in the request body contains an ODS code on the custodian element that is not tied to the ASID supplied in the HTTP request header fromASID, this error will result. 
 
-#### DocumentReference.Indexed ####
-If the DocumentReference in the request body specifies an indexed element that is not a valid [instant](http://hl7.org/fhir/STU3/datatypes.html#instant) as per the FHIR specification this error will be thrown. 
+* **DocumentReference.Content.Attachment.Creation**
 
-#### DocumentReference.Class ####
-If the DocumentReference in the request body specifies a class that is not part of the valueset defined in the [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) FHIR profile this error will be thrown.
+  If this optional field is supplied, it must be a valid [FHIR dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime) 
 
-#### DocumentReference.Content.Format ####
-If the DocumentReference in the request body specifies a format that is not part of the valueset defined in the [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) FHIR profile this error will be thrown.
+* **DocumentReference.Status**
 
-#### DocumentReference.Content.Extension:RetrievalMode ####
-If the DocumentReference in the request body specifies a retrievalMode that is not part of the valueset defined in the [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) FHIR profile this error will be thrown.
+  If the DocumentReference in the request body specifies a status code that is not supported by the required HL7 FHIR [document-reference-status](http://hl7.org/fhir/ValueSet/document-reference-status) valueset, this error will be thrown. 
 
-#### DocumentReference.Context.PracticeSetting ####
-If the DocumentReference in the request body specifies a practiceSetting that is not part of the valueset defined in the [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) FHIR profile this error will be thrown.
+* **DocumentReference.Type**
 
-#### DocumentReference.Context.Period ####
-If the DocumentReference in the request body specifies a period then:
-- At least the start date must be populated and must be a valid FHIR [dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime) 
-- If the end date is populated it must be a valid FHIR [dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime)
+  If the DocumentReference in the request body specifies a type that is not part of the valueset defined in the [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) FHIR profile, this error will be thrown.
 
-#### DocumentReference.RelatesTo ####
-If multiple relatesTo elements are included in a create request then an error will be returned. 
+* **DocumentReference.Indexed**
 
-#### DocumentReference.RelatesTo.Code ####
-If the code is not set to the value "replaces" then an error will be returned.
+  If the DocumentReference in the request body specifies an indexed element that is not a valid [FHIR instant](http://hl7.org/fhir/STU3/datatypes.html#instant), this error will be thrown.
 
-#### Incorrect permissions to modify ####
-When the NRL resolves a DocumentReference through the relatesTo property before modifying its status the NRL should check that 
-the ODS code associated with the fromASID HTTP header is associated with the ODS code specified on the custodian property of the 
-DocumentReference. If not then the NRL should roll back all changes and an error returned.
+* **DocumentReference.Class**
 
-#### Patient mismatch ####
+  If the DocumentReference in the request body specifies a class that is not part of the valueset defined in the [NRL-DocumentReference-1 FHIR profile](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1), this error will be thrown.
 
-When the NRL resolves a DocumentReference through the relatesTo property the subject property reference value must match the subject property reference on the new DocumentReference being created. If not then the NRL should roll back all changes and an error returned.
+* **DocumentReference.Content.Format**
 
-#### MasterIdentifier mismatch ####
+  If the DocumentReference in the request body specifies a format that is not part of the valueset defined in the [NRL-DocumentReference-1 FHIR profile](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1), this error will be thrown.
 
-When the NRL resolves a DocumentReference through the relatesTo property and both the `relatesTo.target.identifier` and `relatesTo.target.reference` properties are populated then the `relatesTo.target.identifier` value must match the masterIdentifier property on the resolved DocumentReference. If not then the NRL should roll back all changes and an error returned.
+* **DocumentReference.Content.Extension:RetrievalMode**
 
-#### DocumentReference does not exist ####
+  If the DocumentReference in the request body specifies a retrievalMode that is not part of the valueset defined in the [NRL-DocumentReference-1 FHIR profile](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1), this error will be thrown.
 
-When the NRL fails to resolve a DocumentReference through the relatesTo property then the NRL should roll back all changes and an error returned.
+* **DocumentReference.Context.PracticeSetting**
 
-#### **Update Invalid Resource Errors** ####
+  If the DocumentReference in the request body specifies a practiceSetting that is not part of the valueset defined in the [NRL-DocumentReference-1 FHIR profile](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1), this error will be thrown.
+
+* **DocumentReference.Context.Period**
+
+  If the DocumentReference in the request body specifies a period:
+  - At least the start date must be populated and must be a valid [FHIR dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime).
+  - If the end date is populated it must be a valid [FHIR dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime).
+
+* **DocumentReference.RelatesTo**
+
+  If multiple relatesTo elements are included in a create request, an error will be returned. 
+
+* **DocumentReference.RelatesTo.Code**
+
+  If the code is not set to the value "replaces", an error will be returned.
+
+* **Incorrect permissions to modify**
+
+  When the NRL resolves a DocumentReference through the relatesTo property before modifying its status, the NRL should check that the ODS code associated with the fromASID HTTP header is associated with the ODS code specified on the custodian property of the DocumentReference. If not, the NRL should roll back all changes and return an error.
+
+* **Patient mismatch**
+
+  When the NRL resolves a DocumentReference through the relatesTo property, the subject property reference value must match the subject property reference on the new DocumentReference being created. If not, the NRL should roll back all changes and return an error.
+
+* **MasterIdentifier mismatch**
+
+  When the NRL resolves a DocumentReference through the relatesTo property and both the `relatesTo.target.identifier` and `relatesTo.target.reference` properties are populated, the `relatesTo.target.identifier` value must match the masterIdentifier property on the resolved DocumentReference. If not, the NRL should roll back all changes and return an error.
+
+* **DocumentReference does not exist**
+
+  If the NRL fails to resolve a DocumentReference through the relatesTo property, the NRL should roll back all changes and return an error.
+
+#### Update Invalid Resource Errors
 
 The following scenarios relate to the [Update](api_interaction_update.html) interaction (HTTP PATCH):
 
-#### Parameters: Type ####
-When updating a DocumentReference, if the type parameter in the Parameters resource in the request body does not have the value "replace", then an error will be returned. 
+* **Parameters: Type**
 
-#### Parameters: Path ####
-When updating a DocumentReference, If the path parameter in the Parameters resource in the request body does not have the value "DocumentReference.status", then an error will be returned. 
+  When updating a DocumentReference, if the type parameter in the Parameters resource in the request body does not have the value "replace", an error will be returned.
 
-#### Parameters: Value ####
-When updating a DocumentReference, If the value parameter in the Parameters resource in the request body does not have the value "entered-in-error", then an error will be returned. 
+* **Parameters: Path**
 
-#### Provider ODS Code does not match Custodian ODS Code ####
-If a provider update pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code associated to the ASID value in the fromASID header, then an error will be returned.
+  When updating a DocumentReference, if the path parameter in the Parameters resource in the request body does not have the value "DocumentReference.status", an error will be returned.
 
-#### **Delete Invalid Resource Errors** ####
+* **Parameters: Value**
 
-The following scenarios relates to the [Delete](api_interaction_delete.html) interaction (HTTP DELETE):
+  When updating a DocumentReference, if the value parameter in the Parameters resource in the request body does not have the value "entered-in-error", an error will be returned.
 
-#### Provider ODS Code does not match Custodian ODS Code ####
-If a provider delete pointer request contains a URL that resolves to a single DocumentReference however the custodian property does not match the ODS code associated to the ASID value in the fromASID header, then an error will be returned.
+* **Provider ODS Code does not match Custodian ODS Code**
 
-### Duplicate Resource ###
+  If a provider update pointer request contains a URL that resolves to a single DocumentReference, but the custodian property does not match the ODS code associated to the ASID value in the fromASID header, an error will be returned.
 
-When the NRL persists a DocumentReference with a masterIdentifier it should ensure that no other DocumentReference exists 
+#### Delete Invalid Resource Errors
+
+The following scenarios relate to the [Delete](api_interaction_delete.html) interaction (HTTP DELETE):
+
+* **Provider ODS Code does not match Custodian ODS Code**
+
+  If a provider delete pointer request contains a URL that resolves to a single DocumentReference, but the custodian property does not match the ODS code associated to the ASID value in the fromASID header, an error will be returned.
+
+#### Duplicate Resource
+
+When the NRL persists a DocumentReference with a masterIdentifier, it should ensure that no other DocumentReference exists 
 for that patient with the same masterIdentifier.
 
-The below table summarises the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
+The following table summarises the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
-|400|error|duplicate| DUPLICATE_REJECTED|Duplicate DocumentReference|Duplicate masterIdentifier <br/> value: [masterIdentifier.value] system: [masterIdentifier.system]|
+|400|error|duplicate| DUPLICATE_REJECTED|Duplicate DocumentReference|Duplicate masterIdentifier value: [masterIdentifier.value]<br>system: [masterIdentifier.system]|
 
-### Inactive DocumentReference ###
+#### Inactive DocumentReference
 
 This error is raised when the status of the DocumentReference to be retrieved or modified is not "current". 
 
-The below table summarises the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
+The following table summarises the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display |Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |400|warning|invalid| BAD_REQUEST|Bad Request|DocumentReference status is not "current"|
 
-### <u>Payload syntax</u> ###
+### Payload Syntax
 
-### Invalid request message ###
+#### Invalid Request Message
 
-This kind of error will be created in response to problems with the request payload. However the kind of errors that trigger this error are distinct from those that cause the INVALID_RESOURCE error which is intended to convey a problem that relates to the business rules associated with an NRL DocumentReference. The INVALID_REQUEST_MESSAGE error is triggered when there is a problem with the format of the DocumentReference Resource in terms of the XML or JSON syntax that has been used.
+The INVALID_REQUEST_MESSAGE error is triggered when there is an XML or JSON syntax error in the DocumentReference resource in the request payload.
 
-The below table summarises the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
+It is distinct from the INVALID_RESOURCE error, which conveys problems relating to the business rules associated with an NRL DocumentReference.
 
+The following table summarises the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |400|error|value| INVALID_REQUEST_MESSAGE|Invalid Request Message|Invalid Request Message|
 
+### Organisation Not Found
 
-### Organisation not found ###
-These two Organisations are referenced in a DocumentReference. Therefore the references must point to a resolvable FHIR Organisation resource. If the URL being used to reference a given Organisation is invalid then this error will result. The URL must conform to the following rules:
-- Must be `https://directory.spineservices.nhs.uk/STU3/Organization`
-- Must supply a logical identifier which will be the organisation's ODS code:
-  - It must be a valid ODS code. 
-  - The ODS code must be an organisation that is known to the NRL 
-  - The ODS code associated with the custodian property must be in the Provider role.
+Organisations referenced in a DocumentReference must point to a resolvable FHIR Organisation resource. If the URL being used to reference a given Organisation is invalid, this error will result.
 
-If there is an exception then it should be displayed following the rules, along with the values
-to expect in the `OperationOutcome` shown in the table below.
+The URL must have the format `https://directory.spineservices.nhs.uk/STU3/Organization/[odsCode]`, where `[odsCode]`:
+- Is a valid ODS code.
+- Refers to an organisation known to the NRL.
+- The ODS code associated with the custodian property must be in the Provider role.
 
+If an exception occurs, it should be displayed following the rules, along with the values to expect in the `OperationOutcome` shown in the following table.
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
-|400|error|not-found| ORGANISATION_NOT_FOUND|Organisation record not found|The ODS code in the custodian and/or author element is not resolvable – [ods code].|
+|400|error|not-found| ORGANISATION_NOT_FOUND|Organisation record not found|The ODS code in the custodian and/or author element is not resolvable - [ods code].|
 
+### Invalid NHS Number
+Used to inform a client that  NHS Number used in a provider pointer create or consumer search interaction is invalid.
 
-### Invalid NHS Number ###
-Used to inform a client that the the NHS Number used in a provider pointer create or consumer search interaction is invalid.
-
-The below table summarises the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
-
+The following table summarises the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
 
 | HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |400|error|invalid| INVALID_NHS_NUMBER|Invalid NHS number|The NHS number does not conform to the NHS Number format: [nhs number].|
 
+### Unsupported Media Type
 
-### Unsupported Media Type ###
-There are three scenarios when an Unsupported Media Type business response code SHALL be returned to a client:
+There are three scenarios when an Unsupported Media Type business response code MUST be returned to a client:
 - Request contains an unsupported `Accept` header and an unsupported `_format` parameter.
 - Request contains a supported `Accept` header and an unsupported `_format` parameter.
-- Retrieval search query request parameters are valid however the URL contains an unsupported `_format` parameter value. 
+- Retrieval search query request parameters are valid, but the URL contains an unsupported `_format` parameter value. 
 
-These exceptions are raised by the Spine Core common requesthandler and not the NRL Service so are supported by the default Spine OperationOutcome [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to the default Spine valueSet [spine-response-code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0). The below table summarises the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body for these exception scenarios.
-
+These exceptions are raised by the Spine Core common requesthandler and not the NRL Service. They are supported by the default Spine OperationOutcome [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile, which binds to the default Spine ValueSet [spine-response-code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0). The following table summarises the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body for these exception scenarios.
 
 | HTTP Code | issue-severity | issue-type | Details.System | Details.Code | Details.Display | Diagnostics |
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |415|error|invalid|http://fhir.nhs.net/ValueSet/spine-response-code-1-0 | UNSUPPORTED_MEDIA_TYPE|Unsupported Media Type|Unsupported Media Type|
 
-### <u>Internal Error</u> ###
+### Internal Error
 
-Where the request cannot be processed but the fault is with the NRL service and not the client then the NRL service will return a 500 HTTP response code along with a descriptive message in the response body e.g:
+Where the request cannot be processed, but the fault is with the NRL service and not the client, the NRL service will return a 500 HTTP response code, along with a descriptive message in the response body, such as:
 
 `<html><title>500: Internal Server Error</title><body>500: Internal Server Error</body></html>`
-
-

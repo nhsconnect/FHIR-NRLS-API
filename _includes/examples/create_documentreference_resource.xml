@@ -1,5 +1,4 @@
-<DocumentReference
-    xmlns="http://hl7.org/fhir">
+<DocumentReference xmlns="http://hl7.org/fhir">
     <id value="c037a0cb-0c77-4976-83a1-a5d2703e6aa3-23325861873450086113"/>
     <meta>
         <profile value="https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1"/>
@@ -32,7 +31,7 @@
     <content>
         <attachment>
             <contentType value="application/pdf"/>
-            <url value="https://spine-proxy.national.ncrs.nhs.uk/https%3A%2F%2Fp1.nhs.uk%2FMentalhealthCrisisPlanReport.pdf"/>
+            <url value="https://p1.nhs.uk/MentalhealthCrisisPlanReport.pdf"/>
             <creation value="2016-03-08T15:26:00+01:00"/>
         </attachment>
         <format>

@@ -5,11 +5,11 @@
 <div markdown="span" class="alert alert-success" role="alert">
 GET [baseUrl]/{{include.content}}?{{include.name}}=[prefix][date]</div>
 
-<p>This SHOULD be supported for all consumer systems. When ‘{{include.name}}’ is included as a parameter it SHALL conform to the following:</p>
+<p>This SHOULD be supported for all consumer systems. When ‘{{include.name}}’ is included as a parameter it MUST conform to the following:</p>
 
-- The <code class="highlighter-rouge">{{include.name}}</code> parameter SHALL be included {{include.multi}} times in the request.
-- Each <code class="highlighter-rouge">{{include.name}}</code> parameter SHALL be supplied with one of the following search prefixes: {{include.prefixes}}.
-- Each <code class="highlighter-rouge">{{include.name}}</code> parameter SHALL NOT include a prefix that has already been used in another <code class="highlighter-rouge">{{include.name}}</code> parameter.
+- The <code class="highlighter-rouge">{{include.name}}</code> parameter MUST be included {{include.multi}} times in the request.
+- Each <code class="highlighter-rouge">{{include.name}}</code> parameter MUST be supplied with one of the following search prefixes: {{include.prefixes}}.
+- Each <code class="highlighter-rouge">{{include.name}}</code> parameter MUST NOT include a prefix that has already been used in another <code class="highlighter-rouge">{{include.name}}</code> parameter.
 
 <div class="language-http highlighter-rouge">
 <pre class="highlight"><code><span class="err">GET [baseUrl]/{{include.content}}?{{include.name}}=ge2010-01-01

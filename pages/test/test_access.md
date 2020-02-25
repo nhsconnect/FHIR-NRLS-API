@@ -1,7 +1,7 @@
 ---
 title: Access | Test
-keywords: test, access, security
-tags: [test, access]
+keywords: test access security
+tags: [testing]
 sidebar: foundations_sidebar
 permalink: test_access.html
 summary: "The Access page shows developers and users of the API how to access and call the API in the test environment"
@@ -9,7 +9,7 @@ summary: "The Access page shows developers and users of the API how to access an
 
 {% include important.html content="All phases outlined below are indicative and subject to on-going review." %}
 
-# Access to Test #
+# Access to Test
 
 Access at the Test stage of API development needs careful consideration of the following key challenges.
 
@@ -19,11 +19,10 @@ Access at the Test stage of API development needs careful consideration of the f
 
 {% include note.html content="Provided as an overview" %}
 
-
-# API Considerations #
+# API Considerations
 
 Other API consideration are shown below. Please click on the parts of the API process to continue your API creation journey.
 
 {% include custom/provide_api.svg %}
 
-{% include custom/contribute.html content="Get in involved and contribute to the above API considerations interoperabilityteam@nhs.net"%}
+{% include custom/contribute.html content="Get in involved and contribute to the above API considerations by contacting [interoperabilityteam@nhs.net](mailto:interoperabilityteam@nhs.net)."%}
