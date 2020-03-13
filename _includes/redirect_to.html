@@ -1,0 +1,21 @@
+{% if include.external_url %}
+    {% assign _url = include.external_url %}
+    {% assign timeout_seconds = 5 %}
+{% else %}
+    {% assign _url = site.url | append: site.baseurl | append: include.path %}
+    {% assign timeout_seconds = 0 %}
+{% endif %}
+
+<meta id="refresh" http-equiv="refresh" content="{{ timeout_seconds }};url='{{ _url }}'">
+<link id="canonical" rel="canonical" href="{{ _url }}">
+
+<script>
+    document.head.appendChild(document.getElementById('refresh'));
+    document.head.appendChild(document.getElementById('canonical'));
+</script>
+
+# Redirecting…
+
+The content that was here has moved.
+
+[Click here if you are not redirected after a few seconds.]({{ _url }})
