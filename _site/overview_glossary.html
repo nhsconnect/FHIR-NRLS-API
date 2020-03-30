@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Glossary of terms used this implementation guide">
+<meta name="keywords" content="overview,  abbreviations definitions glossaries terms">
+<title>Glossary | NRL</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="FHIR-NRLS-API" href="https://developer.nhs.uk/apis/nrl/feed.xml">
+
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> NRL API | FHIR&reg;</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                
+                
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="Search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Glossary">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+
+    <!-- <p style="font-size:2em;">-->
+
+       <!-- <img src="images/interopen.png" height="48px" alt="INTEROpen Logo"/>
+    INTEROPen</p>
+    <p style="font-size:16px;">Supported by -->
+    <img src="images/logo.png"   alt="NHS Digital Logo"/>
+    <!--</p>-->
+
+
+    <li class="sidebarTitle">NRL 2.3.0-beta API <i>specification</i></li>
+    
+    
+    
+    <li>
+        <a href="#">Overview</a>
+        <ul>
+            
+            
+            
+            <li><a href="index.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_guide_versioning.html">Product Versioning</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_release_notes.html">Release Notes</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Solution</a>
+        <ul>
+            
+            
+            
+            <li><a href="overview_concepts.html">Concepts</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_behaviours.html">Behaviour</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_principles.html">Principles</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_data_model.html">Data model</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_interactions.html">Interactions</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">General Guidance</a>
+        <ul>
+            
+            
+            
+            <li><a href="pointer_identity.html">Pointer Identity</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="pointer_errors.html">Pointer Errors</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="pointer_lifecycle.html">Pointer Lifecycle</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="pointer_maintenance.html">Pointer Maintenance</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Development Guidance</a>
+        <ul>
+            
+            
+            
+            <li><a href="explore.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="development_general_api_guidance.html">General API Guidance</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">DocumentReference API Interactions</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="api_interaction_create.html">Create</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_supersede.html">Create (Supersede)</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_update.html">Update</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_delete.html">Delete</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_read.html">Read</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_search.html">Search</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Record Retrieval Guidance</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="retrieval_overview.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_interaction_read.html">Read Interaction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_consumer_guidance.html">Consumer Guidance</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_provider_guidance.html">Provider Guidance</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_formats.html">Formats</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            
+            <li><a href="explore_reference.html">FHIR Profile Reference</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="explore_fhir_open_source_guidance.html">FHIR Open-Source Resources</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Integrate With Spine</a>
+        <ul>
+            
+            
+            
+            <li><a href="integration_authentication_authorisation.html">Authentication &amp; Authorisation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="explore_rbac_mapping.html">Access Control</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="development_api_security_guidance.html">Security</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="integration_access_tokens_JWT.html">Access Tokens (JWT)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="integration_auditing.html">Auditing</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="integration_personal_demographics_service.html">Personal Demographics Service</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+        
+            <li><a href="/assure.html">Assure</a></li>
+        
+    
+        
+    
+    <li>
+        <a href="#">Help &amp; Support</a>
+        <ul>
+            
+            
+            
+            <li><a href="support_faq.html">Frequently Asked Questions (FAQ)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="support_communications.html">Communication Channels</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+        
+            <li><a href="/tags.html">Tags</a></li>
+        
+    
+        
+    
+        
+            <li class="active"><a href="/overview_glossary.html">Glossary</a></li>
+        
+    
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    <!--</li>-->
+</ul>
+<!--</div>-->
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            
+
+<div class="post-header">
+   <h1 class="post-title-main">Glossary</h1>
+</div>
+
+<script>
+    $(function() {
+        $('a[href^="http://"], a[href^="https://"]')
+            .attr('target', '_blank') // open all external links in new tab
+            .attr('rel', 'noopener noreferrer'); // https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/
+    });
+</script>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Glossary of terms used this implementation guide</div>
+   
+
+   
+
+    
+
+  <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop with the National Record Locator API. This project is being developed using an agile methodology, so iterative updates to content will be added on a regular basis.</div>
+
+  <p>Glossary of common terms and abbreviations used throughout this documentation site.</p>
+
+<dl>
+
+<dt id="net">.NET</dt>
+<dd>
+    <p>.NET is both a business strategy from Microsoft and its collection of programming support for Web services. Microsoft’s goal is to provide individual and business users with a seamlessly interoperable and Web-enabled interface for applications and computing devices and to make computing activities increasingly Web browser-oriented. The .NET platform includes servers; building-block services, such as Web-based data storage; and device software. It also includes Passport, Microsoft’s fill-in-the-form-only-once identity verification service.</p>
+  </dd>
+
+<dt id="api">API</dt>
+<dd>
+    <p>The term <em>Application Programming Interface</em> is quite a confused term in the context of FHIR. Strictly speaking, an API is a set or services offered by a programming library that can be made use of by another application. Historically these would have been made available from a single machine although now they are available across networks.<br /><br />In the service/message/document categorisation, an API is a service interface, though this categorisation is contentious. As technology became increasingly capable of supporting distributed operations, the differences between SOA (Service Oriented Architecture) and APIs became blurred. In the context of FHIR, we define APIs as RESTful interfaces.</p>
+  </dd>
+
+<dt id="asid">ASID</dt>
+<dd>
+    <p><em>Accredited System ID</em> (obtained by completing <a href="#scal">SCAL</a>)</p>
+  </dd>
+
+<dt id="ddc">DDC</dt>
+<dd>
+    <p><em>Digital Delivery Centre</em></p>
+  </dd>
+
+<dt id="dm-d">dm+d</dt>
+<dd>
+    <p>The NHS <em>Dictionary of Medicines and Devices</em> is a dictionary of descriptions and codes which represent medicines and devices in use across the NHS. It is delivered through a partnership between NHS Digital and the NHS Business Services Authority and provides the recognised NHS Standard for uniquely identifying medicines and medical devices used in patient care.</p>
+  </dd>
+
+<dt id="dms">DMS</dt>
+<dd>
+    <p><em>Domain Message Specification</em> Description of messages definitions and interactions relating to a specific business area (such as Ambulance, Child Health or Discharge etc.)</p>
+  </dd>
+
+<dt id="dstu">DSTU</dt>
+<dd>
+    <p><em>Draft Standard for Trial Use</em></p>
+  </dd>
+
+<dt id="euod">EUOD</dt>
+<dd>
+    <p><em>End User Organisation Declaration</em></p>
+  </dd>
+
+<dt id="fhir">FHIR</dt>
+<dd>
+    <p>FHIR is the latest standard to be developed under the HL7 organisation. Pronounced ‘Fire’ and stands for Fast Healthcare Interoperability Resources.</p>
+  </dd>
+
+<dt id="fhirpath">FHIRPath</dt>
+<dd>
+    <p><a href="https://hl7.org/fhirpath/">FHIRPath</a> is a path-based navigation and extraction language, somewhat like XPath. Operations are expressed in terms of the logical content of hierarchical data models, supporting traversal, selection, and filtering of data.</p>
+  </dd>
+
+<dt id="fqdn">FQDN</dt>
+<dd>
+    <p>A <a href="http://www.linfo.org/fqdn.html"><em>Fully Qualified Domain Name</em></a> consists of a host name (including all subnames) and a domain name, including the top-level domain (TLD).</p>
+  </dd>
+
+<dt id="itk">ITK</dt>
+<dd>
+    <p>The <em>Interoperability Toolkit</em>, in the context of the NHS this is a set of common specifications, frameworks, and implementation guides to support interoperability within local organisations and across local health and social care communities.</p>
+  </dd>
+
+<dt id="json">JSON</dt>
+<dd>
+    <p><em>Javascript Object Notation</em> is a lightweight data-interchange format. It is easy for humans to read and write and easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language.</p>
+  </dd>
+
+<dt id="jwt">JWT</dt>
+<dd>
+    <p><a href="https://jwt.io/" target="_blank"><em>JSON web token</em></a>, a standard for access tokens containing information about authorisation claims.</p>
+  </dd>
+
+<dt id="lhcre">LHCRE</dt>
+<dd>
+    <p><a href="https://understandingpatientdata.org.uk/news/local-health-and-care-record-exemplars-announced" target="_blank"><em>Local Health and Care Record Exemplar</em></a></p>
+  </dd>
+
+<dt id="mpv">MPV</dt>
+<dd>
+    <p><em>Manufacturer Product Version</em></p>
+  </dd>
+
+<dt id="n3">N3</dt>
+<dd>
+    <p>N3 is a Wide Area IP Network (WAN), connecting many different sites across the NHS within England &amp; Scotland. It also connects to other networks via Gateways, notably to the Internet via the Internet Gateway.</p>
+  </dd>
+
+<dt id="nems">NEMS</dt>
+<dd>
+    <p><a href="https://digital.nhs.uk/services/digital-child-health/national-events-management-service" target="_blank"><em>National Events Management Service</em></a>, a sister project to the NRL that tracks events.</p>
+  </dd>
+
+<dt id="nrl">NRL</dt>
+<dd>
+    <p>The <em>National Record Locator</em> is a national index to identify available records for patients and locate them across local and national care record solutions (such as SCR).</p>
+  </dd>
+
+<dt id="ods">ODS</dt>
+<dd>
+    <p>The <em>Organisational Data Service</em> is responsible for publishing organisation and practitioner codes, along with related national policies and standards. They’re also responsible for the ongoing maintenance of the organisation and person nodes of the Spine Directory Service, the central data repository used within various NHS systems and services.</p>
+  </dd>
+
+<dt id="pas">PAS</dt>
+<dd>
+    <p>The <em>Patient Administration System</em> records the patient’s demographics (e.g. name, home address, date of birth) and details all patient contact with the hospital, both outpatient and inpatient.<br /><br />Some PAS systems do support additional clinical behaviours.</p>
+  </dd>
+
+<dt id="pds">PDS</dt>
+<dd>
+    <p>The <em><a href="https://digital.nhs.uk/services/demographics" target="_blank">Personal Demographics Service</a></em> is a national electronic database of NHS patients containing details such as name, address, date of birth and NHS Number (known as demographic information). (Implemented with HL7 v3)</p>
+  </dd>
+
+<dt id="rbac">RBAC</dt>
+<dd>
+    <p><em>Role Based Access Control</em> defines roles and allowed business activities associated with a user (via their smartcard). (Implemented using SAML)</p>
+  </dd>
+
+<dt id="record-group">Record Group</dt>
+<dd>
+    <p>A grouping that contains one or more Record Types.</p>
+  </dd>
+
+<dt id="record-type">Record Type</dt>
+<dd>
+    <p>The clinical type of a record as defined by SNOMED-CT code. The clinical types permitted on the NRL are defined by a controlled list.</p>
+  </dd>
+
+<dt id="rest">REST</dt>
+<dd>
+    <p><em>Representational State Transfer</em> is a protocol based upon a network of Web resources (a virtual state-machine) where the user progresses through the application by selecting links, such as /user/tom, and operations such as GET or DELETE (state transitions), resulting in the next resource (representing the next state of the application) being transferred to the user for their use. Typically preferred due to it being “stateless” so no information about the client session needs to be maintained on the server.</p>
+  </dd>
+
+<dt id="restful">RESTful</dt>
+<dd>
+    <p>Interfaces are often referred to as being “RESTful” when they follow principles of <a href="#rest">REST</a> to avoid debate about whether they fully conform to REST.</p>
+  </dd>
+
+<dt id="scal">SCAL</dt>
+<dd>
+    <p><a href="https://developer.nhs.uk/apis/uec-appointments/assurance_scal.html" target="_blank"><em>Supplier Conformance Assessment List</em></a></p>
+  </dd>
+
+<dt id="scr">SCR</dt>
+<dd>
+    <p><a href="https://digital.nhs.uk/services/summary-care-records-scr" target="_blank"><em>Summary Care Record</em></a></p>
+  </dd>
+
+<dt id="scra">SCRa</dt>
+<dd>
+    <p><em>Summary Care Record Application</em></p>
+  </dd>
+
+<dt id="sds">SDS</dt>
+<dd>
+    <p>The NHS <em>Spine Directory Service</em> is a component of the NHS Spine service comprising of the Spine User Directory and Spine Accredited Systems and Services. The SDS ensures that transactions/messages are only processed from authorised users and systems. (Implemented with LDAP)</p>
+  </dd>
+
+<dt id="snomed">SNOMED</dt>
+<dd>
+    <p><a href="https://www.snomed.org" target="_blank"><em>Systematized Nomenclature of Medicine</em></a></p>
+  </dd>
+
+<dt id="snomed-ct">SNOMED-CT</dt>
+<dd>
+    <p>The most comprehensive and precise clinical health terminology product in the world, owned and distributed by SNOMED International.</p>
+  </dd>
+
+<dt id="soa">SOA</dt>
+<dd>
+    <p>Method for systems integration and development that allows different applications to exchange data  in a loosely coupled way.</p>
+  </dd>
+
+<dt id="spine">Spine</dt>
+<dd>
+    <p>A collection of national applications, services, and directories which support the health and social care sector in the exchange of information in national and local IT systems</p>
+  </dd>
+
+<dt id="ssp">SSP</dt>
+<dd>
+    <p><em>Spine Secure Proxy</em></p>
+  </dd>
+
+<dt id="stu">STU</dt>
+<dd>
+    <p><em>Standard for Trial Use</em> The original DSTU2 FHIR standard has been superseded by the new standard STU3. To reflect that important parts of the spec are well past the draft stage</p>
+  </dd>
+
+<dt id="tkw">TKW</dt>
+<dd>
+    <p><a href="https://digital.nhs.uk/services/interoperability-toolkit/developer-resources/itk-test-centre/itk-testbench" target="_blank"><em>Toolkit Workbench</em></a></p>
+  </dd>
+
+<dt id="tls">TLS</dt>
+<dd>
+    <p><em>Transport Layer Security</em></p>
+  </dd>
+
+<dt id="tlsma">TLSMA</dt>
+<dd>
+    <p><em><a href="#tls">TLS</a> Mutual Authentication</em></p>
+  </dd>
+
+<dt id="uml">UML</dt>
+<dd>
+    <p>The <em>Unified Modelling Language</em> is a family of graphical notations baked by a single meta-model, that help in designing and describing software systems. Especially useful when working with OOP paradigms..</p>
+  </dd>
+
+<dt id="use-case">Use Case</dt>
+<dd>
+    <p>A list of actions or event steps, typically defining the interactions between a role (known in the Unified Modeling Language as an actor) and a system, to achieve a goal. The actor can be a human or other external system.</p>
+  </dd>
+
+<dt id="use-case-diagram">Use Case Diagram</dt>
+<dd>
+    <p>A visual presentation of a Use Case, standardised within UML.</p>
+  </dd>
+
+<dt id="x509-certificate">X509 certificate</dt>
+<dd>
+    <p>A format of public key certificate originally defined in <a href="https://tools.ietf.org/html/rfc5280" target="_blank">RFC 5280</a>. Often colloquially referred to as an “SSL certificate”.</p>
+  </dd>
+
+<dt id="xml">XML</dt>
+<dd>
+    <p><em>eXtensible Markup Language</em> is a protocol designed to store and transport data. XML was designed to be both human and machine readable.</p>
+  </dd>
+
+<dt id="xpath">xPath</dt>
+<dd>
+    <p>XPath is a major element in the XSLT standard. XPath can be used to navigate through elements and attributes in an XML document. XPath is a syntax for defining parts of an XML document. XPath uses path expressions to navigate in XML documents. XPath contains a library of standard functions.</p>
+  </dd>
+
+</dl>
+
+<script>
+	$(function() {
+        anchors.add('dt');
+	});
+</script>
+
+
+
+    <div class="tags">
+        
+        <b>Tags: </b>
+        
+        
+        
+        <a href="tags.html?tags=overview" class="btn btn-default navbar-btn cursorNorm" role="button">overview</a>
+        
+        
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+                    <img class="pull-left" src="images/explanatoryline.png" alt="NHS Digital Explanatory Line"/>
+                    <br/>
+                    &copy;2020 NHS Digital<br />
+                     Site last generated: Mar 30, 2020 <br />
+                    6f68aaa672cc33d7cfbcf7b81b91ebc455b910a9<br/>
+                    <br/>
+                    <!-- OGL Licence -->
+                    <div class="open-government-licence">
+                        <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license" class="no_icon"><img src="images/licence/ogl-symbol-41px-retina-black.png"></img></a>
+                        <p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license" class="no_icon">Open Government Licence v3.0</a>, except where otherwise stated</p>
+                    </div>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-99659472-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+ 
+
+
+</body>
+
+</html>

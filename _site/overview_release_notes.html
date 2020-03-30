@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Summary release notes of the versions released in NRL API Implementation Guide">
+<meta name="keywords" content="overview,  development versioning">
+<title>Release Notes | NRL</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="FHIR-NRLS-API" href="https://developer.nhs.uk/apis/nrl/feed.xml">
+
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> NRL API | FHIR&reg;</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                
+                
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="Search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Release Notes">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+
+    <!-- <p style="font-size:2em;">-->
+
+       <!-- <img src="images/interopen.png" height="48px" alt="INTEROpen Logo"/>
+    INTEROPen</p>
+    <p style="font-size:16px;">Supported by -->
+    <img src="images/logo.png"   alt="NHS Digital Logo"/>
+    <!--</p>-->
+
+
+    <li class="sidebarTitle">NRL 2.3.0-beta API <i>specification</i></li>
+    
+    
+    
+    <li>
+        <a href="#">Overview</a>
+        <ul>
+            
+            
+            
+            <li><a href="index.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_guide_versioning.html">Product Versioning</a></li>
+            
+            
+            
+            
+            
+            
+            <li class="active"><a href="overview_release_notes.html">Release Notes</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Solution</a>
+        <ul>
+            
+            
+            
+            <li><a href="overview_concepts.html">Concepts</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_behaviours.html">Behaviour</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_principles.html">Principles</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_data_model.html">Data model</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_interactions.html">Interactions</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">General Guidance</a>
+        <ul>
+            
+            
+            
+            <li><a href="pointer_identity.html">Pointer Identity</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="pointer_errors.html">Pointer Errors</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="pointer_lifecycle.html">Pointer Lifecycle</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="pointer_maintenance.html">Pointer Maintenance</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Development Guidance</a>
+        <ul>
+            
+            
+            
+            <li><a href="explore.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="development_general_api_guidance.html">General API Guidance</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">DocumentReference API Interactions</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="api_interaction_create.html">Create</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_supersede.html">Create (Supersede)</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_update.html">Update</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_delete.html">Delete</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_read.html">Read</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_search.html">Search</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Record Retrieval Guidance</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="retrieval_overview.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_interaction_read.html">Read Interaction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_consumer_guidance.html">Consumer Guidance</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_provider_guidance.html">Provider Guidance</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_formats.html">Formats</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            
+            <li><a href="explore_reference.html">FHIR Profile Reference</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="explore_fhir_open_source_guidance.html">FHIR Open-Source Resources</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Integrate With Spine</a>
+        <ul>
+            
+            
+            
+            <li><a href="integration_authentication_authorisation.html">Authentication &amp; Authorisation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="explore_rbac_mapping.html">Access Control</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="development_api_security_guidance.html">Security</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="integration_access_tokens_JWT.html">Access Tokens (JWT)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="integration_auditing.html">Auditing</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="integration_personal_demographics_service.html">Personal Demographics Service</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+        
+            <li><a href="/assure.html">Assure</a></li>
+        
+    
+        
+    
+    <li>
+        <a href="#">Help &amp; Support</a>
+        <ul>
+            
+            
+            
+            <li><a href="support_faq.html">Frequently Asked Questions (FAQ)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="support_communications.html">Communication Channels</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+        
+            <li><a href="/tags.html">Tags</a></li>
+        
+    
+        
+    
+        
+            <li><a href="/overview_glossary.html">Glossary</a></li>
+        
+    
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    <!--</li>-->
+</ul>
+<!--</div>-->
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            
+
+<div class="post-header">
+   <h1 class="post-title-main">Release Notes</h1>
+</div>
+
+<script>
+    $(function() {
+        $('a[href^="http://"], a[href^="https://"]')
+            .attr('target', '_blank') // open all external links in new tab
+            .attr('rel', 'noopener noreferrer'); // https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/
+    });
+</script>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Summary release notes of the versions released in NRL API Implementation Guide</div>
+   
+
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+<!-- removed h3 and h4 from toc KGM 10/JULY/2017 -->
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+  <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop with the National Record Locator API. This project is being developed using an agile methodology, so iterative updates to content will be added on a regular basis.</div>
+
+  <div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Starting from release 2.0.0-beta, all items are considered “general changes” unless otherwise stated.</div>
+
+<h2 id="230-beta">2.3.0-beta</h2>
+
+<ul>
+  <li>Add clarification about use of <code class="highlighter-rouge">versionId</code> to <a href="api_interaction_supersede.html">Supersede interaction page</a></li>
+  <li>Update ODS code and endpoint requirements guidance</li>
+  <li>Remove SSP prefix from example <code class="highlighter-rouge">DocumentReference</code>s</li>
+  <li>Update guidance on constructing SSP URLs and percent-encoding for document retrieval</li>
+  <li>Add clarification about cardinality in JSON</li>
+  <li>Add notes about <code class="highlighter-rouge">CodeableConcept</code> data type</li>
+  <li>Updated glossary of terms</li>
+  <li>Update tags and enable filtering by tag name</li>
+  <li>Remove obsolete pages</li>
+  <li>Miscellaneous copy-edits and minor restructuring</li>
+</ul>
+
+<h2 id="220-beta">2.2.0-beta</h2>
+<ul>
+  <li>Renamed metadata ‘Record class’ to ‘Record category’</li>
+  <li>Updated guidance on request headers for the retrieval read interaction</li>
+  <li>Updated guidance on use of CareConnect GET Binary API for unstructured retrieval</li>
+  <li>Added guidance on pointer model versioning</li>
+  <li>Updated guidance on Consumer and Provider interactions on:
+    <ul>
+      <li>Solution behaviour page</li>
+      <li>Solution interactions page</li>
+      <li>Development guidance overview page</li>
+    </ul>
+  </li>
+  <li>Updated solution principles</li>
+  <li>Added detail on access control and RBAC codes</li>
+  <li>Changed the interaction ID that must be used:
+    <ul>
+      <li>for registering Provider document/record retrieval endpoints on SDS</li>
+      <li>for when Consumers perform a look-up of a Provider ASID on SDS</li>
+    </ul>
+  </li>
+  <li>Added clarification on using absolute URLs in the Record URL metadata attribute</li>
+</ul>
+
+<h2 id="211-beta">2.1.1-beta</h2>
+<ul>
+  <li>Updated guidance on usage of SNOMED CT concepts in FHIR value sets</li>
+  <li>API interaction examples updated</li>
+</ul>
+
+<h2 id="210-beta">2.1.0-beta</h2>
+<p><em>Changes to record/document retrieval requirements and updated guidance</em></p>
+<ul>
+  <li><em class="label label-danger">API Breaking Change</em> The custodian search parameter format has been updated</li>
+  <li><em class="label label-danger">API Breaking Change</em> The supported formats for retrieval have been updated</li>
+  <li><em class="label label-danger">API Breaking Change</em> The inclusion of the <code class="highlighter-rouge">meta.profile</code> element on the create and supersede interactions are now enforced</li>
+  <li>Consumer guidance on assembling SSP request updated</li>
+  <li>Updated JWT requirements for document/record retrieval via the SSP</li>
+  <li>Change to interaction ID for record retrieval via the SSP</li>
+  <li>Restructuring of record retrieval read interaction guidance</li>
+  <li>Added definition of FHIR <code class="highlighter-rouge">meta</code> attributes to the data model</li>
+  <li>Added clarity to the rules on the use of PATCH</li>
+  <li>Added clarity to the use of reference type metadata attributes</li>
+  <li>Added clarity on the use of NHS Number with subject/patient</li>
+  <li>API interaction examples updated</li>
+  <li>Guidance on prerequisites added to API interactions</li>
+  <li>Audit requirements elaborated</li>
+  <li>Phase 1 and Phase 2 overview updated</li>
+</ul>
+
+<h2 id="200-beta">2.0.0-beta</h2>
+<p><em>Changes to record/document retrieval requirements, new API interactions, NRL DocumentReference model changes, and updated guidance.</em></p>
+<ul>
+  <li>The service name has changed from NRLS (National Record Locator Service) to NRL (National Record Locator)</li>
+  <li><em class="label label-danger">API Breaking Change</em> The FHIR Resource NRLS-DocumentReference-1 uplifted to NRL-DocumentReference-1
+    <ul>
+      <li>Data model changes are detailed below</li>
+    </ul>
+  </li>
+  <li><em class="label label-danger">API Breaking Change</em> Data model changes
+    <ul>
+      <li><code class="highlighter-rouge">Class</code>: now mandatory and persisted by NRL</li>
+      <li><code class="highlighter-rouge">Type</code>: ValueSet URL changed from NRLS-RecordType-1 to NRL-RecordType-1</li>
+      <li><code class="highlighter-rouge">Context</code>: now mandatory</li>
+      <li><code class="highlighter-rouge">Context.PracticeSetting</code>: now mandatory and persisted by NRL</li>
+      <li><code class="highlighter-rouge">Context.Period</code>: now persisted by NRL</li>
+      <li><code class="highlighter-rouge">Content.Format</code>: now mandatory and persisted by NRL</li>
+      <li><code class="highlighter-rouge">Content</code>: has new mandatory extension of ContentStability (NRL-ContentStability-1)</li>
+      <li><code class="highlighter-rouge">RelatesTo</code>: now limited to max of 1</li>
+      <li><code class="highlighter-rouge">RelatesTo.Code</code>: now limited to single code of ‘replaces’</li>
+    </ul>
+  </li>
+  <li>FHIR Resource examples (JSON/XML)
+    <ul>
+      <li>Source of FHIR Resource examples has been changed</li>
+      <li>FHIR Resource examples are now contained in a shorter scrollable code block</li>
+    </ul>
+  </li>
+  <li>Assurance page
+    <ul>
+      <li>References to TOM have been changed to SCAL</li>
+      <li>Links to the on-boarding guide have been added</li>
+    </ul>
+  </li>
+  <li>Developer Guidance
+    <ul>
+      <li>Overview page
+        <ul>
+          <li>NHS number verification guidance updated</li>
+          <li>Actor to interaction mapping table updated</li>
+        </ul>
+      </li>
+      <li>FHIR Resource page
+        <ul>
+          <li>Renamed</li>
+          <li>Additional data model properties detailed</li>
+          <li>Additional valuesets, extensions, and codesystems added</li>
+          <li>Master Identifier added to identifiers section</li>
+          <li>The term ‘Record Status’ has changed to ‘Pointer Status’</li>
+        </ul>
+      </li>
+      <li>General API Guidance
+        <ul>
+          <li>Error handling updates:
+            <ul>
+              <li>Invalid resource section re-structured</li>
+              <li>Added detail for the ‘update interaction’ errors</li>
+              <li>Added Patient mismatch errors</li>
+              <li>Added masterIdentifier errors</li>
+              <li>Inactive DocumentReference guidance added</li>
+              <li>New data model error handling details added</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><em class="label label-info">New API Feature</em> Retrieval of Records/Documents Guidance now documented in a new section under Developer Guidance, which includes:
+        <ul>
+          <li>An overview of retrieval</li>
+          <li>Read interaction requirements</li>
+          <li>Provider guidance</li>
+          <li>Consumer guidance</li>
+          <li>Pointer format code guidance</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>API Interactions
+    <ul>
+      <li>Update interaction page has been renamed to ‘Create (Supersede)’
+        <ul>
+          <li><em class="label label-info">New API Feature</em> ‘Supersede’ now supports supersede by logical id</li>
+          <li>Now details additional error responses</li>
+          <li><em class="label label-danger">API Breaking Change</em> A ‘supersede’ with multiple <code class="highlighter-rouge">relatesTo</code> properties will now be rejected</li>
+          <li><em class="label label-danger">API Breaking Change</em> A ‘supersede’ with a <code class="highlighter-rouge">relatesTo</code> property containing a code other than ‘replaces’ will be rejected</li>
+          <li>New ‘Update interaction’ page created, see below</li>
+        </ul>
+      </li>
+      <li><em class="label label-info">New API Feature</em> RESTful ‘read’ by logical id now supported which returns a single DocumentReference resource</li>
+      <li><em class="label label-info">New API Feature</em> RESTful ‘update’ now supported - using the HTTP PATCH verb
+        <ul>
+          <li>HTTP PATCH supports update by logical id and master identifier</li>
+        </ul>
+      </li>
+      <li>Create interaction
+        <ul>
+          <li>Page details additional error responses</li>
+          <li><em class="label label-danger">API Breaking Change</em> Format of Location response header has been changed to [baseUrl]/DocumentReference/[id]</li>
+        </ul>
+      </li>
+      <li>Delete interaction
+        <ul>
+          <li><em class="label label-info">New API Feature</em> Now supports RESTful delete by logical id i.e. DELETE [baseUrl]/DocumentReference/[id]</li>
+          <li>Requirements have been moved into a single section</li>
+        </ul>
+      </li>
+      <li>Search interaction
+        <ul>
+          <li>Now only returns DocumentReference’s that have a ‘status’ of current</li>
+          <li>DocumentReference’s with a format code that indicates the referenced content is to be retrieved via the SSP will have its url property modified to reflect this.</li>
+          <li>These changes also apply to Read Interaction</li>
+          <li>Bundle response now includes additional attributes:
+            <ul>
+              <li><code class="highlighter-rouge">Self link</code> added</li>
+              <li><code class="highlighter-rouge">Search.mode</code> added</li>
+              <li><code class="highlighter-rouge">Resource.fullUrl</code> added</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Integrate with spine
+    <ul>
+      <li>Security page
+        <ul>
+          <li>This page has been moved from Developer guidance to the Integrate with spine section</li>
+          <li>Overview section added</li>
+          <li>Further clarity on which protocols can be used</li>
+          <li>Updated the allowed cipher suite list</li>
+          <li>Guidance added for those that already have a NHS Digital supplied X.509 certificate</li>
+          <li>Guidance document links have been fixed</li>
+        </ul>
+      </li>
+      <li>Access Token and Audit page renamed to Access Token (Audit has moved to its own page)</li>
+      <li>New audit page added</li>
+      <li>PDS Guidance updated</li>
+      <li>Authentication guidance and requirements updated to reflect content retrieval and related service name changes</li>
+    </ul>
+  </li>
+  <li>Pointer Guidance
+    <ul>
+      <li>More clarity on handling errors</li>
+      <li>More clarity on use of the master identifier property</li>
+    </ul>
+  </li>
+  <li>Pointer Lifecycle
+    <ul>
+      <li>Removed reference to transition from “entered-in-error” to current</li>
+      <li>More clarity on meaning of each status</li>
+      <li>More guidance on deleting pointers</li>
+    </ul>
+  </li>
+  <li>Pointer Maintenance
+    <ul>
+      <li>More clarity on what deleting pointers does</li>
+      <li>More clarity on handling lineages</li>
+      <li>Detailed the new ‘update’ and ‘supersede’ interactions</li>
+    </ul>
+  </li>
+  <li>Solution
+    <ul>
+      <li>Data model updated to reflect DocumentReference changes detailed above</li>
+      <li>Clarity around caching data added</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="123-beta">1.2.3-beta</h2>
+<p><em>Changes to restructure the Implementation Guide</em>.</p>
+<ul>
+  <li><code class="highlighter-rouge">versionId</code> will be incremented during a supersede transaction - Create API interaction updated to align with implementation.</li>
+  <li>500 Internal server error HTTP response guidance modified to match Spine Core output - Spine does not return an operation outcome.</li>
+  <li>NRLS-DocumentReference-1 FHIR profile element guidance explicitly supports <code class="highlighter-rouge">relatesTo.target</code> element.</li>
+</ul>
+
+<h2 id="122-beta">1.2.2-beta</h2>
+<p><em>Changes to restructure the Implementation Guide</em>.</p>
+<ul>
+  <li>Introduction of C# example code.</li>
+  <li>Warnings about encoding query parameters.</li>
+  <li>Additional guidance regarding JWT added.</li>
+</ul>
+
+<h2 id="121-beta">1.2.1-beta</h2>
+<p><em>Changes to restructure the Implementation Guide</em>.</p>
+<ul>
+  <li>Wording change for Internal errors.</li>
+  <li>Clearer guidance for pointer transitions (<em>Current to Superseded</em>).</li>
+  <li>Explanation added for the Superseded status.</li>
+  <li>Addition of example for deleting a pointer using masterIdentifier.</li>
+  <li>Pointer error handling and pointer lineage guidance added.</li>
+</ul>
+
+<h2 id="120-beta">1.2.0-beta</h2>
+<p><em>Changes to restructure the Implementation Guide</em>.</p>
+<ul>
+  <li>Additional guidance added to the Data model page.</li>
+  <li>Cardinality corrected for <em>Related Documents</em></li>
+  <li>Added <em>Status</em> to the model.</li>
+  <li>Description updated for the elements.</li>
+  <li>Addition of new <em>API Interaction</em> section to describe the RESTful functionalities (Create, Delete, Search, and Update).</li>
+  <li>API Guidance &gt; Search page</li>
+  <li>Format guidance added for Custodian.</li>
+  <li>Inclusion of the <code class="highlighter-rouge">_summary=count</code> functionality.</li>
+  <li>New Pointer-related pages added a new <em>Development Guidance</em> menu.</li>
+  <li>General API Guidance</li>
+  <li>Error guidance has been restructured to be more informative to the reader.</li>
+  <li>Addition of INTERNAL_SERVER_ERROR and the response format.</li>
+  <li>Exception tables moved from the API Interaction page to the General API Guidance page.</li>
+  <li>Deploy menu option removed</li>
+  <li>Assure menu option removed</li>
+</ul>
+
+<h2 id="110-beta">1.1.0-beta</h2>
+
+<p><em>Changes to re-align the NRL API 1.1.0-beta Specification with the DDC March and May 2018 NRL Service Development Iterations:</em></p>
+
+<ul>
+  <li>Provider and Consumer API Read interaction removed.</li>
+  <li>Provider and Consumer API Search interaction changes:
+    <ul>
+      <li><code class="highlighter-rouge">_count</code> Search parameter removed</li>
+      <li><code class="highlighter-rouge">_id</code> Search parameter added</li>
+      <li><code class="highlighter-rouge">type</code> Search parameter added</li>
+      <li><code class="highlighter-rouge">patient</code> search parameter reverted to <code class="highlighter-rouge">subject</code></li>
+      <li>Bundle type <code class="highlighter-rouge">searchset</code> does not support:
+        <ul>
+          <li>Encoded client search parameters in returned bundle using the <code class="highlighter-rouge">self link</code>.</li>
+          <li>The identity of resources in the entry using the <code class="highlighter-rouge">fullUrl</code> element.</li>
+          <li>Resources matched in a successful search using the <code class="highlighter-rouge">search.mode</code> element</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Provider API Update interaction removed.</li>
+  <li>Provider API Delete interaction changes:
+    <ul>
+      <li>Now supports conditional delete interaction. Allows a provider to delete an existing pointer based on the search parameter <code class="highlighter-rouge">_id</code> which refers to the logical id of the pointer.</li>
+    </ul>
+  </li>
+  <li>Spine response codes changes:
+    <ul>
+      <li>Amended for all Provider and Consumer API interactions</li>
+      <li>Successful Provider Create and Delete interactions now support positive response code values conveyed in the response body <a href="https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1">Spine-OperationOutcome-1</a> payload:
+        <ul>
+          <li>RESOURCE_CREATED</li>
+          <li>RESOURCE_ DELETED</li>
+        </ul>
+      </li>
+      <li>Error Handling section updated to reflect API re-alignment with DDC NRL Service implementation.</li>
+      <li>Exceptions raised by the Spine Core common requesthandler and not the NRL Service will be supported by the default Spine OperationOutcome <a href="https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0">spine-operationoutcome-1-0</a> profile which binds to the default Spine ValueSet <a href="https://fhir.nhs.uk/ValueSet/spine-response-code-1-0">spine-response-code-1-0</a>. Codes include:
+        <ul>
+          <li>UNSUPPORTED_MEDIA_TYPE</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Pagination removed from Provider and Consumer search API.</li>
+  <li>CapabilityStatement conformance functionality removed from this release.</li>
+  <li>For this release the NRL Service returns data as the default format of <code class="highlighter-rouge">XML</code>.</li>
+  <li><a href="https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1">NRLS-DocumentReference-1</a> FHIR profile upversioned to 1.1.0. Changes as follows:
+    <ul>
+      <li><a href="https://fhir.nhs.uk/STU3/ValueSet/NRLS-RecordType-1">ValueSet-NRLS-RecordType-1</a> replaces ValueSet/CarePlanType-1</li>
+      <li>ValueSet-NRLS-RecordType-1 supports a single SNOMED concept:  <code class="highlighter-rouge">736253002 - Mental health crisis plan (record artifact)</code>.</li>
+      <li>All NRLS-DocumentReference-1 API examples updated to support record type: <code class="highlighter-rouge">Mental health crisis plan (record artifact)</code>.</li>
+    </ul>
+  </li>
+  <li><a href="overview_interactions.html">Solution Interactions</a> diagrams updated.</li>
+  <li>NRL access token (JWT) enhancements:
+    <ul>
+      <li>The NRL access token conforms to the Spine <a href="https://nhsconnect.github.io/FHIR-SpineCore/security_jwt.html">JWT</a> definition.</li>
+      <li>New section <a href="integration_access_tokens_JWT.html">Access Tokens and Audit (JWT)</a> added which replaces the Cross Organisation Audit &amp; Provenance section.</li>
+    </ul>
+  </li>
+  <li><a href="assure.html">Assurance Process</a> overview added to specification.</li>
+</ul>
+
+<p><em>Sprint 6 Summary:</em></p>
+
+<ul>
+  <li>Concept of direct and indirect pointers removed from API. Changes to the <a href="overview_data_model.html#data-model">Data Model</a> and the <a href="https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1">NRLS-DocumentReference-1</a> FHIR profile as follows:
+    <ul>
+      <li>RecordRetrievalMode CodeableConcept functionality removed from the <a href="https://fhir.nhs.uk/STU3/StructureDefinition/NRLS-DocumentReference-1">NRLS-DocumentReference-1</a> FHIR profile.</li>
+      <li>The following dependent FHIR assets have been removed from NHS FHIR Server and implementation guide:
+        <ul>
+          <li>Extension-NRLS-RecordRetrievalMode-1</li>
+          <li>ValueSet-NRLS-RecordRetrievalMode-1</li>
+          <li>CodeSystem-NRLS-RecordRetrievalMode-1</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<!--`custodian` search parameter dropped from Consumer API. In turn the combined `patient and custodian` search parameter has also been dropped from Consumer API. See the [Error Handling section](development_general_api_guidance.html#consumer-search-should-return-422-with-error-code-of-invalid_parameter-under-the-following-circumstances) for further guidance.
+- Additional Consumer and Provider API guidance added to [Parameters - INVALID_PARAMETER](development_general_api_guidance.html#parameters---invalid_parameter) Error Handling section.-->
+<ul>
+  <li>Consumer Provider API XML/ JSON examples added</li>
+  <li>HTTP request headers amendments:
+    <ul>
+      <li>Ssp-TraceID, Ssp-InteractionID, Ssp-Version - dropped from specification</li>
+      <li>Ssp-From and Ssp-To - Header name change to <code class="highlighter-rouge">fromASID</code> and <code class="highlighter-rouge">toASID</code></li>
+      <li>Error Handling section reflects these changes</li>
+    </ul>
+  </li>
+  <li>Consumer and Provider API <code class="highlighter-rouge">INVALID_PARAMETER</code> error response code aligned to <code class="highlighter-rouge">400</code> <em>BAD REQUEST</em> HTTP response code.</li>
+</ul>
+
+<h2 id="100-beta">1.0.0-beta</h2>
+
+<p>Sprint 5 summary:</p>
+
+<ul>
+  <li><a href="development_general_api_guidance.html#error-handling">Error Handling</a> section added to ‘General API Guidance’ page.</li>
+  <li>Consumer and Provider API error response examples refined.</li>
+  <li>Provider API Create and Update responses amended.</li>
+  <li>VersionId guidance added.</li>
+  <li>CapabilityStatement page updated.</li>
+  <li><a href="overview_behaviours.html#auditing">Auditing</a> section added to ‘Solution Behaviour’ page.</li>
+  <li>Audit Trail section added to ‘Cross Organization Audit &amp; Provenance’ page.</li>
+  <li>JWT Claims updated:
+    <ul>
+      <li>‘device’ claim added - this is the Identifier (ASID) of the system where the request originates.</li>
+      <li>‘sub’ claim specification/ example has been updated.</li>
+    </ul>
+  </li>
+  <li><a href="integration_authentication_authorisation.html">Authentication and Authorisation</a> page added - NRL strategic approach to align with ‘Care Access Service’ which will become NHS Digital’s national Authentication and Authorisation service.</li>
+  <li>JSON and XML examples added to <a href="explore_reference.html#7-examples">Reference</a> section.</li>
+</ul>
+
+<h2 id="100-alpha">1.0.0-alpha</h2>
+
+<p>Sprint 4 summary:</p>
+
+<ul>
+  <li>Consumer and Provider APIs ‘Success’ Search Response amended to support an empty bundle if search returns no matches.</li>
+  <li>Consumer API Search examples added.</li>
+  <li>Development Guidance section now supports ‘General API Guidance’ page. This includes implementation guide ‘notational conventions’ and RESTful API ‘content types’ sections.</li>
+  <li>The ‘Accept’ HTTP request header conformance amended to ‘MAY’.</li>
+</ul>
+
+<p>Sprint 3 summary:</p>
+
+<ul>
+  <li>Consumer and Provider APIs now support the ‘patient’ Search parameter. This replaces the ‘subject’ parameter.</li>
+  <li>Consumer and Provider APIs Search operations will not mandate the ‘_count’ parameter. It is expected that the NRL Server will support paging as a default to break up result-sets that exceed a pre-determined limit.</li>
+  <li>NRL API Conformance updated.</li>
+</ul>
+
+<p>Sprint 3 early release summary:</p>
+
+<ul>
+  <li>Record retrieval via the SSP will not be mandated.</li>
+</ul>
+
+<p>Sprint 2 summary:</p>
+
+<ul>
+  <li>Read Operation added to Consumer API.</li>
+  <li>Provider and Consumer API search capabilities aligned.</li>
+  <li>Pagination added to Provider and Consumer search API.</li>
+  <li>If-Match header (containing ETag) dropped from Provider API update and delete operations.</li>
+  <li>Security Guidance updated: TLSv1.2 must be supported for all new Spine interfaces and new cyphers added.</li>
+  <li>Implementation Guide semver use updated. No longer using pre-release numeric identifiers.</li>
+</ul>
+
+<p>Sprint 1 ‘internal’ review feedback amendments include:</p>
+
+<ul>
+  <li>References to SDS removed</li>
+  <li>Solution principles changed to reflect that the Provider controls the Record retrieval mechanism strategy</li>
+  <li>NRL will not be fronted by SSP i.e. requests to read/write Pointers will not go through the SSP in order to reach NRL</li>
+</ul>
+
+<p>First release of NRL FHIR API (STU3) via https://nhsconnect.github.io/.</p>
+
+<ul>
+  <li>Project follows the Gov.UK agile delivery phases.</li>
+</ul>
+
+<h2 id="100-experimental">1.0.0-experimental</h2>
+
+<p>First draft of NRL DMS (Version 1.0 Draft A) created to support development of the Spine 2 POC National Record Locator interface.</p>
+
+<p>Published on <a href="https://data.developer.nhs.uk/fhir/nrls-v1-draft-a/Chapter.1.About/index.html">NHS Developer Network</a>.</p>
+
+
+    <div class="tags">
+        
+        <b>Tags: </b>
+        
+        
+        
+        <a href="tags.html?tags=overview" class="btn btn-default navbar-btn cursorNorm" role="button">overview</a>
+        
+        
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+                    <img class="pull-left" src="images/explanatoryline.png" alt="NHS Digital Explanatory Line"/>
+                    <br/>
+                    &copy;2020 NHS Digital<br />
+                     Site last generated: Mar 30, 2020 <br />
+                    6f68aaa672cc33d7cfbcf7b81b91ebc455b910a9<br/>
+                    <br/>
+                    <!-- OGL Licence -->
+                    <div class="open-government-licence">
+                        <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license" class="no_icon"><img src="images/licence/ogl-symbol-41px-retina-black.png"></img></a>
+                        <p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license" class="no_icon">Open Government Licence v3.0</a>, except where otherwise stated</p>
+                    </div>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-99659472-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+ 
+
+
+</body>
+
+</html>

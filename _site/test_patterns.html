@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The Design Patterns / Topology demonstrates and describes how various design patterns can influence access, security, and use of APIs">
+<meta name="keywords" content="testing,  test pattern security">
+<title>Design Patterns / Topology | NRL</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="FHIR-NRLS-API" href="https://developer.nhs.uk/apis/nrl/feed.xml">
+
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html"> <span class="projectTitle"> NRL API | FHIR®</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                
+                
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="Search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Design Patterns / Topology">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12"> </div>
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+
+    <!-- <p style="font-size:2em;">-->
+
+       <!-- <img src="images/interopen.png" height="48px" alt="INTEROpen Logo"/>
+    INTEROPen</p>
+    <p style="font-size:16px;">Supported by -->
+    <img src="images/logo.png" alt="NHS Digital Logo">
+    <!--</p>-->
+
+
+    <li class="sidebarTitle">NRL 2.3.0-beta API <i>specification</i>
+</li>
+    
+    
+    
+    <li>
+        <a href="#">Overview</a>
+        <ul>
+            
+            
+            
+            <li><a href="index.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_guide_versioning.html">Product Versioning</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_release_notes.html">Release Notes</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Solution</a>
+        <ul>
+            
+            
+            
+            <li><a href="overview_concepts.html">Concepts</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_behaviours.html">Behaviour</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_principles.html">Principles</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_data_model.html">Data model</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_interactions.html">Interactions</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">General Guidance</a>
+        <ul>
+            
+            
+            
+            <li><a href="pointer_identity.html">Pointer Identity</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="pointer_errors.html">Pointer Errors</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="pointer_lifecycle.html">Pointer Lifecycle</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="pointer_maintenance.html">Pointer Maintenance</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Development Guidance</a>
+        <ul>
+            
+            
+            
+            <li><a href="explore.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="development_general_api_guidance.html">General API Guidance</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">DocumentReference API Interactions</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="api_interaction_create.html">Create</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_supersede.html">Create (Supersede)</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_update.html">Update</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_delete.html">Delete</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_read.html">Read</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_search.html">Search</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Record Retrieval Guidance</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="retrieval_overview.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_interaction_read.html">Read Interaction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_consumer_guidance.html">Consumer Guidance</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_provider_guidance.html">Provider Guidance</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_formats.html">Formats</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            
+            <li><a href="explore_reference.html">FHIR Profile Reference</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="explore_fhir_open_source_guidance.html">FHIR Open-Source Resources</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Integrate With Spine</a>
+        <ul>
+            
+            
+            
+            <li><a href="integration_authentication_authorisation.html">Authentication &amp; Authorisation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="explore_rbac_mapping.html">Access Control</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="development_api_security_guidance.html">Security</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="integration_access_tokens_JWT.html">Access Tokens (JWT)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="integration_auditing.html">Auditing</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="integration_personal_demographics_service.html">Personal Demographics Service</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+        
+            <li><a href="/assure.html">Assure</a></li>
+        
+    
+        
+    
+    <li>
+        <a href="#">Help &amp; Support</a>
+        <ul>
+            
+            
+            
+            <li><a href="support_faq.html">Frequently Asked Questions (FAQ)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="support_communications.html">Communication Channels</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+        
+            <li><a href="/tags.html">Tags</a></li>
+        
+    
+        
+    
+        
+            <li><a href="/overview_glossary.html">Glossary</a></li>
+        
+    
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    <!--</li>-->
+</ul>
+<!--</div>-->
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            
+
+<div class="post-header">
+   <h1 class="post-title-main">Design Patterns / Topology</h1>
+</div>
+
+<script>
+    $(function() {
+        $('a[href^="http://"], a[href^="https://"]')
+            .attr('target', '_blank') // open all external links in new tab
+            .attr('rel', 'noopener noreferrer'); // https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/
+    });
+</script>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">The Design Patterns / Topology demonstrates and describes how various design patterns can influence access, security, and use of APIs</div>
+   
+
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+<!-- removed h3 and h4 from toc KGM 10/JULY/2017 -->
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+  <div markdown="span" class="alert alert-warning" role="alert">
+<i class="fa fa-warning"></i> <b>Important:</b> This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop with the National Record Locator API. This project is being developed using an agile methodology, so iterative updates to content will be added on a regular basis.</div>
+
+  <div class="alert alert-warning" role="alert">
+<i class="fa fa-warning"></i> <b>Important:</b> All phases outlined below are indicative and subject to on-going review.</div>
+
+<h1 id="patterns-within-testing">Patterns within Testing</h1>
+
+<p>Defining the design pattern (listed below) and your method of testing the pattern is important at this stage.</p>
+
+<ul>
+  <li>Single Shared Application</li>
+  <li>Portal</li>
+  <li>Click Through</li>
+  <li>Store and Notify</li>
+  <li>Broadcast (Point to Point Sharing)</li>
+  <li>Shared Repository</li>
+  <li>Message Broker</li>
+  <li>Registry Repository</li>
+  <li>Publish Subscribe</li>
+</ul>
+
+<p>The same choice of testing your design pattern will need to meet your Assurance and Deploying criteria.</p>
+
+<div class="alert alert-info" role="alert">
+<i class="fa fa-info-circle"></i> <b>Note:</b> Provided as an overview</div>
+
+<h1 id="api-considerations">API Considerations</h1>
+
+<p>Other API consideration are shown below. Please click on the parts of the API process to continue your API creation journey.</p>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="70%" viewbox="0 0 293 330" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>provide_api</title>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Provide" transform="translate(-780.000000, -467.000000)">
+            <g id="provide_api" transform="translate(780.000000, 467.000000)">
+                <rect id="Rectangle-8" stroke="#9BA9C2" fill="#B2C1DB" x="0" y="301.027696" width="293" height="28.0183"></rect>
+                <path d="M217,323 L283,323 L283,308 L217,308 L217,323 Z" id="Fill-7" fill="#c3c6ca"></path>
+                <text id="Local-decision" font-family="HelveticaNeue, Helvetica Neue" font-size="8" font-weight="normal" letter-spacing="0.351999998" fill="#000000">
+                    <tspan x="221" y="318">Local decision</tspan>
+                </text>
+                <path d="M127,323 L183,323 L183,308 L127,308 L127,323 Z" id="Fill-11" fill="#FFFFFF"></path>
+                <text id="Referenced" font-family="HelveticaNeue, Helvetica Neue" font-size="8" font-weight="normal" letter-spacing="0.0120000001" fill="#000000">
+                    <tspan x="131" y="318">Explained</tspan>
+                </text>
+                <path d="M51,323 L98.0734,323 L98.0734,308 L51,308 L51,323 Z" id="Fill-13" stroke="#9B9B9B" stroke-width="0.5" fill="#DFF0D8"></path>
+                <text id="Explained" font-family="HelveticaNeue, Helvetica Neue" font-size="8" font-weight="normal" letter-spacing="-0.00879999995" fill="#000000">
+                    <tspan x="55" y="318">Provided</tspan>
+                </text>
+                <text id="Key:" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="11" font-weight="bold" letter-spacing="-0.0306000002" fill="#000000">
+                    <tspan x="4" y="319">Key:</tspan>
+                </text>
+                <path d="M77.0537,46.7269 C97.3845,31.9556 121.8698,23.9999 147.0001,23.9999 L147,30.5403 C123.2509,30.5403 100.1113,38.0588 80.8979,52.0182 L77.0537,46.7269 Z" id="Fill-15" fill="#B2C1DB"></path>
+                <path d="M33.8243,106.2269 C41.59,82.3265 56.7227,61.4981 77.0536,46.7269 L80.8977,52.0181 C61.6843,65.9775 47.3833,85.6611 40.0444,108.2479 L33.8243,106.2269 Z" id="Fill-16" fill="#B2C1DB"></path>
+                <path d="M33.8243,179.7731 C26.0586,155.8728 26.0586,130.1275 33.8243,106.2271 L40.0444,108.2479 C32.7056,130.8347 32.7056,155.1651 40.0444,177.7519 L33.8243,179.7731 Z" id="Fill-17" fill="#B2C1DB"></path>
+                <path d="M77.0537,239.27313 C56.7228,224.50189 41.5901,203.67351 33.8244,179.7731 L40.0444,177.7521 C47.3833,200.33884 61.6844,220.0225 80.8978,233.98191 L77.0537,239.27313 Z" id="Fill-18" fill="#B2C1DB"></path>
+                <path d="M147,262 C121.8697,262 97.3844,254.04427 77.0536,239.27303 L80.8977,233.98191 C100.1112,247.9413 123.2507,255.45981 146.9999,255.45981 L147,262 Z" id="Fill-19" fill="#B2C1DB"></path>
+                <path d="M216.9464,239.27313 C196.6155,254.04439 172.1302,262.00012 146.9999,262.00012 L147,255.45969 C170.7491,255.45969 193.8887,247.9412 213.1021,233.9818 L216.9464,239.27313 Z" id="Fill-20" fill="#B2C1DB"></path>
+                <path d="M260.1757,179.7731 C252.41,203.67351 237.2773,224.50189 216.9464,239.27313 L213.1023,233.98191 C232.3157,220.0225 246.6167,200.33884 253.9556,177.7521 L260.1757,179.7731 Z" id="Fill-21" fill="#B2C1DB"></path>
+                <path d="M260.1757,106.2269 C267.9414,130.1272 267.9414,155.8726 260.1757,179.7729 L253.9556,177.7521 C261.2944,155.1653 261.2944,130.8349 253.9556,108.2482 L260.1757,106.2269 Z" id="Fill-22" fill="#B2C1DB"></path>
+                <path d="M216.9464,46.7269 C237.2772,61.4981 252.4099,82.3265 260.1756,106.2269 L253.9556,108.2479 C246.6167,85.6611 232.3156,65.9775 213.1022,52.0181 L216.9464,46.7269 Z" id="Fill-23" fill="#B2C1DB"></path>
+                <path d="M147,24 C172.1303,24 196.6156,31.9557 216.9465,46.727 L213.1023,52.0181 C193.8888,38.0587 170.7493,30.5402 147.0001,30.5402 L147,24 Z" id="Fill-24" fill="#B2C1DB"></path>
+                <path d="M97,143 C97,115.3858 119.3858,93 147,93 C174.6142,93 197,115.3858 197,143 C197,170.6142 174.6142,193 147,193 C119.3858,193 97,170.6142 97,143 L97,143 Z" id="Fill-25" stroke="#9B9B9B" fill="#FFFFFF"></path>
+                <path d="M97,143.000002 C97,115.385757 119.385757,93 147.000002,93 C174.614231,93 197.000003,115.385757 197.000003,143.000002 C197.000003,170.614239 174.614231,193.000003 147.000002,193.000003 C119.385757,193.000003 97,170.614239 97,143.000002 L97,143.000002 Z" id="Stroke-26" stroke="#4774AB" stroke-width="25400" stroke-linejoin="round"></path>
+                <text id="API" font-family="HelveticaNeue, Helvetica Neue" font-size="36" font-weight="normal" letter-spacing="-0.0091" fill="#000000">
+                    <tspan x="117" y="156">API</tspan>
+                </text>
+                <a xlink:href="../FHIR-NRLS-API/design_security.html" target="_top">
+                    <path d="M122,26 C122,11.6406 133.4167,0 147.5,0 C161.5833,0 173,11.6406 173,26 C173,40.3594 161.5833,52 147.5,52 C133.4167,52 122,40.3594 122,26 L122,26 Z" id="Fill-27" stroke="#9B9B9B" fill="#FFFFFF" class="s_link"></path>
+                    <path d="M122,26.0000008 C122,11.6405909 133.416733,0 147.500001,0 C161.583253,0 173.000002,11.6405909 173.000002,26.0000008 C173.000002,40.3594029 161.583253,52.0000017 147.500001,52.0000017 C133.416733,52.0000017 122,40.3594029 122,26.0000008 L122,26.0000008 Z" id="Stroke-28" stroke="#4774AB" stroke-width="25400" stroke-linejoin="round"></path>
+                    <text id="Security" font-family="HelveticaNeue, Helvetica Neue" font-size="8" font-weight="normal" letter-spacing="-0.023" fill="#000000">
+                        <tspan x="132.8285" y="27.3128537">Security</tspan>
+                    </text>
+                </a>
+                <path d="M190,48.5 C190,34.4167 201.6406,23 216,23 C230.3594,23 242,34.4167 242,48.5 C242,62.5833 230.3594,74 216,74 C201.6406,74 190,62.5833 190,48.5 L190,48.5 Z" id="Fill-29" stroke="#9B9B9B" fill="#c3c6ca"></path>
+                <path d="M190,48.5000008 C190,34.4167326 201.640591,23 216.000001,23 C230.359403,23 242.000002,34.4167326 242.000002,48.5000008 C242.000002,62.5832532 230.359403,74.0000016 216.000001,74.0000016 C201.640591,74.0000016 190,62.5832532 190,48.5000008 L190,48.5000008 Z" id="Stroke-30" stroke="#4774AB" stroke-width="25400" stroke-linejoin="round"></path>
+                <text id="Transform" font-family="HelveticaNeue, Helvetica Neue" font-size="8" font-weight="normal" letter-spacing="-0.0026" fill="#000000">
+                    <tspan x="197.5392" y="49.374047">Transform</tspan>
+                </text>
+                <path d="M233,106.5 C233,92.4167 244.4167,81 258.5,81 C272.5833,81 284,92.4167 284,106.5 C284,120.5833 272.5833,132 258.5,132 C244.4167,132 233,120.5833 233,106.5 L233,106.5 Z" id="Fill-31" stroke="#9B9B9B" fill="#c3c6ca"></path>
+                <path d="M233,106.500001 C233,92.4167326 244.416748,81 258.500001,81 C272.583253,81 284.000002,92.4167326 284.000002,106.500001 C284.000002,120.583253 272.583253,132.000002 258.500001,132.000002 C244.416748,132.000002 233,120.583253 233,106.500001 L233,106.500001 Z" id="Stroke-32" stroke="#4774AB" stroke-width="25400" stroke-linejoin="round"></path>
+                <text id="Traffic-" font-family="HelveticaNeue, Helvetica Neue" font-size="8" font-weight="normal" letter-spacing="0.051" fill="#000000">
+                    <tspan x="247.1707" y="103.912754">Traffic</tspan>
+                </text>
+                <text id="Manage" font-family="HelveticaNeue, Helvetica Neue" font-size="8" font-weight="normal" letter-spacing="0.004" fill="#000000">
+                    <tspan x="235.1707" y="111.912754">Management</tspan>
+                </text>
+                <a xlink:href="../FHIR-NRLS-API/explore_cc_versioning.html" target="_top">
+                    <path d="M233,179.5 C233,165.4167 244.4167,154 258.5,154 C272.5833,154 284,165.4167 284,179.5 C284,193.58326 272.5833,205 258.5,205 C244.4167,205 233,193.58326 233,179.5 L233,179.5 Z" id="Fill-33" stroke="#9B9B9B" fill="#DFF0D8 " class="s_link"></path>
+                    <path d="M233,179.500001 C233,165.416741 244.416748,154 258.500001,154 C272.583253,154 284.000002,165.416741 284.000002,179.500001 C284.000002,193.583261 272.583253,205.000002 258.500001,205.000002 C244.416748,205.000002 233,193.583261 233,179.500001 L233,179.500001 Z" id="Stroke-34" stroke="#4774AB" stroke-width="25400" stroke-linejoin="round"></path>
+                    <text id="Version" font-family="HelveticaNeue, Helvetica Neue" font-size="8" font-weight="normal" letter-spacing="0.112" fill="#000000">
+                        <tspan x="240.1707" y="182.267254">Versioning</tspan>
+                    </text>
+                </a>
+                <a xlink:href="../FHIR-NRLS-API/engage.html" target="_top">
+                    <path d="M190,237.5 C190,223.41674 201.6406,212 216,212 C230.3594,212 242,223.41674 242,237.5 C242,251.58326 230.3594,263 216,263 C201.6406,263 190,251.58326 190,237.5 L190,237.5 Z" id="Fill-35" stroke="#9B9B9B" fill="#DFF0D8 " class="s_link"></path>
+                    <path d="M32,315.5 C32,311.357865 35.3578654,308 39.5,308 C43.6421346,308 47,311.357865 47,315.5 C47,319.642135 43.6421346,323 39.5,323 C35.3578654,323 32,319.642135 32,315.5 L32,315.5 Z" id="Fill-35" stroke="#9B9B9B" stroke-width="0.5" fill="#DFF0D8 "></path>
+                    <path d="M190,237.500001 C190,223.416741 201.640591,212 216.000001,212 C230.359403,212 242.000002,223.416741 242.000002,237.500001 C242.000002,251.583261 230.359403,263.000002 216.000001,263.000002 C201.640591,263.000002 190,251.583261 190,237.500001 L190,237.500001 Z" id="Stroke-36" stroke="#4774AB" stroke-width="25400" stroke-linejoin="round"></path>
+                    <text id="Engage" font-family="HelveticaNeue, Helvetica Neue" font-size="8" font-weight="normal" letter-spacing="0.014" fill="#000000">
+                        <tspan x="202.6393" y="239.098434">Engage</tspan>
+                    </text>
+                </a>
+                <a xlink:href="../FHIR-NRLS-API/explore.html" target="_top">
+                    <path d="M122,260 C122,245.64059 133.4167,234 147.5,234 C161.5833,234 173,245.64059 173,260 C173,274.3594 161.5833,286 147.5,286 C133.4167,286 122,274.3594 122,260 L122,260 Z" id="Fill-37" stroke="#9B9B9B" fill="#DFF0D8 " class="s_link"></path>
+                    <path d="M122,260.000001 C122,245.640591 133.416733,234 147.500001,234 C161.583253,234 173.000002,245.640591 173.000002,260.000001 C173.000002,274.359403 161.583253,286.000002 147.500001,286.000002 C133.416733,286.000002 122,274.359403 122,260.000001 L122,260.000001 Z" id="Stroke-38" stroke="#4774AB" stroke-width="25400" stroke-linejoin="round"></path>
+                    <text id="API-Docs" font-family="HelveticaNeue, Helvetica Neue" font-size="8" font-weight="normal" letter-spacing="-0.023" fill="#000000">
+                        <tspan x="129.826" y="261.457184">API Docs</tspan>
+                    </text>
+                </a>
+                <path d="M53,237.5 C53,223.41674 64.4167,212 78.5,212 C92.5833,212 104,223.41674 104,237.5 C104,251.58326 92.5833,263 78.5,263 C64.4167,263 53,251.58326 53,237.5 L53,237.5 Z" id="Fill-39" stroke="#9B9B9B" fill="#c3c6ca"></path>
+                <path d="M198,315.5 C198,311.357865 201.357853,308 205.5,308 C209.642147,308 213,311.357865 213,315.5 C213,319.642135 209.642147,323 205.5,323 C201.357853,323 198,319.642135 198,315.5 L198,315.5 Z" id="Fill-39" fill="#c3c6ca"></path>
+                <path d="M53,237.500001 C53,223.416741 64.4167326,212 78.5000008,212 C92.5832532,212 104.000002,223.416741 104.000002,237.500001 C104.000002,251.583261 92.5832532,263.000002 78.5000008,263.000002 C64.4167326,263.000002 53,251.583261 53,237.500001 L53,237.500001 Z" id="Stroke-40" stroke="#4774AB" stroke-width="25400" stroke-linejoin="round"></path>
+                <text id="Report-&amp;-" font-family="HelveticaNeue, Helvetica Neue" font-size="8" font-weight="normal" letter-spacing="-0.06" fill="#000000">
+                    <tspan x="62.0127" y="236.803434">Report &amp;</tspan>
+                </text>
+                <text id="Monitor" font-family="HelveticaNeue, Helvetica Neue" font-size="8" font-weight="normal" letter-spacing="0.004" fill="#000000">
+                    <tspan x="64.0127" y="245.803434">Monitor</tspan>
+                </text>
+                <a xlink:href="../FHIR-NRLS-API/design_patterns.html" target="_top">
+                    <path d="M10,179.5 C10,165.4167 21.4167,154 35.5,154 C49.5833,154 61,165.4167 61,179.5 C61,193.58326 49.5833,205 35.5,205 C21.4167,205 10,193.58326 10,179.5 L10,179.5 Z" id="Fill-41" stroke="#9B9B9B" fill="#FFFFFF" class="s_link"></path>
+                    <path d="M108,315.5 C108,311.357853 111.357853,308 115.5,308 C119.642147,308 123,311.357853 123,315.5 C123,319.642135 119.642147,323 115.5,323 C111.357853,323 108,319.642135 108,315.5 L108,315.5 Z" id="Fill-41" fill="#FFFFFF"></path>
+                    <path d="M10,179.500001 C10,165.416741 21.4167405,154 35.5000008,154 C49.5832532,154 61.0000016,165.416741 61.0000016,179.500001 C61.0000016,193.583261 49.5832532,205.000002 35.5000008,205.000002 C21.4167405,205.000002 10,193.583261 10,179.500001 L10,179.500001 Z" id="Stroke-42" stroke="#4774AB" stroke-width="25400" stroke-linejoin="round"></path>
+                    <text id="Topology-" font-family="HelveticaNeue, Helvetica Neue" font-size="8" font-weight="normal" letter-spacing="0.408" fill="#000000">
+                        <tspan x="18.4837" y="175.972354">Patterns</tspan>
+                    </text>
+                    <text id="Patterns" font-family="HelveticaNeue, Helvetica Neue" font-size="8" font-weight="normal" letter-spacing="-0.023" fill="#000000">
+                        <tspan x="18.4837" y="185.972304">/ Topology</tspan>
+                    </text>
+                </a>
+                <a xlink:href="../FHIR-NRLS-API/design_access.html" target="_top">
+                    <path d="M10,106.5 C10,92.4167 21.4167,81 35.5,81 C49.5833,81 61,92.4167 61,106.5 C61,120.5833 49.5833,132 35.5,132 C21.4167,132 10,120.5833 10,106.5 L10,106.5 Z" id="Fill-43" stroke="#9B9B9B" fill="#FFFFFF" class="s_link"></path>
+                    <path d="M10,106.500001 C10,92.4167326 21.4167405,81 35.5000008,81 C49.5832532,81 61.0000016,92.4167326 61.0000016,106.500001 C61.0000016,120.583253 49.5832532,132.000002 35.5000008,132.000002 C21.4167405,132.000002 10,120.583253 10,106.500001 L10,106.500001 Z" id="Stroke-44" stroke="#4774AB" stroke-width="25400" stroke-linejoin="round"></path>
+                    <text id="Access" font-family="HelveticaNeue, Helvetica Neue" font-size="8" font-weight="normal" letter-spacing="-0.184" fill="#000000">
+                        <tspan x="23.4837" y="108.207754">Access</tspan>
+                    </text>
+                </a>
+                <path d="M53,48.5 C53,34.4167 64.4167,23 78.5,23 C92.5833,23 104,34.4167 104,48.5 C104,62.5833 92.5833,74 78.5,74 C64.4167,74 53,62.5833 53,48.5 L53,48.5 Z" id="Fill-45" stroke="#9B9B9B" fill="#c3c6ca"></path>
+                <path d="M53,48.5000008 C53,34.4167326 64.4167326,23 78.5000008,23 C92.5832532,23 104.000002,34.4167326 104.000002,48.5000008 C104.000002,62.5832532 92.5832532,74.0000016 78.5000008,74.0000016 C64.4167326,74.0000016 53,62.5832532 53,48.5000008 L53,48.5000008 Z" id="Stroke-46" stroke="#4774AB" stroke-width="25400" stroke-linejoin="round"></path>
+                <text id="Endpoint" font-family="HelveticaNeue, Helvetica Neue" font-size="8" font-weight="normal" letter-spacing="0.014" fill="#000000">
+                    <tspan x="62.0152" y="49.6715537">Endpoint</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
+
+<div class="alert contribute contribute-warning" role="alert">
+<i class="fa fa-warning"></i> <b>Contribute:</b> Get involved and contribute to the above API considerations by contacting <a href="mailto:interoperabilityteam@nhs.net">interoperabilityteam@nhs.net</a>.</div>
+
+
+    <div class="tags">
+        
+        <b>Tags: </b>
+        
+        
+        
+        <a href="tags.html?tags=testing" class="btn btn-default navbar-btn cursorNorm" role="button">testing</a>
+        
+        
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded">
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+                    <img class="pull-left" src="images/explanatoryline.png" alt="NHS Digital Explanatory Line">
+                    <br>
+                    ©2020 NHS Digital<br>
+                     Site last generated: Mar 30, 2020 <br>
+                    6f68aaa672cc33d7cfbcf7b81b91ebc455b910a9<br>
+                    <br>
+                    <!-- OGL Licence -->
+                    <div class="open-government-licence">
+                        <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license" class="no_icon"><img src="images/licence/ogl-symbol-41px-retina-black.png"></a>
+                        <p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license" class="no_icon">Open Government Licence v3.0</a>, except where otherwise stated</p>
+                    </div>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-99659472-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+ 
+
+
+</body>
+
+</html>

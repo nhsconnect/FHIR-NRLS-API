@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Solution Data Model">
+<meta name="keywords" content="overview,  engage about">
+<title>Solution Data Model | NRL</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="FHIR-NRLS-API" href="https://developer.nhs.uk/apis/nrl/feed.xml">
+
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> NRL API | FHIR&reg;</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                
+                
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="Search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="Solution Data Model">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+
+    <!-- <p style="font-size:2em;">-->
+
+       <!-- <img src="images/interopen.png" height="48px" alt="INTEROpen Logo"/>
+    INTEROPen</p>
+    <p style="font-size:16px;">Supported by -->
+    <img src="images/logo.png"   alt="NHS Digital Logo"/>
+    <!--</p>-->
+
+
+    <li class="sidebarTitle">NRL 2.3.0-beta API <i>specification</i></li>
+    
+    
+    
+    <li>
+        <a href="#">Overview</a>
+        <ul>
+            
+            
+            
+            <li><a href="index.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_guide_versioning.html">Product Versioning</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_release_notes.html">Release Notes</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Solution</a>
+        <ul>
+            
+            
+            
+            <li><a href="overview_concepts.html">Concepts</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_behaviours.html">Behaviour</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_principles.html">Principles</a></li>
+            
+            
+            
+            
+            
+            
+            <li class="active"><a href="overview_data_model.html">Data model</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_interactions.html">Interactions</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">General Guidance</a>
+        <ul>
+            
+            
+            
+            <li><a href="pointer_identity.html">Pointer Identity</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="pointer_errors.html">Pointer Errors</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="pointer_lifecycle.html">Pointer Lifecycle</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="pointer_maintenance.html">Pointer Maintenance</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Development Guidance</a>
+        <ul>
+            
+            
+            
+            <li><a href="explore.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="development_general_api_guidance.html">General API Guidance</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">DocumentReference API Interactions</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="api_interaction_create.html">Create</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_supersede.html">Create (Supersede)</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_update.html">Update</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_delete.html">Delete</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_read.html">Read</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_search.html">Search</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Record Retrieval Guidance</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="retrieval_overview.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_interaction_read.html">Read Interaction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_consumer_guidance.html">Consumer Guidance</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_provider_guidance.html">Provider Guidance</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_formats.html">Formats</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            
+            <li><a href="explore_reference.html">FHIR Profile Reference</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="explore_fhir_open_source_guidance.html">FHIR Open-Source Resources</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Integrate With Spine</a>
+        <ul>
+            
+            
+            
+            <li><a href="integration_authentication_authorisation.html">Authentication &amp; Authorisation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="explore_rbac_mapping.html">Access Control</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="development_api_security_guidance.html">Security</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="integration_access_tokens_JWT.html">Access Tokens (JWT)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="integration_auditing.html">Auditing</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="integration_personal_demographics_service.html">Personal Demographics Service</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+        
+            <li><a href="/assure.html">Assure</a></li>
+        
+    
+        
+    
+    <li>
+        <a href="#">Help &amp; Support</a>
+        <ul>
+            
+            
+            
+            <li><a href="support_faq.html">Frequently Asked Questions (FAQ)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="support_communications.html">Communication Channels</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+        
+            <li><a href="/tags.html">Tags</a></li>
+        
+    
+        
+    
+        
+            <li><a href="/overview_glossary.html">Glossary</a></li>
+        
+    
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    <!--</li>-->
+</ul>
+<!--</div>-->
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            
+
+<div class="post-header">
+   <h1 class="post-title-main">Solution Data Model</h1>
+</div>
+
+<script>
+    $(function() {
+        $('a[href^="http://"], a[href^="https://"]')
+            .attr('target', '_blank') // open all external links in new tab
+            .attr('rel', 'noopener noreferrer'); // https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/
+    });
+</script>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Solution Data Model</div>
+   
+
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+<!-- removed h3 and h4 from toc KGM 10/JULY/2017 -->
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+  <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop with the National Record Locator API. This project is being developed using an agile methodology, so iterative updates to content will be added on a regular basis.</div>
+
+  <h2 id="data-model">Data Model</h2>
+
+<p>In order to support the Consumer and Provider interactions with the NRL, a data model is provided for the Pointer. The data model is purposefully lean, each property has a clear reason to exist, and it directly supports the activities of Consumers and Providers.</p>
+
+<p>You can explore an in-depth view of the lean data model and the full NRL DocumentReference profile in the <a href="explore_reference.html">FHIR Resources and References section</a>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Cardinality</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="pointer_identity.html">Identifier</a></td>
+      <td>0..1</td>
+      <td>Assigned by the NRL at creation time. Uniquely identifies this record within the NRL. Used by Providers to update or delete.</td>
+    </tr>
+    <tr>
+      <td>Profile</td>
+      <td>0..1</td>
+      <td>The URI of the FHIR profile that the resource conforms to. Indicates the version of the pointer model.</td>
+    </tr>
+    <tr>
+      <td>Pointer version</td>
+      <td>0..1</td>
+      <td>Assigned by the NRL at creation or update time. Used to track the current version of a Pointer.</td>
+    </tr>
+    <tr>
+      <td>Pointer last updated datetime</td>
+      <td>0..1</td>
+      <td>Assigned by the NRL at creation and update time. The date and time that the pointer was last updated.</td>
+    </tr>
+    <tr>
+      <td>Pointer indexed datetime</td>
+      <td>0..1</td>
+      <td>Assigned by the NRL at creation time. The date and time that the pointer was created.</td>
+    </tr>
+    <tr>
+      <td><a href="pointer_identity.html">Master Identifier</a></td>
+      <td>0..1</td>
+      <td>An optional identifier of the document as assigned by the Provider. It is version specific — a new master identifier is required if the document is updated.</td>
+    </tr>
+    <tr>
+      <td><a href="pointer_lifecycle.html">Pointer Status</a></td>
+      <td>1..1</td>
+      <td>The status of the pointer</td>
+    </tr>
+    <tr>
+      <td>Patient</td>
+      <td>1..1</td>
+      <td>The NHS number of the patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.</td>
+    </tr>
+    <tr>
+      <td>Pointer owner</td>
+      <td>1..1</td>
+      <td>The entity that maintains the Pointer. Used to control which systems can modify the Pointer.</td>
+    </tr>
+    <tr>
+      <td>Record owner</td>
+      <td>1..1</td>
+      <td>The entity that maintains the Record. Used to provide the Consumer with context around who they will be interacting with if retrieving the Record.</td>
+    </tr>
+    <tr>
+      <td>Record category</td>
+      <td>1..1</td>
+      <td>A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set.</td>
+    </tr>
+    <tr>
+      <td>Record type</td>
+      <td>1..1</td>
+      <td>The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers. The clinical type will be one of a controlled set. It will not be possible to create a pointer with a type that does not exist within this controlled set.</td>
+    </tr>
+    <tr>
+      <td>Record creation clinical setting</td>
+      <td>1..1</td>
+      <td>Describes the clinical setting in which the content was created.</td>
+    </tr>
+    <tr>
+      <td>Period of care</td>
+      <td>0..1</td>
+      <td>Details the period in which the documented care is relevant.</td>
+    </tr>
+    <tr>
+      <td>Pointer reference</td>
+      <td>1..*</td>
+      <td>Information about the record referenced</td>
+    </tr>
+    <tr>
+      <td>Record creation datetime</td>
+      <td>0..1</td>
+      <td>The date and time (on the Provider’s system) that the record was created, for static records.</td>
+    </tr>
+    <tr>
+      <td>Record URL</td>
+      <td>1..1</td>
+      <td>Absolute URL for the location of the record on the Provider’s system</td>
+    </tr>
+    <tr>
+      <td>Record format</td>
+      <td>1..1</td>
+      <td>Describes the technical structure and rules of the record such that the Consumer can pick an appropriate mechanism to handle the record.</td>
+    </tr>
+    <tr>
+      <td>Record MIME type</td>
+      <td>1..1</td>
+      <td>Describes the type of data such that the Consumer can pick an appropriate mechanism to handle the record.</td>
+    </tr>
+    <tr>
+      <td>Record stability</td>
+      <td>1..1</td>
+      <td>Describes whether the record content at the time of the request is dynamically generated or is static.</td>
+    </tr>
+    <tr>
+      <td><a href="pointer_maintenance.html">Related Documents</a></td>
+      <td>0..1</td>
+      <td>Relationship to another pointer</td>
+    </tr>
+  </tbody>
+</table>
+
+
+    <div class="tags">
+        
+        <b>Tags: </b>
+        
+        
+        
+        <a href="tags.html?tags=overview" class="btn btn-default navbar-btn cursorNorm" role="button">overview</a>
+        
+        
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+                    <img class="pull-left" src="images/explanatoryline.png" alt="NHS Digital Explanatory Line"/>
+                    <br/>
+                    &copy;2020 NHS Digital<br />
+                     Site last generated: Mar 30, 2020 <br />
+                    6f68aaa672cc33d7cfbcf7b81b91ebc455b910a9<br/>
+                    <br/>
+                    <!-- OGL Licence -->
+                    <div class="open-government-licence">
+                        <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license" class="no_icon"><img src="images/licence/ogl-symbol-41px-retina-black.png"></img></a>
+                        <p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license" class="no_icon">Open Government Licence v3.0</a>, except where otherwise stated</p>
+                    </div>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-99659472-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+ 
+
+
+</body>
+
+</html>

@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Developer Cheat Sheet shortcuts for the technical build of NRL API.">
+<meta name="keywords" content="developmentfhir,  development reference">
+<title>FHIR Profile Reference | NRL</title>
+<link rel="stylesheet" href="css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/modern-business.css">
+<link rel="stylesheet" href="css/lavish-bootstrap.css">
+<link rel="stylesheet" href="css/customstyles.css">
+<link rel="stylesheet" href="css/theme-blue.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="js/toc.js"></script>
+<script src="js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="images/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="FHIR-NRLS-API" href="https://developer.nhs.uk/apis/nrl/feed.xml">
+
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#tg-sb-link").click(function() {
+                $("#tg-sb-sidebar").toggle();
+                $("#tg-sb-content").toggleClass('col-md-9');
+                $("#tg-sb-content").toggleClass('col-md-12');
+                $("#tg-sb-icon").toggleClass('fa-toggle-on');
+                $("#tg-sb-icon").toggleClass('fa-toggle-off');
+            });
+        });
+    </script>
+    
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container topnavlinks">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="fa fa-home fa-lg navbar-brand" href="index.html">&nbsp;<span class="projectTitle"> NRL API | FHIR&reg;</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- toggle sidebar button -->
+                <li><a id="tg-sb-link" href="#"><i id="tg-sb-icon" class="fa fa-toggle-on"></i> Nav</a></li>
+                <!-- entries without drop-downs appear here -->
+                
+                <!-- entries with drop-downs appear here -->
+                <!-- conditional logic to control which topnav appears for the audience defined in the configuration file.-->
+                
+                
+                
+                
+                <!--comment out this block if you want to hide search-->
+                <li>
+                    <!--start search-->
+                    <div id="search-demo-container">
+                        <input type="text" id="search-input" placeholder="Search...">
+                        <ul id="results-container"></ul>
+                    </div>
+                    <script src="js/jekyll-search.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                            SimpleJekyllSearch.init({
+                                searchInput: document.getElementById('search-input'),
+                                resultsContainer: document.getElementById('results-container'),
+                                dataSource: 'search.json',
+                                searchResultTemplate: '<li><a href="{url}" title="FHIR Profile Reference">{title}</a></li>',
+                    noResultsText: 'No results found.',
+                            limit: 10,
+                            fuzzy: true,
+                    })
+                    </script>
+                    <!--end search-->
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        
+        
+            <!-- Sidebar Column -->
+            <div class="col-md-3" id="tg-sb-sidebar">
+                
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+
+    <!-- <p style="font-size:2em;">-->
+
+       <!-- <img src="images/interopen.png" height="48px" alt="INTEROpen Logo"/>
+    INTEROPen</p>
+    <p style="font-size:16px;">Supported by -->
+    <img src="images/logo.png"   alt="NHS Digital Logo"/>
+    <!--</p>-->
+
+
+    <li class="sidebarTitle">NRL 2.3.0-beta API <i>specification</i></li>
+    
+    
+    
+    <li>
+        <a href="#">Overview</a>
+        <ul>
+            
+            
+            
+            <li><a href="index.html">Introduction</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_guide_versioning.html">Product Versioning</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_release_notes.html">Release Notes</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Solution</a>
+        <ul>
+            
+            
+            
+            <li><a href="overview_concepts.html">Concepts</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_behaviours.html">Behaviour</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_principles.html">Principles</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_data_model.html">Data model</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="overview_interactions.html">Interactions</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">General Guidance</a>
+        <ul>
+            
+            
+            
+            <li><a href="pointer_identity.html">Pointer Identity</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="pointer_errors.html">Pointer Errors</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="pointer_lifecycle.html">Pointer Lifecycle</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="pointer_maintenance.html">Pointer Maintenance</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Development Guidance</a>
+        <ul>
+            
+            
+            
+            <li><a href="explore.html">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="development_general_api_guidance.html">General API Guidance</a></li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">DocumentReference API Interactions</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="api_interaction_create.html">Create</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_supersede.html">Create (Supersede)</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_update.html">Update</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_delete.html">Delete</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_read.html">Read</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="api_interaction_search.html">Search</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            <li class="subfolders">
+                <a href="#">Record Retrieval Guidance</a>
+                <ul>
+                    
+                    
+                    
+                    <li><a href="retrieval_overview.html">Overview</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_interaction_read.html">Read Interaction</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_consumer_guidance.html">Consumer Guidance</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_provider_guidance.html">Provider Guidance</a></li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="retrieval_formats.html">Formats</a></li>
+                    
+                    
+                    
+                </ul>
+            </li>
+            
+            
+            
+            
+            
+            
+            <li class="active"><a href="explore_reference.html">FHIR Profile Reference</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="explore_fhir_open_source_guidance.html">FHIR Open-Source Resources</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+    <li>
+        <a href="#">Integrate With Spine</a>
+        <ul>
+            
+            
+            
+            <li><a href="integration_authentication_authorisation.html">Authentication &amp; Authorisation</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="explore_rbac_mapping.html">Access Control</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="development_api_security_guidance.html">Security</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="integration_access_tokens_JWT.html">Access Tokens (JWT)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="integration_auditing.html">Auditing</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="integration_personal_demographics_service.html">Personal Demographics Service</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+        
+            <li><a href="/assure.html">Assure</a></li>
+        
+    
+        
+    
+    <li>
+        <a href="#">Help &amp; Support</a>
+        <ul>
+            
+            
+            
+            <li><a href="support_faq.html">Frequently Asked Questions (FAQ)</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="support_communications.html">Communication Channels</a></li>
+            
+            
+            
+            
+        </ul>
+     </li>
+       
+        
+    
+        
+            <li><a href="/tags.html">Tags</a></li>
+        
+    
+        
+    
+        
+            <li><a href="/overview_glossary.html">Glossary</a></li>
+        
+    
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    <!--</li>-->
+</ul>
+<!--</div>-->
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+            </div>
+            
+        
+
+        <!-- Content Column -->
+        <div class="col-md-9" id="tg-sb-content">
+            
+
+<div class="post-header">
+   <h1 class="post-title-main">FHIR Profile Reference</h1>
+</div>
+
+<script>
+    $(function() {
+        $('a[href^="http://"], a[href^="https://"]')
+            .attr('target', '_blank') // open all external links in new tab
+            .attr('rel', 'noopener noreferrer'); // https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/
+    });
+</script>
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">Developer Cheat Sheet shortcuts for the technical build of NRL API.</div>
+   
+
+   
+
+    
+    
+<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
+<script>
+$( document ).ready(function() {
+  // Handler for .ready() called.
+<!-- removed h3 and h4 from toc KGM 10/JULY/2017 -->
+$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2' });
+
+/* this offset helps account for the space taken up by the floating toolbar. */
+$('#toc').on('click', 'a', function() {
+  var target = $(this.getAttribute('href'))
+    , scroll_target = target.offset().top
+
+  $(window).scrollTop(scroll_target - 10);
+  return false
+})
+
+});
+</script>
+
+<div id="toc"></div>
+
+    
+
+  <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop with the National Record Locator API. This project is being developed using an agile methodology, so iterative updates to content will be added on a regular basis.</div>
+
+  <h2 id="1-profiles">1. Profiles</h2>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> The NRL DocumentReference profile has been updated and has also been renamed from <b>NRLS-DocumentReference-1</b> to <b>NRL-DocumentReference-1</b>.</div>
+
+<p>Links to the NRL FHIR profiles on the NHS FHIR Reference Server.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Profile</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1">NRL-DocumentReference-1</a></td>
+      <td>A DocumentReference resource is used to describe a record that is made available to a healthcare system.</td>
+    </tr>
+    <tr>
+      <td><a href="https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1">Spine-OperationOutcome-1</a></td>
+      <td>Operation Outcome resource that supports a collection of error, warning or information messages that result from a NRL Service Spine interaction.</td>
+    </tr>
+    <tr>
+      <td><a href="https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0">Spine-OperationOutcome-1-0</a></td>
+      <td>The default Spine OperationOutcome profile resource that supports exceptions raised by the Spine common requesthandler and not the NRL Service.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Major changes to the pointer model will be reflected in the NRL DocumentReference FHIR profile, using the naming convention <code class="highlighter-rouge">NRL-DocumentReference-[major_version]</code>. <br /><br /> The FHIR profile which the pointer conforms to will be indicated in the <code class="highlighter-rouge">DocumentReference.meta.profile</code> metadata attribute to enable Consumers to support the different versions of the pointer model. Pointers conforming to the NRLS-DocumentReference-1 profile (v1.2.3-beta specification) will not have this attribute populated.</div>
+
+<h2 id="2-nrl-data-model-to-fhir-profile-mapping">2. NRL Data Model to FHIR Profile Mapping</h2>
+
+<p>The table maps the ‘lean alpha’ <a href="overview_data_model.html">Solution Data Model</a> to NRL-DocumentReference-1 profile elements.</p>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> <code class="highlighter-rouge">NRL-DocumentReference-1</code> inherits from the base HL7 <code class="highlighter-rouge">DocumentReference</code> and restricts some fields that are cardinality <code class="highlighter-rouge">0..*</code> or <code class="highlighter-rouge">1..*</code> in the base profile to <code class="highlighter-rouge">1..1</code>. In addition, due to the mapping between XML elements and JSON properties, FHIR views JSON arrays with a single entry as “flat”.<br /><br />However, to ensure interoperability, JSON arrays with cardinality 1 MUST NOT be flattened. For example, <code class="highlighter-rouge">class.coding</code> MUST be an array containing a single object, rather than an object. For details, see <a href="#json-example">the JSON example</a> below.</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data Item</th>
+      <th><a href="https://hl7.org/fhirpath/">FHIRPath</a></th>
+      <th>Data Type</th>
+      <th><abbr title="Cardinality">Card</abbr></th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Identifier</td>
+      <td><code class="highlighter-rouge">id</code></td>
+      <td>string</td>
+      <td>0..1</td>
+      <td>Assigned by the NRL at creation time. Uniquely identifies this record within the NRL. Used by Providers to update or delete.</td>
+    </tr>
+    <tr>
+      <td>Profile</td>
+      <td><code class="highlighter-rouge">meta<wbr />.profile</code></td>
+      <td>uri</td>
+      <td>0..1</td>
+      <td>The URI of the FHIR profile that the resource conforms to. Indicates the version of the pointer model.</td>
+    </tr>
+    <tr>
+      <td>Version</td>
+      <td><code class="highlighter-rouge">meta<wbr />.versionId</code></td>
+      <td>string</td>
+      <td>0..1</td>
+      <td>Assigned by the NRL at creation or update time. Used to track the current version of a Pointer.</td>
+    </tr>
+    <tr>
+      <td>Pointer last updated datetime</td>
+      <td><code class="highlighter-rouge">meta<wbr />.lastUpdated</code></td>
+      <td>datetime</td>
+      <td>0..1</td>
+      <td>Assigned by the NRL at creation and update time. The date and time that the pointer was last updated.</td>
+    </tr>
+    <tr>
+      <td>Pointer indexed datetime</td>
+      <td><code class="highlighter-rouge">indexed</code></td>
+      <td>datetime</td>
+      <td>0..1</td>
+      <td>Assigned by the NRL at creation time. The date and time that the pointer was created.</td>
+    </tr>
+    <tr>
+      <td>Master Identifier</td>
+      <td><code class="highlighter-rouge">masterIdentifier</code></td>
+      <td>Identifier</td>
+      <td>0..1</td>
+      <td>An optional identifier of the document as assigned by the Provider. It is version specific — a new master identifier is required if the document is updated.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">masterIdentifier<wbr />.system</code></td>
+      <td>Uri</td>
+      <td>1..1</td>
+      <td>The namespace for the identifier. This element must be completed if the masterIdentifier is to be included.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">masterIdentifier<wbr />.value</code></td>
+      <td>String</td>
+      <td>1..1</td>
+      <td>The unique value of the identifier. This element must be completed if the masterIdentifier is to be included.</td>
+    </tr>
+    <tr>
+      <td>Pointer Status</td>
+      <td><code class="highlighter-rouge">status</code></td>
+      <td>Code</td>
+      <td>1..1</td>
+      <td>The status of the pointer</td>
+    </tr>
+    <tr>
+      <td>Patient</td>
+      <td><code class="highlighter-rouge">subject</code></td>
+      <td>Reference</td>
+      <td>1..1</td>
+      <td>The NHS number of the patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.</td>
+    </tr>
+    <tr>
+      <td>Pointer owner</td>
+      <td><code class="highlighter-rouge">custodian</code></td>
+      <td>Reference</td>
+      <td>1..1</td>
+      <td>ODS code for the pointer owner organization.</td>
+    </tr>
+    <tr>
+      <td>Record owner</td>
+      <td><code class="highlighter-rouge">author</code></td>
+      <td>Reference</td>
+      <td>1..1</td>
+      <td>ODS code for the record owner organization.</td>
+    </tr>
+    <tr>
+      <td>Record category</td>
+      <td><code class="highlighter-rouge">class</code></td>
+      <td><a href="overview_glossary.html#" data-toggle="tooltip" title=""></a></td>
+      <td>1..1</td>
+      <td>A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">class<wbr />.coding<!--[0]--><wbr />.system</code></td>
+      <td>Uri</td>
+      <td>1..1</td>
+      <td>Identity of the terminology system</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">class<wbr />.coding<!--[0]--><wbr />.code</code></td>
+      <td>Code</td>
+      <td>1..1</td>
+      <td>Symbol in syntax defined by the system</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">class<wbr />.coding<!--[0]--><wbr />.display</code></td>
+      <td>String</td>
+      <td>1..1</td>
+      <td>Representation defined by the system</td>
+    </tr>
+    <tr>
+      <td>Record type</td>
+      <td><code class="highlighter-rouge">type</code></td>
+      <td><a href="overview_glossary.html#" data-toggle="tooltip" title=""></a></td>
+      <td>1..1</td>
+      <td>The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">type<wbr />.coding<!--[0]--><wbr />.system</code></td>
+      <td>Uri</td>
+      <td>1..1</td>
+      <td>Example Value: http://snomed.info/sct.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">type<wbr />.coding<!--[0]--><wbr />.code</code></td>
+      <td>Code</td>
+      <td>1..1</td>
+      <td>Symbol in syntax defined by the system. Example Value: 736253002</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">type<wbr />.coding<!--[0]--><wbr />.display</code></td>
+      <td>String</td>
+      <td>1..1</td>
+      <td>Representation defined by the system.</td>
+    </tr>
+    <tr>
+      <td>Record creation clinical setting</td>
+      <td><code class="highlighter-rouge">context<wbr />.practiceSetting</code></td>
+      <td><a href="overview_glossary.html#" data-toggle="tooltip" title=""></a></td>
+      <td>1..1</td>
+      <td>Describes where the content was created, in what clinical setting</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">context<wbr />.practiceSetting<wbr />.coding<!--[0]--><wbr />.system</code></td>
+      <td>Uri</td>
+      <td>1..1</td>
+      <td>Identity of the terminology system</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">context<wbr />.practiceSetting<wbr />.coding<!--[0]--><wbr />.code</code></td>
+      <td>Code</td>
+      <td>1..1</td>
+      <td>Symbol in syntax defined by the system</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">context<wbr />.practiceSetting<wbr />.coding<!--[0]--><wbr />.display</code></td>
+      <td>String</td>
+      <td>1..1</td>
+      <td>Representation defined by the system</td>
+    </tr>
+    <tr>
+      <td>Period of care</td>
+      <td><code class="highlighter-rouge">context<wbr />.period</code></td>
+      <td>Period</td>
+      <td>0..1</td>
+      <td>Details the time at which the documented care is relevant</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">context<wbr />.period<wbr />.start</code></td>
+      <td>dateTime</td>
+      <td>1..1</td>
+      <td>Starting time with inclusive boundary</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">context<wbr />.period<wbr />.end</code></td>
+      <td>dateTime</td>
+      <td>0..1</td>
+      <td>End time with inclusive boundary, if not ongoing</td>
+    </tr>
+    <tr>
+      <td>Pointer referenced</td>
+      <td><code class="highlighter-rouge">content<!--[0..*]--></code></td>
+      <td>BackboneElement</td>
+      <td>1..*</td>
+      <td>Record referenced</td>
+    </tr>
+    <tr>
+      <td>Record creation datetime</td>
+      <td><code class="highlighter-rouge">content<!--[0..*]--><wbr />.attachment<wbr />.creation</code></td>
+      <td>dateTime</td>
+      <td>0..1</td>
+      <td>The date and time (on the Provider’s system) that the record was created, for static records.</td>
+    </tr>
+    <tr>
+      <td>Record URL</td>
+      <td><code class="highlighter-rouge">content<!--[0..*]--><wbr />.attachment<wbr />.url</code></td>
+      <td>uri</td>
+      <td>1..1</td>
+      <td>Absolute URL for the location of the record on the Provider’s system and/ or a service that allows you to look up information based on the provider url e.g. web page with service contact details.</td>
+    </tr>
+    <tr>
+      <td>Record format</td>
+      <td><code class="highlighter-rouge">content<!--[0..*]--><wbr />.format</code></td>
+      <td>Coding</td>
+      <td>1..1</td>
+      <td>Describes the technical structure and rules of the record such that the Consumer can pick an appropriate mechanism to handle the record.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">content<!--[0..*]--><wbr />.format<wbr />.system</code></td>
+      <td>Uri</td>
+      <td>1..1</td>
+      <td>Identity of the terminology system</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">content<!--[0..*]--><wbr />.format<wbr />.code</code></td>
+      <td>Code</td>
+      <td>1..1</td>
+      <td>Symbol in syntax defined by the system</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">content<!--[0..*]--><wbr />.format<wbr />.display</code></td>
+      <td>String</td>
+      <td>1..1</td>
+      <td>Representation defined by the system</td>
+    </tr>
+    <tr>
+      <td>Record MIME type</td>
+      <td><code class="highlighter-rouge">content<!--[0..*]--><wbr />.attachment<wbr />.contentType</code></td>
+      <td>code</td>
+      <td>1..1</td>
+      <td>Describes the type of data such that the Consumer can pick an appropriate mechanism to handle the record.</td>
+    </tr>
+    <tr>
+      <td>Record Stability</td>
+      <td><code class="highlighter-rouge">content<!--[0..*]--><wbr />.extension:contentStability</code></td>
+      <td>Extension</td>
+      <td>1..1</td>
+      <td>Record content extension</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">content<!--[0..*]--><wbr />.extension:contentStability<wbr />.url</code></td>
+      <td>Uri</td>
+      <td>1..1</td>
+      <td>identifies the meaning of the extension</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">content<!--[0..*]--><wbr />.extension:contentStability.<wbr />valueCodeableConcept</code></td>
+      <td><a href="overview_glossary.html#" data-toggle="tooltip" title=""></a></td>
+      <td>1..1</td>
+      <td>Describes whether the record content at the time of the request is dynamically generated or is static</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">content<!--[0..*]--><wbr />.extension:contentStability.<wbr />valueCodeableConcept<wbr />.coding<!--[0]--><wbr />.system</code></td>
+      <td>Uri</td>
+      <td>1..1</td>
+      <td>Identity of the terminology system</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">content<!--[0..*]--><wbr />.extension:contentStability.<wbr />valueCodeableConcept<wbr />.coding<!--[0]--><wbr />.code</code></td>
+      <td>Code</td>
+      <td>1..1</td>
+      <td>Symbol in syntax defined by the system</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">content<!--[0..*]--><wbr />.extension:contentStability.<wbr />valueCodeableConcept<wbr />.coding<!--[0]--><wbr />.display</code></td>
+      <td>String</td>
+      <td>1..1</td>
+      <td>Representation defined by the system</td>
+    </tr>
+    <tr>
+      <td>Related documents</td>
+      <td><code class="highlighter-rouge">relatesTo</code></td>
+      <td>BackboneElement</td>
+      <td>0..1</td>
+      <td>Relationship to another pointer</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">relatesTo<wbr />.code</code></td>
+      <td>Code</td>
+      <td>1..1</td>
+      <td>The type of relationship between the documents. This element is mandatory if the <em>relatesTo</em> element is sent and the value MUST be <em>replaces</em>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><code class="highlighter-rouge">relatesTo<wbr />.target</code></td>
+      <td>Reference</td>
+      <td>1..1</td>
+      <td>The Target of the relationship. This should contain the logical reference to the target DocumentReference held within the NRL using the identifier property of this <a href="https://www.hl7.org/fhir/references.html#logical">Reference Data Type</a>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="3-valuesets">3. ValueSets</h2>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-warning"></i> <b>Important:</b> The NRL RecordType valueset has been renamed from <b>NRLS-RecordType-1</b> to <b>NRL-RecordType-1</b>.</div>
+
+<p>Links to the NRL FHIR value sets on the NHS FHIR Reference Server.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Valueset</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">NRL-RecordType-1</a></td>
+      <td>A ValueSet that identifies the NRL record type.</td>
+    </tr>
+    <tr>
+      <td><a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-FormatCode-1">NRL-FormatCode-1</a></td>
+      <td>A ValueSet that identifies the NRL record format.</td>
+    </tr>
+    <tr>
+      <td><a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-PracticeSetting-1">NRL-PracticeSetting-1</a></td>
+      <td>A ValueSet that identifies the NRL record practice setting.</td>
+    </tr>
+    <tr>
+      <td><a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordClass-1">NRL-RecordClass-1</a></td>
+      <td>A ValueSet that identifies the NRL record category.</td>
+    </tr>
+    <tr>
+      <td><a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-ContentStability-1">NRL-ContentStability-1</a></td>
+      <td>A ValueSet that identifies the NRL record stability.</td>
+    </tr>
+    <tr>
+      <td><a href="https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1">Spine-ErrorOrWarningCode-1</a></td>
+      <td>A ValueSet that identifies the Spine error or warning code in response to a request.</td>
+    </tr>
+    <tr>
+      <td><a href="https://fhir.nhs.uk/ValueSet/spine-response-code-1-0">Spine-Response-Code-1-0</a></td>
+      <td>A set of codes to indicate low level error information about a Spine 2 error response to a request for patient record details. Exceptions raised by the Spine common requesthandler and not the NRL Service will be returned using the Spine default <a href="https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0">spine-operationoutcome-1-0</a> profile which binds to this default ValueSet.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Display values for SNOMED CT concepts MUST be as listed in the FHIR value sets. The display value is the preferred term and one of the synonyms for the concept, not the Fully Specified Name, as described in the <a href="https://www.hl7.org/fhir/STU3/snomedct.html">FHIR guidance for usage of SNOMED CT</a>.</div>
+
+<h2 id="4-extensions">4. Extensions</h2>
+
+<p>Links to the NRL FHIR Extensions on the NHS FHIR Reference Server.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Extension</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1">Extension-NRL-ContentStability-1</a></td>
+      <td>NRL Record Content Stability.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="5-codesystems">5. CodeSystems</h2>
+
+<p>Links to the NRL FHIR CodeSystems on the NHS FHIR Reference Server.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>CodeSystem</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1">Spine-ErrorOrWarningCode-1</a></td>
+      <td>Spine error codes and descriptions.</td>
+    </tr>
+    <tr>
+      <td><a href="https://fhir.nhs.uk/STU3/CodeSystem/NRL-ContentStability-1">NRL-ContentStability-1</a></td>
+      <td>NRL record stability codes and descriptions.</td>
+    </tr>
+    <tr>
+      <td><a href="https://fhir.nhs.uk/STU3/CodeSystem/NRL-FormatCode-1">NRL-FormatCode-1</a></td>
+      <td>NRL record format codes and descriptions.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="6-identifiers">6. Identifiers</h2>
+
+<p>NRL supported URIs:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>identifier</th>
+      <th>URI</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">Logical ID</code></td>
+      <td><code class="highlighter-rouge">[baseurl]/DocumentReference/[id]</code></td>
+      <td>Pointer identifier</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">Patient</code></td>
+      <td><code class="highlighter-rouge">https://demographics.spineservices.nhs.uk/STU3/Patient/[NHS Number]</code></td>
+      <td>Patient NHS Number</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">Organisation</code></td>
+      <td><code class="highlighter-rouge">https://directory.spineservices.nhs.uk/STU3/Organization/[ODS Code]</code></td>
+      <td>Record author or record owner ODS code</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">Master Identifier</code></td>
+      <td><code class="highlighter-rouge">Identifier=[system]%7C[value]</code></td>
+      <td>Pointer local/business identifier</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-circle"></i> <b>Warning:</b> The URIs on subdomain <code class="highlighter-rouge">spineservices.nhs.uk</code> are currently not resolvable, however this will change in the future where references relate to FHIR endpoints in our national systems.</div>
+
+<h2 id="7-examples">7. Examples</h2>
+
+<h3 id="json-example">JSON Example</h3>
+
+<p>A JSON example of a DocumentReference resource is displayed below.</p>
+
+<div class="github-sample-wrapper scroll-height-350">
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DocumentReference"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c037a0cb-0c77-4976-83a1-a5d2703e6aa3-23325861873450086113"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"profile"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"current"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://snomed.info/sct"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"736253002"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mental health crisis plan"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"class"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://snomed.info/sct"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"734163000"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Care plan"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"indexed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-08T15:26:01+01:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://directory.spineservices.nhs.uk/STU3/Organization/RGD"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"custodian"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://directory.spineservices.nhs.uk/STU3/Organization/RR8"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"attachment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"contentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://p1.nhs.uk/MentalhealthCrisisPlanReport.pdf"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"creation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-08T15:26:00+01:00"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"format"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://fhir.nhs.uk/STU3/CodeSystem/NRL-FormatCode-1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"urn:nhs-ic:unstructured"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unstructured Document"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"valueCodeableConcept"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                            </span><span class="p">{</span><span class="w">
+                                </span><span class="s2">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://fhir.nhs.uk/STU3/CodeSystem/NRL-ContentStability-1"</span><span class="p">,</span><span class="w">
+                                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static"</span><span class="p">,</span><span class="w">
+                                </span><span class="s2">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static"</span><span class="w">
+                            </span><span class="p">}</span><span class="w">
+                        </span><span class="p">]</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"context"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"period"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-07T13:34:00+01:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"practiceSetting"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://snomed.info/sct"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"708168004"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mental health service"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+</div>
+
+<h3 id="xml-example">XML Example</h3>
+
+<p>An XML example of a DocumentReference resource is displayed below.</p>
+
+<div class="github-sample-wrapper scroll-height-350">
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;DocumentReference</span> <span class="na">xmlns=</span><span class="s">"http://hl7.org/fhir"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;id</span> <span class="na">value=</span><span class="s">"c037a0cb-0c77-4976-83a1-a5d2703e6aa3-23325861873450086113"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta&gt;</span>
+        <span class="nt">&lt;profile</span> <span class="na">value=</span><span class="s">"https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/meta&gt;</span>
+    <span class="nt">&lt;status</span> <span class="na">value=</span><span class="s">"current"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;type&gt;</span>
+        <span class="nt">&lt;coding&gt;</span>
+            <span class="nt">&lt;system</span> <span class="na">value=</span><span class="s">"http://snomed.info/sct"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;code</span> <span class="na">value=</span><span class="s">"736253002"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;display</span> <span class="na">value=</span><span class="s">"Mental health crisis plan"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/coding&gt;</span>
+    <span class="nt">&lt;/type&gt;</span>
+    <span class="nt">&lt;class&gt;</span>
+        <span class="nt">&lt;coding&gt;</span>
+            <span class="nt">&lt;system</span> <span class="na">value=</span><span class="s">"http://snomed.info/sct"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;code</span> <span class="na">value=</span><span class="s">"734163000"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;display</span> <span class="na">value=</span><span class="s">"Care plan"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/coding&gt;</span>
+    <span class="nt">&lt;/class&gt;</span>
+    <span class="nt">&lt;subject&gt;</span>
+        <span class="nt">&lt;reference</span> <span class="na">value=</span><span class="s">"https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/subject&gt;</span>
+    <span class="nt">&lt;indexed</span> <span class="na">value=</span><span class="s">"2016-03-08T15:26:01+01:00"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;author&gt;</span>
+        <span class="nt">&lt;reference</span> <span class="na">value=</span><span class="s">"https://directory.spineservices.nhs.uk/STU3/Organization/RGD"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/author&gt;</span>
+    <span class="nt">&lt;custodian&gt;</span>
+        <span class="nt">&lt;reference</span> <span class="na">value=</span><span class="s">"https://directory.spineservices.nhs.uk/STU3/Organization/RR8"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/custodian&gt;</span>
+    <span class="nt">&lt;content&gt;</span>
+        <span class="nt">&lt;attachment&gt;</span>
+            <span class="nt">&lt;contentType</span> <span class="na">value=</span><span class="s">"application/pdf"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;url</span> <span class="na">value=</span><span class="s">"https://p1.nhs.uk/MentalhealthCrisisPlanReport.pdf"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;creation</span> <span class="na">value=</span><span class="s">"2016-03-08T15:26:00+01:00"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/attachment&gt;</span>
+        <span class="nt">&lt;format&gt;</span>
+            <span class="nt">&lt;system</span> <span class="na">value=</span><span class="s">"https://fhir.nhs.uk/STU3/CodeSystem/NRL-FormatCode-1"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;code</span> <span class="na">value=</span><span class="s">"urn:nhs-ic:unstructured"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;display</span> <span class="na">value=</span><span class="s">"Unstructured Document"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/format&gt;</span>
+        <span class="nt">&lt;extension</span> <span class="na">url=</span><span class="s">"https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;valueCodeableConcept&gt;</span>
+                <span class="nt">&lt;coding&gt;</span>
+                    <span class="nt">&lt;system</span> <span class="na">value=</span><span class="s">"https://fhir.nhs.uk/STU3/CodeSystem/NRL-ContentStability-1"</span><span class="nt">/&gt;</span>
+                    <span class="nt">&lt;code</span> <span class="na">value=</span><span class="s">"static"</span><span class="nt">/&gt;</span>
+                    <span class="nt">&lt;display</span> <span class="na">value=</span><span class="s">"Static"</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;/coding&gt;</span>
+            <span class="nt">&lt;/valueCodeableConcept&gt;</span>
+        <span class="nt">&lt;/extension&gt;</span>
+    <span class="nt">&lt;/content&gt;</span>
+    <span class="nt">&lt;context&gt;</span>
+        <span class="nt">&lt;period&gt;</span>
+            <span class="nt">&lt;start</span> <span class="na">value=</span><span class="s">"2016-03-07T13:34:00+01:00"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/period&gt;</span>
+        <span class="nt">&lt;practiceSetting&gt;</span>
+            <span class="nt">&lt;coding&gt;</span>
+                <span class="nt">&lt;system</span> <span class="na">value=</span><span class="s">"http://snomed.info/sct"</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;code</span> <span class="na">value=</span><span class="s">"708168004"</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;display</span> <span class="na">value=</span><span class="s">"Mental health service"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/coding&gt;</span>
+        <span class="nt">&lt;/practiceSetting&gt;</span>
+    <span class="nt">&lt;/context&gt;</span>
+<span class="nt">&lt;/DocumentReference&gt;</span></code></pre></figure>
+
+</div>
+
+
+    <div class="tags">
+        
+        <b>Tags: </b>
+        
+        
+        
+        <a href="tags.html?tags=development" class="btn btn-default navbar-btn cursorNorm" role="button">development</a>
+        
+        
+        
+        <a href="tags.html?tags=fhir" class="btn btn-default navbar-btn cursorNorm" role="button">fhir</a>
+        
+        
+        
+    </div>
+
+    
+
+</div>
+
+<hr class="shaded"/>
+
+<footer>
+            <div class="row">
+                <div class="col-lg-12 footer">
+                    <img class="pull-left" src="images/explanatoryline.png" alt="NHS Digital Explanatory Line"/>
+                    <br/>
+                    &copy;2020 NHS Digital<br />
+                     Site last generated: Mar 30, 2020 <br />
+                    6f68aaa672cc33d7cfbcf7b81b91ebc455b910a9<br/>
+                    <br/>
+                    <!-- OGL Licence -->
+                    <div class="open-government-licence">
+                        <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license" class="no_icon"><img src="images/licence/ogl-symbol-41px-retina-black.png"></img></a>
+                        <p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license" class="no_icon">Open Government Licence v3.0</a>, except where otherwise stated</p>
+                    </div>
+                </div>
+            </div>
+</footer>
+
+
+        </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-99659472-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+ 
+
+
+</body>
+
+</html>
