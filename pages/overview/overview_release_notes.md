@@ -17,7 +17,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 - Update guidance on constructing SSP URLs and percent-encoding for document retrieval 
 - Add clarification about cardinality in JSON
 - Add notes about `CodeableConcept` data type
-- Expand glossary of terms
+- Updated glossary of terms
 - Update tags and enable filtering by tag name
 - Remove obsolete pages
 - Miscellaneous copy-edits and minor restructuring
