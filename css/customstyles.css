@@ -32,8 +32,17 @@ a[data-toggle=tooltip]:hover {
     margin: 0 4px 0 0 !important;
 }
 
+.form-check {
+    display: block;
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
 .form-check-inline {
     display: inline;
+    display: inline-flex;
+    margin: 5px 8px;
 }
 
 .form-check .form-check-label {
@@ -52,8 +61,17 @@ a[data-toggle=tooltip]:hover {
     margin-right: 5px;
 }
 
-.form-check-inline .form-check-label {
+.form-check .form-check-label {
     margin: 0;
+    padding: 0;
+}
+
+.form-check .form-check-label {
+    margin: 0;
+    padding: 0;
+}
+
+.form-check-inline .form-check-label {
     font-weight: normal;
 }
 

@@ -25,9 +25,9 @@ Links to the NRL FHIR profiles on the NHS FHIR Reference Server.
 
 The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) to NRL-DocumentReference-1 profile elements. 
 
-{% include important.html content="`NRL-DocumentReference-1` inherits from the base HL7 `DocumentReference` and restricts some fields that are cardinality `0..*` or `1..*` in the base profile to `1..1`. In addition, due to the mapping between XML elements and JSON properties, FHIR views JSON arrays with a single entry as “flat”.<br><br>However, to ensure interoperability, JSON arrays with cardinality 1 MUST NOT be flattened. For example, `class.coding` MUST be an array containing a single object, rather than a object. For details, see [the JSON example](#json-example) below." %}
+{% include important.html content="`NRL-DocumentReference-1` inherits from the base HL7 `DocumentReference` and restricts some fields that are cardinality `0..*` or `1..*` in the base profile to `1..1`. In addition, due to the mapping between XML elements and JSON properties, FHIR views JSON arrays with a single entry as “flat”.<br><br>However, to ensure interoperability, JSON arrays with cardinality 1 MUST NOT be flattened. For example, `class.coding` MUST be an array containing a single object, rather than an object. For details, see [the JSON example](#json-example) below." %}
 
-|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|<abbr title="cardinality">Card</abbr>|Description|
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|<abbr title="Cardinality">Card</abbr>|Description|
 |----|---------|----|-----------|-----|
 |Identifier| <code class="highlighter-rouge">id</code> |string|0..1|Assigned by the NRL at creation time. Uniquely identifies this record within the NRL. Used by Providers to update or delete.|
 |Profile| <code class="highlighter-rouge">meta<wbr>.profile</code> |uri|0..1|The URI of the FHIR profile that the resource conforms to. Indicates the version of the pointer model. |

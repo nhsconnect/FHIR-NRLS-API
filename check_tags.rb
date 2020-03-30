@@ -1,56 +1,55 @@
 require 'find'
+require 'yaml'
 
-allowed_tags = File.read('_data/tags.yml').split("\n")
-    .filter { |l| l =~ /^\s*-\s*/ }
-    .map { |l| l.scan(/^\s*-\s*(\w+)/)[0][0] }
+allowed_tags = YAML.safe_load(File.read('_data/tags.yml'))['allowed-tags']
 
-used_tags_hash = Hash.new(0)
+tag_usage_numbers = Hash.new(0)
 
 puts "\n"
 
 out_lines = []
 
-Find.find("./pages") do |fname|
-    next unless (fname.end_with? ".md") || (fname.end_with? ".html")
+Find.find('./pages') do |file_name|
+    next unless file_name.end_with?('.md') || file_name.end_with?('.html')
 
-    File.open(fname).each do |line|
-        next unless line =~ /^\s*tags:/
+    text = File.read(file_name)
 
-        _tags = line.scan(/\[(.*)\]/)
-        
-        tags = _tags && _tags[0] && _tags[0][0].split(',') || []
+    m = text.match(/^---\r?\n([\s\S]+)\r?\n---/)
 
-        tags.each { |t| used_tags_hash[t] += 1 }
+    tags = m && YAML.safe_load(m[1])['tags']
 
-        disallowed = tags.reject { |t| allowed_tags.include? t }
+    next unless tags
 
-        next if disallowed.length == 0
-        
-        out_lines << "* " + fname + "\n" + "  " + disallowed.join(", ")
-    end
+    tags.each { |t| tag_usage_numbers[t] += 1 }
+
+    disallowed = tags.reject { |t| allowed_tags.include? t }
+
+    next if disallowed.empty?
+
+    out_lines << "* #{file_name}\n  #{disallowed.join('', '')}"
 end
 
 puts "---\n\n"
 
-if out_lines.size > 0
+unless out_lines.empty?
     puts "# Invalid tags\n\n"
     puts out_lines.join("\n\n")
-    
+
     puts "\n---\n\n"
 end
 
-unused_tags = allowed_tags.filter { |t| used_tags_hash[t] == 0 }
+unused_tags = allowed_tags.filter { |t| tag_usage_numbers[t].zero? }
 
-if unused_tags.size > 0
+unless unused_tags.empty?
     puts "# Unused tags\n\n"
-    puts unused_tags.map { |l| "* " + l } .join("\n")
-    
+    puts unused_tags.map { |l| '* ' + l } .join("\n")
+
     puts "\n---\n\n"
 end
 
 puts "# Page count by tag\n\n"
 
-used_tags_hash
+tag_usage_numbers
     .to_a
     .sort_by { |kv| 0 - kv[1] }
     .each { |kv| puts "* #{kv[0]} - #{kv[1]}" }

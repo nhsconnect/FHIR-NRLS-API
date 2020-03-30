@@ -7,4 +7,3 @@ sidebar: overview_sidebar
 folder: tags
 ---
 {% include tag_redirect.html %}
-

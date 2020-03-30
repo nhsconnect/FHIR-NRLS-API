@@ -4,8 +4,8 @@
 {% assign last_idx = projectTags.size | minus: 1 %}
 
 <div class="form-check">
+    <input class="form-check-input" type="checkbox" id="tag-all" checked>
     <label class="form-check-label" for="tag-all">
-        <input class="form-check-input" type="checkbox" id="tag-all" checked>
         Show all
     </label>
 </div>
@@ -16,8 +16,8 @@
 {% for idx in (0..last_idx) %}
 {% assign tag = projectTags[idx] %}
 <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="tag-{{ idx }}" value="{{ tag }}" checked>
     <label class="form-check-label" for="tag-{{ idx }}">
-        <input class="form-check-input" type="checkbox" id="tag-{{ idx }}" value="{{ tag }}" checked>
         {{ tag | replace: "_", " " }}
     </label>
 </div>
@@ -42,10 +42,12 @@
 
 <script>
     $(function() {
+        var tagQueryStringRegex = /\btags=([^?&]*)/;
+
         var $checkboxes = $('#tag-list input[type=checkbox]');
         var $checkboxAll = $('#tag-all');
 
-        var m = window.location.search.match(/\btags=([^?&]*)/);
+        var m = window.location.search.match(tagQueryStringRegex);
         var queryStringTags = m && m[1].split(',');
 
         if (queryStringTags) {
@@ -68,12 +70,38 @@
             });
         }
 
+        function replaceQueryString(newQueryString) {
+            if (window.history && window.history.replaceState) {
+                if (newQueryString === '?') {
+                    newQueryString = '';
+                }
+
+                window.history.replaceState({}, '', window.location.origin + window.location.pathname + newQueryString);
+            }
+        }
+
+        function updateQueryString(tags) {
+            var tagQueryParam = $checkboxAll.prop('checked') ? '' : 'tags=' + tags.join(',');
+
+            if (!window.location.search) {
+                replaceQueryString('?' + tagQueryParam);
+            } else {
+                if (tagQueryStringRegex.test(window.location.search)) {
+                    replaceQueryString(window.location.search.replace(tagQueryStringRegex, tagQueryParam));
+                } else {
+                    replaceQueryString(window.location.search + '&' + tagQueryParam);
+                }
+            }
+        }
+
         function showFilteredByChecked() {
             var tags = $checkboxes.toArray()
                 .filter(function(el) { return el.checked })
                 .map(function(el) { return el.value });
 
             showFiltered(tags);
+
+            updateQueryString(tags);
         }
 
         function handleCheckboxChange() {
