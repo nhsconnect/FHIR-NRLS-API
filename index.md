@@ -14,7 +14,7 @@ summary: A brief introduction to getting started with the NRL FHIR&reg; API.
 
 # Introduction
 
-Welcome to the National Record Locator Technical Specification landing page. This site will continue to be updated as we receive feedback, which we welcome from all within the clinical and non-clinical community.  To discuss any questions or queries you may have with the NRL team, feel free to email us at [nrls@nhs.net](mailto:nrls@nhs.net). Thank you for your time!
+Welcome to the National Record Locator Technical Specification landing page. This site will continue to be updated as we receive feedback, which we welcome from all within the clinical and non-clinical community.  To discuss any questions or queries you may have with the NRL team, feel free to email us at [nrls@nhs.net](mailto:nrls@nhs.net).
 
 # Background
 
