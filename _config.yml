@@ -1,3 +1,5 @@
+# for environment consistency vs. live version (https://developer.nhs.uk/apis/nrl)
+baseurl: /apis/nrl
 
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
