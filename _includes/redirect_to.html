@@ -2,7 +2,7 @@
     {% assign _url = include.external_url %}
     {% assign timeout_seconds = 5 %}
 {% else %}
-    {% assign _url = site.url | append: site.baseurl | append: include.path %}
+    {% assign _url = site.url | append: include.path %}
     {% assign timeout_seconds = 0 %}
 {% endif %}
 

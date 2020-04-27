@@ -17,6 +17,16 @@ layout: default
 <script>
     $(function() {
         $('a[href^="http://"], a[href^="https://"]')
+            .filter(function(_i, el) {
+                var href = $(el).attr('href');
+
+                // check if href is external - indexOf returns truthy
+                // unless at start (idx 0)
+                return href
+                    && href.indexOf('http://localhost')
+                    && href.indexOf(window.location.origin);
+            })
+            .addClass('external-link') // appends external link icon
             .attr('target', '_blank') // open all external links in new tab
             .attr('rel', 'noopener noreferrer'); // https://www.jitbit.com/alexblog/256-targetblank---the-most-underestimated-vulnerability-ever/
     });

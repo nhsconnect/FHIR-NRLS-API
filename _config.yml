@@ -1,3 +1,5 @@
+url: https://developer.nhs.uk/apis/nrl
+# baseurl: /apis/nrl
 
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
@@ -101,9 +103,6 @@ description: "The Care Connect RESTful APIs support the delivery of care by open
 # the description is used in the feed.xml file
 
 sitemap: true
-
-# needed for sitemap.xml file only
-url: https://developer.nhs.uk/apis/nrl
 
 repository: nhsconnect/FHIR-NRLS-API
 
