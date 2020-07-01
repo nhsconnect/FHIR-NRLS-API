@@ -7,6 +7,13 @@ permalink: overview_release_notes.html
 summary: Summary release notes of the versions released in NRL API Implementation Guide
 ---
 
+## 2.4.0-Beta
+- Specification re-factor and streamline of information included
+- Addition of structured retrieval formats:
+   - Vaccinations
+   - Observations
+
+
 ## 2.3.0-beta
 
 - Add clarification about use of `versionId` to [Supersede interaction page](api_interaction_supersede.html)
@@ -153,9 +160,3 @@ summary: Summary release notes of the versions released in NRL API Implementatio
   -	Solution
     -	Data model updated to reflect DocumentReference changes detailed above
     -	Clarity around caching data added
-
-{% include important.html content="The service name has changed from NRLS (National Record Locator Service) to NRL (National Record Locator)" %}
-
-- Changes to record/document retrieval requirements
-- new API interactions
-- NRL DocumentReference model changes

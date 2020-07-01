@@ -19,11 +19,17 @@ entries:
       url: /overview_release_notes.html
       output: web
 
-  - title: Solution
+  - title: Architecture
     output: web
     folderitems:
-    - title: Concepts
-      url: /overview_concepts.html
+    - title: Overview
+      url: /technical_overview.html
+      output: web
+    - title: Pointers
+      url: /pointer_overview.html
+      output: web
+    - title: Record Types
+      url: /record_type_overview.html
       output: web
     - title: Behaviour
       url: /overview_behaviours.html

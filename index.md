@@ -8,6 +8,8 @@ toc: false
 summary: A brief introduction to to the National Record Locator (NRL)
 ---
 
+{% include important.html content="This site is under active development by NHS Digital and is intended to provide all the technical resources you need to successfully develop with the National Record Locator API. This project is being developed using an agile methodology, so iterative updates to content will be added on a regular basis." %}
+
 # Introduction
 
 The National Record Locator (NRL) has been developed primerally to allow healthcare professionals, in any health or care setting, to locate and access patient information shared by other healthcare organisations to support the direct care of patients. NRL also empowers professionals, patients and communities, strengthens primary, secondary, and acute care and allows introduction of system efficiencies.
