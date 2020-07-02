@@ -31,36 +31,8 @@ entries:
     - title: Record Types
       url: /record_type_overview.html
       output: web
-    - title: Behaviour
-      url: /overview_behaviours.html
-      output: web
-    - title: Principles
-      url: /overview_principles.html
-      output: web
-    - title: Data model
-      url: /overview_data_model.html
-      output: web
-    - title: Interactions
-      url: /overview_interactions.html
-      output: web
 
-  - title: General Guidance
-    output: web
-    folderitems:
-    - title: Pointer Identity
-      url: /pointer_identity.html
-      output: web
-    - title: Pointer Errors
-      url: /pointer_errors.html
-      output: web
-    - title: Pointer Lifecycle 
-      url: /pointer_lifecycle.html
-      output: web
-    - title: Pointer Maintenance 
-      url: /pointer_maintenance.html
-      output: web
-
-  - title: Development Guidance
+  - title: Generic API Guidance
     output: web
     folderitems:
     - title: Overview
@@ -69,8 +41,40 @@ entries:
     - title: General API Guidance
       url: /development_general_api_guidance.html
       output: web
+    - title: FHIR Profile Reference
+      url: /explore_reference.html
+      output: web
       subfolders:
-      - title: DocumentReference API Interactions
+      - title: Spine Integration
+        output: web
+        subfolderitems:
+          - title: Authentication &amp; Authorisation
+            url: /integration_authentication_authorisation.html
+            output: web
+          - title: Access Control
+            url: /explore_rbac_mapping.html
+            output: web
+          - title: Security
+            url: /development_api_security_guidance.html
+            output: web
+          - title: Access Tokens (JWT)
+            url: /integration_access_tokens_JWT.html
+            output: web
+          - title: Auditing 
+            url: /integration_auditing.html
+            output: web
+    - title: Personal Demographics Service
+      url: /integration_personal_demographics_service.html
+      output: web
+  
+  - title: Provider API Guidance
+    output: web
+    folderitems:
+    - title: Overview
+      url: /provider_guidance_overview.html
+      output: web
+      subfolders:
+      - title: Pointer Maintenance
         output: web
         subfolderitems:
           - title: Create
@@ -85,13 +89,33 @@ entries:
           - title: Delete
             url: /api_interaction_delete.html
             output: web
+      - title: Record Sharing
+        output: web  
+        subfolderitems:
+          - title: Provider Guidance
+            url: /retrieval_provider_guidance.html
+            output: web
+          - title: Formats
+            url: /retrieval_formats.html
+            output: web
+      
+  - title: Consumer API Guidance
+    output: web
+    folderitems:
+    - title: Overview
+      url: /consumer_guidance_overview.html
+      output: web
+      subfolders:
+      - title: Finding Pointer
+        output: web
+        subfolderitems:
           - title: Read
             url: /api_interaction_read.html
             output: web  
           - title: Search
             url: /api_interaction_search.html
             output: web   
-      - title: Record Retrieval Guidance
+      - title: Retrieving Records
         output: web  
         subfolderitems:
           - title: Overview
@@ -103,40 +127,9 @@ entries:
           - title: Consumer Guidance
             url: /retrieval_consumer_guidance.html
             output: web
-          - title: Provider Guidance
-            url: /retrieval_provider_guidance.html
-            output: web
           - title: Formats
             url: /retrieval_formats.html
             output: web
-    - title: FHIR Profile Reference
-      url: /explore_reference.html
-      output: web
-    - title: FHIR Open-Source Resources
-      url: /explore_fhir_open_source_guidance.html
-      output: web
-
-  - title: Integrate With Spine
-    output: web
-    folderitems:
-    - title: Authentication &amp; Authorisation
-      url: /integration_authentication_authorisation.html
-      output: web
-    - title: Access Control
-      url: /explore_rbac_mapping.html
-      output: web
-    - title: Security
-      url: /development_api_security_guidance.html
-      output: web
-    - title: Access Tokens (JWT)
-      url: /integration_access_tokens_JWT.html
-      output: web
-    - title: Auditing 
-      url: /integration_auditing.html
-      output: web
-    - title: Personal Demographics Service
-      url: /integration_personal_demographics_service.html
-      output: web
 
   - title: Assure
     output: web
@@ -152,11 +145,6 @@ entries:
     - title: Communication Channels
       url: /support_communications.html
       output: web
-
-  - title: Tags
-    output: web
-    flat: true
-    url: /tags.html
 
   - title: Glossary
     output: web
