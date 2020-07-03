@@ -1,10 +1,10 @@
 ---
-title: Technical Overview
+title: Architectural Overview
 keywords: engage about
 tags: [overview]
 sidebar: overview_sidebar
-permalink: technical_overview.html
-summary: A technical overview of how NRL works
+permalink: architectural_overview.html
+summary: A architectural overview of how NRL works
 ---
 
 

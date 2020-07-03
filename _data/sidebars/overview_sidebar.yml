@@ -23,7 +23,7 @@ entries:
     output: web
     folderitems:
     - title: Overview
-      url: /technical_overview.html
+      url: /architectural_overview.html
       output: web
     - title: Pointers
       url: /pointer_overview.html
@@ -36,8 +36,21 @@ entries:
     output: web
     folderitems:
     - title: Overview
-      url: /explore.html
+      url: /generic_api_guidance_overview.html
       output: web
+    - title: Pointer Types
+      url: /pointer_types.html
+      output: web
+      subfolders:
+      - title: Information Formats
+        output: web
+        subfolderitems:
+          - title: Contact Details
+            url: /retrieval_contact_details.html
+            output: web
+          - title: Vaccinations - FHIR STU3
+            url: /retrieval_vaccinations_fhir_stu3.html
+            output: web
     - title: General API Guidance
       url: /development_general_api_guidance.html
       output: web
@@ -95,9 +108,6 @@ entries:
           - title: Provider Guidance
             url: /retrieval_provider_guidance.html
             output: web
-          - title: Formats
-            url: /retrieval_formats.html
-            output: web
       
   - title: Consumer API Guidance
     output: web
@@ -126,9 +136,6 @@ entries:
             output: web
           - title: Consumer Guidance
             url: /retrieval_consumer_guidance.html
-            output: web
-          - title: Formats
-            url: /retrieval_formats.html
             output: web
 
   - title: Assure
