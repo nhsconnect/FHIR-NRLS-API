@@ -8,168 +8,58 @@ summary: A architectural overview of how NRL works
 ---
 
 
+The [NRL Introduction](index.html) page give a high level overview of the service and how it enables information sharing between providers and consumers. This page goes into more detail around the arcitecture of the NRL, the role of the providers and consumers, and how the NRL can be used to enable information sharing.
+
+
 ## Architectural Pattern
 
-Pointers, actors and components
+The NRL service is based on a `Registry-Repository` pattern which separates the storage and retrieval of information, the repository aspect, from the data describing the location of the information, the registry.
 
+The **NRL** acts as the `registry` and the **Provider** carries out the `repository` function. Providers are systems external to the NRL that expose information for retrieval and create pointers on the NRL as signposts to the information that they are exposing. The NRL can be thought of as a collection of pointers. Consumers query the registry, NRL, to find out what repositories exist and how to access them.
 
-The NRL is based on a `Registry-Repository pattern`, which separates the storage and retrieval of a record from data that describes its location. 
+<img alt="Consumer queries NRL to get Pointer, then uses pointer to retrieve Record from Provider" src="images/architecture/nrl_registry_repository.png" style="width:100%;max-width: 100%;">
 
-<img alt="Consumer queries NRL to get Pointer, then uses pointer to retrieve Record from Provider" src="images/solution/Solution_Concepts_diagram.png" style="width:100%;max-width: 100%;">
+Pointers are at the core of enabling information sharing, as they tell the consumer what type of information is available and how to get it. It is important that the providers keep their pointers up to date so that consumers can find and retrieve information correctly.
 
-The **NRL** is acting as a registry with the repository function carried out by so-called **Providers**. Providers are systems external to the NRL that expose records for retrieval. Pointers are created by Providers to signpost a record that is intended to be exposed for retrieval. 
+As the registry, the NRL does not take part in information retrieval. The retrieval interaction is between the consumer and provider, but may utilise other services such as the `Spine Security Proxy (SSP)` to help with authentication and authorisation.
 
-**Pointers** are really at the core of the NRL. The NRL can be thought of as a collection of Pointers. Each Pointer describes how to retrieve a particular record from the Provider’s system or repository. It is key to the success of the NRL that Pointers are accurate. It is the responsibility of Providers to create and manage Pointers on the NRL in order to maintain this accuracy. 
 
-Accuracy is important from the perspective of those systems who wish to understand what records are available and from there may wish to retrieve records from the Provider. This category of actor is known as a **Consumer**. Without accurate Pointer data the Consumer’s life is made harder as they cannot be assured that a given Pointer describes what it purports to.
+## NRL Interactions
 
-The NRL does not take part in Record retrieval. The actual retrieval of the Record referenced by a given Pointer can be facilitated by the **Spine Security Proxy (SSP)**. 
+The NRL exposes a number of different interactions which allows providers to maintain their pointers and consumers to search and retrieve pointers. Providers can be thought of as systems that have **write access** to the NRL, they can create, update and delete pointers. Consumers can be thought of as systems that have **read access** to the NRL, enabling them to search and retrieve pointers.
 
-The NRL actors are summarised [here](overview_interactions.html#interactions).
+<img alt="Consumer API includes functionality such as basic read and search; Provider API includes functionality such as create, supersede, update, and delete" src="images/architecture/nrl_interface_interactions.png" style="width:100%;max-width: 100%;">
 
-## Providers
+Even though conceptually a consumer and a provider are different, a system connected to the service may be both a consumer and a provider and have both sets of interactions associated with their ASID.
 
-Expose information
-- contact details
-- clinical records
-- care plans
-- etc.
+| Interaction | Description |
+| --- | --- |
+| [Create](api_interaction_create.html) | The `Create` interaction results in the creation of a pointer on NRL. <br/><br/>This interaction is triggered by the provider and is usually performed as a result of an event occurring within the provider system, such as some information being recorded in the patients record, a document being stored, a patient registering with the healthcare service. |
+| [Supersede](api_interaction_supersede.html) | This interaction allows providers to create a new pointer which supersed one of their existing pointers. After storing the new pointer the NRL updates the status of the existing pointer to "superseded" and that superseded pointer is no longer available to Consumers.<br/><br>This interaction should be used where a provider wishes to replace one of their existing pointers with a new pointer, because information on the existing pointer needs to be changed, for example when the retrieval URL needs changing or an additional supported retrieval format is added. |
+| [Update](api_interaction_update.html) | The `Update` interaction allows a provider to remove one of their existing pointers from NRL while simultaniously flagging the pointer to indicate that an error was identified with the pointer or the information it references.<br/><br/>The interaction allows the Provider to update the pointer status to "entered-in-error" and the updated pointer will no longer be available to consumers. |
+| [Delete](api_interaction_delete.html) | The `Delete` interaction allows a provider to remove their existing pointers from the NRL. |
+| [Read](api_interaction_read.html) | The `Read` interaction allows a single pointer to be retrieved using its logical identifier. Only pointers with the status of "current" can be retrieved using the `Read` interaction. |
+| [Search](api_interaction_search.html) | The `Search` interaction allows a consumer to perform a parameterised searches for pointers held on the NRL. Only pointers with the status of "current" can be retrieved using the `Search` interaction |
 
-Create Pointers on NRL
 
 
-## Consumers
+Each of the interactions which can be performed against the NRL is given an interaction ID, for example `creating a pointer` or `searching for pointers`.
 
-What they do and what they get from it
+Each system connected to the NRL will be given a unique Accredited System ID (ASID), by NHS Digital, and this unique ASID will be associated with one or more of the NRL interactions. The interactions associated with an ASID will be determine by what interactions that system has been approved and assured to use. As part of sending a request to the NRL, the system will supply its ASID and the interaction ID that relates to the action it is trying to perform. If the interaction ID is not associated with the systems ASID, the request will be blocked.
 
+When a provider uses the `Supersede`, `Update` and `delete` interactions to maintain existing pointers, the NRL will only allow the provider to make changes to their own pointers. To do this the NRL will validate that the ASID of the system trying to manage the pointer is is associated with the ODS code found in the pointer. If the ASID is not associated with the ODS code within the pointer the NRL will block the attempt to update the pointer.
 
 
+## Information Retrieval
 
-## ------------------------
+The NRL does not take part in the retrieval of information from providers. The pointers held with NRL and shared with consumers can be seen as signposts to where the information can be retreived. The retrieval of information is conducted between the consumer and provider, but may utilise other services such as the `Spine Security Proxy (SSP)` to help with authentication and authorisation. More detail on retrieval of information can be found on the [retrieval overview page](retrieval_overview.html).
 
-
-## From other pages to include
-
-
-## Interactions
-
-There are three main types of systems that need to integrate in order to share data with the NRL.
-
-| System | Role in NRL | 
-|-----------|----------------|
-|Consumer|A system that wishes to retrieve Pointers related to a given patient by NHS number and optionally follow one or more of those Pointers to retrieve the record to which it points.|
-|Provider|A system that wishes to expose its Records for sharing.|
-|NRL|A system that stores and provides access to Pointers for retrieval and maintenance.|
-
-### Provider Interactions
-
-A Provider is responsible for maintaining a set of Pointers. This involves creating, replacing, updating, and deleting Pointers.
-
-#### Pointer Creation
-
-When a relevant event occurs within a Provider organisation, the Provider generates a Pointer referencing a record that the Provider wishes to expose to NRL Consumers.
-
-Once generated, the Provider sends the Pointer to the [create interaction](api_interaction_create.html) exposed by the NRL maintenance interface.
-
-After successfully persisting the Pointer, the NRL informs the Provider client of this in the returned response, which includes the address of the new Pointer.
-
-If any problems prevent the Pointer from being created, the NRL will inform the client of this in the returned response.
-
-#### Pointer Replacement
-
-When an event occurs within a Provider organisation that requires a Pointer's metadata, such as the record URL, to be updated on the NRL, the Provider should create a new pointer with the updated metadata which supersedes (replaces) the existing pointer. This can be done using the [create (supersede) interaction](api_interaction_supersede.html), creating a new pointer that references the superseded pointer using the 'Related document' metadata item.
-
-The creation of the new pointer with the 'Related document' metadata item will consequently update the existing Pointer to change the status to "superseded" and increment the pointer version. The superseded pointer will no longer be available to Consumers. 
-
-After successfully persisting the Pointer, the NRL will inform the Provider client of this in the returned response which will include the address of the new Pointer.
-
-If there were any problems that meant the Pointer could not be created, the NRL will inform the client of this in the returned response. In the case of an error occuring, all updates to the superseded pointer will be rolled back. 
-
-#### Pointer Update
-
-When an error is identified with a Pointer that means it should not exist on NRL, whether the error concerns the pointer metadata or the referenced record itself, the Provider should update the pointer status to "entered-in-error".
-
-The Provider does this using the [update interaction](api_interaction_update.html) that is exposed on the NRL maintenance interface.
-
-After successfully updating the Pointer, the NRL will inform the Provider client of this in the returned response, and the updated pointer will no longer be available to Consumers.
-
-If there were any problems that meant the Pointer could not be updated, the NRL will inform the client of this in the returned response.
-
-#### Pointer Removal
-
-When an event occurs within a Provider organisation that requires the removal of an existing Pointer from the NRL the Provider uses the [delete interaction](api_interaction_delete.html) exposed in the NRL maintenance interface, passing it the address of the Pointer to be removed.
-
-After successfully deleting the Pointer, the NRL will inform the Provider client of this in the returned response, and the deleted pointer will no longer be available to Consumers.
-
-If there were any problems that meant the Pointer could not be removed, the NRL will inform the client.
-
-### Consumer Interactions
-
-Consumers can retrieve pointers using the search or read interactions. Only pointers with the status of "current" can be retrieved by Consumers.
-
-#### Read Pointer
-
-A Consumer can perform a [read interaction](api_interaction_read.html) to retrieve a single pointer by its logical identifier. 
-
-#### Pointer Search
-
-A Consumer can perform parameterised searches of the Pointers held within the NRL using a [search interaction](api_interaction_search.html):
-
-- A Consumer can ask the NRL to return all Pointers that relate to a given patient by supplying the NHS number of that patient.
-- A Consumer can combine the Patient search parameter with the ODS code of the organisation that owns a Pointer to further narrow the search space.
-- The NRL also allows searching by logical ID. This uniquely identifies a Pointer and is similar to the `read` interaction, but returns the relevant Pointer wrapped in a [FHIR bundle](https://www.hl7.org/fhir/bundle.html).
-
-
-## ------------------------
-
-The NRL has been designed around the Pointer as the fundamental unit. Both Providers and Consumers deal exclusively with Pointers. However, Provider and Consumer roles have different capabilities when it comes to Pointer manipulation.
-
-A Provider can be thought of as a system that has **write access** to the NRL, to support Pointer maintenance.
-
-A Consumer can be thought of as a system that has **read access** to the NRL, to facilitate the retrieval of Pointers that are of interest to the Consuming system.
-
-<img alt="Consumer API includes functionality such as basic read and search; Provider API includes functionality such as create, supersede, update, and delete" src="images/solution/Solution_Behaviour_diagram.png" style="width:100%;max-width: 100%;">
-
-A system can be assured as both a Consumer and a Provider, provided that all relevant prerequisites and requirements are met.
-
-### Identity on the NRL
-
-Each client system will be given an Accredited System ID (ASID) by NHS Digital. Each ASID will be associated with one or more interaction IDs. An interaction ID defines an action that can be performed against NRL (for example, creating a new DocumentReference). As part of a request, a client will supply its ASID and the interaction ID that relates to the action that it is trying to perform. If the interaction ID is not associated with the client's ASID, the request will be blocked.
-
-### Pointer Maintenance by Providers
-
-If a client system is in the Provider role, it can create, supersede, update, and delete Pointers. When it comes to the modification of existing Pointers, the Provider is only permitted to change Pointers that it owns. The concept of ownership is carried on the Pointer itself and is again centered around the ODS code. The client can modify a Pointer as long as it satisfies the following two conditions:
-* The ASID of the client system verifies that the client has the Provider role.
-* The ODS code associated with that ASID matches the owner’s ODS code found on the Pointer.
-
-To manipulate a Pointer, a Provider must know the logical identifier _or_ the master identifier of that Pointer. The logical identifier is an NRL-generated value that uniquely identifies a Pointer within an instance of the NRL. The master identifier is a unique identifier for the pointer which is under the control of the Provider. See the [Pointer Identity page](pointer_identity.html) for more details on identifiers.
-
-### Pointer Retrieval by Consumers
-
-Consumer NRL interactions are read only. A system can search for a collection of pointers or retrieve a single pointer by logical identifier. 
-
-The NRL search interaction is predicated on the Consumer having a verified NHS number prior to retrieving Pointers. See the [Personal Demographics Service page](integration_personal_demographics_service.html) for more details on NHS number verification.
-
-Once the Consumer has a verified NHS number, the NRL can be asked to retrieve a collection of all "current" Pointers that relate to that NHS number. The NRL looks for Pointers for which the Subject (Patient) property matches the NHS number query parameter. On this basis, the NRL will return a collection of zero or more matching Pointers. See the [search interaction page](api_interaction_search.html) for more details.
-
-In order to retrieve a single pointer using the read interaction, the Consumer must know the logical identifier of the pointer. See the [read interaction page](api_interaction_read.html) for more details.
-
-### Record Retrieval by Consumers
-
-The NRL does not take part in Record retrieval. The Pointers it holds can be seen as signposts that show the way. Retrieval of referenced documents and records can be facilitated by the Spine Secure Proxy (SSP).
-
-The SSP is a forward HTTP proxy which is used as a front-end to control and protect access to Provider IT systems that will be exposing Records in a standards-compliant way. It provides a single security point for both authentication and authorisation for systems. More details on how document/record retrieval can be facilitated by the SSP can be found on the [retrieval overview page](retrieval_overview.html).
 
 ## Auditing
-The NRL and the SSP will capture an audit trail for each request-response interaction that a client (Consumer or Provider) has with the system. Once captured, the audit trail can be retrieved.
 
-### Capturing an Audit Trail
-The audit trail begins with capturing key data from a client request, and it ends with capturing the NRL's response to that request. The request audit trail and response audit
-trail will be combined to form a full end-to-end audit of a given request and response interaction with the NRL.
+The NRL will capture an audit trail for each interaction it has with any connected system (Consumer or Provider). This audit trail begins with capturing key data from the request, information around how the NRL processes the request and ends with capturing the response that the NRL sent back to the requesting system.
 
-An audit trail will capture different information about who or what is making the request, depending on whether the client is a person or a system. An example of the latter case is a Provider periodically running a batch job to synchronise its Pointers to the NRL. When capturing the audit trail, the system needs to be aware of this difference. The audit capability treats the user ID as an optional field in some circumstances: namely, in the context of a Provider reading, searching, creating, updating, or deleting its Pointers. It is never optional in a Consumer context. If the user ID is available, the guidance is that it should always be provided, regardless of whether the client is a Provider or a Consumer.
-
-Details on the audit requirements for Consumers and Providers can be found on the [auditing page](integration_auditing.html).
+The providers and consumers are also required to cature audit information for interaction with NRL and sharing of information. Details of the audit requirements for consumers and providers can be found on the [Auditing](integration_auditing.html) page.
 
 ### Retrieving an Audit Trail
 

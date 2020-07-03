@@ -32,31 +32,52 @@ entries:
       url: /record_type_overview.html
       output: web
 
-  - title: Generic API Guidance
+  - title: Development Guidance
     output: web
     folderitems:
     - title: Overview
       url: /generic_api_guidance_overview.html
       output: web
-    - title: Pointer Types
+    - title: Supported Pointer Types
       url: /pointer_types.html
       output: web
-      subfolders:
-      - title: Information Formats
-        output: web
-        subfolderitems:
-          - title: Contact Details
-            url: /retrieval_contact_details.html
-            output: web
-          - title: Vaccinations - FHIR STU3
-            url: /retrieval_vaccinations_fhir_stu3.html
-            output: web
     - title: General API Guidance
       url: /development_general_api_guidance.html
       output: web
-    - title: FHIR Profile Reference
-      url: /explore_reference.html
+    - title: Provider Overview
+      url: /provider_guidance_overview.html
       output: web
+    - title: Consumer Overview
+      url: /consumer_guidance_overview.html
+      output: web
+      
+      subfolders:
+      - title: NRL Interactions
+        output: web
+        subfolderitems:
+          - title: Create
+            url: /api_interaction_create.html
+            output: web
+          - title: Create (Supersede)
+            url: /api_interaction_supersede.html
+            output: web
+          - title: Update
+            url: /api_interaction_update.html
+            output: web  
+          - title: Delete
+            url: /api_interaction_delete.html
+            output: web
+          - title: Read
+            url: /api_interaction_read.html
+            output: web  
+          - title: Search
+            url: /api_interaction_search.html
+            output: web
+            
+    - title: Auditing 
+      url: /integration_auditing.html
+      output: web
+      
       subfolders:
       - title: Spine Integration
         output: web
@@ -73,72 +94,39 @@ entries:
           - title: Access Tokens (JWT)
             url: /integration_access_tokens_JWT.html
             output: web
-          - title: Auditing 
-            url: /integration_auditing.html
-            output: web
+            
+    - title: FHIR Profile Reference
+      url: /explore_reference.html
+      output: web
+      
     - title: Personal Demographics Service
       url: /integration_personal_demographics_service.html
       output: web
-  
-  - title: Provider API Guidance
-    output: web
-    folderitems:
-    - title: Overview
-      url: /provider_guidance_overview.html
-      output: web
-      subfolders:
-      - title: Pointer Maintenance
-        output: web
-        subfolderitems:
-          - title: Create
-            url: /api_interaction_create.html
-            output: web
-          - title: Create (Supersede)
-            url: /api_interaction_supersede.html
-            output: web
-          - title: Update
-            url: /api_interaction_update.html
-            output: web  
-          - title: Delete
-            url: /api_interaction_delete.html
-            output: web
-      - title: Record Sharing
-        output: web  
-        subfolderitems:
-          - title: Provider Guidance
-            url: /retrieval_provider_guidance.html
-            output: web
-      
-  - title: Consumer API Guidance
-    output: web
-    folderitems:
-    - title: Overview
-      url: /consumer_guidance_overview.html
-      output: web
-      subfolders:
-      - title: Finding Pointer
-        output: web
-        subfolderitems:
-          - title: Read
-            url: /api_interaction_read.html
-            output: web  
-          - title: Search
-            url: /api_interaction_search.html
-            output: web   
-      - title: Retrieving Records
-        output: web  
-        subfolderitems:
-          - title: Overview
-            url: /retrieval_overview.html
-            output: web
-          - title: Read Interaction
-            url: /retrieval_interaction_read.html
-            output: web
-          - title: Consumer Guidance
-            url: /retrieval_consumer_guidance.html
-            output: web
 
-  - title: Assure
+  - title: Information Retrieval
+    output: web  
+    folderitems:
+      - title: Overview
+        url: /retrieval_overview.html
+        output: web
+        subfolders:
+      - title: Retrieval Formats
+        output: web
+        subfolderitems:
+          - title: Contact Details
+            url: /retrieval_contact_details.html
+            output: web
+          - title: Vaccinations - FHIR STU3
+            url: /retrieval_vaccinations_fhir_stu3.html
+            output: web
+      - title: Read Interaction
+        url: /retrieval_interaction_read.html
+        output: web
+      - title: Consumer Guidance
+        url: /retrieval_consumer_guidance.html
+        output: web
+
+  - title: Assurance
     output: web
     flat: true
     url: /assure.html
@@ -149,11 +137,9 @@ entries:
     - title: Frequently Asked Questions (FAQ)
       url: /support_faq.html
       output: web
+    - title: Glossary
+      url: /overview_glossary.html
+      output: web
     - title: Communication Channels
       url: /support_communications.html
       output: web
-
-  - title: Glossary
-    output: web
-    flat: true
-    url: /overview_glossary.html

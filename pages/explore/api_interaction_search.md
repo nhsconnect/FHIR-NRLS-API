@@ -15,6 +15,14 @@ Consumer interaction to support parameterised search of the NRL.
 
 ## Prerequisites
 
+------------------
+
+The NRL search interaction is predicated on the Consumer having a verified NHS number prior to retrieving Pointers. See the [Personal Demographics Service page](integration_personal_demographics_service.html) for more details on NHS number verification.
+
+Once the Consumer has a verified NHS number, the NRL can be asked to retrieve a collection of all "current" Pointers that relate to that NHS number. The NRL looks for Pointers for which the Subject (Patient) property matches the NHS number query parameter. On this basis, the NRL will return a collection of zero or more matching Pointers. See the [search interaction page](api_interaction_search.html) for more details.
+
+--------------------
+
 In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-prerequisites-for-nrl-api) page MUST be followed when using this interaction.
 
 ## Search Request Headers
