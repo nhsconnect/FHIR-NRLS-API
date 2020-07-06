@@ -24,7 +24,7 @@ Information sharing is made up of three actors:
 - The **NRL** which enables consumers to locate information shared by the providers
 
 
-### Challenges
+### Enabling Information Sharing
 
 With national sharing of information there are a number of challenges for a consumer:
 
@@ -32,10 +32,9 @@ With national sharing of information there are a number of challenges for a cons
 - knowing how to retrieve the information, where from and in what format
 - knowing how to authentication and get authorisation to access the information
 
-The NRL has been built to help overcome these challenges.
+The NRL has been built to help overcome these challenges and enable sharing of information.
 
-
-# Enabling Information Sharing
+# How NRL Works
 
 The NRL is a national [index](architectural_overview.html) of [pointers](pointer_overview.html) to information held by providers.
 

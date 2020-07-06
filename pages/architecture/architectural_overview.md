@@ -13,9 +13,9 @@ The [NRL Introduction](index.html) page give a high level overview of the servic
 
 ## Architectural Pattern
 
-The NRL service is based on a `Registry-Repository` pattern which separates the storage and retrieval of information, the repository aspect, from the data describing the location of the information, the registry.
+The NRL service is based on a `Registry-Repository` pattern which separates the storage and retrieval of information, the repository, from the data describing the location of the information, the registry. The **NRL** acts as the `registry` and the **Provider** carries out the `repository` function.
 
-The **NRL** acts as the `registry` and the **Provider** carries out the `repository` function. Providers are systems external to the NRL that expose information for retrieval and create pointers on the NRL as signposts to the information that they are exposing. The NRL can be thought of as a collection of pointers. Consumers query the registry, NRL, to find out what repositories exist and how to access them.
+Providers are systems external to the NRL that expose information for retrieval, and create pointers on the NRL as a signpost to that information. The NRL can be thought of as a collection or index of pointers which are available to consumers. Consumers query the registry (NRL) to find out what repositories exist and how to access them.
 
 <img alt="Consumer queries NRL to get Pointer, then uses pointer to retrieve Record from Provider" src="images/architecture/nrl_registry_repository.png" style="width:100%;max-width: 100%;">
 
@@ -26,11 +26,11 @@ As the registry, the NRL does not take part in information retrieval. The retrie
 
 ## NRL Interactions
 
-The NRL exposes a number of different interactions which allows providers to maintain their pointers and consumers to search and retrieve pointers. Providers can be thought of as systems that have **write access** to the NRL, they can create, update and delete pointers. Consumers can be thought of as systems that have **read access** to the NRL, enabling them to search and retrieve pointers.
+The NRL exposes a number of different interactions which allows providers to maintain their pointers and consumers to search and retrieve pointers. Providers can be thought of as systems that have **write access** to the NRL, they can `create`, `update` and `delete` pointers. Consumers can be thought of as systems that have **read access** to the NRL, enabling them to `search` and `read` pointers.
 
 <img alt="Consumer API includes functionality such as basic read and search; Provider API includes functionality such as create, supersede, update, and delete" src="images/architecture/nrl_interface_interactions.png" style="width:100%;max-width: 100%;">
 
-Even though conceptually a consumer and a provider are different, a system connected to the service may be both a consumer and a provider and have both sets of interactions associated with their ASID.
+Even though conceptually a consumer and a provider are different, a system connected to the service may be both a consumer and a provider at the same time.
 
 | Interaction | Description |
 | --- | --- |
@@ -47,7 +47,7 @@ Each of the interactions which can be performed against the NRL is given an inte
 
 Each system connected to the NRL will be given a unique Accredited System ID (ASID), by NHS Digital, and this unique ASID will be associated with one or more of the NRL interactions. The interactions associated with an ASID will be determine by what interactions that system has been approved and assured to use. As part of sending a request to the NRL, the system will supply its ASID and the interaction ID that relates to the action it is trying to perform. If the interaction ID is not associated with the systems ASID, the request will be blocked.
 
-When a provider uses the `Supersede`, `Update` and `delete` interactions to maintain existing pointers, the NRL will only allow the provider to make changes to their own pointers. To do this the NRL will validate that the ASID of the system trying to manage the pointer is is associated with the ODS code found in the pointer. If the ASID is not associated with the ODS code within the pointer the NRL will block the attempt to update the pointer.
+When a provider uses the `Supersede`, `Update` and `delete` interactions to maintain existing pointers, the NRL will only allow the provider to make changes to their own pointers. To do this the NRL will validate that the ASID of the system trying to manage the pointer, is associated with the ODS code found in the pointer. If the ASID is not associated with the ODS code within the pointer the NRL will block the attempt to update the pointer.
 
 
 ## Information Retrieval
