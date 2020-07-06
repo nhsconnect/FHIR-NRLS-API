@@ -111,6 +111,7 @@ entries:
         output: web
         subfolders:
       - title: Retrieval Formats
+        url: /retrieval_formats.html
         output: web
         subfolderitems:
           - title: Contact Details
