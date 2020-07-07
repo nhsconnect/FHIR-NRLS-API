@@ -9,26 +9,76 @@ summary: A technical overview the pointers
 
 ## What do pointers do
 
+Pointers on the NRL tell consumers what type of information is available from provider and how to get it. A provder can choose what information they want to share and how they want to share it.
 
-Pointers are associated with a Record. As noted, a Record exists in a remote system. One of the roles of the Pointer is to provide enough context to allow a Consumer to retrieve that Record from the remote system and display it.
+A provider might allow consumers to retrieve the same information in a number of different ways, and this would be reflected in the pointer(s), they create on the NRL. The following diagram illustrates the concept that a provider might enable different ways of retrieving the same information.
 
-The format and method of retrieval for a Record are under the control of the Provider system. It might be that the Provider has exposed the Record for direct retrieval, such that using the context available in the Pointer, a Consumer is able to retrieve the Record.
+<img alt="Pointers link to Records by providing either an API endpoint or contact details of the Provider" src="images/architecture/pointer_type_overview.png" style="width:100%;max-width: 100%;">
 
-Alternatively, rather than point to an electronic copy of the Record, the Provider can expose a set of contact details that a Consumer can use to retrieve the Record. In this scenario, the Consumer is not retrieving the Record electronically. Instead, they are using the contact details as an intermediate step to get to the Record, perhaps by phoning a healthcare service found in the contact details who will then relay the Record to the Consumer via another mechanism.
+The provider  creates two pointers on NRL that point to the same information (Record A) within the provider system:
+- The first pointer contains contact details for the provider. Retrieval in this scenario begins with a user in the consumer organisation dialling the telephone, using the contact details in the pointer. This would begin a human-controlled process that would ultimately lead to "Record A" being retrieved.
+- The second pointer references an API endpoint exposed by the provider. In this scenario the consumer system would use the details in the pointer to request the record directly from the provider system and could display the returned record to the user in the consumer system.
 
-<img alt="Pointers link to Records by providing either an API endpoint or contact details of the Provider" src="images/solution/Solution_Concepts_Pointer2_diagram.png" style="width:100%;max-width: 100%;">
 
-The preceding diagram shows two Pointers that reference the same Record (Record A). The ways that they describe how to get the contents of Record A are different. In red is a Pointer that directly references the Provider’s API. In this example, following the Pointer will return the Record in electronic form direct from the Provider’s record store (green).
+## Pointer Data Items
 
-In contrast, the blue Pointer contains a set of contact details. A Consumer following this Pointer would begin their retrieval by dialling the telephone number detailed in the Pointer. This would begin a human-controlled process that would ultimately lead to Record A being retrieved for them. In this example, the person referenced by the contact details accesses Record A using the same API endpoint that the red Pointer references.
+For a consumer, the information carried in the pointer serves two main purposes:
+- to allowing the them to determin which information could be useful
+- to tell the them how they can retrieve the information
 
+The content of the pointer is intended to be light weight and high level, giving enough information to indicate to the consumer the type of information they can retrieve and some contectual information, such as the care setting the information is being shared from, so that the consumer can filter down the returned pointer to a smaller set which they can retrieve. The pointer model aims to keep complexity low, as including too much detail within a pointer would put a significant maintenance burden on the provider and make consumption of pointers more difficult for consumers.
+
+The following table shows the data items that can be carried within a pointer:
+
+| Data Item | Description |
+|----------------|------------|
+|Patient|The NHS number of the patient which the information referenced, by the pointer, relates to.|
+|Information category|A high-level category of the information, from a set of NRL supported categories.|
+|Information Type|The clinical type of the information which is reference by the pointer. The clinical type will be from a controlled set of types supported by the NRL.|
+|Clinical setting|Describes the clinical setting in which the information was recorded.|
+|Period of care|Optional information detailing the period in which the documented care, reference by the pointer, is relevant.|
+|Retrieval URL|An absolute URL for the location of the information on the Provider’s system.|
+|Retrieval format|An identifier for the technical structure and rules of the information.|
+|Retrieval MIME type|Describes the type of data, in addition to the "Retrieval format".|
+|Information stability|Describes whether the information shared at the time of the consumers request is dynamically generated or static.|
+|Information creation datetime|Optional information about the date and time (on the Provider’s system) that the information was created (for static records).|
+|Pointer owner|The entity that maintains the Pointer.|
+|Information owner|The entity that maintains the information.|
+|Pointer Identifier|Assigned by the NRL at creation time. Uniquely identifies this record within the NRL.|
+|Master Identifier|An optional identifier for the pointer as assigned by the Provider. It is version specific and a new master identifier is required if the pointer is updated.|
+|Pointer version |Assigned by the NRL at creation or update time. Used to track the current version of a Pointer.|
+|Pointer last updated datetime|Assigned by the NRL at creation and update time. The date and time that the pointer was last updated.|
+|Pointer indexed datetime|Assigned by the NRL at creation time. The date and time that the pointer was created.|
+|Related Pointer|Relationship to another pointer|
+
+
+
+## Pointer Identity
+
+A pointer stored on the NRL has a logical identifier, assigned by the NRL, but it may also have a second identifier which is set by the provider, called the master identifier.
+
+### Logical Identifier
+
+This identifier is assigned by the NRL when it persists a pointer. It uniquely identifies that pointer within the NRL.
+
+The format of the ID is under the control of the NRL service and consumers should treat the identifier as an opaque. In other words, the client should not make assumptions about the structure of the identifier.
+
+### Master Identifier
+
+This identifier also uniquely identifies the pointer within the NRL. However, unlike the logical identifier, the master identifier is optional and is under the control of the provider.
+
+When providers create a pointer they must use a unique master identifier, following the guidlines below:
+
+- A Master Identifier must not be re-used, once use in a pointer
+- 'Superseding' a pointer requires a new, unique, master identifier to be included in the new pointer superseding the existing pointer
+- Master Identifiers within deleted pointers cannot be used again for new pointers
 
 
 ## Pointer Lifecycle
 
 A Pointer is a reference to some content, which is stored on a system external to NRL. It has its own lifecycle that is managed by a third party (the Record owner). The Pointer lifecycle as described by NRL defines the statuses and permitted transitions between those statuses for the pointer. The statuses and transitions ensure that only the appropriate pointers are shown to Consumers.
 
-## Pointer Status
+### Pointer Status
 
 A Pointer can be in one of three possible statuses: 
 - "current" - Indicates that the Pointer metadata and record URL are valid and can be used to inform clinical decision making. The definition of “current” is under the control of the Provider, but a Consumer should be confident that by selecting the Pointer they will be presented with a document or record that the Provider considers to be appropriate for Consumers to use.
@@ -37,7 +87,7 @@ A Pointer can be in one of three possible statuses:
 
 Only pointers with the status of “current” are made available to Consumers. The statuses “superseded” and “entered-in-error” are in use in the Pointer Lifecycle for pointer management and auditing purposes. 
 
-## Pointer Status: Legal Transitions
+### Pointer Status: Legal Transitions
 
 Not only is the value of a Pointer’s status constrained, but the transition from one status to another is also tightly controlled.
 
@@ -49,7 +99,7 @@ All Pointers begin life with a status of current. From there, it is possible to 
 
 Once in the superseded or entered-in-error statuses, the Pointer cannot transition anywhere else. One cannot build a chain of Pointers on top of a Pointer with a status other than current. Only the current Pointer can be used in this way by superseding it and replacing it with a new version that becomes the current Pointer. See the [Pointer status transition: worked examples](#pointer-status-transition-worked-examples) section for details on how the NRL allows a Provider to transition the status of its Pointers.
 
-## Pointer Status: Making Transitions
+### Pointer Status: Making Transitions
 
 When a Pointer is first created it will always have a status of current. 
 From there it is possible to supersede that Pointer or to mark it as entered-in-error. Figure 2 below illustrates the NRL functions that must be invoked in order to trigger the transition from one state to another (legal) state.
@@ -63,7 +113,7 @@ One transition that is worth expanding on is the transition from current to supe
 
 In order to supersede a pointer, there must always be a newer version. Therefore, to ensure the transactional integrity of this activity, which spans two Pointers (P1 and P2 in our example), the action is wrapped up into the CREATE of P2. More details on the mechanics of this are provided in the [Managing Pointers to content](pointer_maintenance.html#managing-pointers-to-content) section.
 
-## Pointer Status Transition: Worked Examples
+### Pointer Status Transition: Worked Examples
 
 Note that in the diagrams below, three properties from the Pointer data model are referenced. One of them is the version. 
 This is the version of the Pointer, not the version of the content referenced. Each time a particular instance of a Pointer is modified, the NRL service will increment the version by one, as can be seen in several of the worked examples.
@@ -93,65 +143,7 @@ on the Pointer or the resource that it references.
 
 The Provider must UPDATE the existing resource, changing its status from current to entered-in-error. In doing so, the NRL will modify its version to reflect the change.
 
-## Deleting Pointers
+### Deleting Pointers
 
 If a pointer is no longer valid or appropriate for use and should not be superseded or marked as "entered-in-error", then the pointer should be deleted.
 
-
-
-## What do pointers contain to allow them to do this
-
-Broad Data items and what they are for
-
-
-## Pointer Identity
-
-Once persisted within the NRL there are up to two ways to refer to a specific Pointer instance. Both are identifiers that are stored on the Pointer itself, but the master identifier is optional and is specified by the Provider.
-
-- Logical identifier – This identifier is assigned by the NRL service when it persists a Pointer. It uniquely identifies that Pointer within the NRL service. The NRL service instance is the namespace for a given Pointer’s Logical identifier. 
-
-- Master identifier – This also uniquely identifies the Pointer within the boundary of the NRL service. However, unlike the logical identifier, the master identifier is optional and is under the control of the Provider. For more details, see the [Master Identifier](#master-identifier) and [Uniqueness](#uniqueness) sections below.
-
-### Logical Identifier
-
-The logical identifier (ID) is generated by the NRL during the creation of a new Pointer. It is unique across all Pointers on the NRL service that created the Pointer. If the Pointer were ever to be migrated to a different NRL service instance then it is possible that its ID might need to change to avoid clashes with Pointers on the target NRL service.
-
-The format of the ID is under the control of the NRL service. Clients should treat the id as an opaque identifier. In other words, the client should not make assumptions about the structure of the ID.
-
-### Master Identifier
-
-The master identifier is an optional identifier on the Pointer. It is under the control of the Provider. Guidance on the use of a unique master identifier value:
-
-- Once a pointer with a master identifier value has been created, that same master identifier value must not be re-used with another pointer.
-- 'Superseding' requires a new master identifier value. If a pointer is superseded, the new Pointer that replaces it must have a new, unique master identifier value.
-- Once a pointer with a master identifier is deleted, the master identifier value used in that pointer cannot be used again on the NRL.
-
-## Data
-
-In order to support the Consumer and Provider interactions with the NRL, a data model is provided for the Pointer. The data model is purposefully lean, each property has a clear reason to exist, and it directly supports the activities of Consumers and Providers.
-
-You can explore an in-depth view of the lean data model and the full NRL DocumentReference profile in the [FHIR Resources and References section](explore_reference.html).
-
-| Property | Cardinality | Description | 
-|-----------|----------------|------------|
-|[Identifier](pointer_identity.html)|0..1|Assigned by the NRL at creation time. Uniquely identifies this record within the NRL. Used by Providers to update or delete.|
-|Profile|0..1|The URI of the FHIR profile that the resource conforms to. Indicates the version of the pointer model.|
-|Pointer version |0..1|Assigned by the NRL at creation or update time. Used to track the current version of a Pointer.|
-|Pointer last updated datetime|0..1|Assigned by the NRL at creation and update time. The date and time that the pointer was last updated.|
-|Pointer indexed datetime|0..1|Assigned by the NRL at creation time. The date and time that the pointer was created.|
-|[Master Identifier](pointer_identity.html)|0..1|An optional identifier of the document as assigned by the Provider. It is version specific — a new master identifier is required if the document is updated.|
-|[Pointer Status](pointer_lifecycle.html)|1..1|The status of the pointer|
-|Patient|1..1|The NHS number of the patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.|
-|Pointer owner|1..1|The entity that maintains the Pointer. Used to control which systems can modify the Pointer.|
-|Record owner|1..1|The entity that maintains the Record. Used to provide the Consumer with context around who they will be interacting with if retrieving the Record.|
-|Record category|1..1|A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set.|
-|Record type|1..1|The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers. The clinical type will be one of a controlled set. It will not be possible to create a pointer with a type that does not exist within this controlled set.|
-|Record creation clinical setting|1..1|Describes the clinical setting in which the content was created.|
-|Period of care|0..1|Details the period in which the documented care is relevant.|
-|Pointer reference|1..*|Information about the record referenced|
-|Record creation datetime|0..1|The date and time (on the Provider’s system) that the record was created, for static records.|
-|Record URL|1..1|Absolute URL for the location of the record on the Provider’s system|
-|Record format|1..1|Describes the technical structure and rules of the record such that the Consumer can pick an appropriate mechanism to handle the record.|
-|Record MIME type|1..1|Describes the type of data such that the Consumer can pick an appropriate mechanism to handle the record.|
-|Record stability|1..1|Describes whether the record content at the time of the request is dynamically generated or is static.|
-|[Related Documents](pointer_maintenance.html)|0..1|Relationship to another pointer|
