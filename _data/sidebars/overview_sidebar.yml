@@ -36,22 +36,30 @@ entries:
     output: web
     folderitems:
     - title: Overview
-      url: /generic_api_guidance_overview.html
+      url: /development_overview.html
       output: web
     - title: Supported Pointer Types
-      url: /pointer_types.html
+      url: /supported_pointer_types.html
       output: web
-    - title: General API Guidance
-      url: /development_general_api_guidance.html
-      output: web
-    - title: Provider Overview
-      url: /provider_guidance_overview.html
-      output: web
-    - title: Consumer Overview
-      url: /consumer_guidance_overview.html
-      output: web
-      
       subfolders:
+      - title: General API Guidance
+        output: web
+        subfolderitems:
+          - title: Pointer Identifiers
+            url: /identifier_guidance.html
+            output: web
+          - title: FHIR Profile Reference
+            url: /explore_reference.html
+            output: web  
+          - title: Security
+            url: /security_guidance.html
+            output: web
+          - title: Auditing 
+            url: /integration_auditing.html
+            output: web
+          - title: Error Overview
+            url: /nrl_error_guidance.html
+            output: web
       - title: NRL Interactions
         output: web
         subfolderitems:
@@ -73,32 +81,6 @@ entries:
           - title: Search
             url: /api_interaction_search.html
             output: web
-            
-    - title: Auditing 
-      url: /integration_auditing.html
-      output: web
-      
-      subfolders:
-      - title: Spine Integration
-        output: web
-        subfolderitems:
-          - title: Authentication &amp; Authorisation
-            url: /integration_authentication_authorisation.html
-            output: web
-          - title: Access Control
-            url: /explore_rbac_mapping.html
-            output: web
-          - title: Security
-            url: /development_api_security_guidance.html
-            output: web
-          - title: Access Tokens (JWT)
-            url: /integration_access_tokens_JWT.html
-            output: web
-            
-    - title: FHIR Profile Reference
-      url: /explore_reference.html
-      output: web
-      
     - title: Personal Demographics Service
       url: /integration_personal_demographics_service.html
       output: web
@@ -108,6 +90,9 @@ entries:
     folderitems:
       - title: Overview
         url: /retrieval_overview.html
+        output: web
+      - title: Access Control
+        url: /explore_rbac_mapping.html
         output: web
         subfolders:
       - title: Retrieval Formats

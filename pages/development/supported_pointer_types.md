@@ -3,7 +3,7 @@ title: Pointer Types
 keywords: structured rest documentreference
 tags: [fhir,pointers,record_retrieval]
 sidebar: accessrecord_rest_sidebar
-permalink: pointer_types.html
+permalink: supported_pointer_types.html
 summary: Pointer types supported by NRL
 ---
 
