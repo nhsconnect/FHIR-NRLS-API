@@ -88,15 +88,14 @@ entries:
   - title: Information Retrieval
     output: web  
     folderitems:
-      - title: Overview
-        url: /retrieval_overview.html
-        output: web
-      - title: Access Control
-        url: /explore_rbac_mapping.html
-        output: web
-        subfolders:
+    - title: Overview
+      url: /retrieval_overview.html
+      output: web
+    - title: Access Control
+      url: /explore_rbac_mapping.html
+      output: web
+      subfolders:
       - title: Retrieval Formats
-        url: /retrieval_formats.html
         output: web
         subfolderitems:
           - title: Contact Details
@@ -105,12 +104,12 @@ entries:
           - title: Vaccinations - FHIR STU3
             url: /retrieval_vaccinations_fhir_stu3.html
             output: web
-      - title: Read Interaction
-        url: /retrieval_interaction_read.html
-        output: web
-      - title: Consumer Guidance
-        url: /retrieval_consumer_guidance.html
-        output: web
+    - title: Read Interaction
+      url: /retrieval_interaction_read.html
+      output: web
+    - title: Consumer Guidance
+      url: /retrieval_consumer_guidance.html
+      output: web
 
   - title: Assurance
     output: web
