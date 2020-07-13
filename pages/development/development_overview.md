@@ -7,35 +7,15 @@ permalink: development_overview.html
 summary: "Overview of the Development section"
 ---
 
+This section of the specification is intended to give developers detailed requirements and the guidance needed to interact with the NRL in order to create, use or manage pointers. This section will link to relevant [Information Retrieval](retrieval_overview.html) pages where they relate to pointers.
 
-# Purpose
-
-This implementation guide is intended for use by software developers looking to build a conformant NRL API interface using the FHIR&reg; standard, with a focus on general API implementation guidance.
 
 ### Notational Conventions
 
-The keywords ‘**MUST**’, ‘**MUST NOT**’, ‘**REQUIRED**’, ‘**SHALL**’, ‘**SHALL NOT**’, ‘**SHOULD**’, ‘**SHOULD NOT**’, ‘**RECOMMENDED**’, ‘**MAY**’, and ‘**OPTIONAL**’ in this implementation guide are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
+In the requirement pages, the following keywords ‘**MUST**’, ‘**MUST NOT**’, ‘**REQUIRED**’, ‘**SHALL**’, ‘**SHALL NOT**’, ‘**SHOULD**’, ‘**SHOULD NOT**’, ‘**RECOMMENDED**’, ‘**MAY**’, and ‘**OPTIONAL**’ are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt), in order to create an NRL compliant system.
 
-## RESTful API
 
-### Content Types
-
-- The NRL Server MUST support both formal [MIME-types](https://www.hl7.org/fhir/STU3/http.html#mime-type) for FHIR resources:
-  - XML: `application/fhir+xml`
-  - JSON: `application/fhir+json`
-  
-- The NRL Server MUST also support DSTU2 [MIME-types](https://www.hl7.org/fhir/DSTU2/http.html#mime-type) for backwards compatibility:
-  - XML: `application/xml+fhir`
-  - JSON: `application/json+fhir`
-  
-- The NRL Server MUST also gracefully handle generic XML and JSON MIME types:
-  - XML: `application/xml`
-  - JSON: `application/json`
-  - JSON: `text/json`
-  
-- The NRL Server MUST support the optional `_format` parameter in order to allow the client to specify the response format by its MIME type. If both are present, the `_format` parameter overrides the `Accept` header value in the request.
-
-- If neither the `Accept` header nor the `_format` parameter are supplied by the client system, the NRL Server MUST return data in the default format of `application/fhir+xml`.
+## NRL Interactions
 
 
 ## 1. NRL API Overview
@@ -52,6 +32,28 @@ The NRL API supports the following operations as detailed in the [Solution Inter
 |[Delete](api_interaction_delete.html)|DELETE|Provider|Delete an NRL pointer|
 
 A system can be assured to perform both Consumer and Provider interactions, provided that all relevant prerequisites and requirements are met. 
+
+### Content Types
+
+- The NRL Server MUST support both formal [MIME-types](https://www.hl7.org/fhir/STU3/http.html#mime-type) for FHIR resources:
+  - XML: `application/fhir+xml`
+  - JSON: `application/fhir+json`
+  
+- The NRL Server MUST also support DSTU2 MIME-types for backwards compatibility:
+  - XML: application/xml+fhir
+  - JSON: application/json+fhir
+  
+- The NRL Server MUST also gracefully handle generic XML and JSON MIME types:
+  - XML: `application/xml`
+  - JSON: `application/json`
+  - JSON: `text/json`
+  
+- The NRL Server MUST support the optional `_format` parameter in order to allow the client to specify the response format by its MIME type. If both are present, the `_format` parameter overrides the `Accept` header value in the request.
+
+- If neither the `Accept` header nor the `_format` parameter are supplied by the client system, the NRL Server MUST return data in the default format of `application/fhir+xml`.
+
+
+
 
 ## 2. Prerequisites for NRL API
 
