@@ -7,20 +7,14 @@ permalink: development_overview.html
 summary: "Overview of the Development section"
 ---
 
-This section of the specification is intended to give developers detailed requirements and the guidance needed to interact with the NRL in order to create, use or manage pointers. This section will link to relevant [Information Retrieval](retrieval_overview.html) pages where they relate to pointers.
-
-
-### Notational Conventions
+The "Development Guidance" pages are intended to give developers detailed requirements and guidance needed to interact with the NRL for the creation, management and retrieval of pointers. The following page outlines the information available and some pre-requisites for using the NRL service.
 
 In the requirement pages, the following keywords ‘**MUST**’, ‘**MUST NOT**’, ‘**REQUIRED**’, ‘**SHALL**’, ‘**SHALL NOT**’, ‘**SHOULD**’, ‘**SHOULD NOT**’, ‘**RECOMMENDED**’, ‘**MAY**’, and ‘**OPTIONAL**’ are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt), in order to create an NRL compliant system.
 
 
-## NRL Interactions
+# NRL Interactions
 
-
-## 1. NRL API Overview
-
-The NRL API supports the following operations as detailed in the [Solution Interactions](overview_interactions.html) section of this implementation guide:
+The NRL supports the following interactions as detailed in the [Architectural Overview](architectural_overview.html) page:
 
 |Interaction|HTTP Verb|Actor|Description|
 | ------------- | ------------- | ------------- | ------------- | ------------- | 
@@ -31,81 +25,94 @@ The NRL API supports the following operations as detailed in the [Solution Inter
 |[Update](api_interaction_update.html)|PATCH|Provider|Update an NRL pointer to change the status to "entered-in-error"|
 |[Delete](api_interaction_delete.html)|DELETE|Provider|Delete an NRL pointer|
 
-A system can be assured to perform both Consumer and Provider interactions, provided that all relevant prerequisites and requirements are met. 
 
-### Content Types
-
-- The NRL Server MUST support both formal [MIME-types](https://www.hl7.org/fhir/STU3/http.html#mime-type) for FHIR resources:
-  - XML: `application/fhir+xml`
-  - JSON: `application/fhir+json`
-  
-- The NRL Server MUST also support DSTU2 MIME-types for backwards compatibility:
-  - XML: application/xml+fhir
-  - JSON: application/json+fhir
-  
-- The NRL Server MUST also gracefully handle generic XML and JSON MIME types:
-  - XML: `application/xml`
-  - JSON: `application/json`
-  - JSON: `text/json`
-  
-- The NRL Server MUST support the optional `_format` parameter in order to allow the client to specify the response format by its MIME type. If both are present, the `_format` parameter overrides the `Accept` header value in the request.
-
-- If neither the `Accept` header nor the `_format` parameter are supplied by the client system, the NRL Server MUST return data in the default format of `application/fhir+xml`.
-
-
-
-
-## 2. Prerequisites for NRL API
-
-### 2.1 NRL Server API Conformance
-
-- MUST support HL7 FHIR STU3 version 3.0.1.
-
-- MUST implement REST behavior according to the [FHIR specification](http://www.hl7.org/fhir/STU3/http.html).
-
-- MUST support XML **or** JSON formats for all API interactions.
-
-### 2.2 NRL Client API Conformance
-
-- MUST support HL7 FHIR STU3 version 3.0.1.
-
-- MUST support XML **or** JSON formats for all API interactions.
-
-- SHOULD support the NRL Service RESTful interactions and search parameters.
-
-### 2.3 Spine Services
-
-The NRL API is accessed through the NHS Spine. Providers and consumers of the NRL API are required to integrate with the following Spine services as a pre-requisite to calling the NRL API:
-
-|National Service|Description|
-| ------------- | ------------- |
-|Personal Demographics Service (PDS)|National database of NHS patients containing details such as name, address, date of birth, and NHS Number (known as demographic information).|
-
-#### Detailed Spine Services Prerequisites
-
-To use this API, both Provider and Consumer systems:
-
-- MUST have been accredited and received an endpoint certificate and associated ASID (Accredited System ID) for the client system.
-- MUST pass the system/organisation's information in a JSON web token - see [Access Tokens (JWT)](integration_access_tokens_JWT.html) for details.
-- MUST have previously traced the patient's NHS Number using PDS or an equivalent service.
-
-In addition, Consumer systems:
-
-- MUST have authenticated the user using NHS Identity or national smartcard authentication and obtained a the user's UUID and associated RBAC role.
-- MUST pass the user's information in the JSON web token.
-
-### 2.4 NHS Number
-
-NHS Numbers used with FHIR API profiles MUST be verified. NHS Numbers can be verified using a full PDS Spine-compliant system (HL7v3), a [Spine Mini Services Provider (HL7v3)](https://nhsconnect.github.io/spine-smsp/), or a [Demographics Batch Service (DBS)](https://developer.nhs.uk/library/systems/demographic-batch-service-dbs/) batch-traced record (CSV). 
-
-The option of using a DBS service is for Provider systems only. Consumers performing a search operation MUST use either a full PDS Spine compliant system or a Spine Mini Services Provider.
-
-{% include note.html content="A verified NHS Number exists on PDS, is still in use, and the demographic data supplied results in the correct degree of demographic matching as per PDS matching rules.<br/><br/>The NHS NUMBER is 10 numeric digits in length. The tenth digit is a check digit used to confirm its validity. The check digit MUST be validated using the Modulus 11 algorithm." %}
-
-## 3. Explore the NRL
+### Explore NRL Interactions
 
 You can explore and test the NRL GET, POST, and DELETE commands and responses using Swagger in the [NRL API Reference Implementation](https://data.developer.nhs.uk/nrls-ri/index.html).
 
+
+# Generic Interaction Requirements
+
+## Endpoint Registration
+
+To use the NRL both providers and consumers MUST have been accredited and received an endpoint certificate and associated ASID (Accredited System ID) for the client system.
+
+## JSON Web Token
+
+When interacting with the NRL all requests must include the system/organisation's information in a JSON web token (JWT), using the standard HTTP Authorization request header. Where the interaction is a consumer retrieving pointers, the request MUST also include the user's information within the JSON web token.
+
+The JWT MUST conform to the [Spine JWT](https://developer.nhs.uk/apis/spine-core/security_jwt.html) definition, but the validation of the claims is extended by the rules defined here, where there is a difference in validation the rules on this page override the rules defined for the Spine Core.
+
+### Claims
+
+In the Spine JWT definition, the `requesting_organisation` claim is marked as optional. However, this claim MUST be supplied for all NRL and SSP requests.
+
+In the context of a Consumer request, the `requesting_user` claim is mandatory for all NRL requests.
+
+
+### Validation
+
+Depending upon the client’s role (Provider or Consumer) the validation that is applied to the JWT varies. The following table shows the various checking that are applied to each claim in the JWT and the associated diagnostics message if an error is detected:
+
+| Claim being validated | Error scenario | Diagnostics | 
+|-------|----------|-------------|
+| `sub` | No `requesting_user` has been supplied and the sub claims’ value does not match the value of the `requesting_system` claim.| `requesting_system` and `sub` claim’s values must match.| 
+| `sub` | `requesting_user` has been supplied and the sub claims’ value does not match the value of the `requesting_user` claim. | `requesting_user` and `sub` claim’s values must match.|
+| `reason_for_request` | Reason for request does not have the value “directcare”.  | `reason_for_request` must be “directcare”. |
+| `scope` | For requests to the NRL: scope is not one of `patient/DocumentReference.read` or `patient/DocumentReference.write`. | `scope` must match either `patient/DocumentReference.read` or `patient/DocumentReference.write`. |
+| `scope` | For requests to the SSP: scope is not `patient/*.read`. | `scope` must match `patient/*.read`. |
+| `requesting_system` | Requesting system is not of the form `https://fhir.nhs.uk/Id/accredited-system/[ASID]`. | `requesting_system` must be of the form `https://fhir.nhs.uk/Id/accredited-system/[ASID]`. | 
+| `requesting_system` | `requesting_system` is not an ASID that is known to Spine. | The ASID must be known to Spine. | 
+| `requesting_organisation`  | `requesting_organisation` is not of the form `https://fhir.nhs.uk/Id/ods-organization-code/[ODSCode]`. | `requesting_organisation` must be of the form `https://fhir.nhs.uk/Id/ods-organization-code/[ODSCode]`. |
+| `requesting_organisation`  | The ODS code of the `requesting_organisation` is not known to Spine. | The ODS code of the `requesting_organisation` must be known to Spine. |
+| `requesting_organisation`  | `requesting_organisation` is not associated with the ASID from the `requesting_system` claim. | The `requesting_system` ASID must be associated with the `requesting_organisation` ODS code. |
+
+**Precedence of `requesting_user` over `requesting_system`**
+
+If both the `requesting_system` and `requesting_user` claims have been provided, then the `sub` claim MUST match the `requesting_user` claim.
+
+
+
+## NHS Number
+
+NHS Numbers used within any interaction with the NRL, **MUST** be traced and verified.
+
+Verified of an NHS Number can be done using:
+- a fully PDS Spine-compliant system (HL7v3)
+- a [Spine Mini Services Provider (HL7v3)](https://nhsconnect.github.io/spine-smsp/)
+- a [Demographics Batch Service (DBS)](https://developer.nhs.uk/library/systems/demographic-batch-service-dbs/) batch-traced record (CSV)
+
+The option of using a DBS service is for Provider systems only. Consumers performing a search operation MUST use either a full PDS Spine compliant system or a Spine Mini Services Provider.
+
+
+## Security
+
+MUST have authenticated the user using NHS Identity or national smartcard authentication and obtained a the user's UUID and associated RBAC role.
+
+
+
+## Interaction Content Types
+
+The NRL Supports the following MIME-types for NRL interactions:
+
+**XML**
+- `application/fhir+xml`
+- `application/xml+fhir`
+- `application/xml`
+
+**JSON**
+- `application/fhir+json`
+- `application/json+fhir`  
+- `application/json`
+- `text/json`
+  
+### Sending and Receiving a specific format
+
+For a interaction which returns a FHIR resource within the payload of the response, the NRL supports the following methods to allow the client to specify the response format by its MIME type:
+- the http `Accept` header 
+- the optional `_format` parameter
+
+If both are present in the request, the `_format` parameter overrides the `Accept` header value in the request. If neither the `Accept` header nor the `_format` parameter are supplied by the client system, the NRL Server will return data in the default format of `application/fhir+xml`.
 
 
 ## Retrieval Formats
