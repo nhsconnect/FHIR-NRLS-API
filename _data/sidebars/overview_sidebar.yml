@@ -45,20 +45,20 @@ entries:
       - title: General API Guidance
         output: web
         subfolderitems:
-          - title: Pointer Identifiers
-            url: /identifier_guidance.html
-            output: web
-          - title: FHIR Profile Reference
-            url: /explore_reference.html
-            output: web  
-          - title: Security
-            url: /security_guidance.html
-            output: web
           - title: Auditing 
             url: /integration_auditing.html
             output: web
           - title: Error Overview
             url: /nrl_error_guidance.html
+            output: web
+          - title: FHIR Profile Reference
+            url: /explore_reference.html
+            output: web  
+          - title: Pointer Identifiers
+            url: /identifier_guidance.html
+            output: web
+          - title: Security
+            url: /security_guidance.html
             output: web
       - title: NRL Interactions
         output: web
@@ -81,9 +81,6 @@ entries:
           - title: Search
             url: /api_interaction_search.html
             output: web
-    - title: Personal Demographics Service
-      url: /integration_personal_demographics_service.html
-      output: web
 
   - title: Information Retrieval
     output: web  

@@ -9,6 +9,8 @@ summary: "Implementation guidance for developers - focusing on general API imple
 
 # Security
 
+- MUST have authenticated the user using NHS Identity or national smartcard authentication and obtained a the user's UUID and associated RBAC role.
+
 Providers and Consumers are required to maintain a secure connection to the NRL and SSP.
 
 The technical requirements that support this are detailed below.

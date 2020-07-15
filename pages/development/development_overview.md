@@ -31,26 +31,44 @@ The NRL supports the following interactions as detailed in the [Architectural Ov
 You can explore and test the NRL GET, POST, and DELETE commands and responses using Swagger in the [NRL API Reference Implementation](https://data.developer.nhs.uk/nrls-ri/index.html).
 
 
-# Generic Interaction Requirements
+# Generic Requirements
 
 ## Endpoint Registration
 
-To use the NRL both providers and consumers MUST have been accredited and received an endpoint certificate and associated ASID (Accredited System ID) for the client system.
+For an organisation to be able to use the NRL:
+- the system they are using **MUST** have been accredited through the [assurance process](assure.html)
+- the organisation **MUST** have been given an endpoint [certificate](security_guidance.html) and associated ASID for the environment (INT, DEP, LIVE) they wish to connect to
+- the organisation's endpoint **MUST** have been configured with the required interaction Ids and service permissions
+
+
+## NHS Number
+
+NHS Numbers used within any interaction with the NRL, **MUST** be traced and verified.
+
+Verified of an NHS Number can be done using:
+- a fully PDS Spine-compliant system (HL7v3)
+- a [Spine Mini Services Provider (HL7v3)](https://nhsconnect.github.io/spine-smsp/)
+- a [Demographics Batch Service (DBS)](https://developer.nhs.uk/library/systems/demographic-batch-service-dbs/) batch-traced record (CSV)
+
+The option of using a DBS service is for Provider systems only. Consumers performing a search operation **MUST** use either a full PDS Spine compliant system or a Spine Mini Services Provider.
+
 
 ## JSON Web Token
 
-When interacting with the NRL all requests must include the system/organisation's information in a JSON web token (JWT), using the standard HTTP Authorization request header. Where the interaction is a consumer retrieving pointers, the request MUST also include the user's information within the JSON web token.
+When interacting with the NRL, all requests **MUST** include the system/organisation's information in a JSON web token (JWT), using the standard HTTP Authorization request header.
 
-The JWT MUST conform to the [Spine JWT](https://developer.nhs.uk/apis/spine-core/security_jwt.html) definition, but the validation of the claims is extended by the rules defined here, where there is a difference in validation the rules on this page override the rules defined for the Spine Core.
+Where the interaction is a consumer retrieving pointers, the request **MUST** also include the user's information within the JSON web token.
 
-### Claims
+The JWT **MUST** conform to the [Spine JWT](https://developer.nhs.uk/apis/spine-core/security_jwt.html) definition, but the validation of the claims is extended by the rules defined on this page. Where there is a difference between the validation specified in the Spine Core specification and on this page, the validation on this page override the rules defined for the Spine Core specification.
 
-In the Spine JWT definition, the `requesting_organisation` claim is marked as optional. However, this claim MUST be supplied for all NRL and SSP requests.
+### JWT Claims
+
+In the Spine JWT definition, the `requesting_organisation` claim is marked as optional. However, this claim **MUST** be supplied for all NRL and SSP requests.
 
 In the context of a Consumer request, the `requesting_user` claim is mandatory for all NRL requests.
 
 
-### Validation
+### JWT Validation
 
 Depending upon the client’s role (Provider or Consumer) the validation that is applied to the JWT varies. The following table shows the various checking that are applied to each claim in the JWT and the associated diagnostics message if an error is detected:
 
@@ -72,25 +90,6 @@ Depending upon the client’s role (Provider or Consumer) the validation that is
 If both the `requesting_system` and `requesting_user` claims have been provided, then the `sub` claim MUST match the `requesting_user` claim.
 
 
-
-## NHS Number
-
-NHS Numbers used within any interaction with the NRL, **MUST** be traced and verified.
-
-Verified of an NHS Number can be done using:
-- a fully PDS Spine-compliant system (HL7v3)
-- a [Spine Mini Services Provider (HL7v3)](https://nhsconnect.github.io/spine-smsp/)
-- a [Demographics Batch Service (DBS)](https://developer.nhs.uk/library/systems/demographic-batch-service-dbs/) batch-traced record (CSV)
-
-The option of using a DBS service is for Provider systems only. Consumers performing a search operation MUST use either a full PDS Spine compliant system or a Spine Mini Services Provider.
-
-
-## Security
-
-MUST have authenticated the user using NHS Identity or national smartcard authentication and obtained a the user's UUID and associated RBAC role.
-
-
-
 ## Interaction Content Types
 
 The NRL Supports the following MIME-types for NRL interactions:
@@ -106,62 +105,20 @@ The NRL Supports the following MIME-types for NRL interactions:
 - `application/json`
 - `text/json`
   
-### Sending and Receiving a specific format
+### Response Format
 
-For a interaction which returns a FHIR resource within the payload of the response, the NRL supports the following methods to allow the client to specify the response format by its MIME type:
+The NRL supports the following methods to allow the client to specify the response format by its MIME type:
 - the http `Accept` header 
 - the optional `_format` parameter
 
 If both are present in the request, the `_format` parameter overrides the `Accept` header value in the request. If neither the `Accept` header nor the `_format` parameter are supplied by the client system, the NRL Server will return data in the default format of `application/fhir+xml`.
 
 
-## Retrieval Formats
+## Security
 
-The NRL may support retrieval of records and documents in a range of formats, including both unstructured documents and structured data.
+Generic requirements for security, authentication and authorisation are included in the specification on the [Security Guidance](security_guidance.html) page.
 
-The format of the referenced record is detailed in two metadata fields:
-- Record format — describes the technical structure and the rules of the record.
-- Record MIME type — describes the data type of the record.
 
-See [FHIR Resources & References](explore_reference.html) for more details on the data model. 
+## Retrieval
 
-The combination of these two metadata fields describes to a Consumer system the type and structure of the content that will be returned. This gives the Consumer system the information it needs to know to render the referenced record. For example, the referenced content could be a publicly accessible web page containing contact details, an unstructured PDF document, or a specific FHIR profile. See below for more details and the list of currently supported formats.
-
-## Supported Formats
-
-The following table describes the formats that are currently supported:
-
-| Format | Description |
-|-----------|----------------|
-|Contact Details (HTTP Unsecured)|A publicly accessible HTML web page or PDF detailing contact details for retrieving a record.<br><br>Note that retrieval requests for contact details should be made directly and not via the SSP.|
-|Unstructured Document|An unstructured document, such as a PDF. The content-type of the document returned SHOULD be in the MIME type as described on the pointer metadata (`DocumentReference.content[x].attachment.contentType`).<br><br>For unstructured documents, Consumers and Providers SHOULD support PDF as a minimum.<br><br>An example API endpoint for handling unstructured documents can be seen in the [CareConnect GET Binary specification ("Query 1 - Default Query" in section 1.1)](https://nhsconnect.github.io/CareConnectAPI/api_documents_binary.html#readresponse).  | 
-
-Please see the [format code value set](https://fhir.nhs.uk/STU3/ValueSet/NRL-FormatCode-1) for the list of codes to use. 
-
-{% include note.html content="Format codes related to profiles that support structured data are not currently listed in the above referenced valueset and table. These will be added at a later date." %}
-
-Note that the NRL supports referencing multiple formats of a record document on a single Pointer. See below for details. 
-
-## Multiple Formats
-
-Multiple formats of a record or document can be made available through a single Pointer on the NRL. For example, a Pointer can contain a reference to retrieve a record in PDF format and as a structured FHIR resource. Each format must be detailed in a separate content element on the DocumentReference (Pointer).
-
-### Multiple Format Example
-
-The following examples show a pointer for a Mental Health Crisis Plan that can be retrieved over the phone (using the contact details listed on the referenced HTML web page) and directly as a PDF document.
-
-#### XML
-
-<div class="github-sample-wrapper scroll-height-350">
-{% highlight xml %}
-{% include /examples/retrieval_multiple_formats.xml %}
-{% endhighlight %}
-</div>
-
-#### JSON
-
-<div class="github-sample-wrapper scroll-height-350">
-{% highlight json %}
-{% include /examples/retrieval_multiple_formats.json %}
-{% endhighlight %}
-</div>
+Requirements on information retrieval formats and retrieval mechanisms are outline in the [Information Retrieval](retrieval_overview.html) section of this specification.
