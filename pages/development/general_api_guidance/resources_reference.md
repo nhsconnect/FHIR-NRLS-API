@@ -40,16 +40,16 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 |Pointer Status| <code class="highlighter-rouge">status</code> | Code| 1..1| The status of the pointer|
 |Patient| <code class="highlighter-rouge">subject</code> |Reference|1..1|The NHS number of the patient that the record referenced by this Pointer relates to. Supports Pointer retrieval scenarios.| 
 |Pointer owner| <code class="highlighter-rouge">custodian</code> |Reference|1..1|ODS code for the pointer owner organization.|
-|Record owner| <code class="highlighter-rouge">author</code> |Reference|1..1|ODS code for the record owner organization.|
-|Record category| <code class="highlighter-rouge">class</code> | {% include gloss.html term="CodeableConcept" %} |1..1|A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set|
+|Information owner| <code class="highlighter-rouge">author</code> |Reference|1..1|ODS code for the record owner organization.|
+|Information category| <code class="highlighter-rouge">class</code> | {% include gloss.html term="CodeableConcept" %} |1..1|A high-level category of the record. The category will be one of a controlled set. It will not be possible to create a pointer with a category that does not exist within this controlled set|
 || <code class="highlighter-rouge">class<wbr>.coding<!--[0]--><wbr>.system</code> |Uri|1..1|Identity of the terminology system|
 || <code class="highlighter-rouge">class<wbr>.coding<!--[0]--><wbr>.code</code> |Code|1..1|Symbol in syntax defined by the system|
 || <code class="highlighter-rouge">class<wbr>.coding<!--[0]--><wbr>.display</code> |String|1..1|Representation defined by the system|
-|Record type| <code class="highlighter-rouge">type</code> | {% include gloss.html term="CodeableConcept" %} |1..1|The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers.|
+|Information type| <code class="highlighter-rouge">type</code> | {% include gloss.html term="CodeableConcept" %} |1..1|The clinical type of the record. Used to support searching to allow Consumers to make sense of large result sets of Pointers.|
 || <code class="highlighter-rouge">type<wbr>.coding<!--[0]--><wbr>.system</code> |Uri|1..1|Example Value: http://snomed.info/sct.|
 || <code class="highlighter-rouge">type<wbr>.coding<!--[0]--><wbr>.code</code> |Code|1..1|Symbol in syntax defined by the system. Example Value: 736253002|
 || <code class="highlighter-rouge">type<wbr>.coding<!--[0]--><wbr>.display</code> |String|1..1|Representation defined by the system.|
-|Record creation clinical setting| <code class="highlighter-rouge">context<wbr>.practiceSetting</code> | {% include gloss.html term="CodeableConcept" %} |1..1|Describes where the content was created, in what clinical setting|
+|Information creation clinical setting| <code class="highlighter-rouge">context<wbr>.practiceSetting</code> | {% include gloss.html term="CodeableConcept" %} |1..1|Describes where the content was created, in what clinical setting|
 || <code class="highlighter-rouge">context<wbr>.practiceSetting<wbr>.coding<!--[0]--><wbr>.system</code> |Uri|1..1|Identity of the terminology system|
 || <code class="highlighter-rouge">context<wbr>.practiceSetting<wbr>.coding<!--[0]--><wbr>.code</code> |Code|1..1|Symbol in syntax defined by the system|
 || <code class="highlighter-rouge">context<wbr>.practiceSetting<wbr>.coding<!--[0]--><wbr>.display</code> |String|1..1|Representation defined by the system|
@@ -57,20 +57,20 @@ The table maps the 'lean alpha' [Solution Data Model](overview_data_model.html) 
 || <code class="highlighter-rouge">context<wbr>.period<wbr>.start</code> |dateTime|1..1|Starting time with inclusive boundary|
 || <code class="highlighter-rouge">context<wbr>.period<wbr>.end</code> |dateTime|0..1|End time with inclusive boundary, if not ongoing|
 |Pointer referenced| <code class="highlighter-rouge">content<!--[0..*]--></code> | BackboneElement| 1..*| Record referenced|
-|Record creation datetime| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.attachment<wbr>.creation</code> |dateTime|0..1|The date and time (on the Provider’s system) that the record was created, for static records.|
-|Record URL| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.attachment<wbr>.url</code> |uri|1..1|Absolute URL for the location of the record on the Provider’s system and/ or a service that allows you to look up information based on the provider url e.g. web page with service contact details.|
-|Record format| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.format</code> |Coding|1..1|Describes the technical structure and rules of the record such that the Consumer can pick an appropriate mechanism to handle the record.|
+|Information creation datetime| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.attachment<wbr>.creation</code> |dateTime|0..1|The date and time (on the Provider’s system) that the record was created, for static records.|
+|Retrieval URL| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.attachment<wbr>.url</code> |uri|1..1|Absolute URL for the location of the record on the Provider’s system and/ or a service that allows you to look up information based on the provider url e.g. web page with service contact details.|
+|Retrieval format| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.format</code> |Coding|1..1|Describes the technical structure and rules of the record such that the Consumer can pick an appropriate mechanism to handle the record.|
 || <code class="highlighter-rouge">content<!--[0..*]--><wbr>.format<wbr>.system</code> |Uri|1..1|Identity of the terminology system|
 || <code class="highlighter-rouge">content<!--[0..*]--><wbr>.format<wbr>.code</code> |Code|1..1|Symbol in syntax defined by the system|
 || <code class="highlighter-rouge">content<!--[0..*]--><wbr>.format<wbr>.display</code> |String|1..1|Representation defined by the system|
-|Record MIME type| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.attachment<wbr>.contentType</code> |code|1..1|Describes the type of data such that the Consumer can pick an appropriate mechanism to handle the record.|
-|Record Stability| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability</code> |Extension|1..1|Record content extension|
+|Retrieval MIME type| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.attachment<wbr>.contentType</code> |code|1..1|Describes the type of data such that the Consumer can pick an appropriate mechanism to handle the record.|
+|Information Stability| <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability</code> |Extension|1..1|Record content extension|
 || <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability<wbr>.url</code> |Uri|1..1|identifies the meaning of the extension|
 || <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability.<wbr>valueCodeableConcept</code> | {% include gloss.html term="CodeableConcept" %} |1..1|Describes whether the record content at the time of the request is dynamically generated or is static|
 || <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability.<wbr>valueCodeableConcept<wbr>.coding<!--[0]--><wbr>.system</code> |Uri|1..1|Identity of the terminology system|
 || <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability.<wbr>valueCodeableConcept<wbr>.coding<!--[0]--><wbr>.code</code> |Code|1..1|Symbol in syntax defined by the system|
 || <code class="highlighter-rouge">content<!--[0..*]--><wbr>.extension:contentStability.<wbr>valueCodeableConcept<wbr>.coding<!--[0]--><wbr>.display</code> |String|1..1|Representation defined by the system|
-|Related documents| <code class="highlighter-rouge">relatesTo</code> | BackboneElement| 0..1| Relationship to another pointer|
+|Related Pointer| <code class="highlighter-rouge">relatesTo</code> | BackboneElement| 0..1| Relationship to another pointer|
 || <code class="highlighter-rouge">relatesTo<wbr>.code</code> | Code| 1..1| The type of relationship between the documents. This element is mandatory if the *relatesTo* element is sent and the value MUST be *replaces*.|
 || <code class="highlighter-rouge">relatesTo<wbr>.target</code> | Reference| 1..1| The Target of the relationship. This should contain the logical reference to the target DocumentReference held within the NRL using the identifier property of this [Reference Data Type](https://www.hl7.org/fhir/references.html#logical).|
 
