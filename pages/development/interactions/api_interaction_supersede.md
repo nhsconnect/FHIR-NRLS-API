@@ -17,7 +17,7 @@ The Supersede functionality will be used in cases where a Provider wishes to rep
 
 ## Prerequisites
 
-In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-prerequisites-for-nrl-api) page MUST be followed when using this interaction.
+In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](development_overview.html) page MUST be followed when using this interaction.
 
 ## Supersede Request Headers
 

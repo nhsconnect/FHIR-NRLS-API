@@ -23,7 +23,7 @@ Once the Consumer has a verified NHS number, the NRL can be asked to retrieve a 
 
 --------------------
 
-In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](explore.html#2-prerequisites-for-nrl-api) page MUST be followed when using this interaction.
+In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](development_overview.html) page MUST be followed when using this interaction.
 
 ## Search Request Headers
 
