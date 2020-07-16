@@ -98,15 +98,24 @@ entries:
           - title: Contact Details
             url: /retrieval_contact_details.html
             output: web
-          - title: Vaccinations - FHIR STU3
+          - title: Unstructured Document
+            url: /retreival_unstructured_document.html
+            output: web
+          - title: Observation List - FHIR STU3
+            url: /retrieval_observations_fhir_stu3.html
+            output: web
+          - title: Vaccination List - FHIR STU3
             url: /retrieval_vaccinations_fhir_stu3.html
             output: web
-    - title: Read Interaction
-      url: /retrieval_interaction_read.html
-      output: web
-    - title: Consumer Guidance
-      url: /retrieval_consumer_guidance.html
-      output: web
+      - title: Retrieval Interactions
+        output: web
+        subfolderitems:
+          - title: Public Web
+            url: /retrieval_http_unsecure.html
+            output: web
+          - title: SSP
+            url: /retrieval_ssp.html
+            output: web
 
   - title: Assurance
     output: web

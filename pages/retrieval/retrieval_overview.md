@@ -7,102 +7,53 @@ permalink: retrieval_overview.html
 summary: Solution overview of record and document retrieval
 ---
 
-## The Consumer controls Pointer access
+The "Information Retrieval" pages are intended to give developers detailed requirements and guidance, about how to understand and implement the different types of information sharing and retrieval that can be reference in an NRL pointer.
 
-When a Consumer requests that the NRL return the Pointers that it has for a given patient (NHS number) it will return all Pointers. The NRL will not perform any filtering before sending that collection of Pointers back to the Consumer. 
+Information sharing is made up of two components:
 
-Once consequence of this is that the end user on the Consumer side may be exposed to Pointers that reveal sensitive information about the Patient, for example it will be possible to infer through a Pointer that a Patient has a certain kind of record. Even though the user may not be able to retrieve the Record, knowing that it exists is in itself revealing a degree of personal information about that patient that may not be appropriate.
+| Component | Description |
+| --- | --- |
+| Retrieval Format | Identifies the structure and rules of the information that can be retrieved |
+| Retrieval Interaction | Identifies the mechanism that can be used to retrieve the information |
 
-With this in mind, there will most likely be a need to filter Pointers before they are displayed to the end user. This responsibility belongs to the Consumer and should be implemented using local access rules to judge whether a given user should be permitted to know that a given Pointer exists. This is in addition to the RBAC requirements for NRL (see the [Authentication & Authorisation page](integration_authentication_authorisation.html)).
+# Retrieval Formats
 
-The mechanism for making this decision is predicated on the [Record type](overview_data_model.html#data-model) that the Pointer references.
+Retrieval formats refer to the format in which information can be shared. The NRL pointers can refer to information which can retrieved in a range of formats, including both unstructured documents and structured data, as described on the [Record Type Overview](record_type_overview.html) page.
 
+The retrieval format by which the information can be retrieved from a provider is shared in the NRL pointer, using the following two metadata fields:
 
-## The NRL does not guarantee that Records can be retrieved by following a Pointer
+| Field | Description |
+| --- | --- |
+| Retrieval format | Describes the technical structure and the rules of the information |
+| Retrieval MIME type | Describes the data type of the information |
 
-There are complexities associated with retrieving data over a network that are outside of the scope of the metadata captured by a Pointer. As an example, consider the need to define firewall rules to allow traffic to flow between a Consumer and a Provider. The NRL aims to facilitate record retrieval through the [SSP Read Interaction](retrieval_interaction_read.html), reducing the need for point-to-point integration between Consumer and Provider systems. However, Providers have a responsibility to ensure that Pointer metadata accurately reflects the retrieval mechanism and format of the referenced document/record.
+See the [Pointer Overview](pointer_overview.html) page and the [FHIR Profile Reference](explore_reference.html) page for more details on the data model and the two metadata fields.
 
-## Caching and Storing
+The combination of these two metadata fields allows:
+- a **provider** to say what format they are sharing information in.
+- a **consumer** system the know the type and structure of the content that will recieve. This allows them to decide if they will be able to process and render the information for a user.
 
-It is important that consumers of NRL Pointers can view and make clinical decisions based on the most up-to-date information available. For this reason, NRL recommends that Pointers and referenced content returned from search and read requests not be cached or stored.
-
-
-
-## Retrieval
-
-Documents and records can be retrieved directly from the Providers that hold the documents/records. This is achieved by using the location information (record URL/endpoint) stored on a pointer (obtained from a pointer search) and sending a request to this location over HTTP(S) via the Spine Secure Proxy (SSP).
-
-The process of retrieving a document or record from a provider in this way may be manually triggered by the end user. Retrieval could also be an automated process triggered after a successful patient match from PDS, for example.  The latter example would be transparent to the end user.
-
-## Spine Secure Proxy (SSP)
-
-The SSP is a content agnostic forward proxy, which is used to control and protect access to health systems. It provides a single security point for both authentication and authorisation for systems. See the [SSP specification]( https://developer.nhs.uk/apis/spine-core/ssp_overview.html) for more details.
-
-## End-to-End Retrieval Solution
-
-The following diagram describes how record retrieval is facilitated through the SSP using the Record URL stored on the pointer.
-
-[
-    ![Retrieval solution end-to-end](images/retrieval/retrieval_concept_diagram.png)<br><br>
-    Click to view the diagram at full size.
-](images/retrieval/retrieval_concept_diagram.png){:target="_blank"}
-
-As the diagram depicts, the step-by-step process end-to-end for retrieving a record or document is as follows: 
-1. Consumer system queries the NRL to see if any Pointers exist for the patient under their care.
-2. Consumer system finds a Pointer that references a record which could be of value for the provision of care.
-3. Consumer system takes the URL property value (see [Pointer Data Model](overview_data_model.html) for details) from the Pointer that was found and uses this value to create a request to the Provider system that holds the record.
-
-   The URL property is prefixed with the URL to the SSP, which will ensure that the request goes via the SSP and that all necessary security checks are performed on the request. The SSP base url prefix is added by the Consumer system. For more details, see the [Retrieval Read](retrieval_interaction_read.html#retrieval-via-the-ssp) interaction page.
-
-   {% include note.html content="The URL property should be fully [percent encoded per RFC 3986](https://tools.ietf.org/html/rfc3986#section-2.1) to prevent any possibility of parsing errors." %}
-
-   An example SSP-prefixed URL:
-
-   ```
-   https://testspineproxy.nhs.uk/https%3A%2F%2Fprovider.thirdparty.nhs.uk%2FAB1%2FStatic%2Fc1cd026e-e06b-4121-bb08-a3cb8f53c58b
-   ```
-
-4. Consumer [system] sends the request to the Provider system.
-5. Request sent by the Consumer goes through the SSP, where security checks are performed.
-6. Request is then sent onto the Provider system that holds the record once security checks are passed.
-7. Provider system receives and validates the request.
-8. Provider system sends the requested record back to the Consumer, via the SSP.
-9. Consumer [system] receives the record and processes it ready to display to the end user.
-
-For more details on requirements for facilitating retrieval, see the [retrieval read interaction](retrieval_interaction_read.html).
-
-
-
-## Retrieval Formats
-
-The NRL may support retrieval of records and documents in a range of formats, including both unstructured documents and structured data.
-
-The format of the referenced record is detailed in two metadata fields:
-- Record format — describes the technical structure and the rules of the record.
-- Record MIME type — describes the data type of the record.
-
-See [FHIR Resources & References](explore_reference.html) for more details on the data model. 
-
-The combination of these two metadata fields describes to a Consumer system the type and structure of the content that will be returned. This gives the Consumer system the information it needs to know to render the referenced record. For example, the referenced content could be a publicly accessible web page containing contact details, an unstructured PDF document, or a specific FHIR profile. See below for more details and the list of currently supported formats.
 
 ## Supported Formats
 
-The following table describes the formats that are currently supported:
+The following table describes the formats that are currently supported within NRL pointers:
 
 | Format | Description |
 |-----------|----------------|
-|Contact Details (HTTP Unsecured)|A publicly accessible HTML web page or PDF detailing contact details for retrieving a record.<br><br>Note that retrieval requests for contact details should be made directly and not via the SSP.|
-|Unstructured Document|An unstructured document, such as a PDF. The content-type of the document returned SHOULD be in the MIME type as described on the pointer metadata (`DocumentReference.content[x].attachment.contentType`).<br><br>For unstructured documents, Consumers and Providers SHOULD support PDF as a minimum.<br><br>An example API endpoint for handling unstructured documents can be seen in the [CareConnect GET Binary specification ("Query 1 - Default Query" in section 1.1)](https://nhsconnect.github.io/CareConnectAPI/api_documents_binary.html#readresponse).  | 
+| [Contact Details (HTTP Unsecured)](retrieval_contact_details.html) | A publicly accessible HTML web page or PDF detailing contact details for retrieving a record. |
+| [Unstructured Document](retrieval_contact_details) | An unstructured document, such as a PDF. The content-type of the document returned should be described in the retrieval MIME type field of the pointer. |
+| [Observation List FHIR STU3](retrieval_observations_fhir_stu3.html) | A list of observations, in a FHIR STU3 structured format. |
+| [Vaccination List FHIR STU3](retrieval_vaccinations_fhir_stu3.html) | A list of vaccinations, in a FHIR STU3 structured format. |
 
-Please see the [format code value set](https://fhir.nhs.uk/STU3/ValueSet/NRL-FormatCode-1) for the list of codes to use. 
 
-{% include note.html content="Format codes related to profiles that support structured data are not currently listed in the above referenced valueset and table. These will be added at a later date." %}
+## Supporting Multiple Retrieval Formats
 
-Note that the NRL supports referencing multiple formats of a record document on a single Pointer. See below for details. 
+The NRL pointer model allows for multiple formats to be specified within a single pointer. Therefore a pointer could contain a reference for retrieval of information in a PDF format, but also as a structured FHIR resource.
 
-## Multiple Formats
+Each retrieval format would be detailed in a separate `content` element, within on the FHIR DocumentReference resource which represents the pointer.
 
-Multiple formats of a record or document can be made available through a single Pointer on the NRL. For example, a Pointer can contain a reference to retrieve a record in PDF format and as a structured FHIR resource. Each format must be detailed in a separate content element on the DocumentReference (Pointer).
+Where a Pointer contains reference to multiple formats, the consuming system must decide which is the most appropriate format to retrieve and display within their system.
+
 
 ### Multiple Format Example
 
@@ -123,3 +74,54 @@ The following examples show a pointer for a Mental Health Crisis Plan that can b
 {% include /examples/retrieval_multiple_formats.json %}
 {% endhighlight %}
 </div>
+
+
+
+
+# Retrieval Interactions
+
+The retrieval interaction identifies is the mechanism that can be used by a consumer to retrieve information from the provider and represents the authentication and authorisation requirements for that retrieval.
+
+The retrival interaction information is important to:
+
+- **providers** so they can expose information using a mechanism that consumers can understand and utilise
+- **consumers** so they can understand how to retrieve information from a provider
+
+
+## Supported Retrieval Interactions
+
+The following table describes the retrieval interactions that are currently supported within NRL pointers:
+
+| Retrieval Interaction | Description |
+|-----------|----------------|
+| [Public Web](retrieval_http_unsecure.html) | Some information types, such as Contact Details, can be shared and retrieved via public facing web pages. |
+| [SSP](retrieval_ssp.html) | The SSP is a content agnostic forward proxy, which is used to control and protect access to health systems. It provides a single security point removing the need for a complex and onerous authentication and authorisation mechanism between all consumers and providers. |
+| Direct Integration | The option for consumers and providers to communicate directly, not to use the SSP, is possible where direct integration and a shared authentication and authorisation model is established. |
+
+
+
+# NRL Retrieval Management
+
+## User Access to Information
+
+When a consumer system requests pointers for a patient, the NRL will returned all pointers for that patient which are of a type that the organisation has been approved to receive.
+
+Once the pointers have been returned, it is the responsibility of the consuming organisation/system to control which pointers and what informationation retrieved using the pointers is shared with the end user. This will require some level of filtering within the consumer system and should be implemented in line with local access rules to judge whether a given user should be permitted to know that a pointer type exists or to be given access to information retrieved using information from a pointer.
+
+Details of access control requirement are outlined on the [Access Controls](explore_rbac_mapping.html) page.
+
+
+## Retrieval Availability
+
+The NRL does not guarantee that Records can be retrieved by following information in pointers. 
+
+There are complexities associated with retrieving data over a network that are outside of the scope of the metadata captured by a Pointer.
+
+As an example, consider the need to define firewall rules to allow traffic to flow between a consumer and a provider. The NRL aims to facilitate record retrieval by supporting the [SSP](retrieval_ssp.html) retrieval interaction, reducing the need for point-to-point integration between consumer and provider systems. However, providers still have a responsibility to ensure that the pointer metadata accurately reflects the retrieval mechanism and format of the referenced information.
+
+
+## Caching and Storing
+
+It is important that consumers of NRL pointers, and the information retrieved using information from those pointers, can view and make clinical decisions based on the most up-to-date and accurate information available. For this reason, NRL recommends that pointers, and any information retrived using the references contained in the pointers, is not be cached or stored, apart from as part of audit history.
+
+The consumer system should request the pointer and perform any data retrieval each time information is needed, in order to make sure they have the latest information about which providers have information about a patient and that any information retrieved is the latest and most up to date available from that providers system.
