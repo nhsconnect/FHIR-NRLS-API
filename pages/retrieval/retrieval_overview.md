@@ -42,8 +42,8 @@ The following table describes the formats that are currently supported within NR
 |-----------|----------------|
 | [Contact Details (HTTP Unsecured)](retrieval_contact_details.html) | A publicly accessible HTML web page or PDF detailing contact details for retrieving a record. |
 | [Unstructured Document](retrieval_contact_details) | An unstructured document, such as a PDF. The content-type of the document returned should be described in the retrieval MIME type field of the pointer. |
-| [Observation List FHIR STU3](retrieval_observations_fhir_stu3.html) | A list of observations, in a FHIR STU3 structured format. |
-| [Vaccination List FHIR STU3](retrieval_vaccinations_fhir_stu3.html) | A list of vaccinations, in a FHIR STU3 structured format. |
+| [Observation List FHIR STU3 v1](retrieval_observations_fhir_stu3.html) | A list of observations, in a FHIR STU3 structured format. |
+| [Vaccination List FHIR STU3 v1](retrieval_vaccinations_fhir_stu3.html) | A list of vaccinations, in a FHIR STU3 structured format. |
 
 
 ## Supporting Multiple Retrieval Formats
