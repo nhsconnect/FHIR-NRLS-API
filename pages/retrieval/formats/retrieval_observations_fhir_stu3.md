@@ -48,9 +48,9 @@ The NRL pointer `format` code for this structure is as follows:
 
 ## Retrieval Mechanism  
 
-The retrieval mechanism for the “Observation List FHIR STU3 v1” record format is the SSP Read Interaction. Consumers and Providers MUST meet all requirements outlined on the SSP Read Interaction page. 
+For the “Observation List FHIR STU3 v1” record format, the [SSP Read](retrieval_ssp.html) retrieval interaction **MUST** be supported.
 
-The provider will define the endpoint URL that is included in the NRL pointer, but when a consumer requests the data using the pointer no additional headers or parameters should be needed beyond those required by the SSP. 
+The provider defines the endpoint URL that is included in the NRL pointer, but when a consumer requests the information using the pointer no additional headers or parameters should be needed beyond those required by the SSP.
 
 
 ## Citizen vs Health Care Professional request 
@@ -58,10 +58,10 @@ The provider will define the endpoint URL that is included in the NRL pointer, b
 A provider may wish to return different data when the request for information is from a health care professional to when the request is from a citizen facing application.
 
 An example of this might be:
-- a provider might share some practitioner contact details with other healthcare professionals but may not wish to share those details with a citizen 
+- a provider might share some practitioner contact details with other healthcare professionals but may not wish to share those details with a citizen
 - a provider might wish to hold back information from a citizen about a sensitive result until the information has been shared with the patient by a practitioner, but that same information may be very useful to other healthcare professionals and could result in significantly improved care/life saving for the patient if they were to attend as service such as A&E before the provider has had chance to share that information with the patient.
 
-To enable this control within the provider, all system which wishes to retrieve data must send the request with an appropriate JWT which identifies if the request is for a healthcare professional or for citizen access. Additional details and requirements can be found on the generic pointer and data retrieval requirements page (Link). 
+To enable this control within the provider, all system which wishes to retrieve data must send the request with an appropriate JSON Web Token (JWT) which identifies if the request is for a healthcare professional or for citizen access. The requirements for the JWT are on the [Development Overview](development_overview.html#json-web-token) page.
 
 
 ## Retrieval Response 
@@ -109,400 +109,136 @@ The following requirements and resource population guidance must be followed. On
 
 ### Bundle 
 
-The Bundle resource is the container for the record and MUST conform to the Bundle base FHIR profile and the additional population guidance as per the table below. The first entry within the Bundle MUST be the mandatory "List” resource. 
+The Bundle resource is the container for the record and MUST conform to the `Bundle` base FHIR profile and the additional population guidance as per the table below. The first entry within the Bundle MUST be the mandatory "List” resource. 
 
- 
+| Resource Cardinality | 1..1 |
 
-Resource Cardinality 
+| Element | Cardinality | Additional Guidance |
+| --- | --- | --- |
+| type | 1..1 | Fixed value: `collection` |
 
-1..1 
 
- 
+### List 
 
-Element 
+The List resource MUST conform to the `List` base FHIR profile and the additional population guidance as per the table below. 
 
-Cardinality 
+| Resource Cardinality | 1..1 |
 
-Additional Guidance 
+| Element | Cardinality | Additional Guidance |
+| --- | --- | --- |
+| Extension (informationProvider).valueReference | 1..1 | This must reference the `Organisation` resource representing the organisation sharing the information. This organisation resource will include contact details for the organisation in relation to data quality issues with the retrieved data. |
+| status | 1..1 | Fixed value: current |
+| mode | 1..1 | Fixed value: snapshot |
+| subject | 1..1 | A reference to the patient resource representing the subject of this record |
+| code | 1..1 | The purpose of the list. The value SHALL match the record type code on the associated pointer (DocumentReference.type). |
 
-type 
 
-1..1 
+### CareConnect-Observation-1 
 
-Fixed value: collection 
-
- 
-
- 
-List 
-
-The List resource MUST conform to the List base FHIR profile and the additional population guidance as per the table below. 
-
- 
-
-Resource Cardinality 
-
-1..1 
-
- 
-
-Element 
-
-Cardinality 
-
-Additional Guidance 
-
-Extension (informationProvider).valueReference 
-
-1..1 
-
-This must reference the `Organisation` resource representing the organisation sharing the information. This organisation resource will include contact details for the organisation in relation to data quality issues with the retrieved data. 
-
-status 
-
-1..1 
-
-Fixed value: current 
-
-mode 
-
-1..1 
-
-Fixed value: snapshot 
-
-subject 
-
-1..1 
-
-A reference to the patient resource representing the subject of this record 
-
-code 
-
-1..1 
-
-The purpose of the list. The value SHALL match the record type code on the associated pointer (DocumentReference.type).  
-
- 
-
- 
-
- 
-
- 
-
- 
-
-CareConnect-Observation-1 
-
-The Observation resources included as part of the returned information SHALL conform to the CareConnect-Observation-1 constrained FHIR profile and the additional population guidance as per the table below. 
+The Observation resources included as part of the returned information SHALL conform to the `CareConnect-Observation-1` constrained FHIR profile and the additional population guidance as per the table below. 
 
 The aim should be to include enough information in the observation resource to give it context without the need for any supporting information to be considered. Where additional supporting information is included this should be made available to the user where possible. If supporting information is included and not possible to render for the use, the observation information could be shown to the user but should be flagged to let them know additional information around the observation cannot be shown. 
 
- 
-
-Resource Cardinality 
-
-0..* 
-
- 
+| Resource Cardinality | 0..* |
 
 The following table pulls out some key elements in the observation resource and give some guidance around how the different elements should be used. 
 
- 
+| Element | Cardinality | Additional Guidance |
+| --- | --- | --- |
+| identifier | 1..1 | A publisher defined unique identifier for the observation which will be maintained across different retrieval endpoints/FHIR interfaces to allow subscribers to identify duplicates or updated information. Where the information has been sent within an event message via NEMS, the identifier should be consistent. |
+| code | 1..1 | This will be the main identifier which tells the consumer what type of observation this is. |
+| subject | 1..1 | This would be the patient who is the subject of this list of observations. |
+| context | 0..1 | Where additional context around the “Encounter” or "EpisodeOfCare” in which the observation was made or recorded should be referenced from here. Where a resource is referenced the constraints of the profile must be followed. |
+| effective | 1..1 | This element should contain the datetime at which the observation was made or recorded. |
+| performer | 0..* | Where additional context around who made or is responsible for the observation is required it should be referenced from this element. Constraints within the profile should be followed when referencing other resources.<br/><br/>Note: Where information about any individual is included information governance should be considered. |
+| value | 0..1 | Where the observation has a result then this should be included in this element. |
+| interpretation | 0..1 | Where there is an interpretation about an observation then it should be included in this element. |
+| comment | 0..1 | A comment may be included, but content should be considered carefully in relation to information governance and in terms of a serious harm test for use cases where this comment may be displayed to a user. |
+| component | 0..* | Where components of the observation are expressed as separate code value pairs then this element should be used.<br/><br/>A consumer should consider how these components and the observation code and value should be displayed to user in the most clinically safe way possible. |
 
-Element 
 
-Cardinality 
+### CareConnect-Patient-1 
 
-Additional Guidance 
+The patient resources included in the bundle SHALL conform to the `CareConnect-Patient-1` constrained FHIR profile and the additional population guidance as per the table below: 
 
-identifier 
+| Resource Cardinality | 1..1 |
 
-1..1 
+| Element | Cardinality | Additional Guidance |
+| --- | --- | --- |
+| identifier | 1..1 | Patient NHS Number identifier SHALL be included within the nhsNumber identifier slice. The NHS Number SHALL match the NHS Number on the associated pointer (DocumentReference.subject). |
+| name (official) | 1..1 | Patients name as registered on PDS, included within the resource as the official name element slice |
+| birthDate | 1..1 | The patients date of birth |
 
-A publisher defined unique identifier for the observation which will be maintained across different retrieval endpoints/FHIR interfaces to allow subscribers to identify duplicates or updated information. Where the information has been sent within an event message via NEMS, the identifier should be consistent.  
 
-code 
+### CareConnect-Organization-1 
 
-1..1 
+All Organization resources included in the bundle SHALL conform to the `CareConnect-Organization-1` constrained FHIR profile and the additional population guidance as per the table below: 
 
-This will be the main identifier which tells the consumer what type of observation this is. 
+| Resource Cardinality | 1..* |
 
-subject 
+| Element | Cardinality | Additional Guidance |
+| --- | --- | --- |
+| identifier | 1..* | The organization ODS code identifier SHALL be included within the `odsOrganizationCode` identifier slice. |
+| name | 1..1 | A human readable name for the organization SHALL be included in the organization resource. |
+| telecom | 0..* | Where the Organisation resource is referenced from the list, contact details for the organisation for use in relation to data quality issues must be included. |
+| telecom.system | 1..1 | Must contain a value of phone or email matching the included contact method within the value element |
+| telecom.value | 1..1 | A phone number or email address |
 
-1..1 
 
-This would be the patient who is the subject of this list of observations. 
+### CareConnect-Practitioner-1 
 
-context 
+The Practitioner resources included in the bundle SHALL conform to the `CareConnect-Practitioner-1` constrained FHIR profile. 
 
-0..1 
+| Resource Cardinality | 0..* |
 
-Where additional context around the “Encounter” or "EpisodeOfCare” in which the observation was made or recorded should be referenced from here. Where a resource is referenced the constraints of the profile must be followed. 
+**Note:** Information Governance should be considered before including practitioner’s personal data within shared information. 
 
-effective 
 
-1..1 
+### CareConnect-PractitionerRole-1 
 
-This element should contain the datetime at which the observation was made or recorded. 
+The PractitionerRole resources included in the bundle SHALL conform to the `CareConnect-PractitionerRole-1` constrained FHIR profile. 
 
-performer 
+| Resource Cardinality | 0..* |
 
-0..* 
+| Element | Cardinality | Additional Guidance |
+| --- | --- | --- |
+| organization | 1..1 | Reference to the Organization where the practitioner performs this role |
+| practitioner | 1..1 | Reference to the Practitioner who this role relates to |
+| code | 1..* | The practitioner role SHALL include a value from the `ProfessionalType-1` value set. The PractitionerRole.code should also include the SDS Job Role name where available. |
+| specialty | 1..1 | PractitionerRole.specialty SHALL use a value from `Specialty-1` value set |
 
-Where additional context around who made or is responsible for the observation is required it should be referenced from this element. Constraints within the profile should be followed when referencing other resources. 
 
- 
+### CareConnect-Encounter-1
 
-Note: Where information about any individual is included information governance should be considered. 
+The Encounter resources included in the bundle SHALL conform to the `CareConnect-Encounter-1` constrained FHIR profile and the additional population guidance as per the table below: 
 
-value 
+| Resource Cardinality | 0..* |
 
-0..1 
+| Element | Cardinality | Additional Guidance |
+| --- | --- | --- |
+| Encounter.type | 1..* | The encounter type SHOULD include a value from the `EncounterType-1` value set. This value set is extensible so additional values and code systems may be added where required. |
 
-Where the observation has a result then this should be included in this element. 
 
-interpretation 
+### CareConnect-HealthcareService-1
 
-0..1 
+The HealthcareService resources included in the bundle SHALL conform to the `CareConnect-HealthcareService-1` constrained FHIR profile and the additional population guidance as per the table below: 
 
-Where there is an interpretation about an observation then it should be included in this element. 
+| Resource Cardinality | 0..* |
 
-comment 
+| Element | Cardinality | Additional Guidance |
+| --- | --- | --- |
+| providedBy | 1..1 | Reference to the organization who provides the healthcare service |
+| type | 1..1 | This will have a value from the ValueSet `CareConnect-CareSettingType-1` |
+| specialty | 1..1 | The specialty SHALL be a value from the `Specialty-1` value set |
 
-0..1 
 
-A comment may be included, but content should be considered carefully in relation to information governance and in terms of a serious harm test for use cases where this comment may be displayed to a user.  
 
-component 
+## Examples
 
-0..* 
+An example of observation data from within a Digital Child Health specific care setting.
 
-Where components of the observation are expressed as separate code value pairs then this element should be used. 
-
-A consumer should consider how these components and the observation code and value should be displayed to user in the most clinically safe way possible. 
-
- 
-
- 
-
-CareConnect-Patient-1 
-
-The patient resources included in the bundle SHALL conform to the CareConnect-Patient-1 constrained FHIR profile and the additional population guidance as per the table below: 
-
-Resource Cardinality 
-
-1..1 
-
- 
-
-Element 
-
-Cardinality 
-
-Additional Guidance 
-
-identifier 
-
-1..1 
-
-Patient NHS Number identifier SHALL be included within the nhsNumber identifier slice. The NHS Number SHALL match the NHS Number on the associated pointer (DocumentReference.subject). 
-
-name (official) 
-
-1..1 
-
-Patients name as registered on PDS, included within the resource as the official name element slice 
-
-birthDate 
-
-1..1 
-
-The patients date of birth 
-
- 
-
- 
-
- 
-
-CareConnect-Organization-1 
-
-All Organization resources included in the bundle SHALL conform to the CareConnect-Organization-1 constrained FHIR profile and the additional population guidance as per the table below: 
-
-Resource Cardinality 
-
-1..* 
-
- 
-
-Element 
-
-Cardinality 
-
-Additional Guidance 
-
-identifier 
-
-1..* 
-
-The organization ODS code identifier SHALL be included within the odsOrganizationCode identifier slice. 
-
-name 
-
-1..1 
-
-A human readable name for the organization SHALL be included in the organization resource. 
-
-telecom 
-
-0..* 
-
-Where the Organisation resource is referenced from the list, contact details for the organisation for use in relation to data quality issues must be included. 
-
-telecom.system 
-
-1..1 
-
-Must contain a value of phone or email matching the included contact method within the value element 
-
-telecom.value 
-
-1..1 
-
-A phone number or email address 
-
- 
-
- 
-
-CareConnect-Practitioner-1 
-
-The Practitioner resources included in the bundle SHALL conform to the CareConnect-Practitioner-1 constrained FHIR profile. 
-
-Resource Cardinality 
-
-0..* 
-
- 
-
-Note: Information Governance should be considered before including practitioner’s personal data within shared information. 
-
- 
-
- 
-
-CareConnect-PractitionerRole-1 
-
-The PractitionerRole resources included in the bundle SHALL conform to the CareConnect-PractitionerRole-1 constrained FHIR profile. 
-
-Resource Cardinality 
-
-0..* 
-
- 
-
-Element 
-
-Cardinality 
-
-Additional Guidance 
-
-organization 
-
-1..1 
-
-Reference to the Organization where the practitioner performs this role 
-
-practitioner 
-
-1..1 
-
-Reference to the Practitioner who this role relates to 
-
-code 
-
-1..* 
-
-The practitioner role SHALL include a value from the ProfessionalType-1 value set. The PractitionerRole.code should also include the SDS Job Role name where available. 
-
-specialty 
-
-1..1 
-
-PractitionerRole.specialty SHALL use a value from Specialty-1 value set 
-
- 
-
- 
-
-CareConnect-Encounter-1 
-
-The Encounter resources included in the bundle SHALL conform to the CareConnect-Encounter-1 constrained FHIR profile and the additional population guidance as per the table below: 
-
-Resource Cardinality 
-
-0..* 
-
- 
-
-Element 
-
-Cardinality 
-
-Additional Guidance 
-
-Encounter.type 
-
-1..* 
-
-The encounter type SHOULD include a value from the EncounterType-1 value set. This value set is extensible so additional values and code systems may be added where required. 
-
- 
-
- 
-
-CareConnect-HealthcareService-1 
-
-The HealthcareService resources included in the bundle SHALL conform to the CareConnect-HealthcareService-1 constrained FHIR profile and the additional population guidance as per the table below: 
-
-Resource Cardinality 
-
-0..* 
-
- 
-
-Element 
-
-Cardinality 
-
-Additional Guidance 
-
-providedBy 
-
-1..1 
-
-Reference to the organization who provides the healthcare service 
-
-type 
-
-1..1 
-
-This will have a value from the ValueSet CareConnect-CareSettingType-1 
-
-specialty 
-
-1..1 
-
-The specialty SHALL be a value from the Specialty-1 value set 
-
- 
-
- 
-Examples 
-
- 
-
-Examples can be found on MS Teams here: 
-
-Digital Child Health Example v0.4 
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight xml %}
+{% include_relative examples/Observation_List_v1_DCH.xml %}
+{% endhighlight %}
+</div>
