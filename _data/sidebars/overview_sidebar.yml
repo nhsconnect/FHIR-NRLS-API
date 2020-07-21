@@ -42,24 +42,6 @@ entries:
       url: /supported_pointer_types.html
       output: web
       subfolders:
-      - title: General API Guidance
-        output: web
-        subfolderitems:
-          - title: Auditing 
-            url: /integration_auditing.html
-            output: web
-          - title: Error Overview
-            url: /nrl_error_guidance.html
-            output: web
-          - title: FHIR Profile Reference
-            url: /explore_reference.html
-            output: web  
-          - title: Pointer Identifiers
-            url: /identifier_guidance.html
-            output: web
-          - title: Security
-            url: /security_guidance.html
-            output: web
       - title: NRL Interactions
         output: web
         subfolderitems:
@@ -80,6 +62,24 @@ entries:
             output: web  
           - title: Search
             url: /api_interaction_search.html
+            output: web
+      - title: General API Guidance
+        output: web
+        subfolderitems:
+          - title: Auditing 
+            url: /integration_auditing.html
+            output: web
+          - title: Error Overview
+            url: /nrl_error_guidance.html
+            output: web
+          - title: FHIR Profile Reference
+            url: /explore_reference.html
+            output: web  
+          - title: Pointer Identifiers
+            url: /identifier_guidance.html
+            output: web
+          - title: Security
+            url: /security_guidance.html
             output: web
 
   - title: Information Retrieval
