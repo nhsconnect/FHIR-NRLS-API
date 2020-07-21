@@ -1,0 +1,392 @@
+<Bundle
+    xmlns="http://hl7.org/fhir">
+    <id value="6e824ff8-9b0a-11e8-9eb6-529269fb1459"/>
+    <meta>
+        <profile value="http://hl7.org/fhir/STU3/StructureDefinition/Bundle"/>
+    </meta>
+    <type value="collection"/>
+    <entry>
+        <resource>
+            <List
+                xmlns="http://hl7.org/fhir">
+                <status value="current"/>
+                <mode value="snapshot"/>
+                <code>
+                    <coding>
+                        <system value="http://snomed.info/sct"/>
+                        <code value="1102181000000102"/>
+                        <display value="Immunisations"/>
+                    </coding>
+                </code>
+                <subject>
+                    <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
+                </subject>
+                <date value="2020-05-09T12:10:23+11:00"/>
+                <orderedBy>
+                    <coding>
+                        <system value="http://hl7.org/fhir/list-order"/>
+                        <code value="event-date"/>
+                    </coding>
+                </orderedBy>
+                <entry>
+                    <item>
+                        <reference value="urn:uuid:076db265-8799-4dda-9418-e2a4d6d1c0d0"/>
+                    </item>
+                </entry>
+                <entry>
+                    <item>
+                        <reference value="urn:uuid:f4c3ed2b-e6ad-4eb3-a565-96b2e2edb1ce"/>
+                    </item>
+                </entry>
+            </List>
+        </resource>
+    </entry>
+    <entry>
+        <fullUrl value="urn:uuid:076db265-8799-4dda-9418-e2a4d6d1c0d0"/>
+        <resource>
+            <Immunization>
+                <id value="076db265-8799-4dda-9418-e2a4d6d1c0d0"/>
+                <meta>
+                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Immunization-1"/>
+                </meta>
+                <extension url="https://fhir.hl7.org.uk/STU3/StructureDefinition/Extension-CareConnect-VaccinationProcedure-1">
+                    <valueCodeableConcept>
+                        <coding>
+                            <system value="http://snomed.info/sct"/>
+                            <code value="170433008"/>
+                            <display value="Measles mumps and rubella vaccination - second dose (procedure)"/>
+                        </coding>
+                    </valueCodeableConcept>
+                </extension>
+                <identifier>
+                    <system value="https://supplierABC/identifiers"/>
+                    <value value="abc1111"/>
+                </identifier>
+                <status value="completed"/>
+                <notGiven value="false"/>
+                <vaccineCode>
+                    <coding>
+                        <system value="http://snomed.info/sct"/>
+                        <code value="34925411000001109"/>
+                        <display value="Priorix vaccine powder and solvent for solution for injection 0.5ml pre-filled syringes (GlaxoSmithKline UK Ltd) 1 pre-filled disposable injection (product)"/>
+                    </coding>
+                </vaccineCode>
+                <patient>
+                    <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
+                </patient>
+                <encounter>
+                    <reference value="urn:uuid:0b5365ea-5eb5-4119-bfad-c6dfe0874b1b"/>
+                </encounter>
+                <date value="2020-01-18T12:31:44+00:00"></date>
+                <primarySource value="true"/>
+                <location>
+                    <reference value="urn:uuid:e19a8932-7ccd-4b4a-bed2-b13f5e924698"/>
+                </location>
+                <lotNumber value="CCJN12M"/>
+                <site>
+                    <coding>
+                        <system value="http://snomed.info/sct"/>
+                        <code value="91775009"/>
+                        <display value="Structure of left shoulder region"/>
+                    </coding>
+                </site>
+                <route>
+                    <coding>
+                        <system value="http://snomed.info/sct"/>
+                        <code value="34206005"/>
+                        <display value="Subcutaneous route"/>
+                    </coding>
+                </route>
+                <doseQuantity>
+                    <value value="0.5"/>
+                    <system value="http://unitsofmeasure.org"/>
+                    <code value="ml"/>
+                </doseQuantity>
+                <practitioner>
+                    <actor>
+                        <reference value="urn:uuid:f25e9d63-6a4e-4de6-b9dc-c912fda62b01"/>
+                    </actor>
+                </practitioner>
+                <explanation>
+                    <reason>
+                        <coding>
+                            <system value="http://snomed.info/sct"/>
+                            <code value="864611000000103"/>
+                            <display value="Recommendation to have child immunised against measles, mumps and rubella"/>
+                        </coding>
+                    </reason>
+                </explanation>
+            </Immunization>
+        </resource>
+    </entry>
+    <entry>
+		<fullUrl value="urn:uuid:f4c3ed2b-e6ad-4eb3-a565-96b2e2edb1ce"/>
+		<resource>
+			<Immunization>
+				<id value="f4c3ed2b-e6ad-4eb3-a565-96b2e2edb1ce"/>
+				<meta>
+					<profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Immunization-1"/>
+				</meta>
+				<extension url="https://fhir.hl7.org.uk/STU3/StructureDefinition/Extension-CareConnect-VaccinationProcedure-1">
+					<valueCodeableConcept>
+						<coding>
+							<system value="http://snomed.info/sct"/>
+							<code value="170330007"/>
+							<display value="First tetanus vaccination (procedure)"/>
+						</coding>
+					</valueCodeableConcept>
+				</extension>
+				<identifier>
+					<system value="https://supplierABC/identifiers"/>
+					<value value="ims11112"/>
+				</identifier>
+				<status value="completed"/>
+				<notGiven value="true"/>
+				<vaccineCode>
+					<coding>
+						<system value="http://snomed.info/sct"/>
+						<code value="37055911000001102"/>
+						<display value="Tetanus vaccine (adsorbed) suspension for injection 0.5ml pre-filled syringes (product)"/>
+					</coding>
+				</vaccineCode>
+				<patient>
+					<reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
+				</patient>
+				<encounter>
+					<reference value="urn:uuid:0b5365ea-5eb5-4119-bfad-c6dfe0874b1b"/>
+				</encounter>
+				<date value="2020-01-18T12:31:44+00:00">
+				</date>
+				<primarySource value="true"/>
+				<location>
+					<reference value="urn:uuid:e19a8932-7ccd-4b4a-bed2-b13f5e924698"/>
+				</location>
+				<practitioner>
+					<actor>
+						<reference value="urn:uuid:f25e9d63-6a4e-4de6-b9dc-c912fda62b01"/>
+					</actor>
+				</practitioner>
+				<explanation>
+					<reasonNotGiven>
+						<coding>
+							<system value="http://snomed.info/sct"/>
+							<code value="310376006"/>
+							<display value="Immunization consent not given (finding)"/>
+						</coding>
+					</reasonNotGiven>
+				</explanation>
+			</Immunization>
+		</resource>
+	</entry>
+    <entry>
+        <fullUrl value="urn:uuid:3ff6d789-af64-4d9c-aa1d-0087d29e9e1c"/>
+        <resource>
+            <Organization>
+                <id value="3ff6d789-af64-4d9c-aa1d-0087d29e9e1c"/>
+                <meta>
+                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1"/>
+                </meta>
+                <identifier>
+                    <system value="https://fhir.nhs.uk/Id/ods-organization-code"/>
+                    <value value="A83627"/>
+                </identifier>
+                <name value="SILVERDALE FAMILY PRACTICE"/>
+                <address>
+                    <line value="FRONT STREET"/>
+                    <line value="SOUTH HETTON"/>
+                    <city value="DURHAM"/>
+                    <district value="COUNTY DURHAM"/>
+                    <postalCode value="DH6 2TH"/>
+                </address>
+            </Organization>
+        </resource>
+    </entry>
+    <entry>
+        <fullUrl value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
+        <resource>
+            <Patient>
+                <id value="5d5845f3-398f-474b-af59-14882fc7b0ca"/>
+                <meta>
+                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1"/>
+                </meta>
+                <identifier>
+                    <extension url="https://fhir.hl7.org.uk/STU3/StructureDefinition/Extension-CareConnect-NHSNumberVerificationStatus-1">
+                        <valueCodeableConcept>
+                            <coding>
+                                <system value="https://fhir.hl7.org.uk/STU3/CodeSystem/CareConnect-NHSNumberVerificationStatus-1"/>
+                                <code value="01"/>
+                                <display value="Number present and verified"/>
+                            </coding>
+                        </valueCodeableConcept>
+                    </extension>
+                    <system value="https://fhir.nhs.uk/Id/nhs-number"/>
+                    <value value="9912003888"/>
+                </identifier>
+                <name>
+                    <use value="official"/>
+                    <family value="DAWKINS"/>
+                    <given value="Jack"/>
+                </name>
+                <gender value="male"/>
+                <birthDate value="2013-10-12">
+                    <extension url="http://hl7.org/fhir/StructureDefinition/patient-birthTime">
+                        <valueDateTime value="2017-10-02T12:00:00+00:00"/>
+                    </extension>
+                </birthDate>
+                <address>
+                    <use value="home"/>
+                    <line value="4 Sandmoor Drive"/>
+                    <city value="DURHAM"/>
+                    <postalCode value="DH1 2TF"/>
+                </address>
+            </Patient>
+        </resource>
+    </entry>
+    <entry>
+        <fullUrl value="urn:uuid:5a293df7-b22f-41b6-8bf1-44248ea59edb"/>
+        <resource>
+            <HealthcareService>
+                <id value="5a293df7-b22f-41b6-8bf1-44248ea59edb"/>
+                <meta>
+                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-HealthcareService-1"/>
+                </meta>
+                <identifier>
+                    <system value="https://tools.ietf.org/html/rfc4122"/>
+                    <value value="4d98ee54-c813-49d8-bfdc-6e834313a4ff"/>
+                </identifier>
+                <providedBy>
+                    <reference value="urn:uuid:3ff6d789-af64-4d9c-aa1d-0087d29e9e1c"/>
+                    <display value="SILVERDALE FAMILY PRACTICE"/>
+                </providedBy>
+                <type>
+                    <coding>
+                        <system value="http://snomed.info/sct"/>
+                        <code value="1060971000000108"/>
+                        <display value="General practice service"/>
+                    </coding>
+                </type>
+                <location>
+                    <reference value="urn:uuid:e19a8932-7ccd-4b4a-bed2-b13f5e924698"/>
+                </location>
+                <telecom>
+                    <system value="phone"/>
+                    <value value="0191 1231234"/>
+                </telecom>
+            </HealthcareService>
+        </resource>
+    </entry>
+    <entry>
+        <fullUrl value="urn:uuid:0b5365ea-5eb5-4119-bfad-c6dfe0874b1b"/>
+        <resource>
+            <Encounter>
+                <id value="0b5365ea-5eb5-4119-bfad-c6dfe0874b1b"/>
+                <meta>
+                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Encounter-1"/>
+                </meta>
+                <status value="finished"/>
+                <type>
+                    <coding>
+                        <system value="https://fhir.nhs.uk/STU3/CodeSystem/DCH-ChildHealthEncounterType-1"/>
+                        <code value="0012"/>
+                        <display value="12 week immunisations"/>
+                    </coding>
+                </type>
+                <subject>
+                    <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
+                    <display value="DAWKINS, Jack"/>
+                </subject>
+                <period>
+                    <start value="2017-02-14"/>
+                </period>
+                <location>
+                    <location>
+                        <reference value="urn:uuid:e19a8932-7ccd-4b4a-bed2-b13f5e924698"/>
+                        <display value="SILVERDALE FAMILY PRACTICE"/>
+                    </location>
+                </location>
+                <serviceProvider>
+                    <reference value="urn:uuid:3ff6d789-af64-4d9c-aa1d-0087d29e9e1c"/>
+                    <display value="SILVERDALE FAMILY PRACTICE"/>
+                </serviceProvider>
+            </Encounter>
+        </resource>
+    </entry>
+    <entry>
+        <fullUrl value="urn:uuid:f25e9d63-6a4e-4de6-b9dc-c912fda62b01"/>
+        <resource>
+            <Practitioner>
+                <id value="f25e9d63-6a4e-4de6-b9dc-c912fda62b01"/>
+                <meta>
+                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Practitioner-1"/>
+                </meta>
+                <identifier>
+                    <system value="https://fhir.nhs.uk/Id/sds-role-profile-id"/>
+                    <value value="PT2468"/>
+                </identifier>
+                <name>
+                    <family value="Strange"/>
+                    <given value="Stephen"/>
+                    <prefix value="Dr."/>
+                </name>
+            </Practitioner>
+        </resource>
+    </entry>
+    <entry>
+        <fullUrl value="urn:uuid:b7e3cc3a-9120-49fe-801c-2793b80ca922"/>
+        <resource>
+            <PractitionerRole>
+                <id value="b7e3cc3a-9120-49fe-801c-2793b80ca922"/>
+                <meta>
+                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-PractitionerRole-1"/>
+                </meta>
+                <identifier>
+                    <system value="https://fhir.nhs.uk/Id/sds-role-profile-id"/>
+                    <value value="PT2468"/>
+                </identifier>
+                <practitioner>
+                    <reference value="urn:uuid:f25e9d63-6a4e-4de6-b9dc-c912fda62b01"/>
+                </practitioner>
+                <organization>
+                    <reference value="urn:uuid:3ff6d789-af64-4d9c-aa1d-0087d29e9e1c"/>
+                </organization>
+                <code>
+                    <coding>
+                        <system value="https://fhir.hl7.org.uk/STU3/CodeSystem/CareConnect-SDSJobRoleName-1"/>
+                        <code value="R0260"/>
+                        <display value="General Medical Practitioner"/>
+                    </coding>
+                </code>
+                <code>
+                    <coding>
+                        <system value="https://fhir.nhs.uk/STU3/CodeSystem/ProfessionalType-1"/>
+                        <code value="160"/>
+                        <display value="General Medical Practitioner"/>
+                    </coding>
+                </code>
+                <specialty>
+                    <coding>
+                        <system value="https://fhir.nhs.uk/STU3/CodeSystem/Specialty-1"/>
+                        <code value="290"/>
+                        <display value="COMMUNITY PAEDIATRICS"/>
+                    </coding>
+                </specialty>
+            </PractitionerRole>
+        </resource>
+    </entry>
+    <entry>
+        <fullUrl value="urn:uuid:e19a8932-7ccd-4b4a-bed2-b13f5e924698"/>
+        <resource>
+            <Location>
+                <id value="e19a8932-7ccd-4b4a-bed2-b13f5e924698"/>
+                <meta>
+                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Location-1"/>
+                </meta>
+                <identifier>
+                    <system value="https://fhir.nhs.uk/Id/ods-site-code"/>
+                    <value value="A83627001"/>
+                </identifier>
+                <name value="SILVERDALE FAMILY PRACTICE"/>
+            </Location>
+        </resource>
+    </entry>
+</Bundle>

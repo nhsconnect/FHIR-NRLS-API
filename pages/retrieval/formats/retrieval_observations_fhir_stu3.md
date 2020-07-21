@@ -7,11 +7,7 @@ permalink: retrieval_observations_fhir_stu3.html
 summary: Observation List, FHIR STU3 information format for retrieval
 ---
 
-Please see the [format code value set](https://fhir.nhs.uk/STU3/ValueSet/NRL-FormatCode-1) for the list of codes to use. 
-
-
 # Observation List FHIR STU3 v1 
- 
 
 The `Observation List FHIR STU3 v1` retrieval format represents a list of observations that were made in relation to a patient, and any required supporting information.
 
@@ -78,7 +74,7 @@ The response payload will consist of a FHIR Bundle resource of type “collectio
 
 The diagram below shows the referencing between FHIR resources within the response Bundle resource:
 
-<img alt="Observation information FHIR Bundle diagram" src="images/retrieval/formats/observation_list_fhir-stu3.png" style="width:100%;max-width: 100%;">
+<img alt="Observation information FHIR Bundle diagram" src="images/retrieval/formats/observation_list_fhir_stu3.png" style="width:100%;max-width: 100%;">
  
  
 The Bundle **MUST** contain the following resources: 
