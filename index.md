@@ -26,13 +26,13 @@ Information sharing is made up of three actors:
 
 ### Enabling Information Sharing
 
-With national sharing of information there are a number of challenges for a consumer:
+The NRL has been built to facilitate national sharing of information, enabling a consumer to:
 
-- identifying which providers hold and are sharing information
-- knowing how to retrieve the information, where from and in what format
-- knowing how to authentication and get authorisation to access the information
+- identify which providers hold and are sharing information
+- know how to retrieve the information, where from and in what format
+- know how to authenticate and get authorisation to access the information
 
-The NRL has been built to help overcome these challenges and enable sharing of information.
+The NRL removes the need for organisations to create duplicate copies of information across systems and organisations, by facilitating access to up-to-date information directly from the source. 
 
 # How NRL Works
 
@@ -47,7 +47,7 @@ The providers create and manage [pointers](pointer_overview.html) on the NRL to 
 
 ### Consumers Find And Use Pointers
 
-When a consumer would benefit from having information, about a patient, share by other organisations they can search the NRL and retrieve the [pointers](pointer_overview.html) related to that patient. Looking at the information within the pointers, the consumer can decide if the [types](record_type_overview.html) of information being shared by the provider could be useful to them and then use the information in the pointers retrieve the patients information directly from the provider.
+When a consumer would benefit from having information about a patient, shared by other organisations, they can search the NRL and retrieve the [pointers](pointer_overview.html) related to that patient. From the information within the pointers, the consumer can decide if the [types](record_type_overview.html) of information being shared by the provider could be useful to them. They can then use the information in the pointers to retrieve the patient's information directly from the provider.
 
 <img alt="Providers create pointers on NRL" src="images/overview/nrl_pointer_retrieve.png" style="width:100%;max-width: 100%;">
 
