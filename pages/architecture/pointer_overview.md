@@ -7,17 +7,19 @@ permalink: pointer_overview.html
 summary: A technical overview the pointers
 ---
 
-## What do pointers do
+## What Do Pointers Do?
 
-Pointers on the NRL tell consumers what type of information is available from provider and how to get it. A provider can choose what information they want to share and how they want to share it.
+Pointers on the NRL tell consumers the type of information that is available from a provider and how to get it. A provider can choose what information they want to share and how they want to share it.
 
 A provider might allow consumers to retrieve the same information in a number of different ways, and this would be reflected in the pointer(s), they create on the NRL. The following diagram illustrates the concept that a provider might enable different ways of retrieving the same information.
 
 <img alt="Pointers link to Records by providing either an API endpoint or contact details of the Provider" src="images/architecture/pointer_type_overview.png" style="width:100%;max-width: 100%;">
 
-The provider  creates two pointers on NRL that point to the same information (Record A) within the provider system:
-- The first pointer contains contact details for the provider. Retrieval in this scenario begins with a user in the consumer organisation dialling the telephone, using the contact details in the pointer. This would begin a human-controlled process that would ultimately lead to "Record A" being retrieved.
-- The second pointer references an API endpoint exposed by the provider. In this scenario the consumer system would use the details in the pointer to request the record directly from the provider system and could display the returned record to the user in the consumer system.
+The provider  creates a single pointer on NRL that points to the information (Record A) within the provider system. The pointer references each method or format of retrieving the record:
+- The first reference included on the pointer is to contact details for the provider organisation. Retrieval in this scenario begins with a user in the consumer organisation dialling the telephone, using the contact details in the pointer. This would begin a human-controlled process that would ultimately lead to "Record A" being retrieved.
+- The second reference included on the pointer is to an API endpoint exposed by the provider. In this scenario the consumer system would use the details in the pointer to request the record directly from the provider system and could display the returned record to the user in the consumer system. 
+
+A pointer could contain multiple references to API endpoints that returned the record in different formats. For example, an endpoint which returns the record as a PDF document and another that returns it in a structured data format. 
 
 
 ## Pointer Data Items
@@ -26,7 +28,9 @@ For a consumer, the information carried in the pointer serves two main purposes:
 - to allowing the them to determine which information could be useful
 - to tell the them how they can retrieve the information
 
-The content of the pointer is intended to be light weight and high level, giving enough information to indicate to the consumer the type of information they can retrieve and some contextual information, such as the care setting the information is being shared from, so that the consumer can filter down the returned pointer to a smaller set which they can retrieve. The pointer model aims to keep complexity low, as including too much detail within a pointer would put a significant maintenance burden on the provider and make consumption of pointers more difficult for consumers.
+The content of the pointer is intended to be light weight and high level, giving enough information to indicate to the consumer the type of information they can retrieve and some contextual information, such as the care setting the information is being shared from. This enables a consumer system or user to apply filtering to find relevant pointers. 
+
+The pointer model is intentionally lean. Including complex detail within a pointer would put a significant maintenance burden on the provider and risks making consumption of pointers more difficult for consumers.
 
 The following table shows the data items that can be carried within a pointer:
 
@@ -36,7 +40,7 @@ The following table shows the data items that can be carried within a pointer:
 |Information category|A high-level category of the information, from a set of NRL supported categories.|
 |Information Type|The clinical type of the information which is reference by the pointer. The clinical type will be from a controlled set of types supported by the NRL.|
 |Clinical setting|Describes the clinical setting in which the information was recorded.|
-|Period of care|Optional information detailing the period in which the documented care, reference by the pointer, is relevant.|
+|Period of care|Optional information detailing the period in which the referenced record is/was active.|
 |Retrieval URL|An absolute URL for the location of the information on the Provider’s system.|
 |Retrieval format|An identifier for the technical structure and rules of the information.|
 |Retrieval MIME type|Describes the type of data, in addition to the "Retrieval format".|
@@ -45,11 +49,11 @@ The following table shows the data items that can be carried within a pointer:
 |Pointer owner|The entity that maintains the Pointer.|
 |Information owner|The entity that maintains the information.|
 |Pointer Identifier|Assigned by the NRL at creation time. Uniquely identifies this record within the NRL.|
-|Master Identifier|An optional identifier for the pointer as assigned by the Provider. It is version specific and a new master identifier is required if the pointer is updated.|
+|Master Identifier|An optional identifier for the pointer as assigned by the Provider. It is version specific and a new master identifier is required if the pointer is superdeded, or deleted and recreated.|
 |Pointer version |Assigned by the NRL at creation or update time. Used to track the current version of a Pointer.|
 |Pointer last updated datetime|Assigned by the NRL at creation and update time. The date and time that the pointer was last updated.|
 |Pointer indexed datetime|Assigned by the NRL at creation time. The date and time that the pointer was created.|
-|Related Pointer|Relationship to another pointer|
+|Related Pointer|Relationship referencing the previous version of the pointer, which has been superseded.|
 
 
 
@@ -67,16 +71,15 @@ The format of the ID is under the control of the NRL service and consumers shoul
 
 This identifier also uniquely identifies the pointer within the NRL. However, unlike the logical identifier, the master identifier is optional and is under the control of the provider.
 
-When providers create a pointer they must use a unique master identifier, following the guidelines below:
+When providers create a pointer they must use a globally unique master identifier, following the guidelines below:
 
-- A Master Identifier must not be re-used, once use in a pointer
+- A Master Identifier must not be re-used, once used in a pointer
 - 'Superseding' a pointer requires a new, unique, master identifier to be included in the new pointer superseding the existing pointer
 - Master Identifiers within deleted pointers cannot be used again for new pointers
 
-
 ## Pointer Lifecycle
 
-The pointer lifecycle within the NRL focuses on the `status` of a pointers and the permitted transitions between those statuses. The statuses and transitions ensure that only the appropriate pointers are shown to Consumers.
+The pointer lifecycle within the NRL focuses on the `status` of pointers and the permitted transitions between those statuses. The statuses and transitions ensure that only the appropriate pointers are shown to Consumers.
 
 ### Pointer Status
 
