@@ -72,22 +72,14 @@ In the context of a Consumer request, the `requesting_user` claim is mandatory f
 
 Depending upon the client’s role (Provider or Consumer) the validation that is applied to the JWT varies. The following table shows the various checking that are applied to each claim in the JWT and the associated diagnostics message if an error is detected:
 
-| Claim being validated | Error scenario | Diagnostics | 
-|-------|----------|-------------|
-| `sub` | No `requesting_user` has been supplied and the sub claims’ value does not match the value of the `requesting_system` claim.| `requesting_system` and `sub` claim’s values must match.| 
-| `sub` | `requesting_user` has been supplied and the sub claims’ value does not match the value of the `requesting_user` claim. | `requesting_user` and `sub` claim’s values must match.|
-| `reason_for_request` | Reason for request does not have the value “directcare”.  | `reason_for_request` must be “directcare”. |
-| `scope` | For requests to the NRL: scope is not one of `patient/DocumentReference.read` or `patient/DocumentReference.write`. | `scope` must match either `patient/DocumentReference.read` or `patient/DocumentReference.write`. |
-| `scope` | For requests to the SSP: scope is not `patient/*.read`. | `scope` must match `patient/*.read`. |
-| `requesting_system` | Requesting system is not of the form `https://fhir.nhs.uk/Id/accredited-system/[ASID]`. | `requesting_system` must be of the form `https://fhir.nhs.uk/Id/accredited-system/[ASID]`. | 
-| `requesting_system` | `requesting_system` is not an ASID that is known to Spine. | The ASID must be known to Spine. | 
-| `requesting_organisation`  | `requesting_organisation` is not of the form `https://fhir.nhs.uk/Id/ods-organization-code/[ODSCode]`. | `requesting_organisation` must be of the form `https://fhir.nhs.uk/Id/ods-organization-code/[ODSCode]`. |
-| `requesting_organisation`  | The ODS code of the `requesting_organisation` is not known to Spine. | The ODS code of the `requesting_organisation` must be known to Spine. |
-| `requesting_organisation`  | `requesting_organisation` is not associated with the ASID from the `requesting_system` claim. | The `requesting_system` ASID must be associated with the `requesting_organisation` ODS code. |
+| Claim being validated | Validation applied |  
+|-------|----------|
+| `sub` | Where the `requesting_user` claim has been supplied, the value of the `sub` claim MUST match the value of the `requesting_user` claim. <br/><br/> Where the `requesting_user` claim has not been supplied, the value of the `sub` claim MUST match the value of the `requesting_system` claim. <br/><br/> If both the `requesting_system` and `requesting_user` claims have been provided, then the `sub` claim MUST match the `requesting_user` claim. | 
+| `reason_for_request` | The value of the `reason_for_request` claim MUST be "directcare".  | 
+| `scope` | For requests to the NRL: `scope` MUST have the value of `patient/DocumentReference.read` (consumer interactions) or `patient/DocumentReference.write` (provider interactions). <br/><br/> For requests to the SSP: `scope` MUST have the value of `patient/*.read` (consumer interactions) or `patient/*.write` (provider interactions). |  
+| `requesting_organisation`  | The `requesting_organisation` claim value MUST be of the form `https://fhir.nhs.uk/Id/ods-organization-code/[ODSCode]`. <br/><br/> The ODS code MUST be known to Spine.| 
+| `requesting_system` | The `requesting_system` claim value MUST be of the form `https://fhir.nhs.uk/Id/accredited-system/[ASID]`. <br/><br/> The ASID MUST be known to Spine. <br/><br/> The ASID MUST be associated with the ODS code in the `requesting_organisation` claim. | 
 
-**Precedence of `requesting_user` over `requesting_system`**
-
-If both the `requesting_system` and `requesting_user` claims have been provided, then the `sub` claim MUST match the `requesting_user` claim.
 
 
 ## Interaction Content Types
