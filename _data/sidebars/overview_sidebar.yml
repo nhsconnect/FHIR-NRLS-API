@@ -38,10 +38,19 @@ entries:
     - title: Overview
       url: /development_overview.html
       output: web
-    - title: Supported Pointer Types
-      url: /supported_pointer_types.html
-      output: web
       subfolders:
+      - title: Pointer Data Model
+        output: web
+        subfolderitems:
+          - title: Overview
+            url: /pointer_data_model.html
+            output: web
+          - title: Supported Pointer Types
+            url: /supported_pointer_types.html
+            output: web
+          - title: FHIR Resource Mapping
+            url: /explore_reference.html
+            output: web  
       - title: NRL Interactions
         output: web
         subfolderitems:
@@ -72,9 +81,6 @@ entries:
           - title: Error Overview
             url: /nrl_error_guidance.html
             output: web
-          - title: FHIR Profile Reference
-            url: /explore_reference.html
-            output: web  
           - title: Pointer Identifiers
             url: /identifier_guidance.html
             output: web

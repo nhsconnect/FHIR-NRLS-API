@@ -23,7 +23,33 @@ The NRL API defines many categories of errors, each of which encapsulates a spec
 - [Access denied](development_general_api_guidance.html#access-denied) — Used to inform the client that access to perform the interaction has been denied.
 - [Internal error](development_general_api_guidance.html#internal-error) — Used to inform the client if there is a failure during the change of the DocumentReference status.
 
+## FHIR Resources
+
+The table outlines the profiled FHIR resources which are used to inform a client of an error.
+
+|Profile| Description |
+|-------|-------|
+| [Spine-OperationOutcome-1](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1)| The OperationOutcome resource is the data model that will be used to shared error, warning or information messages that result from a NRL Service interaction.|
+| [Spine-OperationOutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0)| This version of the OperationOutcome resource is the default Spine OperationOutcome profiled resource that supports exceptions raised by the Spine common requesthandler and not the NRL Service. |
+
 The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error or Warning Code ValueSet](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1).
+
+### ValueSets
+
+The following value sets are used within the profiled FHIR resources above.
+
+|Valueset|Description|
+|-------|-----------|
+|[Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)| A ValueSet that identifies the Spine error or warning code in response to a request.|
+|[Spine-Response-Code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0)|  A set of codes to indicate low level error information about a Spine 2 error response to a request for patient record details. Exceptions raised by the Spine common requesthandler and not the NRL Service will be returned using the Spine default [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to this default ValueSet. |
+
+### CodeSystems
+
+The following CodeSystems are used within the profiled FHIR resources above.
+
+|CodeSystem|Description|
+|-------|-----------|
+|[Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1) | Spine error codes and descriptions.|
 
 ### Resource Not Found
 

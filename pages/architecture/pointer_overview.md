@@ -32,50 +32,13 @@ The content of the pointer is intended to be light weight and high level, giving
 
 The pointer model is intentionally lean. Including complex detail within a pointer would put a significant maintenance burden on the provider and risks making consumption of pointers more difficult for consumers.
 
-The following table shows the data items that can be carried within a pointer:
+The pointer data model is based on the [FHIR NRL-DocumentReference-1 resource](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) and carries the following information:
+- Identifiers for the pointer and patient
+- Metadata about the pointer (e.g. version control, pointer ownership)
+- Metadata about the referenced information (e.g. information type, ownership and associated dates)
+- Information for retrieving the record (e.g. URL, information format)
 
-| Data Item | Description |
-|----------------|------------|
-|Patient|The NHS number of the patient which the information referenced, by the pointer, relates to.|
-|Information category|A high-level category of the information, from a set of NRL supported categories.|
-|Information Type|The clinical type of the information which is reference by the pointer. The clinical type will be from a controlled set of types supported by the NRL.|
-|Clinical setting|Describes the clinical setting in which the information was recorded.|
-|Period of care|Optional information detailing the period in which the referenced record is/was active.|
-|Retrieval URL|An absolute URL for the location of the information on the Provider’s system.|
-|Retrieval format|An identifier for the technical structure and rules of the information.|
-|Retrieval MIME type|Describes the type of data, in addition to the "Retrieval format".|
-|Information stability|Describes whether the information shared at the time of the consumers request is dynamically generated or static.|
-|Information creation datetime|Optional information about the date and time (on the Provider’s system) that the information was created (for static records).|
-|Pointer owner|The entity that maintains the Pointer.|
-|Information owner|The entity that maintains the information.|
-|Pointer Identifier|Assigned by the NRL at creation time. Uniquely identifies this record within the NRL.|
-|Master Identifier|An optional identifier for the pointer as assigned by the Provider. It is version specific and a new master identifier is required if the pointer is superdeded, or deleted and recreated.|
-|Pointer version |Assigned by the NRL at creation or update time. Used to track the current version of a Pointer.|
-|Pointer last updated datetime|Assigned by the NRL at creation and update time. The date and time that the pointer was last updated.|
-|Pointer indexed datetime|Assigned by the NRL at creation time. The date and time that the pointer was created.|
-|Related Pointer|Relationship referencing the previous version of the pointer, which has been superseded.|
-
-
-
-## Pointer Identity
-
-A pointer stored on the NRL has a logical identifier, assigned by the NRL, but it may also have a second identifier which is set by the provider, called the master identifier.
-
-### Logical Identifier
-
-This identifier is assigned by the NRL when it persists a pointer. It uniquely identifies that pointer within the NRL.
-
-The format of the ID is under the control of the NRL service and consumers should treat the identifier as an opaque. In other words, the client should not make assumptions about the structure of the identifier.
-
-### Master Identifier
-
-This identifier also uniquely identifies the pointer within the NRL. However, unlike the logical identifier, the master identifier is optional and is under the control of the provider.
-
-When providers create a pointer they must use a globally unique master identifier, following the guidelines below:
-
-- A Master Identifier must not be re-used, once used in a pointer
-- 'Superseding' a pointer requires a new, unique, master identifier to be included in the new pointer superseding the existing pointer
-- Master Identifiers within deleted pointers cannot be used again for new pointers
+For more detailed information about the pointer data model and population guidance, see the [Pointer Data Model page](pointer_data_model.html).
 
 ## Pointer Lifecycle
 

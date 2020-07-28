@@ -1,0 +1,287 @@
+---
+title: FHIR Profile Reference
+keywords: development reference
+tags: [development,fhir]
+sidebar: overview_sidebar
+permalink: explore_reference.html
+summary: "Developer Cheat Sheet shortcuts for the technical build of NRL API."
+---
+
+The [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) resource is the data model used for the pointers held on NRL. This page outlines the population guidance for the pointer data model, referencing the associated FHIR resources and value sets. 
+
+## Identifiers
+
+### Pointer Logical Identifier
+
+Uniquely identifies this pointer within the NRL. Used by Providers to supersede, update or delete pointers. 
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality|Population Guidance|
+|----|---------|----|-----------|-----|
+| Pointer Identifier | `id` | string | 0..1 | *Assigned by the NRL at creation time.*|
+
+**Additional Guidance**
+
+The format of the ID is under the control of the NRL service and consumers should treat the identifier as an opaque. In other words, the client should not make assumptions about the structure of the identifier.
+
+### Master Identifier
+
+An optional identifier of the document as assigned by the Provider. It is version specific, a new master identifier is required if the pointer is updated.
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality| Population Guidance|
+|----|---------|----|-----------|-----|
+| Master Identifier | `masterIdentifier` | Identifier | 0..1 | *See below* |
+| | `masterIdentifier.system` | Uri | 1..1 | The namespace for the identifier. This element must be completed if the masterIdentifier is to be included. |
+| | `masterIdentifier.value` | String | 1..1 | The unique value of the identifier. This element must be completed if the masterIdentifier is to be included. |
+
+**Additional Guidance**
+
+When providers create a pointer they must use a globally unique master identifier, following the guidelines below:
+
+- A Master Identifier must not be re-used, once used in a pointer
+- 'Superseding' a pointer requires a new, unique, master identifier to be included in the new pointer superseding the existing pointer
+- Master Identifiers within deleted pointers cannot be used again for new pointers
+
+It is important that the master identifier be unique. The scope of that uniqueness is recommended to extend beyond the NRL service that the Pointer was originally created on. This is to support the notion that master identifier is a business identifier — it is tied to a specific Pointer and should never change regardless of which NRL service the Pointer is on.
+
+The NRL guarantees that no two Pointers for the same Patient (identified by NHS number) will have the same master identifier. If the Provider attempts to create a Pointer using a master identifier that has already been assigned to one of that patient’s other Pointers, the Provider’s request will be blocked.
+
+It is the Provider’s responsibly to ensure that the master identifiers that it creates are unique across all Pointers in the NRL.
+
+### Patient
+
+The NHS number of the patient that the information referenced by this Pointer relates to. 
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality| Population Guidance|
+|----|---------|----|-----------|-----|
+| Patient | `subject` | Reference | 1..1 | The NHS Number reference MUST follow the structure: `https://demographics.spineservices.nhs.uk/STU3/Patient/[NHS Number]` |
+
+## Pointer Metadata
+
+### FHIR Profile
+
+The URI of the FHIR profile that the resource conforms to. Indicates the version of the pointer model.
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality| Population Guidance|
+|----|---------|----|-----------|-----|
+| Profile | `meta.profile` | uri | 0..1 | The value MUST be `https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1` |
+
+**Additional Guidance**
+
+The FHIR profile which the pointer conforms to will be indicated in this metadata attribute to enable Consumers to support the different versions of the pointer model. Major changes to the pointer model will be reflected in the NRL DocumentReference FHIR profile, using the naming convention `NRL-DocumentReference-[major_version]`. 
+
+{% include note.html content="Pointers conforming to the NRLS-DocumentReference-1 profile will not have this attribute populated." %}
+
+### Pointer Owner
+
+ODS code for the pointer owner organization.
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality| Population Guidance|
+|----|---------|----|-----------|-----|
+| Pointer owner | `custodian` | Reference | 1..1 |The Organisation reference MUST follow the structure: `https://directory.spineservices.nhs.uk/STU3/Organization/[ODS Code]`|
+
+<!--**Additional Guidance**
+ TO DO - link between ODS code and permissions -->
+
+### Pointer Status
+
+The status of the pointer.
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality| Population Guidance|
+|----|---------|----|-----------|-----|
+| Pointer Status | `status` | Code | 1..1 | All pointers created MUST have the status "current". Pointers which have been superseded via the Supersede interaction will have the status of "superseded". Pointers which have been marked as erroneous via the Update interaction will have the status of "entered-in-error". |
+
+**Additional Guidance**
+
+Only pointers with the status of "current" will be available to Consumers. 
+
+### Pointer Versioning
+
+Metadata used to track the current version of a Pointer.
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality| Population Guidance|
+|----|---------|----|-----------|-----|
+| Version | `meta.versionId` | string | 0..1 | *Auto-populated by the NRL.*  Pointer version number. |
+| Pointer indexed datetime | `indexed` | datetime | 0..1 | *Auto-populated by the NRL.* The date and time that the pointer was created. |
+| Pointer last updated datetime | `meta.lastUpdated` | datetime | 0..1 | *Auto-populated by the NRL.* The date and time that the pointer was last updated.|
+
+### Related Pointer
+
+Relationship referencing the previous version of the pointer, which has been superseded. 
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality| Population Guidance|
+|----|---------|----|-----------|-----|
+| Related Pointer | `relatesTo` | BackboneElement | 0..1 | |
+| | `relatesTo.code` | Code | 1..1 | The type of relationship between the documents. This element is mandatory if the *relatesTo* element is sent and the value MUST be *replaces*. |
+| | `relatesTo.target` | Reference | 1..1 | The Target of the relationship. This should contain the logical reference to the target DocumentReference held within the NRL using the identifier property of this [Reference Data Type](https://www.hl7.org/fhir/references.html#logical). |
+
+**Additional Guidance**
+
+For further detail on superseding a pointer, see the [Supersede interaction page](api_interaction_supersede.html).
+
+## Information Metadata
+
+### Information Category
+
+A high-level category of the information, from a set of supported categories.
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality| Population Guidance|
+|----|---------|----|-----------|-----|
+| Information category | `class` | CodeableConcept | 1..1 | The category will be one of a controlled value set. It will not be possible to create a pointer with a category that does not exist within this controlled set. |
+| | `class.coding.system` | Uri | 1..1 | Identity of the terminology system. |
+| | `class.coding.code` | Code | 1..1 | Symbol in syntax defined by the system. |
+| | `class.coding.display` | String | 1..1 | Representation defined by the system. <br><br> Display values MUST be as listed in the value set and are case sensitive.|
+
+**Additional Guidance - Value Set** 
+
+The information category MUST be a value included in the following value set:
+- FHIR Value Set - [NRL-RecordClass-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordClass-1)
+
+### Information Type
+
+The clinical type of the information. Used to support searching to allow Consumers to make sense of large result sets of Pointers. 
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality| Population Guidance|
+|----|---------|----|-----------|-----|
+| Information type | `type` | CodeableConcept | 1..1 |The type will be one of a controlled value set. It will not be possible to create a pointer with a type that does not exist within this controlled set. |
+| | `type.coding.system` | Uri | 1..1 | Example Value: http://snomed.info/sct |
+| | `type.coding.code` | Code | 1..1 | Symbol in syntax defined by the system. Example Value: 736253002 |
+| | `type.coding.display` | String | 1..1 | Representation defined by the system. <br><br> Display values MUST be as listed in the value set and are case sensitive.|
+
+**Additional Guidance - Value Set** 
+
+The information type MUST be a value included in the following value set:
+- FHIR Value Set - [NRL-RecordType-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1)
+
+For further information on which types are supported, see the [Supported Pointer Types page](supported_pointer_types.html).
+
+### Clinical Setting
+
+Describes the clinical setting in which the information was recorded. 
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality| Population Guidance|
+|----|---------|----|-----------|-----|
+| Clinical setting | `context.practiceSetting` | CodeableConcept | 1..1 | The clinical setting will be one of a controlled value set. It will not be possible to create a pointer with a clinical setting that does not exist within this controlled set. |
+|| `context.practiceSetting.coding.system` | Uri | 1..1 | Identity of the terminology system. |
+|| `context.practiceSetting.coding.code` | Code | 1..1 | Symbol in syntax defined by the system. |
+|| `context.practiceSetting.coding.display` | String |1..1 | Representation defined by the system. <br><br> The display value MUST be the preferred term and one of the synonyms for the concept, not the Fully Specified Name, as described in the [FHIR guidance for usage of SNOMED CT](https://www.hl7.org/fhir/STU3/snomedct.html). Display values are case sensitive and MUST only have the first word capitalised.|
+
+**Additional Guidance - Value Set** 
+
+The clinical setting MUST be a value included in the following value set:
+- FHIR Value Set - [NRL-PracticeSetting-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-PracticeSetting-1)
+
+Note that this value set refers to a SNOMED CT reference set. All SNOMED CT concepts that are members of this reference set are valid clinical setting codes.
+
+### Information Owner
+
+ODS code for the information owner organization. 
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality| Population Guidance|
+|----|---------|----|-----------|-----|
+| Information owner | `author` | Reference | 1..1 | The Organisation reference MUST follow the structure: `https://directory.spineservices.nhs.uk/STU3/Organization/[ODS Code]` |
+
+<!-- **Additional Guidance**
+ TO DO - link between ODS code and endpoint registration -->
+
+### Period
+
+Optional information detailing the period in which the referenced record is/was active.
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality| Population Guidance|
+|----|---------|----|-----------|-----|
+| Period of care | `context.period` | Period | 0..1 | Where this property is included, the start date MUST be populated. |
+|| `context.period.start` | dateTime | 1..1 | Starting time with inclusive boundary. |
+|| `context.period.end` | dateTime | 0..1 |End time with inclusive boundary, if not ongoing. |
+
+### Information Creation Date
+
+The date and time (on the Provider’s system) that the information was created, for static records.
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality| Population Guidance|
+|----|---------|----|-----------|-----|
+| Information creation datetime | `content.attachment.creation` | dateTime | 0..1 | The date and time (on the Provider’s system) that the information was created, for static records. |
+
+**Additional Guidance**
+
+The information creation date is specific to each format of the record that is referenced on the pointer. Where the creation date is included and multiple formats are referenced, the creation date must be set for each individual format. 
+
+## Retrieval Information
+
+### Retrieval URL
+
+Absolute URL for the location of the information on the Provider’s system and/or a service that allows you to look up information based on the provider url, e.g. web page with service contact details.
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality| Population Guidance|
+|----|---------|----|-----------|-----|
+| Retrieval URL | `content.attachment.url` | uri | 1..1 | Where retrieval of the record is facilitated by the SSP, the record URL on the pointer MUST NOT include the SSP base URL. |
+
+### Retrieval Format
+
+Describes the technical structure and rules of the information such that the Consumer can pick an appropriate mechanism to handle the retrieved information.
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality| Population Guidance|
+|----|---------|----|-----------|-----|
+| Retrieval format | `content.format` | Coding | 1..1 | The information will be one of a controlled value set. It will not be possible to create a pointer with an information format that does not exist within this controlled set. |
+| | `content.format.system` | Uri | 1..1 | Identity of the terminology system. |
+| | `content.format.code` | Code | 1..1 | Symbol in syntax defined by the system. |
+| | `content.format.display` | String | 1..1 | Representation defined by the system. |
+
+**Additional Guidance - Value Set** 
+
+The information format MUST be a value included in the following value set:
+- FHIR Value Set - [NRL-FormatCode-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-FormatCode-1)
+- FHIR Code System - [NRL-FormatCode-1](https://fhir.nhs.uk/STU3/CodeSystem/NRL-FormatCode-1)
+
+For further information on which formats are supported, see the [Supported Formats](retrieval_overview.html#supported-formats) on the Information Retrieval Overview page.
+
+### Retrieval MIME Type
+
+Describes the type of data such that the Consumer can pick an appropriate mechanism to handle the information.
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality| Population Guidance|
+|----|---------|----|-----------|-----|
+| Retrieval MIME type | `content.attachment.contentType` | code | 1..1 | For retrieval of unstructured documents where more than one MIME type is supported, there should be a reference for each MIME type included on the pointer. |
+
+<!-- TO DO - MIME type guidance for retrieval of unstructured documents -->
+
+### Information Stability
+
+Describes whether the information content at the time of the request is dynamically generated or is static.
+
+|Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality| Population Guidance|
+|----|---------|----|-----------|-----|
+|Information Stability | `content.extension:contentStability` | Extension | 1..1 | Information stability extension. |
+| | `content.extension:contentStability.url` | Uri | 1..1 | identifies the meaning of the extension. |
+| | `content.extension:contentStability`<br/>`.valueCodeableConcept` | CodeableConcept | 1..1 |  |
+| | `content.extension:contentStability`<br/>`.valueCodeableConcept.coding.system` | Uri | 1..1 | Identity of the terminology system |
+| | `content.extension:contentStability`<br/>`.valueCodeableConcept.coding.code` | Code | 1..1 | Symbol in syntax defined by the system |
+| | `content.extension:contentStability`<br/>`.valueCodeableConcept.coding.display` | String | 1..1 | Representation defined by the system |
+
+**Additional Guidance - Extension and Value Set**
+
+An extension is used to represent the information stability. The information stability MUST be a value included in the value set:
+- FHIR Extension - [Extension-NRL-ContentStability-1](https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1)
+- FHIR Value Set - [NRL-RecordType-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1)
+- FHIR Code System - [NRL-ContentStability-1](https://fhir.nhs.uk/STU3/CodeSystem/NRL-ContentStability-1)
+
+## Examples
+
+### JSON Example
+
+A JSON example of a DocumentReference resource is displayed below. 
+
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight json %}
+{% include /examples/create_documentreference_resource.json  %}
+{% endhighlight %}
+</div>
+
+### XML Example
+
+An XML example of a DocumentReference resource is displayed below. 
+
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight xml %}
+{% include /examples/create_documentreference_resource.xml  %}
+{% endhighlight %}
+</div>
