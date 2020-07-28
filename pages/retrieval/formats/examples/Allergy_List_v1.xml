@@ -1,0 +1,325 @@
+<Bundle>
+	<id value="6e824ff8-9b0a-11e8-9eb6-529269fb1459"/>
+	<meta>
+		<profile value="http://hl7.org/fhir/STU3/StructureDefinition/Bundle"/>
+	</meta>
+	<type value="collection"/>
+	<entry>
+		<resource>
+			<List>
+				<id value="4c7e56b0-2587-4403-85cd-6a921475e999"/>
+				<meta>
+					<profile value="http://hl7.org/fhir/STU3/StructureDefinition/List"/>
+				</meta>
+				<status value="current"/>
+				<mode value="snapshot"/>
+				<code>
+					<coding>
+						<system value="http://snomed.info/sct"/>
+						<code value="163221000000102"/>
+						<display value="Allergies and adverse reactions"/>
+					</coding>
+				</code>
+				<subject>
+					<reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
+				</subject>
+				<date value="2020-05-09T12:10:23+11:00"/>
+				<source>
+					<reference value="urn:uuid:65c8a90d-2011-4a50-acd0-2f1a3b18cdcb"/>
+				</source>
+				<orderedBy>
+					<coding>
+						<system value="http://hl7.org/fhir/list-order"/>
+						<code value="event-date"/>
+					</coding>
+				</orderedBy>
+				<entry>
+					<item>
+						<reference value="urn:uuid:89433cac-6226-428d-99c1-988cd8f31a18"/>
+					</item>
+				</entry>
+			</List>
+		</resource>
+	</entry>
+	<entry>
+		<fullUrl value="urn:uuid:89433cac-6226-428d-99c1-988cd8f31a18"/>
+		<resource>
+			<AllergyIntolerance>
+				<id value="89433cac-6226-428d-99c1-988cd8f31a18"/>
+				<meta>
+					<profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-AllergyIntolerance-1"/>
+				</meta>
+				<extension url="http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter">
+					<reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b"/>
+				</extension>
+				<identifier>
+					<system value="https://supplierABC/identifiers"/>
+					<value value="allergy123"/>
+				</identifier>
+				<clinicalStatus value="active"/>
+				<verificationStatus value="confirmed"/>
+				<type value="allergy"/>
+				<code>
+					<coding>
+						<system value="http://snomed.info/sct"/>
+						<code value="373270004"/>
+						<display value="Penicillin antibacterial"/>
+					</coding>
+				</code>
+				<patient>
+					<reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
+				</patient>
+				<onsetString value="In Childhood"/>
+				<assertedDate value="2018-01-29"/>
+				<asserter>
+					<reference value="urn:uuid:dfb12928-d441-45f9-941e-1bc2aa4ebc9d"/>
+				</asserter>
+				<note>
+					<text value="Evidence: Reacted badly to penicillin prescription as a child&#xd;&#xa;Comment: Prescribe alternative an antibiotic group"/>
+				</note>
+				<reaction>
+					<manifestation>
+						<coding>
+							<system value="http://snomed.info/sct"/>
+							<code value="421581006"/>
+							<display value="Pharyngeal swelling"/>
+						</coding>
+					</manifestation>
+					<severity value="moderate"/>
+				</reaction>
+			</AllergyIntolerance>
+		</resource>
+	</entry>
+	<entry>
+		<fullUrl value="urn:uuid:65c8a90d-2011-4a50-acd0-2f1a3b18cdcb"/>
+		<resource>
+			<Device>
+				<id value="65c8a90d-2011-4a50-acd0-2f1a3b18cdcb"/>
+				<meta>
+					<profile value="https://www.hl7.org/fhir/STU3/device.html"/>
+				</meta>
+				<owner>
+					<reference value="urn:uuid:33a33b58-648a-4453-b981-e21ea9ebc6ea"/>
+				</owner>
+				<contact>
+					<system value="phone"/>
+					<value value="0191 1231234"/>
+				</contact>
+			</Device>
+		</resource>
+	</entry>
+	<entry>
+		<fullUrl value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
+		<resource>
+			<Patient>
+				<id value="5d5845f3-398f-474b-af59-14882fc7b0ca"/>
+				<meta>
+					<profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1"/>
+				</meta>
+				<identifier>
+					<extension url="https://fhir.hl7.org.uk/STU3/StructureDefinition/Extension-CareConnect-NHSNumberVerificationStatus-1">
+						<valueCodeableConcept>
+							<coding>
+								<system value="https://fhir.hl7.org.uk/STU3/CodeSystem/CareConnect-NHSNumberVerificationStatus-1"/>
+								<code value="01"/>
+								<display value="Number present and verified"/>
+							</coding>
+						</valueCodeableConcept>
+					</extension>
+					<system value="https://fhir.nhs.uk/Id/nhs-number"/>
+					<value value="9912003888"/>
+				</identifier>
+				<name>
+					<use value="official"/>
+					<family value="DAWKINS"/>
+					<given value="Jack"/>
+				</name>
+				<gender value="male"/>
+				<birthDate value="2013-10-12">
+					<extension url="http://hl7.org/fhir/StructureDefinition/patient-birthTime">
+						<valueDateTime value="2017-10-02T12:00:00+00:00"/>
+					</extension>
+				</birthDate>
+				<address>
+					<use value="home"/>
+					<line value="4 Sandmoor Drive"/>
+					<city value="DURHAM"/>
+					<postalCode value="DH1 2TF"/>
+				</address>
+			</Patient>
+		</resource>
+	</entry>
+	<entry>
+		<fullUrl value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b"/>
+		<resource>
+			<Encounter>
+				<id value="1bcb0151-4ddf-4084-9c06-e8a31fdcf25b"/>
+				<meta>
+					<profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Encounter-1"/>
+				</meta>
+				<status value="finished"/>
+				<type>
+					<coding>
+						<system value="https://fhir.nhs.uk/STU3/CodeSystem/DCH-ChildHealthEncounterType-1"/>
+						<code value="0028"/>
+						<display value="GP Appointment"/>
+					</coding>
+				</type>
+				<subject>
+					<reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
+					<display value="DAWKINS, Jack"/>
+				</subject>
+				<period>
+					<start value="2018-01-29"/>
+				</period>
+				<location>
+					<location>
+						<reference value="urn:uuid:9fb9d531-84dd-421e-8f4a-a309d9ff7890"/>
+					</location>
+				</location>
+				<serviceProvider>
+					<reference value="urn:uuid:33a33b58-648a-4453-b981-e21ea9ebc6ea"/>
+				</serviceProvider>
+			</Encounter>
+		</resource>
+	</entry>
+	<entry>
+		<fullUrl value="urn:uuid:9fb9d531-84dd-421e-8f4a-a309d9ff7890"/>
+		<resource>
+			<Location>
+				<id value="9fb9d531-84dd-421e-8f4a-a309d9ff7890"/>
+				<meta>
+					<profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Location-1"/>
+				</meta>
+				<identifier>
+					<system value="https://fhir.nhs.uk/Id/ods-site-code"/>
+					<value value="RX3EP"/>
+				</identifier>
+			</Location>
+		</resource>
+	</entry>
+	<entry>
+		<fullUrl value="urn:uuid:aed99abc-59b8-48c3-a81e-4fa4ff6ed4ca"/>
+		<resource>
+			<HealthcareService>
+				<id value="aed99abc-59b8-48c3-a81e-4fa4ff6ed4ca"/>
+				<meta>
+					<profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-HealthcareService-1"/>
+				</meta>
+				<identifier>
+					<system value="https://fhir.nhs.uk/STU3/CodeSystem/EMS-HealthcareServiceType-1"/>
+					<value value="PDS"/>
+				</identifier>
+				<providedBy>
+					<reference value="urn:uuid:33a33b58-648a-4453-b981-e21ea9ebc6ea"/>
+					<display value="UNIVERSITY HOSPITAL OF DURHAM "/>
+				</providedBy>
+				<type>
+					<coding>
+						<system value="http://snomed.info/sct"/>
+						<code value="708170008"/>
+						<display value="Nursing service"/>
+					</coding>
+				</type>
+				<location>
+					<reference value="urn:uuid:9fb9d531-84dd-421e-8f4a-a309d9ff7890"/>
+				</location>
+				<telecom>
+					<system value="phone"/>
+					<value value="0191 1231234"/>
+				</telecom>
+				<specialty>
+					<coding>
+						<system value="https://fhir.nhs.uk/STU3/CodeSystem/Specialty-1"/>
+						<code value="317"/>
+						<display value="ALLERGY SERVICE"/>
+					</coding>
+				</specialty>
+			</HealthcareService>
+		</resource>
+	</entry>
+	<entry>
+		<fullUrl value="urn:uuid:33a33b58-648a-4453-b981-e21ea9ebc6ea"/>
+		<resource>
+			<Organization>
+				<id value="33a33b58-648a-4453-b981-e21ea9ebc6ea"/>
+				<meta>
+					<profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1"/>
+				</meta>
+				<identifier>
+					<system value="https://fhir.nhs.uk/Id/ods-organization-code"/>
+					<value value="RX3EP"/>
+				</identifier>
+				<name value="UNIVERSITY HOSPITAL OF NORTH DURHAM"/>
+				<address>
+					<line value="NORTH ROAD"/>
+					<city value="DURHAM"/>
+					<district value="COUNTY DURHAM"/>
+					<postalCode value="DH1 5TW"/>
+				</address>
+			</Organization>
+		</resource>
+	</entry>
+	<entry>
+		<fullUrl value="urn:uuid:dfb12928-d441-45f9-941e-1bc2aa4ebc9d"/>
+		<resource>
+			<Practitioner>
+				<id value="dfb12928-d441-45f9-941e-1bc2aa4ebc9d"/>
+				<meta>
+					<profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Practitioner-1"/>
+				</meta>
+				<identifier>
+					<system value="https://fhir.nhs.uk/Id/sds-role-profile-id"/>
+					<value value="PT2469"/>
+				</identifier>
+				<name>
+					<family value="Smith"/>
+					<given value="John"/>
+					<prefix value="Dr."/>
+				</name>
+			</Practitioner>
+		</resource>
+	</entry>
+	<entry>
+		<fullUrl value="urn:uuid:e9f269a2-2270-4787-9cb3-f546a3a9088e"/>
+		<resource>
+			<PractitionerRole>
+				<id value="e9f269a2-2270-4787-9cb3-f546a3a9088e "/>
+				<meta>
+					<profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-PractitionerRole-1"/>
+				</meta>
+				<identifier>
+					<system value="https://fhir.nhs.uk/Id/sds-role-profile-id"/>
+					<value value="PT2468"/>
+				</identifier>
+				<practitioner>
+					<reference value="urn:uuid:dfb12928-d441-45f9-941e-1bc2aa4ebc9d"/>
+				</practitioner>
+				<organization>
+					<reference value="urn:uuid:33a33b58-648a-4453-b981-e21ea9ebc6ea"/>
+				</organization>
+				<code>
+					<coding>
+						<system value="https://fhir.hl7.org.uk/STU3/CodeSystem/CareConnect-SDSJobRoleName-1"/>
+						<code value="R0260"/>
+						<display value="General Medical Practitioner"/>
+					</coding>
+				</code>
+				<code>
+					<coding>
+						<system value="https://fhir.nhs.uk/STU3/CodeSystem/ProfessionalType-1"/>
+						<code value="160"/>
+						<display value="General Medical Practitioner"/>
+					</coding>
+				</code>
+				<specialty>
+					<coding>
+						<system value="https://fhir.nhs.uk/STU3/CodeSystem/Specialty-1"/>
+						<code value="255"/>
+						<display value="PAEDIATRIC CLINICAL IMMUNOLOGY AND ALLERGY SERVICE"/>
+					</coding>
+				</specialty>
+			</PractitionerRole>
+		</resource>
+	</entry>
+</Bundle>
