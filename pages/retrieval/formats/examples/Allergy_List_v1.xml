@@ -11,6 +11,11 @@
 				<meta>
 					<profile value="http://hl7.org/fhir/STU3/StructureDefinition/List"/>
 				</meta>
+				<extension url="http://hl7.org/fhir/StructureDefinition/information-provider">
+					<valueReference>
+						<reference value="urn:uuid:33a33b58-648a-4453-b981-e21ea9ebc6ea"/>
+					</valueReference>
+				</extension>
 				<status value="current"/>
 				<mode value="snapshot"/>
 				<code>
@@ -24,9 +29,6 @@
 					<reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
 				</subject>
 				<date value="2020-05-09T12:10:23+11:00"/>
-				<source>
-					<reference value="urn:uuid:65c8a90d-2011-4a50-acd0-2f1a3b18cdcb"/>
-				</source>
 				<orderedBy>
 					<coding>
 						<system value="http://hl7.org/fhir/list-order"/>
@@ -88,24 +90,6 @@
 					<severity value="moderate"/>
 				</reaction>
 			</AllergyIntolerance>
-		</resource>
-	</entry>
-	<entry>
-		<fullUrl value="urn:uuid:65c8a90d-2011-4a50-acd0-2f1a3b18cdcb"/>
-		<resource>
-			<Device>
-				<id value="65c8a90d-2011-4a50-acd0-2f1a3b18cdcb"/>
-				<meta>
-					<profile value="https://www.hl7.org/fhir/STU3/device.html"/>
-				</meta>
-				<owner>
-					<reference value="urn:uuid:33a33b58-648a-4453-b981-e21ea9ebc6ea"/>
-				</owner>
-				<contact>
-					<system value="phone"/>
-					<value value="0191 1231234"/>
-				</contact>
-			</Device>
 		</resource>
 	</entry>
 	<entry>
