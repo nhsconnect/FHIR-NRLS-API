@@ -7,7 +7,6 @@ permalink: retrieval_observations_fhir_stu3.html
 summary: Observation List, FHIR STU3 information format for retrieval
 ---
 
-# Observation List FHIR STU3 v1 
 
 The `Observation List FHIR STU3 v1` retrieval format represents a list of observations that were made in relation to a patient, and any required supporting information.
 

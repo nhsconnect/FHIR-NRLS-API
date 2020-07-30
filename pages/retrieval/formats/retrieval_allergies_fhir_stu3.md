@@ -1,5 +1,5 @@
 ---
-title: Allergies List - FHIR STU3
+title: Allergy List - FHIR STU3
 keywords: structured rest documentreference
 tags: [fhir,pointers,record_retrieval]
 sidebar: accessrecord_rest_sidebar
@@ -7,7 +7,6 @@ permalink: retrieval_allergies_fhir_stu3.html
 summary: Allergies and Adverse Reactions List, FHIR STU3 information format for retrieval
 ---
 
-# Allergies List FHIR STU3 v1
 
 The `Allergy List FHIR STU3 v1` record format represents a list of allergies and adverse reactions that have been recorded in related to a patient and any relevant supporting information.
 

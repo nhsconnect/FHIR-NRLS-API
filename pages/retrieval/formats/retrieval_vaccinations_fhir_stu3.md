@@ -7,7 +7,6 @@ permalink: retrieval_vaccinations_fhir_stu3.html
 summary: Vaccination List, FHIR STU3 information format for retrieval
 ---
 
-# Vaccination List FHIR STU3 v1
 
 The `Vaccination List FHIR STU3 v1` record format represents a list of vaccinations that were given or not-given to a patient and any relevant supporting information.
 

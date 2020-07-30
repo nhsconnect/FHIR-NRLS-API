@@ -16,5 +16,6 @@ The table outlines the `Retrieval Format` and `Retrieval Interactions` supported
 | End of life care plan | 736373009 | http://snomed.info/sct | [PDF](retreival_unstructured_document.html) | [SSP Read](retrieval_ssp.html) |
 | Mental Health Crisis Plan | 736253002 | http://snomed.info/sct | [Contact Details](retrieval_contact_details.html) | [Public Web](retrieval_http_unsecure.html) |
 | Mental Health Crisis Plan | 736253002 | http://snomed.info/sct | [PDF](retreival_unstructured_document.html) | [SSP Read](retrieval_ssp.html) |
+| Allergy List | 163221000000102 | http://snomed.info/sct | [Allergy List - FHIR STU3 v1](retrieval_allergies_fhir_stu3.html) | [SSP Read](retrieval_ssp.html) |
 | Observation List | 1102421000000108 | http://snomed.info/sct | [Observation List - FHIR STU3 v1](retrieval_observations_fhir_stu3.html) | [SSP Read](retrieval_ssp.html) |
 | Vaccination List | 1102181000000102 | http://snomed.info/sct | [Vaccination List - FHIR STU3 v1](retrieval_vaccinations_fhir_stu3.html) | [SSP Read](retrieval_ssp.html) |
