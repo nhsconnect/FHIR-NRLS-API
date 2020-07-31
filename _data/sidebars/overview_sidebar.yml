@@ -28,8 +28,8 @@ entries:
     - title: Pointers
       url: /pointer_overview.html
       output: web
-    - title: Record Types
-      url: /record_type_overview.html
+    - title: Information Sharing
+      url: /information_sharing_overview.html
       output: web
 
   - title: Development Guidance
