@@ -7,9 +7,12 @@ permalink: retrieval_http_unsecure.html
 summary: Requirements and guidance for retrieval Interactions via the public web.
 ---
 
-The public web retrieval interaction is intended to support the simple use case for a consumer being given access to publically available information, currently only contact details of the provider organisation.
+The public web retrieval interaction is intended to support a simple use case where the pointer, tells a consumer, where to go to get publically available information, currently only contact details for the provider organisation.
 
-The intention is to enable the consumer to contact the provider directly and retrieve patient information via a human to human interaction.
+This serves two purposes
+
+- to identifies that the organisation has a relationship with the patient
+- to enable the consumer to contact the provider and retrieve the patient information via a human to human interaction
 
 
 ## Retrieval Endpoint
@@ -25,14 +28,14 @@ The endpoint **MUST NOT** require any additional parameters or headers to be pas
 
 As the information is publically accessible over the web, the retrieval of the information **MUST NOT :**
 - require any additional authentication and authorization
-- required the request to flow through the SSP
+- required the consumer to send the request via SSP
 
-The consumer **MUST NOT** attempt to use the SSP for this request and should use the url in the pointer to make the request directly.
+The consumer **MUST NOT** attempt to use the SSP for this request and should use just the url in the pointer to make the request directly to the provider.
 
 
 ## Retrieval Formats
 
-The publically available information **MUST** be accessible either as:
+The publically available information **MUST** be accessible as either:
 
 - HTML
 - a PDF
