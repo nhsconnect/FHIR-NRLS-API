@@ -43,14 +43,6 @@ Even though conceptually a consumer and a provider are different, a system conne
 | [Search](api_interaction_search.html) | The `Search` interaction allows a consumer to perform a parameterised searches for pointers held on the NRL for a single patient. Only pointers with the status of "current" can be retrieved using the `Search` interaction |
 
 
-
-Each of the interactions which can be performed against the NRL is given an interaction ID, for example `creating a pointer` or `searching for pointers`.
-
-Each system connected to the NRL will be given a unique Accredited System ID (ASID), by NHS Digital, and this unique ASID will be associated with one or more of the NRL interactions. The interactions associated with an ASID will be determine by what interactions that system has been approved and assured to use. As part of sending a request to the NRL, the system will supply its ASID and the interaction ID that relates to the action it is trying to perform. If the interaction ID is not associated with the systems ASID, the request will be blocked.
-
-When a provider uses the `Supersede`, `Update` and `delete` interactions to maintain existing pointers, the NRL will only allow the provider to make changes to their own pointers. To do this the NRL will validate that the ASID of the system trying to manage the pointer, is associated with the ODS code found in the pointer. If the ASID is not associated with the ODS code within the pointer the NRL will block the attempt to update the pointer.
-
-
 ## Information Retrieval
 
 The NRL does not take part in the retrieval of information from providers. The pointers held with NRL and shared with consumers can be seen as signposts to where the information can be retreived. The retrieval of information is conducted between the consumer and provider, but may utilise other services such as the `Spine Security Proxy (SSP)` to help with authentication and authorisation. More detail on retrieval of information can be found on the [retrieval overview page](retrieval_overview.html).

@@ -15,6 +15,18 @@ Providers and Consumers are required to maintain a secure connection to the NRL 
 
 The technical requirements that support this are detailed below.
 
+
+### Interaction IDs
+
+Each of the interactions which can be performed against the NRL is given an interaction ID, for example `creating a pointer` or `searching for pointers`.
+
+Each system connected to the NRL will be given a unique Accredited System ID (ASID), by NHS Digital, and this unique ASID will be associated with one or more of the NRL interactions. The interactions associated with an ASID will be determine by what interactions that system has been approved and assured to use. As part of sending a request to the NRL, the system will supply its ASID and the interaction ID that relates to the action it is trying to perform. If the interaction ID is not associated with the systems ASID, the request will be blocked.
+
+When a provider uses the `Supersede`, `Update` and `delete` interactions to maintain existing pointers, the NRL will only allow the provider to make changes to their own pointers. To do this the NRL will validate that the ASID of the system trying to manage the pointer, is associated with the ODS code found in the pointer. If the ASID is not associated with the ODS code within the pointer the NRL will block the attempt to update the pointer.
+
+
+
+
 ## Secure Socket Layer (SSL) and Transport Layer Security (TLS) Protocols
 
 Following consultation with the Infrastructure Security, Operational Security, and Spine DDC teams, the following SSL protocols MUST be supported.
