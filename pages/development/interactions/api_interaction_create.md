@@ -15,7 +15,7 @@ Provider interaction to support the creation of NRL pointers.
 
 ## Prerequisites
 
-In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](development_overview.html) page MUST be followed when using this interaction.
+In addition to the requirements on this page the general guidance and requirements detailed on the [Development Overview](development_overview.html) page MUST be followed when using this interaction.
 
 ## Create Request Headers
 
@@ -23,8 +23,8 @@ Provider API create requests support the following HTTP request headers:
 
 | Header               | Value |Conformance |
 |----------------------|-------|-------|
-| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](development_general_api_guidance.html#content-types) section. | OPTIONAL |
-| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Access Tokens (JWT)](integration_access_tokens_JWT.html) for details. | REQUIRED |
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. | OPTIONAL |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see the JWT section of the [Development Overview](development_overview.html) page for details. | REQUIRED |
 | `fromASID`           | Client System ASID | REQUIRED |
 | `toASID`             | The Spine ASID | REQUIRED |
 
@@ -36,10 +36,10 @@ Provider API create requests support the following HTTP request headers:
 
 Provider systems:
 
-- MUST construct and send a new Pointer (DocumentReference) resource that conforms to the NRL-DocumentReference-1 profile and submit this to NRL using the FHIR RESTful [create](https://www.hl7.org/fhir/http.html#create) interaction.
+- MUST construct and send a new Pointer (DocumentReference) resource that conforms to the NRL-DocumentReference-1 profile and submit this to NRL using the FHIR RESTful [create](https://www.hl7.org/fhir/stu3/http.html#create) interaction.
 - MUST include the URI of the NRL-DocumentReference-1 profile StructureDefinition in the DocumentReference.meta.profile element of the DocumentReference resource.
-- MUST include all of the mandatory data-elements contained in the `NRL-DocumentReference-1` profile when constructing a DocumentReference. The mandatory data-elements are detailed on the [Developer FHIR Resource](explore_reference.html#2-nrl-data-model-to-fhir-profile-mapping) page.
-- MUST supply `subject`, `custodian` and `author` attributes as absolute literal references, the formats of which can be found on the [Developer FHIR Resource](explore_reference.html#6-identifiers) page.
+- MUST include all of the mandatory data-elements contained in the `NRL-DocumentReference-1` profile when constructing a DocumentReference. The mandatory data-elements are detailed on the [Developer FHIR Resource](explore_reference.html) page.
+- MUST supply `subject`, `custodian` and `author` attributes as absolute literal references, the formats of which can be found on the [Developer FHIR Resource](explore_reference.html) page.
 - MUST only create pointers for records where they are the pointer owner (custodian). 
 
 For all create requests the `custodian` ODS code in the DocumentReference resource MUST be affiliated with the `Client System ASID` value in the `fromASID` HTTP request header sent to the NRL.
@@ -63,11 +63,11 @@ For all create requests the `custodian` ODS code in the DocumentReference resour
 
 ### Success
 
-- MUST return a `201` **CREATED** HTTP status code on successful execution of the interaction and the entry has been successfully created in the NRL.
-- MUST return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Operation Outcome'](http://hl7.org/fhir/STU3/operationoutcome.html) core FHIR resource (see the table below).
-- MUST return an HTTP `Location` response header containing the full resolvable URL to the newly created 'single' DocumentReference. 
+- will return a `201` **CREATED** HTTP status code on successful execution of the interaction and the entry has been successfully created in the NRL.
+- will return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Operation Outcome'](http://hl7.org/fhir/STU3/operationoutcome.html) core FHIR resource (see the table below).
+- will return an HTTP `Location` response header containing the full resolvable URL to the newly created 'single' DocumentReference. 
   - The URL will contain the 'server' assigned `logical Id` of the new DocumentReference resource.
-  - The URL format MUST be: `https://[host]/[path]/[id]`. 
+  - The URL format will be: `https://[host]/[path]/[id]`. 
   - An example `Location` response header: 
     - `https://psis-sync.national.ncrs.nhs.uk/DocumentReference/297c3492-3b78-11e8-b333-6c3be5a609f5-54477876544511209789`
 - When a resource has been created it will have a `versionId` of 1.
@@ -97,53 +97,18 @@ The following errors can be triggered when performing this operation:
 
 ### Ensuring that `masterIdentifier` Is Unique
 
-The masterIdentifier should be unique within the NRL. For more information see the discussion on [Pointer identifiers](pointer_identity.html). The masterIdentifer is a [FHIR identifier](https://www.hl7.org/fhir/datatypes.html#Identifier) and for NRL the system and value properties are mandatory.
+The masterIdentifier should be unique within the NRL. For more information see details on the [Identifier Guidance](identifier_guidance.html) page. The masterIdentifer is a [FHIR identifier](https://www.hl7.org/fhir/stu3/datatypes.html#Identifier) and for NRL the system and value properties are mandatory.
 
 The system defines how the value is made unique. As the FHIR specification says this might be a recognised standard that describes how this uniqueness is generated.  
 
-The NRL recommends the use of either an OID or a UUID as an Identifier in keeping with the need for the masterIdentifier value to be unique. In this case then the system MUST be "urn:ietf:rfc:3986" (see the [FHIR identifier registry](https://www.hl7.org/fhir/identifier-registry.html) for details) and the value is of the form – 
+The NRL recommends the use of either an OID or a UUID as an Identifier in keeping with the need for the masterIdentifier value to be unique. In this case then the system MUST be "urn:ietf:rfc:3986" (see the [FHIR identifier registry](https://www.hl7.org/fhir/stu3/identifier-registry.html) for details) and the value is of the form – 
 
 •	OID -  urn:oid:[oidValue] <br/>
 •	UUID - urn:uuid:[uuidValue]
 
-See the [example](https://www.hl7.org/fhir/datatypes-examples.html#Identifier) OID and UUID based Identifiers from the FHIR specification.
+See the [example](https://www.hl7.org/fhir/stu3/datatypes-examples.html#Identifier) OID and UUID based Identifiers from the FHIR specification.
 
-## Code Examples
 
-### POST a Pointer with C#
+## Explore the NRL
 
-The following code samples are taken from the NRL Demonstrator application which has both Consumer and Provider client implementations built in. More information about the design solution can be found
-on the [NRL Demonstrator Wiki](https://github.com/nhsconnect/nrls-reference-implementation/wiki)
-
-First we generate a base pointer request model that includes the custodian and author details, and the specific care plan attachment details that are later used to build our pointer (DocumentReference). 
-These pointer values are taken from the demo crisis plan that is created for the Demonstrator Provider system.
-
-Then we call our DocumentReference service GenerateAndCreatePointer method which will generate our pointer (DocumentReference) using the values stored in the model, build a POST command request and then start the call to the NRL API.
-
-<div class="github-sample-wrapper">
-{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.Services/Service/Epr/CrisisPlanService.cs#L125-L128 %}
-{% highlight csharp %}
-{% github_sample /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.Services/Service/Epr/CrisisPlanService.cs 124 127 %}
-{% endhighlight %}
-</div>
-
-<br/>
-Within the DocumentReference service GenerateAndCreatePointer method we generate our pointer model and then serialise this generated model ready for posting:
-
-<div class="github-sample-wrapper">
-{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.NRLSAdapter/DocumentReferences/DocumentReferenceServices.cs#L53-L54 %}
-{% highlight csharp %}
-{% github_sample /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.NRLSAdapter/DocumentReferences/DocumentReferenceServices.cs 52 53 %}
-{% endhighlight %}
-</div>
-
-<br/>
-<b>Calling the NRL</b><br />
-Using our POST command request model we create a connection to the NRL using HttpClient.
-
-You can view the common connection code example [here](connectioncode_example.html).
-
-<b>Explore the NRL</b><br />
 You can explore and test the NRL POST command using Swagger in the [NRL API Reference Implementation](https://data.developer.nhs.uk/nrls-ri/index.html#/Nrls/createPointer).
-
-{% include note.html content="The code in these examples is standard C# v7.2 taken directly from the [NRL Demonstrator](https://nrls.digital.nhs.uk) code.<br /><br />The official <b>[.NET FHIR Library](https://ewoutkramer.github.io/fhir-net-api/)</b> is utilised to construct, test, parse, and serialize FHIR models with ease." %}
