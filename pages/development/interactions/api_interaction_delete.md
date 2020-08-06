@@ -15,7 +15,7 @@ Provider interaction to support the deletion of NRL pointers.
 
 ## Prerequisites
 
-In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](development_overview.html) page MUST be followed when using this interaction.
+In addition to the requirements on this page the general guidance and requirements detailed on the [Development Overview](development_overview.html) page MUST be followed when using this interaction.
 
 ## Delete Request Headers
 
@@ -23,8 +23,8 @@ Provider API delete requests support the following HTTP request headers:
 
 | Header               | Value |Conformance |
 |----------------------|-------|-------|
-| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](development_general_api_guidance.html#content-types) section. | OPTIONAL |
-| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Access Tokens (JWT)](integration_access_tokens_JWT.html) for details. | REQUIRED |
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. | OPTIONAL |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see the JWT section of the [Development Overview](development_overview.html) page for details. | REQUIRED |
 | `fromASID`           | Client System ASID | REQUIRED |
 | `toASID`             | The Spine ASID | REQUIRED |
 
@@ -105,8 +105,8 @@ Delete the DocumentReference resource for a pointer with a subject and identifie
 
 Success:
 
-- MUST return a `200` **OK** HTTP status code on successful execution of the interaction.
-- MUST return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) FHIR profile. 
+- will return a `200` **OK** HTTP status code on successful execution of the interaction.
+- will return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) FHIR profile. 
 
 The table summarises the successful `delete` interaction scenario and includes HTTP response code and the values expected to be conveyed in the response body `OperationOutcome` payload:
 
@@ -120,34 +120,9 @@ Failure:
 
 The following errors can be triggered when performing this operation:
 
-- [No record found](development_general_api_guidance.html#resource-not-found)
-- [Invalid Resource](development_general_api_guidance.html#invalid-resource)
+- [No record found](nrl_error_guidance.html#resource-not-found)
+- [Invalid Resource](nrl_error_guidance.html#invalid-resource)
 
-## Code Examples
 
-### DELETE a Pointer with C#
-
-The following code samples are taken from the NRL Demonstrator application which has both Consumer and Provider client implementations built in. More information about the design solution can be found
-on the [NRL Demonstrator Wiki](https://github.com/nhsconnect/nrls-reference-implementation/wiki)
-
-First we generate a base pointer request model that includes the pointer logical id used for the _id parameter.
-The logical id is obtained from a mapping stored within the Demonstrator that maps the Provider system crisis plans to NRL pointers.
-
-Then we call our DocumentReference service DeletePointer method which will build a DELETE command request and then start the call to the NRL API.
-
-<div class="github-sample-wrapper">
-{% github_sample_ref /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.Services/Service/Epr/CrisisPlanService.cs#L158-L160 %}
-{% highlight csharp %}
-{% github_sample /nhsconnect/nrls-reference-implementation/blob/d6e952bd1ee53988bb8005b3a27f3fe16355b3ab/Demonstrator/Demonstrator.Services/Service/Epr/CrisisPlanService.cs 157 159 %}
-{% endhighlight %}
-</div>
-<br/>
-<b>Calling the NRL</b><br />
-Using our DELETE command request model we create a connection to the NRL using HttpClient.
-
-You can view the common connection code example [here](connectioncode_example.html).
-
-<b>Explore the NRL</b><br />
+## Explore the NRL
 You can explore and test the NRL DELETE command using Swagger in the [NRL API Reference Implementation](https://data.developer.nhs.uk/nrls-ri/index.html#/Nrls/deletePointer).
-
-{% include note.html content="The code in these examples is standard C# v7.2 taken directly from the [NRL Demonstrator](https://nrls.digital.nhs.uk) code.<br /><br />The official <b>[.NET FHIR Library](https://ewoutkramer.github.io/fhir-net-api/)</b> is utilised to construct, test, parse, and serialize FHIR models with ease." %}

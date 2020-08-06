@@ -87,13 +87,13 @@ The table summarises the `create` interaction HTTP response code and the values 
 
 The following errors can be triggered when performing this operation:
 
-- [Invalid Request Message](development_general_api_guidance.html#invalid-request-message)
-- [Invalid Resource](development_general_api_guidance.html#invalid-resource)
-- [Organisation not found](development_general_api_guidance.html#organisation-not-found)
-- [Invalid NHS Number](development_general_api_guidance.html#invalid-nhs-number)
-- [Invalid Parameter](development_general_api_guidance.html#parameters)
-- [Duplicate Resource](development_general_api_guidance.html#duplicate-resource)
-- [Missing or Invalid Headers](development_general_api_guidance.html#headers)
+- [Invalid Request Message](nrl_error_guidance.html#invalid-request-message)
+- [Invalid Resource](nrl_error_guidance.html#invalid-resource)
+- [Organisation not found](nrl_error_guidance.html#organisation-not-found)
+- [Invalid NHS Number](nrl_error_guidance.html#invalid-nhs-number)
+- [Invalid Parameter](nrl_error_guidance.html#parameters)
+- [Duplicate Resource](nrl_error_guidance.html#duplicate-resource)
+- [Missing or Invalid Headers](nrl_error_guidance.html#headers)
 
 ### Ensuring that `masterIdentifier` Is Unique
 

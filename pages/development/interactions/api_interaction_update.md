@@ -11,13 +11,11 @@ summary: To support the update of NRL pointers
 
 ## Update
 
-{% include important.html content="The Supersede interaction previously detailed on this page has been moved to the [Supersede Interaction](api_interaction_supersede.html) page." %}
-
 Provider interaction to support the update of NRL pointers. The update functionality will be used in cases where a Provider wishes to update a pointer status value, changing it from “current” to “entered-in-error”. 
 
 ## Prerequisites
 
-In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](development_overview.html) page MUST be followed when using this interaction.
+In addition to the requirements on this page the general guidance and requirements detailed on the [Development Overview](development_overview.html) page MUST be followed when using this interaction.
 
 ## Update Request Headers
 
@@ -25,8 +23,8 @@ Provider API update requests support the following HTTP request headers:
 
 | Header               | Value |Conformance |
 |----------------------|-------|-------|
-| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](development_general_api_guidance.html#content-types) section. | OPTIONAL |
-| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Access Tokens (JWT)](integration_access_tokens_JWT.html) for details. | REQUIRED |
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. | OPTIONAL |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see the JWT section of the [Development Overview](development_overview.html) page for details. | REQUIRED |
 | `fromASID`           | Client System ASID | REQUIRED |
 | `toASID`             | The Spine ASID | REQUIRED |
 
@@ -77,11 +75,10 @@ The FHIRPath PATCH operation must be encoded in a Parameters resource as follows
 |`Path`|string|`DocumentReference.status`|
 |`Value`|string|`entered-in-error`|
 
-Only the first parameter within the Parameters resource will be used to perform a PATCH. Any additional parameters included within the request will not be processed. More details on the validation of the Parameters resource can be found in the [error handling guidance](development_general_api_guidance.html#invalid-resource).
+Only the first parameter within the Parameters resource will be used to perform a PATCH. Any additional parameters included within the request will not be processed.
 
-XML and JSON examples of the FHIRPath Parameters resource are shown below. 
 
-### XML FHIRPath PATCH Parameters Resource
+### XML FHIRPath PATCH Parameters Resource Example
 
 <div class="github-sample-wrapper scroll-height-350">
 {% highlight xml %}
@@ -89,7 +86,7 @@ XML and JSON examples of the FHIRPath Parameters resource are shown below.
 {% endhighlight %}
 </div>
 
-### JSON FHIRPath PATCH Parameters Resource
+### JSON FHIRPath PATCH Parameters Resource Example
 
 <div class="github-sample-wrapper scroll-height-350">
 {% highlight json %}
@@ -101,12 +98,10 @@ XML and JSON examples of the FHIRPath Parameters resource are shown below.
 
 Success:
 
-- MUST return a `200` **SUCCESS** HTTP status code on successful execution of the interaction and the entry has been successfully updated in the NRL.
-- MUST return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Operation Outcome'](http://hl7.org/fhir/STU3/operationoutcome.html) core FHIR resource (see the table below).
+- will return a `200` **SUCCESS** HTTP status code on successful execution of the interaction and the entry has been successfully updated in the NRL.
+- will return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Operation Outcome'](http://hl7.org/fhir/STU3/operationoutcome.html) core FHIR resource (see the table below).
 - When a resource has been updated, its `versionId` will be incremented.
 
-{% include note.html content="The `versionId` is an integer that is assigned and maintained by the NRL server. When a new DocumentReference is created, the server assigns it a `versionId` of 1. The `versionId` will be incremented during an update or supersede transaction. <br/><br/> The NRL server will ignore any `versionId` value sent by a client in a `create` interaction. Instead, the server will ensure that the newly assigned `versionId` adheres to the rules laid out above.
-" %}
 
 The table summarises the `update` interaction HTTP response code and the values expected to be conveyed in the successful response body `OperationOutcome` payload:
 
@@ -120,8 +115,8 @@ Failure:
 
 The following errors can be triggered when performing this operation:
 
-- [Invalid Request Message](development_general_api_guidance.html#invalid-request-message)
-- [Invalid Resource](development_general_api_guidance.html#update-invalid-resource-errors)
-- [Invalid Parameter](development_general_api_guidance.html#parameters)
-- [Resource Not Found](development_general_api_guidance.html#resource-not-found)
-- [Inactive Document Reference](development_general_api_guidance.html#inactive-documentreference)
+- [Invalid Request Message](nrl_error_guidance.html#invalid-request-message)
+- [Invalid Resource](nrl_error_guidance.html#update-invalid-resource-errors)
+- [Invalid Parameter](nrl_error_guidance.html#parameters)
+- [Resource Not Found](nrl_error_guidance.html#resource-not-found)
+- [Inactive Document Reference](nrl_error_guidance.html#inactive-documentreference)

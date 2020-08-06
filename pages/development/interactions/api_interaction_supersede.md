@@ -17,7 +17,7 @@ The Supersede functionality will be used in cases where a Provider wishes to rep
 
 ## Prerequisites
 
-In addition to the requirements on this page the general guidance and requirements detailed on the [Development Guidance](development_overview.html) page MUST be followed when using this interaction.
+In addition to the requirements on this page the general guidance and requirements detailed on the [Development Overview](development_overview.html) page MUST be followed when using this interaction.
 
 ## Supersede Request Headers
 
@@ -25,8 +25,8 @@ Provider API supersede requests support the following HTTP request headers:
 
 | Header               | Value |Conformance |
 |----------------------|-------|-------|
-| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. See the RESTful API [Content types](development_general_api_guidance.html#content-types) section. | OPTIONAL |
-| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see [Access Tokens (JWT)](integration_access_tokens_JWT.html) for details. | REQUIRED |
+| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. | OPTIONAL |
+| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see the JWT section of the [Development Overview](development_overview.html) page for details. | REQUIRED |
 | `fromASID`           | Client System ASID | REQUIRED |
 | `toASID`             | The Spine ASID | REQUIRED |
 
@@ -79,11 +79,11 @@ Example of a DocumentReference relatesTo property populated using a FHIR identif
 {% endhighlight %}
 </div>
 
-In both cases (use of reference or identifier values) the patient NHS Number on the new (to be created) DocumentReference and the DocumentReference being superseded must match. For more details, see [Error Handling Guidance](development_general_api_guidance.html#patient-mismatch). 
+In both cases (use of reference or identifier values) the patient NHS Number on the new (to be created) DocumentReference and the DocumentReference being superseded must match.
 
-If both the target.reference property and the target.identifier property are populated then the NRL will use the target.reference property to resolve the DocumentReference. If a DocumentReference is found, then the MasterIdentifier of the returned DocumentReference must match the identifier in the relatesTo collection. For more details, see [Error Handling Guidance](development_general_api_guidance.html#masteridentifier-mismatch).
+If both the target.reference property and the target.identifier property are populated then the NRL will use the target.reference property to resolve the DocumentReference. If a DocumentReference is found, then the MasterIdentifier of the returned DocumentReference must match the identifier in the relatesTo collection.
 
-The NRL will only accept one relatesTo element. Requests that contain multiple relatesTo elements will be rejected. For more details, see [Error Handling Guidance](development_general_api_guidance.html#documentreferencerelatesto).
+The NRL will only accept **one** relatesTo element. Requests that contain multiple relatesTo elements will be rejected.
 
 ### Supersede by Logical ID XML Example
 
@@ -141,8 +141,3 @@ As an extension of the Create interaction, the success and failure responses are
 
 See [Create Interaction - Responses](api_interaction_create.html#create-response) for details of the expected response behaviours and codes.
 
-## Code Examples
-
-When either Creating or Superseding a Pointer, the same HTTP POST verb is used.
-
-See [Create Interaction - Code Examples](api_interaction_create.html#code-examples) for an example of POSTing a pointer.
