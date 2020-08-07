@@ -26,7 +26,7 @@ The NRL pointer `format` code for this retrieval format is as follows:
 
 ### Content-Type
 
-The content-type of the unstructured document returned SHOULD be in the MIME type as described on the pointer metadata `DocumentReference.content[x].attachment.contentType` element.
+The content-type of the unstructured document returned SHOULD be in the MIME type as described on the pointer metadata `DocumentReference.content[x].attachment.contentType` element. Supported MIME types for pointer types which support unstructured documents is listed on the [pointer types](supported_pointer_types.html) page.
 
 Currently supported MIME types:
 
