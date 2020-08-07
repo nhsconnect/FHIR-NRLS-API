@@ -53,3 +53,8 @@ When a consumer would benefit from having information about a patient, shared by
 
 
 More detail about the NRL and how to interact with the service can be found on the [Architectural Overview](architectural_overview.html) page.
+
+
+## Supported Pointer types
+
+The list of pointer types currently supported by the NRL can be found on the [Pointer Types](supported_pointer_types.html) page.
