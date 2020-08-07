@@ -61,7 +61,7 @@ The consumer and the provider's endpoint MUST support the following HTTP request
 
 | Headers | Value |
 | --- | --- |
-| `Authorization` | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the Spine - see [Development Overview](development_overview.html) page for details. |
+| `Authorization` | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the Spine - see [JSON Web Token](jwt_guidance.html) page for details. |
 |`Ssp-TraceID`|Consumer's TraceID (i.e. GUID/UUID), a unique identifier provided by the consumer. |
 |`Ssp-From`|Consumer's ASID, a unique identifier for the consuming system.<br/><br/>The consumer will be given an ASID by NHS Digital when connecting to the Spine. |
 |`Ssp-To`|Provider's ASID<br/><br/>Consumers MUST include the provider ASID in the `SSP-To` HTTP Header when performing a retrieval request via the SSP.<br/><br/>The provider ASID can be obtained through performing a [Spine Directory Services (SDS)](https://developer.nhs.uk/apis/spine-core-1-0/build_directory.html) lookup. This can be done using the record author ODS code, which is included in the pointer metadata, and the interaction ID `urn:nhs:names:services:nrl:DocumentReference.content`.<br/><br/>A worked example of the endpoint look-up process can be found in the [Spine Core specification](https://developer.nhs.uk/apis/spine-core-1-0/build_endpoints_example_spine_fhir.html).<br/><br/>If multiple ASIDs are found for the ODS code and interaction ID, the associated FQDN can be matched to the record URL FQDN to obtain the correct ASID.|
@@ -88,6 +88,6 @@ Failure:
 
 Systems that interact with the SSP MUST meet the secure connection requirements of the SSP.
 
-Consumer systems MUST ensure that users are authenticated and authorised, using an appropriate access control mechanism, before retrieving information. HTTPS requests to the SSP for retrieving records and documents will include an access token (JWT), which can be used in Provider systems for auditing purposes. Providers are not required to perform any further authentication or authorisation.
+Consumer systems MUST ensure that users are authenticated and authorised, using an appropriate access control mechanism, before retrieving information. HTTPS requests to the SSP for retrieving records and documents will include an [JSON Web Token (JWT)](jwt_guidance.html), which can be used in Provider systems for auditing purposes. Providers are not required to perform any further authentication or authorisation.
 
 More details can be found on the [NRL Security Guidance](security_guidance.html) page.

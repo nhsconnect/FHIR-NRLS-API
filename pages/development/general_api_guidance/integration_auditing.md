@@ -39,7 +39,7 @@ Consumers and Providers MUST audit this value to enable an end-to-end audit trai
 
 ## Access Tokens (JWT)
 
-Consumers and Providers MUST generate and supply a JWT access token with each request they initiate using the standard HTTP `Authorization` header. Details of these requirements can be found on the [Access Token](integration_access_tokens_JWT.html) page. 
+Consumers and Providers MUST generate and supply a JWT access token with each request they initiate using the standard HTTP `Authorization` header. Details of these requirements can be found on the [JSON Web Token Guidance](jwt_guidance.html) page. 
 
 Any request to the NRL or SSP that does not supply an Authorization header conforming to these requirements will be rejected.
 

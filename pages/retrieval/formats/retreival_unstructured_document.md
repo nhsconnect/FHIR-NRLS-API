@@ -58,5 +58,5 @@ An example of this might be:
 - a provider might share some practitioner contact details with other healthcare professionals but may not wish to share those details with a citizen
 - a provider might wish to hold back information from a citizen about a sensitive result until the information has been shared with the patient by a practitioner, but that same information may be very useful to other healthcare professionals and could result in significantly improved care/life saving for the patient if they were to attend as service such as A&E before the provider has had chance to share that information with the patient.
 
-To enable this control within the provider, all consumers which wishes to retrieve data via the SSP must send the request with an appropriate JSON Web Token (JWT), which identifies if the request if for a healthcare professional or for citizen access. The requirements for the JWT are on the [Development Overview](development_overview.html#json-web-token) page.
+To enable this control within the provider, all consumers which wishes to retrieve data via the SSP must send the request with an appropriate JSON Web Token (JWT), which identifies if the request if for a healthcare professional or for citizen access. The requirements for the JWT are on the [JSON Web Token Guidance](jwt_guidance.html) page.
 

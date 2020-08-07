@@ -55,31 +55,7 @@ The option of using a DBS service is for Provider systems only. Consumers perfor
 
 ## JSON Web Token
 
-When interacting with the NRL, all requests **MUST** include the system/organisation's information in a JSON web token (JWT), using the standard HTTP Authorization request header.
-
-Where the interaction is a consumer retrieving pointers, the request **MUST** also include the user's information within the JSON web token.
-
-The JWT **MUST** conform to the [Spine JWT](https://developer.nhs.uk/apis/spine-core/security_jwt.html) definition, but the validation of the claims is extended by the rules defined on this page. Where there is a difference between the validation specified in the Spine Core specification and on this page, the validation on this page override the rules defined for the Spine Core specification.
-
-### JWT Claims
-
-In the Spine JWT definition, the `requesting_organisation` claim is marked as optional. However, this claim **MUST** be supplied for all NRL and SSP requests.
-
-In the context of a Consumer request, the `requesting_user` claim is mandatory for all NRL requests.
-
-
-### JWT Validation
-
-Depending upon the client’s role (Provider or Consumer) the validation that is applied to the JWT varies. The following table shows the various checking that are applied to each claim in the JWT and the associated diagnostics message if an error is detected:
-
-| Claim being validated | Validation applied |  
-|-------|----------|
-| `sub` | Where the `requesting_user` claim has been supplied, the value of the `sub` claim MUST match the value of the `requesting_user` claim. <br/><br/> Where the `requesting_user` claim has not been supplied, the value of the `sub` claim MUST match the value of the `requesting_system` claim. <br/><br/> If both the `requesting_system` and `requesting_user` claims have been provided, then the `sub` claim MUST match the `requesting_user` claim. | 
-| `reason_for_request` | The value of the `reason_for_request` claim MUST be "directcare".  | 
-| `scope` | For requests to the NRL: `scope` MUST have the value of `patient/DocumentReference.read` (consumer interactions) or `patient/DocumentReference.write` (provider interactions). <br/><br/> For requests to the SSP: `scope` MUST have the value of `patient/*.read` (consumer interactions) or `patient/*.write` (provider interactions). |  
-| `requesting_organisation`  | The `requesting_organisation` claim value MUST be of the form `https://fhir.nhs.uk/Id/ods-organization-code/[ODSCode]`. <br/><br/> The ODS code MUST be known to Spine.| 
-| `requesting_system` | The `requesting_system` claim value MUST be of the form `https://fhir.nhs.uk/Id/accredited-system/[ASID]`. <br/><br/> The ASID MUST be known to Spine. <br/><br/> The ASID MUST be associated with the ODS code in the `requesting_organisation` claim. | 
-
+The JSON Web Token (JWT) is required for all interaction with NRL and the SSP. All requirements for population of the JWT can be found on the [JSON Web Token Guidance](jwt_guidance.html) page.
 
 
 ## Interaction Content Types

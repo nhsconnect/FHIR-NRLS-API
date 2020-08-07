@@ -9,7 +9,9 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 
 ## 2.4.0-Beta
 - Specification re-factor and streamline of information included
+- Update of [JSON Web Token Guidance](jwt_guidance.html) to enable citizen access
 - Addition of structured retrieval formats:
+   - Allergies
    - Vaccinations
    - Observations
 
