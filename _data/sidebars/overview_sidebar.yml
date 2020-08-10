@@ -84,9 +84,6 @@ entries:
           - title: JSON Web Token
             url: /jwt_guidance.html
             output: web
-          - title: Pointer Identifiers
-            url: /identifier_guidance.html
-            output: web
           - title: Security
             url: /security_guidance.html
             output: web

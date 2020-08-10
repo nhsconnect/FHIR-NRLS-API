@@ -95,19 +95,6 @@ The following errors can be triggered when performing this operation:
 - [Duplicate Resource](nrl_error_guidance.html#duplicate-resource)
 - [Missing or Invalid Headers](nrl_error_guidance.html#headers)
 
-### Ensuring that `masterIdentifier` Is Unique
-
-The masterIdentifier should be unique within the NRL. For more information see details on the [Identifier Guidance](identifier_guidance.html) page. The masterIdentifer is a [FHIR identifier](https://www.hl7.org/fhir/stu3/datatypes.html#Identifier) and for NRL the system and value properties are mandatory.
-
-The system defines how the value is made unique. As the FHIR specification says this might be a recognised standard that describes how this uniqueness is generated.  
-
-The NRL recommends the use of either an OID or a UUID as an Identifier in keeping with the need for the masterIdentifier value to be unique. In this case then the system MUST be "urn:ietf:rfc:3986" (see the [FHIR identifier registry](https://www.hl7.org/fhir/stu3/identifier-registry.html) for details) and the value is of the form – 
-
-•	OID -  urn:oid:[oidValue] <br/>
-•	UUID - urn:uuid:[uuidValue]
-
-See the [example](https://www.hl7.org/fhir/stu3/datatypes-examples.html#Identifier) OID and UUID based Identifiers from the FHIR specification.
-
 
 ## Explore the NRL
 
