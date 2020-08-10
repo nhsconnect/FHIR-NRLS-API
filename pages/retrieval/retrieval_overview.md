@@ -24,8 +24,8 @@ The retrieval format by which the information can be retrieved from a provider i
 
 | Field | Description |
 | --- | --- |
-| Retrieval format | Describes the technical structure and the rules of the information |
-| Retrieval MIME type | Describes the data type of the information |
+| [Retrieval format](explore_reference.html#retrieval-format) | Describes the technical structure and the rules of the information |
+| [Retrieval MIME type](explore_reference.html#retrieval-mime-type) | Describes the data type of the information |
 
 See the [Pointer Overview](pointer_overview.html) page and the [FHIR Profile Reference](explore_reference.html) page for more details on the data model and the two metadata fields.
 
@@ -105,11 +105,11 @@ The following table describes the retrieval interactions that are currently supp
 
 ## User Access to Information
 
-When a consumer system requests pointers for a patient, the NRL will returned all pointers for that patient which are of a type that the organisation has been approved to receive.
+When a consumer system requests pointers for a patient, the NRL will return all pointers for that patient which are of a type that the organisation has been approved to receive.
 
-Once the pointers have been returned, it is the responsibility of the consuming organisation/system to control which pointers and what informationation retrieved using the pointers is shared with the end user. This will require some level of filtering within the consumer system and should be implemented in line with local access rules to judge whether a given user should be permitted to know that a pointer type exists or to be given access to information retrieved using information from a pointer.
+Once the pointers have been returned, it is the responsibility of the consuming organisation/system to control which pointers and what information retrieved using the pointers is shared with the end user. This will require a level of RBAC control and filtering within the consumer system and should be implemented in line with local access rules to judge whether a given user should be permitted to know that a pointer type exists or to be given access to information retrieved using information from a pointer.
 
-Details of access control requirement are outlined on the [Access Controls](explore_rbac_mapping.html) page.
+Details of access control requirements are outlined on the [Access Controls](explore_rbac_mapping.html) page.
 
 
 ## Retrieval Availability
