@@ -14,6 +14,26 @@ The NRL and SSP NHS Digital Spine services are subject to various access restric
 
 Consumers and Providers are required to ensure the correct level of authentication and authorisation is applied to their systems and user access when interacting with NHS Digital SPINE services. 
 
+# User Authenticaion
+
+## Healthcare Professional
+
+Where the consuming system is making a request for healthcare professional access to information, the system **MUST** have authenticated the user using NHS Identity or national smartcard authentication and obtained a the user's UUID and associated RBAC role.
+
+The user details **MUST** be included in the JWT as specified on the [JSON Web Token Guidance](jwt_guidance.html) page.
+
+
+## Citizen
+
+Where the consuming system is making a request for citizen access to information, the system **MUST** have authenticated the citizen to the `DCB3051` Identity Verification and Authentication Standard for Digital Health and Care Services.
+
+The user details **MUST** be included in the JWT as specified on the [JSON Web Token Guidance](jwt_guidance.html) page.
+
+### NHS Login
+
+NHS Login verifyies the citizens identity and authenticates them to the required standard to use the NRL and SSP services.
+
+
 ## Authentication
 
 Clients are required to authenticate and authorise users, using a mechanism that conforms to the level-3 authentication and RBAC control requirements.
