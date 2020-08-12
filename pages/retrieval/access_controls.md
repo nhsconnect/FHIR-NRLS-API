@@ -50,7 +50,7 @@ The following requirements **MUST** be met when giving a citizen access to their
 		<th>Acceptance Criteria</th>
 	</tr>
 	<tr>
-		<td>Citizens need to be able to see their own data to check it is correct</td>
+		<td>Citizens need to be able to see their own data to be fully informed and to check that data held about them is correct</td>
 		<td>
 			<ul>
 				<li>Citizen must to be able to log on using NHS login (or equivalent)</li>
@@ -65,28 +65,29 @@ The following requirements **MUST** be met when giving a citizen access to their
 		<td>
 			<ul>
 				<li>Citizen must be able to report an error in their data</li>
-				<li>Data Owner must be able to amend the Citizen’s data</li>
+				<li>The relevant Data Controller must be able to amend the Citizen’s data</li>
 				<li>Citizen must be able to see that their data has been corrected</li>
-				<li>An audit of the changes to the data is maintained by the Data Owner</li>
+				<li>If the data has not been changed, the Citizen must be able to have a note added to record, stating the fact that they disagree with it</li>
+				<li>An audit of the changes to the data is maintained by the relevant Data Controller(s)</li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
-		<td>Citizens needs to know who has accessed their data via NRL</td>
+		<td>Citizens needs to know who has accessed their data</td>
 		<td>
 			<ul>
 				<li>Citizen must be able to request to know who has accessed their data</li>
-				<li>Data Owner must maintain an audit of whenever the Citizen’s data is accessed, recording who has accessed the data, when they accessed it, and which parts of the record were accessed</li>
-				<li>Data Owner must provide a report to the citizen of who has accessed the data, when they accessed it, and which parts of the record were accessed</li>
+				<li>The relevant Data Controller(s) must maintain an audit of whenever the Citizen’s data is accessed, recording who has accessed the data, when they accessed it, and which parts of the record were accessed</li>
+				<li>On request the Data Owner must provide a report to the citizen of who has accessed their data, when they accessed it, and which parts of the record were accessed</li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
-		<td>Need to be able to hide third-party information from the patient when that information is not known to them</td>
+		<td>The relevant Data Controller(s) needs to be able to hide third-party information from the patient when that information is not known to them</td>
 		<td>
 			<ul>
-				<li>Data Owner must be able to identify data which contains third-party information</li>
-				<li>Data Owner must have the ability to withhold the third-party information from the citizen</li>
+				<li>The relevant Data Controller(s) must be able to identify data which contains third-party information</li>
+				<li>The relevant Data Controller(s) must have the ability to withhold the third-party information from the citizen</li>
 				<li>When the Citizen accesses their data, third-party information should not be displayed if the data owner has chosen to withhold it</li>
 			</ul>
 		</td>
@@ -107,34 +108,35 @@ The following requirements **MUST** be met in a use case where a citizen grants 
 		<td>Delegated data access must be consented to and confirmed by the individual</td>
 		<td>
 			<ul>
-				<li>Citizen must be able to grant access to another person (or persons) to view their data (the delegate)</li>
+				<li>Citizen must be able to grant access to another person or persons (the delegate), to view all, or part of their data</li>
 				<li>Delegate must be able to log on using NHS login (or equivalent)</li>
 				<li>Delegate must be able to view the Citizen’s data that they have been granted access to</li>
+				<li>Delegate must not be able to view the Citizen’s data that they have not been granted access to</li>
 				<li>Delegate must not be able to view data for anyone that they have not been granted access to</li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
-		<td>Need to establish that consent has been freely given (e.g. witnessed by an appropriated registered professional)</td>
+		<td>The relevant Data Controller needs to establish that consent has been freely given (e.g. witnessed by an appropriated registered professional)</td>
 		<td>
 			<ul>
 				<li>Clinician must be satisfied that consent has been freely given for a delegate to view a Citizen’s data</li>
-				<li>Clinician must be able to record that the are satisfied that consent was freely given</li>
+				<li>Clinician must be able to record that they are satisfied that consent was freely given, and their name and professional capacity should be recorded</li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
-		<td> Citizens needs to be able to easily see what was accessed and when by their Delegate</td>
+		<td> Citizens needs to be able to easily see what data was accessed and when by their Delegate</td>
 		<td>
 			<ul>
 				<li>Citizen must be able to request who has accessed their data, when the data was accessed, and which parts of the data where accessed</li>
-				<li>Data Owner must maintain an audit every time the citizen’s data is accessed by a Delegate</li>
-				<li>Data Owner must provide a report to the citizen of who has accessed the data, when they accessed it, and which parts of the record were accessed</li>
+				<li>The relevant Data Controller must maintain an audit every time the Citizen’s data is accessed by a Delegate</li>
+				<li>On request, the relevant Data Controller must provide a report to the Citizen of who has accessed the data, when they accessed it, and which parts of the record were accessed</li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
-		<td> Citizens needs to be able to revoke access quickly and easily</td>
+		<td> Citizens needs to be able to revoke a Delegate's access quickly and easily</td>
 		<td>
 			<ul>
 				<li>Citizen must be able to revoke access to a Delegate</li>
@@ -157,11 +159,12 @@ The following requirements **MUST** be met when a citizen is given access to ano
 		<th>Acceptance Criteria</th>
 	</tr>
 	<tr>
-		<td>The person registering for access needs to prove they have the legal power – either Power of Attorney, or Welfare Deputy (court of protection can prove this)</td>
+		<td>A Person can register for access to another Citizen’s medical record, where they have the legal power, and they need to prove that they have that legal power – either Power of Attorney, or Welfare Deputy (court of protection can prove this)</td>
 		<td>
 			<ul>
 				<li>Clinician must be able to record that the person registering for access has the correct legal power</li>
-				<li>Data Owner must maintain an audit every time the Citizen’s data is accessed by a Delegate</li>
+				<li>The relevant Data Controller must maintain an audit every time the Citizen’s data is accessed by a Delegate</li>
+				<li>On request, the relevant Data Controller must provide a report to the Citizen (assuming the Citizen has the capacity) of who has accessed the data, when they accessed it, and which parts of the record were accessed</li>
 			</ul>
 		</td>
 	</tr>
@@ -181,8 +184,8 @@ The following requirements **MUST** be met when a citizen is given access to ano
 		<td>There must be a process for recording and verifying who the “Legal Parent” is.  This may be the natural parent, but for a “Looked After Child”, it may be the Local Authority who may delegate to a professional carer or relative.</td>
 		<td>
 			<ul>
-				<li>Clinician must be able to record who a Child’s “Legal Parent” is</li>
-				<li>Clinician must be able to amend who a Child’s “Legal Parent” is</li>
+				<li>Clinician must be able to record who a Child’s “Legal Parent” is, and the source of and/or reason for the decision (e.g. Social Services)</li>
+				<li>Clinician must be able to amend who a Child’s “Legal Parent” is, and the source of and/or reason for the decision (e.g. Social Services)</li>
 			</ul>
 		</td>
 	</tr>
@@ -190,7 +193,7 @@ The following requirements **MUST** be met when a citizen is given access to ano
 		<td>There must be a process for recording and maintaining who has parental rights – e.g. in the case of separated couple it could be both, but might just be the principal carer</td>
 		<td>
 			<ul>
-				<li>Clinician must be able to record who has parental access</li>
+				<li>Clinician must be able to record who has parental access and the source of and/or reason for the decision</li>
 				<li>Clinician must be able to amend who has parental access</li>
 			</ul>
 		</td>
@@ -236,6 +239,7 @@ The following requirements **MUST** be met when giving a child access to their o
 				<li>Child must be able to see their own data</li>
 				<li>Child must not be able to see anyone else’s data</li>
 				<li>Where there is a clear legal basis against it, the Child must not be able to see their data</li>
+				<li>Where access is denied, the person who made the decision, the reason, and the date the decision was made should be recorded</li>
 			</ul>
 		</td>
 	</tr>
@@ -246,9 +250,10 @@ The following requirements **MUST** be met when giving a child access to their o
 				<li>Clinician must be able to record that the Child has consent of their “Legal Parent”</li>
 				<li>Child must to be able to log on using NHS login (or equivalent)</li>
 				<li>Child must be able to see their own data if they have consent of their “Legal Parent”</li>
+				<li>The “Legal Parent” should be able to restrict part of the record from the Child</li>
 				<li>Child must not be able to see their own data if they do not have consent of their “Legal Parent”</li>
 				<li>Child must not be able to see anyone else’s data</li>
-				<li>Where there is a clear legal basis against it, the Child must not be able to see their data</li>
+				<li>Where there is a clear legal basis against it, the Child must not be able to see their data, and the person who made the decision, the reason, and the date the decision was made should be recorded</li>
 			</ul>
 		</td>
 	</tr>
