@@ -109,7 +109,7 @@ When a consumer system requests pointers for a patient, the NRL will return all 
 
 Once the pointers have been returned, it is the responsibility of the consuming organisation/system to control which pointers and what information retrieved using the pointers is shared with the end user. This will require a level of RBAC control and filtering within the consumer system and should be implemented in line with local access rules to judge whether a given user should be permitted to know that a pointer type exists or to be given access to information retrieved using information from a pointer.
 
-Details of access control requirements are outlined on the [Access Controls](explore_rbac_mapping.html) page.
+Details of access control requirements are outlined on the [Access Controls](access_controls.html) page.
 
 
 ## Retrieval Availability

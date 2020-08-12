@@ -95,7 +95,7 @@ entries:
       url: /retrieval_overview.html
       output: web
     - title: Access Control
-      url: /explore_rbac_mapping.html
+      url: /access_controls.html
       output: web
       subfolders:
       - title: Retrieval Formats
