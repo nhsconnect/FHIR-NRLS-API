@@ -35,7 +35,7 @@ Currently supported MIME types:
 | PDF | application/pdf |
 
 
-## Retrieval Mechanism  
+## Retrieval Interaction  
 
 For the “Unstructured Document” retrieval format, the [SSP Read](retrieval_ssp.html) retrieval interaction **MUST** be supported.
 

@@ -22,7 +22,7 @@ The NRL pointer `format` code for this structure is as follows:
 | urn:nhs-ic:fhir:stu3:vaccination-list:1 | Vaccination List FHIR STU3 v1 |
 
 
-## Retrieval Mechanism 
+## Retrieval Interaction 
 
 For the “Vaccination List FHIR STU3 v1” record format, the [SSP Read](retrieval_ssp.html) retrieval interaction **MUST** be supported.
 

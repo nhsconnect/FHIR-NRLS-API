@@ -22,7 +22,7 @@ The NRL pointer `format` code for this structure is as follows:
 | urn:nhs-ic:fhir:stu3:allergy-intolerance-list:1 | Allergy List FHIR STU3 v1 |
 
 
-## Retrieval Mechanism  
+## Retrieval Interaction  
 
 For the “Allergy List FHIR STU3 v1” record format, the [SSP Read](retrieval_ssp.html) retrieval interaction **MUST** be supported.
 
