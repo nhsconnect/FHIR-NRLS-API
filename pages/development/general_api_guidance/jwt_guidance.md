@@ -25,7 +25,7 @@ For all requests the following claim requirements MUST be met:
 | --- | --- |
 | requesting_organisation | The claim MUST be populated with the details of the requesting organisation and be in the form:<br/><br/>`https://fhir.nhs.uk/Id/ods-organization-code|[ODS_code]`<br/><br/>The ODS code MUST be known to the Spine. |
 | requesting_system | The claim MUST be populated with the details of the requesting system and be in the form:<br/><br/>`https://fhir.nhs.uk/Id/accredited-system|[ASID]`<br/><br/>The ASID MUST be known to Spine.<br/>The ASID MUST be associated with the ODS code in the requesting_organisation claim. |
-| `scope` | For requests to the NRL: `scope` MUST have the value of `patient/DocumentReference.read` (consumer interactions) or `patient/DocumentReference.write` (provider interactions). <br/><br/> For requests to the SSP: `scope` MUST have the value of `patient/*.read` (consumer interactions) or `patient/*.write` (provider interactions). |  
+| `scope` | For requests to the NRL: `scope` MUST have the value of `patient/DocumentReference.read` (consumer interactions) or `patient/DocumentReference.write` (provider interactions). <br/><br/> For requests to the SSP (see [SSP Information Retrieval Interaction](retrieval_ssp.html)): `scope` MUST have the value of `patient/*.read` (consumer interactions) or `patient/*.write` (provider interactions). |  
 
 
 ### Healthcare Professional Access
@@ -107,7 +107,7 @@ Where the consuming system is making a request for citizen access to information
 
 ### Unattended Access
 
-Where pointers or retrieval is being performed without a user being present, the following claim requirements must be met:
+Where an interaction is performed without a user being present, the following claim requirements must be met:
 
 | claim | Requirement |
 | --- | --- |
@@ -127,7 +127,7 @@ Where pointers or retrieval is being performed without a user being present, the
        "iat": 1469436687,
        "reason_for_request": "directcare",
        "scope": "patient/Documentreference.read",
-       "requesting_organisation": "https://fhir.nhs.uk/Id/ods-organization-code|RXA"
+       "requesting_organisation": "https://fhir.nhs.uk/Id/ods-organization-code|RXA",
        "requesting_system": "https://fhir.nhs.uk/Id/accredited-system|200000000205"
 }
 ```
