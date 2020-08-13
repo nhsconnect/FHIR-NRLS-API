@@ -36,7 +36,7 @@ The diagram above depicts the step-by-step, end-to-end, process for retrieving i
 
 Endpoints which allow retrieval of information via the SSP MUST do so with the [HTTPS GET](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3) request, to the URL contained within the NRL pointer.
 
-The provider endpoint **MUST NOT** require any additional parameters to be passed with the request.
+The provider endpoint **MUST NOT** require any additional parameters to be passed with the request, unless explicitly stated in the relevant format specification.
 
 For a consumer to retrieve information via the SSP, the consumer MUST percent encode the `content.attachment.url` property from the NRL pointer and prefix it with the SSP server URL as follows:
 
@@ -64,12 +64,12 @@ The consumer and the provider's endpoint MUST support the following HTTP request
 | `Authorization` | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the Spine - see [JSON Web Token](jwt_guidance.html) page for details. |
 |`Ssp-TraceID`|Consumer's TraceID (i.e. GUID/UUID), a unique identifier provided by the consumer. |
 |`Ssp-From`|Consumer's ASID, a unique identifier for the consuming system.<br/><br/>The consumer will be given an ASID by NHS Digital when connecting to the Spine. |
-|`Ssp-To`|Provider's ASID<br/><br/>Consumers MUST include the provider ASID in the `SSP-To` HTTP Header when performing a retrieval request via the SSP.<br/><br/>The provider ASID can be obtained through performing a [Spine Directory Services (SDS)](https://developer.nhs.uk/apis/spine-core-1-0/build_directory.html) lookup. This can be done using the record author ODS code, which is included in the pointer metadata, and the interaction ID `urn:nhs:names:services:nrl:DocumentReference.content`.<br/><br/>A worked example of the endpoint look-up process can be found in the [Spine Core specification](https://developer.nhs.uk/apis/spine-core-1-0/build_endpoints_example_spine_fhir.html).<br/><br/>If multiple ASIDs are found for the ODS code and interaction ID, the associated FQDN can be matched to the record URL FQDN to obtain the correct ASID.|
+|`Ssp-To`|Provider's ASID<br/><br/>Consumers MUST include the provider ASID in the `SSP-To` HTTP Header when performing a retrieval request via the SSP.<br/><br/>The provider ASID can be obtained through performing a [Spine Directory Services (SDS)](https://developer.nhs.uk/apis/spine-core-1-0/build_directory.html) lookup. This can be done using the [Information Owner ODS code](explore_reference.html#information-owner), which is included in the pointer metadata, and the interaction ID `urn:nhs:names:services:nrl:DocumentReference.content`.<br/><br/>A worked example of the endpoint look-up process can be found in the [Spine Core specification](https://developer.nhs.uk/apis/spine-core-1-0/build_endpoints_example_spine_fhir.html).<br/><br/>If multiple ASIDs are found for the ODS code and interaction ID, the associated FQDN can be matched to the record URL FQDN to obtain the correct ASID.|
 |`Ssp-InteractionID`|Spine's Interaction ID.<br><br>The interaction ID for retrieving a record referenced in an NRL pointer is specific to the NRL service and is as follows:<br><br>`urn:nhs:names:services:nrl:DocumentReference.content.read`|
 
 For more information on the SSP required headers, please refer to the [Spine Secure Proxy Implementation Guide](https://developer.nhs.uk/apis/spine-core-1-0/ssp_overview.html) for full technical details.
 
-The provider endpoint **MUST NOT** require any additional custom headers.
+The provider endpoint **MUST NOT** require any additional custom headers, unless explicitly stated in the relevant format specification.
 
 
 ### Response
@@ -86,8 +86,34 @@ Failure:
 
 ## Authentication and Authorisation
 
-Systems that interact with the SSP MUST meet the secure connection requirements of the SSP.
+Systems that interact with the SSP MUST meet the secure connection requirements of the SSP. Following completion of assurance, providers will be supplied with an [X.509 Certificate](https://tools.ietf.org/html/rfc5280){:target='_blank'}.
 
 Consumer systems MUST ensure that users are authenticated and authorised, using an appropriate access control mechanism, before retrieving information. HTTPS requests to the SSP for retrieving records and documents will include an [JSON Web Token (JWT)](jwt_guidance.html), which can be used in Provider systems for auditing purposes. Providers are not required to perform any further authentication or authorisation.
 
 More details can be found on the [NRL Security Guidance](security_guidance.html) page.
+
+## Provider Retrieval Endpoints
+
+Endpoints exposed by a provider for retrieval via the SSP must be registered on the Spine Directory Service (SDS). The requirements for registering endpoints on SDS are as follows:
+
+1. The FQDN MUST be of the form `nrl-[ODS_code].[supplier].thirdparty.nhs.uk`, where the ODS code can be for the supplier or information owner organisation, depending on the deployment. Following completion of assurance, providers will be supplied with an FQDN.
+2. Every system MUST have a unique ASID for each organisation. For example, the same system deployed into three organisations would be represented by three unique ASIDs. See below for further details. 
+3. All interactions with the SSP MUST be over port `443`.
+4. Endpoints MUST NOT include explicit port declarations (e.g. `:443`).
+5. Endpoints MUST have be registered with the SSP retrieval interaction ID `urn:nhs:names:services:nrl:DocumentReference.content`.
+
+See the [Spine Core specification](https://developer.nhs.uk/apis/spine-core/ssp_providers.html) for further detail on registering provider endpoints.
+
+Providers MUST ensure that the [Information Owner ODS code](explore_reference.html#information-owner) on the pointer metadata matches the ODS code for the endpoint registered in SDS. This is required to enable Consumers to perform an SDS lookup to obtain the Provider ASID and populate the `Ssp-To` header in the retrieval request. Each information owner requires an individual endpoint to be registered, therefore where multiple information owners expose records via a single deployment, it is recommended that the format of the endpoint is as follows:
+
+<div markdown="span" class="alert alert-success" role="alert">
+`GET https://[supplier_base_url]/[information_owner_ODS_code]/[path_to_record]`
+</div>
+
+For example:
+
+<div class="language-http highlighter-rouge">
+<pre class="highlight">
+<code><span class="err">GET https://nrl-ODS1.supplier.thirdparty.nhs.uk/ODS2/Binary/e73277f9-89e5-4d8c-8457-107e30fcb5a7 
+</span></code></pre>
+</div>

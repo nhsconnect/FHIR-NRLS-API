@@ -17,23 +17,6 @@ As part of sending a request to the NRL, the requesting system will supply its A
 
 When a provider uses the `Supersede`, `Update` and `delete` interactions to maintain existing pointers, the NRL will only allow the provider to make changes to their own pointers. To do this the NRL will validate that the ASID of the system trying to manage the pointer, is associated with the ODS code found in the pointer. If the ASID is not associated with the ODS code within the pointer the NRL will block the attempt to update the pointer.
 
-
-## Provider Retrieval Endpoints
-
-Endpoints exposed by a provider for retrieval must be registered on the Spine Directory Service (SDS). The requirements for registering endpoints on SDS are as follows:
-
-1. Every system MUST have a unique ASID for each organisation. For example, the same system deployed into three organisations would be represented by three unique ASIDs.
-2. All interactions with the SSP MUST be over port `443`.
-3. Endpoints MUST NOT include explicit port declarations (e.g. `:443`).
-4. Endpoints MUST have be registered with the SSP retrieval interaction ID `urn:nhs:names:services:nrl:DocumentReference.content`.
-
-See the [Spine Core specification](https://developer.nhs.uk/apis/spine-core/ssp_providers.html) for further detail on registering provider endpoints.
-
-Providers MUST ensure that the record author ODS code on the pointer metadata matches the ODS code for the endpoint registered in SDS. This is required to enable Consumers to perform an SDS lookup to obtain the Provider system ASID and populate the `Ssp-To` header in the retrieval request.
-
-Following completion of assurance, providers will be supplied with an [X.509 Certificate](https://tools.ietf.org/html/rfc5280){:target='_blank'} and an FQDN. The FQDN will form the base of Provider Endpoints as detailed above.
-
-
 ## Technical Security Constraints
 
 ### Secure Socket Layer (SSL) and Transport Layer Security (TLS) Protocols
