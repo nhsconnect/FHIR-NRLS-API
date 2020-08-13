@@ -9,22 +9,20 @@ summary: Solution overview of record and document retrieval
 
 The "Information Retrieval" pages are intended to give developers detailed requirements and guidance, about how to understand and implement the different types of information sharing and retrieval that can be reference in an NRL pointer.
 
-Information sharing is made up of two components:
+Retrieval formats identify the types of information sharing that can be referenced by an NRL pointer. Retrieval formats are made up of two components:
 
 | Component | Description |
 | --- | --- |
-| Retrieval Format | Identifies the structure and rules of the information that can be retrieved |
 | Retrieval Interaction | Identifies the mechanism that can be used to retrieve the information |
+| Retrieval Data Model | Identifies the structure and rules of the information that can be retrieved |
 
-# Retrieval Formats
-
-Retrieval formats refer to the format in which information can be shared. The NRL pointers can refer to information which can retrieved in a range of formats, including both unstructured documents and structured data, as described on the [Record Type Overview](record_type_overview.html) page.
+Each retrieval format is a unique combination of a retrieval interaction and retrieval data model. It may be possible to retrieve the same data model via two different retrieval interactions, in which case there will be two retrieval formats to represent this.  
 
 The retrieval format by which the information can be retrieved from a provider is shared in the NRL pointer, using the following two metadata fields:
 
 | Field | Description |
 | --- | --- |
-| [Retrieval format](explore_reference.html#retrieval-format) | Describes the technical structure and the rules of the information |
+| [Retrieval format](explore_reference.html#retrieval-format) | Describes the technical structure, the rules of the information and the mechanism for retrieval |
 | [Retrieval MIME type](explore_reference.html#retrieval-mime-type) | Describes the data type of the information |
 
 See the [Pointer Overview](pointer_overview.html) page and the [FHIR Profile Reference](explore_reference.html) page for more details on the data model and the two metadata fields.
@@ -33,18 +31,44 @@ The combination of these two metadata fields allows:
 - a **provider** to say what format they are sharing information in.
 - a **consumer** system the know the type and structure of the content that will recieve. This allows them to decide if they will be able to process and render the information for a user.
 
+# Retrieval Interactions
 
-## Supported Formats
+The retrieval interaction identifies is the mechanism that can be used by a consumer to retrieve information from the provider and represents the authentication and authorisation requirements for that retrieval.
+
+The retrival interaction information is important to:
+
+- **providers** so they can expose information using a mechanism that consumers can understand and utilise
+- **consumers** so they can understand how to retrieve information from a provider
+
+
+## Supported Retrieval Interactions
+
+The following table describes the retrieval interactions that are currently supported within NRL pointers:
+
+| Retrieval Interaction | Description |
+|-----------|----------------|
+| [Public Web](retrieval_http_unsecure.html) | Some information types, such as Contact Details, can be shared and retrieved via public facing web pages. |
+| [SSP](retrieval_ssp.html) | The SSP is a content agnostic forward proxy, which is used to control and protect access to health systems. It provides a single security point removing the need for a complex and onerous authentication and authorisation mechanism between all consumers and providers. |
+| Direct Integration | The option for consumers and providers to communicate directly, not to use the SSP, is possible where direct integration and a shared authentication and authorisation model is established. |
+
+
+# Retrieval Data Models
+
+Retrieval data models refer to the structure in which information can be shared. The NRL pointers can refer to information which can retrieved in a range of formats, including both unstructured documents and structured data, as described on the [Record Type Overview](record_type_overview.html) page.
+
+Structured data formats will be versioned and where any breaking changes to a data structure are required, a new format will be created with an increment to the version number. The NRL supports multiple versions of data structures. 
+
+# Supported Retrieval Formats
 
 The following table describes the formats that are currently supported within NRL pointers:
 
-| Format | Description |
-|-----------|----------------|
-| [Contact Details (HTTP Unsecured)](retrieval_contact_details.html) | A publicly accessible HTML web page or PDF detailing contact details for retrieving a record. |
-| [Unstructured Document](retrieval_contact_details) | An unstructured document, such as a PDF. The content-type of the document returned should be described in the retrieval MIME type field of the pointer. |
-| [Allergy List FHIR STU3 v1](retrieval_allergies_fhir_stu3.html) | A list of allergies, in a FHIR STU3 structured format. |
-| [Observation List FHIR STU3 v1](retrieval_observations_fhir_stu3.html) | A list of observations, in a FHIR STU3 structured format. |
-| [Vaccination List FHIR STU3 v1](retrieval_vaccinations_fhir_stu3.html) | A list of vaccinations, in a FHIR STU3 structured format. |
+| Format | Description | Retrieval Interaction |
+|-----------|----------------|----------------|
+| [Contact Details (HTTP Unsecured)](retrieval_contact_details.html) | A publicly accessible HTML web page or PDF detailing contact details for retrieving a record. | [Public Web](retrieval_http_unsecure.html) |
+| [Unstructured Document](retrieval_contact_details) | An unstructured document, such as a PDF. The content-type of the document returned should be described in the retrieval MIME type field of the pointer. |  [SSP](retrieval_ssp.html) |
+| [Allergy List FHIR STU3 v1](retrieval_allergies_fhir_stu3.html) | A list of allergies, in a FHIR STU3 structured format. |  [SSP](retrieval_ssp.html) |
+| [Observation List FHIR STU3 v1](retrieval_observations_fhir_stu3.html) | A list of observations, in a FHIR STU3 structured format. |  [SSP](retrieval_ssp.html) |
+| [Vaccination List FHIR STU3 v1](retrieval_vaccinations_fhir_stu3.html) | A list of vaccinations, in a FHIR STU3 structured format. |  [SSP](retrieval_ssp.html) |
 
 
 ## Supporting Multiple Retrieval Formats
@@ -75,30 +99,6 @@ The following examples show a pointer for a Mental Health Crisis Plan that can b
 {% include /examples/retrieval_multiple_formats.json %}
 {% endhighlight %}
 </div>
-
-
-
-
-# Retrieval Interactions
-
-The retrieval interaction identifies is the mechanism that can be used by a consumer to retrieve information from the provider and represents the authentication and authorisation requirements for that retrieval.
-
-The retrival interaction information is important to:
-
-- **providers** so they can expose information using a mechanism that consumers can understand and utilise
-- **consumers** so they can understand how to retrieve information from a provider
-
-
-## Supported Retrieval Interactions
-
-The following table describes the retrieval interactions that are currently supported within NRL pointers:
-
-| Retrieval Interaction | Description |
-|-----------|----------------|
-| [Public Web](retrieval_http_unsecure.html) | Some information types, such as Contact Details, can be shared and retrieved via public facing web pages. |
-| [SSP](retrieval_ssp.html) | The SSP is a content agnostic forward proxy, which is used to control and protect access to health systems. It provides a single security point removing the need for a complex and onerous authentication and authorisation mechanism between all consumers and providers. |
-| Direct Integration | The option for consumers and providers to communicate directly, not to use the SSP, is possible where direct integration and a shared authentication and authorisation model is established. |
-
 
 
 # NRL Retrieval Management
