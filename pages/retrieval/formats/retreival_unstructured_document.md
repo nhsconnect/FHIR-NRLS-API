@@ -8,16 +8,16 @@ summary: Unstructured Document information format for retrieval
 ---
 
 
-The `Unsecured Document` retrieval format allows the provider to share information in standard formats which are generally not considered to have a machine readable structure, such as a PDF document containing a Mental Health Crisis plan.
+The `Unstructured Document` retrieval format allows the provider to share information in standard formats which are generally not considered to have a machine readable structure, such as a PDF document containing a Mental Health Crisis Plan.
 
-Support for un-structured documents is intended to be used to share existing document and record types, without the need for consumers and providers to develop and adopt new standards, meaning quicker benefits for health care services and improve care for the patients.
+Support for unstructured documents is intended to be used to share existing document and record types, without the need for consumers and providers to develop and adopt new standards, resulting in reduced development and implementation time, quicker benefits for health care services and improved care for patients.
 
 
 ## Pointer retrieval `Format` Code and `MIME` type
 
 ### Format
 
-The NRL pointer `format` code for this retrieval format is as follows: 
+The NRL pointer [`format`](explore_reference.html#retrieval-format) code for this retrieval format is as follows: 
 
 | Code | Display |
 | --- | --- |
@@ -26,7 +26,7 @@ The NRL pointer `format` code for this retrieval format is as follows:
 
 ### Content-Type
 
-The content-type of the unstructured document returned SHOULD be in the MIME type as described on the pointer metadata `DocumentReference.content[x].attachment.contentType` element. Supported MIME types for pointer types which support unstructured documents is listed on the [pointer types](supported_pointer_types.html) page.
+The content-type of the unstructured document returned SHOULD be in the [`retrieval MIME type`](explore_reference.html#retrieval-mime-type) as described on the pointer metadata. Supported MIME types for pointer types which support unstructured documents are listed on the [pointer types](supported_pointer_types.html) page.
 
 Currently supported MIME types:
 
@@ -47,7 +47,7 @@ The provider defines the endpoint URL that is included in the NRL pointer, but w
 When successfully responding to the request the provider MUST return: 
 
 - a HTTP status code of 200
-- a payload conforming to the Format and MIME included in the pointer reference.
+- a payload conforming to the Format and MIME included in the pointer reference. The unstructured document MUST NOT be wrapped in a structured data model such as a [FHIR Binary](https://www.hl7.org/fhir/binary.html) resource. 
 
 
 ## Citizen vs Health Care Professional request
