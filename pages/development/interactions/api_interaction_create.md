@@ -11,11 +11,11 @@ summary: To support the creation of NRL pointers
 
 ## Create
 
-Provider interaction to support the creation of NRL pointers.
+Provider interaction to support the creation of NRL pointers. The create interaction is a FHIR RESTful [create](https://www.hl7.org/fhir/STU3/http.html#create) interaction.
 
 ## Prerequisites
 
-In addition to the requirements on this page the general guidance and requirements detailed on the [Development Overview](development_overview.html) page MUST be followed when using this interaction.
+In addition to the requirements on this page, the general guidance and requirements detailed on the [Development Overview](development_overview.html) page MUST be followed when using this interaction.
 
 ## Create Request Headers
 
@@ -31,15 +31,14 @@ Provider API create requests support the following HTTP request headers:
 ## Create Operation
 
 <div markdown="span" class="alert alert-success" role="alert">
-`POST [baseUrl]/DocumentReference`
+`POST [baseUrl]/STU3/DocumentReference`
 </div>
 
 Provider systems:
 
-- MUST construct and send a new Pointer (DocumentReference) resource that conforms to the NRL-DocumentReference-1 profile and submit this to NRL using the FHIR RESTful [create](https://www.hl7.org/fhir/stu3/http.html#create) interaction.
-- MUST include the URI of the NRL-DocumentReference-1 profile StructureDefinition in the DocumentReference.meta.profile element of the DocumentReference resource.
+- MUST construct and send a new Pointer (DocumentReference) resource that conforms to the `NRL-DocumentReference-1` profile and submit this to NRL using the FHIR RESTful [create](https://www.hl7.org/fhir/stu3/http.html#create) interaction.
 - MUST include all of the mandatory data-elements contained in the `NRL-DocumentReference-1` profile when constructing a DocumentReference. The mandatory data-elements are detailed on the [Developer FHIR Resource](explore_reference.html) page.
-- MUST supply `subject`, `custodian` and `author` attributes as absolute literal references, the formats of which can be found on the [Developer FHIR Resource](explore_reference.html) page.
+- MUST follow all population guidance as outlined on the [Developer FHIR Resource](explore_reference.html) page when constructing a DocumentReference. 
 - MUST only create pointers for records where they are the pointer owner (custodian). 
 
 For all create requests the `custodian` ODS code in the DocumentReference resource MUST be affiliated with the `Client System ASID` value in the `fromASID` HTTP request header sent to the NRL.
@@ -64,7 +63,7 @@ For all create requests the `custodian` ODS code in the DocumentReference resour
 ### Success
 
 - will return a `201` **CREATED** HTTP status code on successful execution of the interaction and the entry has been successfully created in the NRL.
-- will return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Operation Outcome'](http://hl7.org/fhir/STU3/operationoutcome.html) core FHIR resource (see the table below).
+- will return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Spine Operation Outcome'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) FHIR resource (see the table below).
 - will return an HTTP `Location` response header containing the full resolvable URL to the newly created 'single' DocumentReference. 
   - The URL will contain the 'server' assigned `logical Id` of the new DocumentReference resource.
   - The URL format will be: `https://[host]/[path]/[id]`. 
@@ -81,7 +80,7 @@ The table summarises the `create` interaction HTTP response code and the values 
 |-----------|----------------|------------|--------------|-----------------|-------------------|
 |201|information|informational|RESOURCE_CREATED|New resource created | Spine message UUID |Successfully created resource DocumentReference|
 
-{% include note.html content="Upon successful creation of a pointer the NRL Service returns in the response payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the Deployment Issues Resolution Team. The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
+{% include note.html content="Upon successful creation of a pointer the NRL Service returns in the response payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's Create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the [National Service Desk](https://digital.nhs.uk/services/spine/spine-mini-service-provider-for-personal-demographics-service/service-management-live-service). The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
 
 ### Failure
 
@@ -98,4 +97,4 @@ The following errors can be triggered when performing this operation:
 
 ## Explore the NRL
 
-You can explore and test the NRL POST command using Swagger in the [NRL API Reference Implementation](https://data.developer.nhs.uk/nrls-ri/index.html#/Nrls/createPointer).
+You can explore and test the create interaction using Swagger in the [NRL API Reference Implementation](https://data.developer.nhs.uk/nrls-ri/index.html).

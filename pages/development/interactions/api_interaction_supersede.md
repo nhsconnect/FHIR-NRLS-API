@@ -141,3 +141,5 @@ As an extension of the Create interaction, the success and failure responses are
 
 See [Create Interaction - Responses](api_interaction_create.html#create-response) for details of the expected response behaviours and codes.
 
+## Explore the NRL
+You can explore and test the create (supersede) interaction using Swagger in the [NRL API Reference Implementation](https://data.developer.nhs.uk/nrls-ri/index.html).
