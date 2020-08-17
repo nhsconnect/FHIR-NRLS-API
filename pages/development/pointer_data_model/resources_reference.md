@@ -70,7 +70,7 @@ The URI of the FHIR profile that the resource conforms to. Indicates the version
 
 |Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality| Population Guidance|
 |----|---------|----|-----------|-----|
-| Profile | `meta.profile` | uri | 0..1 | The value MUST be `https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1` |
+| Profile | `meta.profile` | uri | 1..1 | The value MUST be `https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1` |
 
 **Additional Guidance**
 
