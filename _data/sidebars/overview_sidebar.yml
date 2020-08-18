@@ -98,6 +98,15 @@ entries:
       url: /access_controls.html
       output: web
       subfolders:
+      - title: Retrieval Interactions
+        output: web
+        subfolderitems:
+          - title: Public Web
+            url: /retrieval_http_unsecure.html
+            output: web
+          - title: SSP
+            url: /retrieval_ssp.html
+            output: web
       - title: Retrieval Formats
         output: web
         subfolderitems:
@@ -115,15 +124,6 @@ entries:
             output: web
           - title: Vaccination List - FHIR STU3 v1
             url: /retrieval_vaccinations_fhir_stu3.html
-            output: web
-      - title: Retrieval Interactions
-        output: web
-        subfolderitems:
-          - title: Public Web
-            url: /retrieval_http_unsecure.html
-            output: web
-          - title: SSP
-            url: /retrieval_ssp.html
             output: web
 
   - title: Assurance
