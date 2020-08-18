@@ -13,7 +13,7 @@ The `Vaccination List FHIR STU3 v1` record format represents a list of vaccinati
 All pointers which allow for retrieval in the `Vaccination List FHIR STU3 v1` record format MUST return information conforming to the guidance and requirements specified on this page.
 
 
-## Pointer retrieval `Format` Code
+## Pointer Retrieval `Format` Code
 
 The NRL pointer [`format`](explore_reference.html#retrieval-format) code for this structure is as follows:
 
@@ -50,7 +50,7 @@ When successfully responding to the request the provider MUST return:
 
 ## Retrieved Data Structure
 
-The response payload will consist of a [FHIR `Bundle`](http://hl7.org/fhir/STU3/StructureDefinition/Bundle) resource of type “collection”. The `Bundle` will include a [FHIR `List`](http://hl7.org/fhir/STU3/list.html) resource as the first entry, which is used to manage the collection of resources.
+The response payload will consist of a [FHIR Bundle](http://hl7.org/fhir/STU3/StructureDefinition/Bundle) resource of type “collection”. The `Bundle` will include a [FHIR List](http://hl7.org/fhir/STU3/list.html) resource as the first entry, which is used to manage the collection of resources.
 
 The diagram below shows the referencing between FHIR resources within the response Bundle resource: 
 
@@ -64,7 +64,7 @@ The `Bundle` **MUST** contain the following resources:
 | [`List`](http://hl7.org/fhir/STU3/list.html) | 1..1 | Container for list of immunization for the patient.|
 | [`CareConnect-Immunization-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Immunization-1) | 0..* | Immunizations listed will be included in the Bundle as Immunization resources.<br/><br/>The cardinality allows for zero immunizations to be included to allow for where pointer maintenance may not align with data management. For example: if pointers are maintained as an overnight batch process, but a vaccination could be removed at any time in the day, this may result in a pointer pointing to an empty list.<br/><br/>Providers **MUST** remove pointers which will not return any immunizations, as soon as possible. |
 | [`CareConnect-Patient-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1) | 1..1 | The Patient resource identifies the patient which the immunizations relate to. |
-| [`CareConnect-Organization-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1) | 1..* | The Organization resource referenced by the List resource will represent the organization sharing the information and must contain contact details for use in relation to data quality issues. References between the resources will put any other included Organization resources in context. |
+| [`CareConnect-Organization-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1) | 1..* | The Organization resource referenced by the List resource will represent the organisation sharing the information and **MUST** contain contact details for use in relation to data quality issues. References between the resources will put any other included Organization resources in context. |
 
 
 The `Bundle` **MAY** contain the following resources:
@@ -151,9 +151,9 @@ All Organization resources included in the bundle SHALL conform to the `CareConn
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
-| identifier | 1..* | The organization ODS code identifier SHALL be included within the `odsOrganizationCode` identifier slice. |
-| name | 1..1 | A human readable name for the organization SHALL be included in the organization resource. |
-| telecom | 0..* | Where the Organisation resource is referenced directly from the List (`Extension (informationProvider)`), contact details for the organisation MUST be included for use in relation to data quality issues. |
+| identifier | 1..* | The organisation ODS code identifier SHALL be included within the `odsOrganizationCode` identifier slice. |
+| name | 1..1 | A human readable name for the organisation SHALL be included in the organization resource. |
+| telecom | 0..* | Where the Organization resource is referenced directly from the List (`Extension (informationProvider)`), contact details for the organisation MUST be included for use in relation to data quality issues. |
 | telecom.system | 1..1 | MUST contain a value of phone or email matching the included contact method within the value element |
 | telecom.value | 1..1 | A phone number or email address |
 
@@ -202,7 +202,7 @@ The HealthcareService resources included in the bundle SHALL conform to the `Car
 
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
-| providedBy | 1..1 | Reference to the organization who provides the healthcare service |
+| providedBy | 1..1 | Reference to the organisation who provides the healthcare service |
 | type | 1..1 | This type SHALL have a value from the [`CareConnect-CareSettingType-1`](https://fhir.hl7.org.uk/STU3/ValueSet/CareConnect-CareSettingType-1) value set |
 | specialty | 1..1 | The specialty SHALL be a value from the [`Specialty-1`](https://fhir.nhs.uk/STU3/ValueSet/Specialty-1) value set |
 
