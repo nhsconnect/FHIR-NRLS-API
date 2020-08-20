@@ -4,7 +4,7 @@ keywords: development versioning
 tags: [development]
 sidebar: overview_sidebar
 permalink: overview_guide_versioning.html
-summary: An overview of how implementation Guides (and other technical assets) are versioned.
+summary: An overview of how implementation guides (and other technical assets) are versioned.
 ---
 
 ## Product Versioning
@@ -23,10 +23,10 @@ Additional labels for pre-release and build metadata are available as extensions
 
 A pre-release version MAY be denoted by appending a hyphen (see [Semantic Versioning - Item 9](https://semver.org/spec/v2.0.0.html#spec-item-9)).
 
-For examples: 1.0.0-alpha.1 is a valid pre-release version.
+For example: 1.0.0-alpha.1 is a valid pre-release version.
 
 ### Pre-Release Labels
 
-When FHIR API implementation guides are published, they MUST have an associated maturity label. These labels are based on the GDS development process stages and MUST conform to one of the labels defined in the [FHIR-PUB-04: FHIR API Maturity](https://nhsconnect.github.io/fhir-policy/publication.html) 'Publication Requirements' section of the [NHS FHIR Policy](https://nhsconnect.github.io/fhir-policy/index.html).
+When FHIR API implementation guides are published, they MUST have an associated maturity label. These labels are based on the Government Digital Service (GDS) development process [phases](https://www.gov.uk/service-manual/agile-delivery) and MUST conform to one of the labels defined in the [FHIR-PUB-04: FHIR API Maturity](https://nhsconnect.github.io/fhir-policy/publication.html) 'Publication Requirements' section of the [NHS FHIR Policy](https://nhsconnect.github.io/fhir-policy/index.html).
 
 <!-- TODO add more info -->
