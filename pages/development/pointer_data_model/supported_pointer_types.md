@@ -4,14 +4,14 @@ keywords: structured rest documentreference
 tags: [fhir,pointers,record_retrieval]
 sidebar: accessrecord_rest_sidebar
 permalink: supported_pointer_types.html
-summary: Pointer types supported by NRL
+summary: NRL supported pointer types.
 ---
 
-The following table outlines the currently supported pointer types on NRL. As support for other pointer types is added to the NRL this list will be updated.
+The following table outlines the currently supported NRL pointer types; this list will be updated as support for other pointer types are introduced to the NRL.
 
 The table outlines the `Retrieval Format` supported for each pointer type. Details about the retrieval formats can be found on the [Retrieval Overview](retrieval_overview.html) page.
 
-| Pointer Type | Code | System | Retrieval Formats |
+| Pointer Type | Code | System | Retrieval Format(s) |
 | --- | --- | --- | --- |
 | End of life care plan | 736373009 | http://snomed.info/sct | ["Unstructured Document (PDF)"](retreival_unstructured_document.html) |
 | Mental Health Crisis Plan | 736253002 | http://snomed.info/sct | ["Contact Details"](retrieval_contact_details.html) <br/>["Unstructured Document (PDF)"](retreival_unstructured_document.html) |
