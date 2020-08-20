@@ -4,10 +4,10 @@ keywords: development versioning
 tags: [overview]
 sidebar: overview_sidebar
 permalink: overview_release_notes.html
-summary: Summary release notes of the versions released in NRL API Implementation Guide
+summary: Summary release notes of the versions released in NRL API Implementation Guide.
 ---
 
-## 2.4.0-Beta
+## 2.4.0-beta
 - Specification re-factor and streamline of information included
 - Update of [JSON Web Token Guidance](jwt_guidance.html) to enable citizen access
 - Addition of structured retrieval formats:
@@ -125,10 +125,10 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     -	Create interaction 
         - Page details additional error responses
         - *API Breaking Change*{:.label.label-danger} Format of Location response header has been changed to [baseUrl]/DocumentReference/[id]
-    -	Delete interaction  
+    -	Delete interaction
         -	*New API Feature*{:.label.label-info} Now supports RESTful delete by logical id i.e. DELETE [baseUrl]/DocumentReference/[id]
         -	Requirements have been moved into a single section
-    -	Search interaction  
+    -	Search interaction
         -	Now only returns DocumentReference's that have a 'status' of current
         -	DocumentReference's with a format code that indicates the referenced content is to be retrieved via the SSP will have its url property modified to reflect this.
         -	These changes also apply to Read Interaction
