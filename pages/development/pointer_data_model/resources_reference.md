@@ -252,7 +252,7 @@ Describes whether the information content at the time of the request is dynamica
 |Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality|Population Guidance|
 |----|---------|----|-----------|-----|
 | Information Stability | `content.extension:contentStability` | [Extension](http://hl7.org/fhir/stu3/extensibility.html#Extension) | 1..1 | Information stability extension. |
-| | `content.extension:contentStability`<br/>`.url` | [uri](http://hl7.org/fhir/stu3/datatypes.html#uri) | 1..1 | identifies the meaning of the extension. The value **MUST** be `https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1`. |
+| | `content.extension:contentStability`<br/>`.url` | [uri](http://hl7.org/fhir/stu3/datatypes.html#uri) | 1..1 | Identifies the meaning of the extension. The value **MUST** be `https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1`. |
 | | `content.extension:contentStability`<br/>`.valueCodeableConcept` | [CodeableConcept](http://hl7.org/fhir/stu3/datatypes.html#codeableconcept) | 1..1 |  |
 | | `content.extension:contentStability`<br/>`.valueCodeableConcept.coding.system` | [uri](http://hl7.org/fhir/stu3/datatypes.html#uri) | 1..1 | Identity of the terminology system. |
 | | `content.extension:contentStability`<br/>`.valueCodeableConcept.coding.code` | [code](http://hl7.org/fhir/stu3/datatypes.html#code) | 1..1 | Symbol in syntax defined by the system. |
