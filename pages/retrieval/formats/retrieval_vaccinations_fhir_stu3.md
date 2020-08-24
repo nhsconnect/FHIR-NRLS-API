@@ -72,7 +72,7 @@ The `Bundle` **MAY** contain the following resources:
 | Resource | Cardinality | Description |
 |---|---|---|
 | [`CareConnect-Encounter-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Encounter-1) | 0..* | Encounter resources may be included to give context to the immunization. |
-| [`CareConnect-HealthcareService-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-HealthcareService-1) | 0..* | HealthcareService resources may be included to give additional context to the organizations which are included in the returned information. |
+| [`CareConnect-HealthcareService-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-HealthcareService-1) | 0..* | HealthcareService resources may be included to give additional context to the organisations which are included in the returned information. |
 | [`CareConnect-Location-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Location-1) | 0..* | Location resources may be included to add context to the location where immunizations occurred. |
 | [`CareConnect-Practitioner-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Practitioner-1) | 0..* | Practitioner details may be included in the bundle in relation to immunizations.<br/><br/>**Note:** it is important to consider Information Governance when including practitioner personal data within information shared with other organisations. |
 | [`CareConnect-PractitionerRole-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-PractitionerRole-1) | 0..* | PractionerRole resources may be included to add additional information in relation to practitioners included in the shared information. |
