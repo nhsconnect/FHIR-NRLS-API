@@ -7,14 +7,54 @@ permalink: supported_pointer_types.html
 summary: NRL supported pointer types.
 ---
 
-The following table outlines the currently supported NRL pointer types; this list will be updated as support for other pointer types are introduced to the NRL.
+The following table outlines the currently supported NRL information categories and types; this list will be updated as other information types are supported by the NRL. The codes for each information category and type can be found in the relevant value sets detailed on the [FHIR Resource Mapping](explore_reference.html) page. 
 
-The table outlines the `Retrieval Format` supported for each pointer type. Details about the retrieval formats can be found on the [Retrieval Overview](retrieval_overview.html) page.
+The table outlines each `Retrieval Format` supported for each pointer type. Details about the retrieval formats can be found on the [Retrieval Overview](retrieval_overview.html) page.
 
-| Pointer Type | Code | System | Retrieval Format(s) |
-| --- | --- | --- | --- |
-| End of life care plan | 736373009 | http://snomed.info/sct | ["Unstructured Document (PDF)"](retreival_unstructured_document.html) |
-| Mental Health Crisis Plan | 736253002 | http://snomed.info/sct | ["Contact Details"](retrieval_contact_details.html) <br/>["Unstructured Document (PDF)"](retreival_unstructured_document.html) |
-| Allergy List | 163221000000102 | http://snomed.info/sct | ["Allergy List - FHIR STU3 v1"](retrieval_allergies_fhir_stu3.html) |
-| Observation List | 1102421000000108 | http://snomed.info/sct | ["Observation List - FHIR STU3 v1"](retrieval_observations_fhir_stu3.html) |
-| Vaccination List | 1102181000000102 | http://snomed.info/sct | ["Vaccination List - FHIR STU3 v1"](retrieval_vaccinations_fhir_stu3.html) |
+<table style="width:100%;">
+    <tr>
+		<th><a href="explore_reference.html#information-category">Information Category</a></th>
+		<th><a href="explore_reference.html#information-type">Information Type</a></th>
+        <th><a href="explore_reference.html#retrieval-format">Retrieval Format(s)</a></th>
+	</tr>
+    <tr>
+        <td rowspan="2">Care plan</td>
+        <td>End of life care coordination summary</td>
+        <td>
+            <ul>
+                <li>
+                    <a href="retrieval_contact_details.html">"Contact Details"</a>
+                </li>
+                <li>
+                    <a href="retreival_unstructured_document.html">"Unstructured Document (PDF)"</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>Mental health crisis plan</td>
+        <td>
+            <ul>
+                <li>
+                    <a href="retrieval_contact_details.html">"Contact Details"</a>
+                </li>
+                <li>
+                    <a href="retreival_unstructured_document.html">"Unstructured Document (PDF)"</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="3">Care record elements</td>
+        <td>Allergies and adverse reactions</td>
+        <td><a href="retrieval_allergies_fhir_stu3.html">"Allergy List - FHIR STU3 v1"</a></td>
+    </tr>
+    <tr>
+        <td>Observations</td>
+        <td><a href="retrieval_observations_fhir_stu3.html">"Observation List - FHIR STU3 v1"</a></td>
+    </tr>
+    <tr>
+        <td>Immunisations</td>
+        <td><a href="retrieval_vaccinations_fhir_stu3.html">"Vaccination List - FHIR STU3 v1"</a></td>
+    </tr>
+</table>
