@@ -48,13 +48,14 @@ To accomplish this, the provider issues an HTTP PATCH as shown:
 
 <div class="language-http highlighter-rouge">
 <pre class="highlight">
-<code><span class="err">PATCH [baseUrl]/STU3/DocumentReference/da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142</span></code>
+<code><span class="err">PATCH [baseUrl]/STU3/DocumentReference/da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142
+</span></code>
 Update the DocumentReference resource status for a pointer with the logical id of 'da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142'.</pre>
 </div>
 
 ### Conditional Update by `masterIdentifier`
 
-The API supports the conditional update interaction which allows a provider to update a pointer using the `masterIdentifier`, negating the requirement to persist or query the NRL to obtain the generated logical id for the pointer.
+The API supports the conditional update interaction which allows a provider to update a pointer using the `masterIdentifier`, negating the requirement to persist or query the NRL to obtain the generated logical ID for the pointer.
 
 The query parameters should be used as shown:
 
@@ -63,8 +64,8 @@ The query parameters should be used as shown:
 </div>
 
 - *[nhsNumber]* - The NHS number of the patient related to the DocumentReference(s).
-- *[system]* - The namespace of the `masterIdentifier` value that is associated with the DocumentReference(s).
-- *[value]* - The value of the `masterIdentifier` that is associated with the DocumentReference(s).
+- *[system]* - The namespace of the `masterIdentifier` value associated with the DocumentReference(s).
+- *[value]* - The value of the `masterIdentifier` associated with the DocumentReference(s).
 
 <div class="language-http highlighter-rouge">
 <pre class="highlight">
