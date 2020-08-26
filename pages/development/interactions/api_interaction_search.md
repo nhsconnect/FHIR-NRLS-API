@@ -41,8 +41,8 @@ This implementation guide outlines the search parameters for the `DocumentRefere
 |Name|Type|Description|Path|
 |----|----|-----------|----|
 |`_id`|[id](http://hl7.org/fhir/stu3/datatypes.html#id)|Logical ID of the resource.|`DocumentReference.id`|
-|`subject`|[reference](https://www.hl7.org/fhir/STU3/references.html)|Subject (patient) of the DocumentReference.|`DocumentReference.subject` (Patient NHS Number)|
-|`custodian`|[reference](https://www.hl7.org/fhir/STU3/references.html)|Organisation which maintains the DocumentReference.|`DocumentReference.custodian` (Organisation ODS Code)|
+|`subject`|[reference](https://www.hl7.org/fhir/STU3/references.html)|Subject (patient) of the `DocumentReference`.|`DocumentReference.subject` (Patient NHS Number)|
+|`custodian`|[reference](https://www.hl7.org/fhir/STU3/references.html)|Organisation which maintains the `DocumentReference`.|`DocumentReference.custodian` (Organisation ODS Code)|
 |`type`|[Coding](http://hl7.org/fhir/stu3/datatypes.html#coding)|Information type (SNOMED CT).|`>DocumentReference.type.coding`|
 |`_summary`|[summary](https://www.hl7.org/fhir/search.html#summary)|Total number of matching results.|N/A|
 
@@ -55,7 +55,7 @@ A search is made using either the `_id` or `subject` search parameter.
 
 ### **`_id`**
 
-The `_id` search parameter refers to the logical ID of the DocumentReference resource and can be used when the search context specifies the DocumentReference resource type.
+The `_id` search parameter refers to the logical ID of the `DocumentReference` resource and can be used when the search context specifies the `DocumentReference` resource type.
 
 Functionally this search is the equivalent to a simple pointer read operation.
 
