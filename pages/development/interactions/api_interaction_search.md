@@ -107,7 +107,7 @@ The `type` search parameter **MUST** follow the format:
 <div class="language-http highlighter-rouge">
 <pre class="highlight"><code><span class="err">GET [baseUrl]/STU3/DocumentReference?subject=https%3A%2F%2Fdemographics.spineservices.nhs.uk%2FSTU3%2FPatient%2F9876543210&type.coding=http%3A%2F%2Fsnomed.info%2Fsct%7C736253002
 </span></code>
-Return all DocumentReference resources for a patient with an NHS Number of 9876543210 and pointer type mental health crisis plan.</pre>
+Return all DocumentReference resources for a patient with an NHS Number of 9876543210 and pointer type 'Mental health crisis plan'.</pre>
 </div>
 
 ### **`subject` and `custodian`**
