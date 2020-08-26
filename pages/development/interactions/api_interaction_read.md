@@ -4,7 +4,7 @@ keywords: structured rest documentreference
 tags: [fhir,pointers,for_consumers]
 sidebar: accessrecord_rest_sidebar
 permalink: api_interaction_read.html
-summary: To support retrieval of an NRL pointer
+summary: To support the retrieval of an NRL pointer.
 ---
 
 {% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
@@ -15,22 +15,22 @@ Consumer interaction to support the retrieval of a single NRL pointer. The read 
 
 ## Prerequisites
 
-In addition to the requirements on this page, the general guidance and requirements detailed on the [Development Overview](development_overview.html) page MUST be followed when using this interaction.
+In addition to the requirements on this page, the general guidance and requirements detailed on the [Development Overview](development_overview.html) page **MUST** be followed when using this interaction.
 
 ## Read Request Headers
 
-Consumer and Provider API read requests support the following HTTP request headers:
+Consumer API read requests support the following HTTP request headers:
 
-| Header               | Value |Conformance |
-|----------------------|-------|-------|
-| `Accept`      | The `Accept` header indicates the format of the response the client is able to understand, this will be one of the following <code class="highlighter-rouge">application/fhir+json</code> or <code class="highlighter-rouge">application/fhir+xml</code>. | OPTIONAL |
-| `Authorization`      | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see the [JSON Web Token Guidance](jwt_guidance.html) page for details. | REQUIRED |
-| `fromASID`           | Client System ASID | REQUIRED |
-| `toASID`             | The Spine ASID | REQUIRED |
+| Header|Value|Conformance|
+|-------|-----|-----------|
+| `Accept` | The `Accept` header indicates the format of the response the client is able to understand, if set, this must be either `application/fhir+json` or `application/fhir+xml`. | OPTIONAL |
+| `Authorization` | The `Authorization` header will carry the base64url encoded JSON web token required for audit on the spine - see the [JSON Web Token Guidance](jwt_guidance.html) page for details. | REQUIRED |
+| `fromASID` | Client System ASID. | REQUIRED |
+| `toASID` | The Spine ASID. | REQUIRED |
 
 ## Read Operation
 
-The read interaction allows a consumer or provider to retrieve a single pointer (DocumentReference) by logical ID. 
+The read interaction allows a consumer to retrieve a single pointer (DocumentReference) by logical ID. 
 
 The consumer must issue an HTTP GET as shown:
 
@@ -45,17 +45,19 @@ The consumer must issue an HTTP GET as shown:
 Read the DocumentReference resource for a pointer with the logical id of 'da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142'.</pre>
 </div>
 
-Note the status of the pointer must be "current" for the pointer to be retrieved. 
+Note the status of the pointer must be `current` for the pointer to be retrieved. 
 
 ## Read Response
 
-Success:
+### Success
 
-- will return a `200` **SUCCESS** HTTP status code on successful execution of the interaction.
-- will return a response body containing a `DocumentReference` resource which conforms to the [NRL-DocumentReference-1 FHIR profile](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) and has the status "current".
+A successful execution of the read interaction will:
+
+- return a `200` **OK** HTTP status code.
+- return a response body containing a `DocumentReference` resource which conforms to the [NRL-DocumentReference-1 FHIR profile](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) and has the status `current`.
 
 <!--
-{% include note.html content="When a document/record is to be retrieved via the SSP then the Consumer MUST percent encode the `content.attachment.url` property, taken from an NRL pointer, and prefix it with the SSP server URL. For more details, see the [Retrieval Read](retrieval_interaction_read.html#retrieval-via-the-ssp) interaction page." %}
+{% include note.html content="When a document/record is to be retrieved via the SSP then the consumer **MUST** percent encode the `content.attachment.url` property, taken from an NRL pointer, and prefix it with the SSP server URL. For more details, see the [Retrieval Read](retrieval_interaction_read.html#retrieval-via-the-ssp) interaction page." %}
 -->
 
 Example Successful Response:
@@ -66,14 +68,14 @@ Example Successful Response:
 {% endhighlight %}
 </div>
 
-Failure: 
+### Failure
 
 The following errors can be triggered when performing this operation:
 
 - [Invalid Request Message](nrl_error_guidance.html#invalid-request-message)
 - [Invalid Parameter](nrl_error_guidance.html#parameters)
 - [Resource Not Found](nrl_error_guidance.html#resource-not-found)
-- [Inactive Document Reference](nrl_error_guidance.html#inactive-documentreference)
+- [Inactive DocumentReference](nrl_error_guidance.html#inactive-documentreference)
 
 ## Explore the NRL
 You can explore and test the read interaction using Swagger in the [NRL API Reference Implementation](https://data.developer.nhs.uk/nrls-ri/index.html).
