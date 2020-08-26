@@ -4,7 +4,7 @@ keywords: development reference
 tags: [development,fhir]
 sidebar: overview_sidebar
 permalink: explore_reference.html
-summary: "Developer Cheat Sheet for the technical build of the NRL API."
+summary: Developer Cheat Sheet for the technical build of the NRL API.
 ---
 
 The [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) resource is the data model used for the pointers held on the NRL. This page outlines the population guidance for the pointer data model, referencing the associated FHIR resources and value sets.
@@ -68,7 +68,7 @@ The URI of the FHIR profile the resource conforms to, indicating the version of 
 
 **Additional Guidance**
 
-The FHIR profile which the pointer conforms to will be indicated in this metadata attribute to enable consumers to support the different versions of the pointer model. Major changes to the pointer model will be reflected in the NRL DocumentReference FHIR profile, using the naming convention `NRL-DocumentReference-[major_version]`. 
+The FHIR profile which the pointer conforms to will be indicated in this metadata attribute to enable consumers to support the different versions of the pointer model. Major changes to the pointer model will be reflected in the NRL `DocumentReference` FHIR profile, using the naming convention `NRL-DocumentReference-[major_version]`. 
 
 {% include note.html content="Pointers conforming to the NRLS-DocumentReference-1 profile will not have this attribute populated." %}
 
@@ -97,7 +97,7 @@ Only pointers with the `current` status will be available to consumers.
 
 ### Pointer Versioning
 
-Metadata used to track the current version of a Pointer.
+Metadata used to track the current version of a pointer.
 
 |Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality|Population Guidance|
 |----|---------|----|-----------|-----|
@@ -113,7 +113,7 @@ Relationship referencing the previous version of a pointer, which has been super
 |----|---------|----|-----------|-----|
 | Related Pointer | `relatesTo` | [BackboneElement](http://hl7.org/fhir/stu3/backboneelement.html) | 0..1 | |
 | | `relatesTo.code` | [code](http://hl7.org/fhir/stu3/datatypes.html#code) | 1..1 | The type of relationship between the documents (pointers). This element is mandatory if `relatesTo` is included and the value **MUST** be `replaces`. |
-| | `relatesTo.target` | Reference | 1..1 | The target of the relationship. This should contain the logical reference to the target DocumentReference held within the NRL using the identifier property of this [Reference Data Type](https://www.hl7.org/fhir/references.html#logical). |
+| | `relatesTo.target` | Reference | 1..1 | The target of the relationship. This should contain the logical reference to the target `DocumentReference` held within the NRL using the identifier property of this [Reference Data Type](https://www.hl7.org/fhir/references.html#logical). |
 
 **Additional Guidance**
 
@@ -269,7 +269,7 @@ An extension is used to represent the information stability. The information sta
 
 ### JSON Example
 
-A JSON example of a DocumentReference resource is displayed below:
+A JSON example of a `DocumentReference` resource is displayed below:
 
 <div class="github-sample-wrapper scroll-height-350">
 {% highlight json %}
@@ -279,7 +279,7 @@ A JSON example of a DocumentReference resource is displayed below:
 
 ### XML Example
 
-An XML example of a DocumentReference resource is displayed below:
+An XML example of a `DocumentReference` resource is displayed below:
 
 <div class="github-sample-wrapper scroll-height-350">
 {% highlight xml %}
