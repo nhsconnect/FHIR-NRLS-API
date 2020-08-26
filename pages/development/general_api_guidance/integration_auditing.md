@@ -55,7 +55,7 @@ Providers **MUST** record the following in audit logs for each NRL maintenance i
 
 |For requests to the NRL|For responses from the NRL|
 |-----------------------|--------------------------|
-|<ul><li>ASID</li><li>HTTP Request Body (for POST and PATCH only)</li><li>HTTP Request URL</li><li>HTTP Verb</li><li>ODS Code</li><li>NHS Number</li><li>Request Datetime</li><li>User ID</li></ul>|<ul><li>HTTP Response Body</li><li>HTTP Status Code</li><li>Response Datetime</li></ul>|
+|ASID<br />HTTP Request Body (for POST and PATCH only)<br />HTTP Request URL<br />HTTP Verb<br />ODS Code<br />NHS Number<br />Request Datetime<br />User ID|HTTP Response Body<br />HTTP Status Code<br />Response Datetime|
 
 ### Provider Document/Record Retrieval
 
@@ -63,23 +63,23 @@ Providers **MUST** record the following in audit logs for each record retrieval 
 
 |For requests from consumers|
 |---------------------------|
-|<ul><li>ASID</li><li>HTTP Request URL</li><li>HTTP Status Code</li><li>ODS Code</li><li>Record version or equivalent</li><li>Request Datetime</li><li>Trace ID</li><li>User ID</li></ul>|
+|ASID<br />HTTP Request URL<br />HTTP Status Code<br />ODS Code<br />Record version or equivalent<br />Request Datetime<br />Trace ID<br />User ID|
 
 ### Consumer Pointer Search/Read
 
-Consumers **MUST** record the following in audit logs for each NRL search interaction (GET).
+Consumers **MUST** record the following in audit logs for each NRL search interaction (GET):
 
 |For requests to the NRL|For responses from the NRL|
 |-----------------------|--------------------------|
-|<ul><li>ASID</li><li>HTTP Request URL</li><li>HTTP Verb</li><li>ODS Code</li><li>NHS Number</li><li>Request Datetime</li><li>User ID</li></ul>|<ul><li>HTTP Response Body</li><li>HTTP Status Code</li><li>Response Datetime</li></ul>|
+|ASID<br />HTTP Request URL<br />HTTP Verb<br />ODS Code<br />NHS Number<br />Request Datetime<br />User ID|HTTP Response Body<br />HTTP Status Code<br />Response Datetime|
 
 ### Consumer Document/Record Retrieval
 
-Consumers **MUST** record the following in audit logs for each document/record retrieval request to a provider via the SSP.
+Consumers **MUST** record the following in audit logs for each document/record retrieval request to a provider via the SSP:
 
 |For requests to providers|For responses from providers|
 |-------------------------|----------------------------|
-|<ul><li>ASID</li><li>HTTP Request URL</li><li>NHS Number</li><li>ODS Code</li><li>Pointer Logical ID</li><li>Request Datetime</li><li>Trace ID</li><li>User ID</li></ul>|<ul><li>HTTP Response Body (if the request failed)</li><li>HTTP Status Code</li><li>Response Datetime</li></ul>|
+|ASID<br />HTTP Request URL<br />NHS Number<br />ODS Code<br />Pointer Logical ID<br />Request Datetime<br />Trace ID<br />User ID|HTTP Response Body (if the request failed)<br />HTTP Status Code<br />Response Datetime|
 
 ### Audit Log Attributes
 
