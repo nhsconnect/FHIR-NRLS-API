@@ -37,7 +37,7 @@ Where a consuming system is making a request on behalf of a healthcare professio
 |`reason_for_request`|Fixed value: `directcare`.|
 |`requesting_patient`|The claim **MUST NOT** be included.|
 
-#### Example: Healthcare Professional Access
+#### Example: Healthcare professional access
 
 ```json
 {
@@ -114,7 +114,7 @@ Where an interaction is performed without a user being present, the following cl
 |`requesting_user`|The claim **MUST NOT** be included.|
 |`requesting_patient`|The claim **MUST NOT** be included.|
 
-#### Example: Unattended Access
+#### Example: Unattended access
 
 ```json
 {
