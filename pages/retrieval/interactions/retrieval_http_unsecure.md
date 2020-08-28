@@ -4,50 +4,47 @@ keywords: structured rest documentreference
 tags: [for_consumers,record_retrieval]
 sidebar: accessrecord_rest_sidebar
 permalink: retrieval_http_unsecure.html
-summary: Requirements and guidance for retrieval Interactions via the public web.
+summary: Requirements and guidance for retrieval interactions via the public web.
 ---
 
-The public web retrieval interaction is intended to support a simple use case where the pointer, tells a consumer, where to go to get publically available information, currently only contact details for the provider organisation.
+The public web retrieval interaction is intended to support a simple use case where the pointer informs the consumer where to go, to get publically available information.
 
-This serves two purposes
+This serves two purposes:
+- it indicates the organisation has a relationship with the patient.
+- it enables the consumer to contact the provider directly to retrieve patient information via human-to-human interaction.
 
-- to identifies that the organisation has a relationship with the patient
-- to enable the consumer to contact the provider and retrieve the patient information via a human to human interaction
-
+{% include note.html content="Currently, the only information delivered via this retrieval method is contact details for provider organisations." %}
 
 ## Retrieval Endpoint
 
-This retrieval interaction requires the provider to make available a publically accessible web facing endpoint, which MUST support the [HTTP(S) GET](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3) request.
+This retrieval interaction requires the provider to make available a publically accessible web facing endpoint, which **MUST** support the [HTTP(S) GET](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.3) request.
 
 The provider will include the endpoint in the NRL pointer with the appropriate format code to indicate the public web retrieval mechanism.
 
-The endpoint **MUST NOT** require any additional parameters or headers to be passed with the request.
-
+The endpoint **MUST NOT** require any custom parameters or headers to be passed with the request.
 
 ### Security
 
-As the information is publically accessible over the web, the retrieval of the information **MUST NOT :**
-- require any additional authentication and authorization
-- required the consumer to send the request via SSP
+As the information is publically accessible over the web, the retrieval of the information **MUST NOT**:
+- require any additional authentication or authorization.
+- require the consumer to send the request via SSP.
 
-The consumer **MUST NOT** attempt to use the SSP for this request and should use just the url in the pointer to make the request directly to the provider.
-
+The consumer **MUST NOT** attempt to use the SSP to access the address contained within the pointer, instead, it should be called directly.
 
 ## Retrieval Formats
 
-The publically available information **MUST** be accessible as either:
+The publically available information **MUST** be in a supported format, identified by the MIME type `content.attachment.contentType` field within the pointer:
 
-- HTML
-- a PDF
+|Format|`content.attachment.contentType`|
+|------|--------------------------------|
+|HTML|text/html|
+|PDF|application/pdf|
 
-The pointer to the publically available information **MUST** contain a MIME type within the `content.attachment.contentType` identifying if the information is available as HTML or PDF.
+The content-type of the returned information **MUST** be in the MIME type as described on the pointer metadata (or as requested if multiple MIME types are supported).
 
-The content-type of the returned information **MUST** be in the MIME type as described on the pointer metadata, or as requested if multiple MIME types are supported.
+## Pointer Examples
 
-
-## Example Pointer
-
-**PDF Contact Details**
+### PDF contact details
 
 ```xml
 <DocumentReference xmlns="http://hl7.org/fhir">
@@ -116,9 +113,7 @@ The content-type of the returned information **MUST** be in the MIME type as des
 </DocumentReference>
 ```
 
-
-
-**HTML Contact Details**
+### HTML contact details
 
 ```xml
 <DocumentReference xmlns="http://hl7.org/fhir">
@@ -186,4 +181,3 @@ The content-type of the returned information **MUST** be in the MIME type as des
     </context>
 </DocumentReference>
 ```
-
