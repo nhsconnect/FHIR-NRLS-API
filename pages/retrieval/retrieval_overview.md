@@ -56,7 +56,7 @@ Retrieval data models refer to the structure in which information can be shared.
 
 Structured data formats will be versioned and where any breaking changes to a data structure are required, a new format will be created with an increment to the version number. The NRL supports multiple versions of data structures.
 
-# Supported Retrieval Formats
+## Supported Retrieval Formats
 
 The following table describes the formats that are currently supported within NRL pointers:
 
