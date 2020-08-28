@@ -209,7 +209,7 @@ The following requirements **MUST** be met when a citizen is given access to ano
       <ul>
         <li>Clinician <b>MUST</b> be able to mark part of a child's record as restricted.</li>
         <li>When a parent accesses the child's record, the restricted part of the record <b>MUST NOT</b> be displayed.</li>
-        <li>If the child has access to their own record, they <b>MUST</b> be able to access the whole record, including that which has been restricted from their parent(s).</li>
+        <li>If the child has access to their own record, they <b>MUST</b> be able to access their whole record, including records previously restricted by their parent(s).</li>
       </ul>
     </td>
   </tr>
