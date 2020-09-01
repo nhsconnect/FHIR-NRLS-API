@@ -35,13 +35,13 @@ An example of this might be:
 
 To enable the provider to return appropriate information, all consumers wishing to retrieve data via the SSP **MUST** send the request with an appropriate JSON Web Token (JWT) identifying the intended audience. The requirements for the JWT are on the [JSON Web Token Guidance](jwt_guidance.html) page.
 
-## Retrieval Response 
+## Retrieval Response
 
 When successfully responding to a request the provider **MUST** return:
 - an HTTP `200` **OK** status code.
 - a payload conforming to the requirements on this page.
 
-## Retrieved Data Structure 
+## Retrieved Data Structure
 
 The response payload will consist of a `collection` [FHIR Bundle](http://hl7.org/fhir/STU3/StructureDefinition/Bundle). The `Bundle` will include a [FHIR List](http://hl7.org/fhir/STU3/list.html) resource as the first entry, which is used to manage the collection of resources.
 
@@ -49,11 +49,11 @@ The diagram below shows the referencing between FHIR resources within the respon
 
 <img alt="Allergy information FHIR Bundle diagram." src="images/retrieval/formats/allergy_list_fhir_stu3.png" style="width:100%;max-width: 100%;">
  
-The Bundle **MUST** contain the following resources:
+The `Bundle` **MUST** contain the following resources:
 
 |Resource|Cardinality|Description|
 |--------|-----------|-----------|
-| [`List`](http://hl7.org/fhir/STU3/list.html) | 1..1 | Container for list of allergies for the patient.|
+| [`List`](http://hl7.org/fhir/STU3/list.html) | 1..1 | Container for list of allergies for the patient. |
 | [`CareConnect-AllergyIntolerance-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-AllergyIntolerance-1) | 0..* | Allergies listed will be included in the bundle as AllergyIntolerance resources.<br /><br />The cardinality allows for zero allergies to be included to allow for where pointer maintenance may not align with data management. For example: if pointers are maintained as an overnight batch process, but an allergy could be removed at any time in the day, this may result in a pointer pointing to an empty list.<br /><br />Providers **MUST** remove pointers which will not return any allergy information, as soon as possible. |
 | [`CareConnect-Patient-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1)| 1..1 | The patient resource identifies the patient the allergies are related to. |
 | [`CareConnect-Organization-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1) | 1..* | The Organization resources reference by the List resource will represent the organisation sharing the information and **MUST** contain contact details for use in relation to data quality issues. References between the resources will put any other included Organization resources in context. |
