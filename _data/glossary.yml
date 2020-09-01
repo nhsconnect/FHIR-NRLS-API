@@ -71,7 +71,7 @@
   definition: "A grouping that contains one or more Record Types."
 
 - term: Record Type
-  definition: "The clinical type of a record as defined by SNOMED-CT code. The clinical types permitted on the NRL are defined by a controlled list."
+  definition: "The clinical type of a record as defined by a SNOMED CT code. The clinical types permitted on the NRL are defined by a controlled list."
 
 - term: REST
   definition: "_Representational State Transfer_ is a protocol based upon a network of Web resources (a virtual state-machine) where the user progresses through the application by selecting links, such as /user/tom, and operations such as GET or DELETE (state transitions), resulting in the next resource (representing the next state of the application) being transferred to the user for their use. Typically preferred due to it being \"stateless\" so no information about the client session needs to be maintained on the server."
