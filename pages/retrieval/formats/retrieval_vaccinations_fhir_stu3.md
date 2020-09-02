@@ -74,7 +74,7 @@ The following requirements and resource population guidance **MUST** be followed
 
 ### [Bundle](http://hl7.org/fhir/STU3/StructureDefinition/Bundle)
 
-The Bundle resource is the container for the record and **MUST** conform to the `Bundle` base FHIR profile and the additional population guidance as per the table below. The first entry within the `Bundle` **MUST** be the mandatory `List` resource. 
+The `Bundle` resource is the container for the record and **MUST** conform to the `Bundle` base FHIR profile and the additional population guidance as per the table below. The first entry within the `Bundle` **MUST** be the mandatory `List` resource. 
 
 | Resource Cardinality | 1..1 |
 
@@ -149,7 +149,7 @@ The Practitioner resources included in the bundle SHALL conform to the `CareConn
 
 | Resource Cardinality | 0..* |
 
-**Note:** Information Governance should be considered before including practitioner’s personal data within shared information. 
+**Note:** Information Governance should be considered before including practitioner's personal data within shared information. 
 
 ### [CareConnect-PractitionerRole-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-PractitionerRole-1)
 
