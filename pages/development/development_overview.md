@@ -44,7 +44,7 @@ NHS Numbers used within any interaction with the NRL, **MUST** be traced and ver
 Verification of an NHS Number can be achieved using:
 - a fully PDS Spine-compliant system (HL7v3).
 - a [Spine Mini Services Provider (HL7v3)](https://nhsconnect.github.io/spine-smsp/).
-- a [Demographics Batch Service (DBS)](https://developer.nhs.uk/library/systems/demographic-batch-service-dbs/) batch-traced record (CSV).
+- a [Demographics Batch Service (DBS)](https://digital.nhs.uk/services/national-back-office-for-the-personal-demographics-service/demographics-batch-service-bureau) batch-traced record (CSV).
 
 The option of using a DBS service is for provider systems only; consumers performing a search operation **MUST** use either a full PDS Spine compliant system or a Spine Mini Services Provider.
 
@@ -63,10 +63,10 @@ The NRL supports the following MIME types for NRL interactions:
 
 **JSON**
 - `application/fhir+json`
-- `application/json+fhir`  
+- `application/json+fhir`
 - `application/json`
 - `text/json`
-  
+
 ### Response Format
 
 The NRL supports the following methods to allow the client to specify the response format by its MIME type:
