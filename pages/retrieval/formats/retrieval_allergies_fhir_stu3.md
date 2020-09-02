@@ -145,7 +145,7 @@ The Practitioner resources included in the bundle SHALL conform to the `CareConn
 
 | Resource Cardinality | 0..* |
 
-**Note:** Information Governance should be considered before including practitioner’s personal data within shared information.
+**Note:** Information Governance should be considered before including practitioner's personal data within shared information.
 
 ### [CareConnect-PractitionerRole-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-PractitionerRole-1)
 
