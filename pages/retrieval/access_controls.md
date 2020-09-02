@@ -25,7 +25,7 @@ Consumers **MUST** apply appropriate RBAC governance to manage access to differe
 
 # Citizen Access
 
-Where the consuming system is making a request for information on behalf of a citizen, the system **MUST** have authenticated the citizen to the `DCB3051` Identity Verification and Authentication Standard for Digital Health and Care Services.
+Where the consuming system is making a request for information on behalf of a citizen, the system **MUST** have authenticated the citizen to the [DCB3051 Identity Verification and Authentication Standard for Digital Health and Care Services](https://digital.nhs.uk/data-and-information/information-standards/information-standards-and-data-collections-including-extractions/publications-and-notifications/standards-and-collections/dcb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services).
 
 The user details **MUST** be included in the JWT as specified on the [JSON Web Token Guidance](jwt_guidance.html) page.
 
