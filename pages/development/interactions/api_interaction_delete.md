@@ -84,9 +84,9 @@ To accomplish this, the provider issues an HTTP DELETE as shown:
 `DELETE [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&identifier=[system]%7C[value]`
 </div>
 
-- *[nhsNumber]* - The NHS number of the patient related to the DocumentReference(s).
-- *[system]* - The namespace of the `masterIdentifier` value associated with the DocumentReference(s).
-- *[value]* - The value of the `masterIdentifier` associated with the DocumentReference(s).
+- *[nhsNumber]* - The NHS Number of the patient related to the DocumentReference.
+- *[system]* - The namespace of the `masterIdentifier` value associated with the DocumentReference.
+- *[value]* - The value of the `masterIdentifier` associated with the DocumentReference.
 
 <div class="language-http highlighter-rouge">
 <pre class="highlight">
