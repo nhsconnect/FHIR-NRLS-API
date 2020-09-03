@@ -55,7 +55,7 @@ A search is made using either the `_id` or `subject` search parameter.
 
 ### **`_id`**
 
-The `_id` search parameter refers to the logical ID of the `DocumentReference` resource and can be used when the search context specifies the `DocumentReference` resource type.
+The `_id` search parameter refers to the logical ID of the `DocumentReference` resource.
 
 Functionally this search is the equivalent to a simple pointer read operation.
 
