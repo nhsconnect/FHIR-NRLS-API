@@ -21,7 +21,7 @@ Uniquely identifies the pointer within the NRL. Used by providers to supersede, 
 
 **Additional Guidance**
 
-The format of the pointer identifier (ID) is under the control of the NRL service and consumers should treat the identifier as an opaque. In other words, the client should not make assumptions about the structure of the identifier.
+The format of the pointer identifier (ID) is under the control of the NRL service and the client should not make assumptions about the structure of the identifier.
 
 If the pointer was ever to be migrated to a different NRL service instance then it is possible that its ID might change to avoid clashes with pointers on the target NRL service.
 
@@ -242,8 +242,6 @@ Describes the type of data such that the consumer can pick an appropriate mechan
 |Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality|Population Guidance|
 |----|---------|----|-----------|-----|
 | Retrieval MIME type | `content.attachment.contentType` | [code](http://hl7.org/fhir/stu3/datatypes.html#code) | 1..1 | For retrieval of unstructured documents where more than one MIME type is supported, there should be a reference for each MIME type included in the pointer. |
-
-<!-- TO DO - MIME type guidance for retrieval of unstructured documents -->
 
 ### Information Stability
 
