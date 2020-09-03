@@ -52,7 +52,7 @@ The following table describes the retrieval interactions currently supported wit
 
 # Retrieval Data Models
 
-Retrieval data models refer to the structure in which information can be shared. The NRL pointers can refer to information which can be retrieved in a range of formats, including both unstructured documents and structured data, as described on the [Record Type Overview](record_type_overview.html) page.
+Retrieval data models refer to the structure in which information can be shared. The NRL pointers can refer to information which can be retrieved in a range of formats, including both unstructured documents and structured data, as described on the [Information Sharing](information_sharing_overview.html#information-formats) page.
 
 Structured data formats will be versioned and where any breaking changes to a data structure are required, a new format will be created with an increment to the version number. The NRL supports multiple versions of data structures.
 
