@@ -42,7 +42,7 @@ The endpoint URL included in the NRL pointer **MUST** require no additional/cust
 When successfully responding to an unstructured document request, the provider **MUST** return:
 
 - an HTTP `200` **OK** status code.
-- a payload conforming to the format and MIME included in the pointer reference. The unstructured document **MUST NOT** be wrapped in a structured data model such as a [FHIR Binary](https://www.hl7.org/fhir/binary.html) resource.
+- a payload conforming to the format and MIME included in the pointer reference. The unstructured document **MUST NOT** be wrapped in a structured data model such as a [FHIR Binary](https://www.hl7.org/fhir/STU3/binary.html) resource.
 
 ## Citizen vs Health Care Professional Request
 
