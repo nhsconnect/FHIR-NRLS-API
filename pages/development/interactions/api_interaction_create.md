@@ -34,12 +34,12 @@ Provider API create requests support the following HTTP request headers:
 `POST [baseUrl]/STU3/DocumentReference`
 </div>
 
-Provider systems:
+Provider systems **MUST**:
 
-- **MUST** construct and send a new pointer (DocumentReference) resource that conforms to the `NRL-DocumentReference-1` profile and submit this to the NRL using the FHIR RESTful [create](https://www.hl7.org/fhir/stu3/http.html#create) interaction.
-- **MUST** include all of the mandatory data-elements contained in the `NRL-DocumentReference-1` profile when constructing a DocumentReference. The mandatory data-elements are detailed on the [Developer FHIR Resource](explore_reference.html) page.
-- **MUST** follow all population guidance as outlined on the [Developer FHIR Resource](explore_reference.html) page when constructing a DocumentReference. 
-- **MUST** only create pointers for records where they are the pointer owner (custodian). 
+- construct and send a new pointer (DocumentReference) resource that conforms to the `NRL-DocumentReference-1` profile and submit this to the NRL using the FHIR RESTful [create](https://www.hl7.org/fhir/stu3/http.html#create) interaction.
+- include all of the mandatory data-elements contained in the `NRL-DocumentReference-1` profile when constructing a DocumentReference. The mandatory data-elements are detailed on the [Developer FHIR Resource](explore_reference.html) page.
+- follow all population guidance as outlined on the [Developer FHIR Resource](explore_reference.html) page when constructing a DocumentReference. 
+- only create pointers for records where they are the pointer owner (custodian). 
 
 For all create requests the `custodian` ODS code in the DocumentReference resource **MUST** be affiliated with the `Client System ASID` value in the `fromASID` HTTP request header sent to the NRL.
 
@@ -62,27 +62,32 @@ For all create requests the `custodian` ODS code in the DocumentReference resour
 
 ### Success
 
-A successful execution of the `create` interaction will:
-- return a `201` **CREATED** HTTP status code confirming the entry has been successfully created in the NRL.
-- return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Spine Operation Outcome'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) FHIR resource (see the table below).
-- return an HTTP `Location` response header containing the full resolvable URL to the newly created 'single' DocumentReference.
+A successful execution of the `create` interaction will return:
+- a `201` **CREATED** HTTP status code confirming the entry has been successfully created in the NRL.
+- an HTTP `Location` response header containing the full resolvable URL to the newly created 'single' DocumentReference:
   - The URL will contain the 'server' assigned `logical id` of the new DocumentReference resource.
   - The URL format will be: `https://[host]/[path]/[id]`. 
   - An example `Location` response header: 
     - `https://psis-sync.national.ncrs.nhs.uk/DocumentReference/297c3492-3b78-11e8-b333-6c3be5a609f5-54477876544511209789`
+- a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Spine Operation Outcome'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) FHIR resource:
+  - `OperationOutcome.id` - a UUID for this OperationOutcome.
+  - `OperationOutcome.issue.details.text` - a Spine internal message UUID which can be used to identify the client's create transaction within Spine. A client system SHOULD reference this UUID in any related incidents raised with the [National Service Desk](https://digital.nhs.uk/services/spine/spine-mini-service-provider-for-personal-demographics-service/service-management-live-service). The UUID will be used to retrieve log entries that relate to a specific client transaction.
+  - An example response body (XML):
+    - <div class="github-sample-wrapper scroll-height-350">
+        {% highlight json %}
+        {% include /examples/create_response.xml  %}
+        {% endhighlight %}
+      </div>
+  - An example response body (JSON):
+    - <div class="github-sample-wrapper scroll-height-350">
+        {% highlight json %}
+        {% include /examples/create_response.json  %}
+        {% endhighlight %}
+      </div>
 
 When a resource has been created it will have a `versionId` of 1.
 
-{% include note.html content="The versionId is an integer that is assigned and maintained by the NRL server. When a new DocumentReference is created the server assigns it a versionId of 1. The versionId will be incremented during an update or supersede transaction. See [API Interaction - Update](api_interaction_update.html) and [API Interaction - Supersede](api_interaction_supersede.html) for more details on these transactions.<br/><br/> The NRL server will ignore any versionId value sent by a client in a create interaction. Instead, the server will ensure that the newly assigned versionId adheres to the rules laid out above. 
-" %}
-
-The following table summarises the `create` interaction HTTP response code and the values expected to be conveyed in the successful response body `OperationOutcome` payload:
-
-| HTTP Code | issue-severity | issue-type | Details.Code | Details.Display | Details.Text |Diagnostics |
-|-----------|----------------|------------|--------------|-----------------|-------------------|
-|201|information|informational|RESOURCE_CREATED|New resource created | Spine message UUID |Successfully created resource DocumentReference|
-
-{% include note.html content="Upon successful creation of a pointer the NRL service returns in the response payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's create transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the [National Service Desk](https://digital.nhs.uk/services/spine/spine-mini-service-provider-for-personal-demographics-service/service-management-live-service). The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
+{% include note.html content="The versionId is an integer that is assigned and maintained by the NRL server. When a new DocumentReference is created the server assigns it a versionId of 1. The versionId will be incremented during an update or supersede transaction. See [API Interaction - Update](api_interaction_update.html) and [API Interaction - Supersede](api_interaction_supersede.html) for more details on these transactions.<br/><br/> The NRL server will ignore any versionId value sent by a client in a create interaction. Instead, the server will ensure that the newly assigned versionId adheres to the rules laid out above." %}
 
 ### Failure
 
