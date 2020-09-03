@@ -69,25 +69,29 @@ A successful execution of the `create` interaction will return:
   - The URL format will be: `https://[host]/[path]/[id]`. 
   - An example `Location` response header: 
     - `https://psis-sync.national.ncrs.nhs.uk/DocumentReference/297c3492-3b78-11e8-b333-6c3be5a609f5-54477876544511209789`
-- a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Spine Operation Outcome'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) FHIR resource:
+- a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Spine Operation Outcome'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) FHIR resource (see later for examples):
   - `OperationOutcome.id` - a UUID for this OperationOutcome.
   - `OperationOutcome.issue.details.text` - a Spine internal message UUID which can be used to identify the client's create transaction within Spine. A client system SHOULD reference this UUID in any related incidents raised with the [National Service Desk](https://digital.nhs.uk/services/spine/spine-mini-service-provider-for-personal-demographics-service/service-management-live-service). The UUID will be used to retrieve log entries that relate to a specific client transaction.
-  - An example response body (XML):
-    - <div class="github-sample-wrapper scroll-height-350">
-        {% highlight json %}
-        {% include /examples/create_response.xml  %}
-        {% endhighlight %}
-      </div>
-  - An example response body (JSON):
-    - <div class="github-sample-wrapper scroll-height-350">
-        {% highlight json %}
-        {% include /examples/create_response.json  %}
-        {% endhighlight %}
-      </div>
 
 When a resource has been created it will have a `versionId` of 1.
 
 {% include note.html content="The versionId is an integer that is assigned and maintained by the NRL server. When a new DocumentReference is created the server assigns it a versionId of 1. The versionId will be incremented during an update or supersede transaction. See [API Interaction - Update](api_interaction_update.html) and [API Interaction - Supersede](api_interaction_supersede.html) for more details on these transactions.<br/><br/> The NRL server will ignore any versionId value sent by a client in a create interaction. Instead, the server will ensure that the newly assigned versionId adheres to the rules laid out above." %}
+
+#### Example success response body (XML)
+
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight json %}
+{% include /examples/create_response.xml %}
+{% endhighlight %}
+</div>
+
+#### Example success response body (JSON)
+
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight json %}
+{% include /examples/create_response.json %}
+{% endhighlight %}
+</div>
 
 ### Failure
 
