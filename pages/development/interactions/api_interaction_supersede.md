@@ -53,7 +53,7 @@ The target property within the `relatesTo` attribute must be either a reference 
 
 ## Supersede by Logical ID
 
-To supersede by logical ID, the `relatesTo.target` attribute on the `DocumentReference` should be a FHIR reference property i.e. an absolute literal reference to a `DocumentReference` held within NRL. The value should be a URL in the form of read by logical ID.
+To supersede by logical ID, the `relatesTo.target` attribute on the `DocumentReference` should be a FHIR reference property i.e. an absolute literal reference to a `DocumentReference` held within NRL.
 
 Example of a `DocumentReference.relatesTo` property populated using a FHIR reference.
 
