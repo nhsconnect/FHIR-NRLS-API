@@ -119,7 +119,7 @@ entries:
           - title: Unstructured Document
             url: /retreival_unstructured_document.html
             output: web
-          - title: Allergies List - FHIR STU3 v1
+          - title: Allergy List - FHIR STU3 v1
             url: /retrieval_allergies_fhir_stu3.html
             output: web
           - title: Observation List - FHIR STU3 v1
