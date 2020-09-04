@@ -82,13 +82,13 @@ Provider systems **MUST** construct a [FHIRPath PATCH Parameters resource](https
 
 The FHIRPath PATCH operation must be encoded in a `Parameters` resource as follows:
 - A single operation as a `parameter` named "operation".
-- The single `parameter` has a series of mandatory parts, with required values as listed in  following table:
+- The single `parameter` has a series of mandatory parts, with required values as listed in following table:
 
-|Parameter|Type|Required Value|
-|---------|----|--------------|
-|`Type`|code|`replace`|
-|`Path`|string|`DocumentReference.status`|
-|`Value`|string|`entered-in-error`|
+    |Parameter|Type|Required Value|
+    |---------|----|--------------|
+    |`Type`|code|`replace`|
+    |`Path`|string|`DocumentReference.status`|
+    |`Value`|string|`entered-in-error`|
 
 Only the first `parameter` within the `Parameters` resource will be used to perform a PATCH. Any additional `parameter`s included within the request will not be processed.
 
@@ -114,16 +114,40 @@ Only the first `parameter` within the `Parameters` resource will be used to perf
 
 A successful execution of the `update` interaction will:
 - return a `200` **OK** HTTP status code confirming the entry has been successfully updated in the NRL.
-- return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Spine Operation Outcome'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) FHIR resource (see the table below).
+- return a response body containing an `OperationOutcome` resource (see below for full details).
 - increment the resource's `versionId` by 1.
 
-The following table summarises the `update` interaction HTTP response code and values expected to be conveyed in the successful response body `OperationOutcome` payload:
+#### OperationOutcome
 
-|HTTP Code|issue-severity|issue-type|Details.Code|Details.Display|Details.Text|Diagnostics|
-|---------|--------------|----------|------------|---------------|------------|-----------|
-|200|information|informational|RESOURCE_UPDATED|Resource has been updated|Spine message UUID|Successfully updated resource DocumentReference|
+The `OperationOutcome` resource in the response body will conform to the [Spine-OperationOutcome-1](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) FHIR resource:
 
-{% include note.html content="Upon successful update of a pointer the NRL service returns in the response payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's update transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the [National Service Desk](https://digital.nhs.uk/services/spine/spine-mini-service-provider-for-personal-demographics-service/service-management-live-service). The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
+|Element|Content|
+|-------|-------|
+|`id`|A UUID for this `OperationOutcome`.|
+|`meta.profile`|Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1`|
+|`issue.severity`|Fixed value: `information`|
+|`issue.code`|Fixed value: `informational`|
+|`issue.details.coding.system`|Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1`|
+|`issue.details.coding.code`|Fixed value: `RESOURCE_UPDATED`|
+|`issue.details.coding.display`|Fixed value: `Resource has been updated`|
+|`issue.details.text`| A Spine internal message UUID which can be used to identify the client’s create transaction within Spine. A client system SHOULD reference this UUID in any related incidents raised with the [National Service Desk](https://digital.nhs.uk/services/spine/spine-mini-service-provider-for-personal-demographics-service/service-management-live-service). The UUID will be used to retrieve log entries that relate to a specific client transaction. |
+|`issue.diagnostics`|Dynamic value: `Successfully updated resource DocumentReference: [URL]`|
+
+#### Example success response body (XML)
+
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight json %}
+{% include /examples/update_response.xml %}
+{% endhighlight %}
+</div>
+
+#### Example success response body (JSON)
+
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight json %}
+{% include /examples/update_response.json %}
+{% endhighlight %}
+</div>
 
 ### Failure
 
