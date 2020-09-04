@@ -241,7 +241,7 @@ Describes the type of data such that the consumer can pick an appropriate mechan
 
 |Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality|Population Guidance|
 |----|---------|----|-----------|-----|
-| Retrieval MIME type | `content.attachment.contentType` | [code](http://hl7.org/fhir/stu3/datatypes.html#code) | 1..1 | For retrieval of unstructured documents where more than one of the [supported MIME types](retreival_unstructured_document.html#content-type) are available, there should be a reference for each MIME type included in the pointer. |
+| Retrieval MIME type | `content.attachment.contentType` | [code](http://hl7.org/fhir/stu3/datatypes.html#code) | 1..1 | The MIME type of the content available at the `content.attachment.url` (e.g. [unstructured document supported MIME types](retreival_unstructured_document.html#content-type).)<br /><br />Where more than one data format is available for the content, there will be multiple `content` entries, one for each MIME type (which may share the same URL). |
 
 ### Information Stability
 
