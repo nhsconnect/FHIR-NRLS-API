@@ -13,7 +13,7 @@ Consumers are required to ensure an appropriate level of authentication and auth
 
 # Healthcare Professional Access
 
-Where the consuming system is making a request for a healthcare professional access to information, the system **MUST** have authenticated the user using:
+Where the consuming system is making a request on behalf of a healthcare professional, the system **MUST** have authenticated the user using:
 
 - NHS Identity
 - National Smartcard Authentication
