@@ -15,9 +15,9 @@ All pointers which allow for retrieval in the `Allergy List FHIR STU3 v1` record
 
 The NRL pointer [`format`](explore_reference.html#retrieval-format) code for this structure is as follows: 
 
-|Code|Display|
-|----|-------|
-| urn:nhs-ic:fhir:stu3:allergy-intolerance-list:1 | Allergy List FHIR STU3 v1 |
+|System|Code|Display|
+|------|----|-------|
+| https://fhir.nhs.uk/STU3/CodeSystem/NRL-FormatCode-1 | urn:nhs-ic:fhir:stu3:allergy-intolerance-list:1 | Allergy List FHIR STU3 v1 |
 
 ## Retrieval Interaction
 
