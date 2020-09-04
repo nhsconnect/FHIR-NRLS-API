@@ -85,7 +85,7 @@ A failed request:
 
 ## Authentication and Authorisation
 
-Systems that interact with the SSP **MUST** meet the secure connection requirements of the SSP. Following completion of assurance, providers will be supplied with an [X.509 Certificate](https://tools.ietf.org/html/rfc5280){:target='_blank'}.
+Systems that interact with the SSP **MUST** meet the secure connection requirements of the SSP. Following completion of [assurance](assure.html), providers will be supplied with an [X.509 Certificate](https://tools.ietf.org/html/rfc5280){:target='_blank'}.
 
 Consumer systems **MUST** ensure users are authenticated and authorised, using an appropriate access control mechanism, before retrieving information. HTTPS requests to the SSP for retrieving records and documents will include a [JSON Web Token (JWT)](jwt_guidance.html), which can be used in provider systems for auditing purposes. Providers are not required to perform any further authentication or authorisation.
 
@@ -95,7 +95,7 @@ More details can be found on the [NRL Security Guidance](security_guidance.html)
 
 Endpoints exposed by a provider for retrieval via the SSP must be registered on the Spine Directory Service (SDS). The requirements for registering endpoints on SDS are as follows:
 
-1. The FQDN **MUST** be of the form `nrl-[ODS_code].[supplier].thirdparty.nhs.uk`, where the ODS code can be for the supplier or information owner organisation, depending on the deployment. Following completion of assurance, providers will be supplied with an FQDN.
+1. The FQDN **MUST** be of the form `nrl-[ODS_code].[supplier].thirdparty.nhs.uk`, where the ODS code can be for the supplier or information owner organisation, depending on the deployment. Following completion of [assurance](assure.html), providers will be supplied with an FQDN.
 2. Every system **MUST** have a unique ASID for each organisation. For example, the same system deployed into three organisations would be represented by three unique ASIDs. See below for further details.
 3. All interactions with the SSP **MUST** be over port `443`.
 4. Endpoints **MUST NOT** include explicit port declarations (e.g. `:443`).
