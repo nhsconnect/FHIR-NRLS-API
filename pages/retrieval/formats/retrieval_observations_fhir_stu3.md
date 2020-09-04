@@ -29,9 +29,9 @@ For example, in an observation about a blood test result, the observation will c
 
 The NRL pointer `format` code for this structure is as follows:
 
-|Code|Display|
-|----|-------|
-| urn:nhs-ic:fhir:stu3:observation-list:1 | Observation List FHIR STU3 v1 |
+|System|Code|Display|
+|------|----|-------|
+| https://fhir.nhs.uk/STU3/CodeSystem/NRL-FormatCode-1 | urn:nhs-ic:fhir:stu3:observation-list:1 | Observation List FHIR STU3 v1 |
 
 ## Retrieval Interaction
 
