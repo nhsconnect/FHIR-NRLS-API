@@ -17,9 +17,9 @@ Support for unstructured documents is intended to share existing document and re
 
 The NRL pointer [`format`](explore_reference.html#retrieval-format) code for this retrieval format is as follows:
 
-|Code|Display|
-|----|-------|
-| urn:nhs-ic:unstructured | Unstructured Document |
+|System|Code|Display|
+|------|----|-------|
+| https://fhir.nhs.uk/STU3/CodeSystem/NRL-FormatCode-1 | urn:nhs-ic:unstructured | Unstructured Document |
 
 ### Content-Type
 
