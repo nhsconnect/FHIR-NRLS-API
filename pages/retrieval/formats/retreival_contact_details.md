@@ -21,9 +21,9 @@ There are three steps to `Contact Details` information retrieval:
 
 The NRL pointer [`format`](explore_reference.html#retrieval-format) code for this retrieval format is as follows:
 
-|Code|Display|
-|----|-------|
-| urn:nhs-ic:record-contact | Contact details (HTTP Unsecured) |
+|System|Code|Display|
+|------|----|-------|
+| https://fhir.nhs.uk/STU3/CodeSystem/NRL-FormatCode-1 | urn:nhs-ic:record-contact | Contact details (HTTP Unsecured) |
 
 ## Retrieval Interaction
 
