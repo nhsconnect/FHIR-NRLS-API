@@ -97,23 +97,46 @@ Delete the DocumentReference resource for a pointer with a subject and identifie
 
 {% include note.html content="All query parameters must be percent encoded. In particular, the pipe (`|`) character must be percent encoded (`%7C`)." %}
 
-## Delete Response
+## Response
 
 The `delete` interaction removes an existing resource. The interaction is performed by an HTTP DELETE of the DocumentReference resource.
 
 ### Success
 
-A successful execution of the `delete` interaction will:
-- return a `200` **OK** HTTP status code confirming pointer deletion.
-- return a response body containing a payload with an `OperationOutcome` resource that conforms to the ['Spine-OperationOutcome-1'](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) FHIR profile. 
+A successful execution of the `delete` interaction will return:
+- a `200` **OK** HTTP status code confirming pointer deletion.
+- a response body containing an `OperationOutcome` resource (see below for full details). 
 
-The following table summarises a successful `delete` interaction scenario, including the HTTP response code and values expected to be conveyed in the response body `OperationOutcome` payload:
+#### OperationOutcome
+The `OperationOutcome` in the response body will conform to the [Spine-OperationOutcome-1](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1) FHIR resource:
 
-|HTTP Code|issue-severity|issue-type|Details.Code|Details.Display|Details.Text|Diagnostics|
-|---------|--------------|----------|------------|---------------|------------|-----------|
-|200|information|informational|RESOURCE_DELETED|Resource removed|Spine message UUID|Successfully removed resource DocumentReference: [url]|
+|Element|Content|
+|-------|-------|
+|`id`|A UUID for this `OperationOutcome`.|
+|`meta.profile`|Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1`|
+|`issue.severity`|Fixed value: `information`|
+|`issue.code`|Fixed value: `informational`|
+|`issue.details.coding.system`|Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1`|
+|`issue.details.coding.code`|Fixed value: `RESOURCE_DELETED`|
+|`issue.details.coding.display`|Fixed value: `Resource removed`|
+|`issue.details.text`| A Spine internal message UUID which can be used to identify the client's create transaction within Spine. A client system SHOULD reference this UUID in any related incidents raised with the [National Service Desk](https://digital.nhs.uk/services/spine/spine-mini-service-provider-for-personal-demographics-service/service-management-live-service). The UUID will be used to retrieve log entries that relate to a specific client transaction. |
+|`issue.diagnostics`|Dynamic value: `Successfully removed resource DocumentReference: [URL]`|
 
-{% include note.html content="Upon successful deletion of a pointer the NRL service returns in the response payload an OperationOutcome resource with the OperationOutcome.issue.details.text element populated with a Spine internal message UUID. This UUID is used to identify the client's delete transaction within Spine. A client system SHOULD reference the UUID in any calls raised with the [National Service Desk](https://digital.nhs.uk/services/spine/spine-mini-service-provider-for-personal-demographics-service/service-management-live-service). The UUID will be used to retrieve log entries that relate to a specific client transaction." %}
+#### Example success response body (XML)
+
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight json %}
+{% include /examples/delete_response.xml %}
+{% endhighlight %}
+</div>
+
+#### Example success response body (JSON)
+
+<div class="github-sample-wrapper scroll-height-350">
+{% highlight json %}
+{% include /examples/delete_response.json %}
+{% endhighlight %}
+</div>
 
 ### Failure
 
