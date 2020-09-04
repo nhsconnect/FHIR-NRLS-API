@@ -50,8 +50,17 @@ entries:
             output: web
           - title: FHIR Resource Mapping
             url: /explore_reference.html
-            output: web  
-      - title: NRL Interactions
+            output: web
+      - title: Consumer Interactions
+        output: web
+        subfolderitems:
+          - title: Read
+            url: /api_interaction_read.html
+            output: web
+          - title: Search
+            url: /api_interaction_search.html
+            output: web
+      - title: Provider Interactions
         output: web
         subfolderitems:
           - title: Create
@@ -62,20 +71,14 @@ entries:
             output: web
           - title: Update
             url: /api_interaction_update.html
-            output: web  
+            output: web
           - title: Delete
             url: /api_interaction_delete.html
-            output: web
-          - title: Read
-            url: /api_interaction_read.html
-            output: web  
-          - title: Search
-            url: /api_interaction_search.html
             output: web
       - title: General API Guidance
         output: web
         subfolderitems:
-          - title: Auditing 
+          - title: Auditing
             url: /integration_auditing.html
             output: web
           - title: Error Overview
@@ -89,7 +92,7 @@ entries:
             output: web
 
   - title: Information Retrieval
-    output: web  
+    output: web
     folderitems:
     - title: Overview
       url: /retrieval_overview.html
