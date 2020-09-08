@@ -1,10 +1,9 @@
-<Bundle
-    xmlns="http://hl7.org/fhir">
-    <id value="de258b7f-2f0b-4b41-afcb-964d5995fd4f-16547321986190065387"/>
-    <type value="searchset"/>
-    <total value="0"/>
-    <link>
-        <relation value="self"/>
-        <url value="https://psis-sync.national.ncrs.nhs.uk/DocumentReference?subject=https%3A%2F%2Fdemographics.spineservices.nhs.uk%2FSTU3%2FPatient%2F9876543213&amp;_summary=count"/>
-    </link>
-</Bundle> 
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="de258b7f-2f0b-4b41-afcb-964d5995fd4f-16547321986190065387" />
+  <type value="searchset" />
+  <total value="0" />
+  <link>
+    <relation value="self" />
+    <url value="https://psis-sync.national.ncrs.nhs.uk/DocumentReference?subject=https%3A%2F%2Fdemographics.spineservices.nhs.uk%2FSTU3%2FPatient%2F9876543213&amp;_summary=count" />
+  </link>
+</Bundle>

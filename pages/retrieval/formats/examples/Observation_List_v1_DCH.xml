@@ -1,744 +1,744 @@
 <Bundle>
-    <id value="6e824ff8-9b0a-11e8-9eb6-529269fb1459"/>
-    <meta>
-        <profile value="http://hl7.org/fhir/STU3/StructureDefinition/Bundle"/>
-    </meta>
-    <type value="collection"/>
-    <entry>
-        <resource>
-            <List>
-                <id value="4c7e56b0-2587-4403-85cd-6a921475e999"/>
-                <meta>
-                    <profile value="http://hl7.org/fhir/STU3/StructureDefinition/List"/>
-                </meta>
-				<extension url="http://hl7.org/fhir/StructureDefinition/information-provider">
-						<valueReference>
-							<reference value="urn:uuid:33a33b58-648a-4453-b981-e21ea9ebc6ea"/>
-						</valueReference>
-                    </extension>
-                <status value="current"/>
-                <mode value="snapshot"/>
-                <code>
-                    <coding>
-                        <system value="http://snomed.info/sct"/>
-                        <code value="1102421000000108"/>
-                        <display value="Observations"/>
-                    </coding>
-                </code>
-                <subject>
-                    <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
-                </subject>
-                <date value="2020-05-09T12:10:23+11:00"/>
-                <entry>
-                    <item>
-                        <reference value="urn:uuid:13a292b7-5812-44bc-9879-935b723d788d"/>
-                    </item>
-                </entry>
-                <entry>
-                    <item>
-                        <reference value="urn:uuid:7950c693-e2a8-4d5b-a33e-bc9e84c8aaf1"/>
-                    </item>
-                </entry>
-                <entry>
-                    <item>
-                        <reference value="urn:uuid:9d1c939e-8d65-47b1-9927-c64f1ec1e1f9"/>
-                    </item>
-                </entry>
-                <entry>
-                    <item>
-                        <reference value="urn:uuid:cbb988c6-81dc-44f0-b372-dc87bd580977"/>
-                    </item>
-                </entry>
-                <entry>
-                    <item>
-                        <reference value="urn:uuid:5f641cce-6145-498a-9c57-53087fc371aa"/>
-                    </item>
-                </entry>
-                <entry>
-                    <item>
-                        <reference value="urn:uuid:380637df-555b-48b4-9bb7-90bfa09189b6"/>
-                    </item>
-                </entry>
-                <entry>
-                    <item>
-                        <reference value="urn:uuid:d3ac86e7-4d5c-4638-a191-2b7f0876065f"/>
-                    </item>
-                </entry>
-                <entry>
-                    <item>
-                        <reference value="urn:uuid:ac028e60-607e-40ed-874d-3497aca6e583"/>
-                    </item>
-                </entry>
-            </List>
-        </resource>
-    </entry>
-    <entry>
-        <fullUrl value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
-        <resource>
-            <Patient>
-                <id value="5d5845f3-398f-474b-af59-14882fc7b0ca"/>
-                <meta>
-                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1"/>
-                </meta>
-                <identifier>
-                    <extension url="https://fhir.hl7.org.uk/STU3/StructureDefinition/Extension-CareConnect-NHSNumberVerificationStatus-1">
-                        <valueCodeableConcept>
-                            <coding>
-                                <system value="https://fhir.hl7.org.uk/STU3/CodeSystem/CareConnect-NHSNumberVerificationStatus-1"/>
-                                <code value="01"/>
-                                <display value="Number present and verified"/>
-                            </coding>
-                        </valueCodeableConcept>
-                    </extension>
-                    <system value="https://fhir.nhs.uk/Id/nhs-number"/>
-                    <value value="9912003888"/>
-                </identifier>
-                <name>
-                    <use value="official"/>
-                    <family value="DAWKINS"/>
-                    <given value="Jack"/>
-                </name>
-                <gender value="male"/>
-                <birthDate value="2013-10-12">
-                    <extension url="http://hl7.org/fhir/StructureDefinition/patient-birthTime">
-                        <valueDateTime value="2017-10-02T12:00:00+00:00"/>
-                    </extension>
-                </birthDate>
-                <address>
-                    <use value="home"/>
-                    <line value="4 Sandmoor Drive"/>
-                    <city value="DURHAM"/>
-                    <postalCode value="DH1 2TF"/>
-                </address>
-            </Patient>
-        </resource>
-    </entry>
-    <entry>
-        <fullUrl value="urn:uuid:a3bec8bd-56af-4ca9-9eb9-889f3f9adecb"/>
-        <resource>
-            <Encounter>
-                <id value="a3bec8bd-56af-4ca9-9eb9-889f3f9adecb"/>
-                <meta>
-                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Encounter-1"/>
-                </meta>
-                <status value="finished"/>
-                <type>
-                    <coding>
-                        <system value="https://fhir.nhs.uk/STU3/ValueSet/EncounterType-1"/>
-                        <code value="0028"/>
-                        <display value="GP Appointment"/>
-                    </coding>
-                </type>
-                <subject>
-                    <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
-                    <display value="DAWKINS, Jack"/>
-                </subject>
-                <period>
-                    <start value="2018-01-29"/>
-                </period>
-                <location>
-                    <location>
-                        <reference value="urn:uuid:9fb9d531-84dd-421e-8f4a-a309d9ff7890"/>
-                    </location>
-                </location>
-                <serviceProvider>
-                    <reference value="urn:uuid:33a33b58-648a-4453-b981-e21ea9ebc6ea"/>
-                </serviceProvider>
-            </Encounter>
-        </resource>
-    </entry>
-    <entry>
-        <fullUrl value="urn:uuid:9fb9d531-84dd-421e-8f4a-a309d9ff7890"/>
-        <resource>
-            <Location>
-                <id value="9fb9d531-84dd-421e-8f4a-a309d9ff7890"/>
-                <meta>
-                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Location-1"/>
-                </meta>
-                <identifier>
-                    <system value="https://fhir.nhs.uk/Id/ods-site-code"/>
-                    <value value="RX3EP"/>
-                </identifier>
-            </Location>
-        </resource>
-    </entry>
-    <entry>
-        <fullUrl value="urn:uuid:aed99abc-59b8-48c3-a81e-4fa4ff6ed4ca"/>
-        <resource>
-            <HealthcareService>
-                <id value="aed99abc-59b8-48c3-a81e-4fa4ff6ed4ca"/>
-                <meta>
-                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-HealthcareService-1"/>
-                </meta>
-                <identifier>
-                    <system value="https://fhir.nhs.uk/STU3/CodeSystem/EMS-HealthcareServiceType-1"/>
-                    <value value="PDS"/>
-                </identifier>
-                <providedBy>
-                    <reference value="urn:uuid:33a33b58-648a-4453-b981-e21ea9ebc6ea"/>
-                    <display value="UNIVERSITY HOSPITAL OF DURHAM "/>
-                </providedBy>
-                <type>
-                    <coding>
-                        <system value="http://snomed.info/sct"/>
-                        <code value="708170008"/>
-                        <display value="Nursing service"/>
-                    </coding>
-                </type>
-                <location>
-                    <reference value="urn:uuid:9fb9d531-84dd-421e-8f4a-a309d9ff7890"/>
-                </location>
-                <telecom>
-                    <system value="phone"/>
-                    <value value="0191 1231234"/>
-                </telecom>
-                <specialty>
-                    <coding>
-                        <system value="https://fhir.nhs.uk/STU3/CodeSystem/Specialty-1"/>
-                        <code value="317"/>
-                        <display value="ALLERGY SERVICE"/>
-                    </coding>
-                </specialty>
-            </HealthcareService>
-        </resource>
-    </entry>
-    <entry>
-        <fullUrl value="urn:uuid:33a33b58-648a-4453-b981-e21ea9ebc6ea"/>
-        <resource>
-            <Organization>
-                <id value="33a33b58-648a-4453-b981-e21ea9ebc6ea"/>
-                <meta>
-                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1"/>
-                </meta>
-                <identifier>
-                    <system value="https://fhir.nhs.uk/Id/ods-organization-code"/>
-                    <value value="RX3EP"/>
-                </identifier>
-                <name value="UNIVERSITY HOSPITAL OF NORTH DURHAM"/>
-				<telecom>
-                    <system value="phone"/>
-                    <value value="0191 1231234"/>
-				</telecom>
-                <address>
-                    <line value="NORTH ROAD"/>
-                    <city value="DURHAM"/>
-                    <district value="COUNTY DURHAM"/>
-                    <postalCode value="DH1 5TW"/>
-                </address>
-            </Organization>
-        </resource>
-    </entry>
-    <entry>
-        <fullUrl value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b"/>
-        <resource>
-            <Practitioner>
-                <id value="1bcb0151-4ddf-4084-9c06-e8a31fdcf25b"/>
-                <meta>
-                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Practitioner-1"/>
-                </meta>
-                <identifier>
-                    <system value="https://fhir.nhs.uk/Id/sds-role-profile-id"/>
-                    <value value="PT2469"/>
-                </identifier>
-                <name>
-                    <family value="Smith"/>
-                    <given value="John"/>
-                    <prefix value="Dr."/>
-                </name>
-            </Practitioner>
-        </resource>
-    </entry>
-    <entry>
-        <fullUrl value="urn:uuid:e9f269a2-2270-4787-9cb3-f546a3a9088e"/>
-        <resource>
-            <PractitionerRole>
-                <id value="e9f269a2-2270-4787-9cb3-f546a3a9088e "/>
-                <meta>
-                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-PractitionerRole-1"/>
-                </meta>
-                <identifier>
-                    <system value="https://fhir.nhs.uk/Id/sds-role-profile-id"/>
-                    <value value="PT2468"/>
-                </identifier>
-                <practitioner>
-                    <reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b"/>
-                </practitioner>
-                <organization>
-                    <reference value="urn:uuid:33a33b58-648a-4453-b981-e21ea9ebc6ea"/>
-                </organization>
-                <code>
-                    <coding>
-                        <system value="https://fhir.hl7.org.uk/STU3/CodeSystem/CareConnect-SDSJobRoleName-1"/>
-                        <code value="R0260"/>
-                        <display value="General Medical Practitioner"/>
-                    </coding>
-                </code>
-                <code>
-                    <coding>
-                        <system value="https://fhir.nhs.uk/STU3/CodeSystem/ProfessionalType-1"/>
-                        <code value="160"/>
-                        <display value="General Medical Practitioner"/>
-                    </coding>
-                </code>
-                <specialty>
-                    <coding>
-                        <system value="https://fhir.nhs.uk/STU3/CodeSystem/Specialty-1"/>
-                        <code value="255"/>
-                        <display value="PAEDIATRIC CLINICAL IMMUNOLOGY AND ALLERGY SERVICE"/>
-                    </coding>
-                </specialty>
-            </PractitionerRole>
-        </resource>
-    </entry>
-    <entry>
-        <fullUrl value="urn:uuid:13a292b7-5812-44bc-9879-935b723d788d"/>
-        <resource>
-            <Observation>
-                <id value="13a292b7-5812-44bc-9879-935b723d788d"/>
-                <meta>
-                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Observation-1"/>
-                </meta>
-				<identifier>
-					<system value="https://supplierABC/identifiers"/>
-					<value value="vacs12345"/>
-				</identifier>
-                <status value="final"/>
-                <category>
-                    <coding>
-                        <system value="http://hl7.org/fhir/observation-category"/>
-                        <code value="vital-signs"/>
-                    </coding>
-                </category>
-                <code>
-                    <coding>
-                        <system value="http://loinc.org"/>
-                        <code value="29463-7"/>
-                    </coding>
-                    <coding>
-                        <system value="http://snomed.info/sct"/>
-                        <code value="364589006"/>
-                        <display value="Birth weight"/>
-                    </coding>
-                </code>
-                <subject>
-                    <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
-                </subject>
-                <context>
-                    <reference value="urn:uuid:a3bec8bd-56af-4ca9-9eb9-889f3f9adecb"/>
-                </context>
-                <effectiveDateTime value="2017-11-01"/>
-                <performer>
-                    <reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b"/>
-                </performer>
-                <valueQuantity>
-                    <value value="3.5"/>
-                    <unit value="kilogram"/>
-                    <system value="http://unitsofmeasure.org"/>
-                    <code value="kg"/>
-                </valueQuantity>
-            </Observation>
-        </resource>
-    </entry>
-    <entry>
-        <fullUrl value="urn:uuid:7950c693-e2a8-4d5b-a33e-bc9e84c8aaf1"/>
-        <resource>
-            <Observation>
-                <id value="7950c693-e2a8-4d5b-a33e-bc9e84c8aaf1"/>
-                <meta>
-                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Observation-1"/>
-                </meta>
-				<identifier>
-					<system value="https://supplierABC/identifiers"/>
-					<value value="vacs11111"/>
-				</identifier>
-                <status value="final"/>
-                <category>
-                    <coding>
-                        <system value="http://hl7.org/fhir/observation-category"/>
-                        <code value="vital-signs"/>
-                    </coding>
-                </category>
-                <code>
-                    <coding>
-                        <system value="http://loinc.org"/>
-                        <code value="8306-3"/>
-                    </coding>
-                    <coding>
-                        <system value="http://snomed.info/sct"/>
-                        <code value="248334005"/>
-                        <display value="Length of body"/>
-                    </coding>
-                </code>
-                <subject>
-                    <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
-                </subject>
-                <context>
-                    <reference value="urn:uuid:a3bec8bd-56af-4ca9-9eb9-889f3f9adecb"/>
-                </context>
-                <effectiveDateTime value="2017-11-01"/>
-                <performer>
-                    <reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b"/>
-                </performer>
-                <valueQuantity>
-                    <value value="51"/>
-                    <unit value="centimeter"/>
-                    <system value="http://unitsofmeasure.org"/>
-                    <code value="cm"/>
-                </valueQuantity>
-            </Observation>
-        </resource>
-    </entry>
-    <entry>
-        <fullUrl value="urn:uuid:9d1c939e-8d65-47b1-9927-c64f1ec1e1f9"/>
-        <resource>
-            <Observation>
-                <id value="9d1c939e-8d65-47b1-9927-c64f1ec1e1f9"/>
-                <meta>
-                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Observation-1"/>
-                </meta>
-				<identifier>
-					<system value="https://supplierABC/identifiers"/>
-					<value value="vacs11112"/>
-				</identifier>
-                <status value="final"/>
-                <category>
-                    <coding>
-                        <system value="http://hl7.org/fhir/observation-category"/>
-                        <code value="vital-signs"/>
-                    </coding>
-                </category>
-                <code>
-                    <coding>
-                        <system value="http://loinc.org"/>
-                        <code value="8287-5"/>
-                    </coding>
-                    <coding>
-                        <system value="http://snomed.info/sct"/>
-                        <code value="169876006"/>
-                        <display value="Birth head circumference"/>
-                    </coding>
-                </code>
-                <subject>
-                    <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
-                </subject>
-                <context>
-                    <reference value="urn:uuid:a3bec8bd-56af-4ca9-9eb9-889f3f9adecb"/>
-                </context>
-                <effectiveDateTime value="2017-11-01"/>
-                <performer>
-                    <reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b"/>
-                </performer>
-                <valueQuantity>
-                    <value value="34"/>
-                    <unit value="centimeter"/>
-                    <system value="http://unitsofmeasure.org"/>
-                    <code value="cm"/>
-                </valueQuantity>
-            </Observation>
-        </resource>
-    </entry>
-    <entry>
-        <fullUrl value="urn:uuid:cbb988c6-81dc-44f0-b372-dc87bd580977"/>
-        <resource>
-            <Observation>
-                <id value="cbb988c6-81dc-44f0-b372-dc87bd580977"/>
-                <meta>
-                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Observation-1"/>
-                </meta>
-				<identifier>
-					<system value="https://supplierABC/identifiers"/>
-					<value value="vacs98765"/>
-				</identifier>
-				<basedOn>
-					<reference value="urn:uuid:e888b84f-d390-4abf-a4a9-444f31f929bc"/>
-				</basedOn>
-                <status value="final"/>
-                <category>
-                    <coding>
-                        <system value="http://hl7.org/fhir/observation-category"/>
-                        <code value="vital-signs"/>
-                    </coding>
-                </category>
-                <code>
-                    <coding>
-                        <system value="http://loinc.org"/>
-                        <code value="8867-4"/>
-                    </coding>
-                    <coding>
-                        <system value="http://snomed.info/sct"/>
-                        <code value="364075005"/>
-                        <display value="Heart rate"/>
-                    </coding>
-                </code>
-                <subject>
-                    <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
-                </subject>
-                <context>
-                    <reference value="urn:uuid:a3bec8bd-56af-4ca9-9eb9-889f3f9adecb"/>
-                </context>
-                <effectiveDateTime value="2017-11-01"/>
-                <performer>
-                    <reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b"/>
-                </performer>
-                <valueQuantity>
-                    <value value="150"/>
-                    <unit value="per minute"/>
-                    <system value="http://unitsofmeasure.org"/>
-                    <code value="/min"/>
-                </valueQuantity>
-            </Observation>
-        </resource>
-    </entry>
-    <entry>
-        <fullUrl value="urn:uuid:5f641cce-6145-498a-9c57-53087fc371aa"/>
-        <resource>
-            <Observation>
-                <id value="5f641cce-6145-498a-9c57-53087fc371aa"/>
-                <meta>
-                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Observation-1"/>
-                </meta>
-				<identifier>
-					<system value="https://supplierABC/identifiers"/>
-					<value value="vacs55555"/>
-				</identifier>
-                <status value="final"/>
-                <category>
-                    <coding>
-                        <system value="http://hl7.org/fhir/observation-category"/>
-                        <code value="vital-signs"/>
-                    </coding>
-                </category>
-                <code>
-                    <coding>
-                        <system value="http://loinc.org"/>
-                        <code value="9279-1"/>
-                    </coding>
-                    <coding>
-                        <system value="http://snomed.info/sct"/>
-                        <code value="86290005"/>
-                        <display value="Respiratory rate"/>
-                    </coding>
-                </code>
-                <subject>
-                    <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
-                </subject>
-                <context>
-                    <reference value="urn:uuid:a3bec8bd-56af-4ca9-9eb9-889f3f9adecb"/>
-                </context>
-                <effectiveDateTime value="2017-11-01"/>
-                <performer>
-                    <reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b"/>
-                </performer>
-                <valueQuantity>
-                    <value value="50"/>
-                    <unit value="per minute"/>
-                    <system value="http://unitsofmeasure.org"/>
-                    <code value="/min"/>
-                </valueQuantity>
-            </Observation>
-        </resource>
-    </entry>
-    <entry>
-        <fullUrl value="urn:uuid:380637df-555b-48b4-9bb7-90bfa09189b6"/>
-        <resource>
-            <Observation>
-                <id value="380637df-555b-48b4-9bb7-90bfa09189b6"/>
-                <meta>
-                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Observation-1"/>
-                </meta>
-				<identifier>
-					<system value="https://supplierABC/identifiers"/>
-					<value value="vacs223344"/>
-				</identifier>
-                <status value="final"/>
-                <category>
-                    <coding>
-                        <system value="http://hl7.org/fhir/observation-category"/>
-                        <code value="vital-signs"/>
-                    </coding>
-                </category>
-                <code>
-                    <coding>
-                        <system value="http://loinc.org"/>
-                        <code value="85354-9"/>
-                    </coding>
-                    <coding>
-                        <system value="http://snomed.info/sct"/>
-                        <code value="75367002"/>
-                        <display value="Blood pressure"/>
-                    </coding>
-                </code>
-                <subject>
-                    <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
-                </subject>
-                <context>
-                    <reference value="urn:uuid:a3bec8bd-56af-4ca9-9eb9-889f3f9adecb"/>
-                </context>
-                <effectiveDateTime value="2017-11-01"/>
-                <performer>
-                    <reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b"/>
-                </performer>
-                <component>
-                    <code>
-                        <coding>
-                            <system value="http://loinc.org"/>
-                            <code value="8480-6"/>
-                        </coding>
-                        <coding>
-                            <system value="http://snomed.info/sct"/>
-                            <code value="72313002"/>
-                            <display value="Systolic arterial pressure"/>
-                        </coding>
-                    </code>
-                    <valueQuantity>
-                        <value value="64"/>
-                        <unit value="MilliMetersOfMercury"/>
-                        <system value="http://unitsofmeasure.org"/>
-                        <code value="mm[Hg]"/>
-                    </valueQuantity>
-                </component>
-                <component>
-                    <code>
-                        <coding>
-                            <system value="http://loinc.org"/>
-                            <code value="8462-4"/>
-                        </coding>
-                        <coding>
-                            <system value="http://snomed.info/sct"/>
-                            <code value="1091811000000102"/>
-                            <display value="Diastolic arterial pressure"/>
-                        </coding>
-                    </code>
-                    <valueQuantity>
-                        <value value="41"/>
-                        <unit value="MilliMetersOfMercury"/>
-                        <system value="http://unitsofmeasure.org"/>
-                        <code value="mm[Hg]"/>
-                    </valueQuantity>
-                </component>
-            </Observation>
-        </resource>
-    </entry>
-    <entry>
-        <fullUrl value="urn:uuid:d3ac86e7-4d5c-4638-a191-2b7f0876065f"/>
-        <resource>
-            <Observation>
-                <id value="d3ac86e7-4d5c-4638-a191-2b7f0876065f"/>
-                <meta>
-                    <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Observation-1"/>
-                </meta>
-				<identifier>
-					<system value="https://supplierABC/identifiers"/>
-					<value value="vacsID3333"/>
-				</identifier>
-                <status value="final"/>
-                <category>
-                    <coding>
-                        <system value="http://hl7.org/fhir/observation-category"/>
-                        <code value="vital-signs"/>
-                    </coding>
-                </category>
-                <code>
-                    <coding>
-                        <system value="http://loinc.org"/>
-                        <code value="8310-5"/>
-                    </coding>
-                    <coding>
-                        <system value="http://snomed.info/sct"/>
-                        <code value="386725007"/>
-                        <display value="Body temperature"/>
-                    </coding>
-                </code>
-                <subject>
-                    <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
-                </subject>
-                <context>
-                    <reference value="urn:uuid:a3bec8bd-56af-4ca9-9eb9-889f3f9adecb"/>
-                </context>
-                <effectiveDateTime value="2017-11-01"/>
-                <performer>
-                    <reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b"/>
-                </performer>
-                <valueQuantity>
-                    <value value="36.4"/>
-                    <unit value="DegreesCelsius"/>
-                    <system value="http://unitsofmeasure.org"/>
-                    <code value="Cel"/>
-                </valueQuantity>
-            </Observation>
-        </resource>
-    </entry>
-    <entry>
-        <fullUrl value="urn:uuid:ac028e60-607e-40ed-874d-3497aca6e583"/>
-        <resource>
-            <Observation>
-                <id value="ac028e60-607e-40ed-874d-3497aca6e583"/>
-                <meta>
-                    <profile value="https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-Observation-1"/>
-                </meta>
-				<identifier>
-					<system value="https://supplierABC/identifiers"/>
-					<value value="vacsID123"/>
-				</identifier>
-                <status value="final"/>
-                <category>
-                    <coding>
-                        <system value="http://hl7.org/fhir/observation-category"/>
-                        <code value="vital-signs"/>
-                    </coding>
-                </category>
-                <code>
-                    <coding>
-                        <system value="http://loinc.org"/>
-                        <code value="59408-5"/>
-                    </coding>
-                    <coding>
-                        <system value="http://snomed.info/sct"/>
-                        <code value="103228002"/>
-                        <display value="Hemoglobin saturation with oxygen"/>
-                    </coding>
-                </code>
-                <subject>
-                    <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
-                </subject>
-                <context>
-                    <reference value="urn:uuid:a3bec8bd-56af-4ca9-9eb9-889f3f9adecb"/>
-                </context>
-                <effectiveDateTime value="2017-11-01"/>
-                <performer>
-                    <reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b"/>
-                </performer>
-                <valueQuantity>
-                    <value value="95"/>
-                    <unit value="Percent"/>
-                    <system value="http://unitsofmeasure.org"/>
-                    <code value="%"/>
-                </valueQuantity>
-            </Observation>
-        </resource>
-    </entry>
-    <entry>
-        <fullUrl value="urn:uuid:e888b84f-d390-4abf-a4a9-444f31f929bc"/>
-        <resource>
-            <DeviceRequest>
-                <id value="e888b84f-d390-4abf-a4a9-444f31f929bc"/>
-                <status value="completed"/>
-                <intent>
-                    <coding>
-                        <code value="original-order"/>
-                    </coding>
-                </intent>
-                <codeCodeableConcept>
-                    <coding>
-                        <system value="http://snomed.info/sct"/>
-                        <code value="86184003"/>
-                    </coding>
-                    <text value="Electrocardiographic monitor and recorder"/>
-                </codeCodeableConcept>
-                <subject>
-                    <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca"/>
-                </subject>
-            </DeviceRequest>
-        </resource>
-    </entry>
+  <id value="6e824ff8-9b0a-11e8-9eb6-529269fb1459" />
+  <meta>
+    <profile value="http://hl7.org/fhir/STU3/StructureDefinition/Bundle" />
+  </meta>
+  <type value="collection" />
+  <entry>
+    <resource>
+      <List>
+        <id value="4c7e56b0-2587-4403-85cd-6a921475e999" />
+        <meta>
+          <profile value="http://hl7.org/fhir/STU3/StructureDefinition/List" />
+        </meta>
+        <extension url="http://hl7.org/fhir/StructureDefinition/information-provider">
+          <valueReference>
+            <reference value="urn:uuid:33a33b58-648a-4453-b981-e21ea9ebc6ea" />
+          </valueReference>
+        </extension>
+        <status value="current" />
+        <mode value="snapshot" />
+        <code>
+          <coding>
+            <system value="http://snomed.info/sct" />
+            <code value="1102421000000108" />
+            <display value="Observations" />
+          </coding>
+        </code>
+        <subject>
+          <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca" />
+        </subject>
+        <date value="2020-05-09T12:10:23+11:00" />
+        <entry>
+          <item>
+            <reference value="urn:uuid:13a292b7-5812-44bc-9879-935b723d788d" />
+          </item>
+        </entry>
+        <entry>
+          <item>
+            <reference value="urn:uuid:7950c693-e2a8-4d5b-a33e-bc9e84c8aaf1" />
+          </item>
+        </entry>
+        <entry>
+          <item>
+            <reference value="urn:uuid:9d1c939e-8d65-47b1-9927-c64f1ec1e1f9" />
+          </item>
+        </entry>
+        <entry>
+          <item>
+            <reference value="urn:uuid:cbb988c6-81dc-44f0-b372-dc87bd580977" />
+          </item>
+        </entry>
+        <entry>
+          <item>
+            <reference value="urn:uuid:5f641cce-6145-498a-9c57-53087fc371aa" />
+          </item>
+        </entry>
+        <entry>
+          <item>
+            <reference value="urn:uuid:380637df-555b-48b4-9bb7-90bfa09189b6" />
+          </item>
+        </entry>
+        <entry>
+          <item>
+            <reference value="urn:uuid:d3ac86e7-4d5c-4638-a191-2b7f0876065f" />
+          </item>
+        </entry>
+        <entry>
+          <item>
+            <reference value="urn:uuid:ac028e60-607e-40ed-874d-3497aca6e583" />
+          </item>
+        </entry>
+      </List>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca" />
+    <resource>
+      <Patient>
+        <id value="5d5845f3-398f-474b-af59-14882fc7b0ca" />
+        <meta>
+          <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1" />
+        </meta>
+        <identifier>
+          <extension url="https://fhir.hl7.org.uk/STU3/StructureDefinition/Extension-CareConnect-NHSNumberVerificationStatus-1">
+            <valueCodeableConcept>
+              <coding>
+                <system value="https://fhir.hl7.org.uk/STU3/CodeSystem/CareConnect-NHSNumberVerificationStatus-1" />
+                <code value="01" />
+                <display value="Number present and verified" />
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <system value="https://fhir.nhs.uk/Id/nhs-number" />
+          <value value="9912003888" />
+        </identifier>
+        <name>
+          <use value="official" />
+          <family value="DAWKINS" />
+          <given value="Jack" />
+        </name>
+        <gender value="male" />
+        <birthDate value="2013-10-12">
+          <extension url="http://hl7.org/fhir/StructureDefinition/patient-birthTime">
+            <valueDateTime value="2017-10-02T12:00:00+00:00" />
+          </extension>
+        </birthDate>
+        <address>
+          <use value="home" />
+          <line value="4 Sandmoor Drive" />
+          <city value="DURHAM" />
+          <postalCode value="DH1 2TF" />
+        </address>
+      </Patient>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="urn:uuid:a3bec8bd-56af-4ca9-9eb9-889f3f9adecb" />
+    <resource>
+      <Encounter>
+        <id value="a3bec8bd-56af-4ca9-9eb9-889f3f9adecb" />
+        <meta>
+          <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Encounter-1" />
+        </meta>
+        <status value="finished" />
+        <type>
+          <coding>
+            <system value="https://fhir.nhs.uk/STU3/ValueSet/EncounterType-1" />
+            <code value="0028" />
+            <display value="GP Appointment" />
+          </coding>
+        </type>
+        <subject>
+          <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca" />
+          <display value="DAWKINS, Jack" />
+        </subject>
+        <period>
+          <start value="2018-01-29" />
+        </period>
+        <location>
+          <location>
+            <reference value="urn:uuid:9fb9d531-84dd-421e-8f4a-a309d9ff7890" />
+          </location>
+        </location>
+        <serviceProvider>
+          <reference value="urn:uuid:33a33b58-648a-4453-b981-e21ea9ebc6ea" />
+        </serviceProvider>
+      </Encounter>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="urn:uuid:9fb9d531-84dd-421e-8f4a-a309d9ff7890" />
+    <resource>
+      <Location>
+        <id value="9fb9d531-84dd-421e-8f4a-a309d9ff7890" />
+        <meta>
+          <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Location-1" />
+        </meta>
+        <identifier>
+          <system value="https://fhir.nhs.uk/Id/ods-site-code" />
+          <value value="RX3EP" />
+        </identifier>
+      </Location>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="urn:uuid:aed99abc-59b8-48c3-a81e-4fa4ff6ed4ca" />
+    <resource>
+      <HealthcareService>
+        <id value="aed99abc-59b8-48c3-a81e-4fa4ff6ed4ca" />
+        <meta>
+          <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-HealthcareService-1" />
+        </meta>
+        <identifier>
+          <system value="https://fhir.nhs.uk/STU3/CodeSystem/EMS-HealthcareServiceType-1" />
+          <value value="PDS" />
+        </identifier>
+        <providedBy>
+          <reference value="urn:uuid:33a33b58-648a-4453-b981-e21ea9ebc6ea" />
+          <display value="UNIVERSITY HOSPITAL OF DURHAM " />
+        </providedBy>
+        <type>
+          <coding>
+            <system value="http://snomed.info/sct" />
+            <code value="708170008" />
+            <display value="Nursing service" />
+          </coding>
+        </type>
+        <location>
+          <reference value="urn:uuid:9fb9d531-84dd-421e-8f4a-a309d9ff7890" />
+        </location>
+        <telecom>
+          <system value="phone" />
+          <value value="0191 1231234" />
+        </telecom>
+        <specialty>
+          <coding>
+            <system value="https://fhir.nhs.uk/STU3/CodeSystem/Specialty-1" />
+            <code value="317" />
+            <display value="ALLERGY SERVICE" />
+          </coding>
+        </specialty>
+      </HealthcareService>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="urn:uuid:33a33b58-648a-4453-b981-e21ea9ebc6ea" />
+    <resource>
+      <Organization>
+        <id value="33a33b58-648a-4453-b981-e21ea9ebc6ea" />
+        <meta>
+          <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1" />
+        </meta>
+        <identifier>
+          <system value="https://fhir.nhs.uk/Id/ods-organization-code" />
+          <value value="RX3EP" />
+        </identifier>
+        <name value="UNIVERSITY HOSPITAL OF NORTH DURHAM" />
+        <telecom>
+          <system value="phone" />
+          <value value="0191 1231234" />
+        </telecom>
+        <address>
+          <line value="NORTH ROAD" />
+          <city value="DURHAM" />
+          <district value="COUNTY DURHAM" />
+          <postalCode value="DH1 5TW" />
+        </address>
+      </Organization>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b" />
+    <resource>
+      <Practitioner>
+        <id value="1bcb0151-4ddf-4084-9c06-e8a31fdcf25b" />
+        <meta>
+          <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Practitioner-1" />
+        </meta>
+        <identifier>
+          <system value="https://fhir.nhs.uk/Id/sds-role-profile-id" />
+          <value value="PT2469" />
+        </identifier>
+        <name>
+          <family value="Smith" />
+          <given value="John" />
+          <prefix value="Dr." />
+        </name>
+      </Practitioner>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="urn:uuid:e9f269a2-2270-4787-9cb3-f546a3a9088e" />
+    <resource>
+      <PractitionerRole>
+        <id value="e9f269a2-2270-4787-9cb3-f546a3a9088e " />
+        <meta>
+          <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-PractitionerRole-1" />
+        </meta>
+        <identifier>
+          <system value="https://fhir.nhs.uk/Id/sds-role-profile-id" />
+          <value value="PT2468" />
+        </identifier>
+        <practitioner>
+          <reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b" />
+        </practitioner>
+        <organization>
+          <reference value="urn:uuid:33a33b58-648a-4453-b981-e21ea9ebc6ea" />
+        </organization>
+        <code>
+          <coding>
+            <system value="https://fhir.hl7.org.uk/STU3/CodeSystem/CareConnect-SDSJobRoleName-1" />
+            <code value="R0260" />
+            <display value="General Medical Practitioner" />
+          </coding>
+        </code>
+        <code>
+          <coding>
+            <system value="https://fhir.nhs.uk/STU3/CodeSystem/ProfessionalType-1" />
+            <code value="160" />
+            <display value="General Medical Practitioner" />
+          </coding>
+        </code>
+        <specialty>
+          <coding>
+            <system value="https://fhir.nhs.uk/STU3/CodeSystem/Specialty-1" />
+            <code value="255" />
+            <display value="PAEDIATRIC CLINICAL IMMUNOLOGY AND ALLERGY SERVICE" />
+          </coding>
+        </specialty>
+      </PractitionerRole>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="urn:uuid:13a292b7-5812-44bc-9879-935b723d788d" />
+    <resource>
+      <Observation>
+        <id value="13a292b7-5812-44bc-9879-935b723d788d" />
+        <meta>
+          <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Observation-1" />
+        </meta>
+        <identifier>
+          <system value="https://supplierABC/identifiers" />
+          <value value="vacs12345" />
+        </identifier>
+        <status value="final" />
+        <category>
+          <coding>
+            <system value="http://hl7.org/fhir/observation-category" />
+            <code value="vital-signs" />
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value="http://loinc.org" />
+            <code value="29463-7" />
+          </coding>
+          <coding>
+            <system value="http://snomed.info/sct" />
+            <code value="364589006" />
+            <display value="Birth weight" />
+          </coding>
+        </code>
+        <subject>
+          <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca" />
+        </subject>
+        <context>
+          <reference value="urn:uuid:a3bec8bd-56af-4ca9-9eb9-889f3f9adecb" />
+        </context>
+        <effectiveDateTime value="2017-11-01" />
+        <performer>
+          <reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b" />
+        </performer>
+        <valueQuantity>
+          <value value="3.5" />
+          <unit value="kilogram" />
+          <system value="http://unitsofmeasure.org" />
+          <code value="kg" />
+        </valueQuantity>
+      </Observation>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="urn:uuid:7950c693-e2a8-4d5b-a33e-bc9e84c8aaf1" />
+    <resource>
+      <Observation>
+        <id value="7950c693-e2a8-4d5b-a33e-bc9e84c8aaf1" />
+        <meta>
+          <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Observation-1" />
+        </meta>
+        <identifier>
+          <system value="https://supplierABC/identifiers" />
+          <value value="vacs11111" />
+        </identifier>
+        <status value="final" />
+        <category>
+          <coding>
+            <system value="http://hl7.org/fhir/observation-category" />
+            <code value="vital-signs" />
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value="http://loinc.org" />
+            <code value="8306-3" />
+          </coding>
+          <coding>
+            <system value="http://snomed.info/sct" />
+            <code value="248334005" />
+            <display value="Length of body" />
+          </coding>
+        </code>
+        <subject>
+          <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca" />
+        </subject>
+        <context>
+          <reference value="urn:uuid:a3bec8bd-56af-4ca9-9eb9-889f3f9adecb" />
+        </context>
+        <effectiveDateTime value="2017-11-01" />
+        <performer>
+          <reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b" />
+        </performer>
+        <valueQuantity>
+          <value value="51" />
+          <unit value="centimeter" />
+          <system value="http://unitsofmeasure.org" />
+          <code value="cm" />
+        </valueQuantity>
+      </Observation>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="urn:uuid:9d1c939e-8d65-47b1-9927-c64f1ec1e1f9" />
+    <resource>
+      <Observation>
+        <id value="9d1c939e-8d65-47b1-9927-c64f1ec1e1f9" />
+        <meta>
+          <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Observation-1" />
+        </meta>
+        <identifier>
+          <system value="https://supplierABC/identifiers" />
+          <value value="vacs11112" />
+        </identifier>
+        <status value="final" />
+        <category>
+          <coding>
+            <system value="http://hl7.org/fhir/observation-category" />
+            <code value="vital-signs" />
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value="http://loinc.org" />
+            <code value="8287-5" />
+          </coding>
+          <coding>
+            <system value="http://snomed.info/sct" />
+            <code value="169876006" />
+            <display value="Birth head circumference" />
+          </coding>
+        </code>
+        <subject>
+          <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca" />
+        </subject>
+        <context>
+          <reference value="urn:uuid:a3bec8bd-56af-4ca9-9eb9-889f3f9adecb" />
+        </context>
+        <effectiveDateTime value="2017-11-01" />
+        <performer>
+          <reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b" />
+        </performer>
+        <valueQuantity>
+          <value value="34" />
+          <unit value="centimeter" />
+          <system value="http://unitsofmeasure.org" />
+          <code value="cm" />
+        </valueQuantity>
+      </Observation>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="urn:uuid:cbb988c6-81dc-44f0-b372-dc87bd580977" />
+    <resource>
+      <Observation>
+        <id value="cbb988c6-81dc-44f0-b372-dc87bd580977" />
+        <meta>
+          <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Observation-1" />
+        </meta>
+        <identifier>
+          <system value="https://supplierABC/identifiers" />
+          <value value="vacs98765" />
+        </identifier>
+        <basedOn>
+          <reference value="urn:uuid:e888b84f-d390-4abf-a4a9-444f31f929bc" />
+        </basedOn>
+        <status value="final" />
+        <category>
+          <coding>
+            <system value="http://hl7.org/fhir/observation-category" />
+            <code value="vital-signs" />
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value="http://loinc.org" />
+            <code value="8867-4" />
+          </coding>
+          <coding>
+            <system value="http://snomed.info/sct" />
+            <code value="364075005" />
+            <display value="Heart rate" />
+          </coding>
+        </code>
+        <subject>
+          <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca" />
+        </subject>
+        <context>
+          <reference value="urn:uuid:a3bec8bd-56af-4ca9-9eb9-889f3f9adecb" />
+        </context>
+        <effectiveDateTime value="2017-11-01" />
+        <performer>
+          <reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b" />
+        </performer>
+        <valueQuantity>
+          <value value="150" />
+          <unit value="per minute" />
+          <system value="http://unitsofmeasure.org" />
+          <code value="/min" />
+        </valueQuantity>
+      </Observation>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="urn:uuid:5f641cce-6145-498a-9c57-53087fc371aa" />
+    <resource>
+      <Observation>
+        <id value="5f641cce-6145-498a-9c57-53087fc371aa" />
+        <meta>
+          <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Observation-1" />
+        </meta>
+        <identifier>
+          <system value="https://supplierABC/identifiers" />
+          <value value="vacs55555" />
+        </identifier>
+        <status value="final" />
+        <category>
+          <coding>
+            <system value="http://hl7.org/fhir/observation-category" />
+            <code value="vital-signs" />
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value="http://loinc.org" />
+            <code value="9279-1" />
+          </coding>
+          <coding>
+            <system value="http://snomed.info/sct" />
+            <code value="86290005" />
+            <display value="Respiratory rate" />
+          </coding>
+        </code>
+        <subject>
+          <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca" />
+        </subject>
+        <context>
+          <reference value="urn:uuid:a3bec8bd-56af-4ca9-9eb9-889f3f9adecb" />
+        </context>
+        <effectiveDateTime value="2017-11-01" />
+        <performer>
+          <reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b" />
+        </performer>
+        <valueQuantity>
+          <value value="50" />
+          <unit value="per minute" />
+          <system value="http://unitsofmeasure.org" />
+          <code value="/min" />
+        </valueQuantity>
+      </Observation>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="urn:uuid:380637df-555b-48b4-9bb7-90bfa09189b6" />
+    <resource>
+      <Observation>
+        <id value="380637df-555b-48b4-9bb7-90bfa09189b6" />
+        <meta>
+          <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Observation-1" />
+        </meta>
+        <identifier>
+          <system value="https://supplierABC/identifiers" />
+          <value value="vacs223344" />
+        </identifier>
+        <status value="final" />
+        <category>
+          <coding>
+            <system value="http://hl7.org/fhir/observation-category" />
+            <code value="vital-signs" />
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value="http://loinc.org" />
+            <code value="85354-9" />
+          </coding>
+          <coding>
+            <system value="http://snomed.info/sct" />
+            <code value="75367002" />
+            <display value="Blood pressure" />
+          </coding>
+        </code>
+        <subject>
+          <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca" />
+        </subject>
+        <context>
+          <reference value="urn:uuid:a3bec8bd-56af-4ca9-9eb9-889f3f9adecb" />
+        </context>
+        <effectiveDateTime value="2017-11-01" />
+        <performer>
+          <reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b" />
+        </performer>
+        <component>
+          <code>
+            <coding>
+              <system value="http://loinc.org" />
+              <code value="8480-6" />
+            </coding>
+            <coding>
+              <system value="http://snomed.info/sct" />
+              <code value="72313002" />
+              <display value="Systolic arterial pressure" />
+            </coding>
+          </code>
+          <valueQuantity>
+            <value value="64" />
+            <unit value="MilliMetersOfMercury" />
+            <system value="http://unitsofmeasure.org" />
+            <code value="mm[Hg]" />
+          </valueQuantity>
+        </component>
+        <component>
+          <code>
+            <coding>
+              <system value="http://loinc.org" />
+              <code value="8462-4" />
+            </coding>
+            <coding>
+              <system value="http://snomed.info/sct" />
+              <code value="1091811000000102" />
+              <display value="Diastolic arterial pressure" />
+            </coding>
+          </code>
+          <valueQuantity>
+            <value value="41" />
+            <unit value="MilliMetersOfMercury" />
+            <system value="http://unitsofmeasure.org" />
+            <code value="mm[Hg]" />
+          </valueQuantity>
+        </component>
+      </Observation>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="urn:uuid:d3ac86e7-4d5c-4638-a191-2b7f0876065f" />
+    <resource>
+      <Observation>
+        <id value="d3ac86e7-4d5c-4638-a191-2b7f0876065f" />
+        <meta>
+          <profile value="https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Observation-1" />
+        </meta>
+        <identifier>
+          <system value="https://supplierABC/identifiers" />
+          <value value="vacsID3333" />
+        </identifier>
+        <status value="final" />
+        <category>
+          <coding>
+            <system value="http://hl7.org/fhir/observation-category" />
+            <code value="vital-signs" />
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value="http://loinc.org" />
+            <code value="8310-5" />
+          </coding>
+          <coding>
+            <system value="http://snomed.info/sct" />
+            <code value="386725007" />
+            <display value="Body temperature" />
+          </coding>
+        </code>
+        <subject>
+          <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca" />
+        </subject>
+        <context>
+          <reference value="urn:uuid:a3bec8bd-56af-4ca9-9eb9-889f3f9adecb" />
+        </context>
+        <effectiveDateTime value="2017-11-01" />
+        <performer>
+          <reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b" />
+        </performer>
+        <valueQuantity>
+          <value value="36.4" />
+          <unit value="DegreesCelsius" />
+          <system value="http://unitsofmeasure.org" />
+          <code value="Cel" />
+        </valueQuantity>
+      </Observation>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="urn:uuid:ac028e60-607e-40ed-874d-3497aca6e583" />
+    <resource>
+      <Observation>
+        <id value="ac028e60-607e-40ed-874d-3497aca6e583" />
+        <meta>
+          <profile value="https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-Observation-1" />
+        </meta>
+        <identifier>
+          <system value="https://supplierABC/identifiers" />
+          <value value="vacsID123" />
+        </identifier>
+        <status value="final" />
+        <category>
+          <coding>
+            <system value="http://hl7.org/fhir/observation-category" />
+            <code value="vital-signs" />
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value="http://loinc.org" />
+            <code value="59408-5" />
+          </coding>
+          <coding>
+            <system value="http://snomed.info/sct" />
+            <code value="103228002" />
+            <display value="Hemoglobin saturation with oxygen" />
+          </coding>
+        </code>
+        <subject>
+          <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca" />
+        </subject>
+        <context>
+          <reference value="urn:uuid:a3bec8bd-56af-4ca9-9eb9-889f3f9adecb" />
+        </context>
+        <effectiveDateTime value="2017-11-01" />
+        <performer>
+          <reference value="urn:uuid:1bcb0151-4ddf-4084-9c06-e8a31fdcf25b" />
+        </performer>
+        <valueQuantity>
+          <value value="95" />
+          <unit value="Percent" />
+          <system value="http://unitsofmeasure.org" />
+          <code value="%" />
+        </valueQuantity>
+      </Observation>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="urn:uuid:e888b84f-d390-4abf-a4a9-444f31f929bc" />
+    <resource>
+      <DeviceRequest>
+        <id value="e888b84f-d390-4abf-a4a9-444f31f929bc" />
+        <status value="completed" />
+        <intent>
+          <coding>
+            <code value="original-order" />
+          </coding>
+        </intent>
+        <codeCodeableConcept>
+          <coding>
+            <system value="http://snomed.info/sct" />
+            <code value="86184003" />
+          </coding>
+          <text value="Electrocardiographic monitor and recorder" />
+        </codeCodeableConcept>
+        <subject>
+          <reference value="urn:uuid:5d5845f3-398f-474b-af59-14882fc7b0ca" />
+        </subject>
+      </DeviceRequest>
+    </resource>
+  </entry>
 </Bundle>
