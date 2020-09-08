@@ -39,6 +39,6 @@ summary: Assistance for the NRL Service assurance process.
 
 14. Any open defects relating to the test will be shared with NHS Digital stakeholders for agreement regarding a work off plan. Work off plan items may need to be resolved prior to Go Live/Post Pilot.
 
-15. The supplier is now ready for a live deployment, which will be managed by the NHS Digital Operations and Service Management team. This will involve the end-user organisation completing an End User Declaration (EUD) via the End User Online Portal (EUOP), providing sign-off to NHS Digital.
+15. The supplier is now ready for a live deployment, which will be managed by the NHS Digital Operations and Service Management team. This will involve the end-user organisation signing the Data Sharing Arrangement (DSA), providing sign-off to NHS Digital.
 
     {% include note.html content="There may be some additional Clinical Safety group involvement at this stage, if the SCAL assessment flags their sign-off as being required. The same applies to the IG assessment, which may also flag NHS Digital sign-off required." %}
