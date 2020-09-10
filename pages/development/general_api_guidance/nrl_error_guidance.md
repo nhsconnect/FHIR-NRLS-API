@@ -9,23 +9,21 @@ summary: Error guidance.
 
 # FHIR Resources
 
-The following table outlines the profiled FHIR resources which are used to inform a client of an error.
+The following table outlines the profiled FHIR resources used to inform a client of an error.
 
 |Profile|Description|
 |-------|-----------|
 |[Spine-OperationOutcome-1](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1)|The `OperationOutcome` resource is the data model used to share error, warning or information messages that result from an NRL Service interaction.|
 |[Spine-OperationOutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0)|This version of the `OperationOutcome` resource is the default Spine `OperationOutcome` profiled resource that supports exceptions thrown by the Spine common requesthandler and not the NRL Service.|
 
-The error codes (including other Spine error codes that are outside the scope of this API) are defined in the [Spine Error Or Warning Code](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1) ValueSet.
-
 ### ValueSets
 
-The following value sets are used within the profiled FHIR resources above.
+Error codes used within the `OperationOutcome` FHIR resources (including other Spine error codes that are outside the scope of this API) are defined in the following  ValueSets:
 
-|Valueset|Description|
+|ValueSet|Description|
 |--------|-----------|
-|[Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)|A ValueSet that identifies the Spine error or warning code in response to a request.|
-|[Spine-Response-Code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0)|A set of codes to indicate low level error information about a Spine 2 error response to a request for patient record details. Exceptions thrown by the Spine common requesthandler and not the NRL Service will be returned using the Spine default [Spine-OperationOutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to this default ValueSet.|
+|[Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)|ValueSet of Spine error or warning codes in response to a request.|
+|[Spine-Response-Code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0)|ValueSet of Spine 2 error codes in response to a patient record details request. Exceptions thrown by the Spine common requesthandler and not the NRL Service will be returned using the Spine default [Spine-OperationOutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to this default ValueSet.|
 
 ### CodeSystems
 
@@ -37,19 +35,20 @@ The following CodeSystems are used within the profiled FHIR resources above.
 
 # Error Types
 
-The NRL API defines many categories of errors, each of which encapsulates a specific part of a request sent to the NRL. Each type of error is discussed in its own section below with the relevant Spine response code:
-- [Resource not found](nrl_error_guidance.html#resource-not-found) - Spine returns this error when:
-  - A request references a resource, such as a `DocumentReference` or patient, that cannot be resolved.
-  - A request supports an NHS Number where no Spine Clinicals record exists for that NHS Number.
-- [Headers](nrl_error_guidance.html#headers) - There are a number of HTTP headers that must be supplied with any request, each with their own validation rules.
-- [Parameters](nrl_error_guidance.html#parameters) - Certain actions against the NRL allow a client to specify HTTP parameters. This class of error covers problems with the way those parameters are presented.
-- [Payload business rules](nrl_error_guidance.html#payload-business-rules) - Errors of this nature arise when the request payload (`DocumentReference`) does not conform to the business rules associated with its use as an NRL pointer.
-- [Payload syntax](nrl_error_guidance.html#payload-syntax) - Used when the syntax of the request payload (`DocumentReference`) is invalid. For example, if using JSON and the structure of the payload doesn't conform to JSON notation.
-- [Organisation not found](nrl_error_guidance.html#organisation-not-found) - Used to inform the client that the URL being used to reference a given Organisation is invalid.
-- [Invalid NHS Number](nrl_error_guidance.html#invalid-nhs-number) - Used to inform the client that the NHS Number used in a `Create` or `Search` interaction is invalid.
-- [Unsupported Media Type](nrl_error_guidance.html#unsupported-media-type) - Used to inform the client that a requested content type is not supported.
-- [Access denied](nrl_error_guidance.html#access-denied) - Used to inform the client that access to perform the interaction has been denied.
-- [Internal error](nrl_error_guidance.html#internal-error) - Used to inform the client of a failure during the change of `DocumentReference` status.
+The NRL API defines many categories of errors, each of which encapsulates a problem with a specific part of a request sent to the NRL. Each type of error is discussed in its own section below with examples:
+
+|Error Type|Description|
+|----------|-----------|
+|[Resource not found](nrl_error_guidance.html#resource-not-found)|Spine returns this error when a request references a resource, such as a `DocumentReference` or patient, that cannot be resolved **or** a request supports an NHS Number where no Spine Clinicals record exists for that NHS Number.|
+|[Headers](nrl_error_guidance.html#headers)|There are a number of HTTP headers that must be supplied with any request, each with their own validation rules.|
+|[Parameters](nrl_error_guidance.html#parameters)|Certain actions against the NRL allow a client to specify HTTP parameters. This class of error covers problems with the way those parameters are presented.|
+|[Payload business rules](nrl_error_guidance.html#payload-business-rules)|Errors of this nature arise when the request payload (`DocumentReference`) does not conform to the business rules associated with its use as an NRL pointer.|
+|[Payload syntax](nrl_error_guidance.html#payload-syntax)|Used when the syntax of the request payload (`DocumentReference`) is invalid. For example, if using JSON and the structure of the payload doesn't conform to JSON notation.|
+|[Organisation not found](nrl_error_guidance.html#organisation-not-found)|Used to inform the client that the URL being used to reference a given Organisation is invalid.|
+|[Invalid NHS Number](nrl_error_guidance.html#invalid-nhs-number)|Used to inform the client that the NHS Number used in a `Create` or `Search` interaction is invalid.|
+|[Unsupported Media Type](nrl_error_guidance.html#unsupported-media-type)|Used to inform the client that a requested content type is not supported.|
+|[Access denied](nrl_error_guidance.html#access-denied)|Used to inform the client that access to perform the interaction has been denied.|
+|[Internal error](nrl_error_guidance.html#internal-error)|Used to inform the client of a failure during the change of `DocumentReference` status.|
 
 ## Resource Not Found
 
