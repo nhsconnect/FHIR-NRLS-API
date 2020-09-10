@@ -53,7 +53,7 @@ Provider and consumer systems **MUST**:
 - only accept client certificates that have not expired or been revoked.
 - verify that the FQDN presented in the client certificate is that of the [Spine Secure Proxy](https://developer.nhs.uk/apis/spine-core-1-0/ssp_implementation_guide.html) (SSP).
 
-{% include note.html content="For providers and consumers that have been issued with an FQDN and an X.509 certificate for NRL pointer search and/or saintenance, these same assets may be re-used for the purpose of record retrieval.<br /><br />The NHS Digital Deployment Issue and Resolution (DIR) team will be able to confirm this at the point at which EndPoint registration is required." %}
+{% include note.html content="For providers and consumers that have been issued with an FQDN and an X.509 certificate for NRL pointer search and/or saintenance, these same assets may be re-used for the purpose of record retrieval.<br /><br />The NHS Digital Deployment Issue and Resolution (DIR) team will be able to confirm this at the point at which [endpoint registration](https://digital.nhs.uk/forms/combined-endpoint-and-service-registration-request) is required." %}
 
 ## External Documents/Policy Documents
 
