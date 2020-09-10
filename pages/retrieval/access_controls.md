@@ -17,7 +17,6 @@ Where the consuming system is making a request on behalf of a healthcare profess
 
 - NHS Identity
 - National Smartcard Authentication
-- Equivalent level-3 Authentication
 
 The user details, including user ID and associated [Role Based Access Controls](https://developer.nhs.uk/apis/spine-core/security_rbac.html) (RBAC) role, **MUST** be included in the JWT as specified on the [JSON Web Token Guidance](jwt_guidance.html) page.
 
