@@ -22,6 +22,25 @@ The user details, including user ID and associated [Role Based Access Controls](
 
 Consumers **MUST** apply appropriate RBAC governance to manage access to different types of pointers and retrieved information.
 
+<!--
+
+
+------------------------
+When this Citizen Access section is uncommented, there are a number of questions to answer...
+
+  Definition of "third-party"
+  
+  should|MUST usage
+  
+  "Clinician" - Which clinicians?
+  
+  Access for children under 16 -> all "Legal Parent"s? Or can just one give permission?
+  
+  "Children under the age of 16 MUST be able to restrict access to some or all of their record, in consultation with a clinician." -> Is this section correct? e.g. maybe add a note that saying the child's entire record is subject to the same restriction as the adult (where a clinician can hold back information).
+------------------------
+
+
+
 # Citizen Access
 
 Where the consuming system is making a request for information on behalf of a citizen, the system **MUST** have authenticated the citizen to the [DCB3051 Identity Verification and Authentication Standard for Digital Health and Care Services](https://digital.nhs.uk/data-and-information/information-standards/information-standards-and-data-collections-including-extractions/publications-and-notifications/standards-and-collections/dcb3051-identity-verification-and-authentication-standard-for-digital-health-and-care-services).
@@ -260,3 +279,4 @@ The following requirements **MUST** be met when giving a child access to their o
     </td>
   </tr>
 </table>
+-->
