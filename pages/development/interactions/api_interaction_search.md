@@ -81,7 +81,7 @@ See [`reference`](https://www.hl7.org/fhir/STU3/search.html#reference) for detai
 
 The `subject` search parameter **MUST** follow the format:
 
-`https://demographics.spineservices.nhs.uk/STU3/Patient/[NHS Number]`
+`https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]`
 
 <div class="language-http highlighter-rouge">
 <pre class="highlight"><code><span class="err">GET [baseUrl]/STU3/DocumentReference?subject=https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210
@@ -98,7 +98,7 @@ The `subject` and `type` search parameters can be used as follows:
 
 The `subject` search parameter **MUST** follow the format:
 
-`https://demographics.spineservices.nhs.uk/STU3/Patient/[NHS Number]`
+`https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]`
 
 The `type` search parameter **MUST** follow the format:
 
@@ -119,7 +119,7 @@ The `subject` and `custodian` search parameters can be used as follows:
 
 The `subject` search parameter **MUST** follow the format:
 
-`https://demographics.spineservices.nhs.uk/STU3/Patient/[NHS Number]`
+`https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]`
 
 The `custodian` search parameter **MUST** follow the format:
 
@@ -142,7 +142,7 @@ See [`_summary`](https://www.hl7.org/fhir/search.html#summary) for details on th
 
 The `subject` search parameter **MUST** follow the format:
 
-`https://demographics.spineservices.nhs.uk/STU3/Patient/[NHS Number]`
+`https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]`
 
 The `_summary` search parameter **MUST** have the value `count` (other FHIR values for this search parameter are not supported).
 

@@ -22,7 +22,7 @@ For all requests the following claim requirements **MUST** be met:
 
 |Claim|Requirement|
 |-----|-----------|
-|`requesting_organisation`|The ODS code of the requesting organisation **MUST** be known to the Spine and be in the form:<br /><br />`https://fhir.nhs.uk/Id/ods-organization-code|[ODS_code]`|
+|`requesting_organisation`|The ODS code of the requesting organisation **MUST** be known to the Spine and be in the form:<br /><br />`https://fhir.nhs.uk/Id/ods-organization-code|[odsCode]`|
 |`requesting_system`|The ASID of the requesting system (associated with the ODS code in the `requesting_organisation` claim) **MUST** be known to Spine and be in the form:<br /><br />`https://fhir.nhs.uk/Id/accredited-system|[ASID]`|
 |`scope`|For requests to the NRL: `scope` **MUST** have the value `patient/DocumentReference.read` (consumer interactions) or `patient/DocumentReference.write` (provider interactions).<br /><br />For requests to the SSP (see [SSP Information Retrieval Interaction](retrieval_ssp.html)): `scope` **MUST** have the value `patient/*.read` (consumer interactions) or `patient/*.write` (provider interactions).|
 

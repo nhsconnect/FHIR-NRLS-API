@@ -13,6 +13,6 @@
         <display value="Invalid parameter" />
       </coding>
     </details>
-    <diagnostics value="The given resource URL does not conform to the expected format - https://demographics.spineservices.nhs.uk/STU3/Patient/[NHS Number]" />
+    <diagnostics value="The given resource URL does not conform to the expected format - https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]" />
   </issue>
 </OperationOutcome>

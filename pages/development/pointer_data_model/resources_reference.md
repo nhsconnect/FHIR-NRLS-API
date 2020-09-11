@@ -54,7 +54,7 @@ The patent's NHS Number to which the pointer relates.
 
 |Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality|Population Guidance|
 |----|---------|----|-----------|-----|
-| Patient | `subject.reference` | [string](http://hl7.org/fhir/stu3/datatypes.html#string) | 1..1 | The NHS Number reference **MUST** follow the structure: `https://demographics.spineservices.nhs.uk/STU3/Patient/[NHS Number]`. |
+| Patient | `subject.reference` | [string](http://hl7.org/fhir/stu3/datatypes.html#string) | 1..1 | The NHS Number reference **MUST** follow the structure: `https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]`. |
 
 ## Pointer Metadata
 
