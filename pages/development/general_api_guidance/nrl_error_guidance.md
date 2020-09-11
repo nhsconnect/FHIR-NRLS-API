@@ -288,36 +288,34 @@ The URL must have the format `https://directory.spineservices.nhs.uk/STU3/Organi
 - Refers to an organisation known to the NRL.
 - Refers to an organisation associated with the custodian property having a provider role.
 
-<details>
-  <summary>OperationOutcome details</summary>
-  |Element|Content|
-  |-------|-------|
-  | `id` | A UUID for this `OperationOutcome`. |
-  | `meta.profile` | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1` |
-  | `issue.severity` | Fixed value: `error` |
-  | `issue.code` | Fixed value: `not-found` |
-  | `issue.details.coding.system` | Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1` |
-  | `issue.details.coding.code` | Fixed value: `ORGANISATION_NOT_FOUND` |
-  | `issue.details.coding.display` | Fixed value: `Organisation not found` |
-  | `issue.diagnostics` | Dynamic value: `The ODS code in the custodian and/or author element is not resolvable - [odsCode]` |
-</details>
+#### OperationOutcome
+
+|Element|Content|
+|-------|-------|
+| `id` | A UUID for this `OperationOutcome`. |
+| `meta.profile` | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1` |
+| `issue.severity` | Fixed value: `error` |
+| `issue.code` | Fixed value: `not-found` |
+| `issue.details.coding.system` | Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1` |
+| `issue.details.coding.code` | Fixed value: `ORGANISATION_NOT_FOUND` |
+| `issue.details.coding.display` | Fixed value: `Organisation not found` |
+| `issue.diagnostics` | Dynamic value: `The ODS code in the custodian and/or author element is not resolvable - [odsCode]` |
 
 ## Invalid NHS Number
 Thrown when an NHS Number used in a `Create` or `Search` interaction is invalid.
 
-<details>
-  <summary>OperationOutcome details</summary>
-  |Element|Content|
-  |-------|-------|
-  | `id` | A UUID for this `OperationOutcome`. |
-  | `meta.profile` | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1` |
-  | `issue.severity` | Fixed value: `error` |
-  | `issue.code` | Fixed value: `invalid` |
-  | `issue.details.coding.system` | Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1` |
-  | `issue.details.coding.code` | Fixed value: `INVALID_NHS_NUMBER` |
-  | `issue.details.coding.display` | Fixed value: `Invalid NHS number` |
-  | `issue.diagnostics` | Dynamic value: `The NHS number does not conform to the NHS Number format: [nhsNumber]` |
-</details>
+#### OperationOutcome
+
+|Element|Content|
+|-------|-------|
+| `id` | A UUID for this `OperationOutcome`. |
+| `meta.profile` | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1` |
+| `issue.severity` | Fixed value: `error` |
+| `issue.code` | Fixed value: `invalid` |
+| `issue.details.coding.system` | Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1` |
+| `issue.details.coding.code` | Fixed value: `INVALID_NHS_NUMBER` |
+| `issue.details.coding.display` | Fixed value: `Invalid NHS number` |
+| `issue.diagnostics` | Dynamic value: `The NHS number does not conform to the NHS Number format: [nhsNumber]` |
 
 ## Unsupported Media Type
 
