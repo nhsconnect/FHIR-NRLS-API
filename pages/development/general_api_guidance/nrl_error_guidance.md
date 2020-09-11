@@ -37,18 +37,18 @@ The following CodeSystems are used within the profiled FHIR resources above.
 
 The NRL API defines many categories of errors, each of which encapsulates a problem with a specific part of a request sent to the NRL. Each type of error is discussed in its own section below with examples:
 
-|Error Type|Description|
-|----------|-----------|
-|[Resource not found](nrl_error_guidance.html#resource-not-found)|Spine returns this error when a request references a resource, such as a `DocumentReference` or patient, that cannot be resolved **or** a request supports an NHS Number where no Spine Clinicals record exists for that NHS Number.|
-|[Headers](nrl_error_guidance.html#headers)|There are a number of HTTP headers that must be supplied with any request, each with their own validation rules.|
-|[Parameters](nrl_error_guidance.html#parameters)|Certain actions against the NRL allow a client to specify HTTP parameters. This class of error covers problems with the way those parameters are presented.|
-|[Payload business rules](nrl_error_guidance.html#payload-business-rules)|Errors of this nature arise when the request payload (`DocumentReference`) does not conform to the business rules associated with its use as an NRL pointer.|
-|[Payload syntax](nrl_error_guidance.html#payload-syntax)|Used when the syntax of the request payload (`DocumentReference`) is invalid. For example, if using JSON and the structure of the payload doesn't conform to JSON notation.|
-|[Organisation not found](nrl_error_guidance.html#organisation-not-found)|Used to inform the client that the URL being used to reference a given Organisation is invalid.|
-|[Invalid NHS Number](nrl_error_guidance.html#invalid-nhs-number)|Used to inform the client that the NHS Number used in a `Create` or `Search` interaction is invalid.|
-|[Unsupported Media Type](nrl_error_guidance.html#unsupported-media-type)|Used to inform the client that a requested content type is not supported.|
-|[Access denied](nrl_error_guidance.html#access-denied)|Used to inform the client that access to perform the interaction has been denied.|
-|[Internal error](nrl_error_guidance.html#internal-error)|Used to inform the client of a failure during the change of `DocumentReference` status.|
+|Error Type|HTTP Status code|Description|
+|----------|----------------|-----------|
+|[Resource not found](nrl_error_guidance.html#resource-not-found)|404|Spine returns this error when a request references a resource, such as a `DocumentReference` or patient, that cannot be resolved **or** a request supports an NHS Number where no Spine Clinicals record exists for that NHS Number.|
+|[Headers](nrl_error_guidance.html#headers)|400|There are a number of HTTP headers that must be supplied with any request, each with their own validation rules.|
+|[Parameters](nrl_error_guidance.html#parameters)|400|Certain actions against the NRL allow a client to specify HTTP parameters. This class of error covers problems with the way those parameters are presented.|
+|[Payload business rules](nrl_error_guidance.html#payload-business-rules)|400|Errors of this nature arise when the request payload (`DocumentReference`) does not conform to the business rules associated with its use as an NRL pointer.|
+|[Payload syntax](nrl_error_guidance.html#payload-syntax)|400|Used when the syntax of the request payload (`DocumentReference`) is invalid. For example, if using JSON and the structure of the payload doesn't conform to JSON notation.|
+|[Organisation not found](nrl_error_guidance.html#organisation-not-found)|400|Used to inform the client that the URL being used to reference a given Organisation is invalid.|
+|[Invalid NHS Number](nrl_error_guidance.html#invalid-nhs-number)|400|Used to inform the client that the NHS Number used in a `Create` or `Search` interaction is invalid.|
+|[Unsupported Media Type](nrl_error_guidance.html#unsupported-media-type)|415|Used to inform the client that a requested content type is not supported.|
+|[Access denied](nrl_error_guidance.html#access-denied)|TBC|Used to inform the client that access to perform the interaction has been denied.|
+|[Internal error](nrl_error_guidance.html#internal-error)|500|Used to inform the client of a failure during the change of `DocumentReference` status.|
 
 ## Resource Not Found
 
@@ -288,20 +288,36 @@ The URL must have the format `https://directory.spineservices.nhs.uk/STU3/Organi
 - Refers to an organisation known to the NRL.
 - Refers to an organisation associated with the custodian property having a provider role.
 
-If an exception occurs, it should be displayed following the rules, along with the values to expect in the `OperationOutcome` shown in the following table.
-
-|HTTP Code|issue-severity|issue-type|Details.Code|Details.Display|Diagnostics|
-|---------|--------------|----------|------------|---------------|-----------|
-|400|error|not-found|ORGANISATION_NOT_FOUND|Organisation record not found|The ODS code in the custodian and/or author element is not resolvable - [odsCode].|
+<details>
+  <summary>OperationOutcome details</summary>
+  |Element|Content|
+  |-------|-------|
+  | `id` | A UUID for this `OperationOutcome`. |
+  | `meta.profile` | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1` |
+  | `issue.severity` | Fixed value: `error` |
+  | `issue.code` | Fixed value: `not-found` |
+  | `issue.details.coding.system` | Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1` |
+  | `issue.details.coding.code` | Fixed value: `ORGANISATION_NOT_FOUND` |
+  | `issue.details.coding.display` | Fixed value: `Organisation not found` |
+  | `issue.diagnostics` | Dynamic value: `The ODS code in the custodian and/or author element is not resolvable - [odsCode]` |
+</details>
 
 ## Invalid NHS Number
 Thrown when an NHS Number used in a `Create` or `Search` interaction is invalid.
 
-The following table summarises the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
-
-|HTTP Code|issue-severity|issue-type|Details.Code|Details.Display|Diagnostics|
-|---------|--------------|----------|------------|---------------|-----------|
-|400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|The NHS number does not conform to the NHS Number format: [nhsNumber].|
+<details>
+  <summary>OperationOutcome details</summary>
+  |Element|Content|
+  |-------|-------|
+  | `id` | A UUID for this `OperationOutcome`. |
+  | `meta.profile` | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1` |
+  | `issue.severity` | Fixed value: `error` |
+  | `issue.code` | Fixed value: `invalid` |
+  | `issue.details.coding.system` | Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1` |
+  | `issue.details.coding.code` | Fixed value: `INVALID_NHS_NUMBER` |
+  | `issue.details.coding.display` | Fixed value: `Invalid NHS number` |
+  | `issue.diagnostics` | Dynamic value: `The NHS number does not conform to the NHS Number format: [nhsNumber]` |
+</details>
 
 ## Unsupported Media Type
 
@@ -322,31 +338,3 @@ These exceptions are thrown by the Spine Core common requesthandler and not the 
 Where a request cannot be processed due to a fault within the NRL Service (not the client), a `500` **Internal Server Error** HTTP response code will be returned, along with a descriptive message in the response body, such as:
 
 `<html><title>500: Internal Server Error</title><body>500: Internal Server Error</body></html>`
-
-## Examples {.tabset}
-
-### ORGANISATION_NOT_FOUND
-
-|Element|Content|
-|-------|-------|
-| `id` | A UUID for this `OperationOutcome`. |
-| `meta.profile` | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1` |
-| `issue.severity` | Fixed value: `error` |
-| `issue.code` | Fixed value: `not-found` |
-| `issue.details.coding.system` | Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1` |
-| `issue.details.coding.code` | Fixed value: `ORGANISATION_NOT_FOUND` |
-| `issue.details.coding.display` | Fixed value: `Organisation not found` |
-| `issue.diagnostics` | Dynamic value: `The ODS code in the custodian and/or author element is not resolvable - [odsCode]` |
-
-### INVALID_NHS_NUMBER
-
-|Element|Content|
-|-------|-------|
-| `id` | A UUID for this `OperationOutcome`. |
-| `meta.profile` | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1` |
-| `issue.severity` | Fixed value: `error` |
-| `issue.code` | Fixed value: `invalid` |
-| `issue.details.coding.system` | Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1` |
-| `issue.details.coding.code` | Fixed value: `INVALID_NHS_NUMBER` |
-| `issue.details.coding.display` | Fixed value: `Invalid NHS number` |
-| `issue.diagnostics` | Dynamic value: `The NHS number does not conform to the NHS Number format: [nhsNumber]` |
