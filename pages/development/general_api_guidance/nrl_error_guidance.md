@@ -292,7 +292,7 @@ If an exception occurs, it should be displayed following the rules, along with t
 
 |HTTP Code|issue-severity|issue-type|Details.Code|Details.Display|Diagnostics|
 |---------|--------------|----------|------------|---------------|-----------|
-|400|error|not-found|ORGANISATION_NOT_FOUND|Organisation record not found|The ODS code in the custodian and/or author element is not resolvable - [ods code].|
+|400|error|not-found|ORGANISATION_NOT_FOUND|Organisation record not found|The ODS code in the custodian and/or author element is not resolvable - [odsCode].|
 
 ## Invalid NHS Number
 Thrown when an NHS Number used in a `Create` or `Search` interaction is invalid.
@@ -301,7 +301,7 @@ The following table summarises the HTTP response codes, along with the values to
 
 |HTTP Code|issue-severity|issue-type|Details.Code|Details.Display|Diagnostics|
 |---------|--------------|----------|------------|---------------|-----------|
-|400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|The NHS number does not conform to the NHS Number format: [nhs number].|
+|400|error|invalid|INVALID_NHS_NUMBER|Invalid NHS number|The NHS number does not conform to the NHS Number format: [nhsNumber].|
 
 ## Unsupported Media Type
 
@@ -322,3 +322,31 @@ These exceptions are thrown by the Spine Core common requesthandler and not the 
 Where a request cannot be processed due to a fault within the NRL Service (not the client), a `500` **Internal Server Error** HTTP response code will be returned, along with a descriptive message in the response body, such as:
 
 `<html><title>500: Internal Server Error</title><body>500: Internal Server Error</body></html>`
+
+## Examples {.tabset}
+
+### ORGANISATION_NOT_FOUND
+
+|Element|Content|
+|-------|-------|
+| `id` | A UUID for this `OperationOutcome`. |
+| `meta.profile` | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1` |
+| `issue.severity` | Fixed value: `error` |
+| `issue.code` | Fixed value: `not-found` |
+| `issue.details.coding.system` | Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1` |
+| `issue.details.coding.code` | Fixed value: `ORGANISATION_NOT_FOUND` |
+| `issue.details.coding.display` | Fixed value: `Organisation not found` |
+| `issue.diagnostics` | Dynamic value: `The ODS code in the custodian and/or author element is not resolvable - [odsCode]` |
+
+### INVALID_NHS_NUMBER
+
+|Element|Content|
+|-------|-------|
+| `id` | A UUID for this `OperationOutcome`. |
+| `meta.profile` | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1` |
+| `issue.severity` | Fixed value: `error` |
+| `issue.code` | Fixed value: `invalid` |
+| `issue.details.coding.system` | Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1` |
+| `issue.details.coding.code` | Fixed value: `INVALID_NHS_NUMBER` |
+| `issue.details.coding.display` | Fixed value: `Invalid NHS number` |
+| `issue.diagnostics` | Dynamic value: `The NHS number does not conform to the NHS Number format: [nhsNumber]` |
