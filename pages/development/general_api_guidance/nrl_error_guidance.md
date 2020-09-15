@@ -247,23 +247,37 @@ The following scenarios relate to the [Delete](api_interaction_delete.html) inte
 
 ### Duplicate Resource
 
-When the NRL persists a `DocumentReference` with a masterIdentifier, it should ensure that no other `DocumentReference` exists for that patient with the same masterIdentifier.
+When the NRL persists a `DocumentReference` with a masterIdentifier, it should ensure that no other `DocumentReference` exists for that same patient with the same masterIdentifier.
 
-The following table summarises the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
+#### OperationOutcome
 
-|HTTP Code|issue-severity|issue-type|Details.Code|Details.Display|Diagnostics|
-|---------|--------------|----------|------------|---------------|-----------|
-|400|error|duplicate|DUPLICATE_REJECTED|Duplicate DocumentReference|Duplicate masterIdentifier value: [masterIdentifier.value]<br />system: [masterIdentifier.system]|
+|Element|Content|
+|-------|-------|
+| `id` | A UUID for this `OperationOutcome`. |
+| `meta.profile` | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1` |
+| `issue.severity` | Fixed value: `error` |
+| `issue.code` | Fixed value: `duplicate` |
+| `issue.details.coding.system` | Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1` |
+| `issue.details.coding.code` | Fixed value: `DUPLICATE_REJECTED` |
+| `issue.details.coding.display` | Fixed value: `Create would lead to creation of a duplicate resource` |
+| `issue.diagnostics` | Dynamic value: `Duplicate masterIdentifier value: [masterIdentifier.value] system: [masterIdentifier.system]` |
 
 ### Inactive DocumentReference
 
 This error is thrown when the status of the `DocumentReference` to be retrieved or modified is not `current`.
 
-The following table summarises the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
+#### OperationOutcome
 
-|HTTP Code|issue-severity|issue-type|Details.Code|Details.Display|Diagnostics|
-|---------|--------------|----------|------------|---------------|-----------|
-|400|warning|invalid|BAD_REQUEST|Bad Request|DocumentReference status is not current.|
+|Element|Content|
+|-------|-------|
+| `id` | A UUID for this `OperationOutcome`. |
+| `meta.profile` | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1` |
+| `issue.severity` | Fixed value: `error` |
+| `issue.code` | Fixed value: `invalid` |
+| `issue.details.coding.system` | Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1` |
+| `issue.details.coding.code` | Fixed value: `BAD_REQUEST` |
+| `issue.details.coding.display` | Fixed value: `Bad request` |
+| `issue.diagnostics` | Fixed value: `DocumentReference status is not 'current'` |
 
 ## Payload Syntax
 
@@ -273,11 +287,18 @@ The INVALID_REQUEST_MESSAGE error is triggered when there is an XML or JSON synt
 
 It is distinct from the INVALID_RESOURCE error, which conveys problems relating to the business rules associated with an NRL `DocumentReference`.
 
-The following table summarises the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
+#### OperationOutcome
 
-|HTTP Code|issue-severity|issue-type|Details.Code|Details.Display|Diagnostics|
-|---------|--------------|----------|------------|---------------|-----------|
-|400|error|value|INVALID_REQUEST_MESSAGE|Invalid Request Message|Invalid Request Message|
+|Element|Content|
+|-------|-------|
+| `id` | A UUID for this `OperationOutcome`. |
+| `meta.profile` | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1` |
+| `issue.severity` | Fixed value: `error` |
+| `issue.code` | Fixed value: `value` |
+| `issue.details.coding.system` | Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1` |
+| `issue.details.coding.code` | Fixed value: `INVALID_REQUEST_MESSAGE` |
+| `issue.details.coding.display` | Fixed value: `Invalid Request Message` |
+| `issue.diagnostics` | Fixed value: `Invalid Request Message` |
 
 ## Organisation Not Found
 
@@ -325,11 +346,22 @@ There are various scenarios when an Unsupported Media Type business response cod
 - Request contains a supported `Accept` header and an unsupported `_format` parameter.
 - A `Search` interaction request with valid parameters, but the URL contains an unsupported `_format` parameter.
 
-These exceptions are thrown by the Spine Core common requesthandler and not the NRL Service. They are supported by the default Spine [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile, which binds to the default Spine [spine-response-code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0) ValueSet. The following table summarises the HTTP response codes, along with the values to expect in the response `OperationOutcome`.
+These exceptions are thrown by the Spine Core common requesthandler and not the NRL Service. They are supported by the default Spine [spine-operationoutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile, which binds to the default Spine [spine-response-code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0) ValueSet.
 
-|HTTP Code|issue-severity|issue-type|Details.System|Details.Code|Details.Display|Diagnostics|
-|---------|--------------|----------|--------------|------------|---------------|-----------|
-|415|error|invalid|http://fhir.nhs.net/ValueSet/spine-response-code-1-0|UNSUPPORTED_MEDIA_TYPE|Unsupported Media Type|Unsupported Media Type|
+#### OperationOutcome
+
+**NOTE:** This needs to be checked...
+
+|Element|Content|
+|-------|-------|
+| `id` | A UUID for this `OperationOutcome`. |
+| `meta.profile` | Fixed value: `https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0` |
+| `issue.severity` | Fixed value: `error` |
+| `issue.code` | Fixed value: `invalid` |
+| `issue.details.coding.system` | Fixed value: `https://fhir.nhs.uk/ValueSet/spine-response-code-2-0` |
+| `issue.details.coding.code` | Fixed value: `UNSUPPORTED_MEDIA_TYPE` |
+| `issue.details.coding.display` | Fixed value: `Unsupported Media Type` |
+| `issue.diagnostics` | Fixed value: `Unsupported Media Type` |
 
 ## Internal Error
 
