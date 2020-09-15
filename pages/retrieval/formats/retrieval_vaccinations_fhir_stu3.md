@@ -106,8 +106,9 @@ The Immunization resources included as part of the returned information **MUST**
 |-------|-----------|-------------------|
 | extension`(vaccinationProcedure)` | 0..1 | Free text field should be used if no coded text available using extension `(vaccinationProcedure).valueCodeableConcept.text`. |
 | `identifier` | 1..1 | A publisher defined unique identifier for the vaccination which will be maintained across different retrieval endpoints/FHIR interfaces to allow subscribers to identify duplicates or updated information. Where the information has been sent within an event message via NEMS, the identifier should be consistent. |
+| `status` | 1..1 | Value **MUST** be in the [immunization-status ValueSet](http://hl7.org/fhir/stu3/valueset-immunization-status.html). |
 | `notGiven` | 1..1 | Value SHALL be FALSE when the vaccination was given or reported as given, TRUE when not given. |
-| `vaccineCode` | 1..1 | `Immunization.vaccineCode` SHALL use a value from the [`CareConnect-VaccineCode-1`](https://fhir.hl7.org.uk/STU3/ValueSet/CareConnect-VaccineCode-1) value set. Where the vaccineCode is not known, such as when a vaccination is reported, a unknown value should be used. |
+| `vaccineCode` | 1..1 | `Immunization.vaccineCode` SHALL use a value from the [`CareConnect-VaccineCode-1`](https://fhir.hl7.org.uk/STU3/ValueSet/CareConnect-VaccineCode-1) ValueSet. Where the vaccineCode is not known, such as when a vaccination is reported, a unknown value should be used. |
 | `date` | 1..1 | The date or partial date that the vaccination was administered, or reported vaccination was given in the opinion of the child and/or parent carer. |
 | `primarySource` | 1..1 | Value should be FALSE if the vaccination was reported, TRUE if the vaccination was administered. |
 | `reportOrigin` | 0..1 | If the vaccination was reported, the original source SHOULD be included. |
@@ -115,7 +116,7 @@ The Immunization resources included as part of the returned information **MUST**
 | `site` | 0..1 | Where available, this SHOULD be included. |
 | `route` | 0..1 | Where available, this SHOULD be included. |
 | `explanation.reasonNotGiven` | 0..1 | If the vaccination was notGiven then the `reasonNotGiven` element SHALL be included. |
-| `vaccinationProtocol.doseSequence` | 0..1 | Where available, the `doesSequence`SHOULD be include. |
+| `vaccinationProtocol.doseSequence` | 0..1 | Where available, `doesSequence` SHOULD be included. |
 
 ### [CareConnect-Patient-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1)
 
