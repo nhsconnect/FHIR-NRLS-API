@@ -14,16 +14,16 @@ The following table outlines the profiled FHIR resources used to inform a client
 |Profile|Description|
 |-------|-----------|
 |[Spine-OperationOutcome-1](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1)|The `OperationOutcome` resource is the data model used to share error, warning or information messages that result from an NRL Service interaction.|
-|[Spine-OperationOutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0)|This version of the `OperationOutcome` resource is the default Spine `OperationOutcome` profiled resource that supports exceptions thrown by the Spine common requesthandler and not the NRL Service.|
+|[Spine-OperationOutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0)|This version of the `OperationOutcome` resource will be returned if the error occurs within the Spine, prior to the request reaching the NRL specific processing.|
 
 ### ValueSets
 
-Error codes used within the `OperationOutcome` FHIR resources (including other Spine error codes that are outside the scope of this API) are defined in the following  ValueSets:
+Error codes used within the `OperationOutcome` FHIR resources (including other Spine error codes that are outside the scope of this API) are defined in the following ValueSets:
 
 |ValueSet|Description|
 |--------|-----------|
-|[Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)|ValueSet of Spine error or warning codes in response to a request.|
-|[Spine-Response-Code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0)|ValueSet of Spine 2 error codes in response to a patient record details request. Exceptions thrown by the Spine common requesthandler and not the NRL Service will be returned using the Spine default [Spine-OperationOutcome-1-0](https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1-0) profile which binds to this default ValueSet.|
+|[Spine-ErrorOrWarningCode-1](https://fhir.nhs.uk/STU3/ValueSet/Spine-ErrorOrWarningCode-1)|ValueSet of Spine error or warning codes.|
+|[Spine-Response-Code-1-0](https://fhir.nhs.uk/ValueSet/spine-response-code-1-0)|ValueSet of Spine error codes in response to a patient record details request.|
 
 ### CodeSystems
 
@@ -116,8 +116,7 @@ When sending the optional `custodian` parameter, referring to an `Organisation` 
  - The business identifier scheme in the form `https://fhir.nhs.uk/Id/ods-organization-code`.
  - The business identifier, meeting the following requirements:
    - It must be a valid ODS code.
-   - The ODS code must be an organisation that is known to the NRL.
-   - The ODS code must be in the provider role.
+   - The ODS code must be for a provider organisation known to the NRL.
 
 ### `_format` Parameter
 
@@ -153,7 +152,7 @@ If the `_summary` parameter is provided, the only other parameter it can be used
 
 This error code may surface when creating or deleting a `DocumentReference`. There are a number of properties that make up the `DocumentReference` which have business rules associated with them. If there are problems with one or more of these properties, this error may be thrown.
 
-This error code may also surface when updating a `DocumentReference` using the `Parameters` resource and `Update` interaction. This error may be thrown if the resource does not include the specified parameters or does not conform to the associated business rules.
+This error code may also surface when updating a `DocumentReference` using the `Parameters` resource and `Update` interaction. This error may be thrown if the resource does not include required parameters or does not conform to the associated business rules.
 
 The following table summarises the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
 
@@ -161,7 +160,7 @@ The following table summarises the HTTP response code, along with the values to 
 |---------|--------------|----------|------------|
 |400|error|invalid|INVALID_RESOURCE|
 
-{% include note.html content="Although not stated in the table above, the OperationOutcome that the NRL returns in these scenarios will include `Details.display` and `Diagnostics` detail, which will aid in identifying which property this issue relates to." %}
+{% include note.html content="Although not stated in the table above, the `OperationOutcome` that the NRL returns in these scenarios will include `Details.display` and `Diagnostics` detail, which will aid in identifying which property this issue relates to." %}
 
 #### Invalid Resource [Create/Supersede]
 
@@ -196,10 +195,6 @@ The following scenarios relate to the `Create` and `Supersede` interactions (HTT
     |`context.period.start`|If `context.period` is populated, must be a valid FHIR [dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime).|
     |`context.period.end`|If populated, must be a valid FHIR [dateTime](https://www.hl7.org/fhir/STU3/datatypes.html#dateTime).|
     |`context.practiceSetting`|Must be a [NRL-PracticeSetting-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-PracticeSetting-1) ValueSet value.|
-
-* **DocumentReference.Content.Extension:RetrievalMode**
-
-  If the `DocumentReference` in the request body specifies a retrievalMode that is not part of the ValueSet defined in the [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) FHIR profile, this error will be thrown.
 
 * **Incorrect permissions to modify**
 
