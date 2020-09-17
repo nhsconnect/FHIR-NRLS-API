@@ -60,49 +60,43 @@ There are two situations when Spine will return this error:
   - Request to delete a `DocumentReference` by logical identifier or master identifier.
   - Request to update a `DocumentReference` by logical identifier or master identifier.
 
-The following table summarises the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body for these exception scenarios.
+#### OperationOutcome
 
-|HTTP Code|issue-severity|issue-type|Details.Code|Details.Display|Diagnostics|
-|---------|--------------|----------|------------|---------------|-----------|
-|404|error|not-found|NO_RECORD_FOUND|No record found|No record found for supplied DocumentReference identifier - [id]|
-|404|error|not-found|NO_RECORD_FOUND|No record found|The given NHS number could not be found [nhsNumber]|
+|Element|Content|
+|-------|-------|
+| `id` | A UUID for this `OperationOutcome`. |
+| `meta.profile` | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1` |
+| `issue.severity` | Fixed value: `error` |
+| `issue.code` | Fixed value: `not-found` |
+| `issue.details.coding.system` | Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1` |
+| `issue.details.coding.code` | Fixed value: `NO_RECORD_FOUND` |
+| `issue.details.coding.display` | Fixed value: `No record found` |
+| `issue.diagnostics` | \[id\] Dynamic value: `No record found for supplied DocumentReference identifier - [id].`<br />\[NHS Number\] Dynamic value: `The given NHS number could not be found [nhsNumber].`|
 
 ## Headers
 
 This error will be thrown in relation to the mandatory HTTP request headers. Scenarios where this error might be thrown:
+
 - The mandatory `fromASID` HTTP header is missing in the request.
-
-    The table details the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this scenario. Note that the header name is case-sensitive.
-
-    |HTTP Code|issue-severity|issue-type|Details.Code|Details.Display|Diagnostics|
-    |---------|--------------|----------|------------|---------------|-----------|
-    |400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|fromASID HTTP Header is missing|
-
 - The mandatory `toASID` HTTP header is missing in the request.
-
-    The table details the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this scenario.
-
-    |HTTP Code|issue-severity|issue-type|Details.Code|Details.Display|Diagnostics|
-    |---------|--------------|----------|------------|---------------|-----------|
-    |400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|toASID HTTP Header is missing|
-
 - The mandatory `Authorization` HTTP header is missing in the request.
 
-    The table details the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this scenario.
+#### OperationOutcome
 
-    |HTTP Code|issue-severity|issue-type|Details.Code|Details.Display|Diagnostics|
-    |---------|--------------|----------|------------|---------------|-----------|
-    |400|error|invalid|MISSING_OR_INVALID_HEADER|There is a required header missing or invalid|Authorization HTTP Header is missing|
+|Element|Content|
+|-------|-------|
+| `id` | A UUID for this `OperationOutcome`. |
+| `meta.profile` | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1` |
+| `issue.severity` | Fixed value: `error` |
+| `issue.code` | \[fromASID/toASID\] Fixed value: `invalid`<br />\[Authorization\] Fixed value: `structure` |
+| `issue.details.coding.system` | Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1` |
+| `issue.details.coding.code` | Fixed value: `MISSING_OR_INVALID_HEADER` |
+| `issue.details.coding.display` | Fixed value: `There is a required header missing or invalid` |
+| `issue.diagnostics` | \[fromASID\] Fixed value: `fromASID HTTP Header is missing`<br />\[toASID\] Fixed value: `toASID HTTP Header is missing`<br />\[Authorisation\] Fixed value: `The Authorisation header must be supplied` |
 
 ## Parameters
 
 This error will be thrown in relation to request parameters that the client may have specified. This error can be thrown in a variety of circumstances.
-
-The following table summarises the HTTP response codes, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
-
-|HTTP Code|issue-severity|issue-type|Details.Code|Details.Display|
-|---------|--------------|----------|------------|---------------|
-|400|error|invlid|INVALID_PARAMETER|Invalid parameter|
 
 ### Subject Parameter
 
@@ -146,6 +140,19 @@ The `_summary` parameter must have a value of `count`. If it's anything else, an
 
 If the `_summary` parameter is provided, the only other parameter it can be used with is the optional `_format` parameter. If any other parameters are provided, an error will be returned.
 
+#### OperationOutcome
+
+|Element|Content|
+|-------|-------|
+| `id` | A UUID for this `OperationOutcome`. |
+| `meta.profile` | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1` |
+| `issue.severity` | Fixed value: `error` |
+| `issue.code` | Fixed value: `invalid` |
+| `issue.details.coding.system` | Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1` |
+| `issue.details.coding.code` | Fixed value: `INVALID_PARAMETER` |
+| `issue.details.coding.display` | Fixed value: `Invalid parameter` |
+| `issue.diagnostics` | Varied, depending on the error. |
+
 ## Payload Business Rules
 
 ### Invalid Resource
@@ -154,13 +161,18 @@ This error code may surface when creating or deleting a `DocumentReference`. The
 
 This error code may also surface when updating a `DocumentReference` using the `Parameters` resource and `Update` interaction. This error may be thrown if the resource does not include required parameters or does not conform to the associated business rules.
 
-The following table summarises the HTTP response code, along with the values to expect in the `OperationOutcome` in the response body for this exception scenario.
+#### OperationOutcome
 
-|HTTP Code|issue-severity|issue-type|Details.Code|
-|---------|--------------|----------|------------|
-|400|error|invalid|INVALID_RESOURCE|
-
-{% include note.html content="Although not stated in the table above, the `OperationOutcome` that the NRL returns in these scenarios will include `Details.display` and `Diagnostics` detail, which will aid in identifying which property this issue relates to." %}
+|Element|Content|
+|-------|-------|
+| `id` | A UUID for this `OperationOutcome`. |
+| `meta.profile` | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1` |
+| `issue.severity` | Fixed value: `error` |
+| `issue.code` | Fixed value: `invalid` |
+| `issue.details.coding.system` | Fixed value: `https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1` |
+| `issue.details.coding.code` | Fixed value: `INVALID_RESOURCE` |
+| `issue.details.coding.display` | Varied, depending on the error. |
+| `issue.diagnostics` | Varied, depending on the error. |
 
 #### Invalid Resource [Create/Supersede]
 
