@@ -7,7 +7,7 @@ permalink: retrieval_observations_fhir_stu3.html
 summary: Observation List, FHIR STU3 format information retrieval.
 ---
 
-The `Observation List FHIR STU3 v1` retrieval format represents a list of observations that were made in relation to a patient, with required supporting information.
+The `Observation List FHIR STU3 v1` retrieval format represents a list of observations made in relation to a patient, with required supporting information.
 
 All pointers which allow for retrieval in the `Observation List FHIR STU3 v1` record format **MUST** return information conforming to the guidance and requirements specified on this page.
 
@@ -15,15 +15,23 @@ All pointers which allow for retrieval in the `Observation List FHIR STU3 v1` re
 
 The scope of observations is potentially very broad, and some use cases may benefit from the observation being linked to additional supporting information. The following page includes guidance around how information should be represented and how resources should be linked to give each resource context.
 
-Some use cases may require additional contextual information to be included and linked to the observation, but the aim of the requirements and guidance on this page is to try and ensure that there is always a standard set of useful information that has context but also allows additional information to be included when needed.
+Some use cases may require additional contextual information to be included and linked to the observation, but the aim of the requirements and guidance on this page is to try and ensure there is always a standard set of useful information that has context, but also allows additional information to be included when needed.
 
-The diagram below shows the basic information model for representing an observation. The observation is the focus but needs to be linked to the patient that the observation relates to. In addition, there may be use cases that need some supporting information to be included in order to add context to the information being shared.
+The diagram below shows the basic information model for representing an observation. The observation is the focus but needs to be linked to the patient that the observation relates to. In addition, there may be use cases that need some supporting information to be included to add context.
 
-<img alt="Observation information model diagram" src="images/retrieval/formats/observation_information_model.png" style="width:100%;max-width: 100%;">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="721px" height="226px" viewBox="-0.5 -0.5 721 226" style="background-color: rgb(255, 255, 255);"><defs/><g><rect x="0" y="0" width="720" height="225" fill="none" stroke="none" pointer-events="all"/><path d="M 255 56.25 L 284.55 56.25 L 279.8 56.33" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 283.74 56.34 L 278.48 58.95 L 279.8 56.33 L 278.5 53.7 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><path d="M 135 97.5 L 135 122.72" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="stroke"/><path d="M 135 126.66 L 132.38 121.41 L 135 122.72 L 137.63 121.41 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="all"/><rect x="15" y="15" width="240" height="82.5" fill="#dae8fc" stroke="#6c8ebf" pointer-events="all"/><g transform="translate(-0.5 -0.5)scale(0.75)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="134%" height="134%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 287px; height: 1px; padding-top: 75px; margin-left: 32px;"><div style="box-sizing: border-box; font-size: 0; text-align: left; "><div style="display: inline-block; font-size: 18px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><div style="text-align: center ; font-size: 20px"><b>Observation </b><span>(Mandatory)</span></div><ul style="font-size: 18px"><li><span>The type of observation</span><br /></li><li style="font-size: 18px"><span style="font-size: 18px">The result of the observation</span></li></ul></div></div></div></foreignObject><text x="32" y="80" fill="#000000" font-family="Helvetica" font-size="18px">Observation (Mandatory)...</text></switch></g><rect x="15" y="127.5" width="240" height="82.5" fill="#d5e8d4" stroke="#82b366" pointer-events="all"/><g transform="translate(-0.5 -0.5)scale(0.75)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="134%" height="134%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 298px; height: 1px; padding-top: 225px; margin-left: 32px;"><div style="box-sizing: border-box; font-size: 0; text-align: left; "><div style="display: inline-block; font-size: 18px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><font style="font-size: 20px"><b>Patient </b>(Mandatory)</font><br style="font-size: 18px" /><br style="font-size: 18px" /><div style="font-size: 18px"><span style="font-size: 18px">Information about the patient this observation relates to.</span></div></div></div></div></foreignObject><text x="32" y="230" fill="#000000" font-family="Helvetica" font-size="18px">Patient (Mandatory)...</text></switch></g><rect x="285" y="15" width="420" height="195" fill="#fff2cc" stroke="#d6b656" pointer-events="all"/><g transform="translate(-0.5 -0.5)scale(0.75)"><switch><foreignObject style="overflow: visible; text-align: left;" pointer-events="none" width="134%" height="134%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 538px; height: 1px; padding-top: 150px; margin-left: 392px;"><div style="box-sizing: border-box; font-size: 0; text-align: left; "><div style="display: inline-block; font-size: 18px; font-family: Helvetica; color: #000000; line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; "><font style="font-size: 20px"><b>Supporting Information </b>(Optional)</font><br style="font-size: 18px" /><span><br />Other resources could be included to give additional context to the observation. </span><span>This might include:</span><span><br /></span><div style="font-size: 18px"><ul style="font-size: 18px"><li style="font-size: 18px">An "encounter" or "episode of care" in which this observation was made.</li><li style="font-size: 18px">The source of the observation, such as the patient, a practitioner or a related person.</li><li style="font-size: 18px">Device which was used to take measurement for observation.</li><li style="font-size: 18px">A related specimen which affected the observation.</li></ul></div></div></div></div></foreignObject><text x="392" y="155" fill="#000000" font-family="Helvetica" font-size="18px">Supporting Information (Optional)...</text></switch></g></g><switch><g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/><a transform="translate(0,-5)" xlink:href="https://desk.draw.io/support/solutions/articles/16000042487" target="_blank"><text text-anchor="middle" font-size="10px" x="50%" y="100%">Viewer does not support full SVG 1.1</text></a></switch></svg>
 
-The aim of a provider **MUST** be to include enough information in the Observation, with values which gives the observation enough context to be useful to a clinician without requiring the consuming system to understand all the supporting information.
+Providers SHOULD include sufficient information in the observation for a clinician to understand its context without requiring the consuming system to process and display supporting information. For example, a blood test result observation could include:
 
-For example, in an observation about a blood test result, the observation will contain the type of observation, the value/result of the observation and potentially the interpretation of that result. The observation may reference supporting information about the device used to get the result, the specimen that the test was performed on and the episode of care in which the observation was made, but without looking at the supporting information and only looking at the observation a clinician should be able to understand the observation that was made.
+- observation type.
+- observation result.
+- an interpretation of the result.
+
+And supporting information may include:
+
+- the device used to obtain the result.
+- the specimen that the test was performed on
+- the episode of care in which the observation was made.
 
 ## Pointer Retrieval `Format` Code
 
@@ -68,20 +76,20 @@ The `Bundle` **MUST** contain the following resources:
 |Resource|Cardinality|Description|
 |--------|-----------|-----------|
 | [`List`](http://hl7.org/fhir/STU3/list.html) | 1..1 | Container for list of observations related to the patient. |
-| [`CareConnect-Observation-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Observation-1) | 0..* | Observations listed will be included in the bundle as Observation resources.<br /><br />The cardinality allows for zero observations to be included to allow for where pointer maintenance may not align with data management. For example: if pointers are maintained as an overnight batch process, but an observation could be removed at any time in the day, this may result in a pointer pointing to an empty list.<br /><br />Providers **MUST** remove pointers which will not return any observations, as soon as possible. |
-| [`CareConnect-Patient-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1) | 1..1 | The Patient resource identifies the patient which the observations relate to. |
-| [`CareConnect-Organization-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1) | 1..* | The Organization resources reference by the List resource will represent the organisation sharing the information and **MUST** contain contact details for use in relation to data quality issues. References between the resources will put any other included Organization resources in context. |
+| [`CareConnect-Observation-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Observation-1) | 0..* | The set of observations.<br /><br />The cardinality allows for zero observations to be included to allow for where pointer maintenance may not align with data management. For example, if pointers are maintained as an overnight batch process, but an observation is removed during the day, this may result in a pointer pointing to an empty list.<br /><br />Providers **MUST** remove pointers containing no observations as soon as possible. |
+| [`CareConnect-Patient-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1) | 1..1 | Identifies the patient which the observations relate to. |
+| [`CareConnect-Organization-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1) | 1..* | The `Organization` resources reference by the `List` resource represent the organisation sharing the information and **MUST** contain contact details for use in relation to data quality issues. References between the resources will put any other included `Organization` resources in context. |
 
-The `Bundle` **MAY** contain **any** resources referenced by other resources, to add additional information to the observation being shared. The following table contains **some** of the resource that could be included and guidance around the use of these resources:
+The `Bundle` **MAY** contain **any** resources referenced by other resources to add additional information to the observation being shared. The following table contains **some** of the resource that could be included and guidance around the use of these resources:
 
 |Resource|Cardinality|Description|
 |--------|-----------|-----------|
 | [`CareConnect-Encounter-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Encounter-1) | 0..* | Where an observation is tied to a specific encounter, this would be the most appropriate resource to use. |
-| [`CareConnect-EpisodeOfCare-1`]((https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-EpisodeOfCare-1) | 0..* | Where an observation is made as part of an episode of care rather than a specific encounter, this might be a more appropriate resource to use. |
-| [`CareConnect-HealthcareService-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-HealthcareService-1) | 0..* | HealthcareService resources may be included to give additional context to the organisations. This might be where the observation is tied to a specific service within an organisation or as a place to share the care setting in which the observations were made. |
-| [`CareConnect-Practitioner-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Practitioner-1) | 0..* | Practitioner details may be included in the bundle in relation to observations.<br /><br />**Note:** it is important to consider Information Governance when including practitioner personal data within information shared with other organisations. |
-| [`CareConnect-PractitionerRole-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-PractitionerRole-1) | 0..* | PractionerRole resources may be included to add additional information about practitioners included in the shared information. |
-| [`CareConnect-RelatedPerson-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-RelatedPerson-1) | 0..* | Observations may contain a reference to the person who is the source of the observation. This might be a practitioner but in may also be a family member or carer. The related person resource might be useful in representing this information.<br /><br />**Note:** As with the practitioner resource, information governance should be considered when including details of any person who is not the patient this observation information is related to. |
+| [`CareConnect-EpisodeOfCare-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-EpisodeOfCare-1) | 0..* | Where an observation is made as part of an episode of care rather than a specific encounter, this might be a more appropriate resource to use. |
+| [`CareConnect-HealthcareService-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-HealthcareService-1) | 0..* | May be included to give additional context to the associated organisation(s). This might be where the observation is tied to a specific service within an organisation or as a place to share the care setting in which the observation was made. |
+| [`CareConnect-Practitioner-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Practitioner-1) | 0..* | May be included in relation to observations.<br /><br />**Note:** it is important to consider Information Governance when including practitioner personal data within information shared with other organisations. |
+| [`CareConnect-PractitionerRole-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-PractitionerRole-1) | 0..* | May be included to add additional information about practitioners included in the shared information. |
+| [`CareConnect-RelatedPerson-1`](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-RelatedPerson-1) | 0..* | Observations may contain this resource as a reference to the person who is the source of the observation e.g. practitioner, family member or carer.<br /><br />**Note:** As with the `Practitioner` resource, Information Governance should be considered when including details of any person who is not the subject patient. |
 
 ## Resource Population Requirements and Guidance
 
@@ -105,105 +113,113 @@ The `List` resource **MUST** conform to the `List` base FHIR profile and the add
 
 |Element|Cardinality|Additional Guidance|
 |-------|-----------|-------------------|
-| Extension `(informationProvider).valueReference` | 1..1 | This **MUST** reference the `Organization` resource representing the organisation sharing the information. This organisation resource will include contact details for the organisation in relation to data quality issues with the retrieved data. |
+| extension `(informationProvider).valueReference` | 1..1 | This **MUST** reference the `Organization` resource representing the organisation sharing the information, including their contact details for use in relation to data quality issues. |
 | `status` | 1..1 | Fixed value: `current` |
 | `mode` | 1..1 | Fixed value: `snapshot` |
-| `subject` | 1..1 | A reference to the `Patient` resource representing the subject of this record |
+| `subject` | 1..1 | A reference to the `Patient` resource representing the subject of this record. |
 | `code` | 1..1 | The purpose of the list. The value SHALL match the record type code on the associated pointer (`DocumentReference.type`). |
 
 ### [CareConnect-Observation-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Observation-1)
 
-The `Observation` resources included as part of the returned information SHALL conform to the `CareConnect-Observation-1` constrained FHIR profile and the additional population guidance as per the table below.
-
-The aim **MUST** be to include enough information in the observation resource to give it context without the need for any supporting information to be considered. Where additional supporting information is included this SHOULD be made available to the user, where possible. If supporting information is included and it is not possible to render for the user, the observation information could be shown to the user but SHOULD be flagged to let them know additional information around the observation cannot be shown.
+`Observation` resources included in the `Bundle` **MUST** SHALL conform to the `CareConnect-Observation-1` constrained FHIR profile and the additional population guidance as per the table below which details some of the key elements:
 
 | Resource Cardinality | 0..* |
 
-The following table pulls out some key elements in the observation resource and give some guidance around how the different elements should be used:
-
 |Element|Cardinality|Additional Guidance|
 |-------|-----------|-------------------|
-| `identifier` | 1..1 | A publisher defined unique identifier for the observation which will be maintained across different retrieval endpoints/FHIR interfaces to allow subscribers to identify duplicates or updated information. |
-| `code` | 1..1 | This will be the main identifier which tells the consumer what type of observation this is. |
-| `subject` | 1..1 | This will be the patient who is the subject of this list of observations. |
-| `context` | 0..1 | Where additional context around the “Encounter” or "EpisodeOfCare” in which the observation was made or recorded, it SHOULD be referenced from here. Where a resource is referenced the constraints of the profile **MUST** be followed. |
-| `effective` | 1..1 | This element SHOULD contain the datetime at which the observation was made or recorded. |
-| `performer` | 0..* | Where additional context around who made or is responsible for the observation is required, it SHOULD be referenced from this element. Constraints within the profile should be followed when referencing other resources.<br /><br />**Note:** Where information about any individual is included information governance should be considered. |
+| `identifier` | 1..1 | A unique identifier for the observation which will be maintained across different retrieval endpoints/FHIR interfaces to allow identification of duplicates or updated information. |
+| `code` | 1..1 | Identifies the observation type. |
+| `subject` | 1..1 | The patient who is the subject of this list of observations. |
+| `context` | 0..1 | Where additional context around the "Encounter" or "EpisodeOfCare" in which the observation was made or recorded, it SHOULD be referenced from here. |
+| `effective` | 1..1 | The datetime at which the observation was made or recorded. |
+| `performer` | 0..* | Where additional context around who made or is responsible for the observation is required, it SHOULD be referenced from this element.<br /><br />**Note:** Where information about any individual is included Information Governance should be considered. |
 | `value` | 0..1 | Where the observation has a result it SHOULD be included in this element. |
-| `interpretation` | 0..1 | Where there is an interpretation about an observation it SHOULD be included in this element. |
-| `comment` | 0..1 | A comment MAY be included, but content should be considered carefully in relation to information governance and in terms of a serious harm test for use cases where this comment may be displayed to a user. |
-| `component` | 0..* | Where components of the observation are expressed as separate code value pairs then this element should be used.<br /><br />A consumer should consider how these components and the observation code and value should be displayed to user in the most clinically safe way possible. |
+| `interpretation` | 0..1 | Where there is an interpretation about the observation it SHOULD be included in this element. |
+| `comment` | 0..1 | A comment MAY be included, but displaying this content should be considered carefully in relation to Information Governance, for example a comment in relation to a serious harm test. |
+| `component` | 0..* | This element should be used where components of the observation are expressed as separate code value pairs.<br /><br />A consumer should consider how these components and the observation code and value should be displayed to user in the most clinically safe way possible. |
+
+{% include note.html content="Providers SHOULD include sufficient information in the observation for a clinician to understand its context without requiring the consuming system to process and display supporting information. Where additional supporting information is included this SHOULD be made available to the viewer where possible, alternativively, if this cannot be done, it's recommended to flag the ommission." %}
 
 ### [CareConnect-Patient-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1)
 
-The patient resources included in the bundle SHALL conform to the `CareConnect-Patient-1` constrained FHIR profile and the additional population guidance as per the table below:
+`Patient` resources included in the `Bundle` **MUST** conform to the `CareConnect-Patient-1` constrained FHIR profile and the additional population guidance as per the table below:
 
 | Resource Cardinality | 1..1 |
 
 |Element|Cardinality|Additional Guidance|
 |-------|-----------|-------------------|
-| `identifier` | 1..1 | Patient NHS Number identifier SHALL be included within the nhsNumber identifier slice. The NHS Number SHALL match the NHS Number on the associated pointer (`DocumentReference.subject`). |
-| `name` (official) | 1..1 | Patients name as registered on PDS, included within the resource as the official name element slice. |
+| `identifier` | 1..1 | Patient NHS Number identifier SHALL be included within the nhsNumber identifier slice. The NHS Number **MUST** match the NHS Number on the associated pointer (`DocumentReference.subject`). |
+| `name (official)` | 1..1 | Patient's name as registered on PDS, included within the resource as the official name element slice. |
 | `birthDate` | 1..1 | The patient's date of birth. |
 
 ### [CareConnect-Organization-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Organization-1)
 
-All `Organization` resources included in the bundle SHALL conform to the `CareConnect-Organization-1` constrained FHIR profile and the additional population guidance as per the table below:
+`Organization` resources included in the `Bundle` **MUST** conform to the `CareConnect-Organization-1` constrained FHIR profile and the additional population guidance as per the table below:
 
 | Resource Cardinality | 1..* |
 
 |Element|Cardinality|Additional Guidance|
 |-------|-----------|-------------------|
-| `identifier` | 1..* | The organisation ODS code identifier SHALL be included within the `odsOrganizationCode` identifier slice. |
-| `name` | 1..1 | A human readable name for the organisation SHALL be included in the organization resource. |
-| `telecom` | 0..* | Where the Organization resource is referenced directly from the List (`Extension (informationProvider)`), contact details for the organisation **MUST** be included for use in relation to data quality issues. |
+| `identifier` | 1..* | The organisation ODS code identifier **MUST** be included within the `odsOrganizationCode` identifier slice. |
+| `name` | 1..1 | A human readable name for the organisation **MUST** be included. |
+| `telecom` | 0..* | Where the `Organization` resource is referenced directly from the `List` (via `extension (informationProvider)`), contact details for the organisation **MUST** be included for use in relation to data quality issues. |
 | `telecom.system` | 1..1 | **MUST** contain a value of phone or email matching the included contact method within the value element. |
 | `telecom.value` | 1..1 | A phone number or email address. |
 
 ### [CareConnect-Practitioner-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Practitioner-1)
 
-The `Practitioner` resources included in the bundle SHALL conform to the `CareConnect-Practitioner-1` constrained FHIR profile.
+`Practitioner` resources included in the `Bundle` **MUST** conform to the `CareConnect-Practitioner-1` constrained FHIR profile.
 
 | Resource Cardinality | 0..* |
 
-**Note:** Information Governance should be considered before including practitioner's personal data within shared information.
+**Note:** Information Governance should be considered before including practitioners' personal data within shared information.
 
 ### [CareConnect-PractitionerRole-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-PractitionerRole-1)
 
-The `PractitionerRole` resources included in the bundle SHALL conform to the `CareConnect-PractitionerRole-1` constrained FHIR profile.
+`PractitionerRole` resources included in the `Bundle` **MUST** conform to the `CareConnect-PractitionerRole-1` constrained FHIR profile and the additional population guidance as per the table below:
 
 | Resource Cardinality | 0..* |
 
 |Element|Cardinality|Additional Guidance|
 |-------|-----------|-------------------|
-| `organization` | 1..1 | Reference to the Organization where the practitioner performs this role. |
-| `practitioner` | 1..1 | Reference to the Practitioner who this role relates to. |
-| `code` | 1..* | The practitioner role SHALL include a value from the [`ProfessionalType-1`](https://fhir.nhs.uk/STU3/ValueSet/ProfessionalType-1) value set. The `PractitionerRole.code` SHOULD include the SDS Job Role name where available. |
-| `specialty` | 1..1 | `PractitionerRole.specialty` SHALL use a value from [`Specialty-1`](https://fhir.nhs.uk/STU3/ValueSet/Specialty-1) value set. |
-
+| `organization` | 1..1 | Reference to the organization where the practitioner performs this role. |
+| `practitioner` | 1..1 | Reference to the practitioner who this role relates to. |
+| `code` | 1..* | A value from the [`ProfessionalType-1`](https://fhir.nhs.uk/STU3/ValueSet/ProfessionalType-1) ValueSet, including the SDS Job Role name where available. |
+| `specialty` | 1..1 | A value from the [`Specialty-1`](https://fhir.nhs.uk/STU3/ValueSet/Specialty-1) ValueSet. |
 
 ### [CareConnect-Encounter-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Encounter-1)
 
-The `Encounter` resources included in the bundle SHALL conform to the `CareConnect-Encounter-1` constrained FHIR profile and the additional population guidance as per the table below:
+`Encounter` resources included in the `Bundle` **MUST** conform to the `CareConnect-Encounter-1` constrained FHIR profile and the additional population guidance as per the table below:
 
 | Resource Cardinality | 0..* |
 
 |Element|Cardinality|Additional Guidance|
 |-------|-----------|-------------------|
-| `Encounter.type` | 1..* | The encounter type SHOULD include a value from the [`EncounterType-1`](https://fhir.nhs.uk/STU3/ValueSet/EncounterType-1) value set. This value set is extensible so additional values and code systems may be added where required. |
+| `type` | 1..* | A value from the [`EncounterType-1`](https://fhir.nhs.uk/STU3/ValueSet/EncounterType-1) ValueSet. This ValueSet is extensible so additional values and code systems may be added where required. |
+| `location` | 0..1 | Reference to the location at which the encounter took place. |
 | `subject` | 1..1 | A reference to the `Patient` resource representing the subject of this event. |
 
 ### [CareConnect-HealthcareService-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-HealthcareService-1)
 
-The HealthcareService resources included in the bundle SHALL conform to the `CareConnect-HealthcareService-1` constrained FHIR profile and the additional population guidance as per the table below:
+`HealthcareService` resources included in the `Bundle` **MUST** conform to the `CareConnect-HealthcareService-1` constrained FHIR profile and the additional population guidance as per the table below:
 
 | Resource Cardinality | 0..* |
 
 |Element|Cardinality|Additional Guidance|
 |-------|-----------|-------------------|
 | `providedBy` | 1..1 | Reference to the organisation who provides the healthcare service. |
-| `type` | 1..1 | This type SHALL have a value from the [`CareConnect-CareSettingType-1`](https://fhir.hl7.org.uk/STU3/ValueSet/CareConnect-CareSettingType-1) value set. |
-| `specialty` | 1..1 | The specialty SHALL be a value from the [`Specialty-1`](https://fhir.nhs.uk/STU3/ValueSet/Specialty-1) value set. |
+| `type` | 1..1 | A value from the [`CareConnect-CareSettingType-1`](https://fhir.hl7.org.uk/STU3/ValueSet/CareConnect-CareSettingType-1) ValueSet. |
+| `specialty` | 1..1 | A value from the [`Specialty-1`](https://fhir.nhs.uk/STU3/ValueSet/Specialty-1) ValueSet. |
+
+### [CareConnect-Location-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Location-1)
+
+`Location` resources included as part of the `Bundle` **MUST** conform to the `CareConnect-Location-1` constrained FHIR profile and the additional population guidance as per the table below:
+
+| Resource Cardinality | 0..* |
+
+|Element|Cardinality|Additional Guidance|
+|-------|-----------|-------------------|
+| `identifier` | 0..* | Where available, the ODS Site Code slice SHOULD be populated. |
 
 ## Examples
 
