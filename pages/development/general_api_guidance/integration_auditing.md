@@ -13,15 +13,13 @@ Consumers and providers are required to keep an audit trail of:
 - requests to and responses from the NRL API interfaces.
 - requests and responses related to the retrieval of records and documents.
 
-In addition, the NRL and SSP are required to keep an audit trail of requests and responses that flow through these services.
+In addition, the NRL and SSP are required to keep an audit trail of requests and responses that flow through these services and providers may request audit trail data from NHS Digital about any pointers they own/maintain.
 
 ## Consumers
 
 Consumers **MUST** keep an audit trail of:
 - requests to and responses from the NRL.
 - requests to and responses from provider systems (to retrieve records/documents etc.)
-
-Audit trails **MUST** include all details of the HTTP requests/reponses, including all HTTP headers.
 
 ## Providers
 
@@ -30,8 +28,6 @@ Providers **MUST** keep an audit trail of:
 - requests received from consumers (to retrieve records/documents etc.) **and** their corresponding responses*\**.
 
 \* *It is not necessary for a provider to keep an audit trail of the response payload returned to consumers, however, providers **MUST** be able to provide details of the record returned if required for medico-legal purposes.*
-
-Audit trails **MUST** include all details of HTTP requests/reponses, including all HTTP headers.
 
 ## SSP Trace ID
 
@@ -101,3 +97,11 @@ The following table details the audit log attributes and the source of the value
 | Response Datetime | Datetime that the response was received from NHS Digital service (NRL or SSP). |
 | Trace ID | The consumer-generated ID of the retrieval request. This is only used for requests via the SSP and is for use in the `Ssp-TraceID` HTTP request header. |
 | User ID | `requesting_user` from JWT (this will be 'NotProvided' if `requesting_user` isn't available in the JWT.)<br /><br />This is not mandatory where the request is completed as a non-interactive process. |
+
+## Requesting an Audit Trail
+
+Providers can request the following two types of audit trail data from NHS Digital:
+* All audit trails for a given patient (identified by their NHS number).
+* All audit trails for all pointers owned by the provider.
+
+In either case, the provider is permitted to view audit trail information only for pointers that it owns and maintains.
