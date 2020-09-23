@@ -176,7 +176,7 @@ The `List` resource **MUST** conform to the `List` base FHIR profile and the add
 
 ### [CareConnect-Location-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Location-1)
 
-`Location` resources included as part of the `Bundle` **MUST** conform to the `CareConnect-Location-1` constrained FHIR profile and the additional population guidance as per the table below:
+`Location` resources included as part of the `Bundle` **MUST** conform to the `CareConnect-Location-1` constrained FHIR profile and the additional population guidance as per the table below:
 
 | Resource Cardinality | 0..* |
 

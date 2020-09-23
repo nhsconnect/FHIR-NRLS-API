@@ -193,7 +193,7 @@ The following requirements **MUST** be met when a citizen is given access to ano
     <th>Acceptance Criteria</th>
   </tr>
   <tr>
-    <td>There <b>MUST</b> be a process for recording and verifying who a "Legal Parent" is. This may be a natural parent, but for a "Looked After Child", it may be the Local Authority who may delegate to a professional carer or relative.</td>
+    <td>There <b>MUST</b> be a process for recording and verifying who a "Legal Parent" is. This may be a natural parent, but for a "Looked After Child", it may be the Local Authority who may delegate to a professional carer or relative.</td>
     <td>
       <ul>
         <li>Clinician <b>MUST</b> be able to record who a child's "Legal Parent" is, and the source of and/or reason for the decision (e.g. Social Services).</li>
