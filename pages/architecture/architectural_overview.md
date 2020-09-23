@@ -47,12 +47,4 @@ The NRL does not take part in the retrieval of information from providers. The p
 
 The NRL maintains an audit trail for all consumer/provider interactions. This audit trail begins with capturing key data from the request, information around how the NRL processes the request and ends with capturing the response that the NRL returns to the requesting system.
 
-Providers and consumers are also required to cature audit information for NRL interactions and sharing of information. Details of the audit requirements for consumers and providers can be found on the [Auditing](integration_auditing.html) page.
-
-### Retrieving an Audit Trail
-
-Providers can request the following two types of audit trail data from NHS Digital:
-* All audit trails for a given patient (identified by their NHS number)
-* All audit trails for all pointers owned by the provider
-
-In either case, the provider is permitted to view audit trail information only for pointers that it owns and maintains.
+Providers and consumers are also required to capture audit information for NRL interactions and sharing of information. Details of the audit requirements for consumers and providers can be found on the [Auditing](integration_auditing.html) page.
