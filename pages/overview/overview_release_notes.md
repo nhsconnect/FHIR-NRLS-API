@@ -9,19 +9,18 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 
 ## 2.4.0-beta
 - Specification re-factor and streamline of information included
-- Update of [JSON Web Token Guidance](jwt_guidance.html) to enable citizen access
+- Update of [JSON Web Token Guidance](guidance_jwt.html) to enable citizen access
 - Addition of structured retrieval formats:
    - Allergies
    - Vaccinations
    - Observations
-
 
 ## 2.3.0-beta
 
 - Add clarification about use of `versionId` to [Supersede interaction page](api_interaction_supersede.html)
 - Update ODS code and endpoint requirements guidance
 - Remove SSP prefix from example `DocumentReference`s
-- Update guidance on constructing SSP URLs and percent-encoding for document retrieval 
+- Update guidance on constructing SSP URLs and percent-encoding for document retrieval
 - Add clarification about cardinality in JSON
 - Add notes about `CodeableConcept` data type
 - Updated glossary of terms
@@ -72,7 +71,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
   - The service name has changed from NRLS (National Record Locator Service) to NRL (National Record Locator)
   - *API Breaking Change*{:.label.label-danger} The FHIR Resource NRLS-DocumentReference-1 uplifted to NRL-DocumentReference-1
     - Data model changes are detailed below
-  - *API Breaking Change*{:.label.label-danger} Data model changes 
+  - *API Breaking Change*{:.label.label-danger} Data model changes
     - `Class`: now mandatory and persisted by NRL
     - `Type`: ValueSet URL changed from NRLS-RecordType-1 to NRL-RecordType-1
     - `Context`: now mandatory
@@ -86,20 +85,20 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     -	Source of FHIR Resource examples has been changed
     -	FHIR Resource examples are now contained in a shorter scrollable code block
   -	Assurance page
-    -	References to TOM have been changed to SCAL 
+    -	References to TOM have been changed to SCAL
     -	Links to the on-boarding guide have been added
-  -	Developer Guidance 
-      -	Overview page 
-          -	NHS number verification guidance updated 
-          -	Actor to interaction mapping table updated 
-      - FHIR Resource page 
+  -	Developer Guidance
+      -	Overview page
+          -	NHS number verification guidance updated
+          -	Actor to interaction mapping table updated
+      - FHIR Resource page
           - Renamed
           - Additional data model properties detailed
           - Additional valuesets, extensions, and codesystems added
           -	Master Identifier added to identifiers section
           -	The term 'Record Status' has changed to 'Pointer Status'
-      -	General API Guidance 
-          -	Error handling updates: 
+      -	General API Guidance
+          -	Error handling updates:
               -	Invalid resource section re-structured
               -	Added detail for the 'update interaction' errors
               -	Added Patient mismatch errors
@@ -122,7 +121,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     -	*New API Feature*{:.label.label-info} RESTful 'read' by logical id now supported which returns a single DocumentReference resource
     -	*New API Feature*{:.label.label-info} RESTful 'update' now supported - using the HTTP PATCH verb
         -	HTTP PATCH supports update by logical id and master identifier
-    -	Create interaction 
+    -	Create interaction
         - Page details additional error responses
         - *API Breaking Change*{:.label.label-danger} Format of Location response header has been changed to [baseUrl]/DocumentReference/[id]
     -	Delete interaction
@@ -137,7 +136,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
             -	`Search.mode` added
             -	`Resource.fullUrl` added
   -	Integrate with spine
-    -	Security page 
+    -	Security page
         -	This page has been moved from Developer guidance to the Integrate with spine section
         -	Overview section added
         -	Further clarity on which protocols can be used

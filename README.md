@@ -1,6 +1,6 @@
 # FHIR-NRL-API
 
-An API for storing and retrieving pointers to records and documents from the national record locator. 
+An API for storing and retrieving pointers to records and documents from the national record locator.
 
 <p align="center">
   <a href="https://v4-alpha.getbootstrap.com">
@@ -88,10 +88,10 @@ Details to follow.
 
 For transparency into our release cycle and in striving to maintain backward compatibility, the NRL API is maintained under [the Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
 
-See [the Releases section of our GitHub project](https://github.com/nhsconnect/FHIR-NRLS-API/releases) for changelogs for each release version of Bootstrap. 
+See [the Releases section of our GitHub project](https://github.com/nhsconnect/FHIR-NRLS-API/releases) for changelogs for each release version of Bootstrap.
 
 <!--Release announcement posts on [the official CareConnect API blog](#) contain summaries of the most noteworthy changes made in each release.-->
 
 ## Copyright and License
 
-Code and documentation copyright 2011-2017 the [NHS Digital](#) Code released under the [MIT License](#). Docs released under [Creative Commons](#). 
+Code and documentation copyright 2011-2017 the [NHS Digital](#) Code released under the [MIT License](#). Docs released under [Creative Commons](#).

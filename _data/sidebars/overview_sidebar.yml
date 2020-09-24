@@ -13,7 +13,7 @@ entries:
       output: web, pdf
       type: homepage
     - title: Product Versioning
-      url: /overview_guide_versioning.html
+      url: /overview_product_versioning.html
       output: web
     - title: Release Notes
       url: /overview_release_notes.html
@@ -23,13 +23,13 @@ entries:
     output: web
     folderitems:
     - title: Overview
-      url: /architectural_overview.html
+      url: /architecture_overview.html
       output: web
     - title: Pointers
-      url: /pointer_overview.html
+      url: /architecture_pointers.html
       output: web
     - title: Information Sharing
-      url: /information_sharing_overview.html
+      url: /architecture_information_sharing.html
       output: web
 
   - title: Development Guidance
@@ -43,13 +43,13 @@ entries:
         output: web
         subfolderitems:
           - title: Overview
-            url: /pointer_data_model.html
+            url: /pointer_data_model_overview.html
             output: web
           - title: Supported Pointer Types
             url: /supported_pointer_types.html
             output: web
           - title: FHIR Resource Mapping
-            url: /explore_reference.html
+            url: /fhir_resource_mapping.html
             output: web
       - title: Consumer Interactions
         output: web
@@ -79,16 +79,16 @@ entries:
         output: web
         subfolderitems:
           - title: Auditing
-            url: /integration_auditing.html
+            url: /guidance_auditing.html
             output: web
           - title: Error Overview
-            url: /nrl_error_guidance.html
+            url: /guidance_errors.html
             output: web
           - title: JSON Web Token
-            url: /jwt_guidance.html
+            url: /guidance_jwt.html
             output: web
           - title: Security
-            url: /security_guidance.html
+            url: /guidance_security.html
             output: web
 
   - title: Information Retrieval
@@ -97,7 +97,7 @@ entries:
     - title: Overview
       url: /retrieval_overview.html
       output: web
-    - title: Access Control
+    - title: Access Controls
       url: /access_controls.html
       output: web
       subfolders:
@@ -117,7 +117,7 @@ entries:
             url: /retrieval_contact_details.html
             output: web
           - title: Unstructured Document
-            url: /retreival_unstructured_document.html
+            url: /retrieval_unstructured_document.html
             output: web
           - title: Allergy List - FHIR STU3 v1
             url: /retrieval_allergies_fhir_stu3.html
@@ -132,7 +132,7 @@ entries:
   - title: Assurance
     output: web
     flat: true
-    url: /assure.html
+    url: /assurance.html
 
   - title: Help &amp; Support
     output: web
@@ -141,7 +141,7 @@ entries:
       url: /support_faq.html
       output: web
     - title: Glossary
-      url: /overview_glossary.html
+      url: /support_glossary.html
       output: web
     - title: Communication Channels
       url: /support_communications.html
