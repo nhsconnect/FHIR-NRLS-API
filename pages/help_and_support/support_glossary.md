@@ -3,7 +3,7 @@ title: Glossary
 keywords: abbreviations definitions glossaries terms
 tags: [overview]
 sidebar: overview_sidebar
-permalink: overview_glossary.html
+permalink: support_glossary.html
 summary: Glossary of terms used by this implementation guide.
 toc: false
 ---
