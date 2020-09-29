@@ -91,6 +91,7 @@ Consumer systems **MUST** ensure users are authenticated and authorised, using a
 
 More details can be found on the [NRL Security Guidance](guidance_security.html) page.
 
+<!--
 ### Citizen vs Health Care Professional Request
 
 A provider may wish to return different data when the request for information is from a health care professional to when the request is from a citizen facing application.
@@ -100,6 +101,7 @@ An example of this might be:
 - a provider might wish to hold back information from a citizen about a sensitive result until the information has been shared with the patient by a practitioner, but that same information may be very useful to other healthcare professionals and could result in significantly improved care/life saving for the patient if they were to attend a service such as A&E before the provider has had chance to share that information with the patient.
 
 To enable the provider to return appropriate information, all consumers wishing to retrieve data via the SSP **MUST** send the request with an appropriate JSON Web Token (JWT) identifying the intended audience. The requirements for the JWT are on the [JSON Web Token Guidance](guidance_jwt.html) page.
+-->
 
 ## Provider Retrieval Endpoints
 

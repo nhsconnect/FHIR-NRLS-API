@@ -34,7 +34,7 @@ Where a consuming system is making a request on behalf of a healthcare professio
 |-----|-----------|
 |`requesting_user`|The claim **MUST** be populated with the requesting user details in the form:<br /><br />`https://fhir.nhs.uk/Id/sds-role-profile-id|[sds_role_profile_id]`|
 |`sub`|The value **MUST** match the value of the `requesting_user` claim.|
-|`reason_for_request`|Fixed value: `directcare`.|
+|`reason_for_request`|Fixed value: `directcare`|
 |`requesting_patient`|The claim **MUST NOT** be included.|
 
 #### Example: Healthcare professional access
@@ -54,6 +54,7 @@ Where a consuming system is making a request on behalf of a healthcare professio
 }
 ```
 
+<!--
 ### Citizen Access
 
 Where a consuming system is making a request on behalf of a citizen, the following claim requirements **MUST** be met:
@@ -62,7 +63,7 @@ Where a consuming system is making a request on behalf of a citizen, the followi
 |-----|-----------|
 |`requesting_patient`|The claim **MUST** be populated with the citizen's patient details (the subject of the information being requested) in the form:<br /><br />`http://fhir.nhs.net/Id/nhs-number|[nhs_number]`|
 |`sub`|The value **MUST** match the value of the `requesting_patient` claim.|
-|`reason_for_request`|Fixed value: `patientaccess`.|
+|`reason_for_request`|Fixed value: `patientaccess`|
 |`act`|This claim is for use where there is delegated access by one citizen on behalf of another citizen. Where the request is citizen access but not to their own record the `act` claim **MUST** be populated with the details of the requesting citizen.<br/><br/>The claim **MUST** be in the form:<br/><br/>```"act": {```<br />```   "sub": "http://fhir.nhs.net/Id/nhs-number|[nhs_number]"```<br />```}```|
 |`requesting_user`|The claim **MUST NOT** be included.|
 
@@ -110,7 +111,7 @@ Where an interaction is performed without a user being present, the following cl
 |Claim|Requirement|
 |-----|-----------|
 |`sub`|The value **MUST** match the value of the `requesting_system` claim.|
-|`reason_for_request`|Fixed value: `directcare`.|
+|`reason_for_request`|Fixed value: `directcare`|
 |`requesting_user`|The claim **MUST NOT** be included.|
 |`requesting_patient`|The claim **MUST NOT** be included.|
 
@@ -129,3 +130,4 @@ Where an interaction is performed without a user being present, the following cl
   "requesting_system": "https://fhir.nhs.uk/Id/accredited-system|200000000205"
 }
 ```
+-->

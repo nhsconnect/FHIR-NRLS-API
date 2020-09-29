@@ -58,12 +58,19 @@ Structured data formats will be versioned and where any breaking changes to a da
 
 ## Supported Retrieval Formats
 
-The following table describes the formats that are currently supported within NRL pointers:
+The following table lists retrieval formats that are currently supported within NRL pointers:
 
 |Format|Description|Retrieval Interaction|
 |------|-----------|---------------------|
 | [Contact Details (HTTP Unsecured)](retrieval_contact_details.html) | A publicly accessible HTML web page or PDF detailing contact details for retrieving a record. | [Public Web](retrieval_http_unsecure.html) |
 | [Unstructured Document](retrieval_unstructured_document.html) | An unstructured document, such as a PDF. The content-type of the document returned should be described in the retrieval MIME type field of the pointer. | [SSP](retrieval_ssp.html) |
+
+### Upcoming Retrieval Formats
+
+The following table lists upcoming retrieval formats that are not yet supported by the NRL:
+
+|Format|Description|Retrieval Interaction|
+|------|-----------|---------------------|
 | [Allergy List FHIR STU3 v1](retrieval_allergies_fhir_stu3.html) | A list of allergies, in a FHIR STU3 structured format. | [SSP](retrieval_ssp.html) |
 | [Observation List FHIR STU3 v1](retrieval_observations_fhir_stu3.html) | A list of observations, in a FHIR STU3 structured format. | [SSP](retrieval_ssp.html) |
 | [Vaccination List FHIR STU3 v1](retrieval_vaccinations_fhir_stu3.html) | A list of vaccinations, in a FHIR STU3 structured format. | [SSP](retrieval_ssp.html) |

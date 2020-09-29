@@ -12,6 +12,9 @@ entries:
       url: /index.html
       output: web, pdf
       type: homepage
+    - title: Controller Catalogue
+      url: /overview_controller_catalogue.html
+      output: web
     - title: Product Versioning
       url: /overview_product_versioning.html
       output: web
@@ -110,7 +113,7 @@ entries:
           - title: SSP
             url: /retrieval_ssp.html
             output: web
-      - title: Retrieval Formats
+      - title: Retrieval Formats [LIVE]
         output: web
         subfolderitems:
           - title: Contact Details
@@ -119,6 +122,9 @@ entries:
           - title: Unstructured Document
             url: /retrieval_unstructured_document.html
             output: web
+      - title: Retrieval Formats [DRAFT]
+        output: web
+        subfolderitems:
           - title: Allergy List - FHIR STU3 v1
             url: /retrieval_allergies_fhir_stu3.html
             output: web

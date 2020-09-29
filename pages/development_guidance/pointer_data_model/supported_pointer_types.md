@@ -13,10 +13,10 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
 
 <table style="width:100%;">
     <tr>
-		<th><a href="fhir_resource_mapping.html#information-category">Information Category</a></th>
-		<th><a href="fhir_resource_mapping.html#information-type">Information Type</a></th>
+        <th><a href="fhir_resource_mapping.html#information-category">Information Category</a></th>
+        <th><a href="fhir_resource_mapping.html#information-type">Information Type</a></th>
         <th><a href="fhir_resource_mapping.html#retrieval-format">Retrieval Format(s)</a></th>
-	</tr>
+	  </tr>
     <tr>
         <td rowspan="2">Care plan</td>
         <td>End of life care coordination summary</td>
@@ -44,6 +44,7 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
             </ul>
         </td>
     </tr>
+    <!--
     <tr>
         <td rowspan="3">Care record elements</td>
         <td>Allergies and adverse reactions</td>
@@ -57,4 +58,5 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
         <td>Immunisations</td>
         <td><a href="retrieval_vaccinations_fhir_stu3.html">"Vaccination List - FHIR STU3 v1"</a></td>
     </tr>
+    -->
 </table>

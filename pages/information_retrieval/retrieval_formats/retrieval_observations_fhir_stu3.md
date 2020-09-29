@@ -7,6 +7,8 @@ permalink: retrieval_observations_fhir_stu3.html
 summary: Observation List, FHIR STU3 format information retrieval.
 ---
 
+{% include warning.html content="This retrieval format is currently in DRAFT and is included for informational purposes only. No development or technical decision making should be done against this page's content without first consulting the NRL team." %}
+
 The `Observation List FHIR STU3 v1` retrieval format represents a list of observations made in relation to a patient, with required supporting information.
 
 All pointers which allow for retrieval in the `Observation List FHIR STU3 v1` record format **MUST** return information conforming to the guidance and requirements specified on this page.

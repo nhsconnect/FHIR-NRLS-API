@@ -7,6 +7,8 @@ permalink: retrieval_allergies_fhir_stu3.html
 summary: Allergies and Adverse Reactions List, FHIR STU3 format information retrieval.
 ---
 
+{% include warning.html content="This retrieval format is currently in DRAFT and is included for informational purposes only. No development or technical decision making should be done against this page's content without first consulting the NRL team." %}
+
 The `Allergy List FHIR STU3 v1` record format represents a list of allergies and adverse reactions recorded against a patient, with relevant supporting information.
 
 All pointers which allow for retrieval in the `Allergy List FHIR STU3 v1` record format **MUST** return information conforming to the guidance and requirements specified on this page.
