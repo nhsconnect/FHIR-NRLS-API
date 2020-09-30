@@ -48,7 +48,7 @@ When a consumer would benefit from having information shared by other organisati
 
 <img alt="Providers create pointers on the NRL" src="images/overview/nrl_pointer_retrieve.png" style="width:100%;max-width: 100%;">
 
-More detail about the NRL and how to interact with the service can be found on the [Architectural Overview](architecture_overview.html) page.
+More details about the NRL and how to interact with the service can be found on the [Architectural Overview](architecture_overview.html) page.
 
 ## Supported Pointer types
 
