@@ -8,7 +8,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 ---
 
 ## 2.4.0-beta
-- Specification re-factor and streamline of information included
+- Specification refactor and streamline of information included
 - Introduced the [Controller Catalogue](overview_controller_catalogue.html) page
 - Addition of structured retrieval formats (DRAFT):
     - [Allergies](retrieval_allergies_fhir_stu3.html)
