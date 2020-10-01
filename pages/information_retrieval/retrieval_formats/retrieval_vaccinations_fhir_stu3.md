@@ -100,7 +100,7 @@ The `Immunization` resources included as part of the returned information **MUST
 | `identifier` | 1..1 | A unique identifier for the vaccination which will be maintained across different retrieval endpoints/FHIR interfaces to allow identification of duplicates or updated information. |
 | `status` | 1..1 | Value **MUST** be in the [immunization-status ValueSet](http://hl7.org/fhir/stu3/valueset-immunization-status.html). |
 | `notGiven` | 1..1 | `FALSE` when the vaccination was given (or reported as given), or `TRUE` when not given. |
-| `vaccineCode` | 1..1 | A value from the [`CareConnect-VaccineCode-1`](https://fhir.hl7.org.uk/STU3/ValueSet/CareConnect-VaccineCode-1) ValueSet. Where the vaccineCode is not known, such as when a vaccination is reported, a unknown value should be used. |
+| `vaccineCode.coding` | 1..1 | An entry from the [`CareConnect-VaccineCode-1`](https://fhir.hl7.org.uk/STU3/ValueSet/CareConnect-VaccineCode-1) ValueSet. Where the vaccineCode is not known, such as when a vaccination is reported, the `UNK` value **MUST** be used. |
 | `date` | 1..1 | The date or partial date that the vaccination was administered, or reported vaccination was given in the opinion of the child and/or parent carer. |
 | `primarySource` | 1..1 | `TRUE` if the vaccination was administered, otherwise `FALSE` if reported. |
 | `reportOrigin` | 0..1 | If the vaccination was reported, the original source SHOULD be included. |
