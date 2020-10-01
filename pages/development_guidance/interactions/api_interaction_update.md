@@ -7,7 +7,7 @@ permalink: api_interaction_update.html
 summary: To support the update of NRL pointers.
 ---
 
-{% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
+{% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl="https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html), [Parameters](https://www.hl7.org/fhir/STU3/parameters.html)" content="User Stories" %}
 
 ## Update
 
@@ -32,7 +32,7 @@ Provider API update requests support the following HTTP request headers:
 
 Providers systems **MUST** only update pointers for records where they are the pointer owner (custodian).
 
-For all update requests the custodian ODS code in the DocumentReference resource **MUST** be affiliated with the Client System ASID value in the `fromASID` HTTP request header sent to the NRL.
+For all update requests the custodian ODS code in the `DocumentReference` **MUST** be affiliated with the Client System ASID value in the `fromASID` HTTP request header sent to the NRL.
 
 ### Update by `id`
 
@@ -50,7 +50,7 @@ To accomplish this, the provider issues an HTTP PATCH as shown:
 <pre class="highlight">
 <code><span class="err">PATCH [baseUrl]/STU3/DocumentReference/da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142
 </span></code>
-Update the DocumentReference resource status for a pointer with the logical id of 'da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142'.</pre>
+Update the DocumentReference status for a pointer with the logical id of 'da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142'.</pre>
 </div>
 
 ### Conditional Update by `masterIdentifier`
@@ -63,34 +63,40 @@ The query parameters should be used as shown:
 `PATCH [baseUrl]/STU3/DocumentReference?subject=[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&amp;identifier=[system]%7C[value]`
 </div>
 
-- *[nhsNumber]* - The NHS Number of the patient related to the DocumentReference.
-- *[system]* - The namespace of the `masterIdentifier` value associated with the DocumentReference.
-- *[value]* - The value of the `masterIdentifier` associated with the DocumentReference.
+- *[nhsNumber]* - The NHS Number of the patient related to the `DocumentReference`.
+- *[system]* - The namespace of the `masterIdentifier` value associated with the `DocumentReference`.
+- *[value]* - The value of the `masterIdentifier` associated with the `DocumentReference`.
 
 <div class="language-http highlighter-rouge">
 <pre class="highlight">
 <code><span class="err">PATCH [baseUrl]/STU3/DocumentReference?subject=https%3A%2F%2Fdemographics.spineservices.nhs.uk%2FSTU3%2FPatient%2F9876543210%26identifier%3Durn%3Aietf%3Arfc%3A3986%257Curn%3Aoid%3A1.3.6.1.4.1.21367.2005.3.71
 </span></code>
-Update the DocumentReference resource status for a pointer with a subject and identifier.</pre>
+Update the DocumentReference status for a pointer with a subject and identifier.</pre>
 </div>
 
 {% include note.html content="All query parameters must be percent encoded. In particular, the pipe (`|`) character must be percent encoded (`%7C`)." %}
 
 ### Request Body
 
-Provider systems **MUST** construct a [FHIRPath PATCH Parameters resource](https://www.hl7.org/fhir/STU3/fhirpatch.html) and submit this to the NRL using the FHIR RESTful [patch](https://www.hl7.org/fhir/STU3/http.html#patch) interaction.
+Provider systems **MUST** construct a [FHIRPath PATCH](https://www.hl7.org/fhir/STU3/fhirpatch.html) [Parameters](https://www.hl7.org/fhir/STU3/parameters.html) FHIR resource and submit this to the NRL using the FHIR RESTful [patch](https://www.hl7.org/fhir/STU3/http.html#patch) interaction.
 
-The FHIRPath PATCH operation must be encoded in a `Parameters` resource as follows:
-- A single operation as a `parameter` named "operation".
-- The single `parameter` has a series of mandatory parts, with required values as listed in following table:
+The `Parameters` resource **MUST** meet the following conditions:
 
-    |Parameter|Type|Required Value|
-    |---------|----|--------------|
-    |`Type`|code|`replace`|
-    |`Path`|string|`DocumentReference.status`|
-    |`Value`|string|`entered-in-error`|
+|Element|Cardinality|Additional Guidance|
+|-------|-----------|-------------------|
+| `parameter` | 1..1 | |
+| `parameter.name` | 1..1 | Fixed value: `operation` |
+| `parameter.part` | 3..3 | See table below. |
 
-Only the first `parameter` within the `Parameters` resource will be used to perform a PATCH. Any additional `parameter`s included within the request will not be processed.
+Three `part` elements are required as follows:
+
+|`part.name`|`part.value[x]` name|`part.value[x]` value|
+|------|---------------|----------------|
+| Fixed value: `type` | Fixed value: `valueCode` | Fixed value: `replace` |
+| Fixed value: `path` | Fixed value: `valueString` | Fixed value: `DocumentReference.status` |
+| Fixed value: `value` | Fixed value: `valueString` | Fixed value: `entered-in-error` |
+
+{% include note.html content="Only the first `parameter` within the `Parameters` resource will be used to perform a PATCH. Any additional `parameter`s included within the request will not be processed." %}
 
 ### XML FHIRPath PATCH `Parameters` Resource Example
 
