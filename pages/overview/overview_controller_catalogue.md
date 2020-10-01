@@ -11,7 +11,7 @@ The purpose of the controller catalogue is to document the health and social car
 
 Any requests to share information via NHS Digital services, the source and consumer of that information, are reviewed by the Interoperability Working Group (IWG) and a recommendation provided by the group as to the appropriate sharing pattern(s) and sharing capability(ies) which meet end user needs. Where NRL is the recommended capability, the controller catalogue will be updated to reflect this.
 
-The [Controller Catalogue (V1.0)][1] is made up of the following sections:
+The [Controller Catalogue (V1.0 - 27/08/20)][1] is made up of the following sections:
 
 |Section|Description|
 |-------|-----------|
