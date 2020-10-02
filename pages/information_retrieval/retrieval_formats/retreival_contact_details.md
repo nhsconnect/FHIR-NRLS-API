@@ -19,7 +19,7 @@ There are three steps to `Contact Details` information retrieval:
 
 ## Pointer Retrieval `format` Code
 
-The NRL pointer [`format`](fhir_resource_mapping.html#retrieval-format) code for this retrieval format is as follows:
+The NRL pointer [`format`](pointer_fhir_resource.html#retrieval-format) code for this retrieval format is as follows:
 
 |System|Code|Display|
 |------|----|-------|

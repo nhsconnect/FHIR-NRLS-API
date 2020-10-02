@@ -7,7 +7,7 @@ permalink: api_interaction_delete.html
 summary: To support the deletion of NRL pointers.
 ---
 
-{% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
+{% include custom/fhir.reference.nonecc.html resource="NRL-DocumentReference-1" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
 
 ## Delete
 
@@ -32,7 +32,7 @@ Provider API delete requests support the following HTTP request headers:
 
 Provider systems **MUST** only delete pointers for records where they are the pointer owner (custodian).
 
-For all delete requests the `custodian` ODS code in the DocumentReference to be deleted **MUST** be affiliated with the Client System `ASID` value in the `fromASID` HTTP request header sent to the NRL.
+For all delete requests the `custodian` ODS code in the `DocumentReference` to be deleted **MUST** be affiliated with the Client System `ASID` value in the `fromASID` HTTP request header sent to the NRL.
 
 ### Delete by `id`
 
@@ -84,9 +84,9 @@ To accomplish this, the provider issues an HTTP DELETE as shown:
 `DELETE [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&identifier=[system]%7C[value]`
 </div>
 
-- *[nhsNumber]* - The NHS Number of the patient related to the DocumentReference.
-- *[system]* - The namespace of the `masterIdentifier` value associated with the DocumentReference.
-- *[value]* - The value of the `masterIdentifier` associated with the DocumentReference.
+- *[nhsNumber]* - The NHS Number of the patient related to the `DocumentReference`.
+- *[system]* - The namespace of the `masterIdentifier` value associated with the `DocumentReference`.
+- *[value]* - The value of the `masterIdentifier` associated with the `DocumentReference`.
 
 <div class="language-http highlighter-rouge">
 <pre class="highlight">
@@ -99,7 +99,7 @@ Delete the DocumentReference resource for a pointer with a subject and identifie
 
 ## Response
 
-The `delete` interaction removes an existing resource. The interaction is performed by an HTTP DELETE of the DocumentReference resource.
+The `delete` interaction removes an existing `DocumentReference` resource.
 
 ### Success
 

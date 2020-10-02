@@ -1,13 +1,15 @@
 ---
-title: FHIR Profile Reference
+title: Pointer FHIR Resource (DocumentReference)
 keywords: development reference
 tags: [development,fhir]
 sidebar: overview_sidebar
-permalink: fhir_resource_mapping.html
-summary: Developer Cheat Sheet for the technical build of the NRL API.
+permalink: pointer_fhir_resource.html
+summary: Technical guidance for pointer FHIR resource population.
 ---
 
-The [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) resource is the data model used for the pointers held on the NRL. This page outlines the population guidance for the pointer data model, referencing the associated FHIR resources and value sets.
+{% include custom/fhir.reference.nonecc.html resource="NRL-DocumentReference-1" resourceurl="https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
+
+The [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) resource is the data model used for the pointers held on the NRL. This page outlines the population guidance for the pointer data model, referencing the associated FHIR resources and ValueSets.
 
 ## Identifiers
 

@@ -15,7 +15,7 @@ Support for unstructured documents is intended to share existing document and re
 
 ### Format
 
-The NRL pointer [`format`](fhir_resource_mapping.html#retrieval-format) code for this retrieval format is as follows:
+The NRL pointer [`format`](pointer_fhir_resource.html#retrieval-format) code for this retrieval format is as follows:
 
 |System|Code|Display|
 |------|----|-------|
@@ -23,7 +23,7 @@ The NRL pointer [`format`](fhir_resource_mapping.html#retrieval-format) code for
 
 ### Content-Type
 
-The content-type of the unstructured document returned SHOULD be in the [`retrieval MIME type`](fhir_resource_mapping.html#retrieval-mime-type) as described on the pointer metadata. Supported MIME types for pointer types which support unstructured documents are listed on the [pointer types](supported_pointer_types.html) page.
+The content-type of the unstructured document returned SHOULD be in the [`retrieval MIME type`](pointer_fhir_resource.html#retrieval-mime-type) as described on the pointer metadata. Supported MIME types for pointer types which support unstructured documents are listed on the [pointer types](supported_pointer_types.html) page.
 
 Currently supported MIME types:
 

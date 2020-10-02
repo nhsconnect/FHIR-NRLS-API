@@ -15,7 +15,7 @@ All pointers which allow for retrieval in the `Allergy List FHIR STU3 v1` record
 
 ## Pointer Retrieval `Format` Code
 
-The NRL pointer [`format`](fhir_resource_mapping.html#retrieval-format) code for this structure is as follows:
+The NRL pointer [`format`](pointer_fhir_resource.html#retrieval-format) code for this structure is as follows:
 
 |System|Code|Display|
 |------|----|-------|

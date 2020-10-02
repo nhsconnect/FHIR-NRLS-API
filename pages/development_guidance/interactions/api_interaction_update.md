@@ -7,7 +7,7 @@ permalink: api_interaction_update.html
 summary: To support the update of NRL pointers.
 ---
 
-{% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl="https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html), [Parameters](https://www.hl7.org/fhir/STU3/parameters.html)" content="User Stories" %}
+{% include custom/fhir.reference.nonecc.html resource="NRL-DocumentReference-1" resourceurl="https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html), [Parameters](https://www.hl7.org/fhir/STU3/parameters.html)" content="User Stories" %}
 
 ## Update
 

@@ -51,8 +51,8 @@ entries:
           - title: Supported Pointer Types
             url: /supported_pointer_types.html
             output: web
-          - title: FHIR Resource Mapping
-            url: /fhir_resource_mapping.html
+          - title: Pointer FHIR Resource (DocumentReference)
+            url: /pointer_fhir_resource.html
             output: web
       - title: Consumer Interactions
         output: web

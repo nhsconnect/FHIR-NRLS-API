@@ -22,10 +22,10 @@ The retrieval format by which the information can be retrieved from a provider i
 
 |Field|Description|
 |-----|-----------|
-| [Retrieval format](fhir_resource_mapping.html#retrieval-format) | Describes the technical structure, the rules of the information and the mechanism for retrieval. |
-| [Retrieval MIME type](fhir_resource_mapping.html#retrieval-mime-type) | Describes the data type of the information. |
+| [Retrieval format](pointer_fhir_resource.html#retrieval-format) | Describes the technical structure, the rules of the information and the mechanism for retrieval. |
+| [Retrieval MIME type](pointer_fhir_resource.html#retrieval-mime-type) | Describes the data type of the information. |
 
-See the [Pointer Overview](architecture_pointers.html) page and the [FHIR Profile Reference](fhir_resource_mapping.html) page for more details on the data model and the two metadata fields.
+See the [Pointer Overview](architecture_pointers.html) page and the [FHIR Profile Reference](pointer_fhir_resource.html) page for more details on the data model and the two metadata fields.
 
 The combination of these two metadata fields allows:
 - **providers** to say what format they are sharing information in.

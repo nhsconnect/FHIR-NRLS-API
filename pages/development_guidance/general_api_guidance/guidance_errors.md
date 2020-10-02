@@ -55,7 +55,7 @@ The NRL API defines many categories of errors, each of which encapsulates a prob
 There are two situations when Spine will return this error:
 
 - When a search request specifies an NHS Number for which no corresponding Clinicals record exists in the Spine Clinicals data store.
-- When a request references a resource that cannot be resolved. For example, when a request references the [unique ID](fhir_resource_mapping.html#identifiers) of a `DocumentReference`, but the ID is not known to the NRL. There are three scenarios in which this can occur:
+- When a request references a resource that cannot be resolved. For example, when a request references the [unique ID](pointer_fhir_resource.html#identifiers) of a `DocumentReference`, but the ID is not known to the NRL. There are three scenarios in which this can occur:
   - Retrieval of a `DocumentReference` by logical identifier.
   - Request to delete a `DocumentReference` by logical identifier or master identifier.
   - Request to update a `DocumentReference` by logical identifier or master identifier.
@@ -180,7 +180,7 @@ The following scenarios relate to the `Create` and `Supersede` interactions (HTT
 
 * **Mandatory fields**
 
-  If one or more mandatory fields are missing, this error will be thrown. See [`DocumentReference`](fhir_resource_mapping.html) profile.
+  If one or more mandatory fields are missing, this error will be thrown. See [`DocumentReference`](pointer_fhir_resource.html) profile.
 
 * **Mandatory field values**
 

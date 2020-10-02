@@ -7,7 +7,7 @@ permalink: api_interaction_search.html
 summary: To support a parameterised search of the NRL.
 ---
 
-{% include custom/fhir.reference.nonecc.html resource="DocumentReference" resourceurl="https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
+{% include custom/fhir.reference.nonecc.html resource="NRL-DocumentReference-1" resourceurl="https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
 
 ## Search
 
@@ -167,7 +167,7 @@ A successful execution of the search interaction will:
         - The current `versionId` will be included.
         - If `masterIdentifier` and/or `relatesTo` are set, they will be included.
     
-    {% include note.html content="The version of the pointer model (FHIR profile) will be indicated in the `DocumentReference.meta.profile` metadata attribute for each pointer (see [FHIR Resources & References](fhir_resource_mapping.html#1-profiles)). A 'Bundle' may contain pointers which conform to different versions of the pointer model." %}
+    {% include note.html content="The version of the pointer model (FHIR profile) will be indicated in the `DocumentReference.meta.profile` metadata attribute for each pointer (see [FHIR Resources & References](pointer_fhir_resource.html#1-profiles)). A 'Bundle' may contain pointers which conform to different versions of the pointer model." %}
 
 ### Failure
 

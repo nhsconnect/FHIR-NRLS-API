@@ -17,38 +17,38 @@ The [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-D
 
 | Data Item | Optionality | Description |
 |----------------|------------|------------|
-|[Pointer Identifier](fhir_resource_mapping.html#pointer-logical-identifier)| Mandatory | Assigned by the NRL at creation time. Uniquely identifies this record within the NRL.|
-|[Master Identifier](fhir_resource_mapping.html#master-identifier)| Optional | An optional identifier for the pointer as assigned by the provider. It is version specific and a new master identifier is required if the pointer is superdeded, or deleted and recreated.|
-|[Patient](fhir_resource_mapping.html#patient)| Mandatory | The NHS number of the patient which the information referenced, by the pointer, relates to.|
+|[Pointer Identifier](pointer_fhir_resource.html#pointer-logical-identifier)| Mandatory | Assigned by the NRL at creation time. Uniquely identifies this record within the NRL.|
+|[Master Identifier](pointer_fhir_resource.html#master-identifier)| Optional | An optional identifier for the pointer as assigned by the provider. It is version specific and a new master identifier is required if the pointer is superdeded, or deleted and recreated.|
+|[Patient](pointer_fhir_resource.html#patient)| Mandatory | The NHS number of the patient which the information referenced, by the pointer, relates to.|
 
 ## Pointer Metadata
 
 | Data Item | Optionality | Description |
 |----------------|------------|------------|
-|[Profile](fhir_resource_mapping.html#fhir-profile)| Mandatory | The URI of the FHIR profile that the resource conforms to. Indicates the version of the pointer model.|
-|[Pointer owner](fhir_resource_mapping.html#pointer-owner)| Mandatory | The entity that maintains the pointer.|
-|[Pointer status](fhir_resource_mapping.html#pointer-status) | Mandatory | The status of the pointer.|
-|[Pointer version](fhir_resource_mapping.html#pointer-versioning) | Auto-populated by the NRL | Assigned by the NRL at creation or update time. Used to track the current version of a pointer.|
-|[Pointer indexed datetime](fhir_resource_mapping.html#pointer-versioning)| Auto-populated by the NRL | Assigned by the NRL at creation time. The date and time of pointer creation.|
-|[Pointer last updated datetime](fhir_resource_mapping.html#pointer-versioning)| Auto-populated by the NRL | Assigned by the NRL at creation and update time. The date and time the pointer was last updated.|
-|[Related pointer](fhir_resource_mapping.html#related-pointer)| Optional (Mandatory for the [Supersede interaction](api_interaction_supersede.html)) | Relationship referencing the previous version of the pointer, which this pointer supersedes.|
+|[Profile](pointer_fhir_resource.html#fhir-profile)| Mandatory | The URI of the FHIR profile that the resource conforms to. Indicates the version of the pointer model.|
+|[Pointer owner](pointer_fhir_resource.html#pointer-owner)| Mandatory | The entity that maintains the pointer.|
+|[Pointer status](pointer_fhir_resource.html#pointer-status) | Mandatory | The status of the pointer.|
+|[Pointer version](pointer_fhir_resource.html#pointer-versioning) | Auto-populated by the NRL | Assigned by the NRL at creation or update time. Used to track the current version of a pointer.|
+|[Pointer indexed datetime](pointer_fhir_resource.html#pointer-versioning)| Auto-populated by the NRL | Assigned by the NRL at creation time. The date and time of pointer creation.|
+|[Pointer last updated datetime](pointer_fhir_resource.html#pointer-versioning)| Auto-populated by the NRL | Assigned by the NRL at creation and update time. The date and time the pointer was last updated.|
+|[Related pointer](pointer_fhir_resource.html#related-pointer)| Optional (Mandatory for the [Supersede interaction](api_interaction_supersede.html)) | Relationship referencing the previous version of the pointer, which this pointer supersedes.|
 
 ## Information Metadata
 
 | Data Item | Optionality | Description |
 |----------------|------------|------------|
-|[Information category](fhir_resource_mapping.html#information-category)| Mandatory | A high-level category of the information, from a set of NRL supported categories.|
-|[Information type](fhir_resource_mapping.html#information-type)| Mandatory | The clinical type of information referenced by the pointer. The clinical type will be from a controlled set of types supported by the NRL.|
-|[Clinical setting](fhir_resource_mapping.html#clinical-setting)| Mandatory | Describes the clinical setting in which the information was recorded.|
-|[Information owner](fhir_resource_mapping.html#information-owner)| Mandatory | The entity that maintains the information.|
-|[Period](fhir_resource_mapping.html#period)| Optional | Optional information detailing the period in which the referenced record is/was active.|
-|[Information creation datetime](fhir_resource_mapping.html#information-creation-date)| Optional | Optional information about the date and time (on the Provider’s system) that the information was created (for static records).|
+|[Information category](pointer_fhir_resource.html#information-category)| Mandatory | A high-level category of the information, from a set of NRL supported categories.|
+|[Information type](pointer_fhir_resource.html#information-type)| Mandatory | The clinical type of information referenced by the pointer. The clinical type will be from a controlled set of types supported by the NRL.|
+|[Clinical setting](pointer_fhir_resource.html#clinical-setting)| Mandatory | Describes the clinical setting in which the information was recorded.|
+|[Information owner](pointer_fhir_resource.html#information-owner)| Mandatory | The entity that maintains the information.|
+|[Period](pointer_fhir_resource.html#period)| Optional | Optional information detailing the period in which the referenced record is/was active.|
+|[Information creation datetime](pointer_fhir_resource.html#information-creation-date)| Optional | Optional information about the date and time (on the Provider’s system) that the information was created (for static records).|
 
 ## Retrieval Information
 
 | Data Item | Optionality | Description |
 |----------------|------------|------------|
-|[Retrieval URL](fhir_resource_mapping.html#retrieval-url)| Mandatory | An absolute URL for the location of the information on the provider’s system.|
-|[Retrieval format](fhir_resource_mapping.html#retrieval-format)| Mandatory | An identifier for the technical structure and rules of the information.|
-|[Retrieval MIME type](fhir_resource_mapping.html#retrieval-mime-type)| Mandatory | Describes the type of data, in addition to the "Retrieval format".|
-|[Information stability](fhir_resource_mapping.html#information-stability)| Mandatory | Describes whether the information shared at the time of the consumer's request is dynamically generated or static.|
+|[Retrieval URL](pointer_fhir_resource.html#retrieval-url)| Mandatory | An absolute URL for the location of the information on the provider’s system.|
+|[Retrieval format](pointer_fhir_resource.html#retrieval-format)| Mandatory | An identifier for the technical structure and rules of the information.|
+|[Retrieval MIME type](pointer_fhir_resource.html#retrieval-mime-type)| Mandatory | Describes the type of data, in addition to the "Retrieval format".|
+|[Information stability](pointer_fhir_resource.html#information-stability)| Mandatory | Describes whether the information shared at the time of the consumer's request is dynamically generated or static.|

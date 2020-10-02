@@ -100,7 +100,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
             - Added detail for the 'update interaction' errors
             - Added Patient mismatch errors
             - Added masterIdentifier errors
-            - Inactive DocumentReference guidance added
+            - Inactive `DocumentReference` guidance added
             - New data model error handling details added
     - *New API Feature*{:.label.label-info} Retrieval of Records/Documents Guidance now documented in a new section under Developer Guidance, which includes:
         - An overview of retrieval
@@ -115,7 +115,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
         - *API Breaking Change*{:.label.label-danger} A 'supersede' with multiple `relatesTo` properties will now be rejected
         - *API Breaking Change*{:.label.label-danger} A 'supersede' with a `relatesTo` property containing a code other than 'replaces' will be rejected
         - New 'Update interaction' page created, see below
-    - *New API Feature*{:.label.label-info} RESTful 'read' by logical id now supported which returns a single DocumentReference resource
+    - *New API Feature*{:.label.label-info} RESTful 'read' by logical id now supported which returns a single `DocumentReference` resource
     - *New API Feature*{:.label.label-info} RESTful 'update' now supported - using the HTTP PATCH verb
         - HTTP PATCH supports update by logical id and master identifier
     - Create interaction
@@ -125,8 +125,8 @@ summary: Summary release notes of the versions released in NRL API Implementatio
         - *New API Feature*{:.label.label-info} Now supports RESTful delete by logical id i.e. DELETE [baseUrl]/DocumentReference/[id]
         - Requirements have been moved into a single section
     - Search interaction
-        - Now only returns DocumentReference's that have a 'status' of current
-        - DocumentReference's with a format code that indicates the referenced content is to be retrieved via the SSP will have its url property modified to reflect this.
+        - Now only returns `DocumentReference`s that have a 'status' of current
+        - `DocumentReference`s with a format code that indicates the referenced content is to be retrieved via the SSP will have its url property modified to reflect this.
         - These changes also apply to Read Interaction
         - Bundle response now includes additional attributes:
             - `Self link` added
@@ -156,5 +156,5 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     - More clarity on handling lineages
     - Detailed the new 'update' and 'supersede' interactions
 - Solution
-    - Data model updated to reflect DocumentReference changes detailed above
+    - Data model updated to reflect `DocumentReference` changes detailed above
     - Clarity around caching data added

@@ -7,15 +7,15 @@ permalink: supported_pointer_types.html
 summary: NRL supported pointer types.
 ---
 
-The following table outlines the currently supported NRL information categories and types; this list will be updated as other information types are supported by the NRL. The codes for each information category and type can be found in the relevant value sets detailed on the [FHIR Resource Mapping](fhir_resource_mapping.html) page.
+The following table outlines the currently supported NRL information categories and types; this list will be updated as other information types are supported by the NRL. The codes for each information category and type can be found in the relevant value sets detailed on the [FHIR Resource Mapping](pointer_fhir_resource.html) page.
 
 The table outlines each `Retrieval Format` supported for each pointer type. Details about the retrieval formats can be found on the [Retrieval Overview](retrieval_overview.html) page.
 
 <table style="width:100%;">
     <tr>
-        <th><a href="fhir_resource_mapping.html#information-category">Information Category</a></th>
-        <th><a href="fhir_resource_mapping.html#information-type">Information Type</a></th>
-        <th><a href="fhir_resource_mapping.html#retrieval-format">Retrieval Format(s)</a></th>
+        <th><a href="pointer_fhir_resource.html#information-category">Information Category</a></th>
+        <th><a href="pointer_fhir_resource.html#information-type">Information Type</a></th>
+        <th><a href="pointer_fhir_resource.html#retrieval-format">Retrieval Format(s)</a></th>
 	  </tr>
     <tr>
         <td rowspan="2">Care plan</td>
