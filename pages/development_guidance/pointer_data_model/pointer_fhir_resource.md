@@ -129,15 +129,10 @@ A high-level category of the information, from a set of supported categories.
 
 |Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality|Population Guidance|
 |----|---------|----|-----------|-----|
-| Information category | `class` | [CodeableConcept](http://hl7.org/fhir/stu3/datatypes.html#codeableconcept) | 1..1 | The category will be one of a controlled value set. It will not be possible to create a pointer with a category that does not exist within this controlled set. |
+| Information category | `class` | [CodeableConcept](http://hl7.org/fhir/stu3/datatypes.html#codeableconcept) | 1..1 | `class.coding` is bound to the [NRL-RecordClass-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordClass-1) ValueSet. |
 | | `class.coding.system` | [uri](http://hl7.org/fhir/stu3/datatypes.html#uri) | 1..1 | Identity of the terminology system. |
 | | `class.coding.code` | [code](http://hl7.org/fhir/stu3/datatypes.html#code) | 1..1 | Symbol in syntax defined by the system. |
 | | `class.coding.display` | [string](http://hl7.org/fhir/stu3/datatypes.html#string) | 1..1 | Representation defined by the system. Display values **MUST** be as listed in the value set and are case sensitive. |
-
-**Additional Guidance - Value Set**
-
-The information category **MUST** be a value included in the following value set:
-- FHIR Value Set - [NRL-RecordClass-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordClass-1)
 
 ### Information Type
 
@@ -145,15 +140,10 @@ The clinical type of the information. Used to support searching to allow consume
 
 |Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality|Population Guidance|
 |----|---------|----|-----------|-----|
-| Information type | `type` | [CodeableConcept](http://hl7.org/fhir/stu3/datatypes.html#codeableconcept) | 1..1 | The type will be one of a controlled value set. It will not be possible to create a pointer with a type that does not exist within this controlled set. |
+| Information type | `type` | [CodeableConcept](http://hl7.org/fhir/stu3/datatypes.html#codeableconcept) | 1..1 | `type.coding` is bound to the [NRL-RecordType-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1) ValueSet. |
 | | `type.coding.system` | [uri](http://hl7.org/fhir/stu3/datatypes.html#uri) | 1..1 | Identity of the terminology system. Example value: `http://snomed.info/sct`. |
 | | `type.coding.code` | [code](http://hl7.org/fhir/stu3/datatypes.html#code) | 1..1 | Symbol in syntax defined by the system. Example value: `736253002`. |
 | | `type.coding.display` | [string](http://hl7.org/fhir/stu3/datatypes.html#string) | 1..1 | Representation defined by the system. Display values **MUST** be as listed in the value set and are case sensitive. |
-
-**Additional Guidance - Value Set**
-
-The information type **MUST** be a value included in the following value set:
-- FHIR Value Set - [NRL-RecordType-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1)
 
 For further information on which types are supported, see the [Supported Pointer Types page](supported_pointer_types.html).
 
@@ -163,17 +153,10 @@ Describes the clinical setting in which the information was recorded.
 
 |Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality|Population Guidance|
 |----|---------|----|-----------|-----|
-| Clinical setting | `context.practiceSetting` | [CodeableConcept](http://hl7.org/fhir/stu3/datatypes.html#codeableconcept) | 1..1 | The clinical setting will be one of a controlled value set. It will not be possible to create a pointer with a clinical setting that does not exist within this controlled set. |
+| Clinical setting | `context.practiceSetting` | [CodeableConcept](http://hl7.org/fhir/stu3/datatypes.html#codeableconcept) | 1..1 | `context.practiceSetting.coding` is bound to the [NRL-PracticeSetting-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-PracticeSetting-1) ValueSet. Note that this ValueSet refers to a SNOMED CT reference set and all SNOMED CT concepts that are members of this reference set are valid clinical setting codes. |
 | | `context.practiceSetting.coding.system` | [uri](http://hl7.org/fhir/stu3/datatypes.html#uri) | 1..1 | Identity of the terminology system. |
 | | `context.practiceSetting.coding.code` | [code](http://hl7.org/fhir/stu3/datatypes.html#code) | 1..1 | Symbol in syntax defined by the system. |
 | | `context.practiceSetting.coding.display` | [string](http://hl7.org/fhir/stu3/datatypes.html#string) | 1..1 | Representation defined by the system. The display value **MUST** be the preferred term and one of the synonyms for the concept, not the Fully Specified Name, as described in the [FHIR guidance for usage of SNOMED CT](https://www.hl7.org/fhir/STU3/snomedct.html). Display values are case sensitive and **MUST** only have the first word capitalised. |
-
-**Additional Guidance - Value Set**
-
-The clinical setting **MUST** be a value included in the following value set:
-- FHIR Value Set - [NRL-PracticeSetting-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-PracticeSetting-1)
-
-Note that this value set refers to a SNOMED CT reference set. All SNOMED CT concepts that are members of this reference set are valid clinical setting codes.
 
 ### Information Owner
 
@@ -224,18 +207,12 @@ Describes the technical structure and rules of the information such that the con
 
 |Data Item|[FHIRPath](https://hl7.org/fhirpath/)|Data Type|Cardinality|Population Guidance|
 |----|---------|----|-----------|-----|
-| Retrieval format | `content.format` | [Coding](http://hl7.org/fhir/stu3/datatypes.html#coding) | 1..1 | The information will be one of a controlled value set. It will not be possible to create a pointer with an information format that does not exist within this controlled set. |
+| Retrieval format | `content.format` | [Coding](http://hl7.org/fhir/stu3/datatypes.html#coding) | 1..1 | Bound to the [NRL-FormatCode-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-FormatCode-1) ValueSet. |
 | | `content.format.system` | [uri](http://hl7.org/fhir/stu3/datatypes.html#uri) | 1..1 | Identity of the terminology system. |
 | | `content.format.code` | [code](http://hl7.org/fhir/stu3/datatypes.html#code) | 1..1 | Symbol in syntax defined by the system. |
 | | `content.format.display` | [string](http://hl7.org/fhir/stu3/datatypes.html#string) | 1..1 | Representation defined by the system. |
 
-**Additional Guidance - Value Set**
-
-The information format **MUST** be a value included in the following value sets:
-- FHIR Value Set - [NRL-FormatCode-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-FormatCode-1)
-- FHIR Code System - [NRL-FormatCode-1](https://fhir.nhs.uk/STU3/CodeSystem/NRL-FormatCode-1)
-
-For further information on which formats are supported, see the [Supported Formats](retrieval_overview.html#supported-formats) on the Information Retrieval Overview page.
+For further information on which formats are supported, see the [Supported Formats](retrieval_overview.html#supported-retrieval-formats) on the Information Retrieval Overview page.
 
 ### Retrieval MIME Type
 
@@ -253,17 +230,10 @@ Describes whether the information content at the time of the request is dynamica
 |----|---------|----|-----------|-----|
 | Information Stability | `content.extension:contentStability` | [Extension](http://hl7.org/fhir/stu3/extensibility.html#Extension) | 1..1 | Information stability extension. |
 | | `content.extension:contentStability`<br/>`.url` | [uri](http://hl7.org/fhir/stu3/datatypes.html#uri) | 1..1 | Identifies the meaning of the extension. The value **MUST** be `https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1`. |
-| | `content.extension:contentStability`<br/>`.valueCodeableConcept` | [CodeableConcept](http://hl7.org/fhir/stu3/datatypes.html#codeableconcept) | 1..1 |  |
+| | `content.extension:contentStability`<br/>`.valueCodeableConcept` | [CodeableConcept](http://hl7.org/fhir/stu3/datatypes.html#codeableconcept) | 1..1 | `content.extension:contentStability.valueCodeableConcept.coding` is bound to the [NRL-ContentStability-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-ContentStability-1) ValueSet. |
 | | `content.extension:contentStability`<br/>`.valueCodeableConcept.coding.system` | [uri](http://hl7.org/fhir/stu3/datatypes.html#uri) | 1..1 | Identity of the terminology system. |
 | | `content.extension:contentStability`<br/>`.valueCodeableConcept.coding.code` | [code](http://hl7.org/fhir/stu3/datatypes.html#code) | 1..1 | Symbol in syntax defined by the system. |
 | | `content.extension:contentStability`<br/>`.valueCodeableConcept.coding.display` | [string](http://hl7.org/fhir/stu3/datatypes.html#string) | 1..1 | Representation defined by the system. |
-
-**Additional Guidance - Extension and Value Set**
-
-An extension is used to represent the information stability. The information stability MUST be a value included in the value set:
-- FHIR Extension - [Extension-NRL-ContentStability-1](https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1)
-- FHIR Value Set - [NRL-RecordType-1](https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1)
-- FHIR Code System - [NRL-ContentStability-1](https://fhir.nhs.uk/STU3/CodeSystem/NRL-ContentStability-1)
 
 ## Examples
 
