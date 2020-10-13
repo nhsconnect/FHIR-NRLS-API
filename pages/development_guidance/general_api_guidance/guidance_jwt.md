@@ -103,10 +103,11 @@ Where a consuming system is making a request on behalf of a citizen, the followi
   }
 }
 ```
+-->
 
 ### Unattended Access
 
-Where an interaction is performed without a user being present, the following claim requirements **MUST** be met:
+For Provider interactions only. Where an interaction is performed without a user being present, the following claim requirements **MUST** be met:
 
 |Claim|Requirement|
 |-----|-----------|
@@ -130,4 +131,4 @@ Where an interaction is performed without a user being present, the following cl
   "requesting_system": "https://fhir.nhs.uk/Id/accredited-system|200000000205"
 }
 ```
--->
+
