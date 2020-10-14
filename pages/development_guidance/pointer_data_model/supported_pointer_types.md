@@ -18,7 +18,7 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
         <th><a href="pointer_fhir_resource.html#retrieval-format">Retrieval Format(s)</a></th>
 	  </tr>
     <tr>
-        <td rowspan="2">Care plan</td>
+        <td rowspan="3">Care plan</td>
         <td>End of life care coordination summary</td>
         <td>
             <ul>
@@ -33,6 +33,19 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
     </tr>
     <tr>
         <td>Mental health crisis plan</td>
+        <td>
+            <ul>
+                <li>
+                    <a href="retrieval_contact_details.html">"Contact Details"</a>
+                </li>
+                <li>
+                    <a href="retrieval_unstructured_document.html">"Unstructured Document (PDF)"</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>Emergency health care plan</td>
         <td>
             <ul>
                 <li>
