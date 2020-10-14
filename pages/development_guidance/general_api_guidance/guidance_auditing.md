@@ -49,7 +49,7 @@ The following table details the audit log attributes and the source of the value
 |---------|------|
 | ASID | `requesting_system` from JWT (only the ASID portion is required, for example, `https://fhir.nhs.uk/Id/accredited-system\|[ASID]`). |
 | HTTP Request Body | HTTP request body (where applicable, i.e. POST or PATCH). |
-| HTTP Request URL | For example, the URL of the NRL service that was called |
+| HTTP Request URL | For example, the URL of the NRL service that was called. |
 | HTTP Response Body | Response message. |
 | HTTP Status Code | Describes the response outcome (Success: 2xx \| Fail: 4xx or 5xx). |
 | HTTP Verb | POST, PATCH, GET or DELETE. |
