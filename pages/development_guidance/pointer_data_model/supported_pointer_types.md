@@ -57,19 +57,28 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
             </ul>
         </td>
     </tr>
-    <!--
     <tr>
-        <td rowspan="3">Care record elements</td>
-        <td>Allergies and adverse reactions</td>
-        <td><a href="retrieval_allergies_fhir_stu3.html">"Allergy List - FHIR STU3 v1"</a></td>
-    </tr>
-    <tr>
-        <td>Observations</td>
-        <td><a href="retrieval_observations_fhir_stu3.html">"Observation List - FHIR STU3 v1"</a></td>
+        <td rowspan="2">Record headings</td>
+        <td>Services and care</td>
+        <td>
+            <ul>
+                <li>
+                    <a href="retrieval_contact_details.html">"Contact Details"</a>
+                </li>
+                <li>
+                    <a href="retrieval_unstructured_document.html">"Unstructured Document (PDF)"</a>
+                </li>
+            </ul>
+        </td>
     </tr>
     <tr>
         <td>Immunisations</td>
-        <td><a href="retrieval_vaccinations_fhir_stu3.html">"Vaccination List - FHIR STU3 v1"</a></td>
+        <td>
+            <ul>
+                <li>
+                    <a href="retrieval_vaccinations_fhir_stu3.html">"Vaccination List - FHIR STU3 v1"</a>
+                </li>
+            </ul>
+        </td>
     </tr>
-    -->
 </table>
