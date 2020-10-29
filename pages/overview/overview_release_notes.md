@@ -16,7 +16,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     - Services and care
     - Immunisations
 - Addition of structured retrieval formats (DRAFT):
-    - [Vaccinations](retrieval_observations_fhir_stu3.html)
+    - [Vaccinations](retrieval_vaccinations_fhir_stu3.html)
 
 ## 2.3.0-beta
 - Add clarification about use of `versionId` to [Supersede interaction page](api_interaction_supersede.html)
