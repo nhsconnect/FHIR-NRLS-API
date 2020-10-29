@@ -1,17 +1,20 @@
+- term: .NET
+  definition: ".NET is both a business strategy from Microsoft and its collection of programming support for Web services. Microsoft's goal is to provide individual and business users with a seamlessly interoperable and Web-enabled interface for applications and computing devices and to make computing activities increasingly Web browser-oriented. The .NET platform includes servers; building-block services, such as Web-based data storage; and device software. It also includes Passport, Microsoft's fill-in-the-form-only-once identity verification service."
+
 - term: API
-  definition: "The term _Application Programming Interface_ is quite a confused term in the context of FHIR. Strictly speaking, an API is a set or services offered by a programming library that can be made use of by another application. Historically these would have been made available from a single machine although now they are available across networks.<br><br>In the service/message/document categorisation, an API is a service interface, though this categorisation is contentious. As technology became increasingly capable of supporting distributed operations, the differences between SOA (Service Oriented Architecture) and APIs became blurred. In the context of FHIR, we define APIs as RESTful interfaces."
+  definition: "The term _Application Programming Interface_ is quite a confused term in the context of FHIR. Strictly speaking, an API is a set of services offered by a programming library that can be made use of by another application. Historically these would have been made available from a single machine although now they are available across networks.<br /><br />In the service/message/document categorisation, an API is a service interface, though this categorisation is contentious. As technology became increasingly capable of supporting distributed operations, the differences between SOA (Service Oriented Architecture) and APIs became blurred. In the context of FHIR, we define APIs as RESTful interfaces."
 
 - term: ASID
-  definition: "_Accredited System ID_ (obtained by completing [SCAL](#scal))"
+  definition: "_Accredited System ID_, obtained by completing [SCAL](#scal)."
 
 - term: DDC
   definition: "_Digital Delivery Centre_"
 
 - term: dm+d
-  definition: "The NHS _Dictionary of Medicines and Devices_ is a dictionary of descriptions and codes which represent medicines and devices in use across the NHS. It is delivered through a partnership between NHS Digital and the NHS Business Services Authority and provides the recognised NHS Standard for uniquely identifying medicines and medical devices used in patient care."
+  definition: "The NHS _Dictionary of Medicines and Devices_ is a dictionary of descriptions and codes which represent medicines and devices in use across the NHS. It is delivered through a partnership between NHS Digital and the NHS Business Services Authority and provides the recognised NHS standard for uniquely identifying medicines and medical devices used in patient care."
 
 - term: DMS
-  definition: "_Domain Message Specification_ Description of messages definitions and interactions relating to a specific business area (such as Ambulance, Child Health or Discharge etc.)"
+  definition: "_Domain Message Specification_, a description of message definitions and interactions relating to a specific business area (such as Ambulance, Child Health or Discharge etc.)"
 
 - term: DSTU
   definition: "_Draft Standard for Trial Use_"
@@ -20,7 +23,7 @@
   definition: "_End User Organisation Declaration_"
 
 - term: FHIR
-  definition: "FHIR is the latest standard to be developed under the HL7 organisation. Pronounced 'Fire' and stands for Fast Healthcare Interoperability Resources."
+  definition: "FHIR is the latest standard to be developed under the HL7 organisation. Pronounced 'fire', it stands for _Fast Healthcare Interoperability Resources_."
 
 - term: FHIRPath
   definition: "[FHIRPath](https://hl7.org/fhirpath/) is a path-based navigation and extraction language, somewhat like XPath. Operations are expressed in terms of the logical content of hierarchical data models, supporting traversal, selection, and filtering of data."
@@ -29,13 +32,13 @@
   definition: "A [_Fully Qualified Domain Name_](http://www.linfo.org/fqdn.html) consists of a host name (including all subnames) and a domain name, including the top-level domain (TLD)."
 
 - term: ITK
-  definition: "The _Interoperability Toolkit_, in the context of the NHS this is a set of common specifications, frameworks, and implementation guides to support interoperability within local organisations and across local health and social care communities."
-
-- term: JWT
-  definition: "[_JSON web token_](https://jwt.io/){:target='_blank'}, a standard for access tokens containing information about authorisation claims."
+  definition: "The _Interoperability Toolkit_, in the context of the NHS, is a set of common specifications, frameworks, and implementation guides to support interoperability within local organisations and across local health and social care communities."
 
 - term: JSON
-  definition: "_Javascript Object Notation_ is a lightweight data-interchange format. It is easy for humans to read and write and easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language."
+  definition: "_JavaScript Object Notation_ is a lightweight data-interchange format. It is easy for humans to read and write and easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language."
+
+- term: JWT
+  definition: "[_JSON Web Token_](https://jwt.io/){:target='_blank'}, a standard for access tokens containing information about authorisation claims."
 
 - term: LHCRE
   definition: "[_Local Health and Care Record Exemplar_](https://understandingpatientdata.org.uk/news/local-health-and-care-record-exemplars-announced){:target='_blank'}"
@@ -44,13 +47,10 @@
   definition: "_Manufacturer Product Version_"
 
 - term: N3
-  definition: "N3 is a Wide Area IP Network (WAN), connecting many different sites across the NHS within England & Scotland. It also connects to other networks via Gateways, notably to the Internet via the Internet Gateway."
+  definition: "_N3_ is a Wide Area IP Network (WAN), connecting many different sites across the NHS within England & Scotland. It also connects to other networks via Gateways, notably to the Internet via the Internet Gateway."
 
 - term: NEMS
   definition: "[_National Events Management Service_](https://digital.nhs.uk/services/digital-child-health/national-events-management-service){:target='_blank'}, a sister project to the NRL that tracks events."
-
-- term: .NET
-  definition: ".NET is both a business strategy from Microsoft and its collection of programming support for Web services. Microsoft's goal is to provide individual and business users with a seamlessly interoperable and Web-enabled interface for applications and computing devices and to make computing activities increasingly Web browser-oriented. The .NET platform includes servers; building-block services, such as Web-based data storage; and device software. It also includes Passport, Microsoft's fill-in-the-form-only-once identity verification service."
 
 - term: NRL
   definition: "The _National Record Locator_ is a national index to identify available records for patients and locate them across local and national care record solutions (such as SCR)."
@@ -59,19 +59,19 @@
   definition: "The _Organisational Data Service_ is responsible for publishing organisation and practitioner codes, along with related national policies and standards. They're also responsible for the ongoing maintenance of the organisation and person nodes of the Spine Directory Service, the central data repository used within various NHS systems and services."
 
 - term: PAS
-  definition: "The _Patient Administration System_ records the patient's demographics (e.g. name, home address, date of birth) and details all patient contact with the hospital, both outpatient and inpatient.<br><br>Some PAS systems do support additional clinical behaviours."
+  definition: "The _Patient Administration System_ records the patient's demographics (e.g. name, home address, date of birth) and details all patient contact with the hospital, both outpatient and inpatient.<br /><br />Some PAS systems do support additional clinical behaviours."
 
 - term: PDS
-  definition: "The _[Personal Demographics Service](https://digital.nhs.uk/services/demographics){:target='_blank'}_ is a national electronic database of NHS patients containing details such as name, address, date of birth and NHS Number (known as demographic information). (Implemented with HL7 v3)"
+  definition: "The _[Personal Demographics Service](https://digital.nhs.uk/services/demographics){:target='_blank'}_ is a national electronic database of NHS patients containing details such as name, address, date of birth and NHS Number (known as demographic information). (Implemented with HL7 v3.)"
 
 - term: RBAC
-  definition: "_Role Based Access Control_ defines roles and allowed business activities associated with a user (via their smartcard). (Implemented using SAML)"
+  definition: "_Role Based Access Control_ defines roles and allowed business activities associated with a user (via their smartcard). (Implemented using SAML.)"
 
 - term: Record Group
   definition: "A grouping that contains one or more Record Types."
 
 - term: Record Type
-  definition: "The clinical type of a record as defined by SNOMED-CT code. The clinical types permitted on the NRL are defined by a controlled list."
+  definition: "The clinical type of a record as defined by a SNOMED CT code. The clinical types permitted on the NRL are defined by a controlled list."
 
 - term: REST
   definition: "_Representational State Transfer_ is a protocol based upon a network of Web resources (a virtual state-machine) where the user progresses through the application by selecting links, such as /user/tom, and operations such as GET or DELETE (state transitions), resulting in the next resource (representing the next state of the application) being transferred to the user for their use. Typically preferred due to it being \"stateless\" so no information about the client session needs to be maintained on the server."
@@ -83,31 +83,31 @@
   definition: "[_Supplier Conformance Assessment List_](https://developer.nhs.uk/apis/uec-appointments/assurance_scal.html){:target='_blank'}"
 
 - term: SCR
-  definition: "[_Summary Care Record_](https://digital.nhs.uk/services/summary-care-records-scr){:target='_blank'}"
+  definition: "[_Summary Care Records_](https://digital.nhs.uk/services/summary-care-records-scr){:target='_blank'}"
 
 - term: SCRa
-  definition: "_Summary Care Record Application_"
+  definition: "[_Summary Care Record Application_](https://digital.nhs.uk/services/summary-care-record-application){:target='_blank'}"
 
 - term: SDS
-  definition: "The NHS _Spine Directory Service_ is a component of the NHS Spine service comprising of the Spine User Directory and Spine Accredited Systems and Services. The SDS ensures that transactions/messages are only processed from authorised users and systems. (Implemented with LDAP)"
+  definition: "The NHS _Spine Directory Service_ is a component of the NHS Spine service comprising of the Spine User Directory and Spine Accredited Systems and Services. The SDS ensures that transactions/messages are only processed from authorised users and systems. (Implemented with LDAP.)"
 
 - term: SNOMED
   definition: "[_Systematized Nomenclature of Medicine_](https://www.snomed.org){:target='_blank'}"
 
-- term: SNOMED-CT
+- term: SNOMED CT
   definition: "The most comprehensive and precise clinical health terminology product in the world, owned and distributed by SNOMED International."
 
 - term: SOA
   definition: "Method for systems integration and development that allows different applications to exchange data  in a loosely coupled way."
 
 - term: Spine
-  definition: "A collection of national applications, services, and directories which support the health and social care sector in the exchange of information in national and local IT systems"
+  definition: "A collection of national applications, services, and directories which support the health and social care sector in the exchange of information in national and local IT systems."
 
 - term: SSP
   definition: "_Spine Secure Proxy_"
 
 - term: STU
-  definition: "_Standard for Trial Use_ The original DSTU2 FHIR standard has been superseded by the new standard STU3. To reflect that important parts of the spec are well past the draft stage"
+  definition: "_Standard for Trial Use_ The original DSTU2 FHIR standard has been superseded by the new standard STU3. To reflect that important parts of the spec are well past the draft stage."
 
 - term: TKW
   definition: "[_Toolkit Workbench_](https://digital.nhs.uk/services/interoperability-toolkit/developer-resources/itk-test-centre/itk-testbench){:target='_blank'}"
@@ -118,20 +118,20 @@
 - term: TLSMA
   definition: "_[TLS](#tls) Mutual Authentication_"
 
-- term: XML
-  definition: "_eXtensible Markup Language_ is a protocol designed to store and transport data. XML was designed to be both human and machine readable."
+- term: UML
+  definition: "The _Unified Modelling Language_ is a family of graphical notations baked by a single meta-model, that help in designing and describing software systems. Especially useful when working with OOP paradigms."
+
+- term: Use Case
+  definition: "A list of actions or event steps, typically defining the interactions between a role (known in [UML](#uml) as an actor) and a system, to achieve a goal. The actor can be a human or other external system."
+
+- term: Use Case Diagram
+  definition: "A visual presentation of a Use Case, standardised within UML."
 
 - term: X509 certificate
   definition: "A format of public key certificate originally defined in [RFC 5280](https://tools.ietf.org/html/rfc5280){:target='_blank'}. Often colloquially referred to as an \"SSL certificate\"."
 
+- term: XML
+  definition: "_eXtensible Markup Language_ is a protocol designed to store and transport data. XML was designed to be both human and machine readable."
+
 - term: xPath
-  definition: "XPath is a major element in the XSLT standard. XPath can be used to navigate through elements and attributes in an XML document. XPath is a syntax for defining parts of an XML document. XPath uses path expressions to navigate in XML documents. XPath contains a library of standard functions."
-
-- term: UML
-  definition: "The _Unified Modelling Language_ is a family of graphical notations baked by a single meta-model, that help in designing and describing software systems. Especially useful when working with OOP paradigms.."
-
-- term: Use Case
-  definition: "A list of actions or event steps, typically defining the interactions between a role (known in the Unified Modeling Language as an actor) and a system, to achieve a goal. The actor can be a human or other external system."
-
-- term: Use Case Diagram
-  definition: "A visual presentation of a Use Case, standardised within UML."
+  definition: "A major element in the XSLT standard, xPath is a syntax for defining the location of elements and attributes of an XML document via path expressions."
