@@ -8,8 +8,13 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 ---
 
 ## 2.4.0-beta
-- Specification refactor and streamline of information included
+- Specification refactor: restructure and streamline of information included
 - Introduced the [Controller Catalogue](overview_controller_catalogue.html) page
+- Addition of [supported pointer types](supported_pointer_types.html):
+    - End of life care coordination summary
+    - Emergency health care plan
+    - Services and care
+    - Immunisations
 - Addition of structured retrieval formats (DRAFT):
     - [Vaccinations](retrieval_observations_fhir_stu3.html)
 
