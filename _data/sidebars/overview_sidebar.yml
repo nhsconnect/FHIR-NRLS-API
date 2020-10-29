@@ -1,7 +1,7 @@
 entries:
 - title: NRL
   product: NRL
-  version: 2.3.0-beta API <i>specification</i>
+  version: 2.4.0-beta API <i>specification</i>
   levels: one
   folders:
 
@@ -12,59 +12,58 @@ entries:
       url: /index.html
       output: web, pdf
       type: homepage
+    - title: Controller Catalogue
+      url: /overview_controller_catalogue.html
+      output: web
     - title: Product Versioning
-      url: /overview_guide_versioning.html
+      url: /overview_product_versioning.html
       output: web
     - title: Release Notes
       url: /overview_release_notes.html
       output: web
 
-  - title: Solution
+  - title: Architecture
     output: web
     folderitems:
-    - title: Concepts
-      url: /overview_concepts.html
+    - title: Overview
+      url: /architecture_overview.html
       output: web
-    - title: Behaviour
-      url: /overview_behaviours.html
+    - title: Pointers
+      url: /architecture_pointers.html
       output: web
-    - title: Principles
-      url: /overview_principles.html
-      output: web
-    - title: Data model
-      url: /overview_data_model.html
-      output: web
-    - title: Interactions
-      url: /overview_interactions.html
-      output: web
-
-  - title: General Guidance
-    output: web
-    folderitems:
-    - title: Pointer Identity
-      url: /pointer_identity.html
-      output: web
-    - title: Pointer Errors
-      url: /pointer_errors.html
-      output: web
-    - title: Pointer Lifecycle 
-      url: /pointer_lifecycle.html
-      output: web
-    - title: Pointer Maintenance 
-      url: /pointer_maintenance.html
+    - title: Information Sharing
+      url: /architecture_information_sharing.html
       output: web
 
   - title: Development Guidance
     output: web
     folderitems:
     - title: Overview
-      url: /explore.html
-      output: web
-    - title: General API Guidance
-      url: /development_general_api_guidance.html
+      url: /development_overview.html
       output: web
       subfolders:
-      - title: DocumentReference API Interactions
+      - title: Pointer Data Model
+        output: web
+        subfolderitems:
+          - title: Overview
+            url: /pointer_data_model_overview.html
+            output: web
+          - title: Supported Pointer Types
+            url: /supported_pointer_types.html
+            output: web
+          - title: Pointer FHIR Resource (DocumentReference)
+            url: /pointer_fhir_resource.html
+            output: web
+      - title: Consumer Interactions
+        output: web
+        subfolderitems:
+          - title: Read
+            url: /api_interaction_read.html
+            output: web
+          - title: Search
+            url: /api_interaction_search.html
+            output: web
+      - title: Provider Interactions
         output: web
         subfolderitems:
           - title: Create
@@ -75,67 +74,65 @@ entries:
             output: web
           - title: Update
             url: /api_interaction_update.html
-            output: web  
+            output: web
           - title: Delete
             url: /api_interaction_delete.html
             output: web
-          - title: Read
-            url: /api_interaction_read.html
-            output: web  
-          - title: Search
-            url: /api_interaction_search.html
-            output: web   
-      - title: Record Retrieval Guidance
-        output: web  
+      - title: General API Guidance
+        output: web
         subfolderitems:
-          - title: Overview
-            url: /retrieval_overview.html
+          - title: Auditing
+            url: /guidance_auditing.html
             output: web
-          - title: Read Interaction
-            url: /retrieval_interaction_read.html
+          - title: Error Overview
+            url: /guidance_errors.html
             output: web
-          - title: Consumer Guidance
-            url: /retrieval_consumer_guidance.html
+          - title: JSON Web Token
+            url: /guidance_jwt.html
             output: web
-          - title: Provider Guidance
-            url: /retrieval_provider_guidance.html
+          - title: Security
+            url: /guidance_security.html
             output: web
-          - title: Formats
-            url: /retrieval_formats.html
-            output: web
-    - title: FHIR Profile Reference
-      url: /explore_reference.html
-      output: web
-    - title: FHIR Open-Source Resources
-      url: /explore_fhir_open_source_guidance.html
-      output: web
 
-  - title: Integrate With Spine
+  - title: Information Retrieval
     output: web
     folderitems:
-    - title: Authentication &amp; Authorisation
-      url: /integration_authentication_authorisation.html
+    - title: Overview
+      url: /retrieval_overview.html
       output: web
-    - title: Access Control
-      url: /explore_rbac_mapping.html
+    - title: Access Controls
+      url: /access_controls.html
       output: web
-    - title: Security
-      url: /development_api_security_guidance.html
-      output: web
-    - title: Access Tokens (JWT)
-      url: /integration_access_tokens_JWT.html
-      output: web
-    - title: Auditing 
-      url: /integration_auditing.html
-      output: web
-    - title: Personal Demographics Service
-      url: /integration_personal_demographics_service.html
-      output: web
+      subfolders:
+      - title: Retrieval Interactions
+        output: web
+        subfolderitems:
+          - title: Public Web
+            url: /retrieval_http_unsecure.html
+            output: web
+          - title: SSP
+            url: /retrieval_ssp.html
+            output: web
+      - title: Retrieval Formats [LIVE]
+        output: web
+        subfolderitems:
+          - title: Contact Details
+            url: /retrieval_contact_details.html
+            output: web
+          - title: Unstructured Document
+            url: /retrieval_unstructured_document.html
+            output: web
+      - title: Retrieval Formats [DRAFT]
+        output: web
+        subfolderitems:
+          - title: Vaccination List - FHIR STU3 v1
+            url: /retrieval_vaccinations_fhir_stu3.html
+            output: web
 
-  - title: Assure
+  - title: Assurance
     output: web
     flat: true
-    url: /assure.html
+    url: /assurance.html
 
   - title: Help &amp; Support
     output: web
@@ -143,16 +140,9 @@ entries:
     - title: Frequently Asked Questions (FAQ)
       url: /support_faq.html
       output: web
+    - title: Glossary
+      url: /support_glossary.html
+      output: web
     - title: Communication Channels
       url: /support_communications.html
       output: web
-
-  - title: Tags
-    output: web
-    flat: true
-    url: /tags.html
-
-  - title: Glossary
-    output: web
-    flat: true
-    url: /overview_glossary.html

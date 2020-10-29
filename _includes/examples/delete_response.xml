@@ -1,0 +1,19 @@
+<OperationOutcome xmlns="http://hl7.org/fhir">
+  <id value="01be50a1-f755-4461-aa64-90ad41b68055-00000000000000000000" />
+  <meta>
+    <profile value="https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1" />
+  </meta>
+  <issue>
+    <severity value="information" />
+    <code value="informational" />
+    <details>
+      <coding>
+        <system value="https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1" />
+        <code value="RESOURCE_DELETED" />
+        <display value="Resource removed" />
+      </coding>
+      <text value="5b01d97f-68ac-4faa-85d1-dda3af28a2d2" />
+    </details>
+    <diagnostics value="Successfully removed resource DocumentReference: http://data.developer.nhs.uk/nrls-ri/DocumentReference/5f5247c68ae8c40001ba7d91" />
+  </issue>
+</OperationOutcome>

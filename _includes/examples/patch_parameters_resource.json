@@ -1,22 +1,22 @@
 {
-    "resourceType": "Parameters",
-    "parameter": [
+  "resourceType": "Parameters",
+  "parameter": [
+    {
+      "name": "operation",
+      "part": [
         {
-            "name": "operation",
-            "part": [
-                {
-                    "name": "type",
-                    "valueCode": "replace"
-                },
-                {
-                    "name": "path",
-                    "valueString": "DocumentReference.status"
-                },
-                {
-                    "name": "value",
-                    "valueString": "entered-in-error"
-                }
-            ]
+          "name": "type",
+          "valueCode": "replace"
+        },
+        {
+          "name": "path",
+          "valueString": "DocumentReference.status"
+        },
+        {
+          "name": "value",
+          "valueString": "entered-in-error"
         }
-    ]
+      ]
+    }
+  ]
 }
