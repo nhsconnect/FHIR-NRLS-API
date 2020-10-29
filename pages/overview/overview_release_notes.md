@@ -11,9 +11,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 - Specification refactor and streamline of information included
 - Introduced the [Controller Catalogue](overview_controller_catalogue.html) page
 - Addition of structured retrieval formats (DRAFT):
-    - [Allergies](retrieval_allergies_fhir_stu3.html)
     - [Vaccinations](retrieval_observations_fhir_stu3.html)
-    - [Observations](retrieval_vaccinations_fhir_stu3.html)
 
 ## 2.3.0-beta
 - Add clarification about use of `versionId` to [Supersede interaction page](api_interaction_supersede.html)

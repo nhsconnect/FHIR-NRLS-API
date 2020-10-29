@@ -125,12 +125,6 @@ entries:
       - title: Retrieval Formats [DRAFT]
         output: web
         subfolderitems:
-          - title: Allergy List - FHIR STU3 v1
-            url: /retrieval_allergies_fhir_stu3.html
-            output: web
-          - title: Observation List - FHIR STU3 v1
-            url: /retrieval_observations_fhir_stu3.html
-            output: web
           - title: Vaccination List - FHIR STU3 v1
             url: /retrieval_vaccinations_fhir_stu3.html
             output: web
