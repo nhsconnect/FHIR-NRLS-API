@@ -1,0 +1,26 @@
+{
+  "resourceType": "OperationOutcome",
+  "id": "ca613912-e0fe-4ad3-a5b2-378a2f2824c3-00000000000000000000",
+  "meta": {
+    "profile": [
+      "https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1"
+    ]
+  },
+  "issue": [
+    {
+      "severity": "information",
+      "code": "informational",
+      "details": {
+        "coding": [
+          {
+            "system": "https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1",
+            "code": "RESOURCE_CREATED",
+            "display": "New resource created"
+          }
+        ],
+        "text": "3de126fa-b5f5-4783-b67f-30c02b865016"
+      },
+      "diagnostics": "Successfully created resource DocumentReference"
+    }
+  ]
+}

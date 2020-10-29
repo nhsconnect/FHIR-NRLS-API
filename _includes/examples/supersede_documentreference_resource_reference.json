@@ -1,87 +1,87 @@
 {
-    "resourceType": "DocumentReference",
-    "meta": {
-        "profile": [
-            "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1"
-        ]
-    },
-    "status": "current",
-    "type": {
-        "coding": [
-            {
-                "system": "http://snomed.info/sct",
-                "code": "736253002",
-                "display": "Mental health crisis plan"
-            }
-        ]
-    },
-    "class": {
-        "coding": [
-            {
-                "system": "http://snomed.info/sct",
-                "code": "734163000",
-                "display": "Care plan"
-            }
-        ]
-    },
-    "subject": {
-        "reference": "https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210"
-    },
-    "indexed": "2016-03-08T15:26:00+01:00",
-    "author": [
-        {
-            "reference": "https://directory.spineservices.nhs.uk/STU3/Organization/RGD"
-        }
-    ],
-    "custodian": {
-        "reference": "https://directory.spineservices.nhs.uk/STU3/Organization/RR8"
-    },
-    "content": [
-        {
-            "attachment": {
-                "contentType": "application/pdf",
-                "url": "https://p1.nhs.uk/MentalhealthCrisisPlanReport.pdf",
-                "creation": "2016-03-08T15:26:00+01:00"
-            },
-            "format": {
-                "system": "https://fhir.nhs.uk/STU3/CodeSystem/NRL-FormatCode-1",
-                "code": "urn:nhs-ic:unstructured",
-                "display": "Unstructured Document"
-            },
-            "extension": {
-                "url": "https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1",
-                "valueCodeableConcept": {
-                    "coding": [
-                        {
-                            "system": "https://fhir.nhs.uk/STU3/CodeSystem/NRL-ContentStability-1",
-                            "code": "static",
-                            "display": "Static"
-                        }
-                    ]
-                }
-            }
-        }
-    ],
-    "relatesTo": [
-        {
-            "code": "replaces",
-            "target": {
-                "reference": "https://psis-sync.national.ncrs.nhs.uk/DocumentReference/0353e505-f7be-4c20-8f4e-337e79a32c51-76009894321256642261"
-            }
-        }
-    ],
-    "context": {
-        "period": {
-            "start": "2016-03-07T13:34:00+01:00"
-        },
-        "practiceSetting": {
-            "coding": [
-                {
-                    "system": "http://snomed.info/sct",
-                    "code": "708168004",
-                    "display": "Mental health service"
-                }
-            ]
-        }
+  "resourceType": "DocumentReference",
+  "meta": {
+    "profile": [
+      "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1"
+    ]
+  },
+  "status": "current",
+  "type": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "736253002",
+        "display": "Mental health crisis plan"
+      }
+    ]
+  },
+  "class": {
+    "coding": [
+      {
+        "system": "http://snomed.info/sct",
+        "code": "734163000",
+        "display": "Care plan"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "https://demographics.spineservices.nhs.uk/STU3/Patient/9876543210"
+  },
+  "indexed": "2016-03-08T15:26:00+01:00",
+  "author": [
+    {
+      "reference": "https://directory.spineservices.nhs.uk/STU3/Organization/RGD"
     }
+  ],
+  "custodian": {
+    "reference": "https://directory.spineservices.nhs.uk/STU3/Organization/RR8"
+  },
+  "content": [
+    {
+      "attachment": {
+        "contentType": "application/pdf",
+        "url": "https://p1.nhs.uk/MentalhealthCrisisPlanReport.pdf",
+        "creation": "2016-03-08T15:26:00+01:00"
+      },
+      "format": {
+        "system": "https://fhir.nhs.uk/STU3/CodeSystem/NRL-FormatCode-1",
+        "code": "urn:nhs-ic:unstructured",
+        "display": "Unstructured Document"
+      },
+      "extension": {
+        "url": "https://fhir.nhs.uk/STU3/StructureDefinition/Extension-NRL-ContentStability-1",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "https://fhir.nhs.uk/STU3/CodeSystem/NRL-ContentStability-1",
+              "code": "static",
+              "display": "Static"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "relatesTo": [
+    {
+      "code": "replaces",
+      "target": {
+        "reference": "https://psis-sync.national.ncrs.nhs.uk/DocumentReference/0353e505-f7be-4c20-8f4e-337e79a32c51-76009894321256642261"
+      }
+    }
+  ],
+  "context": {
+    "period": {
+      "start": "2016-03-07T13:34:00+01:00"
+    },
+    "practiceSetting": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "708168004",
+          "display": "Mental health service"
+        }
+      ]
+    }
+  }
 }
