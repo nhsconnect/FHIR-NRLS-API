@@ -4,10 +4,8 @@ keywords: RBAC authorisation documentreference
 tags: [security,authorisation,spine_secure_proxy]
 sidebar: accessrecord_rest_sidebar
 permalink: access_controls.html
-summary: Overview of NRL access controls.
+summary: Overview of information retrieval access controls.
 ---
-
-The NRL and SSP are subject to various technical access controls and restrictions, as outlined on the [security](guidance_security.html) page. These controls protect information flowing between the client and server. However, this transport-layer security does not address authentication and authorisation of the users consuming the shared information.
 
 Consumers are required to ensure an appropriate level of authentication and authorisation is applied, within their systems, when giving users access to information received via Spine services.
 
