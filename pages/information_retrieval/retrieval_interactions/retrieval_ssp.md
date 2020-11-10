@@ -75,7 +75,7 @@ The provider endpoint **MUST NOT** require any custom headers to be passed with 
 
 A successful request **MUST**:
 - return a `200` **OK** HTTP status code.
-- return a response body containing the requested information in the format described in the format metadata attribute on the pointer. See [Supported Formats](retrieval_overview.html) for more details.
+- return a response body containing the requested information in the format described in the format metadata attribute on the pointer. See [Supported Formats](information_retrieval_overview.html) for more details.
 
 #### Failure
 

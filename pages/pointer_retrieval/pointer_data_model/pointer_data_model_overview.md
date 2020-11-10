@@ -9,7 +9,7 @@ summary: "Population guidance for the pointer data model."
 
 The following diagram shows the data item categories that can be carried within a pointer. Each individual data item is described in further detail in the sections below.
 
-<img alt="The pointer model contains: identifiers, pointer metadata, information metadata and retrieval information." src="images/development/pointer_model_overview.png" style="display:block;margin:auto;width:75%;max-width: 100%;">
+<img alt="The pointer model contains: identifiers, pointer metadata, information metadata and retrieval information." src="images/pointer_retrieval/pointer_model_overview.png" style="display:block;margin:auto;width:75%;max-width: 100%;">
 
 The [NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1) resource describes the NRL pointer data model. Follow the links in the 'Data Item' column below for mapping to the FHIR profile and detail on population guidance.
 

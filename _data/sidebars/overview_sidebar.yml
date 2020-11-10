@@ -34,12 +34,15 @@ entries:
     - title: Information Sharing
       url: /architecture_information_sharing.html
       output: web
+    - title: Access Controls
+      url: /access_controls.html
+      output: web
 
-  - title: Development Guidance
+  - title: Pointer Retrieval
     output: web
     folderitems:
     - title: Overview
-      url: /development_overview.html
+      url: /pointer_retrieval_overview.html
       output: web
       subfolders:
       - title: Pointer Data Model
@@ -78,30 +81,27 @@ entries:
           - title: Delete
             url: /api_interaction_delete.html
             output: web
-      - title: General API Guidance
+      - title: General Guidance
         output: web
         subfolderitems:
-          - title: Auditing
-            url: /guidance_auditing.html
-            output: web
-          - title: Error Overview
-            url: /guidance_errors.html
-            output: web
           - title: JSON Web Token
             url: /guidance_jwt.html
             output: web
           - title: Security
             url: /guidance_security.html
             output: web
+          - title: Auditing
+            url: /guidance_auditing.html
+            output: web
+          - title: Error Overview
+            url: /guidance_errors.html
+            output: web
 
   - title: Information Retrieval
     output: web
     folderitems:
     - title: Overview
-      url: /retrieval_overview.html
-      output: web
-    - title: Access Controls
-      url: /access_controls.html
+      url: /information_retrieval_overview.html
       output: web
       subfolders:
       - title: Retrieval Interactions

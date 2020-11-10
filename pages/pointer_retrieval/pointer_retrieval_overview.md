@@ -1,10 +1,10 @@
 ---
-title: Development Overview
+title: Pointer Retrieval Overview
 keywords: getcarerecord structured rest resource
 tags: [development,for_providers,for_consumers]
 sidebar: foundations_sidebar
-permalink: development_overview.html
-summary: Development overview.
+permalink: pointer_retrieval_overview.html
+summary: Pointer retrieval overview.
 ---
 
 This section intends to give developers detailed requirements and guidance to interact with the NRL for the creation, management and retrieval of pointers, outlines the information available and lists some pre-requisites for using the NRL service.
@@ -77,8 +77,4 @@ If both are present in the request, the `_format` parameter overrides the `Accep
 
 ## Security
 
-Generic requirements for security, authentication and authorisation are included in the specification on the [Security Guidance](guidance_security.html) page.
-
-## Retrieval
-
-Requirements on information retrieval formats and retrieval mechanisms are outline in the [Information Retrieval](retrieval_overview.html) section of this specification.
+Generic requirements for security, authentication and authorisation are included in the specification on the [Security](guidance_security.html) page.

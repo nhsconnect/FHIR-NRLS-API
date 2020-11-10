@@ -212,7 +212,7 @@ Describes the technical structure and rules of the information such that the con
 | | `content.format.code` | [code](http://hl7.org/fhir/stu3/datatypes.html#code) | 1..1 | Symbol in syntax defined by the system. |
 | | `content.format.display` | [string](http://hl7.org/fhir/stu3/datatypes.html#string) | 1..1 | Representation defined by the system. |
 
-For further information on which formats are supported, see the [Supported Formats](retrieval_overview.html#supported-retrieval-formats) on the Information Retrieval Overview page.
+For further information on which formats are supported, see the [supported formats](information_retrieval_overview.html#supported-retrieval-formats) on the information retrieval overview page.
 
 ### Retrieval MIME Type
 

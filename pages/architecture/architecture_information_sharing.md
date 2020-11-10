@@ -47,7 +47,7 @@ Information sharing provides a snapshot of the most up-to-date information avail
 
 To enable consumers to retrieve information with minimal custom integration between consumer and provider systems, information should be exposed using national standards.
 
-The pointer model includes a record format metadata attribute, which describes the technical structure of the information and the mechanism for retrieval. The set of currently supported formats for retrieval is listed on the [Retrieval Overview](retrieval_overview.html#supported-retrieval-formats) page.
+The pointer model includes a record format metadata attribute, which describes the technical structure of the information and the mechanism for retrieval. The set of currently supported formats for retrieval is listed on the [information retrieval overview](information_retrieval_overview.html#supported-retrieval-formats) page.
 
 ## Managing Information Shared With Users
 
