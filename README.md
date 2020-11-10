@@ -27,18 +27,19 @@ Option 1:
 Option 2 (running documentation locally):
 
 - Clone the repo: `git clone https://github.com/nhsconnect/FHIR-NRLS-API`
-- Install [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
-- Install Jekyll and Bundler:
-    - `$ gem install jekyll bundler`
-    - `$ jekyll -v` (Note: if this doesn't work, try rebooting)
 - Delete the `Gemfile.lock` file in the project root.
-- Execute Jekyll locally against the project:
+- Install [Ruby](https://www.ruby-lang.org/en/documentation/installation/).
+    - If installing on Windows, use the [RubyInstaller](https://rubyinstaller.org/).
+- Install `bundler`:
+    - `$ gem install bundler`
+- Install the dependencies:
     - `$ bundle`
     - `$ bundle lock --add-platform ruby`
     - `$ bundle lock --add-platform x86-mingw32`
     - `$ bundle lock --add-platform x64-mingw32`
+- Run locally:
     - `$ bundle exec jekyll serve`
-- Browse to [`localhost:4006`](http://localhost:4006)
+    - Browse to [`localhost:4006`](http://localhost:4006)
 
 Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/home/).
 
