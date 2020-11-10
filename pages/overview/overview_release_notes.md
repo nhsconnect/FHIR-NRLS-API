@@ -7,6 +7,9 @@ permalink: overview_release_notes.html
 summary: Summary release notes of the versions released in NRL API Implementation Guide.
 ---
 
+## 2.5.0-beta
+- TBC
+
 ## 2.4.0-beta
 - Specification refactor: restructure and streamline of information included
 - Introduced the [Controller Catalogue](overview_controller_catalogue.html) page
