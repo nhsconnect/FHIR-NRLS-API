@@ -41,7 +41,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 - Updated guidance on Consumer and Provider interactions on:
     - Solution behaviour page
     - Solution interactions page
-    - Development guidance (pointer retrieval) overview page
+    - Development guidance (NRL interaction) overview page
 - Updated solution principles
 - Added detail on access control and RBAC codes
 - Changed the interaction ID that must be used:

@@ -15,7 +15,7 @@ Consumer interaction to support the retrieval of a single NRL pointer. The read 
 
 ## Prerequisites
 
-In addition to the requirements on this page, the general guidance and requirements detailed on the [pointer retrieval overview](pointer_retrieval_overview.html) page **MUST** be followed when using this interaction.
+In addition to the requirements on this page, the general guidance and requirements detailed on the [NRL interaction overview](nrl_interaction_overview.html) page **MUST** be followed when using this interaction.
 
 ## Read Request Headers
 

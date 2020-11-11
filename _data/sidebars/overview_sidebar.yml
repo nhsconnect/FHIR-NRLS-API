@@ -38,11 +38,11 @@ entries:
       url: /access_controls.html
       output: web
 
-  - title: Pointer Retrieval
+  - title: NRL Interaction
     output: web
     folderitems:
     - title: Overview
-      url: /pointer_retrieval_overview.html
+      url: /nrl_interaction_overview.html
       output: web
       subfolders:
       - title: Pointer Data Model

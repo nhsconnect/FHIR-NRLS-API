@@ -1,10 +1,10 @@
 ---
-title: Pointer Retrieval Overview
+title: NRL Interaction Overview
 keywords: getcarerecord structured rest resource
 tags: [development,for_providers,for_consumers]
 sidebar: foundations_sidebar
-permalink: pointer_retrieval_overview.html
-summary: Pointer retrieval overview.
+permalink: nrl_interaction_overview.html
+summary: Pointer creation, management and retrieval overview.
 ---
 
 This section intends to give developers detailed requirements and guidance to interact with the NRL for the creation, management and retrieval of pointers, outlines the information available and lists some pre-requisites for using the NRL service.

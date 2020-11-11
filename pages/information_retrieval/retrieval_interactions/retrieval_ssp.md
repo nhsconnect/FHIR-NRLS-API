@@ -16,8 +16,8 @@ The SSP is a content agnostic forward proxy, which is used to control and protec
 The following diagram describes how information retrieval is facilitated through the SSP using a URL included in a pointer.
 
 [
-    ![Retrieval solution end-to-end](images/retrieval/retrieval_concept_diagram.png)
-](images/retrieval/retrieval_concept_diagram.png){:target="_blank"}
+    ![Retrieval solution end-to-end](images/information_retrieval/retrieval_concept_diagram.png)
+](images/information_retrieval/retrieval_concept_diagram.png){:target="_blank"}
 
 The diagram above depicts the step-by-step, end-to-end, process for retrieving information, as follows:
 1. Consumer system queries the NRL to see if any pointers exist for the patient.

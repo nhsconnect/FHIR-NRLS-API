@@ -114,7 +114,7 @@ When sending the optional `custodian` parameter, referring to an `Organisation` 
 
 ### `_format` Parameter
 
-This parameter must specify one of the [MIME types](pointer_retrieval_overview.html#interaction-content-types) recognised by the NRL.
+This parameter must specify one of the [MIME types](nrl_interaction_overview.html#interaction-content-types) recognised by the NRL.
 
 ### Invalid Reference URL (Create Request)
 

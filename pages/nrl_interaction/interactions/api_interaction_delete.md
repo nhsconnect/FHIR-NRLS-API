@@ -15,7 +15,7 @@ Provider interaction to support the deletion of NRL pointers. The delete interac
 
 ## Prerequisites
 
-In addition to the requirements on this page, the general guidance and requirements detailed on the [pointer retrieval overview](pointer_retrieval_overview.html) page **MUST** be followed when using this interaction.
+In addition to the requirements on this page, the general guidance and requirements detailed on the [NRL interaction overview](nrl_interaction_overview.html) page **MUST** be followed when using this interaction.
 
 ## Delete Request Headers
 
