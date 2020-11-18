@@ -40,7 +40,11 @@ Even though conceptually a consumer and a provider are different, a system conne
 
 ## Information Retrieval
 
-The NRL does not take part in the retrieval of information from providers. The pointers held within the NRL should be considered as signposts to where the information can be retreived. The retrieval of information is conducted between the consumer and provider, but may utilise other services such as the `Spine Security Proxy (SSP)` to help with authentication and authorisation. More detail on retrieval of information can be found on the [information retrieval overview](information_retrieval_overview.html) page.
+The NRL does not take part in the retrieval of information from providers. The pointers held within the NRL should be considered as signposts to where the information can be retrieved. The retrieval of information is conducted between the consumer and provider, but may utilise other services such as the `Spine Security Proxy (SSP)` to help with authentication and authorisation.
+
+Providers have a responsibility to ensure pointer metadata accurately reflects the record's correct format and working retrieval mechanism; even then, the presence of a pointer doesn't guarantee its related information is always accessible.
+
+More detail on retrieval of information can be found on the [information retrieval overview](information_retrieval_overview.html) page.
 
 ## Auditing
 
