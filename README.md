@@ -45,7 +45,7 @@ Learn more about using Jekyll by reading its [documentation](https://jekyllrb.co
 
 ## Contributing
 
-Notice a defect or have a feature request? Check the existing [issues](https://github.com/nhsconnect/FHIR-NRLS-API/issues) first. If your problem or idea is not addressed yet, feel free to [open a new issue](https://github.com/nhsconnect/FHIR-NRLS-API/issues/new).
+Notice a defect or have a feature request? Contact the NRL team at [nrls@nhs.net](mailto:nrls@nhs.net).
 
 ## Versioning
 
