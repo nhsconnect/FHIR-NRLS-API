@@ -7,13 +7,11 @@ permalink: architecture_information_sharing.html
 summary: An overview of the ways in which information can be shared by providers with consumers.
 ---
 
-When sharing information, a provider will create pointers which tell consumers what type of information is being shared, the formats in which that information is shared and the mechanisms which can be used to retrieved the information.
+For information sharing to be useful for different use cases, the NRL has a list of supported pointer types and supported retrieval formats that a pointer can contain; these lists will be updated as new types and formats are supported.
 
-To allow information shared to be used in different use cases, there needs to be standardisation in the grouping of information and the retrieval mechanisms used. The NRL has a list of supported pointer types and supported retrieval formats that can be used by providers to share information, these lists will be updated as new types and formats are added.
+## Types of Information
 
-### Types of Information
-
-When choosing the information types and retrieval mechanisms that will be supported by the NRL, the aim is to make the shared information useful in a broad set of use cases, across a number of different care settings whilst still allowing the consumer to identify the bits of information they are interested in.
+When choosing the information types and retrieval mechanisms for the NRL to support, the aim is to make the shared information useful in a broad set of use cases, across a number of different care settings whilst still allowing the consumer to identify the bits of information they are interested in.
 
 Choosing how information should be grouped is challenging, it can be done at various levels of granularity and in different ways. How information is grouped will affect its usefulness and re-usability across different use cases and care settings. For example, here are a few options of information grouping/types for a patient (one pointer for each):
 - A summary of the patient's complete record.

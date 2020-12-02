@@ -7,11 +7,13 @@ permalink: api_interaction_delete.html
 summary: To support the deletion of NRL pointers.
 ---
 
-{% include custom/fhir.reference.nonecc.html resource="NRL-DocumentReference-1" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
+{% include custom/fhir.reference.nonecc.html NHSDProfiles="[Spine-OperationOutcome-1](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1)" HL7Profiles="-" %}
 
 ## Delete
 
-Provider interaction to support the deletion of NRL pointers. The delete interaction is a FHIR RESTful [delete](https://www.hl7.org/fhir/STU3/http.html#delete) interaction.
+Provider interaction to support the deletion of NRL pointers. The `delete` interaction is a FHIR RESTful [delete](https://www.hl7.org/fhir/STU3/http.html#delete) interaction.
+
+The `delete` interaction removes an existing `DocumentReference` resource.
 
 ## Prerequisites
 
@@ -19,7 +21,7 @@ In addition to the requirements on this page, the general guidance and requireme
 
 ## Delete Request Headers
 
-Provider API delete requests support the following HTTP request headers:
+The `delete` interaction supports the following HTTP request headers:
 
 | Header|Value|Conformance|
 |-------|-----|-----------|
@@ -30,76 +32,44 @@ Provider API delete requests support the following HTTP request headers:
 
 ## Delete Operation
 
-Provider systems **MUST** only delete pointers for records where they are the pointer owner (custodian).
+Provider systems **MUST**:
+- only delete pointers for records where they are the pointer owner (custodian).
+    - the custodian ODS code in the `DocumentReference` being deleted **MUST** be affiliated with the Client System ASID value in the `fromASID` HTTP request header.
+- Use one of the two supported methods of pointer identification:
+    - logical ID
+        - The logical ID can be obtained from the `Location` header returned in a `create` interaction [response](api_interaction_create.html#create-response).
+        - Example:
+            <div markdown="span" class="alert alert-success" role="alert">
+            `DELETE [baseUrl]/STU3/DocumentReference/[id]`
+            </div>
 
-For all delete requests the `custodian` ODS code in the `DocumentReference` to be deleted **MUST** be affiliated with the Client System `ASID` value in the `fromASID` HTTP request header sent to the NRL.
+            <div class="language-http highlighter-rouge">
+            <pre class="highlight"><code><span class="err">DELETE [baseUrl]/DocumentReference/da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142
+            </span></code>
+            Delete the DocumentReference resource for a pointer with a logical id of 'da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142'.</pre>
+            </div>
+    - `masterIdentifier`
+        - This option negates a need to persist or query the NRL to obtain the generated logical ID for the pointer.
+        - The following query parameters should be used:
+            - *[nhsNumber]* - The NHS Number of the patient related to the `DocumentReference`.
+            - *[system]* - The namespace of the `masterIdentifier` value associated with the `DocumentReference`.
+            - *[value]* - The value of the `masterIdentifier` associated with the `DocumentReference`.
+        - Example:
+            <div markdown="span" class="alert alert-success" role="alert">
+            `DELETE [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&identifier=[system]%7C[value]`
+            </div>
 
-### Delete by `id`
+            <div class="language-http highlighter-rouge">
+            <pre class="highlight">
+            <code><span class="err">DELETE [baseUrl]/DocumentReference?subject=https%3A%2F%2Fdemographics.spineservices.nhs.uk%2FSTU3%2FPatient%2F9876543210%26identifier%3Durn%3Aietf%3Arfc%3A3986%257Curn%3Aoid%3A1.3.6.1.4.1.21367.2005.3.71
+            </span></code>
+            Delete the DocumentReference resource for a pointer with a subject and identifier.</pre>
+            </div>
 
-The API supports the delete by ID interaction, which allows a provider to delete an existing pointer based on the pointer's logical ID.
-
-The logical ID can be obtained from the `Location` header contained in the create response - see the [Create API Interaction](api_interaction_create.html#create-response) for details.
-
-To accomplish this, the provider issues an HTTP DELETE as shown:
-
-<div markdown="span" class="alert alert-success" role="alert">
-`DELETE [baseUrl]/STU3/DocumentReference/[id]`
-</div>
-
-<div class="language-http highlighter-rouge">
-<pre class="highlight"><code><span class="err">DELETE [baseUrl]/DocumentReference/da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142
-</span></code>
-Delete the DocumentReference resource for a pointer with a logical id of 'da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142'.</pre>
-</div>
-
-### Conditional Delete by `id`
-
-{% include important.html content="Conditional delete by logical ID may be deprecated in the future, therefore it is recommended to implement [delete by ID](#delete-by-id) as a path variable." %}
-
-The API supports the conditional delete by `id` interaction which allows a provider to delete an existing pointer based on the search parameter `_id` which refers to the pointer's logical ID.
-
-The logical ID can be obtained from the `Location` header contained in the create response - see the [Create API Interaction](api_interaction_create.html#create-response) for details.
-
-To accomplish this, the provider issues an HTTP DELETE as shown:
-
-<div markdown="span" class="alert alert-success" role="alert">
-`DELETE [baseUrl]/DocumentReference?_id=[id]`
-</div>
-
-<div class="language-http highlighter-rouge">
-<pre class="highlight">
-<code><span class="err">DELETE [baseUrl]/DocumentReference?_id=da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142
-</span></code>
-Delete the DocumentReference resource for a pointer conditionally with a logical ID of 'da2b6e8a-3c8f-11e8-baae-6c3be5a609f5-584d385036514c383142'.</pre>
-</div>
-
-### Conditional Delete by `masterIdentifier`
-
-The API supports the conditional delete by `masterIdentifier` interaction which allows a provider to delete an existing pointer using the master identifier
-negating the requirement to persist or query the NRL to obtain the generated logical ID for the pointer.
-
-To accomplish this, the provider issues an HTTP DELETE as shown:
-
-<div markdown="span" class="alert alert-success" role="alert">
-`DELETE [baseUrl]/DocumentReference?subject=[https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]&identifier=[system]%7C[value]`
-</div>
-
-- *[nhsNumber]* - The NHS Number of the patient related to the `DocumentReference`.
-- *[system]* - The namespace of the `masterIdentifier` value associated with the `DocumentReference`.
-- *[value]* - The value of the `masterIdentifier` associated with the `DocumentReference`.
-
-<div class="language-http highlighter-rouge">
-<pre class="highlight">
-<code><span class="err">DELETE [baseUrl]/DocumentReference?subject=https%3A%2F%2Fdemographics.spineservices.nhs.uk%2FSTU3%2FPatient%2F9876543210%26identifier%3Durn%3Aietf%3Arfc%3A3986%257Curn%3Aoid%3A1.3.6.1.4.1.21367.2005.3.71
-</span></code>
-Delete the DocumentReference resource for a pointer with a subject and identifier.</pre>
-</div>
-
-{% include note.html content="All query parameters must be percent encoded. In particular, the pipe (`|`) character must be percent encoded (`%7C`)." %}
+            {% include note.html content="All query parameters must be percent encoded. In particular, the pipe (`|`) character must be percent encoded (`%7C`)." %}
+- submit the request to the NRL using the FHIR RESTful [delete](https://www.hl7.org/fhir/STU3/http.html#delete) interaction.
 
 ## Response
-
-The `delete` interaction removes an existing `DocumentReference` resource.
 
 ### Success
 
@@ -140,7 +110,7 @@ The `OperationOutcome` in the response body will conform to the [Spine-Operation
 
 ### Failure
 
-The following errors can be triggered when performing this operation:
+The following errors may be triggered when performing this operation:
 
 - [No record found](guidance_errors.html#resource-not-found)
 - [Invalid Resource](guidance_errors.html#invalid-resource)

@@ -269,7 +269,7 @@ When the NRL persists a `DocumentReference` with a masterIdentifier, it should e
 | `issue.details.coding.display` | Fixed value: `Create would lead to creation of a duplicate resource` |
 | `issue.diagnostics` | Dynamic value: `Duplicate masterIdentifier value: [masterIdentifier.value] system: [masterIdentifier.system]` |
 
-### Inactive DocumentReference
+### Inactive `DocumentReference`
 
 This error is thrown when the status of the `DocumentReference` to be retrieved or modified is not `current`.
 

@@ -7,7 +7,7 @@ permalink: supported_pointer_types.html
 summary: NRL supported pointer types.
 ---
 
-The following table outlines the currently supported NRL information categories and types; this list will be updated as other information types are supported by the NRL. The codes for each information category and type can be found in the relevant value sets detailed on the [FHIR Resource Mapping](pointer_fhir_resource.html) page.
+The following table outlines the currently supported NRL information categories and types; this list will be updated as other information types become supported by the NRL. The codes for each information category and type can be found in the relevant value sets detailed on the [Pointer FHIR Resource](pointer_fhir_resource.html) page.
 
 The table outlines each `Retrieval Format` supported for each pointer type. Details about the retrieval formats can be found on the [information retrieval overview](information_retrieval_overview.html) page.
 

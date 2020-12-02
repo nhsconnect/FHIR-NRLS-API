@@ -14,6 +14,7 @@ An API for storing and retrieving pointers to records and documents from the Nat
 ## Table of Contents
 
 - [Quick start](#quick-start)
+- [Images](#images)
 - [Contributing](#contributing)
 - [Versioning](#versioning)
 - [Copyright and license](#copyright-and-license)
@@ -42,6 +43,22 @@ Option 2 (running documentation locally):
     - Browse to [`localhost:4006`](http://localhost:4006)
 
 Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/home/).
+
+## Images
+
+Images within the source are in SVG format. If a new image is required, or an existing image needs updating, the following procedure should be taken:
+
+- Install [draw.io](http://get.diagrams.net/) (if not already installed).
+- Open `/images/NRL_images.drawio` and make any changes you need (for a new image, create a new tab and give it an appropriate title).
+- To export the image as SVG, select all components of the image you wish to export (e.g. using Ctrl+A), then choose `File -> Export as -> SVG...` and use the following config:
+    - Zoom: \[start with 100%, but you may need to try exporting a few different times using different percentages until you get this figure correct\]
+    - Border Width: 10
+    - Selection Only: tick
+        - Crop: tick
+    - Include a copy of my diagram: untick
+- Once exported, copy **ONLY** the <svg...> tag from the created file and insert it into the relevant .md/.html file.
+- [Run the documentation locally](#quick-start) and see what the new image looks like. If the zoom isn't quite right, repeat the previous steps with a different zoom percentage until the image looks good.
+- When committing the change, ensure the modified `NRL_images.drawio` is also committed in the same commit.
 
 ## Contributing
 

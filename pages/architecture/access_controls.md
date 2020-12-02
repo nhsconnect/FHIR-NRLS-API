@@ -4,7 +4,7 @@ keywords: RBAC authorisation documentreference
 tags: [security,authorisation,spine_secure_proxy]
 sidebar: accessrecord_rest_sidebar
 permalink: access_controls.html
-summary: Overview of retrieval access controls.
+summary: Overview of access controls.
 ---
 
 Consumers are required to ensure an appropriate level of authentication and authorisation is applied, within their systems, when giving users access to information received via Spine services.

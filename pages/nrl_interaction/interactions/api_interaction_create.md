@@ -7,11 +7,11 @@ permalink: api_interaction_create.html
 summary: To support the creation of NRL pointers.
 ---
 
-{% include custom/fhir.reference.nonecc.html resource="NRL-DocumentReference-1" resourceurl= "https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1" page="" fhirlink="[DocumentReference](https://www.hl7.org/fhir/STU3/documentreference.html)" content="User Stories" %}
+{% include custom/fhir.reference.nonecc.html NHSDProfiles="[NRL-DocumentReference-1](https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1), [Spine-OperationOutcome-1](https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1)" HL7Profiles="-" %}
 
 ## Create
 
-Provider interaction to support the creation of NRL pointers. The create interaction is a FHIR RESTful [create](https://www.hl7.org/fhir/STU3/http.html#create) interaction.
+Provider interaction to support the creation of NRL pointers. The `create` interaction is a FHIR RESTful [create](https://www.hl7.org/fhir/STU3/http.html#create) interaction.
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ In addition to the requirements on this page, the general guidance and requireme
 
 ## Create Request Headers
 
-Provider API create requests support the following HTTP request headers:
+The `create` interaction supports the following HTTP request headers:
 
 |Header|Value|Conformance|
 |------|-----|-----------|
@@ -35,13 +35,10 @@ Provider API create requests support the following HTTP request headers:
 </div>
 
 Provider systems **MUST**:
-
-- construct and send a new pointer (DocumentReference) resource that conforms to the `NRL-DocumentReference-1` profile and submit this to the NRL using the FHIR RESTful [create](https://www.hl7.org/fhir/stu3/http.html#create) interaction.
-- include all of the mandatory data-elements contained in the `NRL-DocumentReference-1` profile when constructing a `DocumentReference`. The mandatory data-elements are detailed on the [Developer FHIR Resource](pointer_fhir_resource.html) page.
-- follow all population guidance as outlined on the [Developer FHIR Resource](pointer_fhir_resource.html) page when constructing a `DocumentReference`.
 - only create pointers for records where they are the pointer owner (custodian).
-
-For all create requests the `custodian` ODS code in the `DocumentReference` **MUST** be affiliated with the `Client System ASID` value in the `fromASID` HTTP request header sent to the NRL.
+- construct a new pointer that conforms to the `NRL-DocumentReference-1` profile following all population guidance as outlined on the [Developer FHIR Resource](pointer_fhir_resource.html) page.
+    - `custodian.reference` must be populated with an ODS code affiliated with the Client System ASID value in the `fromASID` HTTP request header.
+- submit the pointer to the NRL using the FHIR RESTful [create](https://www.hl7.org/fhir/stu3/http.html#create) interaction.
 
 ### XML Example of a New DocumentReference Resource (Pointer)
 
@@ -63,17 +60,17 @@ For all create requests the `custodian` ODS code in the `DocumentReference` **MU
 ### Success
 
 A successful execution of the `create` interaction will return:
-- a `201` **CREATED** HTTP status code confirming the entry has been successfully created in the NRL.
+- a `201` **Created** HTTP status code confirming the entry has been successfully created in the NRL.
 - a response body containing an `OperationOutcome` resource (see below for full details).
 - an HTTP `Location` response header containing the full resolvable URL to the newly created 'single' `DocumentReference`:
-  - The URL will contain the 'server' assigned `logical id` of the new `DocumentReference` resource.
   - The URL format will be: `https://[host]/[path]/[id]`.
+  - The URL will contain the 'server' assigned logical id of the new `DocumentReference` resource.
   - An example `Location` response header:
     - `https://psis-sync.national.ncrs.nhs.uk/DocumentReference/297c3492-3b78-11e8-b333-6c3be5a609f5-54477876544511209789`
 
 When a resource has been created it will have a `versionId` of 1.
 
-{% include note.html content="The versionId is an integer that is assigned and maintained by the NRL server. When a new DocumentReference is created the server assigns it a versionId of 1. The versionId will be incremented during an update or supersede transaction. See [API Interaction - Update](api_interaction_update.html) and [API Interaction - Supersede](api_interaction_supersede.html) for more details on these transactions.<br /><br />The NRL server will ignore any versionId value sent by a client in a create interaction. Instead, the server will ensure that the newly assigned versionId adheres to the rules laid out above." %}
+{% include note.html content="The `versionId` is an integer that is assigned and maintained by the NRL server (any versionId value sent in a create interaction will be ignored). When a new `DocumentReference` is created the server assigns it a `versionId` of 1. The versionId will increment during an [update](api_interaction_update.html) or [supersede](api_interaction_supersede.html) transaction." %}
 
 #### OperationOutcome
 
@@ -121,4 +118,4 @@ The following errors can be triggered when performing this operation:
 
 ## Explore the NRL
 
-You can explore and test the create interaction using Swagger in the [NRL API Reference Implementation](https://data.developer.nhs.uk/nrls-ri/index.html).
+You can explore and test the `create` interaction using Swagger in the [NRL API Reference Implementation](https://data.developer.nhs.uk/nrls-ri/index.html).

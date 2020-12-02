@@ -8,7 +8,8 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 ---
 
 ## 2.5.0-beta
-- TBC
+- Removed: Conditional Delete by id
+- Specification refactor: further restructure and streamline of information included
 
 ## 2.4.0-beta
 - Specification refactor: restructure and streamline of information included
@@ -92,7 +93,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     - Links to the on-boarding guide have been added
 - Developer Guidance
     - Overview page
-        - NHS number verification guidance updated
+        - NHS Number verification guidance updated
         - Actor to interaction mapping table updated
     - FHIR Resource page
         - Renamed
