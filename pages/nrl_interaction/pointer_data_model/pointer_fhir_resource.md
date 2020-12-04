@@ -66,7 +66,8 @@ The URI of the FHIR profile the resource conforms to, indicating the version of 
 
 |Data Item|FHIRPath|Data Type|Cardinality|Population Guidance|
 |---------|--------|---------|-----------|-------------------|
-| Profile | `meta.profile` | [uri](http://hl7.org/fhir/stu3/datatypes.html#uri) | 1..1 | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1`. |
+| Meta | `meta` | [Meta](http://hl7.org/fhir/stu3/resource.html#Meta) | 1..1<sup>\[0..1\]</sup> | |
+| Profile | `meta.profile` | [uri](http://hl7.org/fhir/stu3/datatypes.html#uri) | 1..1<sup>\[0..*\]</sup> | Fixed value: `https://fhir.nhs.uk/STU3/StructureDefinition/NRL-DocumentReference-1`. |
 
 **Additional Guidance**
 
@@ -103,9 +104,12 @@ Metadata used to track the current version of a pointer.
 
 |Data Item|FHIRPath|Data Type|Cardinality|Population Guidance|
 |---------|--------|---------|-----------|-------------------|
+| Meta | `meta` | [Meta](http://hl7.org/fhir/stu3/resource.html#Meta) | 1..1<sup>\[0..1\]</sup> | |
 | Version | `meta.versionId` | [id](http://hl7.org/fhir/stu3/datatypes.html#id) | 0..1 | *Auto-populated by the NRL.*  Pointer version number. |
-| Pointer indexed datetime | `indexed` | [instant](http://hl7.org/fhir/stu3/datatypes.html#instant) | 0..1 | *Auto-populated by the NRL.* The date and time the pointer was created. |
 | Pointer last updated datetime | `meta.lastUpdated` | [instant](http://hl7.org/fhir/stu3/datatypes.html#instant) | 0..1 | *Auto-populated by the NRL.* The date and time the pointer was last updated. |
+| Pointer indexed datetime | `indexed` | [instant](http://hl7.org/fhir/stu3/datatypes.html#instant) | 1..1 | *Auto-populated by the NRL.* The date and time the pointer was created. |
+
+{% include important.html content="Even though the `indexed` value is auto-populated by the NRL, the field is mandatory in the FHIR profile, therefore a value **MUST** be provided when creating a pointer. The value will be ignored by the NRL." %}
 
 ### Related Pointer
 
@@ -115,7 +119,7 @@ Relationship referencing the previous version of a pointer, which has been super
 |---------|--------|---------|-----------|-------------------|
 | Related Pointer | `relatesTo` | [BackboneElement](http://hl7.org/fhir/stu3/backboneelement.html) | 0..1 | |
 | | `relatesTo.code` | [code](http://hl7.org/fhir/stu3/datatypes.html#code) | 1..1 | The type of relationship between the documents (pointers). This element is mandatory if `relatesTo` is included and the value **MUST** be `replaces`. |
-| | `relatesTo.target.reference`<br />`relatesTo.target.identifier` | [string](http://hl7.org/fhir/stu3/datatypes.html#string)<br />[Identifier](http://hl7.org/fhir/stu3/datatypes.html#identifier) | 1..1 | The target of the relationship, denoted by a [literal reference](https://www.hl7.org/fhir/stu3/references.html#literal) **or** [logical identifier](https://www.hl7.org/fhir/stu3/references.html#logical) to the target `DocumentReference` held within the NRL.<br /><br />Only one of these values should be populated. |
+| | `relatesTo.target.reference`<br />`relatesTo.target.identifier` | [string](http://hl7.org/fhir/stu3/datatypes.html#string)<br />[Identifier](http://hl7.org/fhir/stu3/datatypes.html#identifier) | 1..1<sup>\[0..1\]</sup> | The target of the relationship, denoted by a [literal reference](https://www.hl7.org/fhir/stu3/references.html#literal) **or** [logical identifier](https://www.hl7.org/fhir/stu3/references.html#logical) to the target `DocumentReference` held within the NRL.<br /><br />Only one of these values should be populated. |
 
 **Additional Guidance**
 
@@ -176,7 +180,7 @@ Optional information detailing the period the record is/was active.
 |Data Item|FHIRPath|Data Type|Cardinality|Population Guidance|
 |---------|--------|---------|-----------|-------------------|
 | Period of care | `context.period` | [Period](http://hl7.org/fhir/stu3/datatypes.html#period) | 0..1 | Where this property is included, the start date **MUST** be populated. |
-| | `context.period.start` | [dateTime](http://hl7.org/fhir/stu3/datatypes.html#datetime) | 1..1 | Starting time with inclusive boundary. |
+| | `context.period.start` | [dateTime](http://hl7.org/fhir/stu3/datatypes.html#datetime) | 1..1<sup>\[0..1\]</sup> | Starting time with inclusive boundary. |
 | | `context.period.end` | [dateTime](http://hl7.org/fhir/stu3/datatypes.html#datetime) | 0..1 | End time with inclusive boundary, if not ongoing. |
 
 ### Information Creation Date

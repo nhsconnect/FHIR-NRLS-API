@@ -14,6 +14,8 @@ The National Record Locator (NRL) has been developed to, primarily, enable healt
 
 Sharing of information through the NRL empowers professionals, patients and communities, strengthens primary, secondary, and acute care, and enables efficiencies.
 
+The NRL does not contain any patient record information itself, instead, it holds pointers to where the information can be accessed.
+
 ### Terms
 
 In this specification, keywords '**MUST**', '**MUST NOT**', '**REQUIRED**', '**SHALL**', '**SHALL NOT**', '**SHOULD**', '**SHOULD NOT**', '**RECOMMENDED**', '**MAY**' and '**OPTIONAL**' are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
@@ -28,7 +30,7 @@ Three actors are involved with the sharing of information via the NRL:
 |**Consumer**|An individual or organisation who would benefit from having access to information shared by providers.|
 |**The NRL**|Enables consumers to locate information shared by providers.|
 
-### Enabling Information Sharing
+### Information Sharing
 
 The NRL has been built to facilitate national sharing of information, enabling consumers to:
 - identify which providers hold and are sharing information.
@@ -36,6 +38,38 @@ The NRL has been built to facilitate national sharing of information, enabling c
 - know how to authenticate and get authorisation to access the information.
 
 The NRL removes the need for organisations to create duplicate copies of information across systems and organisations, by facilitating access to up-to-date information directly from the source.
+
+<!--
+The National Record Locator does not support the sharing of a patient's full record in a single pointer. Instead, the NRL requires providers to share just a single section of a patient's record per pointer. This allows the shared information to be filtered to be most useful in a broad set of use cases, across a number of different care settings. It also helps avoid confusion when multiple providers share information about the same patient, as data is not needed to be 'merged'.
+
+For example, here are a few sections of a full record that can be shared on the NRL (one pointer for each):
+- A list of the patient's medications.
+- A 'Mental health crisis plan' document.
+- A discharge summary.
+
+Splitting a record in this manner aids the implementation of access rules to limit visibility of certain sections to different clinicians based on their user access privilege and need to see certain aspects of a patient's full record.
+
+{% include note.html content="The term 'Record' used throughout this specification refers to a section of a patient's full clinical record i.e. that can be pointed to by a pointer." %}
+-->
+
+### Cardinality
+
+Some elements within FHIR resources utilised by the NRL require a more stringent cardinality than the resource permits; in such cases, the FHIR resource's cardinality will be indicated in superscript.
+
+For example, the cardinality of the [`Parameters`](https://www.hl7.org/fhir/STU3/parameters.html) resource used for the `update` interaction is described as follows:
+
+|Element|Cardinality|
+|-------|-----------|
+|`parameter`|1..1<sup>\[0..*\]</sup>|
+|`parameter.name`|1..1|
+|`parameter.part`|3..3<sup>\[0..*\]</sup>|
+
+In this case, the `parameter.name` cardinality matches the FHIR resource, but the other two elements do not.
+
+{% include important.html content="The `parameter` element has a `1..1` cardinality for the NRL, however, because this cardinality is based on the FHIR resource's `0..*` cardinality, the element **MUST** be treated as an array with a single element (when using JSON) i.e.
+`\"parameter\": [{...}]`" %}
+
+In all cases, the NRL's cardinality requirement takes precedence.
 
 ## How The NRL Works
 

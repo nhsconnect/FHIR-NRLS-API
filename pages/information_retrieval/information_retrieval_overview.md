@@ -35,7 +35,7 @@ The combination of these two metadata fields allows:
 
 The retrieval interaction identifies mechanisms consumers can use to retrieve information from providers and represents the authentication and authorisation requirements for that retrieval.
 
-The retrival interaction information is important to:
+The retrieval interaction information is important to:
 
 - **providers** so they can expose information using a mechanism that consumers can understand and utilise.
 - **consumers** so they can understand how to retrieve information from a provider.
