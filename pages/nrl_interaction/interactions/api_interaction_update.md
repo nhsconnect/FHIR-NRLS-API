@@ -75,9 +75,9 @@ The [`Parameters`](https://www.hl7.org/fhir/STU3/parameters.html) resource **MUS
 
 |Element|Cardinality|Additional Guidance|
 |-------|-----------|-------------------|
-| `parameter` | 1..1<sup>\[0..*\]</sup> | |
+| `parameter` | 1..1 | |
 | `parameter.name` | 1..1 | Fixed value: `operation` |
-| `parameter.part` | 3..3<sup>\[0..*\]</sup> | See table below. |
+| `parameter.part` | 3..3 | See table below. |
 
 Three `part` elements are required as follows:
 

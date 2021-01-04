@@ -94,21 +94,20 @@ The `Immunization` resources included as part of the returned information **MUST
 
 | Resource Cardinality | 0..* |
 
-|Element|Cardinality|Additional Guidance|
-|-------|-----------|-------------------|
-| extension `(vaccinationProcedure)` | 1..1 | Free text field should be used if no coded text available using extension `(vaccinationProcedure).valueCodeableConcept.text`. |
-| `identifier` | 1..1 | A unique identifier for the vaccination which will be maintained across different retrieval endpoints/FHIR interfaces to allow identification of duplicates or updated information. |
-| `status` | 1..1 | Value **MUST** be in the [immunization-status ValueSet](http://hl7.org/fhir/stu3/valueset-immunization-status.html). |
-| `notGiven` | 1..1 | `FALSE` when the vaccination was given (or reported as given), or `TRUE` when not given. |
-| `vaccineCode.coding` | 1..1 | An entry from the [`CareConnect-VaccineCode-1`](https://fhir.hl7.org.uk/STU3/ValueSet/CareConnect-VaccineCode-1) ValueSet. Where the vaccineCode is not known, such as when a vaccination is reported, the `UNK` value **MUST** be used. |
-| `date` | 1..1 | The date or partial date that the vaccination was administered, or reported vaccination was given in the opinion of the child and/or parent carer. |
-| `primarySource` | 1..1 | `TRUE` if the vaccination was administered, otherwise `FALSE` if reported. |
-| `reportOrigin` | 0..1 | If the vaccination was reported, the original source SHOULD be included. |
-| `manufacturer` | 0..1 | Where available, this SHOULD be included. |
-| `site` | 0..1 | Where available, this SHOULD be included. |
-| `route` | 0..1 | Where available, this SHOULD be included. |
-| `explanation.reasonNotGiven` | 0..1 | If the vaccination was `notGiven` then this SHOULD be included. |
-| `vaccinationProtocol.doseSequence` | 0..1 | Where available, this SHOULD be included. |
+| Element | Cardinality | Additional Guidance |
+| --- | --- | --- |
+| extension(vaccinationProcedure) | 1..1 |  A code from the SNOMED Clinical Terminology UK coding system, to record a vaccination procedure that is either given or not given.<br/><br/>If a vaccination is given, then an immunisation procedure concept or an immunisation situation (given) concept SHALL be used.<br/><br/>If a vaccination has not been given, then an immunisation situation (not done) concept SHALL be used.<br/><br/>Free text field should be used if no coded text available using `extension(vaccinationProcedure).valueCodeableConcept.text` |
+| identifier | 1..1 | A publisher defined unique identifier for the vaccination which will be maintained across different messages to allow consumers to identify the information between messages. |
+| notGiven | 1..1 | Value SHALL be `FALSE` when the vaccination was given or reported as given, `TRUE` when not given |
+| vaccineCode | 1..1 | Immunization.vaccineCode SHALL use a value from  the [CareConnect-VaccineCode-1](https://fhir.hl7.org.uk/STU3/ValueSet/CareConnect-VaccineCode-1) value set |
+| date | 1..1 | The date or partial date that the vaccination was administered, or reported vaccination was given in the opinion of the child and/or parent carer |
+| primarySource | 1..1 | Value should be `FALSE` if the vaccination was reported, `TRUE` if the vaccination was administered |
+| reportOrigin | 0..1 | If the vaccination was reported then the original source should be include |
+| manufacturer | 0..1 | Where available this should be included |
+| site | 0..1 | Where available this should be included |
+| route | 0..1 | Where available this should be included |
+| explanation.reasonNotGiven | 0..1 | If the vaccination was `notGiven` then the `reasonNotGiven` element SHALL be included |
+| vaccinationProtocol.doseSequence | 0..1 | Where available the `doesSequence` should be include |
 
 ### [CareConnect-Patient-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1)
 
@@ -167,7 +166,7 @@ The `Immunization` resources included as part of the returned information **MUST
 |-------|-----------|-------------------|
 | `type` | 1..* | A value from the [`EncounterType-1`](https://fhir.nhs.uk/STU3/ValueSet/EncounterType-1) ValueSet. This ValueSet is extensible so additional values and code systems may be added where required. |
 | `location` | 0..1 | Reference to the location at which the encounter took place. |
-| `subject` | 1..1 | A reference to the `Patient` resource representing the subject of this event. |
+| `subject` | 1..1 | A reference to the `Patient` resource representing the subject of this information. |
 
 ### [CareConnect-HealthcareService-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-HealthcareService-1)
 

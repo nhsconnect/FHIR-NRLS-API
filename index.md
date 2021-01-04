@@ -60,9 +60,9 @@ For example, the cardinality of the [`Parameters`](https://www.hl7.org/fhir/STU3
 
 |Element|Cardinality|
 |-------|-----------|
-|`parameter`|1..1<sup>\[0..*\]</sup>|
+|`parameter`|1..1|
 |`parameter.name`|1..1|
-|`parameter.part`|3..3<sup>\[0..*\]</sup>|
+|`parameter.part`|3..3|
 
 In this case, the `parameter.name` cardinality matches the FHIR resource, but the other two elements do not.
 

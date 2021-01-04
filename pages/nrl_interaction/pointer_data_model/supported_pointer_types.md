@@ -59,14 +59,14 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
     </tr>
     <tr>
         <td rowspan="2">Record headings</td>
-        <td>Services and care</td>
+        <td>Services and care (Professional Contacts)</td>
         <td>
             <ul>
                 <li>
                     <a href="retrieval_contact_details.html">"Contact Details"</a>
                 </li>
-                <li>
-                    <a href="retrieval_unstructured_document.html">"Unstructured Document (PDF)"</a>
+				<li>
+                    <a href="retrieval_services_and_care_fhir_stu3.html">"Services and Care List FHIR STU3 v1"</a>
                 </li>
             </ul>
         </td>

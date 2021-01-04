@@ -125,6 +125,9 @@ entries:
           - title: Observation List - FHIR STU3 v1
             url: /retrieval_observations_fhir_stu3.html
             output: web
+          - title: Services and Care List - FHIR STU3 v1
+            url: /retrieval_services_and_care_fhir_stu3.html
+            output: web
           - title: Vaccination List - FHIR STU3 v1
             url: /retrieval_vaccinations_fhir_stu3.html
             output: web
