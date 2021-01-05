@@ -43,7 +43,7 @@ The response payload will consist of a `collection` [FHIR Bundle](http://hl7.org
 
 The diagram below shows the referencing between FHIR resources within the response `Bundle` resource:
 
-<img alt="Services and Care List FHIR Bundle diagram." src="images/information_retrieval/formats/services_and_care_list_fhir_stu3.png" style="width:100%;max-width: 100%;">
+<img alt="Services and Care List FHIR Bundle diagram." src="images/information_retrieval/formats/services_and_care_list_fhir_stu3.png" >
 
 
 The `Bundle` **MUST** contain the following resources:
