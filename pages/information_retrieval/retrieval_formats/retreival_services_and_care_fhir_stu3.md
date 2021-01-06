@@ -9,7 +9,7 @@ summary: Services and Care List, FHIR STU3 format information retrieval.
 
 {% include warning.html content="This retrieval format is currently in DRAFT and is included for informational purposes only. No development or technical decision making should be done against this page's content without first consulting the NRL team." %}
 
-The `Services and Care List FHIR STU3 v1` record format contains a list of episodes of care, in which an organisations had or has a responsibility for care of a patient. This information will contain information about the organisation responsible for the care but may also contain information about a care team or individual responsible for that patients care.
+The `Services and Care List FHIR STU3 v1` record format contains a list of episodes of care, in which organisations had or has a responsibility for care of a patient. The episodes of care will contain information about the organisation responsible for the care but may also contain information about a care team or individual responsible for that patients care.
 
 All pointers which allow for retrieval in the `Services and Care List FHIR STU3 v1` record format **MUST** return information conforming to the guidance and requirements specified on this page.
 
@@ -103,9 +103,9 @@ The `EpisodeOfCare` resources included as part of the returned information **MUS
 | Element | Cardinality | Additional Guidance |
 | --- | --- | --- |
 | identifier | 1..1 | A publisher defined unique identifier for the episode of care which will be maintained across different sharing capabilities to allow consumers to identify the information from different messages. |
-| status | 1..1 | The `status` element MUST represent the current status of the organisations responsibility for the patient. |
+| status | 1..1 | The `status` element MUST represent the current status of the organisation's responsibility for the patient. |
 | type | 1..* | The `type` element MUST represent the type of care/service the organisation is providing during this episode of care.<br/><br/>The resource MUST contain a `type` from value set [CareConnect-CareSettingType-1](https://fhir.hl7.org.uk/STU3/ValueSet/CareConnect-CareSettingType-1)<br/><br/>For example "Health visiting service (1078501000000104)"  |
-| managingOrganization | 1..1  | This MUST reference the organisation who is responsibility for this episode of care, which contains contact details for that organisation in relation to this episode of care. |
+| managingOrganization | 1..1  | This MUST reference the organisation which is responsible for this episode of care, which contains contact details for that organisation in relation to this episode of care. |
 | period.start | 0..1 | Date on which the organisation took responsibility for the patients care. |
 | period.end | 0..1 | Date on which the organisation stopped being responsible for the patients care. |
 | team | 0..* | The EpisodeOfCare may reference specific care teams for this episode of care. |
@@ -141,7 +141,7 @@ The `EpisodeOfCare` resources included as part of the returned information **MUS
 
 ### [CareConnect-CareTeam-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-CareTeam-1)
 
-The CareConnect-CareTeam-1 resource may be included as part of the bundle to give more detail on a specific team who is responsible for the patients care.
+The CareConnect-CareTeam-1 resource may be included as part of the bundle to give more detail on a specific team who are responsible for the patient's care.
 
 Any CareTeam resource SHALL conform to the [CareConnect-CareTeam-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-CareTeam-1) constrained FHIR profile and the additional population guidance as per the table below:
 
