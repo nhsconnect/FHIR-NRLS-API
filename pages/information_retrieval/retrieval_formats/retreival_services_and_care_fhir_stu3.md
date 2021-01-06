@@ -151,7 +151,7 @@ Any CareTeam resource SHALL conform to the [CareConnect-CareTeam-1](https://fhir
 | --- | --- | --- |
 | subject | 0..1 | This should reference the Patient resource representing the subject of the episode of care. |
 | name | 0..1 | The care team name should be included to assist subscribers of the information to contact the organisation if required. |
-| participant | 0..* | The members of the care team may be referenced and should include their role within the care team. |
+| participant | 0..* | The members of the care team may be referenced and should include their role within the care team.<br /><br />**Note:** it is important to consider Information Governance when including personal data of members of the care team within information shared with other organisations. |
 
 
 ### [CareConnect-Practitioner-1](https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Practitioner-1)
