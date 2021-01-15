@@ -16,10 +16,15 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
         <th><a href="pointer_fhir_resource.html#information-category">Information Category</a></th>
         <th><a href="pointer_fhir_resource.html#information-type">Information Type</a></th>
         <th><a href="pointer_fhir_resource.html#retrieval-format">Retrieval Format(s)</a></th>
-	  </tr>
+	</tr>
     <tr>
-        <td rowspan="3">Care plan</td>
-        <td>End of life care coordination summary</td>
+        <td rowspan="3">
+			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordClass-1">Care plan</a>
+			<br/>(734163000)
+		</td>
+        <td>
+			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">End of life care coordination summary</a>
+			<br/>(861421000000109)</td>
         <td>
             <ul>
                 <li>
@@ -32,7 +37,10 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
         </td>
     </tr>
     <tr>
-        <td>Mental health crisis plan</td>
+        <td>
+			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">Mental health crisis plan</a>
+			<br/>(736253002)
+		</td>
         <td>
             <ul>
                 <li>
@@ -45,7 +53,10 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
         </td>
     </tr>
     <tr>
-        <td>Emergency health care plan</td>
+        <td>
+			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">Emergency health care plan</a>
+			<br/>(887701000000100)
+		</td>
         <td>
             <ul>
                 <li>
@@ -58,25 +69,29 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
         </td>
     </tr>
     <tr>
-        <td rowspan="2">Record headings</td>
-        <td>Services and care (Professional Contacts)</td>
+        <td rowspan="1">
+			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordClass-1">Record headings</a>
+			<br/>(716931000000107)
+		</td>
+        <td>
+			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">Immunisations</a>
+			<br/>(1102181000000102)
+		</td>
         <td>
             <ul>
-                <li>
-                    <a href="retrieval_contact_details.html">"Contact Details"</a>
-                </li>
 				<li>
-                    <a href="retrieval_services_and_care_fhir_stu3.html">"Services and Care List FHIR STU3 v1"</a>
+                    <a href="retrieval_careconnect_immunizations_fhir_stu3.html">"CareConnect Immunizations FHIR STU3"</a>
                 </li>
             </ul>
         </td>
     </tr>
-    <tr>
-        <td>Immunisations</td>
+	<tr>
+		<td rowspan="1">Patient Record</td>
+        <td>Healthcare Record</td>
         <td>
             <ul>
-                <li>
-                    <a href="retrieval_vaccinations_fhir_stu3.html">"Vaccination List - FHIR STU3 v1"</a>
+				<li>
+                    <a href="retrieval_careconnect_fhir_stu3.html">"CareConnect FHIR STU3"</a>
                 </li>
             </ul>
         </td>
