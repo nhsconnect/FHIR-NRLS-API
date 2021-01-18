@@ -20,7 +20,6 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
     <tr>
         <td rowspan="3">
 			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordClass-1">Care plan</a>
-			<br/>(734163000)
 		</td>
         <td>
 			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">End of life care coordination summary</a>
@@ -71,7 +70,6 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
     <tr>
         <td rowspan="1">
 			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordClass-1">Record headings</a>
-			<br/>(716931000000107)
 		</td>
         <td>
 			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">Immunisations</a>
@@ -81,17 +79,6 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
             <ul>
 				<li>
                     <a href="retrieval_careconnect_immunizations_fhir_stu3.html">"CareConnect Immunizations FHIR STU3"</a>
-                </li>
-            </ul>
-        </td>
-    </tr>
-	<tr>
-		<td rowspan="1">Patient Record</td>
-        <td>Healthcare Record</td>
-        <td>
-            <ul>
-				<li>
-                    <a href="retrieval_careconnect_fhir_stu3.html">"CareConnect FHIR STU3"</a>
                 </li>
             </ul>
         </td>
