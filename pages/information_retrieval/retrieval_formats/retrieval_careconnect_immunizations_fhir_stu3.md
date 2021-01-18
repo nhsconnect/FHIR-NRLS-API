@@ -28,11 +28,13 @@ The [HL7 FHIR Search](https://www.hl7.org/fhir/STU3/search.html) specification d
 
 ### URL
 
-The URL incuded in the pointer MUST be to the Immunization endpoint on the server
+The URL incuded in the pointer MUST be to the Immunization endpoint on the server, and MUST include the patient identifier parameter.
 
 ```url
-https://{fhir_server_base_url}/Immunization/
+https://{fhir_server_base_url}/Immunization?patient.identifier=https://fhir.nhs.uk/Id/nhs-number|{NHS_Number}
 ```
+
+The consumer MAY add other chained search paramters to the request.
 
 
 ### Provider Requirements
