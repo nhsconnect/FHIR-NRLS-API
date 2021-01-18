@@ -122,9 +122,6 @@ entries:
           - title: CareConnect Immunizations FHIR STU3
             url: /retrieval_careconnect_immunizations_fhir_stu3.html
             output: web
-          - title: CareConnect FHIR STU3
-            url: /retrieval_careconnect_fhir_stu3.html
-            output: web
 
   - title: JSON Web Token
     flat: true
