@@ -7,14 +7,14 @@ permalink: retrieval_careconnect_immunizations_fhir_stu3.html
 summary: CareConnect Immunizations, FHIR STU3 format for information retrieval.
 ---
 
-The `CareConnect Immunizations FHIR STU3` retreival format included on a pointer denotes that the provider supports the [CareConnect Immunization FHIR STU3 - Search](https://nhsconnect.github.io/CareConnectAPI/api_medication_immunization.html#2-search) capability at URL endpoint included in the pointer.
+The `CareConnect Immunizations FHIR STU3` retreival format included on a pointer denotes that the provider supports the [CareConnect Immunization FHIR STU3 - Search](https://nhsconnect.github.io/CareConnectAPI/api_medication_immunization.html#2-search) capability at the URL endpoint included in the pointer.
 
-In alignment with national stratergy, providers should be aiming to implement a complete implementation of the CareConnect API, but this page outlines the minimum conformance to the standard required for endpoints which will be included within pointers to immunization data.
+In alignment with national stratergy, providers should be aiming to implement a complete implementation of the CareConnect API, but this page outlines the minimum conformance to the standard required for endpoints which will be included within NRL pointers to immunization data.
 
 
 ## Pointer Retrieval `Format` Code
 
-In the NRL pointer, the retrieval [`format`](pointer_fhir_resource.html#retrieval-format) code for this structure is as follows:
+In the NRL pointer, the retrieval [format](pointer_fhir_resource.html#retrieval-format) code for this structure is as follows:
 
 |System|Code|Display|
 |------|----|-------|
