@@ -7,7 +7,7 @@ permalink: retrieval_careconnect_immunizations_fhir_stu3.html
 summary: CareConnect Immunizations, FHIR STU3 format for information retrieval.
 ---
 
-The `CareConnect Immunizations FHIR STU3` retreival format included on a pointer denotes that the provider supports the [CareConnect Immunization FHIR STU3 search](https://nhsconnect.github.io/CareConnectAPI/api_medication_immunization.html#2-search) capability at URL endpoint included in the pointer.
+The `CareConnect Immunizations FHIR STU3` retreival format included on a pointer denotes that the provider supports the [CareConnect Immunization FHIR STU3 - Search](https://nhsconnect.github.io/CareConnectAPI/api_medication_immunization.html#2-search) capability at URL endpoint included in the pointer.
 
 In alignment with national stratergy, providers should be aiming to implement a complete implementation of the CareConnect API, but this page outlines the minimum conformance to the standard required for endpoints which will be included within pointers to immunization data.
 
