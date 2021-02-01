@@ -7,6 +7,9 @@ permalink: overview_release_notes.html
 summary: Summary release notes of the versions released in NRL API Implementation Guide.
 ---
 
+## 2.5.0
+- Deprectaion of search `_summary` count functionality
+
 ## 2.4.0-beta
 - Specification refactor: restructure and streamline of information included
 - Introduced the [Controller Catalogue](overview_controller_catalogue.html) page
@@ -15,7 +18,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     - Emergency health care plan
     - Services and care
     - Immunisations
-- Addition of structured retrieval formats (DRAFT):
+- Addition of DRAFT structured retrieval formats (DRAFT):
     - [Vaccinations](retrieval_vaccinations_fhir_stu3.html)
 
 ## 2.3.0-beta
