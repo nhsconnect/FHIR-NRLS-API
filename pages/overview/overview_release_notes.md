@@ -7,7 +7,7 @@ permalink: overview_release_notes.html
 summary: Summary release notes of the versions released in NRL API Implementation Guide.
 ---
 
-## 2.5.0
+## 2.5.0-beta
 - Deprectaion of search `_summary` count functionality
 
 ## 2.4.0-beta
