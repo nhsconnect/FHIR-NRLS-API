@@ -44,7 +44,6 @@ This implementation guide outlines the search parameters for the `DocumentRefere
 |`subject`|[reference](https://www.hl7.org/fhir/STU3/references.html)|Subject (patient) of the `DocumentReference`.|`DocumentReference.subject` (Patient NHS Number)|
 |`custodian`|[reference](https://www.hl7.org/fhir/STU3/references.html)|Organisation which maintains the `DocumentReference`.|`DocumentReference.custodian` (Organisation ODS Code)|
 |`type`|[Coding](http://hl7.org/fhir/stu3/datatypes.html#coding)|Information type (SNOMED CT).|`DocumentReference.type.coding`|
-|`_summary`|[summary](https://www.hl7.org/fhir/search.html#summary)|Total number of matching results.|N/A|
 
 A search is made using either the `_id` or `subject` search parameter.
 
@@ -131,26 +130,6 @@ The `custodian` search parameter **MUST** follow the format:
 Return all DocumentReference resources for a patient with an NHS Number of 9876543210 and pointer owner with ODS code RR8.</pre>
 </div>
 
-### **`_summary`**
-
-The `_summary` search parameter allows the consumer to retrieve the number of `DocumentReference`s that match a given search.
-
-See [`_summary`](https://www.hl7.org/fhir/search.html#summary) for details on this search parameter. The `_summary` search parameter can be used as follows:
-
-<div markdown="span" class="alert alert-success" role="alert">
-`GET [baseUrl]/STU3/DocumentReference?subject=[reference]&_summary=count`</div>
-
-The `subject` search parameter **MUST** follow the format:
-
-`https://demographics.spineservices.nhs.uk/STU3/Patient/[nhsNumber]`
-
-The `_summary` search parameter **MUST** have the value `count` (other FHIR values for this search parameter are not supported).
-
-<div class="language-http highlighter-rouge">
-<pre class="highlight"><code><span class="err">GET [baseUrl]/STU3/DocumentReference?subject=https%3A%2F%2Fdemographics.spineservices.nhs.uk%2FSTU3%2FPatient%2F9876543210&_summary=count
-</span></code>
-Return a count of resources for a patient with an NHS Number of 9876543210.</pre>
-</div>
 
 ## Search Response
 
@@ -210,25 +189,6 @@ The following errors can be triggered when performing this operation:
 {% endhighlight %}
 </div>
 
-### Examples: `_summary=count` Response
-
-When using the `_summary=count` search parameter, the response body will contain an XML or JSON formatted `Bundle` of type `searchset` that reports the total number of resources matching the search criteria in field `Bundle.total` (no entries or prev/next/last links).
-
-#### Three `DocumentReference`s exist for patient
-
-<div class="github-sample-wrapper scroll-height-350">
-{% highlight XML %}
-{% include /examples/search_response_summary_count3.xml %}
-{% endhighlight %}
-</div>
-
-#### No `DocumentReference`s exist for patient
-
-<div class="github-sample-wrapper scroll-height-350">
-{% highlight XML %}
-{% include /examples/search_response_summary_count0.xml %}
-{% endhighlight %}
-</div>
 
 ## Explore the NRL
 
