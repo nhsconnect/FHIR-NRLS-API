@@ -2,7 +2,7 @@
 title: Contact Details
 keywords: structured rest documentreference
 tags: [fhir,pointers,record_retrieval]
-sidebar: accessrecord_rest_sidebar
+sidebar: overview_sidebar
 permalink: retrieval_contact_details.html
 summary: Contact Details retrieval format information.
 ---

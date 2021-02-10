@@ -2,7 +2,7 @@
 title: Observation List FHIR STU3 v1
 keywords: structured rest documentreference
 tags: [fhir,pointers,record_retrieval]
-sidebar: accessrecord_rest_sidebar
+sidebar: overview_sidebar
 permalink: retrieval_observations_fhir_stu3.html
 summary: Observation List, FHIR STU3 format information retrieval.
 ---

@@ -2,7 +2,7 @@
 title: API Update Interaction
 keywords: structured update rest documentreference
 tags: [fhir,for_providers]
-sidebar: accessrecord_rest_sidebar
+sidebar: overview_sidebar
 permalink: api_interaction_update.html
 summary: To support the update of NRL pointers.
 ---

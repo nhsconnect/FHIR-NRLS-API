@@ -2,7 +2,7 @@
 title: Unstructured Document
 keywords: structured rest documentreference
 tags: [fhir,pointers,record_retrieval]
-sidebar: accessrecord_rest_sidebar
+sidebar: overview_sidebar
 permalink: retrieval_unstructured_document.html
 summary: Unstructured Document format retrieval information.
 ---

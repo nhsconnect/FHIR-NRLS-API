@@ -2,7 +2,7 @@
 title: SSP Retrieval
 keywords: structured rest documentreference
 tags: [for_consumers,record_retrieval]
-sidebar: accessrecord_rest_sidebar
+sidebar: overview_sidebar
 permalink: retrieval_ssp.html
 summary: Requirements and guidance for information retrieval interactions via the SSP.
 ---

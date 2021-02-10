@@ -2,7 +2,7 @@
 title: Public HTTP Retrieval Interaction
 keywords: structured rest documentreference
 tags: [for_consumers,record_retrieval]
-sidebar: accessrecord_rest_sidebar
+sidebar: overview_sidebar
 permalink: retrieval_http_unsecure.html
 summary: Requirements and guidance for retrieval interactions via the public web.
 ---

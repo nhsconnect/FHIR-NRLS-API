@@ -2,7 +2,7 @@
 title: API Read Interaction
 keywords: structured rest documentreference
 tags: [fhir,pointers,for_consumers]
-sidebar: accessrecord_rest_sidebar
+sidebar: overview_sidebar
 permalink: api_interaction_read.html
 summary: To support the retrieval of an NRL pointer.
 ---

@@ -2,7 +2,7 @@
 title: CareConnect Immunizations FHIR STU3
 keywords: structured rest documentreference
 tags: [fhir,pointers,record_retrieval]
-sidebar: accessrecord_rest_sidebar
+sidebar: overview_sidebar
 permalink: retrieval_careconnect_immunizations_fhir_stu3.html
 summary: CareConnect Immunizations, FHIR STU3 format for information retrieval.
 ---

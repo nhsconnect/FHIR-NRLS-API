@@ -2,7 +2,7 @@
 title: Information Retrieval Overview
 keywords: structured rest documentreference
 tags: [record_retrieval,for_consumers,for_providers]
-sidebar: accessrecord_rest_sidebar
+sidebar: overview_sidebar
 permalink: information_retrieval_overview.html
 summary: Overview of record and document retrieval.
 ---

@@ -119,11 +119,11 @@ entries:
       - title: Retrieval Formats [DRAFT]
         output: web
         subfolderitems:
-          - title: CareConnect Immunizations FHIR STU3
-            url: /retrieval_careconnect_immunizations_fhir_stu3.html
-            output: web
           - title: CareConnect Allergy Intolerance FHIR STU3
             url: /retrieval_careconnect_allergies_fhir_stu3.html
+            output: web
+          - title: CareConnect Immunizations FHIR STU3
+            url: /retrieval_careconnect_immunizations_fhir_stu3.html
             output: web
 
   - title: JSON Web Token

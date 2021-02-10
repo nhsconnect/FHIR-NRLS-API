@@ -2,7 +2,7 @@
 title: Assurance Overview
 keywords: assure assurance accredit
 tags: [assurance,for_providers,for_consumers]
-sidebar: foundations_sidebar
+sidebar: overview_sidebar
 permalink: assurance.html
 summary: Assistance for the NRL Service assurance process.
 ---

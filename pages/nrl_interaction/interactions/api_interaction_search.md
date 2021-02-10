@@ -2,7 +2,7 @@
 title: API Search Interaction
 keywords: structured rest documentreference
 tags: [fhir,pointers,for_consumers]
-sidebar: accessrecord_rest_sidebar
+sidebar: overview_sidebar
 permalink: api_interaction_search.html
 summary: How to perform a parameterised search of the NRL.
 ---

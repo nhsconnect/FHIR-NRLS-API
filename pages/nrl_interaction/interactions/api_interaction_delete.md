@@ -2,7 +2,7 @@
 title: API Delete Interaction
 keywords: structured rest documentreference
 tags: [fhir,for_providers]
-sidebar: accessrecord_rest_sidebar
+sidebar: overview_sidebar
 permalink: api_interaction_delete.html
 summary: To support the deletion of NRL pointers.
 ---

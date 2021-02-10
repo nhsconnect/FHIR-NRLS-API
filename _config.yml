@@ -94,10 +94,6 @@ defaults:
 sidebars:
 - overview_sidebar
 - overview_sidebar
-- designprinciples_sidebar
-- accessrecord_sidebar
-- appointments_sidebar
-- tasks_sidebar
 
 description: "The Care Connect RESTful APIs support the delivery of care by opening information and data held across different clinical care settings through the use of nationally defined INTEROPen FHIR® resources."
 # the description is used in the feed.xml file

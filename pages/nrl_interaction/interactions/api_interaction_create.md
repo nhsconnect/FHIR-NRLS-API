@@ -2,7 +2,7 @@
 title: API Create Interaction
 keywords: structured rest documentreference
 tags: [fhir,for_providers]
-sidebar: accessrecord_rest_sidebar
+sidebar: overview_sidebar
 permalink: api_interaction_create.html
 summary: To support the creation of NRL pointers.
 ---

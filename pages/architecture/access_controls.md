@@ -2,7 +2,7 @@
 title: Access Controls
 keywords: RBAC authorisation documentreference
 tags: [security,authorisation,spine_secure_proxy]
-sidebar: accessrecord_rest_sidebar
+sidebar: overview_sidebar
 permalink: access_controls.html
 summary: Overview of access controls.
 ---

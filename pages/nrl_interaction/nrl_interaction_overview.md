@@ -2,7 +2,7 @@
 title: NRL Interaction Overview
 keywords: getcarerecord structured rest resource
 tags: [development,for_providers,for_consumers]
-sidebar: foundations_sidebar
+sidebar: overview_sidebar
 permalink: nrl_interaction_overview.html
 summary: Pointer creation, management and retrieval overview.
 ---

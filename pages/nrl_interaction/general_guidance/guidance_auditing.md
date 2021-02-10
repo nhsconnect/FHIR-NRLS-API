@@ -2,7 +2,7 @@
 title: Auditing
 keywords: structured rest documentreference
 tags: [integration,auditing,fhir,spine_secure_proxy]
-sidebar: accessrecord_rest_sidebar
+sidebar: overview_sidebar
 permalink: guidance_auditing.html
 summary: Overview of audit and provenance requirements for data transported over NRL interfaces.
 ---

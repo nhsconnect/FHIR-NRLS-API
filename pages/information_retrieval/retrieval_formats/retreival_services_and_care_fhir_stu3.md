@@ -2,7 +2,7 @@
 title: Services and Care List (Professional Contacts) - FHIR STU3
 keywords: structured rest documentreference
 tags: [fhir,pointers,record_retrieval]
-sidebar: accessrecord_rest_sidebar
+sidebar: overview_sidebar
 permalink: retrieval_services_and_care_fhir_stu3.html
 summary: Services and Care List, FHIR STU3 format information retrieval.
 ---

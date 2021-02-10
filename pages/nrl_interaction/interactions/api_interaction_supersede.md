@@ -2,7 +2,7 @@
 title: API Supersede Interaction
 keywords: structured supersede rest documentreference
 tags: [fhir,for_providers]
-sidebar: accessrecord_rest_sidebar
+sidebar: overview_sidebar
 permalink: api_interaction_supersede.html
 summary: To support the superseding of NRL pointers.
 ---
