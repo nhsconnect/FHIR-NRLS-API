@@ -7,6 +7,10 @@ permalink: overview_release_notes.html
 summary: Summary release notes of the versions released in NRL API Implementation Guide.
 ---
 
+## 2.6.0-beta
+- Updated draft page for vaccination retrieval inline with stratigic direction
+- Added draft allergy and intolerence retrieval format
+
 ## 2.5.0-beta
 - Removed: Conditional Delete by id
 - Specification refactor: further restructure and streamline of information included

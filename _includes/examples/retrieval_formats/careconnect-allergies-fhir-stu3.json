@@ -1,0 +1,87 @@
+{
+	"resourceType": "Bundle",
+	"id": "5a4600ec-a8c1-417f-9b41-b84ac20369e5",
+	"meta": {
+		"lastUpdated": "2021-02-10T13:45:10.537+00:00"
+	},
+	"type": "searchset",
+	"total": 1,
+	"link": [
+		{
+			"relation": "self",
+			"url": "http://hapi.fhir.org/baseDstu3/AllergyIntolerance?patient.identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9912003888"
+		}
+	],
+	"entry": [
+		{
+			"fullUrl": "http://hapi.fhir.org/baseDstu3/AllergyIntolerance/2803350",
+			"resource": {
+				"resourceType": "AllergyIntolerance",
+				"id": "2803350",
+				"meta": {
+					"extension": [
+						{
+							"url": "http://hapifhir.io/fhir/StructureDefinition/resource-meta-source",
+							"valueUri": "#nO4GszqUc4gIWffw"
+						}
+					],
+					"versionId": "1",
+					"lastUpdated": "2021-02-10T13:43:09.786+00:00",
+					"profile": [
+						"https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-AllergyIntolerance-1"
+					]
+				},
+				"identifier": [
+					{
+						"system": "https://supplierABC/identifiers",
+						"value": "allergy123"
+					}
+				],
+				"clinicalStatus": "active",
+				"verificationStatus": "confirmed",
+				"type": "allergy",
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "373270004",
+							"display": "Penicillin antibacterial"
+						}
+					]
+				},
+				"patient": {
+					"reference": "Patient/2800448"
+				},
+				"onsetString": "In Childhood",
+				"assertedDate": "2018-01-29",
+				"asserter": {
+					"reference": "Practitioner/2800450"
+				},
+				"note": [
+					{
+						"text": "Evidence: Reacted badly to penicillin prescription as a child\r\nComment: Prescribe alternative an antibiotic group"
+					}
+				],
+				"reaction": [
+					{
+						"manifestation": [
+							{
+								"coding": [
+									{
+										"system": "http://snomed.info/sct",
+										"code": "421581006",
+										"display": "Pharyngeal swelling"
+									}
+								]
+							}
+						],
+						"severity": "moderate"
+					}
+				]
+			},
+			"search": {
+				"mode": "match"
+			}
+		}
+	]
+}

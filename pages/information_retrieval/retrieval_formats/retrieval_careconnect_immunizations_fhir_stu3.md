@@ -51,7 +51,6 @@ The Provider endpoint MUST support the following search parameters, which the co
 
 A consumer should consider the following, when implementing a consumer for a CareConnect API endpoint:
 
-- When performing a search using the `patient.identifier` parameter, the consumer SHOULD include the system as well as the identifier, e.g. `https://fhir.nhs.uk/Id/nhs-number|9912003888`
 - A consumer MUST not assume all referenced resources are supported by the `_include` parameter so SHOULD be able to make seperate calls to retrieve referenced resources, within the response from the provider
 
 

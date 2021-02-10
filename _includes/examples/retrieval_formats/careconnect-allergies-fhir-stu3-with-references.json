@@ -1,0 +1,203 @@
+{
+	"resourceType": "Bundle",
+	"id": "c2092b26-6259-4a79-8e29-ae2ea9a04010",
+	"meta": {
+		"lastUpdated": "2021-02-10T13:44:41.584+00:00"
+	},
+	"type": "searchset",
+	"total": 1,
+	"link": [
+		{
+			"relation": "self",
+			"url": "http://hapi.fhir.org/baseDstu3/AllergyIntolerance?_include%3Arecurse=*&patient.identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9912003888"
+		}
+	],
+	"entry": [
+		{
+			"fullUrl": "http://hapi.fhir.org/baseDstu3/AllergyIntolerance/2803350",
+			"resource": {
+				"resourceType": "AllergyIntolerance",
+				"id": "2803350",
+				"meta": {
+					"extension": [
+						{
+							"url": "http://hapifhir.io/fhir/StructureDefinition/resource-meta-source",
+							"valueUri": "#nO4GszqUc4gIWffw"
+						}
+					],
+					"versionId": "1",
+					"lastUpdated": "2021-02-10T13:43:09.786+00:00",
+					"profile": [
+						"https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-AllergyIntolerance-1"
+					]
+				},
+				"identifier": [
+					{
+						"system": "https://supplierABC/identifiers",
+						"value": "allergy123"
+					}
+				],
+				"clinicalStatus": "active",
+				"verificationStatus": "confirmed",
+				"type": "allergy",
+				"code": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "373270004",
+							"display": "Penicillin antibacterial"
+						}
+					]
+				},
+				"patient": {
+					"reference": "Patient/2800448"
+				},
+				"onsetString": "In Childhood",
+				"assertedDate": "2018-01-29",
+				"asserter": {
+					"reference": "Practitioner/2800450"
+				},
+				"note": [
+					{
+						"text": "Evidence: Reacted badly to penicillin prescription as a child\r\nComment: Prescribe alternative an antibiotic group"
+					}
+				],
+				"reaction": [
+					{
+						"manifestation": [
+							{
+								"coding": [
+									{
+										"system": "http://snomed.info/sct",
+										"code": "421581006",
+										"display": "Pharyngeal swelling"
+									}
+								]
+							}
+						],
+						"severity": "moderate"
+					}
+				]
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "http://hapi.fhir.org/baseDstu3/Practitioner/2800450",
+			"resource": {
+				"resourceType": "Practitioner",
+				"id": "2800450",
+				"meta": {
+					"extension": [
+						{
+							"url": "http://hapifhir.io/fhir/StructureDefinition/resource-meta-source",
+							"valueUri": "#2AnwqcNg6oDzc8Gb"
+						}
+					],
+					"versionId": "1",
+					"lastUpdated": "2021-01-12T19:33:41.580+00:00",
+					"profile": [
+						"https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Practitioner-1"
+					]
+				},
+				"identifier": [
+					{
+						"system": "https://fhir.nhs.uk/Id/sds-role-profile-id",
+						"value": "PT2468"
+					}
+				],
+				"name": [
+					{
+						"family": "Strange",
+						"given": [
+							"Stephen"
+						],
+						"prefix": [
+							"Dr."
+						]
+					}
+				]
+			},
+			"search": {
+				"mode": "include"
+			}
+		},
+		{
+			"fullUrl": "http://hapi.fhir.org/baseDstu3/Patient/2800448",
+			"resource": {
+				"resourceType": "Patient",
+				"id": "2800448",
+				"meta": {
+					"extension": [
+						{
+							"url": "http://hapifhir.io/fhir/StructureDefinition/resource-meta-source",
+							"valueUri": "#2AnwqcNg6oDzc8Gb"
+						}
+					],
+					"versionId": "1",
+					"lastUpdated": "2021-01-12T19:33:41.580+00:00",
+					"profile": [
+						"https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1"
+					]
+				},
+				"text": {
+					"status": "generated",
+					"div": "<div xmlns=\http://www.w3.org/1999/xhtml\`><div class=\"hapiHeaderText\">Jack <b>DAWKINS </b></div><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>9912003888</td></tr><tr><td>Address</td><td><span>4 Sandmoor Drive </span><br/><span>DURHAM </span></td></tr><tr><td>Date of birth</td><td><span>12 October 2013</span></td></tr></tbody></table></div>"
+				},
+				"identifier": [
+					{
+						"extension": [
+							{
+								"url": "https://fhir.hl7.org.uk/STU3/StructureDefinition/Extension-CareConnect-NHSNumberVerificationStatus-1",
+								"valueCodeableConcept": {
+									"coding": [
+										{
+											"system": "https://fhir.hl7.org.uk/STU3/CodeSystem/CareConnect-NHSNumberVerificationStatus-1",
+											"code": "01",
+											"display": "Number present and verified"
+										}
+									]
+								}
+							}
+						],
+						"system": "https://fhir.nhs.uk/Id/nhs-number",
+						"value": "9912003888"
+					}
+				],
+				"name": [
+					{
+						"use": "official",
+						"family": "DAWKINS",
+						"given": [
+							"Jack"
+						]
+					}
+				],
+				"gender": "male",
+				"birthDate": "2013-10-12",
+				"_birthDate": {
+					"extension": [
+						{
+							"url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+							"valueDateTime": "2017-10-02T12:00:00+00:00"
+						}
+					]
+				},
+				"address": [
+					{
+						"use": "home",
+						"line": [
+							"4 Sandmoor Drive"
+						],
+						"city": "DURHAM",
+						"postalCode": "DH1 2TF"
+					}
+				]
+			},
+			"search": {
+				"mode": "include"
+			}
+		}
+	]
+}

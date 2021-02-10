@@ -68,9 +68,22 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
         </td>
     </tr>
     <tr>
-        <td rowspan="1">
+        <td rowspan="2">
 			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordClass-1">Record headings</a>
 		</td>
+        <td>
+			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">Allergies and adverse reactions</a>
+			<br/>(886921000000105)
+		</td>
+        <td>
+            <ul>
+				<li>
+                    <a href="retrieval_careconnect_allergies_fhir_stu3.html">"CareConnect Allergy Intolerance FHIR STU3"</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+	<tr>
         <td>
 			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">Immunisations</a>
 			<br/>(1102181000000102)
