@@ -1,7 +1,7 @@
 entries:
 - title: NRL
-  product: NRL
-  version: 2.5.0-beta<br/>API <i>specification</i>
+  product: National Record Locator (NRL)
+  version: 2.6.0
   levels: one
   folders:
 
@@ -125,8 +125,8 @@ entries:
       - title: Retrieval Formats [DRAFT]
         output: web
         subfolderitems:
-          - title: Vaccination List - FHIR STU3 v1
-            url: /retrieval_vaccinations_fhir_stu3.html
+          - title: CareConnect Immunizations FHIR STU3
+            url: /retrieval_careconnect_immunizations_fhir_stu3.html
             output: web
 
   - title: Assurance
