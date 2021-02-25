@@ -7,6 +7,10 @@ permalink: overview_release_notes.html
 summary: Summary release notes of the versions released in NRL API Implementation Guide.
 ---
 
+## 2.6.0-beta
+- Updated draft page for vaccination retrieval inline with stratigic direction
+- Removed Beta status from spec
+
 ## 2.5.0-beta
 - Deprectaion of search `_summary` count functionality
 
@@ -18,7 +22,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     - Emergency health care plan
     - Services and care
     - Immunisations
-- Addition of DRAFT structured retrieval formats (DRAFT):
+- Addition of structured retrieval formats (DRAFT):
     - [Vaccinations](retrieval_vaccinations_fhir_stu3.html)
 
 ## 2.3.0-beta
@@ -92,7 +96,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     - Links to the on-boarding guide have been added
 - Developer Guidance
     - Overview page
-        - NHS number verification guidance updated
+        - NHS Number verification guidance updated
         - Actor to interaction mapping table updated
     - FHIR Resource page
         - Renamed
