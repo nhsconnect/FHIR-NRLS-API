@@ -32,7 +32,6 @@ Consumer API search requests support the following HTTP request headers:
 
 The `search` interaction allows a consumer to query the NRL to obtain:
 - all pointers (`DocumentReference`s) related to a specific NHS Number.
-- the count of all pointers (`DocumentReference`s) related to a specific NHS Number.
 - a specific pointer (equivalent to the [read](api_interaction_read.html) interaction).
 
 The consumer **MUST** submit the request to the NRL using:
@@ -52,12 +51,11 @@ A variety of search parameters can be used to perform different types of search:
 |`subject`|[reference](https://www.hl7.org/fhir/STU3/references.html)|Subject (patient) of the `DocumentReference` (patient's NHS Number).<br /><br />See [`reference`](https://www.hl7.org/fhir/STU3/search.html#reference) for more details on this search parameter.|`subject`|
 |`type`|[Coding](http://hl7.org/fhir/stu3/datatypes.html#coding)|Information type (SNOMED CT).|`type.coding`|
 |`custodian`|[reference](https://www.hl7.org/fhir/STU3/references.html)|Organisation which maintains the `DocumentReference` (organisation's ODS code).|`custodian`|
-|`_summary`|[summary](https://www.hl7.org/fhir/search.html#summary)|Total number of matching results.<br /><br />See [`_summary`](https://www.hl7.org/fhir/search.html#summary) for more details on this search parameter.|N/A|
 
 Each search **MUST** include either the `_id` or `subject` search parameter.
 
 - The `_id` search parameter **MUST NOT** be used in conjunction with any other search parameter (with the exception of the `_format` parameter).
-- The `type`, `custodian` and `_summary` search parameters can **ONLY** be used in conjunction with the `subject` search parameter, but cannot be combined with each other.
+- The `type` and `custodian` search parameters can **ONLY** be used in conjunction with the `subject` search parameter, but cannot be combined with each other.
 
 {% include note.html content="All query parameters must be percent encoded. In particular, the pipe (`|`) character must be percent encoded (`%7C`)." %}
 
@@ -131,26 +129,12 @@ The `custodian` search parameter **MUST** follow the format:
 Return all DocumentReference resources for a patient with an NHS Number of 9876543210 and pointer owner with ODS code RR8.</pre>
 </div>
 
-#### **`subject` and `_summary`**
-
-The `_summary` search parameter allows the consumer to retrieve the count of `DocumentReference`s known to the NRL for a given patient, and can be combined as follows:
-
-<div markdown="span" class="alert alert-success" role="alert">
-`GET [baseUrl]/STU3/DocumentReference?subject=[reference]&_summary=count`</div>
-
-<div class="language-http highlighter-rouge">
-<pre class="highlight"><code><span class="err">GET [baseUrl]/STU3/DocumentReference?subject=https%3A%2F%2Fdemographics.spineservices.nhs.uk%2FSTU3%2FPatient%2F9876543210&_summary=count
-</span></code>
-Return a count of resources for a patient with an NHS Number of 9876543210.</pre>
-</div>
-
-{% include note.html content="The `_summary` search parameter **MUST** have the value `count` (other FHIR values for this search parameter are not supported)." %}
 
 ## Search Response
 
 ### Success
 
-A successful execution of the `search` interaction (**NOT** using the `_summary` search parameter) will return:
+A successful execution of the `search` interaction will return:
 - a `200` **OK** HTTP status code.
 - a [`Bundle`](https://www.hl7.org/fhir/STU3/bundle.html) response body of type `searchset`, containing either:
     - A `0` (zero) `Bundle.total` value indicating no records matched the search criteria i.e. an empty `Bundle`.
@@ -163,12 +147,6 @@ A successful execution of the `search` interaction (**NOT** using the `_summary`
     
     {% include note.html content="The version of the pointer model (FHIR profile) will be indicated in the `DocumentReference.meta.profile` attribute for each pointer (see [Pointer FHIR Resource](pointer_fhir_resource.html#fhir-profile)). A 'Bundle' may contain pointers which conform to different versions of the pointer model." %}
 
-A successful execution of the `search` interaction (using the `_summary` search parameter) will return:
-- a `200` **OK** HTTP status code.
-- a [`Bundle`](https://www.hl7.org/fhir/STU3/bundle.html) response body of type `searchset`, containing no entries.
-- A `Bundle.total` value indicating the quantity of pointers known to the NRL related to the patient.
-
-{% include important.html content="If the `Bundle.total` value returned from a `_summary` search is greater than 0, this value **MUST** only act as an indicator that it's likely that pointers will be returned should a full search be made i.e. it cannot guarantee that any pointers will in fact be returned. A `Bundle.total` value of 0, however, is a conclusive result i.e. no pointers would be returned if a full search was performed.<br /><br />For more information on the reason behind this, please [contact the NRL team](support_communications.html)." %}
 
 #### Example: Single Pointer Response
 
@@ -200,26 +178,6 @@ A successful execution of the `search` interaction (using the `_summary` search 
 <div class="github-sample-wrapper scroll-height-350">
 {% highlight XML %}
 {% include /examples/search_response_empty.xml %}
-{% endhighlight %}
-</div>
-
-#### Examples: `_summary=count` Response
-
-When using the `_summary=count` search parameter, the response body will contain an XML or JSON formatted `Bundle` of type `searchset` that reports the total number of resources matching the search criteria in field `Bundle.total` (no entries or prev/next/last links).
-
-##### Example: Three `DocumentReference`s exist for patient
-
-<div class="github-sample-wrapper scroll-height-350">
-{% highlight XML %}
-{% include /examples/search_response_summary_count3.xml %}
-{% endhighlight %}
-</div>
-
-##### Example: No `DocumentReference`s exist for patient
-
-<div class="github-sample-wrapper scroll-height-350">
-{% highlight XML %}
-{% include /examples/search_response_summary_count0.xml %}
 {% endhighlight %}
 </div>
 

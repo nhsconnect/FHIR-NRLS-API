@@ -134,11 +134,6 @@ If the search request specifies unsupported parameter values in the request, thi
 
 Where `masterIdentifier` is a search term, both the `system` and `value` parameters must be supplied.
 
-### `_summary` Parameter
-
-The `_summary` parameter must have a value of `count`. If it's anything else, an error will be returned.
-
-If the `_summary` parameter is provided, the only other parameter it can be used with is the optional `_format` parameter. If any other parameters are provided, an error will be returned.
 
 #### OperationOutcome
 

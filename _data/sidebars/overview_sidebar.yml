@@ -1,7 +1,7 @@
 entries:
 - title: NRL
-  product: NRL
-  version: 2.6.0-beta API <i>specification (DRAFT)</i>
+  product: National Record Locator (NRL)
+  version: 2.7.0 (DRAFT)
   levels: one
   folders:
 
