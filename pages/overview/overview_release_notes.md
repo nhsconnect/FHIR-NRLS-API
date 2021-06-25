@@ -7,6 +7,10 @@ permalink: overview_release_notes.html
 summary: Summary release notes of the versions released in NRL API Implementation Guide.
 ---
 
+## 2.7.0-beta
+- Removed vaccination retrieval until provider onboards
+- Added new class "Observations" and type "Royal College of Physicians NEWS2 (National Early Warning Score 2)" to supported pointer types
+
 ## 2.6.0-beta
 - Updated draft page for vaccination retrieval inline with stratigic direction
 - Removed Beta status from spec
@@ -21,7 +25,6 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     - End of life care coordination summary
     - Emergency health care plan
     - Services and care
-    - Immunisations
 - Addition of structured retrieval formats (DRAFT):
     - [Vaccinations](retrieval_vaccinations_fhir_stu3.html)
 
