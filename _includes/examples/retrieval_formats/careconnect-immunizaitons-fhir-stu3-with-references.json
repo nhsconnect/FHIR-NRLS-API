@@ -1,0 +1,272 @@
+{
+	"resourceType": "Bundle",
+	"id": "9d482a04-d822-411a-81a8-6f9ed8ada2cc",
+	"meta": {
+		"lastUpdated": "2021-01-15T14:56:33.174+00:00"
+	},
+	"type": "searchset",
+	"total": 1,
+	"link": [
+		{
+			"relation": "self",
+			"url": "http://hapi.fhir.org/baseDstu3/Immunization?_include%3Arecurse=*&patient.identifier=https%3A%2F%2Ffhir.nhs.uk%2FId%2Fnhs-number%7C9912003888"
+		}
+	],
+	"entry": [
+		{
+			"fullUrl": "http://hapi.fhir.org/baseDstu3/Immunization/2800446",
+			"resource": {
+				"resourceType": "Immunization",
+				"id": "2800446",
+				"meta": {
+					"extension": [
+						{
+							"url": "http://hapifhir.io/fhir/StructureDefinition/resource-meta-source",
+							"valueUri": "#2AnwqcNg6oDzc8Gb"
+						}
+					],
+					"versionId": "1",
+					"lastUpdated": "2021-01-12T19:33:41.580+00:00",
+					"profile": [
+						"https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Immunization-1"
+					]
+				},
+				"extension": [
+					{
+						"url": "https://fhir.hl7.org.uk/STU3/StructureDefinition/Extension-CareConnect-VaccinationProcedure-1",
+						"valueCodeableConcept": {
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "170433008",
+									"display": "Measles mumps and rubella vaccination - second dose (procedure)"
+								}
+							]
+						}
+					}
+				],
+				"identifier": [
+					{
+						"system": "https://supplierABC/identifiers",
+						"value": "abc1111"
+					}
+				],
+				"status": "completed",
+				"notGiven": false,
+				"vaccineCode": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "34925411000001109",
+							"display": "Priorix vaccine powder and solvent for solution for injection 0.5ml pre-filled syringes (GlaxoSmithKline UK Ltd) 1 pre-filled disposable injection (product)"
+						}
+					]
+				},
+				"patient": {
+					"reference": "Patient/2800448"
+				},
+				"encounter": {
+					"reference": "Encounter/2800449"
+				},
+				"date": "2017-02-14T12:00:00+00:00",
+				"primarySource": true,
+				"location": {
+					"reference": "Location/2800451"
+				},
+				"lotNumber": "CCJN12M",
+				"site": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "91775009",
+							"display": "Structure of left shoulder region"
+						}
+					]
+				},
+				"route": {
+					"coding": [
+						{
+							"system": "http://snomed.info/sct",
+							"code": "34206005",
+							"display": "Subcutaneous route"
+						}
+					]
+				},
+				"doseQuantity": {
+					"value": 0.5,
+					"system": "http://unitsofmeasure.org",
+					"code": "ml"
+				},
+				"practitioner": [
+					{
+						"actor": {
+							"reference": "Practitioner/2800450"
+						}
+					}
+				],
+				"explanation": {
+					"reason": [
+						{
+							"coding": [
+								{
+									"system": "http://snomed.info/sct",
+									"code": "864611000000103",
+									"display": "Recommendation to have child immunised against measles, mumps and rubella"
+								}
+							]
+						}
+					]
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "http://hapi.fhir.org/baseDstu3/Practitioner/2800450",
+			"resource": {
+				"resourceType": "Practitioner",
+				"id": "2800450",
+				"meta": {
+					"extension": [
+						{
+							"url": "http://hapifhir.io/fhir/StructureDefinition/resource-meta-source",
+							"valueUri": "#2AnwqcNg6oDzc8Gb"
+						}
+					],
+					"versionId": "1",
+					"lastUpdated": "2021-01-12T19:33:41.580+00:00",
+					"profile": [
+						"https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Practitioner-1"
+					]
+				},
+				"identifier": [
+					{
+						"system": "https://fhir.nhs.uk/Id/sds-role-profile-id",
+						"value": "PT2468"
+					}
+				],
+				"name": [
+					{
+						"family": "Strange",
+						"given": [
+							"Stephen"
+						],
+						"prefix": [
+							"Dr."
+						]
+					}
+				]
+			},
+			"search": {
+				"mode": "include"
+			}
+		},
+		{
+			"fullUrl": "http://hapi.fhir.org/baseDstu3/Location/2800451",
+			"resource": {
+				"resourceType": "Location",
+				"id": "2800451",
+				"meta": {
+					"extension": [
+						{
+							"url": "http://hapifhir.io/fhir/StructureDefinition/resource-meta-source",
+							"valueUri": "#2AnwqcNg6oDzc8Gb"
+						}
+					],
+					"versionId": "1",
+					"lastUpdated": "2021-01-12T19:33:41.580+00:00",
+					"profile": [
+						"https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Location-1"
+					]
+				},
+				"identifier": [
+					{
+						"system": "https://fhir.nhs.uk/Id/ods-site-code",
+						"value": "A83627001"
+					}
+				],
+				"name": "SILVERDALE FAMILY PRACTICE"
+			},
+			"search": {
+				"mode": "include"
+			}
+		},
+		{
+			"fullUrl": "http://hapi.fhir.org/baseDstu3/Patient/2800448",
+			"resource": {
+				"resourceType": "Patient",
+				"id": "2800448",
+				"meta": {
+					"extension": [
+						{
+							"url": "http://hapifhir.io/fhir/StructureDefinition/resource-meta-source",
+							"valueUri": "#2AnwqcNg6oDzc8Gb"
+						}
+					],
+					"versionId": "1",
+					"lastUpdated": "2021-01-12T19:33:41.580+00:00",
+					"profile": [
+						"https://fhir.hl7.org.uk/STU3/StructureDefinition/CareConnect-Patient-1"
+					]
+				},
+				"text": {
+					"status": "generated",
+					"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\">Jack <b>DAWKINS </b></div><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>9912003888</td></tr><tr><td>Address</td><td><span>4 Sandmoor Drive </span><br/><span>DURHAM </span></td></tr><tr><td>Date of birth</td><td><span>12 October 2013</span></td></tr></tbody></table></div>"
+				},
+				"identifier": [
+					{
+						"extension": [
+							{
+								"url": "https://fhir.hl7.org.uk/STU3/StructureDefinition/Extension-CareConnect-NHSNumberVerificationStatus-1",
+								"valueCodeableConcept": {
+									"coding": [
+										{
+											"system": "https://fhir.hl7.org.uk/STU3/CodeSystem/CareConnect-NHSNumberVerificationStatus-1",
+											"code": "01",
+											"display": "Number present and verified"
+										}
+									]
+								}
+							}
+						],
+						"system": "https://fhir.nhs.uk/Id/nhs-number",
+						"value": "9912003888"
+					}
+				],
+				"name": [
+					{
+						"use": "official",
+						"family": "DAWKINS",
+						"given": [
+							"Jack"
+						]
+					}
+				],
+				"gender": "male",
+				"birthDate": "2013-10-12",
+				"_birthDate": {
+					"extension": [
+						{
+							"url": "http://hl7.org/fhir/StructureDefinition/patient-birthTime",
+							"valueDateTime": "2017-10-02T12:00:00+00:00"
+						}
+					]
+				},
+				"address": [
+					{
+						"use": "home",
+						"line": [
+							"4 Sandmoor Drive"
+						],
+						"city": "DURHAM",
+						"postalCode": "DH1 2TF"
+					}
+				]
+			},
+			"search": {
+				"mode": "include"
+			}
+		}
+	]
+}
