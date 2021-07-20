@@ -69,16 +69,16 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
     </tr>
     <tr>
         <td rowspan="1">
-			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordClass-1">Observations</a>
+			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordClass-1">Record headings</a>
 		</td>
         <td>
-			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">Royal College of Physicians NEWS2 (National Early Warning Score 2)</a>
-			<br/>(1104061000000103)
+			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">Immunisations</a>
+			<br/>(1102181000000102)
 		</td>
         <td>
             <ul>
 				<li>
-                    <a href="retrieval_unstructured_document.html">"Unstructured Document (PDF)"</a>
+                    <a href="retrieval_careconnect_immunizations_fhir_stu3.html">"CareConnect Immunizations FHIR STU3"</a>
                 </li>
             </ul>
         </td>
