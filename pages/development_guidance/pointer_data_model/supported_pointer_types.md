@@ -72,8 +72,8 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
 			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordClass-1">Observations</a>
 		</td>
         <td>
-			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">Royal College of Physicians NEWS2 (National Early Warning Score 2)</a>
-			<br/>(1104061000000103)
+			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">Royal College of Physicians NEWS2 (National Early Warning Score 2) chart</a>
+			<br/>(1363501000000100)
 		</td>
         <td>
             <ul>
