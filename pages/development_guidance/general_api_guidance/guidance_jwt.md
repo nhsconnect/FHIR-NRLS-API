@@ -54,17 +54,16 @@ Where a consuming system is making a request on behalf of a healthcare professio
 }
 ```
 
-<!--
 ### Citizen Access
 
 Where a consuming system is making a request on behalf of a citizen, the following claim requirements **MUST** be met:
 
 |Claim|Requirement|
 |-----|-----------|
-|`requesting_patient`|The claim **MUST** be populated with the citizen's patient details (the subject of the information being requested) in the form:<br /><br />`http://fhir.nhs.net/Id/nhs-number|[nhs_number]`|
+|`requesting_patient`|The claim **MUST** be populated with the citizen's patient details (the subject of the information being requested) in the form:<br /><br />`https://fhir.nhs.net/Id/nhs-number|[nhs_number]`|
 |`sub`|The value **MUST** match the value of the `requesting_patient` claim.|
 |`reason_for_request`|Fixed value: `patientaccess`|
-|`act`|This claim is for use where there is delegated access by one citizen on behalf of another citizen. Where the request is citizen access but not to their own record the `act` claim **MUST** be populated with the details of the requesting citizen.<br/><br/>The claim **MUST** be in the form:<br/><br/>```"act": {```<br />```   "sub": "http://fhir.nhs.net/Id/nhs-number|[nhs_number]"```<br />```}```|
+|`act`|This claim is for use where there is delegated access by one citizen on behalf of another citizen. Where the request is citizen access but not to their own record the `act` claim **MUST** be populated with the details of the requesting citizen.<br/><br/>The claim **MUST** be in the form:<br/><br/>```"act": {```<br />```   "sub": "https://fhir.nhs.net/Id/nhs-number|[nhs_number]"```<br />```}```|
 |`requesting_user`|The claim **MUST NOT** be included.|
 
 #### Example: Citizen accessing own record
@@ -80,7 +79,7 @@ Where a consuming system is making a request on behalf of a citizen, the followi
   "scope": "patient/Documentreference.read",
   "requesting_system": "https://fhir.nhs.uk/Id/accredited-system|200000000205",
   "requesting_organisation": "https://fhir.nhs.uk/Id/ods-organization-code|RXA",
-  "requesting_patient": "http://fhir.nhs.net/Id/nhs-number|6101231234"
+  "requesting_patient": "https://fhir.nhs.net/Id/nhs-number|6101231234"
 }
 ```
 
@@ -97,13 +96,12 @@ Where a consuming system is making a request on behalf of a citizen, the followi
   "scope": "patient/Documentreference.read",
   "requesting_system": "https://fhir.nhs.uk/Id/accredited-system|200000000205",
   "requesting_organisation": "https://fhir.nhs.uk/Id/ods-organization-code|RXA",
-  "requesting_patient": "http://fhir.nhs.net/Id/nhs-number|6101231234",
+  "requesting_patient": "https://fhir.nhs.net/Id/nhs-number|6101231234",
   "act": {
-    "sub": "http://fhir.nhs.net/Id/nhs-number|9876543210"
+    "sub": "https://fhir.nhs.net/Id/nhs-number|9876543210"
   }
 }
 ```
--->
 
 ### Unattended Access
 
