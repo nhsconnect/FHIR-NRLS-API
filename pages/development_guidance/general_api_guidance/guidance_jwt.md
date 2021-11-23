@@ -22,8 +22,8 @@ For all requests the following claim requirements **MUST** be met:
 
 |Claim|Requirement|
 |-----|-----------|
-|`requesting_organisation`|The ODS code of the requesting organisation **MUST** be known to the Spine and be in the form:<br /><br />`https://fhir.nhs.uk/Id/ods-organization-code|[odsCode]`|
-|`requesting_system`|The ASID of the requesting system (associated with the ODS code in the `requesting_organisation` claim) **MUST** be known to Spine and be in the form:<br /><br />`https://fhir.nhs.uk/Id/accredited-system|[ASID]`|
+|`requesting_organization`|The ODS code of the requesting organisation **MUST** be known to the Spine and be in the form:<br /><br />`https://fhir.nhs.uk/Id/ods-organization-code|[odsCode]`|
+|`requesting_system`|The ASID of the requesting system (associated with the ODS code in the `requesting_organization` claim) **MUST** be known to Spine and be in the form:<br /><br />`https://fhir.nhs.uk/Id/accredited-system|[ASID]`|
 |`scope`|For requests to the NRL: `scope` **MUST** have the value `patient/DocumentReference.read` (consumer interactions) or `patient/DocumentReference.write` (provider interactions).<br /><br />For requests to the SSP (see [SSP Information Retrieval Interaction](retrieval_ssp.html)): `scope` **MUST** have the value `patient/*.read` (consumer interactions) or `patient/*.write` (provider interactions).|
 
 ### Healthcare Professional Access
@@ -49,7 +49,7 @@ Where a consuming system is making a request on behalf of a healthcare professio
   "reason_for_request": "directcare",
   "scope": "patient/Documentreference.read",
   "requesting_system": "https://fhir.nhs.uk/Id/accredited-system|200000000205",
-  "requesting_organisation": "https://fhir.nhs.uk/Id/ods-organization-code|RXA",
+  "requesting_organization": "https://fhir.nhs.uk/Id/ods-organization-code|RXA",
   "requesting_user": "https://fhir.nhs.uk/Id/sds-role-profile-id|4387293874928"
 }
 ```
@@ -78,7 +78,7 @@ Where a consuming system is making a request on behalf of a citizen, the followi
   "reason_for_request": "patientaccess",
   "scope": "patient/Documentreference.read",
   "requesting_system": "https://fhir.nhs.uk/Id/accredited-system|200000000205",
-  "requesting_organisation": "https://fhir.nhs.uk/Id/ods-organization-code|RXA",
+  "requesting_organization": "https://fhir.nhs.uk/Id/ods-organization-code|RXA",
   "requesting_patient": "https://fhir.nhs.net/Id/nhs-number|6101231234"
 }
 ```
@@ -95,7 +95,7 @@ Where a consuming system is making a request on behalf of a citizen, the followi
   "reason_for_request": "patientaccess",
   "scope": "patient/Documentreference.read",
   "requesting_system": "https://fhir.nhs.uk/Id/accredited-system|200000000205",
-  "requesting_organisation": "https://fhir.nhs.uk/Id/ods-organization-code|RXA",
+  "requesting_organization": "https://fhir.nhs.uk/Id/ods-organization-code|RXA",
   "requesting_patient": "https://fhir.nhs.net/Id/nhs-number|6101231234",
   "act": {
     "sub": "https://fhir.nhs.net/Id/nhs-number|9876543210"
@@ -125,7 +125,7 @@ For Provider interactions only. Where an interaction is performed without a user
   "iat": 1469436687,
   "reason_for_request": "directcare",
   "scope": "patient/Documentreference.read",
-  "requesting_organisation": "https://fhir.nhs.uk/Id/ods-organization-code|RXA",
+  "requesting_organization": "https://fhir.nhs.uk/Id/ods-organization-code|RXA",
   "requesting_system": "https://fhir.nhs.uk/Id/accredited-system|200000000205"
 }
 ```
