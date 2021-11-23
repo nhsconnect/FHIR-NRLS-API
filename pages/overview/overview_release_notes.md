@@ -7,6 +7,9 @@ permalink: overview_release_notes.html
 summary: Summary release notes of the versions released in NRL API Implementation Guide.
 ---
 
+## 2.7.1-beta
+- Corrected issue with JWT claim "requesting_organization" which origionally had organizaiton with an `s`
+
 ## 2.7.0-beta
 - Removed vaccination retrieval until provider onboards
 - Added new class "Observations" and type "Royal College of Physicians NEWS2 (National Early Warning Score 2)" to supported pointer types
