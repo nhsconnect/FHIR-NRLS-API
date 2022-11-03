@@ -7,21 +7,21 @@ permalink: overview_release_notes.html
 summary: Summary release notes of the versions released in NRL API Implementation Guide.
 ---
 
-## 2.7.1-beta
+## 2.7.1
 - Corrected issue with JWT claim "requesting_organization" which origionally had organizaiton with an `s`
 
-## 2.7.0-beta
+## 2.7.0
 - Removed vaccination retrieval until provider onboards
 - Added new class "Observations" and type "Royal College of Physicians NEWS2 (National Early Warning Score 2)" to supported pointer types
 
-## 2.6.0-beta
+## 2.6.0
 - Updated draft page for vaccination retrieval inline with stratigic direction
 - Removed Beta status from spec
 
-## 2.5.0-beta
+## 2.5.0
 - Deprectaion of search `_summary` count functionality
 
-## 2.4.0-beta
+## 2.4.0
 - Specification refactor: restructure and streamline of information included
 - Introduced the [Controller Catalogue](overview_controller_catalogue.html) page
 - Addition of [supported pointer types](supported_pointer_types.html):
@@ -31,7 +31,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 - Addition of structured retrieval formats (DRAFT):
     - [Vaccinations](retrieval_vaccinations_fhir_stu3.html)
 
-## 2.3.0-beta
+## 2.3.0
 - Add clarification about use of `versionId` to [Supersede interaction page](api_interaction_supersede.html)
 - Update ODS code and endpoint requirements guidance
 - Remove SSP prefix from example `DocumentReference`s
@@ -43,7 +43,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 - Remove obsolete pages
 - Miscellaneous copy-edits and minor restructuring
 
-## 2.2.0-beta
+## 2.2.0
 - Renamed metadata 'Record class' to 'Record category'
 - Updated guidance on request headers for the retrieval read interaction
 - Updated guidance on use of CareConnect GET Binary API for unstructured retrieval
@@ -59,11 +59,11 @@ summary: Summary release notes of the versions released in NRL API Implementatio
     - for when Consumers perform a look-up of a Provider ASID on SDS
 - Added clarification on using absolute URLs in the Record URL metadata attribute
 
-## 2.1.1-beta
+## 2.1.1
 - Updated guidance on usage of SNOMED CT concepts in FHIR value sets
 - API interaction examples updated
 
-## 2.1.0-beta
+## 2.1.0
 *Changes to record/document retrieval requirements and updated guidance*
 - *API Breaking Change*{:.label.label-danger} The custodian search parameter format has been updated
 - *API Breaking Change*{:.label.label-danger} The supported formats for retrieval have been updated
@@ -81,7 +81,7 @@ summary: Summary release notes of the versions released in NRL API Implementatio
 - Audit requirements elaborated
 - Phase 1 and Phase 2 overview updated
 
-## 2.0.0-beta
+## 2.0.0
 *Changes to record/document retrieval requirements, new API interactions, NRL DocumentReference model changes, and updated guidance.*
 - The service name has changed from NRLS (National Record Locator Service) to NRL (National Record Locator)
 - *API Breaking Change*{:.label.label-danger} The FHIR Resource `NRLS-DocumentReference-1` uplifted to `NRL-DocumentReference-1` - data model changes are:
