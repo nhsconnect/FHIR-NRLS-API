@@ -18,12 +18,60 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
         <th><a href="pointer_fhir_resource.html#retrieval-format">Retrieval Format(s)</a></th>
 	</tr>
     <tr>
-        <td rowspan="3">
+        <td rowspan="6">
 			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordClass-1">Care plan</a>
 		</td>
         <td>
+			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">Contingency plan</a>
+			<br/>(325691000000100)
+		</td>
+        <td>
+            <ul>
+                <li>
+                    <a href="retrieval_contact_details.html">"Contact Details"</a>
+                </li>
+                <li>
+                    <a href="retrieval_unstructured_document.html">"Unstructured Document (PDF)"</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+	<tr>
+        <td>
+			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">Emergency health care plan</a>
+			<br/>(887701000000100)
+		</td>
+        <td>
+            <ul>
+                <li>
+                    <a href="retrieval_contact_details.html">"Contact Details"</a>
+                </li>
+                <li>
+                    <a href="retrieval_unstructured_document.html">"Unstructured Document (PDF)"</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+	<tr>
+        <td>
 			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">End of life care coordination summary</a>
 			<br/>(861421000000109)</td>
+        <td>
+            <ul>
+                <li>
+                    <a href="retrieval_contact_details.html">"Contact Details"</a>
+                </li>
+                <li>
+                    <a href="retrieval_unstructured_document.html">"Unstructured Document (PDF)"</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+	<tr>
+        <td>
+			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">End of life care plan</a>
+			<br/>(736373009)
+		</td>
         <td>
             <ul>
                 <li>
@@ -51,10 +99,11 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
             </ul>
         </td>
     </tr>
-    <tr>
+	
+	<tr>
         <td>
-			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">Emergency health care plan</a>
-			<br/>(887701000000100)
+			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">ReSPECT (Recommended Summary Plan for Emergency Care and Treatment) form</a>
+			<br/>(1382601000000107)
 		</td>
         <td>
             <ul>
@@ -67,6 +116,7 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
             </ul>
         </td>
     </tr>
+	
     <tr>
         <td rowspan="1">
 			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordClass-1">Observations</a>
