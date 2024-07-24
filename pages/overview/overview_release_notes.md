@@ -13,6 +13,8 @@ Added new supported pointer types
 - End of life care plan
 - ReSPECT (Recommended Summary Plan for Emergency Care and Treatment) form
 - Contingency plan
+- Treatment escalation plan
+- Advance care plan
 
 ## 2.7.1
 - Corrected issue with JWT claim "requesting_organization" which origionally had organizaiton with an `s`

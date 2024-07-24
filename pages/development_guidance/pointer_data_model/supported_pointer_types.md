@@ -18,7 +18,7 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
         <th><a href="pointer_fhir_resource.html#retrieval-format">Retrieval Format(s)</a></th>
 	</tr>
     <tr>
-        <td rowspan="6">
+        <td rowspan="8">
 			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordClass-1">Care plan</a>
 		</td>
         <td>
@@ -36,6 +36,7 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
             </ul>
         </td>
     </tr>
+	
 	<tr>
         <td>
 			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">Emergency health care plan</a>
@@ -52,6 +53,7 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
             </ul>
         </td>
     </tr>
+
 	<tr>
         <td>
 			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">End of life care coordination summary</a>
@@ -67,6 +69,7 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
             </ul>
         </td>
     </tr>
+
 	<tr>
         <td>
 			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">End of life care plan</a>
@@ -83,6 +86,7 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
             </ul>
         </td>
     </tr>
+	
     <tr>
         <td>
 			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">Mental health crisis plan</a>
@@ -104,6 +108,40 @@ The table outlines each `Retrieval Format` supported for each pointer type. Deta
         <td>
 			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">ReSPECT (Recommended Summary Plan for Emergency Care and Treatment) form</a>
 			<br/>(1382601000000107)
+		</td>
+        <td>
+            <ul>
+                <li>
+                    <a href="retrieval_contact_details.html">"Contact Details"</a>
+                </li>
+                <li>
+                    <a href="retrieval_unstructured_document.html">"Unstructured Document (PDF)"</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+
+	<tr>
+        <td>
+			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">Treatment escalation plan</a>
+			<br/>(735324008)
+		</td>
+        <td>
+            <ul>
+                <li>
+                    <a href="retrieval_contact_details.html">"Contact Details"</a>
+                </li>
+                <li>
+                    <a href="retrieval_unstructured_document.html">"Unstructured Document (PDF)"</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+
+	<tr>
+        <td>
+			<a href="https://fhir.nhs.uk/STU3/ValueSet/NRL-RecordType-1">Advance care plan</a>
+			<br/>(736366004)
 		</td>
         <td>
             <ul>
